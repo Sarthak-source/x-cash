@@ -72,4 +72,24 @@ class MyStrings{
   // bottom-nav
   static const String home = "Home";
   static const String activity = "Activity";
+
+  // home bottom-sheet
+  static const String totalReceived = "Total Received";
+  static const String viewTransactions = "View Transactions";
+
+  static const String transaction = "Transaction";
+  static const String requestToMe = "Request to Me";
+  static const String addMoneyHistory = "Add Money History";
+  static const String myVoucher = "My Voucher";
+  static const String withdrawHistory = "Withdraw History";
+  static const String myInvoice = "My Invoice";
+
+  // transfer-money
+  static const String selectWallet = "Select Wallet";
+  static const String agentUsernameEmail = "Agent Username / E-mail";
+  static const String amount = "Amount";
+  static const String otpBySMS = "OTP by SMS";
+  static const String otpByEmail = "OTP by Email";
+  static const String otpByGoogleAuth = "OTP by Google Authentication";
+  static const String transferNow = "Transfer Now";
 }
