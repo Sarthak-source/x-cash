@@ -117,4 +117,80 @@ class MyStrings{
   // payment details
   static const String paymentDetails = "Payment Details";
   static const String merchantUsernameEmail = "Merchant Username / E-mail";
+
+  // my voucher
+  static const String notUsed = "Not Used";
+  static const String used = "Used";
+  static const String createdAt = "Created at : ";
+  static const String usedAt = "Used at - ";
+
+  // redeem voucher
+  static const String redeemVoucher = "Redeem Voucher";
+  static const String voucherNumber = "Voucher Number";
+  static const String redeem = "Redeem";
+
+  // provide details
+  static const String provideDetails = "Provide Details";
+  static const String createVoucher = "Create Voucher";
+
+  // my invoice
+  static const String published = "Published";
+  static const String discarded = "Discarded";
+  static const String inVoice = "In Voice to";
+  static const String createdDate = "Created Date";
+  static const String paymentStatus = "Payment Status";
+  static const String issued = "Issued:";
+  static const String download = "Download";
+
+  // invoice details
+  static const String invoiceDetails = "Invoice Details";
+  static const String invoiceTo = "Invoice To";
+  static const String yourWallet = "Your Wallet";
+
+  // invoice items
+  static const String invoiceItems = "Invoice items";
+  static const String itemName = "Item Name";
+  static const String itemNameHint = "Enter item name";
+  static const String createInvoice = "Create Invoice";
+
+  // money request
+  static const String myRequests = "My Requests";
+  static const String toMe = "To me";
+  static const String demoUser = "demouser demouser";
+  static const String walletCurrency = "Wallet Currency";
+  static const String note = "Note";
+  static const String remainingBalance = "Remaining Balance";
+  static const String wantToReject = "Want to reject?";
+  static const String wantToConfirm = "Want to confirm?";
+  static const String areYouSureConfirm = "Are you sure want to confirm?";
+  static const String subTile = "400 IDR will be reduced from your IDR wallet.";
+  static const String confirm = "Confirm";
+
+  // alert dialog
+  static const String areYouSureReject = "Are you sure want to\nreject?";
+  static const String no = "No";
+  static const String yes = "Yes";
+
+  // request details
+  static const String requestDetails = "Request Details";
+  static const String totalCharge = "Total Charge";
+  static const String amountToRequest = "Amount to Request";
+  static const String requestTo = "Request To";
+  static const String noteForRecipient = "Note for Recipient";
+  static const String typeNot = "Type not";
+  static const String requestNow = "Request Now";
+
+  // withdraw money
+  static const String withdrawMoney = "Withdraw Money";
+  static const String basic = "Basic";
+  static const String payoneer = "Payoner";
+  static const String paypal = "Paypal";
+  static const String min = "Min: ";
+  static const String max = "Max: ";
+
+  // add withdraw method
+  static const String addWithdrawMethod = "Add Withdraw Method";
+  static const String selectMethod = "Select Method";
+  static const String selectCurrency = "Select Currency";
+  static const String provideNickName = "Provide a Nick Name";
 }
