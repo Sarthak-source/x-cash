@@ -92,4 +92,29 @@ class MyStrings{
   static const String otpByEmail = "OTP by Email";
   static const String otpByGoogleAuth = "OTP by Google Authentication";
   static const String transferNow = "Transfer Now";
+
+  static const String date = "Amount";
+  static const String gateWay = "Gateway";
+  static const String charge = "Charge";
+  static const String payableAfterCharge = "Payable after Charge";
+  static const String sendFromNumber = "Send From Number";
+  static const String status = "Complete";
+
+  // add money details
+  static const String addMoneyDetails = "Add Money Details";
+  static const String selectGateway = "Select Gateway";
+  static const String summery = "Summery";
+  static const String payable = "Payable";
+  static const String proceed = "Proceed";
+
+  // exchange money
+  static const String exchangeMoney = "Exchange Money";
+  static const String exchangeCalculation = "Exchange Calculation";
+
+  // money out details
+  static const String moneyOutDetail = "Money Out Detail";
+
+  // payment details
+  static const String paymentDetails = "Payment Details";
+  static const String merchantUsernameEmail = "Merchant Username / E-mail";
 }
