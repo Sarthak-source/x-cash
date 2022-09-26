@@ -45,5 +45,12 @@ class MyStrings{
   static const String alreadyAccount = "Already have an account";
   static const String signInNow = "Sign In Now";
 
+  // otp-screen
+  static const String otpVerify = "OTP Verify";
+  static const String enterOtpSent = "Enter the otp sent to ";
+  static const String verify = "Verify";
+  static const String donotReceiveCode = "Don't receive code ?";
+  static const String requestAgain = "Request again";
+
 
 }
