@@ -24,5 +24,26 @@ class MyStrings{
   static const String donotAccount = "Don't have an account?";
   static const String registerNow = "Register Now";
 
+  // register-screen
+  static const String createAnAccount = "Create An Account";
+  static const String registerSubTitle = "Create you account, it takes less than a minute enter your details";
+  static const String personalAccount = "Personal Account";
+  static const String companyAccount = "Company Account";
+  static const String firstName = "First Name";
+  static const String lastName = "Last Name";
+  static const String country = "Country";
+  static const String mobileNumber = "Mobile Number";
+  static const String emailAddress = "E-mail Address";
+  static const String confirmPassword = "Confirm Password";
+  static const String firstNameHint = "Enter first Name";
+  static const String lastNameHint = "Enter last Name";
+  static const String countryHint = "Select one";
+  static const String mobileNumberHint = "Your phone number";
+  static const String emailAddressHint = "Enter email address";
+  static const String confirmPasswordHint = "Enter confirm Password";
+  static const String signUp = "Sign Up";
+  static const String alreadyAccount = "Already have an account";
+  static const String signInNow = "Sign In Now";
+
 
 }
