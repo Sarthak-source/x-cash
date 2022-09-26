@@ -52,5 +52,16 @@ class MyStrings{
   static const String donotReceiveCode = "Don't receive code ?";
   static const String requestAgain = "Request again";
 
-
+  // home-screen
+  static const String tapForBalance = "Tap for Balance";
+  static const String myWallet = "My Wallets";
+  static const String transferMoney = "Transfer Money";
+  static const String addMoney = "Add Money";
+  static const String exchange = "Exchange";
+  static const String makePayment = "Make Payment";
+  static const String invoice = "Invoice";
+  static const String voucher = "Voucher";
+  static const String transfer = "Transfer";
+  static const String requestMoney = "Request Money";
+  static const String withdraw = "Withdraw";
 }
