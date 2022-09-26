@@ -64,4 +64,12 @@ class MyStrings{
   static const String transfer = "Transfer";
   static const String requestMoney = "Request Money";
   static const String withdraw = "Withdraw";
+  static const String insights = "Insights";
+  static const String moneyIn = "Money In";
+  static const String moneyOut = "Money Out";
+  static const String viewMore = "View More";
+
+  // bottom-nav
+  static const String home = "Home";
+  static const String activity = "Activity";
 }
