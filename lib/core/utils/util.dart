@@ -6,8 +6,16 @@ class MyUtil{
   static primaryTheme(){
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
         statusBarColor: MyColor.primaryColor,
-        statusBarIconBrightness: Brightness.dark,
+        statusBarIconBrightness: Brightness.light,
         systemNavigationBarColor: MyColor.primaryColor,
         systemNavigationBarIconBrightness: Brightness.light));
+  }
+
+  static secondaryTheme(){
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+        statusBarColor: MyColor.transparentColor,
+        statusBarIconBrightness: Brightness.dark,
+        systemNavigationBarColor: MyColor.colorWhite,
+        systemNavigationBarIconBrightness: Brightness.dark));
   }
 }
