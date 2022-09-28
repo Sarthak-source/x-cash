@@ -13,8 +13,8 @@ class MyUtil{
 
   static secondaryTheme(){
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-        statusBarColor: MyColor.transparentColor,
-        statusBarIconBrightness: Brightness.dark,
+        statusBarColor: MyColor.primaryColor,
+        statusBarIconBrightness: Brightness.light,
         systemNavigationBarColor: MyColor.colorWhite,
         systemNavigationBarIconBrightness: Brightness.dark));
   }
