@@ -1,8 +1,5 @@
 class Dimensions{
 
-  static const double appLogoH = 85;
-  static const double appLogoV = 85;
-
   // font-size
   static const double fontExtraSmall = 10.00;
   static const double fontSmall = 12.00;
