@@ -3,6 +3,7 @@ import 'package:xcash_app/constants/my_strings.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/styles.dart';
 import 'package:xcash_app/core/utils/util.dart';
+import 'package:xcash_app/view/screens/auth/login/widget/login_form.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -40,6 +41,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 Text(MyStrings.welcomeBack, textAlign: TextAlign.left, style: interRegularLarge.copyWith(fontWeight: FontWeight.w600)),
                 const SizedBox(height: 10),
                 Text(MyStrings.loginSubTitle, textAlign: TextAlign.left, style: interRegularSmall.copyWith(color: MyColor.primarySubTextColor)),
+
+                const SizedBox(height: 40),
+
+                const LoginForm()
               ],
             ),
           ),
