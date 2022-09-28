@@ -29,6 +29,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
   @override
   void dispose() {
     MyUtil.primaryTheme();
+    pageController.dispose();
     super.dispose();
   }
 
@@ -85,24 +86,21 @@ class _OnboardScreenState extends State<OnboardScreen> {
 
             Align(
               alignment: Alignment.center,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  color: Colors.transparent,
-                  child: PageView(
-                    scrollDirection: Axis.horizontal,
-                    physics: const ScrollPhysics(),
-                    controller: pageController,
-                    children: [
-                      buildPage(MyImages.onboard1, MyStrings.onboardTitle1, MyStrings.onboardSubTitle1),
-                      buildPage(MyImages.onboard2, MyStrings.onboardTitle2, MyStrings.onboardSubTitle2),
-                      buildPage(MyImages.onboard3, MyStrings.onboardTitle3, MyStrings.onboardSubTitle3)
-                    ],
-                    onPageChanged: (index){
-                      selectedIndex = index;
-                    }
-                  ),
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                color: Colors.transparent,
+                child: PageView(
+                  scrollDirection: Axis.horizontal,
+                  physics: const ScrollPhysics(),
+                  controller: pageController,
+                  children: [
+                    buildPage(MyImages.onboard1, MyStrings.onboardTitle1, MyStrings.onboardSubTitle1),
+                    buildPage(MyImages.onboard2, MyStrings.onboardTitle2, MyStrings.onboardSubTitle2),
+                    buildPage(MyImages.onboard3, MyStrings.onboardTitle3, MyStrings.onboardSubTitle3)
+                  ],
+                  onPageChanged: (index){
+                    selectedIndex = index;
+                  }
                 ),
               ),
             ),
@@ -151,7 +149,6 @@ class _OnboardScreenState extends State<OnboardScreen> {
                             curve: Curves.easeInOut
                         );
                       }
-
                     },
                     height: 45,
                     width: 120,
@@ -166,7 +163,6 @@ class _OnboardScreenState extends State<OnboardScreen> {
                 ],
               ),
             )
-
           ],
         ),
       ),
