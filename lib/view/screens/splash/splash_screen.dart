@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
     MyUtil.primaryTheme();
     Timer(
         const Duration(seconds: 5),(){
-      Get.toNamed(RouteHelper.onboard);
+      Get.toNamed(RouteHelper.onboardScreen);
     }
     );
     super.initState();
