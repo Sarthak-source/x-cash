@@ -223,7 +223,6 @@ class _OnboardScreenState extends State<OnboardScreen> {
 
             3, (index) => GestureDetector(
           onTap:(){
-            // controller.changeSelectedPlan(index);
             pageController.animateToPage(
                 index,
                 duration: const Duration(milliseconds: 500),
