@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:xcash_app/constants/my_strings.dart';
+import 'package:xcash_app/core/route/route.dart';
 import 'dart:math' as math;
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
@@ -124,7 +126,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                   CustomAnimatedButton(
 
                     onTap: (){
-                      //Get.offAllNamed(RouteHelper.loginScreen);
+                      Get.offAllNamed(RouteHelper.loginScreen);
                     },
                     height: 45,
                     width: 80,
@@ -141,8 +143,8 @@ class _OnboardScreenState extends State<OnboardScreen> {
                   CustomAnimatedButton(
 
                     onTap: (){
-                      if(selectedIndex==2){
-                        //Get.offAllNamed(RouteHelper.loginScreen);
+                      if(selectedIndex == 2){
+                        Get.offAllNamed(RouteHelper.loginScreen);
                       }else{
                         pageController.nextPage(
                             duration: const Duration(milliseconds: 500),
