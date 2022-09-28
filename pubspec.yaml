@@ -63,6 +63,7 @@ dependencies:
   simple_animations: ^4.2.0
   dotted_border: ^2.0.0+2
   cached_network_image: ^3.2.1
+  google_fonts: ^3.0.1
 
 dev_dependencies:
   flutter_test:
