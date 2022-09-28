@@ -3,61 +3,61 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 
-TextStyle interNormalExtraSmall = GoogleFonts.inter(
+TextStyle interRegularExtraSmall = GoogleFonts.inter(
     color: MyColor.primaryTextColor,
     fontWeight: FontWeight.w400,
     fontSize: Dimensions.fontExtraSmall // 10
 );
 
-TextStyle interNormalSmall = GoogleFonts.inter(
+TextStyle interRegularSmall = GoogleFonts.inter(
     color: MyColor.primaryTextColor,
     fontWeight: FontWeight.w400,
     fontSize: Dimensions.fontSmall // 12
 );
 
-TextStyle interNormalDefault = GoogleFonts.inter(
+TextStyle interRegularDefault = GoogleFonts.inter(
     color: MyColor.primaryTextColor,
     fontWeight: FontWeight.w400,
     fontSize: Dimensions.fontDefault // 14
 );
 
-TextStyle interNormalDefaultLarge = GoogleFonts.inter(
+TextStyle interRegularDefaultLarge = GoogleFonts.inter(
     color: MyColor.primaryTextColor,
     fontWeight: FontWeight.w400,
     fontSize: Dimensions.fontDefaultLarge // 16
 );
 
-TextStyle interNormalMediumLarge = GoogleFonts.inter(
+TextStyle interRegularMediumLarge = GoogleFonts.inter(
     color: MyColor.primaryTextColor,
     fontWeight: FontWeight.w400,
     fontSize: Dimensions.fontMediumLarge // 18
 );
 
-TextStyle interNormalLarge = GoogleFonts.inter(
+TextStyle interRegularLarge = GoogleFonts.inter(
     color: MyColor.primaryTextColor,
     fontWeight: FontWeight.w400,
     fontSize: Dimensions.fontLarge // 20
 );
 
-TextStyle interNormalExtraLarge = GoogleFonts.inter(
+TextStyle interRegularExtraLarge = GoogleFonts.inter(
     color: MyColor.primaryTextColor,
     fontWeight: FontWeight.w400,
     fontSize: Dimensions.fontExtraLarge // 22
 );
 
-TextStyle interNormalOverLarge = GoogleFonts.inter(
+TextStyle interRegularOverLarge = GoogleFonts.inter(
     color: MyColor.primaryTextColor,
     fontWeight: FontWeight.w400,
     fontSize: Dimensions.fontOverLarge // 24
 );
 
-TextStyle interNormalHeader = GoogleFonts.inter(
+TextStyle interRegularHeader = GoogleFonts.inter(
     color: MyColor.primaryTextColor,
     fontWeight: FontWeight.w400,
     fontSize: Dimensions.fontHeader // 26, 28, 30, 32
 );
 
-TextStyle interNormalHeaderLarge = GoogleFonts.inter(
+TextStyle interRegularHeaderLarge = GoogleFonts.inter(
 
     color: MyColor.primaryTextColor,
     fontWeight: FontWeight.w400,
