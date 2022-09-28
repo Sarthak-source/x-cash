@@ -25,13 +25,13 @@ class CustomDotIndicator extends StatelessWidget {
 
 
       duration: duration,
-      width: isActive ? 10.0 : 10.0,
+      width: isActive ? 18.0 : 18.0,
       margin: const EdgeInsets.symmetric(horizontal: 5),
-      height: 15.0,
+      height: 12.0,
       decoration: BoxDecoration(
 
           color: isActive ? activeColor : inactiveColor,
-          shape: BoxShape.circle
+          borderRadius: BorderRadius.circular(5)
       ),
     );
   }
