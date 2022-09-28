@@ -1,5 +1,9 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/util.dart';
@@ -17,7 +21,18 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     MyUtil.primaryTheme();
+    Timer(
+        const Duration(seconds: 5),(){
+      Get.toNamed(RouteHelper.onboard);
+    }
+    );
     super.initState();
+  }
+
+  @override
+  void dispose() {
+
+    super.dispose();
   }
 
   @override
