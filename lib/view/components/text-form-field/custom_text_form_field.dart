@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/view/components/text/small_text.dart';
 import '../../../../core/utils/my_color.dart';
 
 class CustomTextFormField extends StatefulWidget {
@@ -45,7 +47,7 @@ class CustomTextFormField extends StatefulWidget {
         this.maxLines = 1,
         this.onSuffixTap,
         this.validator,
-        this.fillColor=MyColor.primaryColor100,
+        this.fillColor=MyColor.colorWhite,
         this.onSubmit,
         required this.onChanged,
         this.capitalization = TextCapitalization.none,
@@ -76,8 +78,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
 
-        Text(widget.labelText, style: interRegularSmall),
-        const SizedBox(height: 5),
+        SmallText(text: widget.labelText, fontSize: Dimensions.fontDefault),
+        const SizedBox(height: Dimensions.space10),
 
         TextFormField(
           maxLines: widget.maxLines,
@@ -86,7 +88,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           style: interRegularDefault.copyWith(color: MyColor.primaryTextColor),
           textInputAction: widget.inputAction,
           keyboardType: widget.inputType,
-          cursorColor: Theme.of(context).primaryColor,
+          cursorColor: MyColor.primaryColor,
           textCapitalization: widget.capitalization,
           enabled: widget.isEnabled,
           validator:widget.validator,
@@ -94,23 +96,23 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           obscureText: widget.isPassword ? _obscureText : false,
           decoration: InputDecoration(
             //contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 22),
-            border: OutlineInputBorder(
+            border: UnderlineInputBorder(
               borderRadius: BorderRadius.circular(3),
               borderSide: const BorderSide(color: MyColor.textFieldBorderColor, width: 1),
             ),
-            enabledBorder: OutlineInputBorder(
+            enabledBorder: UnderlineInputBorder(
               borderRadius: BorderRadius.circular(3),
               borderSide: const BorderSide(color: MyColor.textFieldBorderColor, width: 1),
             ),
-            focusedBorder: OutlineInputBorder(
+            focusedBorder: UnderlineInputBorder(
               borderRadius: BorderRadius.circular(3),
               borderSide: const BorderSide(color: MyColor.primaryColor, width: 1),
             ),
-            errorBorder: OutlineInputBorder(
+            errorBorder: UnderlineInputBorder(
               borderRadius: BorderRadius.circular(3),
               borderSide: const BorderSide(color: Colors.red, width: 1),
             ),
-            focusedErrorBorder: OutlineInputBorder(
+            focusedErrorBorder: UnderlineInputBorder(
               borderRadius: BorderRadius.circular(3),
               borderSide: const BorderSide(color: MyColor.textFieldBorderColor, width: 1),
             ),
