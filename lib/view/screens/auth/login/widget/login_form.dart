@@ -6,6 +6,7 @@ import 'package:xcash_app/core/utils/styles.dart';
 import 'package:xcash_app/view/components/Sizedbox/form_sized_box.dart';
 import 'package:xcash_app/view/components/buttons/custom_animated_button.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_text_form_field.dart';
+import 'package:xcash_app/view/components/text/small_text.dart';
 import 'package:xcash_app/view/screens/auth/login/widget/login_bottom_section.dart';
 
 class LoginForm extends StatefulWidget {
@@ -38,7 +39,9 @@ class _LoginFormState extends State<LoginForm> {
               hintText: MyStrings.usernameHint,
               onChanged: (value){}
           ),
+
           const FormSizedBox(),
+
           CustomTextFormField(
 
             labelText: MyStrings.password,
@@ -49,7 +52,9 @@ class _LoginFormState extends State<LoginForm> {
             isShowSuffixIcon: true,
 
           ),
+
           const FormSizedBox(),
+
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -74,11 +79,10 @@ class _LoginFormState extends State<LoginForm> {
                       },
                     ),
                   ),
-                  const SizedBox(width: 12),
-                  Text(
-                      "Remember me",
-                      style: interRegularSmall
-                  )
+
+                  const SizedBox(width: Dimensions.space15),
+
+                  const SmallText(text: MyStrings.rememberMe, fontSize: Dimensions.fontDefault)
                 ],
               ),
 
@@ -88,14 +92,13 @@ class _LoginFormState extends State<LoginForm> {
 
                   //Get.toNamed(RouteHelper.forgotPasswordScreen);
                 },
-                child: Text(
-                    "Forget Password?",
-                    style: interRegularSmall
-                ),
+                child: const SmallText(text: MyStrings.forgotPassword, fontSize: Dimensions.fontDefault)
               ),
             ],
           ),
+
           const FormSizedBox(),
+
           CustomAnimatedButton(
 
               onTap: () async{
@@ -115,14 +118,10 @@ class _LoginFormState extends State<LoginForm> {
 
                 height: 15, width: 15,
                 child: CircularProgressIndicator(color: MyColor.colorWhite, strokeWidth: 1.5),
-              ) : Text(
-
-                  MyStrings.signIn,
-                  textAlign: TextAlign.center,
-                  style: interSemiBoldSmall.copyWith(color: MyColor.colorWhite)
-              )
+              ) : const SmallText(text: MyStrings.signIn, fontSize: Dimensions.fontDefault, textColor: MyColor.colorWhite)
           ),
-          const SizedBox(height: 40),
+
+          const SizedBox(height: Dimensions.space40),
 
           const LoginBottomSection()
         ],

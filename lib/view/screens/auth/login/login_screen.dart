@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:xcash_app/constants/my_strings.dart';
+import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/styles.dart';
 import 'package:xcash_app/core/utils/util.dart';
+import 'package:xcash_app/view/components/default_app_text/app_default_text.dart';
+import 'package:xcash_app/view/components/text/header_text.dart';
+import 'package:xcash_app/view/components/text/small_text.dart';
 import 'package:xcash_app/view/screens/auth/login/widget/login_form.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -22,30 +26,33 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void dispose() {
-    MyUtil.secondaryTheme();
     super.dispose();
   }
   @override
   Widget build(BuildContext context) {
 
     return SafeArea(
-      child: Scaffold(
-        backgroundColor: MyColor.colorWhite,
+      child: AppDefaultText(
+        child: Scaffold(
+          backgroundColor: MyColor.colorWhite,
 
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(MyStrings.welcomeBack, textAlign: TextAlign.left, style: interRegularLarge.copyWith(fontWeight: FontWeight.w600)),
-                const SizedBox(height: 10),
-                Text(MyStrings.loginSubTitle, textAlign: TextAlign.left, style: interRegularSmall.copyWith(color: MyColor.primarySubTextColor)),
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: Dimensions.defaultPaddingV, horizontal: Dimensions.defaultPaddingH),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  HeaderText(text: MyStrings.welcomeBack),
 
-                const SizedBox(height: 40),
+                  SizedBox(height: 10),
 
-                const LoginForm()
-              ],
+                  SmallText(text: MyStrings.loginSubTitle, textColor: MyColor.primarySubTextColor, fontSize: Dimensions.fontDefault),
+
+                  SizedBox(height: Dimensions.space40),
+
+                  LoginForm()
+                ],
+              ),
             ),
           ),
         ),
