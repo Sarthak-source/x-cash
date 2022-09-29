@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/constants/my_strings.dart';
+import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
+import 'package:xcash_app/view/components/default_app_text/app_default_text.dart';
 import 'package:xcash_app/view/components/text/app_bar_text.dart';
+import 'package:xcash_app/view/components/text/header_text.dart';
+import 'package:xcash_app/view/components/text/small_text.dart';
+import 'package:xcash_app/view/screens/auth/forgot_password/widget/forgot_password_form.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({Key? key}) : super(key: key);
@@ -40,6 +45,28 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           leading: GestureDetector(
             onTap: () => Get.back(),
             child: const Icon(Icons.arrow_back, color: MyColor.primaryColor, size: 20),
+          ),
+        ),
+        
+        body: AppDefaultText(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: Dimensions.defaultPaddingV, horizontal: Dimensions.defaultPaddingH),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  HeaderText(text: MyStrings.resetPassword),
+                  
+                  SizedBox(height: Dimensions.space5),
+                  
+                  SmallText(text: MyStrings.subText, textColor: MyColor.primarySubTextColor, fontSize: Dimensions.fontDefault),
+
+                  SizedBox(height: Dimensions.space45),
+
+                  ForgotPasswordForm()
+                ],
+              ),
+            ),
           ),
         ),
       ),
