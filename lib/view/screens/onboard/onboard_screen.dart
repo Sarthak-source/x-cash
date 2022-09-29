@@ -30,7 +30,6 @@ class _OnboardScreenState extends State<OnboardScreen> {
 
   @override
   void dispose() {
-    MyUtil.primaryTheme();
     pageController.dispose();
     super.dispose();
   }
