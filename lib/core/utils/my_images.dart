@@ -141,4 +141,5 @@ class MyImages{
   static const String withdraw = "${basePath}withdraw.png";
   static const String withdrawHistory = "${basePath}withdrawHistory.png";
   static const String zipCode = "${basePath}zipCode.png";
+  static const String suitcase = "${basePath}suitcase.png";
 }
