@@ -19,7 +19,7 @@ class MyStrings{
   static const String password = "Password";
   static const String passwordHint = "Enter password";
   static const String rememberMe = "Remember Me";
-  static const String forgotPassword = "Forgot Password?";
+  static const String forgotPassword = "Forgot Password";
   static const String signIn = "Sign In";
   static const String donotAccount = "Don't have an account?";
   static const String registerNow = "Register Now";
@@ -193,4 +193,7 @@ class MyStrings{
   static const String selectMethod = "Select Method";
   static const String selectCurrency = "Select Currency";
   static const String provideNickName = "Provide a Nick Name";
+
+  // forgot password
+
 }
