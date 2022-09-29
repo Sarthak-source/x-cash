@@ -14,7 +14,7 @@ class MyColor{
   static const Color lineColor = Color(0xffDBDFE8);
   static const Color borderColor = Color(0xffD9D9D9);
 
-  static const Color textFieldBorderColor = Color(0xffEBEBEB);
+  static const Color textFieldBorderColor = Color(0xffCFCEDB);
 
   static const Color colorWhite = Color(0xffFFFFFF);
   static const Color colorGreen = Color(0xff28C76F);
