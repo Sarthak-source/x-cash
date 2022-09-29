@@ -95,7 +95,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           autofocus: false,
           obscureText: widget.isPassword ? _obscureText : false,
           decoration: InputDecoration(
-            //contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 22),
+            contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 22),
             border: UnderlineInputBorder(
               borderRadius: BorderRadius.circular(3),
               borderSide: const BorderSide(color: MyColor.textFieldBorderColor, width: 1),
@@ -126,7 +126,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
             isDense: true,
             hintText: widget.hintText,
             fillColor: widget.fillColor,
-            hintStyle: interRegularSmall.copyWith(color: MyColor.primarySubTextColor),
+            hintStyle: interRegularDefault.copyWith(color: MyColor.primarySubTextColor),
             filled: true,
             prefixIcon: widget.isShowPrefixIcon ? Padding(
               padding: const EdgeInsets.only(left: 20, right: 5),
