@@ -195,5 +195,8 @@ class MyStrings{
   static const String provideNickName = "Provide a Nick Name";
 
   // forgot password
-
+  static const String resetPassword = "Reset Password";
+  static const String subText = "Your new password must different form \nprevious used passwords";
+  static const String newPassword = "New Password";
+  static const String newPasswordHint = "Enter new password";
 }
