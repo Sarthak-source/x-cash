@@ -6,6 +6,7 @@ import 'package:xcash_app/core/utils/styles.dart';
 import 'package:xcash_app/view/components/Sizedbox/form_sized_box.dart';
 import 'package:xcash_app/view/components/buttons/custom_animated_button.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_text_form_field.dart';
+import 'package:xcash_app/view/screens/auth/login/widget/login_bottom_section.dart';
 
 class LoginForm extends StatefulWidget {
 
@@ -122,32 +123,10 @@ class _LoginFormState extends State<LoginForm> {
               )
           ),
           const SizedBox(height: 40),
-          bottomSection()
+
+          const LoginBottomSection()
         ],
       ),
-    );
-  }
-
-  bottomSection() {
-
-    return Row(
-
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-
-        Text(MyStrings.donotAccount, style: interRegularDefault),
-        TextButton(
-
-          onPressed: () {
-            //Get.offAllNamed(RouteHelper.registrationScreen);
-          },
-          child: Text(
-
-            MyStrings.registerNow,
-            style: interRegularDefault.copyWith(color: MyColor.primaryColor, decoration: TextDecoration.underline),
-          ),
-        )
-      ],
     );
   }
 }
