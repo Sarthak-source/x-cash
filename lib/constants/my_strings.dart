@@ -199,4 +199,10 @@ class MyStrings{
   static const String subText = "Your new password must different form \nprevious used passwords";
   static const String newPassword = "New Password";
   static const String newPasswordHint = "Enter new password";
+
+  // change password
+  static const String changePassword = "Change Password";
+  static const String currentPassword = "Current Password";
+  static const String currentPasswordHint = "Enter current password";
+  static const String saveNewPassword = "Save New Password";
 }
