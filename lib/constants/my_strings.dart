@@ -13,7 +13,7 @@ class MyStrings{
 
   // login-screen
   static const String welcomeBack = "Welcome Back!";
-  static const String loginSubTitle = "We happy to see you here again. Enter your username and password";
+  static const String loginSubTitle = "We happy to see you here again. Enter your\nusername and password";
   static const String username = "Username";
   static const String usernameHint = "Enter username";
   static const String password = "Password";
