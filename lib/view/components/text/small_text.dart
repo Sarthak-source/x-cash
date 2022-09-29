@@ -7,13 +7,20 @@ class SmallText extends StatelessWidget {
   final String text;
   final Color textColor;
   final double fontSize;
-  const SmallText({Key? key, required this.text, this.textColor = MyColor.primaryTextColor, this.fontSize = Dimensions.fontSmall}) : super(key: key);
+  final FontWeight fontWeight;
+  const SmallText({
+    Key? key,
+    required this.text,
+    this.textColor = MyColor.primaryTextColor,
+    this.fontSize = Dimensions.fontSmall,
+    this.fontWeight = FontWeight.w400
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: interRegularSmall.copyWith(color: textColor, fontWeight: FontWeight.w400, fontSize: fontSize),
+      style: interRegularSmall.copyWith(color: textColor, fontWeight: fontWeight, fontSize: fontSize),
     );
   }
 }
