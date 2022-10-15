@@ -6,6 +6,6 @@ class FormSizedBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(height: Dimensions.space25);
+    return const SizedBox(height: Dimensions.space20);
   }
 }
