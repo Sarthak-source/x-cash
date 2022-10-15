@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/view/components/text/small_text.dart';
 import '../../../../core/utils/my_color.dart';
 
 
@@ -71,7 +72,8 @@ class _CustomTextFieldForPhoneState extends State<CustomTextFieldForPhone> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
 
-        Text(widget.labelText, style: interRegularSmall),
+        SmallText(text: widget.labelText),
+
         const SizedBox(height:5),
 
         TextFormField(
