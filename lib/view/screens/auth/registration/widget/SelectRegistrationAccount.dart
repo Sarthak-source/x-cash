@@ -45,10 +45,8 @@ class _SelectRegistrationAccountState extends State<SelectRegistrationAccount> {
   selectUserType(String imagePath, String title, int index) {
     
     return Expanded(
-
       child: TypeofUser(
           onPressed: (){
-
             setState(() {
               selectedUser = index;
             });
@@ -58,7 +56,7 @@ class _SelectRegistrationAccountState extends State<SelectRegistrationAccount> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                padding: const EdgeInsets.all(Dimensions.space10),
+                padding: const EdgeInsets.all(8),
                 decoration: const BoxDecoration(
                   color: MyColor.primaryColor100,
                   shape: BoxShape.circle
@@ -66,8 +64,8 @@ class _SelectRegistrationAccountState extends State<SelectRegistrationAccount> {
                 child: Image.asset(
                     imagePath,
                     color: index == selectedUser ? MyColor.primaryColor : MyColor.primarySubTextColor,
-                    height: 16,
-                    width: 16
+                    height: 12,
+                    width: 12
                 ),
               ),
 
