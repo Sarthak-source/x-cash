@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/view/components/default_app_text/app_default_text.dart';
 
 class TypeofUser extends StatelessWidget {
 
@@ -21,8 +20,7 @@ class TypeofUser extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppDefaultText(
-      child: GestureDetector(
+    return GestureDetector(
         onTap: onPressed,
         child: Container(
           width: MediaQuery.of(context).size.width,
@@ -35,7 +33,6 @@ class TypeofUser extends StatelessWidget {
           ),
           child: child,
         ),
-      ),
     );
   }
 }

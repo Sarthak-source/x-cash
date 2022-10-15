@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:xcash_app/constants/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/view/components/default_app_text/app_default_text.dart';
 import 'package:xcash_app/view/components/text/app_bar_text.dart';
 import 'package:xcash_app/view/components/text/header_text.dart';
 import 'package:xcash_app/view/components/text/small_text.dart';
@@ -48,8 +47,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           ),
         ),
         
-        body: AppDefaultText(
-          child: SingleChildScrollView(
+        body: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: Dimensions.defaultPaddingV, horizontal: Dimensions.defaultPaddingH),
               child: Column(
@@ -69,7 +67,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             ),
           ),
         ),
-      ),
     );
   }
 }

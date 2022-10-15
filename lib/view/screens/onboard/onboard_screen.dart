@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/constants/my_strings.dart';
 import 'package:xcash_app/core/route/route.dart';
@@ -226,6 +225,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
 
             3, (index) => GestureDetector(
           onTap:(){
+            // controller.changeSelectedPlan(index);
             pageController.animateToPage(
                 index,
                 duration: const Duration(milliseconds: 500),
@@ -237,7 +237,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
             pageController: pageController,
             isActive: index == selectedIndex ? true : false,
             activeColor: MyColor.primaryColor,
-            inactiveColor: MyColor.primaryColor100,
+            inactiveColor: MyColor.lineColor,
             duration: const Duration(milliseconds: 500),
             onChanged: (){
 
