@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/styles.dart';
 import 'package:xcash_app/view/components/text/small_text.dart';
 import '../../../../core/utils/my_color.dart';
@@ -43,7 +44,7 @@ class CustomTextFieldForPhone extends StatefulWidget {
         this.inputAction = TextInputAction.next,
         this.maxLines = 1,
         this.onSuffixTap,
-        this.fillColor=MyColor.primaryColor100,
+        this.fillColor = MyColor.colorWhite,
         this.onSubmit,
         required this.onChanged,
         this.capitalization = TextCapitalization.none,
@@ -74,7 +75,7 @@ class _CustomTextFieldForPhoneState extends State<CustomTextFieldForPhone> {
 
         SmallText(text: widget.labelText),
 
-        const SizedBox(height:5),
+        const SizedBox(height: Dimensions.space10),
 
         TextFormField(
           maxLines: widget.maxLines,
