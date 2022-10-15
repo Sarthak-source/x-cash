@@ -53,7 +53,7 @@ class _SelectRegistrationAccountState extends State<SelectRegistrationAccount> {
           },
           borderColor: index == selectedUser ? MyColor.primaryColor : MyColor.borderColor,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Container(
                 padding: const EdgeInsets.all(8),
