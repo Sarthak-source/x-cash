@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/view/components/text/app_bar_text.dart';
+import 'package:xcash_app/view/components/text/app_bar_title.dart';
 
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget{
 
