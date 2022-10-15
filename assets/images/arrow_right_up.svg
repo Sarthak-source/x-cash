@@ -1,10 +1,13 @@
-<svg width="9" height="9" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_1322_2011)">
-<path d="M0.855707 0.00515366H8.14429C8.60269 0.00515366 9 0.394808 9 0.860862C9 0.860862 9 8.14179 9 8.14945C9 8.58495 8.64089 8.96695 8.20545 8.9975C7.71651 9.0357 7.28865 8.63081 7.28865 8.14945V2.92366C7.28865 2.92366 1.47456 8.73775 1.45932 8.75299C0.695321 9.51699 -0.52708 8.32514 0.252194 7.54587L6.08149 1.71654H0.855707C0.389654 1.71654 0 1.32692 0 0.860862C0 0.387155 0.382 0.00515366 0.855707 0.00515366Z" fill="#EA5455"/>
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+ "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="9.000000pt" height="9.000000pt" viewBox="0 0 9.000000 9.000000"
+ preserveAspectRatio="xMidYMid meet">
+<metadata>
+Created by potrace 1.16, written by Peter Selinger 2001-2019
+</metadata>
+<g transform="translate(0.000000,9.000000) scale(0.100000,-0.100000)"
+fill="#000000" stroke="none">
 </g>
-<defs>
-<clipPath id="clip0_1322_2011">
-<rect width="9" height="9" transform="matrix(1 0 0 -1 0 9)" fill="white"/>
-</clipPath>
-</defs>
 </svg>
