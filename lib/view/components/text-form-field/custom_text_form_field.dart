@@ -96,23 +96,23 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           obscureText: widget.isPassword ? _obscureText : false,
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 22),
-            border: UnderlineInputBorder(
+            border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(3),
               borderSide: const BorderSide(color: MyColor.textFieldBorderColor, width: 1),
             ),
-            enabledBorder: UnderlineInputBorder(
+            enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(3),
               borderSide: const BorderSide(color: MyColor.textFieldBorderColor, width: 1),
             ),
-            focusedBorder: UnderlineInputBorder(
+            focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(3),
               borderSide: const BorderSide(color: MyColor.primaryColor, width: 1),
             ),
-            errorBorder: UnderlineInputBorder(
+            errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(3),
               borderSide: const BorderSide(color: Colors.red, width: 1),
             ),
-            focusedErrorBorder: UnderlineInputBorder(
+            focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(3),
               borderSide: const BorderSide(color: MyColor.textFieldBorderColor, width: 1),
             ),
