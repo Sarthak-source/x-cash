@@ -4,9 +4,7 @@ import 'package:xcash_app/constants/my_strings.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/styles.dart';
 import 'package:xcash_app/view/components/Sizedbox/form_sized_box.dart';
-import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/buttons/custom_animated_button.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_text_form_field.dart';
 import 'package:xcash_app/view/components/text/small_text.dart';
@@ -28,7 +26,6 @@ class _LoginFormState extends State<LoginForm> {
   Widget build(BuildContext context) {
     return Form(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomTextFormField(
               labelText: MyStrings.username,
@@ -77,12 +74,11 @@ class _LoginFormState extends State<LoginForm> {
                   const SmallText(text: MyStrings.rememberMe)
                 ],
               ),
-
               TextButton(
                 onPressed: (){
                   Get.toNamed(RouteHelper.forgotPasswordScreen);
                 },
-                child: const SmallText(text: "${MyStrings.forgotPassword}?")
+                child: const SmallText(text: MyStrings.forgotPassword)
               ),
             ],
           ),
@@ -90,10 +86,7 @@ class _LoginFormState extends State<LoginForm> {
           const FormSizedBox(),
 
           CustomAnimatedButton(
-
-              onTap: () {
-
-              },
+              onTap: () {},
               height: Dimensions.defaultButtonH,
               width: MediaQuery.of(context).size.width,
               backgroundColor: MyColor.primaryColor,
