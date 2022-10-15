@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/constants/my_strings.dart';
 import 'package:xcash_app/core/route/route.dart';
@@ -61,7 +63,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                         left: -100,
                         child: Transform.rotate(
                           angle: - (math.pi * 7.4688),
-                          child: Image.asset(MyImages.bg1, height: 400, width: MediaQuery.of(context).size.width, color: MyColor.colorWhite),
+                          child: SvgPicture.asset(MyImages.bg1, height: 400, width: MediaQuery.of(context).size.width, color: MyColor.colorWhite),
                         ),
                       ),
                     ],
