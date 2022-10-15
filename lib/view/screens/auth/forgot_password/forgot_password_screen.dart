@@ -40,7 +40,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         appBar: AppBar(
           backgroundColor: MyColor.colorWhite,
           elevation: 0,
-          title: const AppBarText(text: MyStrings.forgotPassword),
+          title: const AppBarTitle(text: MyStrings.forgotPassword),
           leading: GestureDetector(
             onTap: () => Get.back(),
             child: const Icon(Icons.arrow_back, color: MyColor.primaryColor, size: 20),

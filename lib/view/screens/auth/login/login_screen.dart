@@ -3,6 +3,7 @@ import 'package:xcash_app/constants/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/util.dart';
+import 'package:xcash_app/view/components/app-bar/custom_app_bar.dart';
 import 'package:xcash_app/view/components/text/header_text.dart';
 import 'package:xcash_app/view/components/text/small_text.dart';
 import 'package:xcash_app/view/screens/auth/login/widget/login_form.dart';
@@ -32,7 +33,6 @@ class _LoginScreenState extends State<LoginScreen> {
     return SafeArea(
       child: Scaffold(
           backgroundColor: MyColor.colorWhite,
-
           body: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: Dimensions.defaultPaddingV, horizontal: Dimensions.defaultPaddingH),

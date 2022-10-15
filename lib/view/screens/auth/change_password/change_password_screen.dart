@@ -39,7 +39,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
         appBar: AppBar(
           backgroundColor: MyColor.colorWhite,
           elevation: 0,
-          title: const AppBarText(text: MyStrings.changePassword),
+          title: const AppBarTitle(text: MyStrings.changePassword),
           leading: GestureDetector(
             onTap: () => Get.back(),
             child: const Icon(Icons.arrow_back, color: MyColor.primaryColor, size: 20),
