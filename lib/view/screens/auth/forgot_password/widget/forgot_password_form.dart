@@ -50,7 +50,7 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
               height: Dimensions.defaultButtonH, 
               width: MediaQuery.of(context).size.width, 
               backgroundColor: MyColor.primaryColor,
-              child: const SmallText(text: MyStrings.resetPassword, textColor: MyColor.colorWhite, fontSize: Dimensions.fontDefault),
+              child: const SmallText(text: MyStrings.resetPassword, textColor: MyColor.colorWhite),
           )
         ],
       ),

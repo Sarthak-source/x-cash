@@ -43,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                   SizedBox(height: 10),
 
-                  SmallText(text: MyStrings.loginSubTitle, textColor: MyColor.primarySubTextColor, fontSize: Dimensions.fontDefault),
+                  SmallText(text: MyStrings.loginSubTitle, textColor: MyColor.primarySubTextColor),
 
                   SizedBox(height: Dimensions.space40),
 

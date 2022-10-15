@@ -57,7 +57,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   
                   SizedBox(height: Dimensions.space5),
                   
-                  SmallText(text: MyStrings.subText, textColor: MyColor.primarySubTextColor, fontSize: Dimensions.fontDefault),
+                  SmallText(text: MyStrings.subText, textColor: MyColor.primarySubTextColor),
 
                   SizedBox(height: Dimensions.space45),
 

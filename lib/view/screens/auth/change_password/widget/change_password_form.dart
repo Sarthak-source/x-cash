@@ -61,7 +61,7 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
             height: Dimensions.defaultButtonH,
             width: MediaQuery.of(context).size.width,
             backgroundColor: MyColor.primaryColor,
-            child: const SmallText(text: MyStrings.saveNewPassword, textColor: MyColor.colorWhite, fontSize: Dimensions.fontDefault),
+            child: const SmallText(text: MyStrings.saveNewPassword, textColor: MyColor.colorWhite),
           )
         ],
       ),

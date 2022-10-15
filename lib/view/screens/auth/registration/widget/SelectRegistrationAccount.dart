@@ -80,7 +80,7 @@ class _SelectRegistrationAccountState extends State<SelectRegistrationAccount> {
 
                   const SizedBox(height: Dimensions.space5),
 
-                  const SmallText(text: MyStrings.signUp, textColor: MyColor.primarySubTextColor, fontSize: Dimensions.fontExtraSmall),
+                  const SmallText(text: MyStrings.signUp, textColor: MyColor.primarySubTextColor),
                 ],
               )
             ],

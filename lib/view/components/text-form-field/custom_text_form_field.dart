@@ -77,8 +77,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
 
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        SmallText(text: widget.labelText),
 
-        SmallText(text: widget.labelText, fontSize: Dimensions.fontDefault),
         const SizedBox(height: Dimensions.space10),
 
         TextFormField(
