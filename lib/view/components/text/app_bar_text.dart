@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/styles.dart';
 
-class AppBarText extends StatelessWidget {
+class AppBarTitle extends StatelessWidget {
   final String text;
   final Color textColor;
-  const AppBarText({
+  const AppBarTitle({
     Key? key,
     required this.text,
     this.textColor = MyColor.primaryTextColor
