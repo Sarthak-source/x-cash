@@ -37,7 +37,7 @@ class MyStrings{
   static const String confirmPassword = "Confirm Password";
   static const String firstNameHint = "Enter first Name";
   static const String lastNameHint = "Enter last Name";
-  static const String countryHint = "Select one";
+  static const String countryHint = "Select Country";
   static const String mobileNumberHint = "Your phone number";
   static const String emailAddressHint = "Enter email address";
   static const String confirmPasswordHint = "Enter confirm Password";
