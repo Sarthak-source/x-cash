@@ -30,14 +30,12 @@ class Dimensions{
   static const double space45 = 45;
   static const double space50 = 50;
 
-
   // default screen padding
-  static const double defaultPaddingV = 35;
+  static const double defaultPaddingV = 20;
   static const double defaultPaddingH = 15;
 
   // border radius
   static const double buttonRadius = 4;
-  static const double containerRadius = 3;
   static const double cardRadius = 8;
   static const double bottomSheetRadius = 15;
 }
