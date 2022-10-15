@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/styles.dart';
 
@@ -10,9 +11,7 @@ class CustomDropDownTextField extends StatefulWidget {
   final List<DropdownMenuItem<Object>>? items;
 
   CustomDropDownTextField({
-
     Key? key,
-
     required this.labelText,
     required this.hintText,
     required this.selectedValue,
@@ -35,49 +34,50 @@ class _CustomDropDownTextFieldState extends State<CustomDropDownTextField> {
       children: [
 
         Text(
-
           widget.labelText,
-          style: interRegularSmall,
+          style: interRegularSmall.copyWith(height: 1.452),
         ),
-        const SizedBox(height: 5),
+        const SizedBox(height: Dimensions.space10),
 
-        DropdownButtonFormField(
-
-          value: widget.selectedValue,
-          dropdownColor: MyColor.colorWhite,
-          focusColor: MyColor.colorWhite,
-          style: interRegularSmall,
-          decoration: InputDecoration(
-
-            hintText: widget.hintText,
-            filled: true,
-            fillColor: MyColor.primaryColor100,
-            hintStyle: interRegularSmall.copyWith(fontSize: 14, color: MyColor.primarySubTextColor),
-            contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 22),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(3),
-              borderSide: const BorderSide(color: MyColor.textFieldBorderColor, width: 1),
+        SizedBox(
+          height: 50,
+          child: DropdownButtonFormField(
+            value: widget.selectedValue,
+            dropdownColor: MyColor.colorWhite,
+            focusColor: MyColor.colorWhite,
+            style: interRegularSmall,
+            alignment: Alignment.centerLeft,
+            decoration: InputDecoration(
+              hintText: widget.hintText,
+              filled: true,
+              fillColor: MyColor.colorWhite,
+              hintStyle: interRegularSmall.copyWith(color: MyColor.primarySubTextColor),
+              contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(3),
+                borderSide: const BorderSide(color: MyColor.textFieldBorderColor, width: 1),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(3),
+                borderSide: const BorderSide(color: MyColor.textFieldBorderColor, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(3),
+                borderSide: const BorderSide(color: MyColor.primaryColor, width: 1),
+              ),
+              errorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(3),
+                borderSide: const BorderSide(color: Colors.red, width: 1),
+              ),
+              focusedErrorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(3),
+                borderSide: const BorderSide(color: MyColor.textFieldBorderColor, width: 1),
+              ),
             ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(3),
-              borderSide: const BorderSide(color: MyColor.textFieldBorderColor, width: 1),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(3),
-              borderSide: const BorderSide(color: MyColor.primaryColor, width: 1),
-            ),
-            errorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(3),
-              borderSide: const BorderSide(color: Colors.red, width: 1),
-            ),
-            focusedErrorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(3),
-              borderSide: const BorderSide(color: MyColor.textFieldBorderColor, width: 1),
-            ),
+            isExpanded: false,
+            onChanged: widget.onChanged,
+            items: widget.items
           ),
-          isExpanded: false,
-          onChanged: widget.onChanged,
-          items: widget.items
         )
       ],
     );
