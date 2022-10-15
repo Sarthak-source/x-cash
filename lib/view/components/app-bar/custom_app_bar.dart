@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/view/components/text/app_bar_text.dart';
 
@@ -7,9 +8,8 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget{
   final String title;
   final Color backgroundColor;
   final Widget? leading;
-  bool isShowLeading;
+  bool showBackIcon;
   final double elevation;
-  final Widget? flexibleSpace;
   final ShapeBorder? shape;
   final List<Widget>? actions;
   CustomAppBar({
@@ -17,9 +17,8 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget{
     this.title = "",
     this.backgroundColor = MyColor.colorWhite,
     this.leading,
-    this.isShowLeading = false,
+    this.showBackIcon = false,
     this.elevation = 5,
-    this.flexibleSpace,
     this.shape,
     this.actions
   }) : super(key: key);
@@ -28,18 +27,31 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget{
   State<CustomAppBar> createState() => _CustomAppBarState();
 
   @override
-  Size get preferredSize => const Size.fromHeight(60);
+  Size get preferredSize => const Size.fromHeight(50);
 }
 
 class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
-    return AppBar(
+    return widget.showBackIcon ? AppBar(
+      backgroundColor: widget.backgroundColor,
       elevation: widget.elevation,
-      leading: widget.isShowLeading ? widget.leading : const SizedBox(),
+      leading: IconButton(
+        onPressed: (){
+          Get.toNamed("route name");
+        },
+        icon: const Icon(Icons.arrow_back_ios_new, color: MyColor.colorWhite, size: 16),
+      ),
       title: AppBarTitle(text: widget.title),
-      automaticallyImplyLeading: widget.isShowLeading,
-      flexibleSpace: widget.flexibleSpace,
+      automaticallyImplyLeading: false,
+      shape: widget.shape,
+      actions: widget.actions,
+    ) : AppBar(
+      backgroundColor: widget.backgroundColor,
+      elevation: widget.elevation,
+      leading: widget.leading,
+      title: AppBarTitle(text: widget.title),
+      automaticallyImplyLeading: false,
       shape: widget.shape,
       actions: widget.actions,
     );
