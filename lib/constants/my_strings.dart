@@ -22,7 +22,6 @@ class MyStrings{
   static const String forgotPassword = "Forgot Password?";
   static const String signIn = "Sign In";
   static const String donotAccount = "Don't have an account?";
-  static const String registerNow = "Register Now";
 
   // register-screen
   static const String createAnAccount = "Create An Account";
@@ -42,8 +41,16 @@ class MyStrings{
   static const String emailAddressHint = "Enter email address";
   static const String confirmPasswordHint = "Enter confirm Password";
   static const String signUp = "Sign Up";
-  static const String alreadyAccount = "Already have an account";
+  static const String alreadyAccount = "Already have an account?";
   static const String signInNow = "Sign In Now";
+  static const String signUpNow = "Sign Up Now";
+  static const String companyName = "Legal Name of Company";
+  static const String companyNameHint = "Enter legal name of company";
+  static const String representativeFirstName = "Representative First Name";
+  static const String representativeLastName = "Representative Last Name";
+  static const String userName = "Username";
+  static const String userNameHint = "Enter username";
+
 
   // otp-screen
   static const String otpVerify = "OTP Verify";
