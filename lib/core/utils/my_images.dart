@@ -1,5 +1,6 @@
 class MyImages{
   static const String basePath = "assets/images/svg/";
+  static const String basePath1 = "assets/images/png/";
 
   static const String activity = "${basePath}activity.svg";
   static const String addMoney = "${basePath}addMoney.svg";
@@ -7,14 +8,14 @@ class MyImages{
   // static const String address = "${basePath}address.svg";
   // static const String alertIcon = "${basePath}alertIcon.svg";
   // static const String amount = "${basePath}amount.svg";
-  static const String appLogo = "${basePath}appLogo.svg";
+  static const String appLogo = "${basePath1}appLogo.png";
   //static const String arrowDown = "${basePath}arrow_down.svg";
   //static const String arrowRightDown = "${basePath}arrow_right_down.svg";
   //static const String arrowRightUp = "${basePath}arrow_right_up.svg";
   //static const String basic = "${basePath}basic.svg";
   static const String bell = "${basePath}bell.svg";
-  static const String bg1 = "${basePath}bg1.svg";
-  static const String bg2 = "${basePath}bg2.svg";
+  static const String bg1 = "${basePath1}bg1.png";
+  static const String bg2 = "${basePath1}bg2.png";
   //static const String changePassword = "${basePath}changePassword.svg";
   //static const String charge = "${basePath}charge.svg";
   //static const String city = "${basePath}city.svg";
@@ -41,9 +42,9 @@ class MyImages{
   //static const String myProfile = "${basePath}myProfile.svg";
   static const String myVoucher = "${basePath}myVoucher.svg";
   //static const String name = "${basePath}name.svg";
-  static const String onboard1 = "${basePath}onboard1.svg";
-  static const String onboard2 = "${basePath}onboard2.svg";
-  static const String onboard3 = "${basePath}onboard3.svg";
+  static const String onboard1 = "${basePath1}onboard1.png";
+  static const String onboard2 = "${basePath1}onboard2.png";
+  static const String onboard3 = "${basePath1}onboard3.png";
   static const String otp = "${basePath}otp.svg";
   static const String paperPlan = "${basePath}paper-plan.svg";
   static const String payable = "${basePath}payable.svg";
