@@ -4,7 +4,7 @@ class MyColor{
 
   static const Color primaryColor = Color(0xff7966FF);
   static const Color secondaryColor = Color(0xffF6F7FE);
-  static const Color bodyColor = Color(0xff555555);
+  static const Color iconColor = Color(0xff555555);
 
   static const Color primaryColor100 = Color(0xffF1EFFF);
   static const Color primaryColor300 = Color(0xffC9C2FF);
