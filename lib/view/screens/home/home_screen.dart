@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/view/screens/home/widget/top_section.dart';
+import 'package:xcash_app/view/screens/home/widget/wallet_card_section.dart';
 import 'package:xcash_app/view/screens/home/widget/wallet_section.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -17,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: MyColor.primaryColor,
+        backgroundColor: MyColor.primaryColor100,
         body: CustomScrollView(
           slivers: [
             SliverAppBar(
@@ -25,10 +26,10 @@ class _HomeScreenState extends State<HomeScreen> {
               elevation: 0,
               automaticallyImplyLeading: false,
               backgroundColor: MyColor.primaryColor,
-              expandedHeight: 200,
+              expandedHeight: 310,
               flexibleSpace: FlexibleSpaceBar(
                 background: Padding(
-                  padding: const EdgeInsets.only(left: Dimensions.space15, right: Dimensions.space15, top: Dimensions.space30),
+                  padding: const EdgeInsets.only(top: Dimensions.space40),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: const [
@@ -37,6 +38,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(height: Dimensions.space30),
 
                       WalletSection(),
+
+                      SizedBox(height: Dimensions.space20),
+
+                      Expanded(
+                        child: WalletCardSection()
+                      ),
+
+                      SizedBox(height: Dimensions.space20),
                     ],
                   ),
                 ),
@@ -45,9 +54,24 @@ class _HomeScreenState extends State<HomeScreen> {
 
             SliverToBoxAdapter(
               child: Container(
-                height: MediaQuery.of(context).size.height,
-                margin: EdgeInsets.only(top: 100),
-                color: MyColor.primaryColor100,
+                color: MyColor.primaryColor,
+                child: Container(
+                  decoration: const BoxDecoration(
+                      color: MyColor.primaryColor100,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20.0),
+                        topRight: Radius.circular(20.0),
+                      )
+                  ),
+                  child: Container(
+                    height: MediaQuery.of(context).size.height,
+                    decoration: const BoxDecoration(
+                        color: MyColor.primaryColor100,
+                        borderRadius: BorderRadius.vertical(top: Radius.circular(20))
+                    ),
+                    padding: const EdgeInsets.only(top: Dimensions.space20, left: Dimensions.space15, right: Dimensions.space15),
+                  ),
+                ),
               ),
             )
           ],
