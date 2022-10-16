@@ -18,9 +18,8 @@ class CustomDivider extends StatelessWidget {
 
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-
         SizedBox(height: height),
-        const Divider(color: MyColor.lineColor, height: 0.5, thickness: 1),
+        Divider(color: MyColor.primaryColor.withOpacity(0.2), height: 0.5, thickness: 1),
         SizedBox(height: height),
       ],
     );
