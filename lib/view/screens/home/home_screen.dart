@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
+import 'package:xcash_app/view/screens/home/widget/items_section.dart';
 import 'package:xcash_app/view/screens/home/widget/top_section.dart';
 import 'package:xcash_app/view/screens/home/widget/wallet_card_section.dart';
 import 'package:xcash_app/view/screens/home/widget/wallet_section.dart';
@@ -20,7 +21,8 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         backgroundColor: MyColor.primaryColor100,
         body: CustomScrollView(
-          slivers: [
+          slivers: <Widget>[
+
             SliverAppBar(
               pinned: false,
               elevation: 0,
@@ -63,17 +65,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         topRight: Radius.circular(20.0),
                       )
                   ),
-                  child: Container(
-                    height: MediaQuery.of(context).size.height,
-                    decoration: const BoxDecoration(
-                        color: MyColor.primaryColor100,
-                        borderRadius: BorderRadius.vertical(top: Radius.circular(20))
-                    ),
-                    padding: const EdgeInsets.only(top: Dimensions.space20, left: Dimensions.space15, right: Dimensions.space15),
-                  ),
+                  child: const ItemsSection(),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
