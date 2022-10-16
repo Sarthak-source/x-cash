@@ -66,7 +66,7 @@ class MyImages{
   static const String transfer = "${basePath}transfer.svg";
   static const String transferMoney = "${basePath}transferMoney.svg";
   static const String user1 = "${basePath}user1.svg";
-  static const String userProfile = "${basePath}userProfile.svg";
+  static const String userProfile = "${basePath1}userProfile.png";
   //static const String userProfile2 = "${basePath}userProfile2.svg";
   static const String voucher = "${basePath}voucher.svg";
   static const String withdraw = "${basePath}withdraw.svg";
