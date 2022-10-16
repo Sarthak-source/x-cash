@@ -61,14 +61,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
           alignment: Alignment.center,
           padding: const EdgeInsets.all(Dimensions.space10),
           decoration: const BoxDecoration(color: MyColor.primaryColor, shape: BoxShape.circle),
-          child: SvgPicture.asset(MyImages.scan, color: MyColor.primaryColor100, width: 30, height: 30),
+          child: Image.asset(MyImages.scan, color: MyColor.primaryColor100, width: 30, height: 30),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 
-  navBarItem(String imagePath, int index, String label) {
+  navBarItem(String ImagePath, int index, String label) {
 
     return GestureDetector(
       onTap: (){
@@ -87,9 +87,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
               color: index == currentIndex ? MyColor.primaryColor100 : Colors.grey.withOpacity(0.2),
               shape: BoxShape.circle
             ),
-            child: SvgPicture.asset(
-              imagePath, color: index == currentIndex ? MyColor.primaryColor : MyColor.iconColor,
-              width: 20, height: 20,
+            child: Image.asset(
+              ImagePath, color: index == currentIndex ? MyColor.primaryColor : MyColor.iconColor,
+              width: 30, height: 30,
             ),
           ),
           const SizedBox(height: Dimensions.space10 / 2),
