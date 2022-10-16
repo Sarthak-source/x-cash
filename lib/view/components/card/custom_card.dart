@@ -4,6 +4,7 @@ import 'package:xcash_app/core/utils/my_color.dart';
 
 class CustomCard extends StatefulWidget {
   final double paddingLeft, paddingRight, paddingTop, paddingBottom;
+  final double width;
   final Color backgroundColor;
   final double radius;
   final VoidCallback? onPressed;
@@ -11,6 +12,7 @@ class CustomCard extends StatefulWidget {
   bool isPress;
   CustomCard({
     Key? key,
+    required this.width,
     this.paddingLeft = Dimensions.space15,
     this.paddingRight = Dimensions.space15,
     this.paddingTop = Dimensions.space10,
@@ -32,6 +34,7 @@ class _CustomCardState extends State<CustomCard> {
     return widget.isPress ? GestureDetector(
       onTap: widget.onPressed,
       child: Container(
+        width: widget.width,
         padding: EdgeInsets.only(left: widget.paddingLeft, right: widget.paddingRight, top: widget.paddingTop, bottom: widget.paddingBottom),
         decoration: BoxDecoration(
           color: widget.backgroundColor,
@@ -40,6 +43,7 @@ class _CustomCardState extends State<CustomCard> {
         child: widget.child,
       ),
     ) : Container(
+      width: widget.width,
       padding: EdgeInsets.only(left: widget.paddingLeft, right: widget.paddingRight, top: widget.paddingTop, bottom: widget.paddingBottom),
       decoration: BoxDecoration(
           color: widget.backgroundColor,
