@@ -81,7 +81,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            padding: const EdgeInsets.all(Dimensions.space5),
+            padding: const EdgeInsets.all(Dimensions.space10),
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: index == currentIndex ? MyColor.primaryColor100 : Colors.grey.withOpacity(0.2),
@@ -89,7 +89,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             ),
             child: SvgPicture.asset(
               SvgPicturePath, color: index == currentIndex ? MyColor.primaryColor : MyColor.iconColor,
-              width: 30, height: 30,
+              width: 16, height: 16,
             ),
           ),
           const SizedBox(height: Dimensions.space10 / 2),
