@@ -24,83 +24,86 @@ class _TopSectionState extends State<TopSection> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: Dimensions.space15),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
 
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              height: 45, width: 45,
-              decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(image: AssetImage(MyImages.userProfile), fit: BoxFit.fill)
-              ),
-            ),
-
-            const SizedBox(width: 10),
-
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text("William Anne", style: interRegularDefault.copyWith(color: MyColor.colorWhite, fontWeight: FontWeight.w500)),
-                const SizedBox(height: Dimensions.space10),
-                InkWell(
-                    onTap: changeState,
-                    child: Container(
-                        width: 160,
-                        height: 30,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(50)),
-                        child: Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              AnimatedOpacity(
-                                  opacity: isBalanceShown ? 1 : 0,
-                                  duration: const Duration(milliseconds: 500),
-                                  child: Text(myBalance, style: interRegularSmall.copyWith(color: MyColor.primaryColor, fontWeight: FontWeight.w600))
-                              ),
-
-                              AnimatedOpacity(
-                                  opacity: isBalance ? 1 : 0,
-                                  duration: const Duration(milliseconds: 300),
-                                  child: Text(MyStrings.tapForBalance, style: interRegularSmall.copyWith(fontWeight: FontWeight.w500))
-                              ),
-
-                              AnimatedPositioned(
-                                  duration: const Duration(milliseconds: 1100),
-                                  left: _isAnimated == false ? 5 : 135,
-                                  curve: Curves.fastOutSlowIn,
-                                  child: FittedBox(
-                                    child: Container(
-                                      height: 20, width: 20,
-                                      padding: const EdgeInsets.all(Dimensions.space10 / 5),
-                                      alignment: Alignment.center,
-                                      decoration: const BoxDecoration(color: MyColor.primaryColor, shape: BoxShape.circle),
-                                      child: Icon(_isAnimated == true ? Icons.visibility : Icons.visibility_off, color: MyColor.colorWhite, size: 10),
-                                    ),
-                                  )
-                              )
-                            ]
-                        )
-                    )
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                height: 45, width: 45,
+                decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(image: AssetImage(MyImages.userProfile), fit: BoxFit.fill)
                 ),
-              ],
-            )
-          ],
-        ),
+              ),
 
-        Row(
-          children: const [
-            NotificationSection(),
-            SizedBox(width: Dimensions.space10),
-            MenuSection()
-          ],
-        )
-      ],
+              const SizedBox(width: 10),
+
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("William Anne", style: interRegularDefault.copyWith(color: MyColor.colorWhite, fontWeight: FontWeight.w500)),
+                  const SizedBox(height: Dimensions.space10),
+                  InkWell(
+                      onTap: changeState,
+                      child: Container(
+                          width: 160,
+                          height: 30,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(50)),
+                          child: Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                AnimatedOpacity(
+                                    opacity: isBalanceShown ? 1 : 0,
+                                    duration: const Duration(milliseconds: 500),
+                                    child: Text(myBalance, style: interRegularSmall.copyWith(color: MyColor.primaryColor, fontWeight: FontWeight.w600))
+                                ),
+
+                                AnimatedOpacity(
+                                    opacity: isBalance ? 1 : 0,
+                                    duration: const Duration(milliseconds: 300),
+                                    child: Text(MyStrings.tapForBalance, style: interRegularSmall.copyWith(fontWeight: FontWeight.w500))
+                                ),
+
+                                AnimatedPositioned(
+                                    duration: const Duration(milliseconds: 1100),
+                                    left: _isAnimated == false ? 5 : 135,
+                                    curve: Curves.fastOutSlowIn,
+                                    child: FittedBox(
+                                      child: Container(
+                                        height: 20, width: 20,
+                                        padding: const EdgeInsets.all(Dimensions.space10 / 5),
+                                        alignment: Alignment.center,
+                                        decoration: const BoxDecoration(color: MyColor.primaryColor, shape: BoxShape.circle),
+                                        child: Icon(_isAnimated == true ? Icons.visibility : Icons.visibility_off, color: MyColor.colorWhite, size: 10),
+                                      ),
+                                    )
+                                )
+                              ]
+                          )
+                      )
+                  ),
+                ],
+              )
+            ],
+          ),
+
+          Row(
+            children: const [
+              NotificationSection(),
+              SizedBox(width: Dimensions.space10),
+              MenuSection()
+            ],
+          )
+        ],
+      ),
     );
   }
 
