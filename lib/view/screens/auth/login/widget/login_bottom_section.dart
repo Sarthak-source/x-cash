@@ -28,7 +28,7 @@ class _LoginBottomSectionState extends State<LoginBottomSection> {
           },
           child: Text(
 
-            MyStrings.registerNow,
+            MyStrings.signUpNow,
             style: interRegularDefault.copyWith(color: MyColor.primaryColor, decoration: TextDecoration.underline),
           ),
         )
