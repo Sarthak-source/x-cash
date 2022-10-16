@@ -3,6 +3,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 
+TextStyle interOverSmall = GoogleFonts.inter(
+    color: MyColor.primaryTextColor,
+    fontWeight: FontWeight.w400,
+    fontSize: 8 // 10
+);
+
 TextStyle interRegularExtraSmall = GoogleFonts.inter(
     color: MyColor.primaryTextColor,
     fontWeight: FontWeight.w400,
