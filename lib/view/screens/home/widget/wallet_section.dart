@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xcash_app/constants/my_strings.dart';
+import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/styles.dart';
 
@@ -8,18 +9,21 @@ class WalletSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          MyStrings.myWallet,
-          style: interRegularDefault.copyWith(color: MyColor.colorWhite, fontWeight: FontWeight.w500),
-        ),
-        Text(
-          MyStrings.viewMore,
-          style: interRegularSmall.copyWith(color: MyColor.colorWhite),
-        )
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: Dimensions.space15),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            MyStrings.myWallet,
+            style: interRegularDefault.copyWith(color: MyColor.colorWhite, fontWeight: FontWeight.w500),
+          ),
+          Text(
+            MyStrings.viewMore,
+            style: interRegularSmall.copyWith(color: MyColor.colorWhite),
+          )
+        ],
+      ),
     );
   }
 }
