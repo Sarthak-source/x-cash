@@ -49,16 +49,22 @@ class _BottomNavBarState extends State<BottomNavBar> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: MyColor.primaryColor100,
-        onPressed: (){},
+      floatingActionButton: Container(
+        height: 65, width: 65,
+        alignment: Alignment.center,
+        padding: const EdgeInsets.all(5),
+        decoration: const BoxDecoration(
+          color: MyColor.primaryColor100,
+          shape: BoxShape.circle
+        ),
         child: Container(
           alignment: Alignment.center,
           padding: const EdgeInsets.all(Dimensions.space10),
-          child: SvgPicture.asset(MyImages.scan, color: MyColor.primaryColor100, width: 20, height: 20),
+          decoration: const BoxDecoration(color: MyColor.primaryColor, shape: BoxShape.circle),
+          child: SvgPicture.asset(MyImages.scan, color: MyColor.primaryColor100, width: 30, height: 30),
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 
