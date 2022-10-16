@@ -86,7 +86,9 @@ class _LoginFormState extends State<LoginForm> {
           const FormSizedBox(),
 
           CustomAnimatedButton(
-              onTap: () {},
+              onTap: () {
+                Get.offAndToNamed(RouteHelper.bottomNavBar);
+              },
               height: Dimensions.defaultButtonH,
               width: MediaQuery.of(context).size.width,
               backgroundColor: MyColor.primaryColor,

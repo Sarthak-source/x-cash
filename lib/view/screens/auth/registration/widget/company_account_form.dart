@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:xcash_app/constants/my_strings.dart';
+import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/styles.dart';
@@ -121,7 +123,9 @@ class _CompanyAccountFormState extends State<CompanyAccountForm> {
           const SizedBox(height: Dimensions.space30),
 
           CustomAnimatedButton(
-              onTap: (){},
+              onTap: (){
+                Get.offAndToNamed(RouteHelper.bottomNavBar);
+              },
               height: 45,
               width: MediaQuery.of(context).size.width,
               backgroundColor: MyColor.primaryColor,
