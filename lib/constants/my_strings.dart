@@ -143,7 +143,7 @@ class MyStrings{
   // my invoice
   static const String published = "Published";
   static const String discarded = "Discarded";
-  static const String inVoice = "In Voice to";
+  static const String inVoice = "Invoice";
   static const String createdDate = "Created Date";
   static const String paymentStatus = "Payment Status";
   static const String issued = "Issued:";
