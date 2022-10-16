@@ -22,11 +22,11 @@ class _BottomNavBarState extends State<BottomNavBar> {
     const ActivityScreen(),
   ];
   int currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: screens[currentIndex],
-
       bottomNavigationBar: SingleChildScrollView(
         physics: const ClampingScrollPhysics(),
         child: Container(
@@ -65,20 +65,15 @@ class _BottomNavBarState extends State<BottomNavBar> {
   navBarItem(String imagePath, int index, String label) {
 
     return GestureDetector(
-
       onTap: (){
-
         setState(() {
-
           currentIndex = index;
         });
       },
       child: Column(
-
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-
           Container(
             padding: const EdgeInsets.all(Dimensions.space5),
             alignment: Alignment.center,
@@ -93,7 +88,6 @@ class _BottomNavBarState extends State<BottomNavBar> {
           ),
           const SizedBox(height: Dimensions.space10 / 2),
           Text(
-
               label, textAlign: TextAlign.center,
               style: interRegularSmall.copyWith(color: index == currentIndex ? MyColor.primaryColor : MyColor.primaryTextColor)
           )
