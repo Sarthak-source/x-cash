@@ -20,6 +20,8 @@ class RouteHelper{
 
   static const String bottomNavBar = "/bottom_nav_bar";
 
+  static const String termsServiceScreen = "/terms_services_screen";
+
   List<GetPage> routes = [
 
     GetPage(name: splashScreen, page: () => const SplashScreen()),
