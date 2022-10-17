@@ -25,6 +25,7 @@ class _CircleShapeImageState extends State<CircleShapeImage> {
   @override
   Widget build(BuildContext context) {
     return widget.isSvgImage ? Container(
+      height: 35, width: 35,
       padding: const EdgeInsets.all(Dimensions.space10),
       alignment: Alignment.center,
       decoration: BoxDecoration(
@@ -33,6 +34,7 @@ class _CircleShapeImageState extends State<CircleShapeImage> {
       ),
       child: SvgPicture.asset(widget.image, color: widget.imageColor, height: widget.imageSize, width: widget.imageSize),
     ) : Container(
+      height: 35, width: 35,
       padding: const EdgeInsets.all(Dimensions.space10),
       alignment: Alignment.center,
       decoration: BoxDecoration(
