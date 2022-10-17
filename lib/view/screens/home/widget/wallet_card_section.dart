@@ -7,6 +7,7 @@ import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/styles.dart';
 import 'package:xcash_app/view/components/card/custom_card.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
+import 'package:xcash_app/view/components/image/circle_shape_image.dart';
 
 class WalletCardSection extends StatefulWidget {
   const WalletCardSection({Key? key}) : super(key: key);
@@ -32,14 +33,9 @@ class _WalletCardSectionState extends State<WalletCardSection> {
               children: [
                 Row(
                   children: [
-                    Container(
-                      padding: const EdgeInsets.all(Dimensions.space10),
-                      alignment: Alignment.center,
-                      decoration: const BoxDecoration(
-                          color: MyColor.primaryColor100,
-                          shape: BoxShape.circle
-                      ),
-                      child: SvgPicture.asset(MyImages.transferMoney, color: MyColor.primaryColor100, height: 20, width: 20),
+                    CircleShapeImage(
+                      isSvgImage: true,
+                      image: MyImages.transferMoney,
                     ),
 
                     const SizedBox(width: Dimensions.space10),
