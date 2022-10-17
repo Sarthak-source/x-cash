@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: MyColor.primaryColor100,
+        backgroundColor: MyColor.primaryColor,
         body: CustomScrollView(
           slivers: <Widget>[
 
@@ -54,12 +54,11 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
 
-            SliverToBoxAdapter(
-              child: Container(
-                color: MyColor.primaryColor,
+            const SliverToBoxAdapter(
+              child: ItemsSection(),
+              /*SizedBox(
                 child: Container(
                   decoration: const BoxDecoration(
-                      color: MyColor.primaryColor100,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(20.0),
                         topRight: Radius.circular(20.0),
@@ -67,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   child: const ItemsSection(),
                 ),
-              ),
+              ),*/
             ),
           ],
         ),
