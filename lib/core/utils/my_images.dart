@@ -55,7 +55,7 @@ class MyImages{
   static const String requestMoney = "${basePath}requestMoney.svg";
   static const String requestMoney1 = "${basePath1}requestMoney1.png";
   static const String scan = "${basePath}scan.svg";
-  static const String suitcase = "${basePath}suitcase.svg";
+  static const String suitcase = "${basePath1}suitcase.png";
   static const String scan2 = "${basePath}scan2.svg";
   static const String search = "${basePath}search.svg";
   static const String security = "${basePath}security.svg";
@@ -65,7 +65,7 @@ class MyImages{
   static const String transaction1 = "${basePath}transaction1.svg";
   static const String transfer = "${basePath}transfer.svg";
   static const String transferMoney = "${basePath}transferMoney.svg";
-  static const String user1 = "${basePath}user1.svg";
+  static const String user1 = "${basePath1}user1.png";
   static const String userProfile = "${basePath1}userProfile.png";
   static const String userProfile2 = "${basePath}userProfile2.svg";
   static const String voucher = "${basePath}voucher.svg";
