@@ -5,7 +5,11 @@ import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_bar.dart';
+import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/card/custom_card.dart';
+import 'package:xcash_app/view/components/divider/custom_divider.dart';
+import 'package:xcash_app/view/components/row_icon_text_widget.dart';
 
 class CardList extends StatefulWidget {
   const CardList({Key? key}) : super(key: key);
@@ -79,8 +83,49 @@ class _CardListState extends State<CardList> {
                 ],
               ),
               GestureDetector(
-                onTap: (){},
-                child: SvgPicture.asset(MyImages.dotMenu, height: 12, width: 12),
+                onTap: (){
+                  CustomBottomSheet(
+                    isNeedMargin: true,
+                    child: Column(
+                      children: [
+                        const BottomSheetBar(),
+                        const SizedBox(height: Dimensions.space15),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            RowIconTextWidget(
+                                image: MyImages.downLeftArrow,
+                                text: MyStrings.totalReceived
+                            ),
+
+                            const CustomDivider(height: Dimensions.space15),
+
+                            RowIconTextWidget(
+                                image: MyImages.requestMoney1,
+                                text: MyStrings.requestMoney
+                            ),
+
+                            const CustomDivider(height: Dimensions.space15),
+
+                            RowIconTextWidget(
+                                image: MyImages.viewTransaction,
+                                text: MyStrings.viewTransactions
+                            ),
+                          ],
+                        )
+                      ],
+                    )
+                  ).customBottomSheet(context);
+                },
+                child: Container(
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.all(Dimensions.space5),
+                    decoration: const BoxDecoration(
+                      color: MyColor.primaryColor100,
+                      shape: BoxShape.circle
+                    ),
+                    child: SvgPicture.asset(MyImages.dotMenu, height: 12, width: 12)
+                ),
               )
             ],
           ),
