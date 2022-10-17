@@ -40,7 +40,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
         onPressed: (){
           Get.toNamed("route name");
         },
-        icon: const Icon(Icons.arrow_back_ios_new, color: MyColor.colorWhite, size: 16),
+        icon: const Icon(Icons.arrow_back, color: MyColor.primaryColor, size: 16),
       ),
       title: AppBarTitle(text: widget.title),
       automaticallyImplyLeading: false,
@@ -49,7 +49,6 @@ class _CustomAppBarState extends State<CustomAppBar> {
     ) : AppBar(
       backgroundColor: widget.backgroundColor,
       elevation: widget.elevation,
-      leading: widget.leading,
       title: AppBarTitle(text: widget.title),
       automaticallyImplyLeading: false,
       shape: widget.shape,
