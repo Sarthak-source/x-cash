@@ -43,18 +43,18 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
 
             Positioned(
-                top: -50, left: 0, right: 0,
+                top: -10, left: 0, right: 0,
                 child: Image.asset(MyImages.bg1)
             ),
 
             Align(
               alignment: Alignment.center,
-              child: Image.asset(MyImages.appLogo),
+              child: Image.asset(MyImages.appLogo, height: 50, width: 225),
             ),
 
             Positioned(
-                bottom: -50, left: 0, right: 0,
-                child: Image.asset(MyImages.bg1)
+                bottom: -10, left: 0, right: 0,
+                child: Image.asset(MyImages.bg2)
             ),
           ],
         ),
