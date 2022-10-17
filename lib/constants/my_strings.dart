@@ -212,4 +212,13 @@ class MyStrings{
   static const String currentPassword = "Current Password";
   static const String currentPasswordHint = "Enter current password";
   static const String saveNewPassword = "Save New Password";
+
+  // terms of services
+  static const String termsOfServices = "Terms of Services";
+  static const String ownership = "Ownership";
+  static const String support = "Support";
+  static const String warranty = "Warranty";
+  static const String unauthorized = "Unauthorized / Illegal Usage";
+  static const String payment = "Payment / Refund Policy";
+  static const String couponPolicy = "Coupon Policy";
 }
