@@ -4,6 +4,7 @@ import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/screens/activity/activity_screen.dart';
 import 'package:xcash_app/view/screens/home/home_screen.dart';
 
@@ -18,9 +19,9 @@ class BottomNavBar extends StatefulWidget {
 class _BottomNavBarState extends State<BottomNavBar> {
 
   List<Widget> screens = [
-    const HomeScreen(),
-    const ActivityScreen(),
+    const HomeScreen()
   ];
+
   int currentIndex = 0;
 
   @override
@@ -68,13 +69,19 @@ class _BottomNavBarState extends State<BottomNavBar> {
     );
   }
 
-  navBarItem(String SvgPicturePath, int index, String label) {
-
+  navBarItem(String imagePath, int index, String label) {
     return GestureDetector(
       onTap: (){
-        setState(() {
-          currentIndex = index;
-        });
+        if(index != 1){
+          setState(() {
+            currentIndex = index;
+          });
+        }
+        else{
+          CustomBottomSheet(
+            child: const ActivityScreen()
+          ).customBottomSheet(context);
+        }
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -88,7 +95,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
               shape: BoxShape.circle
             ),
             child: SvgPicture.asset(
-              SvgPicturePath, color: index == currentIndex ? MyColor.primaryColor : MyColor.iconColor,
+              imagePath, color: index == currentIndex ? MyColor.primaryColor : MyColor.iconColor,
               width: 16, height: 16,
             ),
           ),
