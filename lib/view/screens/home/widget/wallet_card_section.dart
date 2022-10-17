@@ -26,7 +26,7 @@ class _WalletCardSectionState extends State<WalletCardSection> {
         itemBuilder: (context, index) => Padding(
           padding: EdgeInsets.only(left: index == 0 ? 10 : 5, right: Dimensions.space10),
           child: CustomCard(
-            width: MediaQuery.of(context).size.width * 0.8,
+            width: MediaQuery.of(context).size.width * 0.85,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
