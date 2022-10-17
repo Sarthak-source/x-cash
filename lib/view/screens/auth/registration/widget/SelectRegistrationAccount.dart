@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:xcash_app/constants/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
@@ -63,7 +64,7 @@ class _SelectRegistrationAccountState extends State<SelectRegistrationAccount> {
                 ),
                 child: Image.asset(
                     imagePath,
-                    color: index == selectedUser ? MyColor.primaryColor : MyColor.primarySubTextColor,
+                    color: index == selectedUser ? MyColor.primaryColor : MyColor.primarySubTextColor.withOpacity(0.2),
                     height: 12,
                     width: 12
                 ),
