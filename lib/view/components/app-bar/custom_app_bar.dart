@@ -5,7 +5,7 @@ import 'package:xcash_app/view/components/text/app_bar_title.dart';
 
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget{
 
-  final String title;
+  final String title, routeName;
   final Color backgroundColor;
   final Widget? leading;
   bool showBackIcon;
@@ -20,7 +20,8 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget{
     this.showBackIcon = false,
     this.elevation = 5,
     this.shape,
-    this.actions
+    this.actions,
+    required this.routeName
   }) : super(key: key);
 
   @override
@@ -38,7 +39,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
       elevation: widget.elevation,
       leading: IconButton(
         onPressed: (){
-          Get.toNamed("route name");
+          Get.toNamed(widget.routeName);
         },
         icon: const Icon(Icons.arrow_back, color: MyColor.primaryColor, size: 16),
       ),
