@@ -34,7 +34,7 @@ class _CustomAmountTextFieldState extends State<CustomAmountTextField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(widget.labelText, style: interRegularDefault.copyWith(height: 1.452)),
+        Text(widget.labelText, style: interRegularSmall.copyWith(height: 1.452)),
 
         const SizedBox(height: Dimensions.space10),
 
