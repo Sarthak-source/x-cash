@@ -6,6 +6,7 @@ import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/buttons/circle_animated_button_with_text.dart';
+import 'package:xcash_app/view/screens/add-money/add_money.dart';
 import 'package:xcash_app/view/screens/transfer/transfer_money.dart';
 
 class ItemsSectionTopPart extends StatefulWidget {
@@ -31,7 +32,11 @@ class _ItemsSectionTopPartState extends State<ItemsSectionTopPart> {
                 height: 40, width: 40,
                 backgroundColor: MyColor.colorWhite,
                 child: SvgPicture.asset(MyImages.addMoney, color: MyColor.primaryColor, height: 20, width: 20),
-                onTap: (){},
+                onTap: (){
+                  CustomBottomSheet(
+                    child: const AddMoney()
+                  ).customBottomSheet(context);
+                },
               ),
             ),
 
