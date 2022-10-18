@@ -5,8 +5,10 @@ import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/styles.dart';
 import 'package:xcash_app/view/components/app-bar/custom_app_bar.dart';
+import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/card/custom_card.dart';
 import 'package:xcash_app/view/screens/add-money-history/widget/add_money_history_bottom_sheet.dart';
+import 'package:xcash_app/view/screens/add-money/add_money.dart';
 
 class AddMoneyHistoryScreen extends StatefulWidget {
   const AddMoneyHistoryScreen({Key? key}) : super(key: key);
@@ -54,7 +56,11 @@ class _AddMoneyHistoryScreenState extends State<AddMoneyHistoryScreen> {
             Padding(
               padding: const EdgeInsets.only(right: Dimensions.space15),
               child: GestureDetector(
-                onTap: (){},
+                onTap: (){
+                  CustomBottomSheet(
+                    child: const AddMoney()
+                  ).customBottomSheet(context);
+                },
                 child: Container(
                   height: 25, width: 25,
                   alignment: Alignment.center,
