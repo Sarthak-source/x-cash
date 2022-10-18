@@ -26,5 +26,6 @@ class MyColor{
   static const Color colorOrange = Color(0xffFF9F43);
   static const Color colorOrange100 = Color(0xffFFECD9);
   static const Color colorRed = Color(0xffEA5455);
+  static const Color colorRed100 = Color(0xffFCE9E9);
   static const Color transparentColor = Colors.transparent;
 }
