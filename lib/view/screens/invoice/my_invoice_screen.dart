@@ -9,6 +9,7 @@ import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart'
 import 'package:xcash_app/view/components/card/custom_card.dart';
 import 'package:xcash_app/view/screens/add-money-history/widget/add_money_history_bottom_sheet.dart';
 import 'package:xcash_app/view/screens/add-money/add_money.dart';
+import 'package:xcash_app/view/screens/invoice/widget/my_invoice_bottom_sheet.dart';
 
 class MyInvoiceScreen extends StatefulWidget {
   const MyInvoiceScreen({Key? key}) : super(key: key);
@@ -134,7 +135,16 @@ class _MyInvoiceScreenState extends State<MyInvoiceScreen> {
                     )
                   ],
                 ),
-                onPressed: (){},
+                onPressed: (){
+                  MyInvoiceBottomSheet.bottomSheet(
+                      context,
+                      "${data[index]["name"]}",
+                      "${data[index]["status"]}",
+                      "${data[index]["amount"]}",
+                      "${data[index]["date"]}",
+                      "${data[index]["time"]}"
+                  );
+                },
               )
           ),
         ),
