@@ -221,4 +221,6 @@ class MyStrings{
   static const String unauthorized = "Unauthorized / Illegal Usage";
   static const String payment = "Payment / Refund Policy";
   static const String couponPolicy = "Coupon Policy";
+
+  static const String currency = "USD";
 }
