@@ -104,12 +104,15 @@ class MyStrings{
   static const String chargeAmount = "Charge : 50 USD";
   static const String min_max_Amount = "Min: 50 USD -- Max: 1000 USD";
 
-  static const String date = "Amount";
+  // add money-history bottom-sheet
+  static const String date = "Date";
   static const String gateWay = "Gateway";
   static const String charge = "Charge";
+  static const String payableAmount = "Payable amount";
   static const String payableAfterCharge = "Payable after Charge";
   static const String sendFromNumber = "Send From Number";
-  static const String status = "Complete";
+  static const String status = "Status";
+  static const String screenShot = "Screenshot";
 
   // add money details
   static const String addMoneyDetails = "Add Money Details";
