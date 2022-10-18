@@ -4,7 +4,9 @@ import 'package:xcash_app/constants/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
+import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/buttons/circle_animated_button_with_text.dart';
+import 'package:xcash_app/view/screens/transfer/transfer_money.dart';
 
 class ItemsSectionTopPart extends StatefulWidget {
   const ItemsSectionTopPart({Key? key}) : super(key: key);
@@ -22,10 +24,9 @@ class _ItemsSectionTopPartState extends State<ItemsSectionTopPart> {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
 
+            // add Money
             Expanded(
-
               child: CircleAnimatedButtonWithText(
-
                 buttonName: MyStrings.addMoney,
                 height: 40, width: 40,
                 backgroundColor: MyColor.colorWhite,
@@ -34,10 +35,9 @@ class _ItemsSectionTopPartState extends State<ItemsSectionTopPart> {
               ),
             ),
 
+            // exchange
             Expanded(
-
               child: CircleAnimatedButtonWithText(
-
                 buttonName: MyStrings.exchange,
                 height: 40, width: 40,
                 backgroundColor: MyColor.colorWhite,
@@ -46,10 +46,9 @@ class _ItemsSectionTopPartState extends State<ItemsSectionTopPart> {
               ),
             ),
 
+            // make payment
             Expanded(
-
               child: CircleAnimatedButtonWithText(
-
                 buttonName: MyStrings.makePayment,
                 height: 40, width: 40,
                 backgroundColor: MyColor.colorWhite,
@@ -58,10 +57,9 @@ class _ItemsSectionTopPartState extends State<ItemsSectionTopPart> {
               ),
             ),
 
+            // invoice
             Expanded(
-
               child: CircleAnimatedButtonWithText(
-
                 buttonName: MyStrings.inVoice,
                 height: 40, width: 40,
                 backgroundColor: MyColor.colorWhite,
@@ -76,10 +74,10 @@ class _ItemsSectionTopPartState extends State<ItemsSectionTopPart> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+
+            // voucher
             Expanded(
-
               child: CircleAnimatedButtonWithText(
-
                 buttonName: MyStrings.voucher,
                 height: 40, width: 40,
                 backgroundColor: MyColor.colorWhite,
@@ -88,15 +86,18 @@ class _ItemsSectionTopPartState extends State<ItemsSectionTopPart> {
               ),
             ),
 
+            // transfer
             Expanded(
-
               child: CircleAnimatedButtonWithText(
-
                 buttonName: MyStrings.transfer,
                 height: 40, width: 40,
                 backgroundColor: MyColor.colorWhite,
                 child: SvgPicture.asset(MyImages.transfer, color: MyColor.primaryColor, height: 20, width: 20),
-                onTap: (){},
+                onTap: (){
+                  CustomBottomSheet(
+                    child: const TransferMoney()
+                  ).customBottomSheet(context);
+                },
               ),
             ),
 
