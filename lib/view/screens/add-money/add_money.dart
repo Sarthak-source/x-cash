@@ -32,7 +32,7 @@ class AddMoney extends StatelessWidget {
           ],
         ),
 
-        const CustomDivider(),
+        const CustomDivider(height: Dimensions.space15),
 
         const AddMoneyForm()
       ],
