@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:xcash_app/view/components/bottom-nav-bar/bottom_nav_bar.dart';
+import 'package:xcash_app/view/screens/add-money-history/add_money_history_screen.dart';
 import 'package:xcash_app/view/screens/auth/change_password/change_password_screen.dart';
 import 'package:xcash_app/view/screens/auth/forgot_password/forgot_password_screen.dart';
 import 'package:xcash_app/view/screens/auth/login/login_screen.dart';
@@ -16,9 +17,9 @@ class RouteHelper{
   static const String forgotPasswordScreen = "/forgot_password_screen";
   static const String changePasswordScreen = "/change_password_screen";
   static const String registrationScreen = "/registration_screen";
-  static const String myWalletScreen = "/my_wallet_screen";
-
   static const String bottomNavBar = "/bottom_nav_bar";
+  static const String myWalletScreen = "/my_wallet_screen";
+  static const String addMoneyHistoryScreen = "/add_money_history_screen";
 
   static const String termsServiceScreen = "/terms_services_screen";
 
@@ -31,6 +32,7 @@ class RouteHelper{
     GetPage(name: changePasswordScreen, page: () => const ChangePasswordScreen()),
     GetPage(name: registrationScreen, page: () => const RegistrationScreen()),
     GetPage(name: bottomNavBar, page: () => const BottomNavBar()),
-    GetPage(name: myWalletScreen, page: () => const MyWalletScreen())
+    GetPage(name: myWalletScreen, page: () => const MyWalletScreen()),
+    GetPage(name: addMoneyHistoryScreen, page: () => const AddMoneyHistoryScreen())
   ];
 }
