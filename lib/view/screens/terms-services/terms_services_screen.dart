@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:xcash_app/constants/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
@@ -26,7 +27,7 @@ class _TermsServicesScreenState extends State<TermsServicesScreen> {
           elevation: 0,
           backgroundColor: MyColor.colorWhite,
           title: MyStrings.termsOfServices,
-          routeName: "",
+          changeRoute: () => Get.back(),
         ),
         body: SingleChildScrollView(
           child: Padding(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:xcash_app/constants/my_strings.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
@@ -84,7 +85,7 @@ class _MyWalletScreenState extends State<MyWalletScreen> {
           elevation: 0,
           showBackIcon: true,
           title: MyStrings.myWallet,
-          routeName: RouteHelper.bottomNavBar,
+          changeRoute: () => Get.toNamed(RouteHelper.bottomNavBar),
         ),
         body: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: Dimensions.space15, vertical: Dimensions.space20),
