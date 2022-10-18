@@ -3,16 +3,13 @@ import 'package:get/get.dart';
 import 'package:xcash_app/constants/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
+import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
+import 'package:xcash_app/view/screens/add-money/widget/add_money_form.dart';
 
-class AddMoney extends StatefulWidget {
+class AddMoney extends StatelessWidget {
   const AddMoney({Key? key}) : super(key: key);
 
-  @override
-  State<AddMoney> createState() => _AddMoneyState();
-}
-
-class _AddMoneyState extends State<AddMoney> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -33,8 +30,13 @@ class _AddMoneyState extends State<AddMoney> {
               ),
             )
           ],
-        )
+        ),
+
+        const CustomDivider(),
+
+        const AddMoneyForm()
       ],
     );
   }
 }
+
