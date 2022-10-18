@@ -24,7 +24,7 @@ class TypeofUser extends StatelessWidget {
         onTap: onPressed,
         child: Container(
           width: MediaQuery.of(context).size.width,
-          padding: const EdgeInsets.symmetric(vertical: Dimensions.space15, horizontal: Dimensions.space10),
+          padding: const EdgeInsets.symmetric(vertical: Dimensions.space15, horizontal: 8),
           decoration: BoxDecoration(
             color: backgroundColor,
             borderRadius: BorderRadius.circular(borderRadius),

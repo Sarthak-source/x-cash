@@ -30,7 +30,7 @@ class _SelectRegistrationAccountState extends State<SelectRegistrationAccount> {
             children: [
               selectUserType(MyImages.user1, MyStrings.personalAccount, 0),
 
-              const SizedBox(width: Dimensions.space15),
+              const SizedBox(width: Dimensions.space10),
 
               selectUserType(MyImages.suitcase, MyStrings.companyAccount, 1)
             ],
@@ -70,7 +70,7 @@ class _SelectRegistrationAccountState extends State<SelectRegistrationAccount> {
                 ),
               ),
 
-              const SizedBox(width: Dimensions.space10),
+              const SizedBox(width: 8),
 
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
