@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
@@ -36,28 +35,26 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: MyColor.primaryColor,
-        body: Stack(
-          children: [
+    return Scaffold(
+      backgroundColor: MyColor.primaryColor,
+      body: Stack(
+        children: [
 
-            Positioned(
-                top: -10, left: 0, right: 0,
-                child: Image.asset(MyImages.bg1)
-            ),
+          /*Positioned(
+              top: -10, left: 0, right: 0,
+              child: Image.asset(MyImages.bg1)
+          ),*/
 
-            Align(
-              alignment: Alignment.center,
-              child: Image.asset(MyImages.appLogo, height: 50, width: 225),
-            ),
+          Align(
+            alignment: Alignment.center,
+            child: Image.asset(MyImages.appLogo, height: 50, width: 225),
+          ),
 
-            Positioned(
-                bottom: -10, left: 0, right: 0,
-                child: Image.asset(MyImages.bg2)
-            ),
-          ],
-        ),
+          /*Positioned(
+              bottom: -10, left: 0, right: 0,
+              child: Image.asset(MyImages.bg2)
+          ),*/
+        ],
       ),
     );
   }
