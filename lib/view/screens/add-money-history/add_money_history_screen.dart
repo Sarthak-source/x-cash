@@ -6,6 +6,7 @@ import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/styles.dart';
 import 'package:xcash_app/view/components/app-bar/custom_app_bar.dart';
 import 'package:xcash_app/view/components/card/custom_card.dart';
+import 'package:xcash_app/view/screens/add-money-history/widget/add_money_history_bottom_sheet.dart';
 
 class AddMoneyHistoryScreen extends StatefulWidget {
   const AddMoneyHistoryScreen({Key? key}) : super(key: key);
@@ -127,6 +128,16 @@ class _AddMoneyHistoryScreenState extends State<AddMoneyHistoryScreen> {
                   )
                 ],
               ),
+              onPressed: (){
+                AddMoneyHistoryBottomSheet.bottomSheet(
+                    context,
+                    "${data[index]["trxNo"]}",
+                    "${data[index]["status"]}",
+                    "${data[index]["amount"]}",
+                    "${data[index]["date"]}",
+                    "${data[index]["time"]}"
+                );
+              },
             )
           ),
         ),
