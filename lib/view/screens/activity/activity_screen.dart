@@ -67,7 +67,8 @@ class ActivityScreen extends StatelessWidget {
             RowIconTextWidget(
                 isSvgPicture: true,
                 image: MyImages.myInvoice,
-                text: MyStrings.myInvoice
+                text: MyStrings.myInvoice,
+                onPressed: () => Get.toNamed(RouteHelper.myInvoiceScreen),
             ),
           ],
         )
