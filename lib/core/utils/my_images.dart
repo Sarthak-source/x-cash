@@ -7,7 +7,7 @@ class MyImages{
   static const String addMoneyHistory = "${basePath}addMoneyHistory.svg";
   static const String address = "${basePath}address.svg";
   static const String alertIcon = "${basePath}alertIcon.svg";
-  static const String amount = "${basePath}amount.svg";
+  static const String amount = "${basePath1}amount.png";
   static const String appLogo = "${basePath1}appLogo.png";
   static const String arrowDown = "${basePath}arrow_down.svg";
   static const String arrowRightDown = "${basePath}arrow_right_down.svg";
@@ -17,7 +17,7 @@ class MyImages{
   static const String bg1 = "${basePath1}bg1.png";
   static const String bg2 = "${basePath1}bg2.png";
   static const String changePassword = "${basePath}changePassword.svg";
-  static const String charge = "${basePath}charge.svg";
+  static const String charge = "${basePath1}charge.png";
   static const String city = "${basePath}city.svg";
   static const String clear = "${basePath}clear.svg";
   static const String companyAccount = "${basePath}companyAccount.svg";
@@ -47,7 +47,7 @@ class MyImages{
   static const String onboard3 = "${basePath1}onboard3.png";
   static const String otp = "${basePath}otp.svg";
   static const String paperPlan = "${basePath}paper-plan.svg";
-  static const String payable = "${basePath}payable.svg";
+  static const String payable = "${basePath1}payable.png";
   static const String payoneer = "${basePath}payoneer.svg";
   static const String paypal = "${basePath}paypal.svg";
   static const String phone = "${basePath}phone.svg";
