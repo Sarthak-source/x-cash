@@ -44,7 +44,7 @@ class _CustomAmountTextFieldState extends State<CustomAmountTextField> {
           alignment: Alignment.center,
           padding: const EdgeInsets.only(left: Dimensions.space20, right: Dimensions.space10 / 2, top: Dimensions.space10 / 2, bottom: Dimensions.space10 / 2),
           decoration: BoxDecoration(
-            color: MyColor.primaryColor100,
+            color: MyColor.colorWhite,
             border: Border.all(color: isFocus ? MyColor.primaryColor : MyColor.textFieldBorderColor, width: 1.00),
             borderRadius: BorderRadius.circular(3)
           ),
