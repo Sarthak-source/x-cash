@@ -21,8 +21,6 @@ class _InvoiceItemsState extends State<InvoiceItems> {
   @override
   Widget build(BuildContext context) {
 
-    List<Widget> widgetList = [];
-
     return CustomCard(
       width: MediaQuery.of(context).size.width,
       child: Padding(
