@@ -49,6 +49,15 @@ class ActivityScreen extends StatelessWidget {
             const CustomDivider(height: Dimensions.space15),
 
             RowIconTextWidget(
+              isSvgPicture: true,
+              image: MyImages.myVoucher,
+              text: MyStrings.myVoucher,
+              onPressed: (){},
+            ),
+
+            const CustomDivider(height: Dimensions.space15),
+
+            RowIconTextWidget(
                 isSvgPicture: true,
                 image: MyImages.withdrawHistory,
                 text: MyStrings.withdrawHistory
