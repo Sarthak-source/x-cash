@@ -93,8 +93,8 @@ class MyStrings{
 
   // transfer-money
   static const String selectWallet = "Select Wallet";
-  static const String agentUsernameEmail = "Agent Username / E-mail";
-  static const String agentUsernameHint = "Enter agent username / e-mail";
+  static const String agentUsernameEmail = "Agent Username / Email";
+  static const String agentUsernameHint = "Enter agent username / email";
   static const String amount = "Amount";
   static const String amountHint = "Enter amount";
   static const String otpBySMS = "OTP by SMS";
@@ -127,6 +127,7 @@ class MyStrings{
 
   // money out details
   static const String moneyOutDetail = "Money Out Detail";
+  static const String agentUsername = "Agent Username / Email";
 
   // payment details
   static const String paymentDetails = "Payment Details";
