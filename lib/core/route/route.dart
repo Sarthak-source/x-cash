@@ -5,7 +5,7 @@ import 'package:xcash_app/view/screens/auth/change_password/change_password_scre
 import 'package:xcash_app/view/screens/auth/forgot_password/forgot_password_screen.dart';
 import 'package:xcash_app/view/screens/auth/login/login_screen.dart';
 import 'package:xcash_app/view/screens/auth/registration/registration_screen.dart';
-import 'package:xcash_app/view/screens/invoice/my_invoice_screen.dart';
+import 'package:xcash_app/view/screens/invoice/my_invoice/my_invoice_screen.dart';
 import 'package:xcash_app/view/screens/onboard/onboard_screen.dart';
 import 'package:xcash_app/view/screens/splash/splash_screen.dart';
 import 'package:xcash_app/view/screens/wallet/my_wallet_screen.dart';

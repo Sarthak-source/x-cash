@@ -6,7 +6,7 @@ import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/styles.dart';
 import 'package:xcash_app/view/components/app-bar/custom_app_bar.dart';
 import 'package:xcash_app/view/components/card/custom_card.dart';
-import 'package:xcash_app/view/screens/invoice/widget/my_invoice_bottom_sheet.dart';
+import 'package:xcash_app/view/screens/invoice/my_invoice/widget/my_invoice_bottom_sheet.dart';
 
 class MyInvoiceScreen extends StatefulWidget {
   const MyInvoiceScreen({Key? key}) : super(key: key);
