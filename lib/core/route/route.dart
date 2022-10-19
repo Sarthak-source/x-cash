@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import 'package:xcash_app/view/components/bottom-nav-bar/bottom_nav_bar.dart';
-import 'package:xcash_app/view/screens/add-money-history/add_money_history_screen.dart';
+import 'package:xcash_app/view/screens/add-money/add_money_history/add_money_history_screen.dart';
 import 'package:xcash_app/view/screens/auth/change_password/change_password_screen.dart';
 import 'package:xcash_app/view/screens/auth/forgot_password/forgot_password_screen.dart';
 import 'package:xcash_app/view/screens/auth/login/login_screen.dart';
