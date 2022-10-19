@@ -5,7 +5,8 @@ import 'package:xcash_app/core/utils/styles.dart';
 
 class AnotherCustomTextField extends StatefulWidget {
 
-  final String hintText, labelText;
+  final String labelText;
+  final String? hintText;
   final TextEditingController? controller;
   final FocusNode? focusNode;
   final FocusNode? nextFocus;
@@ -36,7 +37,7 @@ class AnotherCustomTextField extends StatefulWidget {
   const AnotherCustomTextField(
       {Key? key,
         required this.labelText,
-        required this.hintText,
+        this.hintText,
         this.controller,
         this.focusNode,
         this.nextFocus,
