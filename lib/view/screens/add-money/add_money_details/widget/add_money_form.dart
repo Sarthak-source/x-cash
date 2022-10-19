@@ -3,11 +3,8 @@ import 'package:simple_animations/simple_animations.dart';
 import 'package:xcash_app/constants/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/styles.dart';
 import 'package:xcash_app/view/components/buttons/custom_animated_button.dart';
-import 'package:xcash_app/view/components/divider/custom_divider.dart';
-import 'package:xcash_app/view/components/image/circle_shape_image.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
 
@@ -22,9 +19,11 @@ class _AddMoneyFormState extends State<AddMoneyForm> {
 
   var selectWalletValue = "Select Wallet";
   var selectGatewayValue = "Select Gateway";
+  var selectOtp = "Select OTP Type";
 
   List<String> walletItems = ["Select Wallet", "TRX", "USD", "BCH", "BDT", "BTC", "BTL", "CNY", "ETH", "EUR"];
   List<String> gatewayItems = ["Select Gateway", "Paypal - USD", "Stripe Hosted - USD", "PayTM - USD"];
+  List<String> otpItems = ["Select OTP Type", "Email", "Sms"];
 
   @override
   Widget build(BuildContext context) {
@@ -87,68 +86,24 @@ class _AddMoneyFormState extends State<AddMoneyForm> {
           ),
           const SizedBox(height: Dimensions.space20),
 
-          Container(
-            width: MediaQuery.of(context).size.width,
-            padding: const EdgeInsets.all(Dimensions.space15),
-            decoration: BoxDecoration(
-              color: MyColor.colorWhite,
-              border: Border.all(color: MyColor.primaryColor100, width: 0.8),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(MyStrings.summery, style: interRegularDefault.copyWith(fontWeight: FontWeight.w600)),
-                const CustomDivider(height: Dimensions.space15),
-
-                Row(
-                  children: [
-                    CircleShapeImage(image: MyImages.amount),
-                    const SizedBox(width: Dimensions.space15),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(MyStrings.amount, style: interRegularSmall.copyWith(color: MyColor.primarySubTextColor, fontWeight: FontWeight.w500)),
-                        const SizedBox(height: Dimensions.space5),
-                        Text("100.00000000 USD", style: interRegularDefault.copyWith(fontWeight: FontWeight.w500)),
-                      ],
+          CustomDropDownTextField(
+              labelText: MyStrings.selectOtp,
+              hintText: selectOtp,
+              selectedValue: selectOtp,
+              onChanged: (value){
+                setState(() {
+                  selectOtp = value.toString();
+                });
+              },
+              items: otpItems.map((String val){
+                return DropdownMenuItem(
+                    value: val,
+                    child: Text(
+                      val,
+                      style: interRegularSmall,
                     )
-                  ],
-                ),
-                const CustomDivider(height: Dimensions.space15),
-
-                Row(
-                  children: [
-                    CircleShapeImage(image: MyImages.payable),
-                    const SizedBox(width: Dimensions.space15),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(MyStrings.payable, style: interRegularSmall.copyWith(color: MyColor.primarySubTextColor, fontWeight: FontWeight.w500)),
-                        const SizedBox(height: Dimensions.space5),
-                        Text("500,000.00 USD", style: interRegularDefault.copyWith(fontWeight: FontWeight.w500)),
-                      ],
-                    )
-                  ],
-                ),
-                const CustomDivider(height: Dimensions.space15),
-
-                Row(
-                  children: [
-                    CircleShapeImage(image: MyImages.charge),
-                    const SizedBox(width: Dimensions.space15),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(MyStrings.charge, style: interRegularSmall.copyWith(color: MyColor.primarySubTextColor, fontWeight: FontWeight.w500)),
-                        const SizedBox(height: Dimensions.space5),
-                        Text("2.00000000 USD", style: interRegularDefault.copyWith(fontWeight: FontWeight.w500)),
-                      ],
-                    )
-                  ],
-                ),
-              ],
-            ),
+                );
+              }).toList()
           ),
 
           const SizedBox(height: Dimensions.space20),
