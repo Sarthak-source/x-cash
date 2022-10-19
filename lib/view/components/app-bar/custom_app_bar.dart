@@ -40,7 +40,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
       elevation: widget.elevation,
       leading: IconButton(
         onPressed: widget.changeRoute,
-        icon: const Icon(Icons.arrow_back, color: MyColor.primaryColor, size: 16),
+        icon: const Icon(Icons.arrow_back, color: MyColor.primaryColor, size: 20),
       ),
       title: AppBarTitle(text: widget.title),
       automaticallyImplyLeading: false,
