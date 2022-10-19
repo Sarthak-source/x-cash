@@ -37,19 +37,17 @@ class _InvoiceItemsState extends State<InvoiceItems> {
                 Row(
                   children: [
                     SizedBox(
-                      width: 135,
+                      width: 120,
                       child: AnotherCustomTextField(
                           labelText: MyStrings.itemName,
-                          hintText: MyStrings.itemNameHint,
                           onChanged: (value){}
                       ),
                     ),
                     const SizedBox(width: Dimensions.space10),
                     SizedBox(
-                      width: 135,
+                      width: 120,
                       child: AnotherCustomTextField(
                           labelText: MyStrings.amount,
-                          hintText: MyStrings.amountHint,
                           onChanged: (value){}
                       ),
                     )
