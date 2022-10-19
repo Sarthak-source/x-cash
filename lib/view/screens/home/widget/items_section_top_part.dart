@@ -6,7 +6,7 @@ import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/buttons/circle_animated_button_with_text.dart';
-import 'package:xcash_app/view/screens/add-money/add_money.dart';
+import 'package:xcash_app/view/screens/add-money/add_money_details/add_money.dart';
 import 'package:xcash_app/view/screens/transfer/transfer_money.dart';
 
 class ItemsSectionTopPart extends StatefulWidget {
