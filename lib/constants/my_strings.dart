@@ -231,4 +231,5 @@ class MyStrings{
   static const String couponPolicy = "Coupon Policy";
 
   static const String currency = "USD";
+  static const String selectOtp = "Select OTP";
 }
