@@ -52,7 +52,9 @@ class ActivityScreen extends StatelessWidget {
               isSvgPicture: true,
               image: MyImages.myVoucher,
               text: MyStrings.myVoucher,
-              onPressed: (){},
+              onPressed: (){
+                Get.toNamed(RouteHelper.myVoucherScreen);
+              },
             ),
 
             const CustomDivider(height: Dimensions.space15),
