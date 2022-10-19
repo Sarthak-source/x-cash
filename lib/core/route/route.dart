@@ -5,6 +5,7 @@ import 'package:xcash_app/view/screens/auth/change_password/change_password_scre
 import 'package:xcash_app/view/screens/auth/forgot_password/forgot_password_screen.dart';
 import 'package:xcash_app/view/screens/auth/login/login_screen.dart';
 import 'package:xcash_app/view/screens/auth/registration/registration_screen.dart';
+import 'package:xcash_app/view/screens/invoice/create_invoice/create_invoice_screen.dart';
 import 'package:xcash_app/view/screens/invoice/my_invoice/my_invoice_screen.dart';
 import 'package:xcash_app/view/screens/onboard/onboard_screen.dart';
 import 'package:xcash_app/view/screens/splash/splash_screen.dart';
@@ -23,6 +24,7 @@ class RouteHelper{
   static const String addMoneyHistoryScreen = "/add_money_history_screen";
 
   static const String myInvoiceScreen = "/my_invoice_screen";
+  static const String createInvoiceScreen = "/create_invoice_screen";
 
   static const String termsServiceScreen = "/terms_services_screen";
 
@@ -37,6 +39,7 @@ class RouteHelper{
     GetPage(name: bottomNavBar, page: () => const BottomNavBar()),
     GetPage(name: myWalletScreen, page: () => const MyWalletScreen()),
     GetPage(name: addMoneyHistoryScreen, page: () => const AddMoneyHistoryScreen()),
-    GetPage(name: myInvoiceScreen, page: () => const MyInvoiceScreen())
+    GetPage(name: myInvoiceScreen, page: () => const MyInvoiceScreen()),
+    GetPage(name: createInvoiceScreen, page: () => const CreateInvoiceScreen())
   ];
 }
