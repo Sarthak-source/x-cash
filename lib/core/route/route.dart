@@ -9,6 +9,7 @@ import 'package:xcash_app/view/screens/invoice/create_invoice/create_invoice_scr
 import 'package:xcash_app/view/screens/invoice/my_invoice/my_invoice_screen.dart';
 import 'package:xcash_app/view/screens/onboard/onboard_screen.dart';
 import 'package:xcash_app/view/screens/splash/splash_screen.dart';
+import 'package:xcash_app/view/screens/voucher/my_voucher/my_voucher_screen.dart';
 import 'package:xcash_app/view/screens/wallet/my_wallet_screen.dart';
 
 class RouteHelper{
@@ -26,6 +27,8 @@ class RouteHelper{
   static const String myInvoiceScreen = "/my_invoice_screen";
   static const String createInvoiceScreen = "/create_invoice_screen";
 
+  static const String myVoucherScreen = "/my_voucher_screen";
+
   static const String termsServiceScreen = "/terms_services_screen";
 
   List<GetPage> routes = [
@@ -40,6 +43,7 @@ class RouteHelper{
     GetPage(name: myWalletScreen, page: () => const MyWalletScreen()),
     GetPage(name: addMoneyHistoryScreen, page: () => const AddMoneyHistoryScreen()),
     GetPage(name: myInvoiceScreen, page: () => const MyInvoiceScreen()),
-    GetPage(name: createInvoiceScreen, page: () => const CreateInvoiceScreen())
+    GetPage(name: createInvoiceScreen, page: () => const CreateInvoiceScreen()),
+    GetPage(name: myVoucherScreen, page: () => const MyVoucherScreen())
   ];
 }
