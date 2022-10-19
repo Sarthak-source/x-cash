@@ -233,4 +233,5 @@ class MyStrings{
 
   static const String currency = "USD";
   static const String selectOtp = "Select OTP";
+  static const String continueDownload = "Continue Download";
 }
