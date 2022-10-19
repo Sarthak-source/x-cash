@@ -62,15 +62,6 @@ class ActivityScreen extends StatelessWidget {
                 image: MyImages.withdrawHistory,
                 text: MyStrings.withdrawHistory
             ),
-
-            const CustomDivider(height: Dimensions.space15),
-
-            RowIconTextWidget(
-                isSvgPicture: true,
-                image: MyImages.myInvoice,
-                text: MyStrings.myInvoice,
-                onPressed: () => Get.toNamed(RouteHelper.myInvoiceScreen),
-            ),
           ],
         )
       ],
