@@ -7,8 +7,8 @@ import 'package:xcash_app/core/utils/styles.dart';
 import 'package:xcash_app/view/components/app-bar/custom_app_bar.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/card/custom_card.dart';
-import 'package:xcash_app/view/screens/add-money-history/widget/add_money_history_bottom_sheet.dart';
-import 'package:xcash_app/view/screens/add-money/add_money.dart';
+import 'package:xcash_app/view/screens/add-money/add_money_details/add_money.dart';
+import 'package:xcash_app/view/screens/add-money/add_money_history/widget/add_money_history_bottom_sheet.dart';
 
 class AddMoneyHistoryScreen extends StatefulWidget {
   const AddMoneyHistoryScreen({Key? key}) : super(key: key);
