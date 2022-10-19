@@ -157,6 +157,7 @@ class MyStrings{
   static const String paymentStatus = "Payment Status";
   static const String issued = "Issued:";
   static const String download = "Download";
+  static const String createInvoice = "Create Invoice";
 
   // invoice details
   static const String invoiceDetails = "Invoice Details";
@@ -167,7 +168,6 @@ class MyStrings{
   static const String invoiceItems = "Invoice items";
   static const String itemName = "Item Name";
   static const String itemNameHint = "Enter item name";
-  static const String createInvoice = "Create Invoice";
 
   // money request
   static const String myRequests = "My Requests";
