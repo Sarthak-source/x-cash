@@ -73,4 +73,5 @@ class MyImages{
   static const String withdrawHistory = "${basePath}withdrawHistory.svg";
   static const String dotMenu = "${basePath}dots.svg";
   static const String viewTransaction = "${basePath1}viewTransaction.png";
+  static const String moneyOut2 = "${basePath1}moneyOut2.png";
 }
