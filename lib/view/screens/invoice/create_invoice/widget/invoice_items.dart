@@ -74,55 +74,54 @@ class _InvoiceItemsState extends State<InvoiceItems> {
               ],
             ),
 
-            Padding(
-              padding: const EdgeInsets.only(top: Dimensions.space15),
-              child: ListView.separated(
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: numberOfField,
-                separatorBuilder: (context, index) => const SizedBox(height: Dimensions.space15),
-                itemBuilder: (context, index) => Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Row(
-                      children: [
-                        SizedBox(
-                          width: 120,
-                          child: AnotherCustomTextField(
-                              labelText: MyStrings.itemName,
-                              onChanged: (value){}
-                          ),
+            SizedBox(height: numberOfField == 0 ? 0 : Dimensions.space15),
+
+            ListView.separated(
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: numberOfField,
+              separatorBuilder: (context, index) => const SizedBox(height: Dimensions.space15),
+              itemBuilder: (context, index) => Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Row(
+                    children: [
+                      SizedBox(
+                        width: 120,
+                        child: AnotherCustomTextField(
+                            labelText: MyStrings.itemName,
+                            onChanged: (value){}
                         ),
-                        const SizedBox(width: Dimensions.space10),
-                        SizedBox(
-                          width: 120,
-                          child: AnotherCustomTextField(
-                              labelText: MyStrings.amount,
-                              onChanged: (value){}
-                          ),
-                        )
-                      ],
-                    ),
-                    GestureDetector(
-                      onTap: (){
-                        setState(() {
-                          numberOfField = numberOfField - 1;
-                        });
-                      },
-                      child: Container(
-                        height: 30, width: 30,
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            color: MyColor.colorWhite,
-                            shape: BoxShape.circle, border: Border.all(color: MyColor.primarySubTextColor.withOpacity(0.8), width: 1.2)
-                        ),
-                        child: Icon(Icons.remove, color: MyColor.primarySubTextColor.withOpacity(0.8), size: 20),
                       ),
-                    )
-                  ],
-                ),
+                      const SizedBox(width: Dimensions.space10),
+                      SizedBox(
+                        width: 120,
+                        child: AnotherCustomTextField(
+                            labelText: MyStrings.amount,
+                            onChanged: (value){}
+                        ),
+                      )
+                    ],
+                  ),
+                  GestureDetector(
+                    onTap: (){
+                      setState(() {
+                        numberOfField = numberOfField - 1;
+                      });
+                    },
+                    child: Container(
+                      height: 30, width: 30,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: MyColor.colorWhite,
+                          shape: BoxShape.circle, border: Border.all(color: MyColor.primarySubTextColor.withOpacity(0.8), width: 1.2)
+                      ),
+                      child: Icon(Icons.remove, color: MyColor.primarySubTextColor.withOpacity(0.8), size: 20),
+                    ),
+                  )
+                ],
               ),
             )
           ],
