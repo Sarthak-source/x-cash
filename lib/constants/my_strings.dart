@@ -131,7 +131,8 @@ class MyStrings{
 
   // payment details
   static const String paymentDetails = "Payment Details";
-  static const String merchantUsernameEmail = "Merchant Username / E-mail";
+  static const String merchantUsernameEmail = "Merchant Username / Email";
+  static const String merchantUsernameEmailHint = "Enter merchant username / email";
 
   // my voucher
   static const String notUsed = "Not Used";
