@@ -83,10 +83,10 @@ class _ItemsSectionTopPartState extends State<ItemsSectionTopPart> {
             // voucher
             Expanded(
               child: CircleAnimatedButtonWithText(
-                buttonName: MyStrings.voucher,
+                buttonName: MyStrings.moneyOut,
                 height: 40, width: 40,
                 backgroundColor: MyColor.colorWhite,
-                child: SvgPicture.asset(MyImages.voucher, color: MyColor.primaryColor, height: 20, width: 20),
+                child: SvgPicture.asset(MyImages.moneyOut, color: MyColor.primaryColor, height: 20, width: 20),
                 onTap: (){},
               ),
             ),
