@@ -4,9 +4,7 @@ import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/view/components/card/custom_card.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
-import 'package:xcash_app/view/components/image/circle_shape_image.dart';
 import 'package:xcash_app/view/components/text-form-field/another_custom_text_field.dart';
-import 'package:xcash_app/view/components/text-form-field/custom_text_form_field.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
 
 class InvoiceItems extends StatefulWidget {
