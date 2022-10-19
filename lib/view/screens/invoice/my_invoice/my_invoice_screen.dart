@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/constants/my_strings.dart';
+import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/styles.dart';
@@ -55,9 +56,7 @@ class _MyInvoiceScreenState extends State<MyInvoiceScreen> {
               padding: const EdgeInsets.only(right: Dimensions.space15),
               child: GestureDetector(
                 onTap: (){
-                  /*CustomBottomSheet(
-                      child: const AddMoney()
-                  ).customBottomSheet(context);*/
+                  Get.toNamed(RouteHelper.createInvoiceScreen);
                 },
                 child: Container(
                   height: 25, width: 25,
