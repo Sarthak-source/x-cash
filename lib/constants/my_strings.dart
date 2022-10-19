@@ -50,7 +50,8 @@ class MyStrings{
   static const String representativeLastName = "Representative Last Name";
   static const String userName = "Username";
   static const String userNameHint = "Enter username";
-
+  static const String email = "Email";
+  static const String address = "Address";
 
   // otp-screen
   static const String otpVerify = "OTP Verify";
