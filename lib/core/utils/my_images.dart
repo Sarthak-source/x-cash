@@ -12,7 +12,7 @@ class MyImages{
   static const String arrowDown = "${basePath}arrow_down.svg";
   static const String arrowRightDown = "${basePath}arrow_right_down.svg";
   static const String arrowRightUp = "${basePath}arrow_right_up.svg";
-  static const String basic = "${basePath}basic.svg";
+  static const String basic = "${basePath1}basic.png";
   static const String bell = "${basePath}bell.svg";
   static const String bg1 = "${basePath1}bg1.png";
   static const String bg2 = "${basePath1}bg2.png";
@@ -48,8 +48,8 @@ class MyImages{
   static const String otp = "${basePath}otp.svg";
   static const String paperPlan = "${basePath}paper-plan.svg";
   static const String payable = "${basePath1}payable.png";
-  static const String payoneer = "${basePath}payoneer.svg";
-  static const String paypal = "${basePath}paypal.svg";
+  static const String payoneer = "${basePath1}payoneer.png";
+  static const String paypal = "${basePath1}paypal.png";
   static const String phone = "${basePath}phone.svg";
   static const String requestMe = "${basePath}requestMe.svg";
   static const String requestMoney = "${basePath}requestMoney.svg";
