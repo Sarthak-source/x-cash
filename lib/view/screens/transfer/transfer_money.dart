@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:xcash_app/constants/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/styles.dart';
 import 'package:xcash_app/view/components/buttons/custom_animated_button.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
@@ -24,6 +23,9 @@ class _TransferMoneyState extends State<TransferMoney> {
   var selectedValue = "Select One";
   List<String> items = ["Select One", "USD", "NGN", "BDT", "ETH"];
   int selectedCard = 0;
+
+  var selectOtp = "Select OTP Type";
+  List<String> otpItems = ["Select OTP Type", "Email", "Sms"];
 
   @override
   Widget build(BuildContext context) {
@@ -105,11 +107,25 @@ class _TransferMoneyState extends State<TransferMoney> {
 
               const SizedBox(height: Dimensions.space20),
 
-              transferCardList(MyImages.mail, MyStrings.otpBySMS, 0),
-              const SizedBox(height: Dimensions.space10),
-              transferCardList(MyImages.email, MyStrings.otpByEmail, 1),
-              const SizedBox(height: Dimensions.space10),
-              transferCardList(MyImages.google, MyStrings.otpByGoogleAuth, 2),
+              CustomDropDownTextField(
+                  labelText: MyStrings.selectOtp,
+                  hintText: selectOtp,
+                  selectedValue: selectOtp,
+                  onChanged: (value){
+                    setState(() {
+                      selectOtp = value.toString();
+                    });
+                  },
+                  items: otpItems.map((String val){
+                    return DropdownMenuItem(
+                        value: val,
+                        child: Text(
+                          val,
+                          style: interRegularSmall,
+                        )
+                    );
+                  }).toList()
+              ),
 
               const SizedBox(height: Dimensions.space25),
 
@@ -118,65 +134,12 @@ class _TransferMoneyState extends State<TransferMoney> {
                   height: 45,
                   width: MediaQuery.of(context).size.width,
                   backgroundColor: MyColor.primaryColor,
-                  child: Text(MyStrings.transferNow, textAlign: TextAlign.center, style: interRegularDefault.copyWith(color: MyColor.colorWhite, fontWeight: FontWeight.w600)),
+                  child: Text(MyStrings.transferNow, textAlign: TextAlign.center, style: interRegularDefault.copyWith(color: MyColor.colorWhite, fontWeight: FontWeight.w500)),
               )
             ],
           ),
         )
       ],
-    );
-  }
-
-  transferCardList(String imageName, String title, int index) {
-
-    return GestureDetector(
-
-      onTap: (){
-        setState(() {
-          selectedCard = index;
-        });
-      },
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        padding: const EdgeInsets.all(12),
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-            color: MyColor.colorWhite,
-            borderRadius: BorderRadius.circular(3),
-            border: Border.all(color: index == selectedCard ? MyColor.primaryColor : MyColor.lineColor),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                Container(
-                    height: 30, width: 30,
-                    alignment: Alignment.center,
-                    padding: const EdgeInsets.all(Dimensions.space10 / 2),
-                    decoration: const BoxDecoration(
-                        color: MyColor.primaryColor100, shape: BoxShape.circle
-                    ),
-                    child: Image.asset(imageName, color: index == selectedCard ? MyColor.primaryColor : MyColor.colorBlack, height: 15, width: 15)
-                ),
-                const SizedBox(width: Dimensions.space10),
-                Text(title, style: interRegularSmall.copyWith(fontWeight: FontWeight.w500))
-              ],
-            ),
-            Container(
-
-              height: 20, width: 20,
-              alignment: Alignment.center,
-              padding: const EdgeInsets.all(Dimensions.space10 / 5),
-              decoration: BoxDecoration(
-
-                  color: index == selectedCard ? MyColor.primaryColor : MyColor.lineColor, shape: BoxShape.circle
-              ),
-              child: const Icon(Icons.check, color: MyColor.colorWhite, size: 10),
-            )
-          ],
-        ),
-      ),
     );
   }
 }
