@@ -71,7 +71,7 @@ class MyStrings{
   static const String voucher = "Voucher";
   static const String transfer = "Transfer";
   static const String requestMoney = "Request Money";
-  static const String withdraw = "Withdraw";
+  static const String withdraw = "Withdrawals";
   static const String insights = "Insights";
   static const String moneyIn = "Money In";
   static const String moneyOut = "Money Out";
