@@ -27,6 +27,8 @@ class _ExchangeMoneyState extends State<ExchangeMoney> {
   var selectToCurrency = "TRX";
   List<String> toCurrency = ["TRX", "USD", "BCH", "BDT", "BTC", "BTL", "CNY", "ETH", "EUR", "GBP", "IDR", "INR", "JPY"];
 
+  bool isPress = false;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -52,14 +54,22 @@ class _ExchangeMoneyState extends State<ExchangeMoney> {
                   iconColor: MyColor.colorWhite,
                   fillColor: MyColor.primaryColor,
                   dropDownColor: MyColor.primaryColor,
-                  selectedValue: selectFromCurrency,
+                  selectedValue: isPress ? selectToCurrency : selectFromCurrency,
                   radius: 8,
                   onChanged: (value){
                     setState(() {
-                      selectFromCurrency = value.toString();
+                      isPress ? selectToCurrency = value.toString() : selectFromCurrency = value.toString();
                     });
                   },
-                  items: fromCurrency.map((String val){
+                  items: isPress ? toCurrency.map((String val){
+                    return DropdownMenuItem(
+                        value: val,
+                        child: Text(
+                          val,
+                          style: interRegularSmall.copyWith(color: isPress ? MyColor.colorWhite : MyColor.colorBlack),
+                        )
+                    );
+                  }).toList() : fromCurrency.map((String val){
                     return DropdownMenuItem(
                         value: val,
                         child: Text(
@@ -74,7 +84,11 @@ class _ExchangeMoneyState extends State<ExchangeMoney> {
             Padding(
               padding: const EdgeInsets.only(top: Dimensions.space20),
               child: CustomCircleAnimatedButton(
-                  onTap: (){},
+                  onTap: (){
+                    setState(() {
+                      isPress = !isPress;
+                    });
+                  },
                   height: 40,
                   width: 40,
                   backgroundColor: MyColor.primaryColor100,
@@ -86,14 +100,22 @@ class _ExchangeMoneyState extends State<ExchangeMoney> {
               width: 100,
               child: CustomDropDownTextField(
                   radius: 8,
-                  selectedValue: selectToCurrency,
+                  selectedValue: isPress ? selectFromCurrency : selectToCurrency,
                   labelText: "To Currency",
                   onChanged: (value){
                     setState(() {
-                      selectToCurrency = value.toString();
+                      isPress ? selectFromCurrency = value.toString() : selectToCurrency = value.toString();
                     });
                   },
-                  items: toCurrency.map((String val){
+                  items: isPress ? fromCurrency.map((String val){
+                    return DropdownMenuItem(
+                        value: val,
+                        child: Text(
+                          val,
+                          style: interRegularSmall.copyWith(color: isPress ? MyColor.colorBlack : MyColor.colorWhite),
+                        )
+                    );
+                  }).toList() : toCurrency.map((String val){
                     return DropdownMenuItem(
                         value: val,
                         child: Text(
