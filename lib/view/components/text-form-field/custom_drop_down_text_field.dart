@@ -6,17 +6,26 @@ import 'package:xcash_app/core/utils/styles.dart';
 class CustomDropDownTextField extends StatefulWidget {
 
   final Object selectedValue;
-  final String labelText, hintText;
+  final String? labelText;
+  final String? hintText;
   Function(Object?)? onChanged;
   final List<DropdownMenuItem<Object>>? items;
+  final Color? fillColor;
+  final Color? focusColor;
+  final Color? dropDownColor;
+  final Color? iconColor;
 
   CustomDropDownTextField({
     Key? key,
-    required this.labelText,
-    required this.hintText,
+    this.labelText,
+    this.hintText,
     required this.selectedValue,
     required this.onChanged,
-    required this.items
+    required this.items,
+    this.fillColor = MyColor.colorWhite,
+    this.focusColor = MyColor.colorWhite,
+    this.dropDownColor = MyColor.colorWhite,
+    this.iconColor = MyColor.colorGrey,
   }) : super(key: key);
 
   @override
@@ -34,7 +43,7 @@ class _CustomDropDownTextFieldState extends State<CustomDropDownTextField> {
       children: [
 
         Text(
-          widget.labelText,
+          widget.labelText.toString(),
           style: interRegularSmall.copyWith(height: 1.452),
         ),
         const SizedBox(height: Dimensions.space10),
@@ -43,14 +52,14 @@ class _CustomDropDownTextFieldState extends State<CustomDropDownTextField> {
           height: 50,
           child: DropdownButtonFormField(
             value: widget.selectedValue,
-            dropdownColor: MyColor.colorWhite,
-            focusColor: MyColor.colorWhite,
+            dropdownColor: widget.dropDownColor,
+            focusColor: widget.focusColor,
             style: interRegularSmall,
             alignment: Alignment.centerLeft,
             decoration: InputDecoration(
-              hintText: widget.hintText,
+              hintText: widget.hintText.toString(),
               filled: true,
-              fillColor: MyColor.colorWhite,
+              fillColor: widget.fillColor,
               hintStyle: interRegularSmall.copyWith(color: MyColor.primarySubTextColor),
               contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
               border: OutlineInputBorder(
@@ -76,7 +85,8 @@ class _CustomDropDownTextFieldState extends State<CustomDropDownTextField> {
             ),
             isExpanded: false,
             onChanged: widget.onChanged,
-            items: widget.items
+            items: widget.items,
+            icon: Icon(Icons.arrow_drop_down, color: widget.iconColor),
           ),
         )
       ],
