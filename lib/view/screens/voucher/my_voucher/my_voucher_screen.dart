@@ -6,6 +6,7 @@ import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/styles.dart';
 import 'package:xcash_app/view/components/app-bar/custom_app_bar.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
+import 'package:xcash_app/view/screens/voucher/create_voucher/create_voucher.dart';
 import 'package:xcash_app/view/screens/voucher/my_voucher/widget/voucher_not_used.dart';
 import 'package:xcash_app/view/screens/voucher/my_voucher/widget/voucher_used.dart';
 import 'package:xcash_app/view/screens/voucher/redeem_voucher/redeem_voucher.dart';
@@ -41,7 +42,11 @@ class _MyVoucherScreenState extends State<MyVoucherScreen> {
               icon: Icon(Icons.card_giftcard, color: MyColor.primarySubTextColor.withOpacity(0.8), size: 20),
             ),
             IconButton(
-              onPressed: (){},
+              onPressed: (){
+                CustomBottomSheet(
+                  child: const CreateVoucher()
+                ).customBottomSheet(context);
+              },
               icon: Icon(Icons.add_circle_outline_rounded, color: MyColor.primarySubTextColor.withOpacity(0.8), size: 20),
             ),
           ],
