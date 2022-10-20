@@ -25,7 +25,7 @@ class MyImages{
   static const String downLeftArrow = "${basePath1}downLeftArrow.png";
   static const String email = "${basePath1}email.png";
   static const String exchange = "${basePath}exchange.svg";
-  static const String exchange2 = "${basePath}exchange2.svg";
+  static const String exchange2 = "${basePath1}exchange2.png";
   static const String filter = "${basePath}filter.svg";
   static const String gift = "${basePath}gift.svg";
   static const String google = "${basePath1}google.png";
