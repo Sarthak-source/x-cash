@@ -94,16 +94,6 @@ class _WithdrawMethodFormState extends State<WithdrawMethodForm> {
               onChanged: (value){}
           ),
 
-          const SizedBox(height: Dimensions.space25),
-
-          CustomAnimatedButton(
-              onTap: (){},
-              height: 45,
-              width: MediaQuery.of(context).size.width,
-              backgroundColor: MyColor.primaryColor,
-              child: Text(MyStrings.addWithdrawMethod, textAlign: TextAlign.center, style: interRegularDefault.copyWith(color: MyColor.colorWhite, fontWeight: FontWeight.w500))
-          ),
-
           Visibility(
             visible: isVisible,
             child: Column(
@@ -141,7 +131,17 @@ class _WithdrawMethodFormState extends State<WithdrawMethodForm> {
                 )
               ],
             ),
-          )
+          ),
+
+          const SizedBox(height: Dimensions.space25),
+
+          CustomAnimatedButton(
+              onTap: (){},
+              height: 45,
+              width: MediaQuery.of(context).size.width,
+              backgroundColor: MyColor.primaryColor,
+              child: Text(MyStrings.addWithdrawMethod, textAlign: TextAlign.center, style: interRegularDefault.copyWith(color: MyColor.colorWhite, fontWeight: FontWeight.w500))
+          ),
         ],
       ),
     );
