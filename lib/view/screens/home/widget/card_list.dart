@@ -21,21 +21,21 @@ class CardList extends StatefulWidget {
 class _CardListState extends State<CardList> {
 
   List<Map<String, dynamic>> data = [
-    {"id" : 1, "data" : {"image":MyImages.moneyIn, "title":MyStrings.moneyIn, "time-limit": "Last 7 days", "amount": "674,475,999,995,140.00"}},
-    {"id" : 2, "data" : {"image":MyImages.moneyOut, "title":MyStrings.moneyOut, "time-limit": "Last 7 days", "amount": "674,475,999,995,140.00"}},
-    {"id" : 3, "data" : {"image":MyImages.moneyIn, "title":MyStrings.moneyIn, "time-limit": "Last 7 days", "amount": "674,475,999,995,140.00"}},
-    {"id" : 4, "data" : {"image":MyImages.moneyOut, "title":MyStrings.moneyOut, "time-limit": "Last 7 days", "amount": "674,475,999,995,140.00"}},
-    {"id" : 5, "data" : {"image":MyImages.moneyIn, "title":MyStrings.moneyIn, "time-limit": "Last 7 days", "amount": "674,475,999,995,140.00"}},
-    {"id" : 6, "data" : {"image":MyImages.moneyOut, "title":MyStrings.moneyOut, "time-limit": "Last 7 days", "amount": "674,475,999,995,140.00"}},
-    {"id" : 7, "data" : {"image":MyImages.moneyIn, "title":MyStrings.moneyIn, "time-limit": "Last 7 days", "amount": "674,475,999,995,140.00"}},
-    {"id" : 8, "data" : {"image":MyImages.moneyOut, "title":MyStrings.moneyOut, "time-limit": "Last 7 days", "amount": "674,475,999,995,140.00"}},
-    {"id" : 9, "data" : {"image":MyImages.moneyIn, "title":MyStrings.moneyIn, "time-limit": "Last 7 days", "amount": "674,475,999,995,140.00"}},
-    {"id" : 10, "data" : {"image":MyImages.moneyOut, "title":MyStrings.moneyOut, "time-limit": "Last 7 days", "amount": "674,475,999,995,140.00"}},
-    {"id" : 11, "data" : {"image":MyImages.moneyIn, "title":MyStrings.moneyIn, "time-limit": "Last 7 days", "amount": "674,475,999,995,140.00"}},
-    {"id" : 12, "data" : {"image":MyImages.moneyOut, "title":MyStrings.moneyOut, "time-limit": "Last 7 days", "amount": "674,475,999,995,140.00"}},
-    {"id" : 13, "data" : {"image":MyImages.moneyIn, "title":MyStrings.moneyIn, "time-limit": "Last 7 days", "amount": "674,475,999,995,140.00"}},
-    {"id" : 14, "data" : {"image":MyImages.moneyOut, "title":MyStrings.moneyOut, "time-limit": "Last 7 days", "amount": "674,475,999,995,140.00"}},
-    {"id" : 15, "data" : {"image":MyImages.moneyIn, "title":MyStrings.moneyIn, "time-limit": "Last 7 days", "amount": "674,475,999,995,140.00"}},
+    {"data" : {"image":MyImages.moneyIn, "title":MyStrings.moneyIn, "time-limit": "Last 7 days", "amount": "674,475,999,995,140.00"}},
+    {"data" : {"image":MyImages.moneyOut, "title":MyStrings.moneyOut, "time-limit": "Last 7 days", "amount": "674,475,999,995,140.00"}},
+    {"data" : {"image":MyImages.moneyIn, "title":MyStrings.moneyIn, "time-limit": "Last 7 days", "amount": "674,475,999,995,140.00"}},
+    {"data" : {"image":MyImages.moneyOut, "title":MyStrings.moneyOut, "time-limit": "Last 7 days", "amount": "674,475,999,995,140.00"}},
+    {"data" : {"image":MyImages.moneyIn, "title":MyStrings.moneyIn, "time-limit": "Last 7 days", "amount": "674,475,999,995,140.00"}},
+    {"data" : {"image":MyImages.moneyOut, "title":MyStrings.moneyOut, "time-limit": "Last 7 days", "amount": "674,475,999,995,140.00"}},
+    {"data" : {"image":MyImages.moneyIn, "title":MyStrings.moneyIn, "time-limit": "Last 7 days", "amount": "674,475,999,995,140.00"}},
+    {"data" : {"image":MyImages.moneyOut, "title":MyStrings.moneyOut, "time-limit": "Last 7 days", "amount": "674,475,999,995,140.00"}},
+    {"data" : {"image":MyImages.moneyIn, "title":MyStrings.moneyIn, "time-limit": "Last 7 days", "amount": "674,475,999,995,140.00"}},
+    {"data" : {"image":MyImages.moneyOut, "title":MyStrings.moneyOut, "time-limit": "Last 7 days", "amount": "674,475,999,995,140.00"}},
+    {"data" : {"image":MyImages.moneyIn, "title":MyStrings.moneyIn, "time-limit": "Last 7 days", "amount": "674,475,999,995,140.00"}},
+    {"data" : {"image":MyImages.moneyOut, "title":MyStrings.moneyOut, "time-limit": "Last 7 days", "amount": "674,475,999,995,140.00"}},
+    {"data" : {"image":MyImages.moneyIn, "title":MyStrings.moneyIn, "time-limit": "Last 7 days", "amount": "674,475,999,995,140.00"}},
+    {"data" : {"image":MyImages.moneyOut, "title":MyStrings.moneyOut, "time-limit": "Last 7 days", "amount": "674,475,999,995,140.00"}},
+    {"data" : {"image":MyImages.moneyIn, "title":MyStrings.moneyIn, "time-limit": "Last 7 days", "amount": "674,475,999,995,140.00"}},
   ];
 
   @override
@@ -94,15 +94,15 @@ class _CardListState extends State<CardList> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             RowIconTextWidget(
-                                image: MyImages.downLeftArrow,
-                                text: MyStrings.totalReceived
+                                image: data[index]["data"]["title"] == "Money In" ? MyImages.downLeftArrow : MyImages.arrowRightUp,
+                                text: data[index]["data"]["title"] == "Money In" ? MyStrings.totalReceived : "Total Spent"
                             ),
 
                             const CustomDivider(height: Dimensions.space15),
 
                             RowIconTextWidget(
                                 image: MyImages.requestMoney1,
-                                text: MyStrings.requestMoney
+                                text: data[index]["data"]["title"] == "Money In" ? MyStrings.requestMoney : "Send Money"
                             ),
 
                             const CustomDivider(height: Dimensions.space15),
@@ -124,7 +124,7 @@ class _CardListState extends State<CardList> {
                       color: MyColor.primaryColor100,
                       shape: BoxShape.circle
                     ),
-                    child: SvgPicture.asset(MyImages.dotMenu, height: 12, width: 12)
+                    child: SvgPicture.asset(MyImages.dotMenu, height: 13.5, width: 13.5)
                 ),
               )
             ],
