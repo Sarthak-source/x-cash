@@ -6,9 +6,9 @@ import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/styles.dart';
 import 'package:xcash_app/view/components/app-bar/custom_app_bar.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
-import 'package:xcash_app/view/screens/voucher/my_voucher/widget/redeem_voucher.dart';
 import 'package:xcash_app/view/screens/voucher/my_voucher/widget/voucher_not_used.dart';
 import 'package:xcash_app/view/screens/voucher/my_voucher/widget/voucher_used.dart';
+import 'package:xcash_app/view/screens/voucher/redeem_voucher/redeem_voucher.dart';
 
 class MyVoucherScreen extends StatefulWidget {
   const MyVoucherScreen({Key? key}) : super(key: key);
