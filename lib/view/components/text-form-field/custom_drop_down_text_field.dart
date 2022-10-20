@@ -14,6 +14,7 @@ class CustomDropDownTextField extends StatefulWidget {
   final Color? focusColor;
   final Color? dropDownColor;
   final Color? iconColor;
+  final double radius;
 
   CustomDropDownTextField({
     Key? key,
@@ -26,6 +27,7 @@ class CustomDropDownTextField extends StatefulWidget {
     this.focusColor = MyColor.colorWhite,
     this.dropDownColor = MyColor.colorWhite,
     this.iconColor = MyColor.colorGrey,
+    this.radius = 3
   }) : super(key: key);
 
   @override
@@ -63,23 +65,23 @@ class _CustomDropDownTextFieldState extends State<CustomDropDownTextField> {
               hintStyle: interRegularSmall.copyWith(color: MyColor.primarySubTextColor),
               contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(3),
+                borderRadius: BorderRadius.circular(widget.radius),
                 borderSide: const BorderSide(color: MyColor.textFieldBorderColor, width: 1),
               ),
               enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(3),
+                borderRadius: BorderRadius.circular(widget.radius),
                 borderSide: const BorderSide(color: MyColor.textFieldBorderColor, width: 1),
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(3),
+                borderRadius: BorderRadius.circular(widget.radius),
                 borderSide: const BorderSide(color: MyColor.primaryColor, width: 1),
               ),
               errorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(3),
+                borderRadius: BorderRadius.circular(widget.radius),
                 borderSide: const BorderSide(color: Colors.red, width: 1),
               ),
               focusedErrorBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(3),
+                borderRadius: BorderRadius.circular(widget.radius),
                 borderSide: const BorderSide(color: MyColor.textFieldBorderColor, width: 1),
               ),
             ),
