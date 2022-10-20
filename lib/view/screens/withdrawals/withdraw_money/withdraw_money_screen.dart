@@ -9,6 +9,7 @@ import 'package:xcash_app/core/utils/styles.dart';
 import 'package:xcash_app/view/components/app-bar/custom_app_bar.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/card/custom_card.dart';
+import 'package:xcash_app/view/screens/withdrawals/withdraw_method/withdraw_method.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_money/widget/withdraw_money_bottom_sheet.dart';
 
 class WithdrawMoneyScreen extends StatefulWidget {
@@ -40,7 +41,11 @@ class _WithdrawMoneyScreenState extends State<WithdrawMoneyScreen> {
             Padding(
               padding: const EdgeInsets.only(right: Dimensions.space15),
               child: GestureDetector(
-                onTap: (){},
+                onTap: (){
+                  CustomBottomSheet(
+                    child: const WithdrawMethod()
+                  ).customBottomSheet(context);
+                },
                 child: Container(
                   height: 25, width: 25,
                   alignment: Alignment.center,
