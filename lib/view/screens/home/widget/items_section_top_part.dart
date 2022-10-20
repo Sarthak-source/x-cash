@@ -145,7 +145,9 @@ class _ItemsSectionTopPartState extends State<ItemsSectionTopPart> {
                 height: 40, width: 40,
                 backgroundColor: MyColor.colorWhite,
                 child: SvgPicture.asset(MyImages.withdraw, color: MyColor.primaryColor, height: 20, width: 20),
-                onTap: (){},
+                onTap: (){
+                  Get.toNamed(RouteHelper.withdrawMoneyScreen);
+                },
               ),
             ),
           ],
