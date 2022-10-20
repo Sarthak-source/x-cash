@@ -100,7 +100,7 @@ class _MoneyOutDetailsFormState extends State<MoneyOutDetailsForm> {
             height: 45,
             width: MediaQuery.of(context).size.width,
             backgroundColor: MyColor.primaryColor,
-            child: Text(MyStrings.moneyOut, textAlign: TextAlign.center, style: interRegularDefault.copyWith(color: MyColor.colorWhite, fontWeight: FontWeight.w600)),
+            child: Text(MyStrings.moneyOut, textAlign: TextAlign.center, style: interRegularDefault.copyWith(color: MyColor.colorWhite, fontWeight: FontWeight.w500)),
           )
         ],
       ),
