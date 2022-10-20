@@ -70,7 +70,7 @@ class _MyInvoiceScreenState extends State<MyInvoiceScreen> {
               ),
             )
           ],
-          changeRoute: () => Get.back(),
+          changeRoute: () => Get.toNamed(RouteHelper.bottomNavBar),
         ),
         body: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(vertical: Dimensions.space20, horizontal: Dimensions.space15),
