@@ -62,7 +62,10 @@ class ActivityScreen extends StatelessWidget {
             RowIconTextWidget(
                 isSvgPicture: true,
                 image: MyImages.withdrawHistory,
-                text: MyStrings.withdrawHistory
+                text: MyStrings.withdrawHistory,
+                onPressed: (){
+                  Get.toNamed(RouteHelper.withdrawHistoryScreen);
+                },
             ),
           ],
         )
