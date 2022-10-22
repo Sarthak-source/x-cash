@@ -16,7 +16,7 @@ class MyImages{
   static const String bell = "${basePath}bell.svg";
   static const String bg1 = "${basePath1}bg1.png";
   static const String bg2 = "${basePath1}bg2.png";
-  static const String changePassword = "${basePath}changePassword.svg";
+  static const String changePassword = "${basePath1}changePassword.png";
   static const String charge = "${basePath1}charge.png";
   static const String city = "${basePath}city.svg";
   static const String clear = "${basePath}clear.svg";
@@ -31,7 +31,7 @@ class MyImages{
   static const String google = "${basePath1}google.png";
   static const String home = "${basePath}home.svg";
   static const String invoice = "${basePath}invoice.svg";
-  static const String logout = "${basePath}logout.svg";
+  static const String logout = "${basePath1}logout.png";
   static const String mail = "${basePath1}mail.png";
   static const String makePayment = "${basePath}makePayment.svg";
   static const String mark = "${basePath}mark.svg";
@@ -39,7 +39,7 @@ class MyImages{
   static const String moneyIn = "${basePath}moneyIn.svg";
   static const String moneyOut = "${basePath}moneyOut.svg";
   static const String myInvoice = "${basePath}myInvoice.svg";
-  static const String myProfile = "${basePath}myProfile.svg";
+  static const String myProfile = "${basePath1}myProfile.png";
   static const String myVoucher = "${basePath}myVoucher.svg";
   static const String name = "${basePath}name.svg";
   static const String onboard1 = "${basePath1}onboard1.png";
@@ -60,7 +60,7 @@ class MyImages{
   static const String search = "${basePath}search.svg";
   static const String security = "${basePath}security.svg";
   static const String state = "${basePath}state.svg";
-  static const String termServices = "${basePath}termsServices.svg";
+  static const String termServices = "${basePath1}termsServices.png";
   static const String transaction = "${basePath}transaction.svg";
   static const String transaction1 = "${basePath}transaction1.svg";
   static const String transfer = "${basePath}transfer.svg";
