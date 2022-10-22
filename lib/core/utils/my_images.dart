@@ -46,7 +46,7 @@ class MyImages{
   static const String onboard2 = "${basePath1}onboard2.png";
   static const String onboard3 = "${basePath1}onboard3.png";
   static const String otp = "${basePath}otp.svg";
-  static const String paperPlan = "${basePath}paper-plan.svg";
+  static const String paperPlan = "${basePath1}paperPlan.png";
   static const String payable = "${basePath1}payable.png";
   static const String payoneer = "${basePath1}payoneer.png";
   static const String paypal = "${basePath1}paypal.png";
