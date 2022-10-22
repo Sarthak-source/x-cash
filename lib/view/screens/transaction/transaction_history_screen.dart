@@ -10,6 +10,7 @@ import 'package:xcash_app/view/components/app-bar/custom_app_bar.dart';
 import 'package:xcash_app/view/components/card/custom_card.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_search_field.dart';
+import 'package:xcash_app/view/screens/transaction/widget/filters_field.dart';
 
 class TransactionHistoryScreen extends StatefulWidget {
   const TransactionHistoryScreen({Key? key}) : super(key: key);
@@ -22,13 +23,6 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
 
   bool isVisible = false;
   bool isVisible2 = false;
-
-  var selectValue1 = "All Type";
-  var selectValue2 = "All Operations";
-  var selectValue3 = "All Time";
-  var selectValue4 = "All Currency";
-
-  List<String> walletItems = ["All Type", "TRX", "USD", "BCH", "BDT", "BTC", "BTL", "CNY", "ETH", "EUR"];
 
   List<Map<String, String>> data = [
     {"image" : MyImages.arrowRightDown2, "title" : "Add Money", "date" : "Sep 12, 2022", "time" : "6:00 am", "amount" : "790.00 USD", "status" : "Successful"},
@@ -60,6 +54,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: MyColor.primaryColor100,
+        // app bar
         appBar: CustomAppBar(
           elevation: 0,
           showBackIcon: true,
@@ -112,6 +107,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
           padding: const EdgeInsets.symmetric(horizontal: Dimensions.space15, vertical: Dimensions.space20),
           child: Column(
             children: [
+              // search field
               Visibility(
                 visible: isVisible,
                 child: Column(
@@ -127,49 +123,20 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                   ],
                 ),
               ),
-              
+
+              // filters field
               Visibility(
                 visible: isVisible2,
                 child: Column(
-                  children: [
-                    Container(
-                      height: 80,
-                      width: MediaQuery.of(context).size.width,
-                      color: MyColor.transparentColor,
-                      child: ListView.separated(
-                        shrinkWrap: true,
-                        scrollDirection: Axis.horizontal,
-                        physics: const BouncingScrollPhysics(),
-                        itemCount: title.length,
-                        separatorBuilder: (context, index) => const SizedBox(width: Dimensions.space10),
-                        itemBuilder: (context, index) => SizedBox(
-                          width: 150,
-                          child: CustomDropDownTextField(
-                              labelText: title[index],
-                              selectedValue: selectValue1,
-                              onChanged: (value){
-                                setState(() {
-                                  selectValue1 = value.toString();
-                                });
-                              },
-                              items: walletItems.map((String val){
-                                return DropdownMenuItem(
-                                    value: val,
-                                    child: Text(
-                                      val,
-                                      style: interRegularSmall,
-                                    )
-                                );
-                              }).toList()
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: Dimensions.space20),
+                  children: const [
+                    FiltersField(),
+
+                    SizedBox(height: Dimensions.space20),
                   ],
                 ),
               ),
 
+              // card list
               ListView.separated(
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
