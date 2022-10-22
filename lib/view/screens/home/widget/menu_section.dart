@@ -16,7 +16,9 @@ class _MenuSectionState extends State<MenuSection> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: (){},
+        onTap: (){
+          Scaffold.of(context).openDrawer();
+        },
         child: Container(
           padding: const EdgeInsets.all(Dimensions.space10),
           alignment: Alignment.center,
