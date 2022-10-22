@@ -108,6 +108,7 @@ class _PersonalAccountFormState extends State<PersonalAccountForm> {
 
           CustomAnimatedButton(
               onTap: (){
+                // Get.offAndToNamed(RouteHelper.otpScreen);
                 Get.offAndToNamed(RouteHelper.bottomNavBar);
               },
               height: 45,
