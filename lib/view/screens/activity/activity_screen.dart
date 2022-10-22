@@ -35,7 +35,10 @@ class ActivityScreen extends StatelessWidget {
             RowIconTextWidget(
                 isSvgPicture: true,
                 image: MyImages.requestMe,
-                text: MyStrings.requestToMe
+                text: MyStrings.requestToMe,
+                onPressed: (){
+                  Get.toNamed(RouteHelper.requestToMeScreen);
+                },
             ),
 
             const CustomDivider(height: Dimensions.space15),
