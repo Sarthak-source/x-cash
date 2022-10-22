@@ -244,4 +244,5 @@ class MyStrings{
   static const String state = "State";
   static const String city = "City";
   static const String editProfile = "Edit Profile";
+  static const String updateProfile = "Update Profile";
 }
