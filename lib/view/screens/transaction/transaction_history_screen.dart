@@ -179,7 +179,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text("${data[index]["title"]}", style: interRegularDefault.copyWith(fontWeight: FontWeight.w500)),
-                              const SizedBox(height: Dimensions.space5),
+                              const SizedBox(height: 8),
                               Text(
                                   "${data[index]["date"]} - ${data[index]["time"]}",
                                   style: interRegularSmall.copyWith(fontWeight: FontWeight.w500, color: MyColor.primarySubTextColor)
@@ -193,7 +193,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Text("${data[index]["amount"]}", style: interRegularDefault.copyWith(fontWeight: FontWeight.w500)),
-                          const SizedBox(height: Dimensions.space5),
+                          const SizedBox(height: 8),
                           Container(
                             alignment: Alignment.center,
                             padding: const EdgeInsets.symmetric(vertical: Dimensions.space5 / 2, horizontal: Dimensions.space5),
@@ -204,7 +204,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                             child: Text(
                                 "${data[index]['status']}",
                                 textAlign: TextAlign.center,
-                                style: interRegularExtraSmall.copyWith(
+                                style: interRegularSmall.copyWith(
                                     color: getTextColor("${data[index]['status']}"),
                                     fontWeight: FontWeight.w500
                                 )
