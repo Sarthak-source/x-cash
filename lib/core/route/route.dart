@@ -9,6 +9,7 @@ import 'package:xcash_app/view/screens/auth/registration/registration_screen.dar
 import 'package:xcash_app/view/screens/edit_profile/edit_profile_screen.dart';
 import 'package:xcash_app/view/screens/invoice/create_invoice/create_invoice_screen.dart';
 import 'package:xcash_app/view/screens/invoice/my_invoice/my_invoice_screen.dart';
+import 'package:xcash_app/view/screens/notification/notification_screen.dart';
 import 'package:xcash_app/view/screens/onboard/onboard_screen.dart';
 import 'package:xcash_app/view/screens/splash/splash_screen.dart';
 import 'package:xcash_app/view/screens/terms-services/terms_services_screen.dart';
@@ -37,6 +38,7 @@ class RouteHelper{
   static const String withdrawMoneyScreen = "/withdraw_money_screen";
   static const String withdrawHistoryScreen = "/withdraw_history_screen";
 
+  static const String notificationScreen = "/notification_screen";
   static const String profileScreen = "/profile_screen";
   static const String editProfileScreen = "/edit_profile_screen";
   static const String termsServiceScreen = "/terms_services_screen";
@@ -56,6 +58,7 @@ class RouteHelper{
     GetPage(name: myVoucherScreen, page: () => const MyVoucherScreen()),
     GetPage(name: withdrawMoneyScreen, page: () => const WithdrawMoneyScreen()),
     GetPage(name: withdrawHistoryScreen, page: () => const WithdrawHistoryScreen()),
+    GetPage(name: notificationScreen, page: () => const NotificationScreen()),
     GetPage(name: profileScreen, page: () => const ProfileScreen()),
     GetPage(name: editProfileScreen, page: () => const EditProfileScreen()),
     GetPage(name: termsServiceScreen, page: () => const TermsServicesScreen()),
