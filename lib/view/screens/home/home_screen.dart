@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
+import 'package:xcash_app/view/screens/home/Drawer/drawer_menu.dart';
 import 'package:xcash_app/view/screens/home/widget/items_section.dart';
 import 'package:xcash_app/view/screens/home/widget/top_section.dart';
 import 'package:xcash_app/view/screens/home/widget/wallet_card_section.dart';
@@ -20,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: MyColor.primaryColor,
+        drawer: const DrawerMenu(),
         body: CustomScrollView(
           slivers: <Widget>[
 
