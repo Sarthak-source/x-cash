@@ -11,7 +11,9 @@ class MyImages{
   static const String appLogo = "${basePath1}appLogo.png";
   static const String arrowDown = "${basePath}arrow_down.svg";
   static const String arrowRightDown = "${basePath}arrow_right_down.svg";
+  static const String arrowRightDown2 = "${basePath1}arrow_right_down.png";
   static const String arrowRightUp = "${basePath1}arrow_right_up.png";
+  static const String arrowRightUp2 = "${basePath1}arrow_right_up2.png";
   static const String basic = "${basePath1}basic.png";
   static const String bell = "${basePath}bell.svg";
   static const String bg1 = "${basePath1}bg1.png";
@@ -26,7 +28,7 @@ class MyImages{
   static const String email = "${basePath1}email.png";
   static const String exchange = "${basePath}exchange.svg";
   static const String exchange2 = "${basePath1}exchange2.png";
-  static const String filter = "${basePath}filter.svg";
+  static const String filter = "${basePath1}filter.png";
   static const String gift = "${basePath}gift.svg";
   static const String google = "${basePath1}google.png";
   static const String home = "${basePath}home.svg";
@@ -57,7 +59,7 @@ class MyImages{
   static const String scan = "${basePath}scan.svg";
   static const String suitcase = "${basePath1}suitcase.png";
   static const String scan2 = "${basePath}scan2.svg";
-  static const String search = "${basePath}search.svg";
+  static const String search = "${basePath1}search.png";
   static const String security = "${basePath}security.svg";
   static const String state = "${basePath1}state.png";
   static const String termServices = "${basePath1}termsServices.png";
