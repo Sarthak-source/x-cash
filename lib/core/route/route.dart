@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:xcash_app/view/components/bottom-nav-bar/bottom_nav_bar.dart';
+import 'package:xcash_app/view/screens/Profile/profile_screen.dart';
 import 'package:xcash_app/view/screens/add-money/add_money_history/add_money_history_screen.dart';
 import 'package:xcash_app/view/screens/auth/change_password/change_password_screen.dart';
 import 'package:xcash_app/view/screens/auth/forgot_password/forgot_password_screen.dart';
@@ -35,6 +36,7 @@ class RouteHelper{
   static const String withdrawMoneyScreen = "/withdraw_money_screen";
   static const String withdrawHistoryScreen = "/withdraw_history_screen";
 
+  static const String profileScreen = "/profile_screen";
   static const String termsServiceScreen = "/terms_services_screen";
 
   List<GetPage> routes = [
@@ -52,6 +54,7 @@ class RouteHelper{
     GetPage(name: myVoucherScreen, page: () => const MyVoucherScreen()),
     GetPage(name: withdrawMoneyScreen, page: () => const WithdrawMoneyScreen()),
     GetPage(name: withdrawHistoryScreen, page: () => const WithdrawHistoryScreen()),
+    GetPage(name: profileScreen, page: () => const ProfileScreen()),
     GetPage(name: termsServiceScreen, page: () => const TermsServicesScreen()),
   ];
 }
