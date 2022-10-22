@@ -236,4 +236,12 @@ class MyStrings{
   static const String selectOtp = "Select OTP";
   static const String continueDownload = "Continue Download";
   static const String submit = "Submit";
+
+  // profile
+  static const String name = "Name";
+  static const String phone = "Phone";
+  static const String zipCode = "Zip Code";
+  static const String state = "State";
+  static const String city = "City";
+  static const String editProfile = "Edit Profile";
 }
