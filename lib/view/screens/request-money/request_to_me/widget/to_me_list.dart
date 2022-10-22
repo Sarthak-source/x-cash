@@ -5,6 +5,7 @@ import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/styles.dart';
 import 'package:xcash_app/view/components/card/custom_card.dart';
+import 'package:xcash_app/view/screens/request-money/request_to_me/widget/money_request_details.dart';
 
 class ToMeList extends StatefulWidget {
   const ToMeList({Key? key}) : super(key: key);
@@ -50,6 +51,10 @@ class _ToMeListState extends State<ToMeList> {
           itemCount: data.length,
           separatorBuilder: (context, index) => const SizedBox(height: Dimensions.space10),
           itemBuilder: (context, index) => CustomCard(
+            isPress: true,
+            onPressed: (){
+              MoneyRequestDetails.bottomSheet(context);
+            },
             paddingTop: Dimensions.space15,
             paddingBottom: Dimensions.space15,
             width: MediaQuery.of(context).size.height,
