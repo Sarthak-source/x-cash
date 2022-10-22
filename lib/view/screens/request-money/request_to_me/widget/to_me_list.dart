@@ -4,8 +4,10 @@ import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/card/custom_card.dart';
 import 'package:xcash_app/view/screens/request-money/request_to_me/widget/money_request_details.dart';
+import 'package:xcash_app/view/screens/request-money/request_to_me/widget/reject_confirm_item.dart';
 
 class ToMeList extends StatefulWidget {
   const ToMeList({Key? key}) : super(key: key);
@@ -66,7 +68,12 @@ class _ToMeListState extends State<ToMeList> {
                   children: [
                     Text(data[index]["user"], style: interRegularDefault.copyWith(fontWeight: FontWeight.w500)),
                     GestureDetector(
-                      onTap: (){},
+                      onTap: (){
+                        CustomBottomSheet(
+                          isNeedMargin: true,
+                          child: const RejectConfirmItem()
+                        ).customBottomSheet(context);
+                      },
                       child: Container(
                           alignment: Alignment.center,
                           padding: const EdgeInsets.all(Dimensions.space5),
