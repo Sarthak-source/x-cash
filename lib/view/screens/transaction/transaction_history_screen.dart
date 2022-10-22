@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/constants/my_strings.dart';
+import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/styles.dart';
 import 'package:xcash_app/view/components/app-bar/custom_app_bar.dart';
 import 'package:xcash_app/view/components/card/custom_card.dart';
+import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_search_field.dart';
 
 class TransactionHistoryScreen extends StatefulWidget {
@@ -19,6 +21,14 @@ class TransactionHistoryScreen extends StatefulWidget {
 class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
 
   bool isVisible = false;
+  bool isVisible2 = false;
+
+  var selectValue1 = "All Type";
+  var selectValue2 = "All Operations";
+  var selectValue3 = "All Time";
+  var selectValue4 = "All Currency";
+
+  List<String> walletItems = ["All Type", "TRX", "USD", "BCH", "BDT", "BTC", "BTL", "CNY", "ETH", "EUR"];
 
   List<Map<String, String>> data = [
     {"image" : MyImages.arrowRightDown2, "title" : "Add Money", "date" : "Sep 12, 2022", "time" : "6:00 am", "amount" : "790.00 USD", "status" : "Successful"},
@@ -42,6 +52,8 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
     {"image" : MyImages.arrowRightDown2, "title" : "Add Money", "date" : "Sep 12, 2022", "time" : "6:00 am", "amount" : "790.00 USD", "status" : "Successful"},
     {"image" : MyImages.arrowRightUp2, "title" : "Exchange Money", "date" : "Sep 12, 2022", "time" : "6:00 am", "amount" : "800.00 USD", "status" : "Canceled"},
   ];
+
+  List<String> title = ["Transaction Type", "Operation Type", "History From", "Wallet Currency"];
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +86,11 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
             const SizedBox(width: Dimensions.space15),
 
             GestureDetector(
-              onTap: (){},
+              onTap: (){
+                setState(() {
+                  isVisible2 = !isVisible2;
+                });
+              },
               child: Container(
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(Dimensions.space5),
@@ -82,13 +98,13 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                     color: MyColor.transparentColor,
                     shape: BoxShape.circle
                 ),
-                child: Image.asset(MyImages.filter, color: MyColor.primarySubTextColor, height: 20, width: 20),
+                child: Image.asset(MyImages.filter, color: isVisible2 ? MyColor.primaryColor : MyColor.primarySubTextColor, height: 20, width: 20),
               ),
             ),
 
             const SizedBox(width: Dimensions.space15),
           ],
-          changeRoute: () => Get.back(),
+          changeRoute: () => Get.toNamed(RouteHelper.bottomNavBar),
         ),
 
         body: SingleChildScrollView(
@@ -106,6 +122,48 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                         hintText: "Search by transaction",
                         onChanged: (value){},
                         onPressed: (){}
+                    ),
+                    const SizedBox(height: Dimensions.space20),
+                  ],
+                ),
+              ),
+              
+              Visibility(
+                visible: isVisible2,
+                child: Column(
+                  children: [
+                    Container(
+                      height: 80,
+                      width: MediaQuery.of(context).size.width,
+                      color: MyColor.transparentColor,
+                      child: ListView.separated(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        physics: const BouncingScrollPhysics(),
+                        itemCount: title.length,
+                        separatorBuilder: (context, index) => const SizedBox(width: Dimensions.space10),
+                        itemBuilder: (context, index) => SizedBox(
+                          width: 150,
+                          child: CustomDropDownTextField(
+                              labelText: title[index],
+                              selectedValue: selectValue1,
+                              onChanged: (value){
+                                setState(() {
+                                  selectValue1 = value.toString();
+                                });
+                              },
+                              items: walletItems.map((String val){
+                                return DropdownMenuItem(
+                                    value: val,
+                                    child: Text(
+                                      val,
+                                      style: interRegularSmall,
+                                    )
+                                );
+                              }).toList()
+                          ),
+                        ),
+                      ),
                     ),
                     const SizedBox(height: Dimensions.space20),
                   ],
