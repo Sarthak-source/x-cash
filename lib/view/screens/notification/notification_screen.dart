@@ -67,6 +67,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
             physics: const NeverScrollableScrollPhysics(),
             itemCount: data.length,
             separatorBuilder: (context, index) => const SizedBox(height: Dimensions.space10),
+            padding: EdgeInsets.zero,
             itemBuilder: (context, index) => CustomCard(
                 paddingTop: Dimensions.space15,
                 paddingBottom: Dimensions.space15,
