@@ -89,7 +89,7 @@ class _DrawerItemsState extends State<DrawerItems> {
 
     switch(index){
       case 0:
-        //Get.toNamed(RouteHelper.profileScreen);
+        Get.toNamed(RouteHelper.profileScreen);
         break;
       case 1:
         Get.toNamed(RouteHelper.changePasswordScreen);
