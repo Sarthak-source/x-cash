@@ -12,6 +12,7 @@ import 'package:xcash_app/view/screens/add-money/add_money_details/add_money.dar
 import 'package:xcash_app/view/screens/exchange/exchange_money.dart';
 import 'package:xcash_app/view/screens/money-discharge/make_payment/payment_details.dart';
 import 'package:xcash_app/view/screens/money-discharge/money_out/money_out_details.dart';
+import 'package:xcash_app/view/screens/request-money/request_money/request_money.dart';
 import 'package:xcash_app/view/screens/transfer/transfer_money.dart';
 
 class ItemsSectionTopPart extends StatefulWidget {
@@ -133,7 +134,11 @@ class _ItemsSectionTopPartState extends State<ItemsSectionTopPart> {
                 height: 40, width: 40,
                 backgroundColor: MyColor.colorWhite,
                 child: SvgPicture.asset(MyImages.requestMoney, color: MyColor.primaryColor, height: 20, width: 20),
-                onTap: (){},
+                onTap: (){
+                  CustomBottomSheet(
+                    child: const RequestMoney()
+                  ).customBottomSheet(context);
+                },
               ),
             ),
 
