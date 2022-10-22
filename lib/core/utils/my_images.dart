@@ -22,6 +22,7 @@ class MyImages{
   static const String charge = "${basePath1}charge.png";
   static const String city = "${basePath1}city.png";
   static const String clear = "${basePath}clear.svg";
+  static const String clear1 = "${basePath1}clear.png";
   static const String companyAccount = "${basePath}companyAccount.svg";
   static const String country = "${basePath1}country.png";
   static const String downLeftArrow = "${basePath1}downLeftArrow.png";
@@ -36,7 +37,7 @@ class MyImages{
   static const String logout = "${basePath1}logout.png";
   static const String mail = "${basePath1}mail.png";
   static const String makePayment = "${basePath}makePayment.svg";
-  static const String mark = "${basePath}mark.svg";
+  static const String mark = "${basePath1}mark.png";
   static const String menu = "${basePath}menu.svg";
   static const String moneyIn = "${basePath}moneyIn.svg";
   static const String moneyOut = "${basePath}moneyOut.svg";
