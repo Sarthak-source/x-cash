@@ -13,6 +13,8 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget{
   final ShapeBorder? shape;
   final List<Widget>? actions;
   final VoidCallback changeRoute;
+  final Color iconColor;
+  final Color textColor;
   CustomAppBar({
     Key? key,
     this.title = "",
@@ -22,6 +24,8 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget{
     this.elevation = 5,
     this.shape,
     this.actions,
+    this.iconColor = MyColor.primaryColor,
+    this.textColor = MyColor.colorBlack,
     required this.changeRoute
   }) : super(key: key);
 
@@ -40,16 +44,16 @@ class _CustomAppBarState extends State<CustomAppBar> {
       elevation: widget.elevation,
       leading: IconButton(
         onPressed: widget.changeRoute,
-        icon: const Icon(Icons.arrow_back, color: MyColor.primaryColor, size: 20),
+        icon: Icon(Icons.arrow_back, color: widget.iconColor, size: 20),
       ),
-      title: AppBarTitle(text: widget.title),
+      title: AppBarTitle(text: widget.title, textColor: widget.textColor),
       automaticallyImplyLeading: false,
       shape: widget.shape,
       actions: widget.actions,
     ) : AppBar(
       backgroundColor: widget.backgroundColor,
       elevation: widget.elevation,
-      title: AppBarTitle(text: widget.title),
+      title: AppBarTitle(text: widget.title, textColor: widget.textColor),
       automaticallyImplyLeading: false,
       shape: widget.shape,
       actions: widget.actions,
