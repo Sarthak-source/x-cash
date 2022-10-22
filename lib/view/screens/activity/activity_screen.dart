@@ -24,7 +24,10 @@ class ActivityScreen extends StatelessWidget {
             RowIconTextWidget(
                 isSvgPicture: true,
                 image: MyImages.transaction,
-                text: MyStrings.transaction
+                text: MyStrings.transaction,
+                onPressed: (){
+                  Get.toNamed(RouteHelper.transactionHistoryScreen);
+                },
             ),
 
             const CustomDivider(height: Dimensions.space15),
