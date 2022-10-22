@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
@@ -16,7 +18,9 @@ class _NotificationSectionState extends State<NotificationSection> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: (){},
+        onTap: (){
+          Get.toNamed(RouteHelper.notificationScreen);
+        },
         child: Stack(
           children: [
             Container(
