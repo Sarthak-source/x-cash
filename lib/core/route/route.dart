@@ -13,6 +13,7 @@ import 'package:xcash_app/view/screens/notification/notification_screen.dart';
 import 'package:xcash_app/view/screens/onboard/onboard_screen.dart';
 import 'package:xcash_app/view/screens/splash/splash_screen.dart';
 import 'package:xcash_app/view/screens/terms-services/terms_services_screen.dart';
+import 'package:xcash_app/view/screens/transaction/transaction_history_screen.dart';
 import 'package:xcash_app/view/screens/voucher/my_voucher/my_voucher_screen.dart';
 import 'package:xcash_app/view/screens/wallet/my_wallet_screen.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_history/withdraw_history_screen.dart';
@@ -32,6 +33,7 @@ class RouteHelper{
 
   static const String myInvoiceScreen = "/my_invoice_screen";
   static const String createInvoiceScreen = "/create_invoice_screen";
+  static const String transactionHistoryScreen = "/transaction_history_screen";
 
   static const String myVoucherScreen = "/my_voucher_screen";
 
@@ -62,5 +64,6 @@ class RouteHelper{
     GetPage(name: profileScreen, page: () => const ProfileScreen()),
     GetPage(name: editProfileScreen, page: () => const EditProfileScreen()),
     GetPage(name: termsServiceScreen, page: () => const TermsServicesScreen()),
+    GetPage(name: transactionHistoryScreen, page: () => const TransactionHistoryScreen()),
   ];
 }
