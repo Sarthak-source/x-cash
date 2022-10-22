@@ -5,7 +5,7 @@ class MyImages{
   static const String activity = "${basePath}activity.svg";
   static const String addMoney = "${basePath}addMoney.svg";
   static const String addMoneyHistory = "${basePath}addMoneyHistory.svg";
-  static const String address = "${basePath}address.svg";
+  static const String address = "${basePath1}address.png";
   static const String alertIcon = "${basePath}alertIcon.svg";
   static const String amount = "${basePath1}amount.png";
   static const String appLogo = "${basePath1}appLogo.png";
@@ -18,10 +18,10 @@ class MyImages{
   static const String bg2 = "${basePath1}bg2.png";
   static const String changePassword = "${basePath1}changePassword.png";
   static const String charge = "${basePath1}charge.png";
-  static const String city = "${basePath}city.svg";
+  static const String city = "${basePath1}city.png";
   static const String clear = "${basePath}clear.svg";
   static const String companyAccount = "${basePath}companyAccount.svg";
-  static const String country = "${basePath}country.svg";
+  static const String country = "${basePath1}country.png";
   static const String downLeftArrow = "${basePath1}downLeftArrow.png";
   static const String email = "${basePath1}email.png";
   static const String exchange = "${basePath}exchange.svg";
@@ -41,7 +41,7 @@ class MyImages{
   static const String myInvoice = "${basePath}myInvoice.svg";
   static const String myProfile = "${basePath1}myProfile.png";
   static const String myVoucher = "${basePath}myVoucher.svg";
-  static const String name = "${basePath}name.svg";
+  static const String name = "${basePath1}name.png";
   static const String onboard1 = "${basePath1}onboard1.png";
   static const String onboard2 = "${basePath1}onboard2.png";
   static const String onboard3 = "${basePath1}onboard3.png";
@@ -50,7 +50,7 @@ class MyImages{
   static const String payable = "${basePath1}payable.png";
   static const String payoneer = "${basePath1}payoneer.png";
   static const String paypal = "${basePath1}paypal.png";
-  static const String phone = "${basePath}phone.svg";
+  static const String phone = "${basePath1}phone.png";
   static const String requestMe = "${basePath}requestMe.svg";
   static const String requestMoney = "${basePath}requestMoney.svg";
   static const String requestMoney1 = "${basePath1}requestMoney1.png";
@@ -59,7 +59,7 @@ class MyImages{
   static const String scan2 = "${basePath}scan2.svg";
   static const String search = "${basePath}search.svg";
   static const String security = "${basePath}security.svg";
-  static const String state = "${basePath}state.svg";
+  static const String state = "${basePath1}state.png";
   static const String termServices = "${basePath1}termsServices.png";
   static const String transaction = "${basePath}transaction.svg";
   static const String transaction1 = "${basePath}transaction1.svg";
@@ -74,4 +74,5 @@ class MyImages{
   static const String dotMenu = "${basePath}dots.svg";
   static const String viewTransaction = "${basePath1}viewTransaction.png";
   static const String moneyOut2 = "${basePath1}moneyOut2.png";
+  static const String zipCode = "${basePath1}zipCode.png";
 }
