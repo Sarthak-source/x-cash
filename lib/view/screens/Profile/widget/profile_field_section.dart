@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:xcash_app/constants/my_strings.dart';
+import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
@@ -52,7 +54,7 @@ class _ProfileFieldSectionState extends State<ProfileFieldSection> {
             children: [
               Row(
                 children: [
-                  CircleShapeImage(image: MyImages.email),
+                  CircleShapeImage(image: MyImages.paperPlan),
                   const SizedBox(width: Dimensions.space15),
                   Text(MyStrings.email, style: interRegularDefault.copyWith(color: MyColor.primarySubTextColor))
                 ],
@@ -167,7 +169,9 @@ class _ProfileFieldSectionState extends State<ProfileFieldSection> {
           const SizedBox(height: Dimensions.space30),
           
           CustomAnimatedButton(
-              onTap: (){},
+              onTap: (){
+                Get.toNamed(RouteHelper.editProfileScreen);
+              },
               height: 45,
               width: MediaQuery.of(context).size.width,
               backgroundColor: MyColor.primaryColor,
