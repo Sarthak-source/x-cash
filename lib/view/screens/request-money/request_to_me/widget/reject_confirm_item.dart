@@ -3,10 +3,20 @@ import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/view/components/alert-dialog/custom_alert_dialog.dart';
+import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
+import 'package:xcash_app/view/screens/request-money/request_to_me/widget/confirm_bottom_sheet_widget.dart';
+import 'package:xcash_app/view/screens/request-money/request_to_me/widget/reject_alert_dialog_widget.dart';
 
-class RejectConfirmItem extends StatelessWidget {
+class RejectConfirmItem extends StatefulWidget {
   const RejectConfirmItem({Key? key}) : super(key: key);
+
+  @override
+  State<RejectConfirmItem> createState() => _RejectConfirmItemState();
+}
+
+class _RejectConfirmItemState extends State<RejectConfirmItem> {
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +24,12 @@ class RejectConfirmItem extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         GestureDetector(
-          onTap: (){},
+          onTap: (){
+            CustomAlertDialog(
+              isHorizontalPadding: false,
+              child: const RejectAlertDialogWidget()
+            ).customAlertDialog(context);
+          },
           child: Row(
             children: [
               Container(
@@ -36,7 +51,11 @@ class RejectConfirmItem extends StatelessWidget {
         const CustomDivider(height: Dimensions.space15),
 
         GestureDetector(
-          onTap: (){},
+          onTap: (){
+            CustomBottomSheet(
+              child: const ConfirmBottomSheetWidget()
+            ).customBottomSheet(context);
+          },
           child: Row(
             children: [
               Container(
