@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
-import 'package:xcash_app/core/utils/style.dart';
+import 'package:xcash_app/core/utils/styles.dart';
 import 'package:xcash_app/view/components/card/custom_card.dart';
 import 'package:xcash_app/view/screens/request-money/request_to_me/widget/money_request_details.dart';
 
@@ -64,14 +64,14 @@ class _ToMeListState extends State<ToMeList> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(data[index]["user"], style: regularDefault.copyWith(fontWeight: FontWeight.w500)),
+                    Text(data[index]["user"], style: interRegularDefault.copyWith(fontWeight: FontWeight.w500)),
                     GestureDetector(
                       onTap: (){},
                       child: Container(
                           alignment: Alignment.center,
                           padding: const EdgeInsets.all(Dimensions.space5),
                           decoration: const BoxDecoration(
-                              color: MyColor.screenBgColor,
+                              color: MyColor.primaryColor100,
                               shape: BoxShape.circle
                           ),
                           child: SvgPicture.asset(MyImages.dotMenu, height: 13.5, width: 13.5)
@@ -85,12 +85,12 @@ class _ToMeListState extends State<ToMeList> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("${data[index]["date"]} - ${data[index]["time"]}", style: regularSmall.copyWith(color: MyColor.contentTextColor)),
+                    Text("${data[index]["date"]} - ${data[index]["time"]}", style: interRegularSmall.copyWith(color: MyColor.primarySubTextColor)),
                     Text.rich(
                         TextSpan(
                             children: [
-                              TextSpan(text: data[index]["amount"].toString(), style: regularLarge.copyWith(fontWeight: FontWeight.w600)),
-                              TextSpan(text: " USD", style: regularSmall)
+                              TextSpan(text: data[index]["amount"].toString(), style: interRegularDefaultLarge.copyWith(fontWeight: FontWeight.w600)),
+                              TextSpan(text: " USD", style: interRegularSmall)
                             ]
                         )
                     )
