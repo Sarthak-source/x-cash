@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xcash_app/constants/my_strings.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/styles.dart';
-import 'package:xcash_app/view/components/buttons/custom_animated_button.dart';
+import 'package:xcash_app/core/utils/style.dart';
+import 'package:xcash_app/view/components/buttons/rounded_button.dart';
+
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
-import 'package:xcash_app/view/components/text-form-field/custom_text_form_field.dart';
+import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
 
 class TransferMoney extends StatefulWidget {
@@ -42,7 +43,7 @@ class _TransferMoneyState extends State<TransferMoney> {
                 height: 30, width: 30,
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(Dimensions.space5),
-                decoration: const BoxDecoration(color: MyColor.primaryColor100, shape: BoxShape.circle),
+                decoration: const BoxDecoration(color: MyColor.screenBgColor, shape: BoxShape.circle),
                 child: const Icon(Icons.clear, color: MyColor.colorBlack, size: 15),
               ),
             )
@@ -72,19 +73,19 @@ class _TransferMoneyState extends State<TransferMoney> {
                             value: val,
                             child: Text(
                               val,
-                              style: interRegularSmall,
+                              style: regularSmall,
                             )
                         );
                       }).toList(),
                   ),
                   const SizedBox(height: Dimensions.space10 / 2),
-                  Text(MyStrings.chargeAmount, style: interRegularExtraSmall.copyWith(color: MyColor.primaryColor))
+                  Text(MyStrings.chargeAmount, style: regularExtraSmall.copyWith(color: MyColor.primaryColor))
                 ],
               ),
 
               const SizedBox(height: Dimensions.space15),
 
-              CustomTextFormField(
+              CustomTextField(
                   labelText: MyStrings.agentUsernameEmail,
                   hintText: MyStrings.agentUsernameHint,
                   onChanged: (value){}
@@ -98,10 +99,11 @@ class _TransferMoneyState extends State<TransferMoney> {
                   CustomAmountTextField(
                       labelText: MyStrings.amount,
                       hintText: MyStrings.amountHint,
-                      onChanged: (value){}
+                      onChanged: (value){},
+                      currency: '',
                   ),
                   const SizedBox(height: Dimensions.space10 / 2),
-                  Text(MyStrings.min_max_Amount, style: interRegularExtraSmall.copyWith(color: MyColor.primaryColor))
+                  Text(MyStrings.min_max_Amount, style: regularExtraSmall.copyWith(color: MyColor.primaryColor))
                 ],
               ),
 
@@ -121,20 +123,15 @@ class _TransferMoneyState extends State<TransferMoney> {
                         value: val,
                         child: Text(
                           val,
-                          style: interRegularSmall,
+                          style: regularSmall,
                         )
                     );
                   }).toList()
               ),
-
               const SizedBox(height: Dimensions.space25),
-
-              CustomAnimatedButton(
-                  onTap: (){},
-                  height: 45,
-                  width: MediaQuery.of(context).size.width,
-                  backgroundColor: MyColor.primaryColor,
-                  child: Text(MyStrings.transferNow, textAlign: TextAlign.center, style: interRegularDefault.copyWith(color: MyColor.colorWhite, fontWeight: FontWeight.w500)),
+              RoundedButton(
+                  press: (){},
+                  text: MyStrings.transferNow,
               )
             ],
           ),

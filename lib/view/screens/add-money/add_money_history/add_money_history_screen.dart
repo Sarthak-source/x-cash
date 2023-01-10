@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xcash_app/constants/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/styles.dart';
-import 'package:xcash_app/view/components/app-bar/custom_app_bar.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
+import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/card/custom_card.dart';
 import 'package:xcash_app/view/screens/add-money/add_money_details/add_money.dart';
@@ -46,12 +45,15 @@ class _AddMoneyHistoryScreenState extends State<AddMoneyHistoryScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: MyColor.primaryColor100,
-        appBar: CustomAppBar(
-          showBackIcon: true,
-          elevation: 0,
-          title: MyStrings.addMoneyHistory,
-          backgroundColor: MyColor.colorWhite,
+        backgroundColor: MyColor.screenBgColor,
+        appBar: AppBar(
+          automaticallyImplyLeading: true,
+          leading: GestureDetector(
+            onTap: () => Get.back(),
+            child: Icon(Icons.arrow_back, color: MyColor.getAppBarContentColor(), size: 20),
+          ),
+          title: Text(MyStrings.addMoneyHistory, style: regularDefault.copyWith(color: MyColor.appBarContentColor)),
+          backgroundColor: MyColor.getAppBarColor(),
           actions: [
             Padding(
               padding: const EdgeInsets.only(right: Dimensions.space15),
@@ -73,7 +75,6 @@ class _AddMoneyHistoryScreenState extends State<AddMoneyHistoryScreen> {
               ),
             )
           ],
-          changeRoute: () => Get.back(),
         ),
         body: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(vertical: Dimensions.space20, horizontal: Dimensions.space15),
@@ -95,7 +96,7 @@ class _AddMoneyHistoryScreenState extends State<AddMoneyHistoryScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text("${data[index]["trxNo"]}", style: interRegularDefault.copyWith(fontWeight: FontWeight.w500)),
+                      Text("${data[index]["trxNo"]}", style: regularDefault.copyWith(fontWeight: FontWeight.w500)),
                       Container(
                         alignment: Alignment.center,
                         padding: const EdgeInsets.symmetric(vertical: Dimensions.space5 / 2, horizontal: Dimensions.space5),
@@ -107,7 +108,7 @@ class _AddMoneyHistoryScreenState extends State<AddMoneyHistoryScreen> {
                         child: Text(
                             "${data[index]['status']}",
                             textAlign: TextAlign.center,
-                            style: interRegularExtraSmall.copyWith(
+                            style: regularExtraSmall.copyWith(
                                 color: getTextColor("${data[index]['status']}"),
                                 fontWeight: FontWeight.w500
                             )
@@ -121,12 +122,12 @@ class _AddMoneyHistoryScreenState extends State<AddMoneyHistoryScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text("${data[index]["date"]} - ${data[index]["time"]}", style: interRegularSmall.copyWith(color: MyColor.primarySubTextColor)),
+                      Text("${data[index]["date"]} - ${data[index]["time"]}", style: regularSmall.copyWith(color: MyColor.contentTextColor)),
                       Text.rich(
                         TextSpan(
                           children: [
-                            TextSpan(text: "${data[index]["amount"]}", style: interRegularDefaultLarge.copyWith(fontWeight: FontWeight.w600)),
-                            TextSpan(text: " ${data[index]["currency"]}", style: interRegularSmall.copyWith(fontWeight: FontWeight.w500))
+                            TextSpan(text: "${data[index]["amount"]}", style: regularLarge.copyWith(fontWeight: FontWeight.w600)),
+                            TextSpan(text: " ${data[index]["currency"]}", style: regularSmall.copyWith(fontWeight: FontWeight.w500))
                           ]
                         ),
                       )

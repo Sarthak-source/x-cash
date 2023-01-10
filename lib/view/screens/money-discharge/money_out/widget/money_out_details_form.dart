@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:xcash_app/constants/my_strings.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/styles.dart';
-import 'package:xcash_app/view/components/buttons/custom_animated_button.dart';
+import 'package:xcash_app/core/utils/style.dart';
+import 'package:xcash_app/view/components/buttons/rounded_button.dart';
+
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
-import 'package:xcash_app/view/components/text-form-field/custom_text_form_field.dart';
+import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
 
 class MoneyOutDetailsForm extends StatefulWidget {
   const MoneyOutDetailsForm({Key? key}) : super(key: key);
@@ -29,7 +30,7 @@ class _MoneyOutDetailsFormState extends State<MoneyOutDetailsForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomTextFormField(
+          CustomTextField(
               labelText: MyStrings.agentUsername,
               hintText: MyStrings.agentUsernameHint,
               onChanged: (value){}
@@ -51,7 +52,7 @@ class _MoneyOutDetailsFormState extends State<MoneyOutDetailsForm> {
                     value: val,
                     child: Text(
                       val,
-                      style: interRegularSmall,
+                      style: regularSmall,
                     )
                 );
               }).toList()
@@ -65,10 +66,11 @@ class _MoneyOutDetailsFormState extends State<MoneyOutDetailsForm> {
               CustomAmountTextField(
                   labelText: MyStrings.amount,
                   hintText: MyStrings.amountHint,
-                  onChanged: (value){}
+                  onChanged: (value){},
+                  currency: '',
               ),
               const SizedBox(height: Dimensions.space5),
-              Text(MyStrings.min_max_Amount, style: interRegularExtraSmall.copyWith(color: MyColor.primaryColor))
+              Text(MyStrings.min_max_Amount, style: regularExtraSmall.copyWith(color: MyColor.primaryColor))
             ],
           ),
           const SizedBox(height: Dimensions.space15),
@@ -87,20 +89,15 @@ class _MoneyOutDetailsFormState extends State<MoneyOutDetailsForm> {
                     value: val,
                     child: Text(
                       val,
-                      style: interRegularSmall,
+                      style: regularSmall,
                     )
                 );
               }).toList()
           ),
-
           const SizedBox(height: Dimensions.space20),
-
-          CustomAnimatedButton(
-            onTap: (){},
-            height: 45,
-            width: MediaQuery.of(context).size.width,
-            backgroundColor: MyColor.primaryColor,
-            child: Text(MyStrings.moneyOut, textAlign: TextAlign.center, style: interRegularDefault.copyWith(color: MyColor.colorWhite, fontWeight: FontWeight.w500)),
+          RoundedButton(
+            press: (){},
+            text: MyStrings.moneyOut,
           )
         ],
       ),

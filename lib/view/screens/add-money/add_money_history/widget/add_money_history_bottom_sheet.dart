@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xcash_app/constants/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
+import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_label_text.dart';
@@ -38,8 +38,8 @@ class AddMoneyHistoryBottomSheet{
                       const SizedBox(height: Dimensions.space5),
                       Row(
                         children: [
-                          Text("${MyStrings.status}: ", style: interRegularSmall.copyWith(fontWeight: FontWeight.w500)),
-                          Text(status, style: interRegularSmall.copyWith(color: getTextColor(status),fontWeight: FontWeight.w500)),
+                          Text("${MyStrings.status}: ", style: regularSmall.copyWith(fontWeight: FontWeight.w500)),
+                          Text(status, style: regularSmall.copyWith(color: getTextColor(status),fontWeight: FontWeight.w500)),
                         ],
                       )
                     ],
@@ -50,15 +50,13 @@ class AddMoneyHistoryBottomSheet{
                       height: 30, width: 30,
                       alignment: Alignment.center,
                       padding: const EdgeInsets.all(Dimensions.space5),
-                      decoration: const BoxDecoration(color: MyColor.primaryColor100, shape: BoxShape.circle),
+                      decoration: const BoxDecoration(color: MyColor.screenBgColor, shape: BoxShape.circle),
                       child: const Icon(Icons.clear, color: MyColor.colorBlack, size: 15),
                     ),
                   )
                 ],
               ),
-
               const CustomDivider(),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -69,7 +67,7 @@ class AddMoneyHistoryBottomSheet{
                       children: [
                         const BottomSheetLabelText(text: MyStrings.amount),
                         const SizedBox(height: Dimensions.space5),
-                        Text("$amount USD", style: interRegularDefault.copyWith(fontWeight: FontWeight.w500))
+                        Text("$amount USD", style: regularDefault.copyWith(fontWeight: FontWeight.w500))
                       ],
                     ),
                   ),
@@ -80,14 +78,13 @@ class AddMoneyHistoryBottomSheet{
                       children: [
                         const BottomSheetLabelText(text: MyStrings.date),
                         const SizedBox(height: Dimensions.space5),
-                        Text("$date - $time", style: interRegularDefault.copyWith(fontWeight: FontWeight.w500))
+                        Text("$date - $time", style: regularDefault.copyWith(fontWeight: FontWeight.w500))
                       ],
                     ),
                   )
                 ],
               ),
               const SizedBox(height: Dimensions.space20),
-
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -98,7 +95,7 @@ class AddMoneyHistoryBottomSheet{
                       children: [
                         const BottomSheetLabelText(text: MyStrings.gateWay),
                         const SizedBox(height: Dimensions.space5),
-                        Text("Mobile Money", style: interRegularDefault.copyWith(fontWeight: FontWeight.w500))
+                        Text("Mobile Money", style: regularDefault.copyWith(fontWeight: FontWeight.w500))
                       ],
                     ),
                   ),
@@ -109,7 +106,7 @@ class AddMoneyHistoryBottomSheet{
                       children: [
                         const BottomSheetLabelText(text: MyStrings.charge),
                         const SizedBox(height: Dimensions.space5),
-                        Text("0.50 USD", style: interRegularDefault.copyWith(fontWeight: FontWeight.w500))
+                        Text("0.50 USD", style: regularDefault.copyWith(fontWeight: FontWeight.w500))
                       ],
                     ),
                   )
@@ -127,7 +124,7 @@ class AddMoneyHistoryBottomSheet{
                       children: [
                         const BottomSheetLabelText(text: MyStrings.payableAmount),
                         const SizedBox(height: Dimensions.space5),
-                        Text("800.50 USD", style: interRegularDefault.copyWith(fontWeight: FontWeight.w500))
+                        Text("800.50 USD", style: regularDefault.copyWith(fontWeight: FontWeight.w500))
                       ],
                     ),
                   ),
@@ -138,7 +135,7 @@ class AddMoneyHistoryBottomSheet{
                       children: [
                         const BottomSheetLabelText(text: MyStrings.payableAfterCharge),
                         const SizedBox(height: Dimensions.space5),
-                        Text("800.50 USD", style: interRegularDefault.copyWith(fontWeight: FontWeight.w500))
+                        Text("800.50 USD", style: regularDefault.copyWith(fontWeight: FontWeight.w500))
                       ],
                     ),
                   )
@@ -156,7 +153,7 @@ class AddMoneyHistoryBottomSheet{
                       children: [
                         const BottomSheetLabelText(text: MyStrings.sendFromNumber),
                         const SizedBox(height: Dimensions.space5),
-                        Text("56385385", style: interRegularDefault.copyWith(fontWeight: FontWeight.w500))
+                        Text("56385385", style: regularDefault.copyWith(fontWeight: FontWeight.w500))
                       ],
                     ),
                   ),
@@ -175,7 +172,7 @@ class AddMoneyHistoryBottomSheet{
                                 children: [
                                   const Icon(Icons.attach_file_sharp, color: MyColor.primaryColor, size: 16),
                                   const SizedBox(width: Dimensions.space5),
-                                  Text("Attached File", style: interRegularDefault.copyWith(color: MyColor.primaryColor, fontWeight: FontWeight.w500))
+                                  Text("Attached File", style: regularDefault.copyWith(color: MyColor.primaryColor, fontWeight: FontWeight.w500))
                                 ],
                               ),
                             )

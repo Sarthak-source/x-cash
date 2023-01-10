@@ -1,12 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
-import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/core/utils/my_color.dart';
+import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/view/components/text/small_text.dart';
-import '../../../../core/utils/my_color.dart';
-
-
 
 class CustomTextFieldForPhone extends StatefulWidget {
   final String hintText, labelText;
@@ -81,7 +78,7 @@ class _CustomTextFieldForPhoneState extends State<CustomTextFieldForPhone> {
           maxLines: widget.maxLines,
           controller: widget.controller,
           focusNode: widget.focusNode,
-          style: interRegularDefault,
+          style: regularDefault,
           textInputAction: widget.inputAction,
           keyboardType: widget.inputType,
           cursorColor: Theme.of(context).primaryColor,
@@ -95,11 +92,11 @@ class _CustomTextFieldForPhoneState extends State<CustomTextFieldForPhone> {
             contentPadding: const EdgeInsets.symmetric(vertical: 16, horizontal: 22),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(3),
-              borderSide: const BorderSide(color: MyColor.textFieldBorderColor, width: 1),
+              borderSide: const BorderSide(color: MyColor.textFieldDisableBorderColor, width: 1),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(3),
-              borderSide: const BorderSide(color: MyColor.textFieldBorderColor, width: 1),
+              borderSide: const BorderSide(color: MyColor.textFieldDisableBorderColor, width: 1),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(3),
@@ -107,16 +104,16 @@ class _CustomTextFieldForPhoneState extends State<CustomTextFieldForPhone> {
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(3),
-              borderSide: const BorderSide(color: Colors.red, width: 1),
+              borderSide: const BorderSide(color: MyColor.colorRed, width: 1),
             ),
             focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(3),
-              borderSide: const BorderSide(color: MyColor.textFieldBorderColor, width: 1),
+              borderSide: const BorderSide(color: MyColor.textFieldDisableBorderColor, width: 1),
             ),
             isDense: true,
             hintText: widget.hintText,
             fillColor: widget.fillColor,
-            hintStyle: interRegularSmall.copyWith(color: MyColor.primarySubTextColor),
+            hintStyle: regularSmall.copyWith(color: MyColor.contentTextColor),
             filled: true,
             prefixIcon: widget.isShowPrefixIcon ? Padding(
               padding: const EdgeInsets.only(left: 20, right: 5),
@@ -127,7 +124,7 @@ class _CustomTextFieldForPhoneState extends State<CustomTextFieldForPhone> {
             suffixIcon: widget.isShowSuffixIcon
                 ? widget.isPassword
                 ? IconButton(
-                icon: Icon(_obscureText ? Icons.visibility_off : Icons.visibility, color: MyColor.primarySubTextColor),
+                icon: Icon(_obscureText ? Icons.visibility_off : Icons.visibility, color: MyColor.contentTextColor),
                 onPressed: _toggle)
                 : widget.isIcon
                 ? IconButton(

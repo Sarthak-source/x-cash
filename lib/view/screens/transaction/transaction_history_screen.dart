@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xcash_app/constants/my_strings.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
-import 'package:xcash_app/core/utils/styles.dart';
-import 'package:xcash_app/view/components/app-bar/custom_app_bar.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
+import 'package:xcash_app/core/utils/style.dart';
+import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/card/custom_card.dart';
-import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_search_field.dart';
 import 'package:xcash_app/view/screens/transaction/widget/filters_field.dart';
 
@@ -53,14 +52,11 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: MyColor.primaryColor100,
+        backgroundColor: MyColor.screenBgColor,
         // app bar
-        appBar: CustomAppBar(
-          elevation: 0,
-          showBackIcon: true,
+        appBar: const CustomAppBar(
           title: "${MyStrings.transaction} History",
-          backgroundColor: MyColor.colorWhite,
-          actions: [
+          /*actions: [
             GestureDetector(
               onTap: (){
                 setState(() {
@@ -74,7 +70,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                   color: MyColor.transparentColor,
                   shape: BoxShape.circle
                 ),
-                child: isVisible ? const Icon(Icons.clear, color: MyColor.colorRed, size: 20) : Image.asset(MyImages.search, color: MyColor.primarySubTextColor, height: 20, width: 20),
+                child: isVisible ? const Icon(Icons.clear, color: MyColor.colorRed, size: 20) : Image.asset(MyImages.search, color: MyColor.contentTextColor, height: 20, width: 20),
               ),
             ),
 
@@ -93,13 +89,13 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                     color: MyColor.transparentColor,
                     shape: BoxShape.circle
                 ),
-                child: Image.asset(MyImages.filter, color: isVisible2 ? MyColor.primaryColor : MyColor.primarySubTextColor, height: 20, width: 20),
+                child: Image.asset(MyImages.filter, color: isVisible2 ? MyColor.primaryColor : MyColor.contentTextColor, height: 20, width: 20),
               ),
             ),
 
             const SizedBox(width: Dimensions.space15),
           ],
-          changeRoute: () => Get.toNamed(RouteHelper.bottomNavBar),
+          changeRoute: () => Get.toNamed(RouteHelper.bottomNavBar),*/
         ),
 
         body: SingleChildScrollView(
@@ -178,11 +174,11 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("${data[index]["title"]}", style: interRegularDefault.copyWith(fontWeight: FontWeight.w500)),
+                              Text("${data[index]["title"]}", style: regularDefault.copyWith(fontWeight: FontWeight.w500)),
                               const SizedBox(height: 8),
                               Text(
                                   "${data[index]["date"]} - ${data[index]["time"]}",
-                                  style: interRegularSmall.copyWith(fontWeight: FontWeight.w500, color: MyColor.primarySubTextColor)
+                                  style: regularSmall.copyWith(fontWeight: FontWeight.w500, color: MyColor.contentTextColor)
                               ),
                             ],
                           )
@@ -192,7 +188,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Text("${data[index]["amount"]}", style: interRegularDefault.copyWith(fontWeight: FontWeight.w500)),
+                          Text("${data[index]["amount"]}", style: regularDefault.copyWith(fontWeight: FontWeight.w500)),
                           const SizedBox(height: 8),
                           Container(
                             alignment: Alignment.center,
@@ -204,7 +200,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                             child: Text(
                                 "${data[index]['status']}",
                                 textAlign: TextAlign.center,
-                                style: interRegularSmall.copyWith(
+                                style: regularSmall.copyWith(
                                     color: getTextColor("${data[index]['status']}"),
                                     fontWeight: FontWeight.w500
                                 )

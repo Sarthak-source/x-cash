@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:xcash_app/constants/my_strings.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
-import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/view/components/card/custom_card.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
-import 'package:xcash_app/view/components/text-form-field/custom_text_form_field.dart';
+import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
 
 class InvoiceDetails extends StatefulWidget {
@@ -37,21 +37,21 @@ class _InvoiceDetailsState extends State<InvoiceDetails> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomTextFormField(
+                  CustomTextField(
                       labelText: MyStrings.invoiceTo,
                       hintText: "Enter ${MyStrings.invoiceTo}",
                       onChanged: (value){}
                   ),
                   const SizedBox(height: Dimensions.space15),
 
-                  CustomTextFormField(
+                  CustomTextField(
                       labelText: MyStrings.email,
                       hintText: "Enter ${MyStrings.email}",
                       onChanged: (value){}
                   ),
                   const SizedBox(height: Dimensions.space15),
 
-                  CustomTextFormField(
+                  CustomTextField(
                       labelText: MyStrings.address,
                       hintText: "Enter ${MyStrings.address}",
                       onChanged: (value){}
@@ -72,7 +72,7 @@ class _InvoiceDetailsState extends State<InvoiceDetails> {
                             value: val,
                             child: Text(
                               val,
-                              style: interRegularSmall,
+                              style: regularSmall,
                             )
                         );
                       }).toList()

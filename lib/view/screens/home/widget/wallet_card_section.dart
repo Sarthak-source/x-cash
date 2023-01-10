@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:xcash_app/constants/my_strings.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
-import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/view/components/card/custom_card.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/image/circle_shape_image.dart';
@@ -40,7 +40,7 @@ class _WalletCardSectionState extends State<WalletCardSection> {
 
                     const SizedBox(width: Dimensions.space10),
 
-                    Text("674,475,999,995,140.00 USD", style: interRegularDefaultLarge.copyWith(fontWeight: FontWeight.w600))
+                    Text("674,475,999,995,140.00 USD", style: regularLarge.copyWith(fontWeight: FontWeight.w600))
                   ],
                 ),
 
@@ -51,7 +51,7 @@ class _WalletCardSectionState extends State<WalletCardSection> {
                   children: [
                     Text(
                       MyStrings.transferMoney,
-                      style: interRegularSmall.copyWith(color: MyColor.primarySubTextColor),
+                      style: regularSmall.copyWith(color: MyColor.contentTextColor),
                     ),
                     const Icon(Icons.arrow_forward_ios_outlined, color: MyColor.primaryColor, size: 16)
                   ],

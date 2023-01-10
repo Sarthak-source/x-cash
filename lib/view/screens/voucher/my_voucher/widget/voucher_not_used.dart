@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/view/components/card/custom_card.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
 
@@ -59,7 +59,7 @@ class _VoucherNotUsedState extends State<VoucherNotUsed> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text(data[index]["code"], style: interRegularDefault.copyWith(fontWeight: FontWeight.w500)),
+                  Text(data[index]["code"], style: regularDefault.copyWith(fontWeight: FontWeight.w500)),
                   Container(
                     alignment: Alignment.center,
                     padding: const EdgeInsets.symmetric(vertical: Dimensions.space5 / 2, horizontal: Dimensions.space5),
@@ -71,7 +71,7 @@ class _VoucherNotUsedState extends State<VoucherNotUsed> {
                     child: Text(
                         "${data[index]['useStatus']}",
                         textAlign: TextAlign.center,
-                        style: interRegularExtraSmall.copyWith(
+                        style: regularExtraSmall.copyWith(
                             color: MyColor.colorGreen,
                             fontWeight: FontWeight.w500
                         )
@@ -86,12 +86,12 @@ class _VoucherNotUsedState extends State<VoucherNotUsed> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text("Create at : ${data[index]["date"]}", style: interRegularSmall.copyWith(color: MyColor.primarySubTextColor)),
+                  Text("Create at : ${data[index]["date"]}", style: regularSmall.copyWith(color: MyColor.contentTextColor)),
                   Text.rich(
                     TextSpan(
                       children: [
-                        TextSpan(text: data[index]["amount"].toString(), style: interRegularDefaultLarge.copyWith(fontWeight: FontWeight.w600)),
-                        TextSpan(text: " USD", style: interRegularSmall)
+                        TextSpan(text: data[index]["amount"].toString(), style: regularLarge.copyWith(fontWeight: FontWeight.w600)),
+                        TextSpan(text: " USD", style: regularSmall)
                       ]
                     )
                   )
@@ -100,7 +100,7 @@ class _VoucherNotUsedState extends State<VoucherNotUsed> {
 
               const CustomDivider(height: Dimensions.space15),
 
-              Text("Used At - ${data[index]["usedAt"]}", style: interRegularSmall)
+              Text("Used At - ${data[index]["usedAt"]}", style: regularSmall)
             ],
           ),
         )

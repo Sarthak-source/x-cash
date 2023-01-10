@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:xcash_app/constants/my_strings.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
@@ -38,8 +38,8 @@ class WithdrawHistoryBottomSheet{
                         const SizedBox(height: Dimensions.space5),
                         Row(
                           children: [
-                            Text("${MyStrings.status}: ", style: interRegularSmall.copyWith(fontWeight: FontWeight.w500)),
-                            Text(status, style: interRegularSmall.copyWith(color: getTextColor(status),fontWeight: FontWeight.w500)),
+                            Text("${MyStrings.status}: ", style: regularSmall.copyWith(fontWeight: FontWeight.w500)),
+                            Text(status, style: regularSmall.copyWith(color: getTextColor(status),fontWeight: FontWeight.w500)),
                           ],
                         )
                       ],
@@ -60,7 +60,7 @@ class WithdrawHistoryBottomSheet{
                         children: [
                           const BottomSheetLabelText(text: MyStrings.amount),
                           const SizedBox(height: Dimensions.space5),
-                          Text("$amount USD", style: interRegularDefault.copyWith(fontWeight: FontWeight.w500))
+                          Text("$amount USD", style: regularDefault.copyWith(fontWeight: FontWeight.w500))
                         ],
                       ),
                     ),
@@ -71,7 +71,7 @@ class WithdrawHistoryBottomSheet{
                         children: [
                           const BottomSheetLabelText(text: MyStrings.date),
                           const SizedBox(height: Dimensions.space5),
-                          Text("$date - $time", style: interRegularDefault.copyWith(fontWeight: FontWeight.w500))
+                          Text("$date - $time", style: regularDefault.copyWith(fontWeight: FontWeight.w500))
                         ],
                       ),
                     )
@@ -89,7 +89,7 @@ class WithdrawHistoryBottomSheet{
                         children: [
                           const BottomSheetLabelText(text: "Withdraw method"),
                           const SizedBox(height: Dimensions.space5),
-                          Text("xCash", style: interRegularDefault.copyWith(fontWeight: FontWeight.w500))
+                          Text("xCash", style: regularDefault.copyWith(fontWeight: FontWeight.w500))
                         ],
                       ),
                     ),
@@ -100,7 +100,7 @@ class WithdrawHistoryBottomSheet{
                         children: [
                           const BottomSheetLabelText(text: MyStrings.charge),
                           const SizedBox(height: Dimensions.space5),
-                          Text("0.50 USD", style: interRegularDefault.copyWith(fontWeight: FontWeight.w500))
+                          Text("0.50 USD", style: regularDefault.copyWith(fontWeight: FontWeight.w500))
                         ],
                       ),
                     )
@@ -118,7 +118,7 @@ class WithdrawHistoryBottomSheet{
                         children: [
                           const BottomSheetLabelText(text: "Receivable"),
                           const SizedBox(height: Dimensions.space5),
-                          Text("800.50 USD", style: interRegularDefault.copyWith(fontWeight: FontWeight.w500))
+                          Text("800.50 USD", style: regularDefault.copyWith(fontWeight: FontWeight.w500))
                         ],
                       ),
                     ),

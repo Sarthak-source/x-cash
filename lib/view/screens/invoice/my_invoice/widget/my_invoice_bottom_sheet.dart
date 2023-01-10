@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xcash_app/constants/my_strings.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/styles.dart';
-import 'package:xcash_app/view/components/buttons/custom_animated_button.dart';
+import 'package:xcash_app/core/utils/style.dart';
+import 'package:xcash_app/view/components/buttons/rounded_button.dart';
+
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_label_text.dart';
@@ -38,8 +39,8 @@ class MyInvoiceBottomSheet{
                       const SizedBox(height: Dimensions.space5),
                       Row(
                         children: [
-                          Text("${MyStrings.status}: ", style: interRegularSmall.copyWith(fontWeight: FontWeight.w500)),
-                          Text(status, style: interRegularSmall.copyWith(color: getTextColor(status),fontWeight: FontWeight.w500)),
+                          Text("${MyStrings.status}: ", style: regularSmall.copyWith(fontWeight: FontWeight.w500)),
+                          Text(status, style: regularSmall.copyWith(color: getTextColor(status),fontWeight: FontWeight.w500)),
                         ],
                       )
                     ],
@@ -50,7 +51,7 @@ class MyInvoiceBottomSheet{
                       height: 30, width: 30,
                       alignment: Alignment.center,
                       padding: const EdgeInsets.all(Dimensions.space5),
-                      decoration: const BoxDecoration(color: MyColor.primaryColor100, shape: BoxShape.circle),
+                      decoration: const BoxDecoration(color: MyColor.screenBgColor, shape: BoxShape.circle),
                       child: const Icon(Icons.clear, color: MyColor.colorBlack, size: 15),
                     ),
                   )
@@ -69,7 +70,7 @@ class MyInvoiceBottomSheet{
                       children: [
                         const BottomSheetLabelText(text: MyStrings.amount),
                         const SizedBox(height: Dimensions.space5),
-                        Text("$amount USD", style: interRegularDefault.copyWith(fontWeight: FontWeight.w500))
+                        Text("$amount USD", style: regularDefault.copyWith(fontWeight: FontWeight.w500))
                       ],
                     ),
                   ),
@@ -80,7 +81,7 @@ class MyInvoiceBottomSheet{
                       children: [
                         const BottomSheetLabelText(text: MyStrings.createdDate),
                         const SizedBox(height: Dimensions.space5),
-                        Text("$date - $time", style: interRegularDefault.copyWith(fontWeight: FontWeight.w500))
+                        Text("$date - $time", style: regularDefault.copyWith(fontWeight: FontWeight.w500))
                       ],
                     ),
                   )
@@ -98,20 +99,16 @@ class MyInvoiceBottomSheet{
                       children: [
                         const BottomSheetLabelText(text: MyStrings.paymentStatus),
                         const SizedBox(height: Dimensions.space5),
-                        Text("Paid", style: interRegularDefault.copyWith(fontWeight: FontWeight.w500))
+                        Text("Paid", style: regularDefault.copyWith(fontWeight: FontWeight.w500))
                       ],
                     ),
                   ),
                 ],
               ),
               const SizedBox(height: Dimensions.space20),
-
-              CustomAnimatedButton(
-                  onTap: (){}, // add web view
-                  height: 45,
-                  width: MediaQuery.of(context).size.width,
-                  backgroundColor: MyColor.primaryColor,
-                  child: Text(MyStrings.continueDownload, textAlign: TextAlign.center, style: interRegularDefault.copyWith(color: MyColor.colorWhite, fontWeight: FontWeight.w500)),
+              RoundedButton(
+                  press: (){}, // add web view
+                  text: MyStrings.continueDownload,
               )
             ],
           ),

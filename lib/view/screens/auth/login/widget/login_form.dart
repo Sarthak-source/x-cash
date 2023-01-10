@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xcash_app/constants/my_strings.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/view/components/Sizedbox/form_sized_box.dart';
-import 'package:xcash_app/view/components/buttons/custom_animated_button.dart';
-import 'package:xcash_app/view/components/text-form-field/custom_text_form_field.dart';
+import 'package:xcash_app/view/components/buttons/rounded_button.dart';
+import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
 import 'package:xcash_app/view/components/text/small_text.dart';
 import 'package:xcash_app/view/screens/auth/login/widget/login_bottom_section.dart';
 
@@ -27,27 +27,21 @@ class _LoginFormState extends State<LoginForm> {
     return Form(
       child: Column(
         children: [
-          CustomTextFormField(
+          CustomTextField(
               labelText: MyStrings.username,
-              isShowBorder: true,
-              inputType: TextInputType.name,
+              textInputType: TextInputType.name,
               hintText: MyStrings.usernameHint,
               onChanged: (value){}
           ),
-
           const FormSizedBox(),
-
-          CustomTextFormField(
+          CustomTextField(
             labelText: MyStrings.password,
             isPassword: true,
-            isShowBorder: true,
             hintText: MyStrings.passwordHint,
             onChanged: (value){},
             isShowSuffixIcon: true,
           ),
-
           const FormSizedBox(),
-
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -68,9 +62,7 @@ class _LoginFormState extends State<LoginForm> {
                       },
                     ),
                   ),
-
                   const SizedBox(width: Dimensions.space15),
-
                   const SmallText(text: MyStrings.rememberMe)
                 ],
               ),
@@ -82,21 +74,16 @@ class _LoginFormState extends State<LoginForm> {
               ),
             ],
           ),
-
           const FormSizedBox(),
-
-          CustomAnimatedButton(
-              onTap: () {
+          RoundedButton(
+              press: () {
                 Get.offAndToNamed(RouteHelper.bottomNavBar);
               },
-              height: Dimensions.defaultButtonH,
-              width: MediaQuery.of(context).size.width,
-              backgroundColor: MyColor.primaryColor,
-              child: const SmallText(text: MyStrings.signIn,textColor: MyColor.colorWhite)
+              color: MyColor.getPrimaryButtonColor(),
+              text: MyStrings.signIn,
+              textColor: MyColor.getPrimaryButtonTextColor()
           ),
-
           const SizedBox(height: Dimensions.space40),
-
           const LoginBottomSection()
         ],
       ),

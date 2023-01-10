@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:xcash_app/constants/my_strings.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
@@ -64,13 +64,13 @@ class WithdrawMoneyBottomSheet{
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(bankName, style: interRegularDefault.copyWith(fontWeight: FontWeight.w500)),
+                          Text(bankName, style: regularDefault.copyWith(fontWeight: FontWeight.w500)),
                           const SizedBox(height: Dimensions.space5),
 
-                          Text(amount, style: interRegularSmall.copyWith(color: MyColor.primarySubTextColor)),
+                          Text(amount, style: regularSmall.copyWith(color: MyColor.contentTextColor)),
 
                           const SizedBox(height: Dimensions.space10),
-                          Text("Charge : $charge USD + $rate%", style: interRegularSmall.copyWith(color: MyColor.primarySubTextColor)),
+                          Text("Charge : $charge USD + $rate%", style: regularSmall.copyWith(color: MyColor.contentTextColor)),
                         ],
                       )
                     ],

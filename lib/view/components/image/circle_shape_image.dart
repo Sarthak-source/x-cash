@@ -10,7 +10,7 @@ class CircleShapeImage extends StatefulWidget {
   bool isSvgImage;
   CircleShapeImage({
     Key? key,
-    this.backgroundColor = MyColor.primaryColor100,
+    this.backgroundColor = MyColor.screenBgColor,
     this.imageColor = MyColor.primaryColor,
     this.imageSize = 16,
     required this.image,

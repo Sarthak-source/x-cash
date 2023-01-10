@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/core/utils/style.dart';
 
 class BottomSheetLabelText extends StatelessWidget {
   final String text;
@@ -12,7 +12,7 @@ class BottomSheetLabelText extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: interRegularSmall.copyWith(color: MyColor.primarySubTextColor, fontWeight: FontWeight.w500)
+      style: regularSmall.copyWith(color: MyColor.contentTextColor, fontWeight: FontWeight.w500)
     );
   }
 }

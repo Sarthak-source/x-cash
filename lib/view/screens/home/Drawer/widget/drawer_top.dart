@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
-import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/core/utils/style.dart';
 
 class DrawerTop extends StatefulWidget {
   const DrawerTop({Key? key}) : super(key: key);
@@ -30,12 +30,12 @@ class _DrawerTopState extends State<DrawerTop> {
 
           Text(
             "William Anne",
-            style: interRegularDefaultLarge.copyWith(fontWeight: FontWeight.w600),
+            style: regularLarge.copyWith(fontWeight: FontWeight.w600),
           ),
           const SizedBox(height: Dimensions.space5),
           Text(
             "williamanne123@gmail.com",
-            style: interRegularSmall.copyWith(color: MyColor.primarySubTextColor, fontWeight: FontWeight.w500),
+            style: regularSmall.copyWith(color: MyColor.contentTextColor, fontWeight: FontWeight.w500),
           )
         ],
       ),

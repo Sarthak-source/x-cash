@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:xcash_app/constants/my_strings.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/view/components/card/custom_card.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
-import 'package:xcash_app/view/components/text-form-field/another_custom_text_field.dart';
+import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
 
 class InvoiceItems extends StatefulWidget {
@@ -40,7 +40,7 @@ class _InvoiceItemsState extends State<InvoiceItems> {
                   children: [
                     SizedBox(
                       width: 120,
-                      child: AnotherCustomTextField(
+                      child: CustomTextField(
                           labelText: MyStrings.itemName,
                           onChanged: (value){}
                       ),
@@ -48,7 +48,7 @@ class _InvoiceItemsState extends State<InvoiceItems> {
                     const SizedBox(width: Dimensions.space10),
                     SizedBox(
                       width: 120,
-                      child: AnotherCustomTextField(
+                      child: CustomTextField(
                           labelText: MyStrings.amount,
                           onChanged: (value){}
                       ),
@@ -66,9 +66,9 @@ class _InvoiceItemsState extends State<InvoiceItems> {
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       color: MyColor.colorWhite,
-                      shape: BoxShape.circle, border: Border.all(color: MyColor.primarySubTextColor.withOpacity(0.8), width: 1.2)
+                      shape: BoxShape.circle, border: Border.all(color: MyColor.contentTextColor.withOpacity(0.8), width: 1.2)
                     ),
-                    child: Icon(Icons.add, color: MyColor.primarySubTextColor.withOpacity(0.8), size: 20),
+                    child: Icon(Icons.add, color: MyColor.contentTextColor.withOpacity(0.8), size: 20),
                   ),
                 )
               ],
@@ -90,7 +90,7 @@ class _InvoiceItemsState extends State<InvoiceItems> {
                     children: [
                       SizedBox(
                         width: 120,
-                        child: AnotherCustomTextField(
+                        child: CustomTextField(
                             labelText: MyStrings.itemName,
                             onChanged: (value){}
                         ),
@@ -98,7 +98,7 @@ class _InvoiceItemsState extends State<InvoiceItems> {
                       const SizedBox(width: Dimensions.space10),
                       SizedBox(
                         width: 120,
-                        child: AnotherCustomTextField(
+                        child: CustomTextField(
                             labelText: MyStrings.amount,
                             onChanged: (value){}
                         ),
@@ -116,9 +116,9 @@ class _InvoiceItemsState extends State<InvoiceItems> {
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                           color: MyColor.colorWhite,
-                          shape: BoxShape.circle, border: Border.all(color: MyColor.primarySubTextColor.withOpacity(0.8), width: 1.2)
+                          shape: BoxShape.circle, border: Border.all(color: MyColor.contentTextColor.withOpacity(0.8), width: 1.2)
                       ),
-                      child: Icon(Icons.remove, color: MyColor.primarySubTextColor.withOpacity(0.8), size: 20),
+                      child: Icon(Icons.remove, color: MyColor.contentTextColor.withOpacity(0.8), size: 20),
                     ),
                   )
                 ],

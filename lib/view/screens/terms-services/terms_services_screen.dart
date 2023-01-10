@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:xcash_app/constants/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/styles.dart';
-import 'package:xcash_app/view/components/app-bar/custom_app_bar.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
+import 'package:xcash_app/core/utils/style.dart';
+import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
+
 
 class TermsServicesScreen extends StatefulWidget {
 
@@ -21,13 +21,9 @@ class _TermsServicesScreenState extends State<TermsServicesScreen> {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: MyColor.primaryColor100,
-        appBar: CustomAppBar(
-          showBackIcon: true,
-          elevation: 0,
-          backgroundColor: MyColor.colorWhite,
+        backgroundColor: MyColor.screenBgColor,
+        appBar: const CustomAppBar(
           title: MyStrings.termsOfServices,
-          changeRoute: () => Get.back(),
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -36,46 +32,46 @@ class _TermsServicesScreenState extends State<TermsServicesScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(MyStrings.ownership, style: interRegularDefaultLarge.copyWith(fontWeight: FontWeight.w600)),
+                Text(MyStrings.ownership, style: regularLarge.copyWith(fontWeight: FontWeight.w600)),
                 const SizedBox(height: Dimensions.space10 / 2),
                 Text(
-                  "You may not guarantee scholarly or selective possession of any of our items, altered or unmodified. All item apropertwe created them. Our items are given",
-                  style: interRegularDefault.copyWith(color: MyColor.primarySubTextColor),
+                  "You may not guarantee scholarly or selective possession of any of our items, altecolorRed or unmodified. All item apropertwe created them. Our items are given",
+                  style: regularDefault.copyWith(color: MyColor.contentTextColor),
                 ),
                 const SizedBox(height: Dimensions.space15),
-                Text(MyStrings.support, style: interRegularDefaultLarge.copyWith(fontWeight: FontWeight.w600)),
+                Text(MyStrings.support, style: regularLarge.copyWith(fontWeight: FontWeight.w600)),
                 const SizedBox(height: Dimensions.space10 / 2),
                 Text(
-                  "You may not guarantee scholarly or selective possession of any of our items, altered or unmodified. All item apropertwe created them. Our items are given",
-                  style: interRegularDefault.copyWith(color: MyColor.primarySubTextColor),
+                  "You may not guarantee scholarly or selective possession of any of our items, altecolorRed or unmodified. All item apropertwe created them. Our items are given",
+                  style: regularDefault.copyWith(color: MyColor.contentTextColor),
                 ),
                 const SizedBox(height: Dimensions.space15),
-                Text(MyStrings.warranty, style: interRegularDefaultLarge.copyWith(fontWeight: FontWeight.w600)),
+                Text(MyStrings.warranty, style: regularLarge.copyWith(fontWeight: FontWeight.w600)),
                 const SizedBox(height: Dimensions.space10 / 2),
                 Text(
-                  "You may not guarantee scholarly or selective possession of any of our items, altered or unmodified. All item apropertwe created them. Our items are given",
-                  style: interRegularDefault.copyWith(color: MyColor.primarySubTextColor),
+                  "You may not guarantee scholarly or selective possession of any of our items, altecolorRed or unmodified. All item apropertwe created them. Our items are given",
+                  style: regularDefault.copyWith(color: MyColor.contentTextColor),
                 ),
                 const SizedBox(height: Dimensions.space15),
-                Text(MyStrings.unauthorized, style: interRegularDefaultLarge.copyWith(fontWeight: FontWeight.w600)),
+                Text(MyStrings.unauthorized, style: regularLarge.copyWith(fontWeight: FontWeight.w600)),
                 const SizedBox(height: Dimensions.space10 / 2),
                 Text(
-                  "You may not guarantee scholarly or selective possession of any of our items, altered or unmodified. All item apropertwe created them. Our items are given",
-                  style: interRegularDefault.copyWith(color: MyColor.primarySubTextColor),
+                  "You may not guarantee scholarly or selective possession of any of our items, altecolorRed or unmodified. All item apropertwe created them. Our items are given",
+                  style: regularDefault.copyWith(color: MyColor.contentTextColor),
                 ),
                 const SizedBox(height: Dimensions.space15),
-                Text(MyStrings.payment, style: interRegularDefaultLarge.copyWith(fontWeight: FontWeight.w600)),
+                Text(MyStrings.payment, style: regularLarge.copyWith(fontWeight: FontWeight.w600)),
                 const SizedBox(height: Dimensions.space10 / 2),
                 Text(
-                  "You may not guarantee scholarly or selective possession of any of our items, altered or unmodified. All item apropertwe created them. Our items are given",
-                  style: interRegularDefault.copyWith(color: MyColor.primarySubTextColor),
+                  "You may not guarantee scholarly or selective possession of any of our items, altecolorRed or unmodified. All item apropertwe created them. Our items are given",
+                  style: regularDefault.copyWith(color: MyColor.contentTextColor),
                 ),
                 const SizedBox(height: Dimensions.space15),
-                Text(MyStrings.couponPolicy, style: interRegularDefaultLarge.copyWith(fontWeight: FontWeight.w600)),
+                Text(MyStrings.couponPolicy, style: regularLarge.copyWith(fontWeight: FontWeight.w600)),
                 const SizedBox(height: Dimensions.space10 / 2),
                 Text(
-                  "You may not guarantee scholarly or selective possession of any of our items, altered or unmodified. All item apropertwe created them. Our items are given",
-                  style: interRegularDefault.copyWith(color: MyColor.primarySubTextColor),
+                  "You may not guarantee scholarly or selective possession of any of our items, altecolorRed or unmodified. All item apropertwe created them. Our items are given",
+                  style: regularDefault.copyWith(color: MyColor.contentTextColor),
                 ),
               ],
             ),

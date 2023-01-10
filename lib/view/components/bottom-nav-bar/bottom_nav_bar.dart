@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
-import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/screens/activity/activity_screen.dart';
 import 'package:xcash_app/view/screens/home/home_screen.dart';
@@ -55,14 +55,14 @@ class _BottomNavBarState extends State<BottomNavBar> {
         alignment: Alignment.center,
         padding: const EdgeInsets.all(5),
         decoration: const BoxDecoration(
-          color: MyColor.primaryColor100,
+          color: MyColor.screenBgColor,
           shape: BoxShape.circle
         ),
         child: Container(
           alignment: Alignment.center,
           padding: const EdgeInsets.all(Dimensions.space10),
           decoration: const BoxDecoration(color: MyColor.primaryColor, shape: BoxShape.circle),
-          child: SvgPicture.asset(MyImages.scan, color: MyColor.primaryColor100, width: 30, height: 30),
+          child: SvgPicture.asset(MyImages.scan, color: MyColor.screenBgColor, width: 30, height: 30),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -91,7 +91,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             padding: const EdgeInsets.all(Dimensions.space10),
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: index == currentIndex ? MyColor.primaryColor100 : Colors.grey.withOpacity(0.2),
+              color: index == currentIndex ? MyColor.screenBgColor : Colors.grey.withOpacity(0.2),
               shape: BoxShape.circle
             ),
             child: SvgPicture.asset(
@@ -102,7 +102,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           const SizedBox(height: Dimensions.space10 / 2),
           Text(
               label, textAlign: TextAlign.center,
-              style: interRegularSmall.copyWith(color: index == currentIndex ? MyColor.primaryColor : MyColor.primaryTextColor)
+              style: regularSmall.copyWith(color: index == currentIndex ? MyColor.primaryColor : MyColor.primaryTextColor)
           )
         ],
       ),

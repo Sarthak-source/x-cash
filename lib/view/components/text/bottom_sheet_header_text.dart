@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/core/utils/style.dart';
 
 class BottomSheetHeaderText extends StatelessWidget {
   final String text;
@@ -11,7 +11,7 @@ class BottomSheetHeaderText extends StatelessWidget {
     return Text(
       text,
       textAlign: textAlign,
-      style: interRegularDefaultLarge.copyWith(fontWeight: FontWeight.w600),
+      style: regularLarge.copyWith(fontWeight: FontWeight.w600),
     );
   }
 }

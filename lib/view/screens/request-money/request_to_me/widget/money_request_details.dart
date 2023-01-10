@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:xcash_app/constants/my_strings.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
@@ -48,7 +48,7 @@ class MoneyRequestDetails{
                       children: [
                         const BottomSheetLabelText(text: MyStrings.amount),
                         const SizedBox(height: Dimensions.space5),
-                        Text("400.00 USD", style: interRegularDefault.copyWith(fontWeight: FontWeight.w500))
+                        Text("400.00 USD", style: regularDefault.copyWith(fontWeight: FontWeight.w500))
                       ],
                     ),
                   ),
@@ -59,7 +59,7 @@ class MoneyRequestDetails{
                       children: [
                         const BottomSheetLabelText(text: MyStrings.date),
                         const SizedBox(height: Dimensions.space5),
-                        Text("Sep 12, 2022 - 6:00 am", style: interRegularDefault.copyWith(fontWeight: FontWeight.w500))
+                        Text("Sep 12, 2022 - 6:00 am", style: regularDefault.copyWith(fontWeight: FontWeight.w500))
                       ],
                     ),
                   )
@@ -77,7 +77,7 @@ class MoneyRequestDetails{
                       children: [
                         const BottomSheetLabelText(text: MyStrings.walletCurrency),
                         const SizedBox(height: Dimensions.space5),
-                        Text("USD", style: interRegularDefault.copyWith(fontWeight: FontWeight.w500))
+                        Text("USD", style: regularDefault.copyWith(fontWeight: FontWeight.w500))
                       ],
                     ),
                   ),
@@ -89,7 +89,7 @@ class MoneyRequestDetails{
                       children: [
                         const BottomSheetLabelText(text: MyStrings.note),
                         const SizedBox(height: Dimensions.space5),
-                        Text("Wll uncover many web sites still", style: interRegularDefault.copyWith(fontWeight: FontWeight.w500))
+                        Text("Wll uncover many web sites still", style: regularDefault.copyWith(fontWeight: FontWeight.w500))
                       ],
                     ),
                   ),
@@ -107,7 +107,7 @@ class MoneyRequestDetails{
                       children: [
                         const BottomSheetLabelText(text: MyStrings.remainingBalance),
                         const SizedBox(height: Dimensions.space5),
-                        Text("3,481,070,153.00 USD", style: interRegularDefault.copyWith(fontWeight: FontWeight.w500))
+                        Text("3,481,070,153.00 USD", style: regularDefault.copyWith(fontWeight: FontWeight.w500))
                       ],
                     ),
                   ),

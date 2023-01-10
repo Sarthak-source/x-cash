@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/view/components/image/circle_shape_image.dart';
 
 class RowIconTextWidget extends StatelessWidget {
   final VoidCallback? onPressed;
-  bool isSvgPicture;
+  final bool isSvgPicture;
   final String image;
   final String text;
-  RowIconTextWidget({
+
+  const RowIconTextWidget({
     Key? key,
     this.onPressed,
     this.isSvgPicture = false,
@@ -32,7 +33,7 @@ class RowIconTextWidget extends StatelessWidget {
 
           const SizedBox(width: Dimensions.space20),
 
-          Text(text, style: interRegularSmall.copyWith(fontWeight: FontWeight.w500))
+          Text(text, style: regularSmall.copyWith(fontWeight: FontWeight.w500))
         ],
       ),
     ) : GestureDetector(
@@ -48,7 +49,7 @@ class RowIconTextWidget extends StatelessWidget {
 
           const SizedBox(width: Dimensions.space20),
 
-          Text(text, style: interRegularSmall.copyWith(fontWeight: FontWeight.w500))
+          Text(text, style: regularSmall.copyWith(fontWeight: FontWeight.w500))
         ],
       ),
     );

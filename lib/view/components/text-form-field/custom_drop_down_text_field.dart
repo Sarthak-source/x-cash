@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/core/utils/style.dart';
 
 class CustomDropDownTextField extends StatefulWidget {
 
   final Object selectedValue;
   final String? labelText;
   final String? hintText;
-  Function(Object?)? onChanged;
+  final Function(Object?)? onChanged;
   final List<DropdownMenuItem<Object>>? items;
   final Color? fillColor;
   final Color? focusColor;
@@ -16,7 +16,7 @@ class CustomDropDownTextField extends StatefulWidget {
   final Color? iconColor;
   final double radius;
 
-  CustomDropDownTextField({
+  const CustomDropDownTextField({
     Key? key,
     this.labelText,
     this.hintText,
@@ -46,7 +46,7 @@ class _CustomDropDownTextFieldState extends State<CustomDropDownTextField> {
 
         Text(
           widget.labelText.toString(),
-          style: interRegularSmall.copyWith(height: 1.452),
+          style: regularSmall.copyWith(height: 1.452),
         ),
         const SizedBox(height: Dimensions.space10),
 
@@ -56,21 +56,21 @@ class _CustomDropDownTextFieldState extends State<CustomDropDownTextField> {
             value: widget.selectedValue,
             dropdownColor: widget.dropDownColor,
             focusColor: widget.focusColor,
-            style: interRegularSmall,
+            style: regularSmall,
             alignment: Alignment.centerLeft,
             decoration: InputDecoration(
               hintText: widget.hintText.toString(),
               filled: true,
               fillColor: widget.fillColor,
-              hintStyle: interRegularSmall.copyWith(color: MyColor.primarySubTextColor),
+              hintStyle: regularSmall.copyWith(color: MyColor.contentTextColor),
               contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(widget.radius),
-                borderSide: const BorderSide(color: MyColor.textFieldBorderColor, width: 1),
+                borderSide: const BorderSide(color: MyColor.textFieldDisableBorderColor, width: 1),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(widget.radius),
-                borderSide: const BorderSide(color: MyColor.textFieldBorderColor, width: 1),
+                borderSide: const BorderSide(color: MyColor.textFieldDisableBorderColor, width: 1),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(widget.radius),
@@ -78,11 +78,11 @@ class _CustomDropDownTextFieldState extends State<CustomDropDownTextField> {
               ),
               errorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(widget.radius),
-                borderSide: const BorderSide(color: Colors.red, width: 1),
+                borderSide: const BorderSide(color: MyColor.colorRed, width: 1),
               ),
               focusedErrorBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(widget.radius),
-                borderSide: const BorderSide(color: MyColor.textFieldBorderColor, width: 1),
+                borderSide: const BorderSide(color: MyColor.textFieldDisableBorderColor, width: 1),
               ),
             ),
             isExpanded: false,

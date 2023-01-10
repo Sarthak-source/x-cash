@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xcash_app/constants/my_strings.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/styles.dart';
-import 'package:xcash_app/view/components/app-bar/custom_app_bar.dart';
+import 'package:xcash_app/core/utils/style.dart';
+import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
+
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/screens/voucher/create_voucher/create_voucher.dart';
 import 'package:xcash_app/view/screens/voucher/my_voucher/widget/voucher_not_used.dart';
 import 'package:xcash_app/view/screens/voucher/my_voucher/widget/voucher_used.dart';
-import 'package:xcash_app/view/screens/voucher/redeem_voucher/redeem_voucher.dart';
 
 class MyVoucherScreen extends StatefulWidget {
   const MyVoucherScreen({Key? key}) : super(key: key);
@@ -26,20 +26,17 @@ class _MyVoucherScreenState extends State<MyVoucherScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: MyColor.primaryColor100,
-        appBar: CustomAppBar(
-          showBackIcon: true,
-          elevation: 0,
+        backgroundColor: MyColor.screenBgColor,
+        appBar: const CustomAppBar(
           title: MyStrings.myVoucher,
-          changeRoute: () => Get.back(),
-          actions: [
+          /*actions: [
             IconButton(
               onPressed: (){
                 CustomBottomSheet(
                   child: const RedeemVoucher()
                 ).customBottomSheet(context);
               },
-              icon: Icon(Icons.card_giftcard, color: MyColor.primarySubTextColor.withOpacity(0.8), size: 20),
+              icon: Icon(Icons.card_giftcard, color: MyColor.contentTextColor.withOpacity(0.8), size: 20),
             ),
             IconButton(
               onPressed: (){
@@ -47,9 +44,9 @@ class _MyVoucherScreenState extends State<MyVoucherScreen> {
                   child: const CreateVoucher()
                 ).customBottomSheet(context);
               },
-              icon: Icon(Icons.add_circle_outline_rounded, color: MyColor.primarySubTextColor.withOpacity(0.8), size: 20),
+              icon: Icon(Icons.add_circle_outline_rounded, color: MyColor.contentTextColor.withOpacity(0.8), size: 20),
             ),
-          ],
+          ],*/
         ),
         body: Column(
           children: [
@@ -100,7 +97,7 @@ class _MyVoucherScreenState extends State<MyVoucherScreen> {
                 borderRadius: index == 0 ? const BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10)) :
                 const BorderRadius.only(topRight: Radius.circular(10), bottomRight: Radius.circular(10))
             ),
-            child: Text(buttonName, textAlign: TextAlign.center, style: interRegularSmall.copyWith(color: index == selectedIndex ? MyColor.colorWhite : MyColor.primaryColor)),
+            child: Text(buttonName, textAlign: TextAlign.center, style: regularSmall.copyWith(color: index == selectedIndex ? MyColor.colorWhite : MyColor.primaryColor)),
           ) : Container(
 
             width: 150,
@@ -111,7 +108,7 @@ class _MyVoucherScreenState extends State<MyVoucherScreen> {
                 color: Colors.transparent,
                 borderRadius: BorderRadius.circular(10)
             ),
-            child: Text(buttonName, textAlign: TextAlign.center, style: interRegularSmall.copyWith(color: MyColor.primaryColor)),
+            child: Text(buttonName, textAlign: TextAlign.center, style: regularSmall.copyWith(color: MyColor.primaryColor)),
           )
       ),
     );

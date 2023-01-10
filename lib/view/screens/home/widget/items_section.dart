@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:xcash_app/constants/my_strings.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/view/screens/home/widget/card_list.dart';
 import 'package:xcash_app/view/screens/home/widget/items_section_top_part.dart';
 
@@ -20,7 +20,7 @@ class _ItemsSectionState extends State<ItemsSection> {
     return Container(
       padding: const EdgeInsets.only(top: Dimensions.space30),
       decoration: const BoxDecoration(
-          color: MyColor.primaryColor100,
+          color: MyColor.screenBgColor,
           borderRadius: BorderRadius.vertical(top: Radius.circular(20))
       ),
       child: SingleChildScrollView(
@@ -38,14 +38,14 @@ class _ItemsSectionState extends State<ItemsSection> {
                 children: [
                   Text(
                     MyStrings.insights,
-                    style: interRegularDefault.copyWith(fontWeight: FontWeight.w500, height: 2.3),
+                    style: regularDefault.copyWith(fontWeight: FontWeight.w500, height: 2.3),
                   ),
 
                   Row(
                     children: [
                       Text(
                         "Last 7 days",
-                        style: interRegularSmall.copyWith(color: MyColor.primaryColor),
+                        style: regularSmall.copyWith(color: MyColor.primaryColor),
 
                       ),
                       const SizedBox(width: Dimensions.space10),

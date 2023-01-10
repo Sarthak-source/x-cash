@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:xcash_app/constants/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/styles.dart';
-import 'package:xcash_app/view/components/app-bar/custom_app_bar.dart';
-import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
-import 'package:xcash_app/view/screens/request-money/request_money/request_money.dart';
+import 'package:xcash_app/core/utils/style.dart';
+import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/screens/request-money/request_to_me/widget/to_me_list.dart';
 
 class RequestToMeScreen extends StatefulWidget {
@@ -24,13 +20,10 @@ class _RequestToMeScreenState extends State<RequestToMeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: MyColor.primaryColor100,
-        appBar: CustomAppBar(
-          showBackIcon: true,
-          elevation: 0,
+        backgroundColor: MyColor.screenBgColor,
+        appBar: const CustomAppBar(
           title: "Money Request",
-          backgroundColor: MyColor.colorWhite,
-          actions: [
+         /* actions: [
             Padding(
               padding: const EdgeInsets.only(right: Dimensions.space15),
               child: GestureDetector(
@@ -51,7 +44,7 @@ class _RequestToMeScreenState extends State<RequestToMeScreen> {
               ),
             )
           ],
-          changeRoute: () => Get.back(),
+          changeRoute: () => Get.back(),*/
         ),
 
         body: Column(
@@ -103,7 +96,7 @@ class _RequestToMeScreenState extends State<RequestToMeScreen> {
                 borderRadius: index == 0 ? const BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10)) :
                 const BorderRadius.only(topRight: Radius.circular(10), bottomRight: Radius.circular(10))
             ),
-            child: Text(buttonName, textAlign: TextAlign.center, style: interRegularSmall.copyWith(color: index == selectedIndex ? MyColor.colorWhite : MyColor.primaryColor)),
+            child: Text(buttonName, textAlign: TextAlign.center, style: regularSmall.copyWith(color: index == selectedIndex ? MyColor.colorWhite : MyColor.primaryColor)),
           ) : Container(
 
             width: 150,
@@ -114,7 +107,7 @@ class _RequestToMeScreenState extends State<RequestToMeScreen> {
                 color: Colors.transparent,
                 borderRadius: BorderRadius.circular(10)
             ),
-            child: Text(buttonName, textAlign: TextAlign.center, style: interRegularSmall.copyWith(color: MyColor.primaryColor)),
+            child: Text(buttonName, textAlign: TextAlign.center, style: regularSmall.copyWith(color: MyColor.primaryColor)),
           )
       ),
     );

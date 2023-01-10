@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/styles.dart';
-import 'package:xcash_app/view/components/buttons/custom_animated_button.dart';
+import 'package:xcash_app/core/utils/style.dart';
+import 'package:xcash_app/view/components/buttons/rounded_button.dart';
+
 import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
 
 class FiltersField extends StatefulWidget {
@@ -50,7 +51,7 @@ class _FiltersFieldState extends State<FiltersField> {
                           value: val,
                           child: Text(
                             val,
-                            style: interRegularSmall,
+                            style: regularSmall,
                           )
                       );
                     }).toList()
@@ -74,7 +75,7 @@ class _FiltersFieldState extends State<FiltersField> {
                           value: val,
                           child: Text(
                             val,
-                            style: interRegularSmall,
+                            style: regularSmall,
                           )
                       );
                     }).toList()
@@ -98,7 +99,7 @@ class _FiltersFieldState extends State<FiltersField> {
                           value: val,
                           child: Text(
                             val,
-                            style: interRegularSmall,
+                            style: regularSmall,
                           )
                       );
                     }).toList()
@@ -122,7 +123,7 @@ class _FiltersFieldState extends State<FiltersField> {
                           value: val,
                           child: Text(
                             val,
-                            style: interRegularSmall,
+                            style: regularSmall,
                           )
                       );
                     }).toList()
@@ -133,12 +134,9 @@ class _FiltersFieldState extends State<FiltersField> {
 
               Padding(
                 padding: const EdgeInsets.only(top: 25),
-                child: CustomAnimatedButton(
-                    onTap: (){},
-                    height: 45,
-                    width: 60,
-                    backgroundColor: MyColor.primaryColor,
-                    child: Text("Apply", textAlign: TextAlign.center, style: interRegularSmall.copyWith(color: MyColor.colorWhite, fontWeight: FontWeight.w500)),
+                child: RoundedButton(
+                    press: (){},
+                    text: "Apply",
                 ),
               )
             ],

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:xcash_app/constants/my_strings.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/styles.dart';
-import 'package:xcash_app/view/components/buttons/custom_animated_button.dart';
+import 'package:xcash_app/core/utils/style.dart';
+import 'package:xcash_app/view/components/buttons/rounded_button.dart';
+
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
-import 'package:xcash_app/view/components/text-form-field/custom_text_form_field.dart';
+import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
 
 class RequestMoneyForm extends StatefulWidget {
   const RequestMoneyForm({Key? key}) : super(key: key);
@@ -43,13 +44,13 @@ class _RequestMoneyFormState extends State<RequestMoneyForm> {
                         value: val,
                         child: Text(
                           val,
-                          style: interRegularSmall,
+                          style: regularSmall,
                         )
                     );
                   }).toList()
               ),
               const SizedBox(height: Dimensions.space5),
-              Text("Total Charge: 0.00", style: interRegularExtraSmall.copyWith(color: MyColor.primaryColor))
+              Text("Total Charge: 0.00", style: regularExtraSmall.copyWith(color: MyColor.primaryColor))
             ],
           ),
           const SizedBox(height: Dimensions.space15),
@@ -60,16 +61,17 @@ class _RequestMoneyFormState extends State<RequestMoneyForm> {
               CustomAmountTextField(
                   labelText: MyStrings.amountToRequest,
                   hintText: MyStrings.amountHint,
-                  onChanged: (value){}
+                  onChanged: (value){},
+                  currency: '',
               ),
               const SizedBox(height: Dimensions.space5),
-              Text("Limit: 1.00000000 ~ 100.0000000 USD", style: interRegularExtraSmall.copyWith(color: MyColor.primaryColor))
+              Text("Limit: 1.00000000 ~ 100.0000000 USD", style: regularExtraSmall.copyWith(color: MyColor.primaryColor))
             ],
           ),
 
           const SizedBox(height: Dimensions.space15),
 
-          CustomTextFormField(
+          CustomTextField(
               labelText: MyStrings.requestTo,
               hintText: "Enter username / email",
               onChanged: (value){}
@@ -77,21 +79,17 @@ class _RequestMoneyFormState extends State<RequestMoneyForm> {
 
           const SizedBox(height: Dimensions.space15),
 
-          CustomTextFormField(
+          CustomTextField(
               labelText: MyStrings.noteForRecipient,
               hintText: "Type note",
               onChanged: (value){},
-              maxLines: 3,
           ),
 
           const SizedBox(height: Dimensions.space25),
 
-          CustomAnimatedButton(
-            onTap: (){},
-            height: 45,
-            width: MediaQuery.of(context).size.width,
-            backgroundColor: MyColor.primaryColor,
-            child: Text(MyStrings.requestNow, textAlign: TextAlign.center, style: interRegularDefault.copyWith(color: MyColor.colorWhite, fontWeight: FontWeight.w500)),
+          RoundedButton(
+            press: (){},
+            text: MyStrings.requestNow,
           )
         ],
       ),

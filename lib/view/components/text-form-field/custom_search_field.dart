@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/core/utils/style.dart';
 
 class CustomSearchField extends StatefulWidget {
 
   final String labelText;
   final String hintText;
   final Function(String) onChanged;
-  bool showLabelText;
+  final bool showLabelText;
   final VoidCallback onPressed;
   final TextEditingController? textEditingController;
-  CustomSearchField({
+  const CustomSearchField({
     Key? key,
     this.textEditingController,
     this.labelText = "Label Text",
@@ -34,7 +34,7 @@ class _CustomSearchFieldState extends State<CustomSearchField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        widget.showLabelText ? Text(widget.labelText, style: interRegularDefault.copyWith(height: 1.452)) : const SizedBox(),
+        widget.showLabelText ? Text(widget.labelText, style: regularDefault.copyWith(height: 1.452)) : const SizedBox(),
 
         widget.showLabelText ? const SizedBox(height: Dimensions.space10) : const SizedBox(),
 
@@ -55,7 +55,7 @@ class _CustomSearchFieldState extends State<CustomSearchField> {
                 flex: 5,
                 child: TextField(
                   controller: widget.textEditingController,
-                  style: interRegularSmall,
+                  style: regularSmall,
                   textAlign: TextAlign.left,
                   keyboardType: TextInputType.text,
                   onChanged: widget.onChanged,
@@ -67,7 +67,7 @@ class _CustomSearchFieldState extends State<CustomSearchField> {
                   decoration: InputDecoration(
                       contentPadding: const EdgeInsets.only(bottom: 12),
                       hintText: widget.hintText,
-                      hintStyle: interRegularSmall.copyWith(color: MyColor.primarySubTextColor, height: 1.452),
+                      hintStyle: regularSmall.copyWith(color: MyColor.contentTextColor, height: 1.452),
                       border: InputBorder.none,
                       focusedBorder: InputBorder.none,
                       enabledBorder: InputBorder.none,

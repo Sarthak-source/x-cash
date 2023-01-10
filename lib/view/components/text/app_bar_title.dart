@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/core/utils/style.dart';
 
 class AppBarTitle extends StatelessWidget {
   final String text;
@@ -15,7 +15,7 @@ class AppBarTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: interRegularDefaultLarge.copyWith(color: textColor, fontWeight: FontWeight.w500),
+      style: regularLarge.copyWith(color: textColor, fontWeight: FontWeight.w500),
     );
   }
 }

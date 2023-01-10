@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xcash_app/constants/my_strings.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
+import 'package:xcash_app/core/utils/style.dart';
 
 class BottomSection extends StatelessWidget {
   const BottomSection({Key? key}) : super(key: key);
@@ -14,15 +14,14 @@ class BottomSection extends StatelessWidget {
 
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-
-        Text(MyStrings.alreadyAccount, style: interRegularDefault),
+        const Text(MyStrings.alreadyAccount, style: regularDefault),
         TextButton(
           onPressed: () {
             Get.toNamed(RouteHelper.loginScreen);
           },
           child: Text(
             MyStrings.signInNow,
-            style: interRegularDefault.copyWith(color: MyColor.primaryColor, decoration: TextDecoration.underline),
+            style: regularDefault.copyWith(color: MyColor.primaryColor, decoration: TextDecoration.underline),
           ),
         )
       ],

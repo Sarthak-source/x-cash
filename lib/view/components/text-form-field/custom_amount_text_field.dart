@@ -1,25 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:xcash_app/constants/my_strings.dart';
+import 'package:get/get.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/core/utils/style.dart';
+import 'package:xcash_app/view/components/text/label_text.dart';
 
 class CustomAmountTextField extends StatefulWidget {
 
-  CustomAmountTextField({
+  const CustomAmountTextField({
     Key? key,
     required this.labelText,
     required this.hintText,
-    this.autoFocus = false,
+    this.controller,
+    this.chargeText='',
+    required this.currency,
     required this.onChanged,
-    this.textEditingController
+    this.autoFocus = false,
+    this.inputAction,
+    this.readOnly = false
   }) : super(key: key);
 
+  final String chargeText;
   final String labelText;
   final String hintText;
-  bool autoFocus;
+  final String currency;
+  final bool autoFocus;
+  final bool readOnly;
   final Function(String) onChanged;
-  final TextEditingController? textEditingController;
+  final TextEditingController? controller;
+  final TextInputAction? inputAction;
 
   @override
   State<CustomAmountTextField> createState() => _CustomAmountTextFieldState();
@@ -34,19 +43,16 @@ class _CustomAmountTextFieldState extends State<CustomAmountTextField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(widget.labelText, style: interRegularSmall.copyWith(height: 1.452)),
-
-        const SizedBox(height: Dimensions.space10),
-
+        LabelText(text: widget.labelText.tr),
+        const SizedBox(height: 8),
         Container(
           height: 50,
           width: MediaQuery.of(context).size.width,
-          alignment: Alignment.center,
-          padding: const EdgeInsets.only(left: Dimensions.space20, right: Dimensions.space10 / 2, top: Dimensions.space10 / 2, bottom: Dimensions.space10 / 2),
+          padding: const EdgeInsets.symmetric(horizontal: Dimensions.space15, vertical: 8),
           decoration: BoxDecoration(
-            color: MyColor.colorWhite,
-            border: Border.all(color: isFocus ? MyColor.primaryColor : MyColor.textFieldBorderColor, width: 1.00),
-            borderRadius: BorderRadius.circular(3)
+            color: MyColor.getTransparentColor(),
+            border: Border.all(color: isFocus ? MyColor.getTextFieldEnableBorder() : MyColor.getTextFieldDisableBorder(), width: 0.5),
+            borderRadius: BorderRadius.circular(Dimensions.defaultRadius)
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -54,36 +60,44 @@ class _CustomAmountTextFieldState extends State<CustomAmountTextField> {
             children: [
               Expanded(
                 flex: 5,
-                child: TextField(
-                  controller: widget.textEditingController,
-                  autofocus: widget.autoFocus,
-                  style: interRegularSmall,
-                  textAlign: TextAlign.left,
-                  keyboardType: TextInputType.number,
-                  onTap: (){
+                child: FocusScope(
+                  child: Focus(
+                    onFocusChange: (focus){
                       setState(() {
-                        isFocus = true;
+                        isFocus = focus;
                       });
-                  },
-                  onChanged: (value){},
-                  decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.only(bottom: 12),
-                    hintText: widget.hintText,
-                    hintStyle: interRegularSmall.copyWith(color: MyColor.primarySubTextColor, height: 1.452),
-                    border: InputBorder.none,
-                    focusedBorder: InputBorder.none,
-                    enabledBorder: InputBorder.none,
-                    disabledBorder: InputBorder.none,
-                    focusedErrorBorder: InputBorder.none,
-                    errorBorder: InputBorder.none
+                    },
+                    child: TextField(
+                      cursorColor: MyColor.colorBlack,
+                      readOnly: widget.readOnly,
+                      controller: widget.controller,
+                      autofocus: widget.autoFocus,
+                      style: regularDefault.copyWith(color: MyColor.getTextColor()),
+                      textAlign: TextAlign.left,
+                      keyboardType: TextInputType.number,
+                      textInputAction: widget.inputAction,
+                      onChanged: widget.onChanged,
+                      decoration: InputDecoration(
+                          contentPadding: const EdgeInsets.only(bottom: 16),
+                          hintText: widget.hintText,
+                          hintStyle: regularSmall.copyWith(color: MyColor.hintTextColor, height: 1.452),
+                          border: InputBorder.none,
+                          focusedBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          disabledBorder: InputBorder.none,
+                          focusedErrorBorder: InputBorder.none,
+                          errorBorder: InputBorder.none
+                      ),
+                    ),
                   ),
                 ),
               ),
               Container(
-                padding: const EdgeInsets.all(Dimensions.space10),
-                color: MyColor.primaryColor.withOpacity(0.06),
+                width: 48,
+                padding: const EdgeInsets.all(Dimensions.space5),
+                decoration: BoxDecoration(color: MyColor.getTextColor().withOpacity(0.04), borderRadius: BorderRadius.circular(5)),
                 alignment: Alignment.center,
-                child: Text(MyStrings.currency, textAlign: TextAlign.center, style: interRegularDefault.copyWith(color: MyColor.primaryColor, fontWeight: FontWeight.w500)),
+                child: Text(widget.currency, textAlign: TextAlign.center, style: regularDefault.copyWith(color: MyColor.getPrimaryColor(), fontWeight: FontWeight.w500)),
               )
             ],
           ),

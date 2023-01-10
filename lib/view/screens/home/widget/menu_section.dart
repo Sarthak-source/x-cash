@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
-import 'package:xcash_app/view/components/text/notification_count_text.dart';
 
 class MenuSection extends StatefulWidget {
   const MenuSection({Key? key}) : super(key: key);

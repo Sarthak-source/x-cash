@@ -4,7 +4,7 @@ import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
-import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/core/utils/style.dart';
 
 class DrawerItems extends StatefulWidget {
   const DrawerItems({Key? key}) : super(key: key);
@@ -57,7 +57,7 @@ class _DrawerItemsState extends State<DrawerItems> {
         width: MediaQuery.of(context).size.width,
         padding: const EdgeInsets.all(Dimensions.space15),
         decoration: BoxDecoration(
-          color: itemIndex == selectedItems ? MyColor.primaryColor100 : MyColor.colorWhite,
+          color: itemIndex == selectedItems ? MyColor.screenBgColor : MyColor.colorWhite,
           borderRadius: BorderRadius.circular(5)
         ),
         child: Row(
@@ -67,7 +67,7 @@ class _DrawerItemsState extends State<DrawerItems> {
               padding: const EdgeInsets.all(Dimensions.space5),
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: itemIndex == selectedItems ? MyColor.colorWhite : MyColor.primaryColor100,
+                color: itemIndex == selectedItems ? MyColor.colorWhite : MyColor.screenBgColor,
                 shape: BoxShape.circle
               ),
               child: Image.asset(itemImage, color: itemIndex == selectedItems ? MyColor.primaryColor : MyColor.colorBlack, height: 15, width: 15),
@@ -77,7 +77,7 @@ class _DrawerItemsState extends State<DrawerItems> {
 
             Text(
               itemName,
-              style: interRegularDefault.copyWith(color: itemIndex == selectedItems ? MyColor.primaryColor : MyColor.colorBlack, fontWeight: FontWeight.w500),
+              style: regularDefault.copyWith(color: itemIndex == selectedItems ? MyColor.primaryColor : MyColor.colorBlack, fontWeight: FontWeight.w500),
             )
           ],
         ),

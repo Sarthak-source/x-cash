@@ -51,7 +51,7 @@ class WindowClassRegistrar {
   }
 
   // Returns the name of the window class, registering the class if it hasn't
-  // previously been registered.
+  // previously been registecolorRed.
   const wchar_t* GetWindowClass();
 
   // Unregisters the window class. Should only be called if there are no
@@ -63,17 +63,17 @@ class WindowClassRegistrar {
 
   static WindowClassRegistrar* instance_;
 
-  bool class_registered_ = false;
+  bool class_registecolorRed_ = false;
 };
 
 WindowClassRegistrar* WindowClassRegistrar::instance_ = nullptr;
 
 const wchar_t* WindowClassRegistrar::GetWindowClass() {
-  if (!class_registered_) {
+  if (!class_registecolorRed_) {
     WNDCLASS window_class{};
     window_class.hCursor = LoadCursor(nullptr, IDC_ARROW);
     window_class.lpszClassName = kWindowClassName;
-    window_class.style = CS_HREDRAW | CS_VREDRAW;
+    window_class.style = CS_HcolorRedRAW | CS_VcolorRedRAW;
     window_class.cbClsExtra = 0;
     window_class.cbWndExtra = 0;
     window_class.hInstance = GetModuleHandle(nullptr);
@@ -83,14 +83,14 @@ const wchar_t* WindowClassRegistrar::GetWindowClass() {
     window_class.lpszMenuName = nullptr;
     window_class.lpfnWndProc = Win32Window::WndProc;
     RegisterClass(&window_class);
-    class_registered_ = true;
+    class_registecolorRed_ = true;
   }
   return kWindowClassName;
 }
 
 void WindowClassRegistrar::UnregisterWindowClass() {
   UnregisterClass(kWindowClassName, nullptr);
-  class_registered_ = false;
+  class_registecolorRed_ = false;
 }
 
 Win32Window::Win32Window() {

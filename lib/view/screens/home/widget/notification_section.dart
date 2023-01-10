@@ -5,7 +5,6 @@ import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
-import 'package:xcash_app/view/components/text/notification_count_text.dart';
 
 class NotificationSection extends StatefulWidget {
   const NotificationSection({Key? key}) : super(key: key);
@@ -39,10 +38,9 @@ class _NotificationSectionState extends State<NotificationSection> {
                 height: 12, width: 12,
                 alignment: Alignment.center,
                 decoration: const BoxDecoration(
-                    color: Colors.red,
+                    color: MyColor.colorRed,
                     shape: BoxShape.circle
                 ),
-                child:  const NotificationCountText(text: "5"),
               ),
             ),
           ]

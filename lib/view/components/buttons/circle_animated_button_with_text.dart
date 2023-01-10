@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/core/utils/style.dart';
 
 class CircleAnimatedButtonWithText extends StatefulWidget {
 
@@ -77,7 +76,7 @@ class _CircleAnimatedButtonWithTextState extends State<CircleAnimatedButtonWithT
               _animatedButton(),
               const SizedBox(height: 10),
 
-              Text(widget.buttonName, textAlign: TextAlign.center, style: interRegularSmall.copyWith(color: MyColor.primaryTextColor))
+              Text(widget.buttonName, textAlign: TextAlign.center, style: regularSmall.copyWith(color: MyColor.primaryTextColor))
             ],
           ),
         ),

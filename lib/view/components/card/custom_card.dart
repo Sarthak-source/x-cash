@@ -9,8 +9,8 @@ class CustomCard extends StatefulWidget {
   final double radius;
   final VoidCallback? onPressed;
   final Widget child;
-  bool isPress;
-  CustomCard({
+  final bool isPress;
+  const CustomCard({
     Key? key,
     required this.width,
     this.paddingLeft = Dimensions.space15,

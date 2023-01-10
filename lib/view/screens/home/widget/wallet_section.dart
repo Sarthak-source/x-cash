@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xcash_app/constants/my_strings.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/core/utils/style.dart';
 
 class WalletSection extends StatelessWidget {
   const WalletSection({Key? key}) : super(key: key);
@@ -18,7 +18,7 @@ class WalletSection extends StatelessWidget {
         children: [
           Text(
             MyStrings.myWallet,
-            style: interRegularDefault.copyWith(color: MyColor.colorWhite, fontWeight: FontWeight.w500),
+            style: regularDefault.copyWith(color: MyColor.colorWhite, fontWeight: FontWeight.w500),
           ),
           GestureDetector(
             onTap: (){
@@ -31,7 +31,7 @@ class WalletSection extends StatelessWidget {
               child: Text(
                 MyStrings.viewMore,
                 textAlign: TextAlign.center,
-                style: interRegularSmall.copyWith(color: MyColor.colorWhite),
+                style: regularSmall.copyWith(color: MyColor.colorWhite),
               ),
             ),
           )

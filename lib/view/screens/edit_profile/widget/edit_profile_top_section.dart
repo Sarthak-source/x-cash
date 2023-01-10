@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
-import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/core/utils/style.dart';
 
 class EditProfileTopSection extends StatefulWidget {
   const EditProfileTopSection({Key? key}) : super(key: key);
@@ -34,7 +34,7 @@ class _EditProfileTopSectionState extends State<EditProfileTopSection> {
                 alignment: Alignment.center,
                 padding: const EdgeInsets.symmetric(vertical: Dimensions.space10 / 2, horizontal: Dimensions.space10 / 2),
                 decoration: const BoxDecoration(
-                  color: MyColor.primaryColor100,
+                  color: MyColor.screenBgColor,
                   shape: BoxShape.circle,
                 ),
                 child: Container(
@@ -66,7 +66,7 @@ class _EditProfileTopSectionState extends State<EditProfileTopSection> {
           Text(
             "William Anne",
             textAlign: TextAlign.center,
-            style: interRegularDefaultLarge.copyWith(fontWeight: FontWeight.w500),
+            style: regularLarge.copyWith(fontWeight: FontWeight.w500),
           )
         ],
       ),

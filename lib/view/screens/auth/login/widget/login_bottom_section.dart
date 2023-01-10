@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xcash_app/constants/my_strings.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
+import 'package:xcash_app/core/utils/style.dart';
 
 class LoginBottomSection extends StatefulWidget {
   const LoginBottomSection({Key? key}) : super(key: key);
@@ -19,17 +19,14 @@ class _LoginBottomSectionState extends State<LoginBottomSection> {
 
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-
-        Text(MyStrings.donotAccount, style: interRegularDefault),
+        const Text(MyStrings.donotAccount, style: regularDefault),
         TextButton(
-
           onPressed: () {
             Get.offAllNamed(RouteHelper.registrationScreen);
           },
           child: Text(
-
             MyStrings.signUpNow,
-            style: interRegularDefault.copyWith(color: MyColor.primaryColor, decoration: TextDecoration.underline),
+            style: regularDefault.copyWith(color: MyColor.primaryColor, decoration: TextDecoration.underline),
           ),
         )
       ],

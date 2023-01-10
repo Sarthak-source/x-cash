@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:xcash_app/constants/my_strings.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
-import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_bar.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/card/custom_card.dart';
@@ -64,7 +64,7 @@ class _CardListState extends State<CardList> {
                     padding: const EdgeInsets.all(Dimensions.space10),
                     alignment: Alignment.center,
                     decoration: const BoxDecoration(
-                        color: MyColor.primaryColor100,
+                        color: MyColor.screenBgColor,
                         shape: BoxShape.circle
                     ),
                     child: SvgPicture.asset(data[index]["data"]["image"], height: 16, width: 16),
@@ -73,11 +73,11 @@ class _CardListState extends State<CardList> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(data[index]["data"]["title"], style: interRegularDefault.copyWith(fontWeight: FontWeight.w500)),
+                      Text(data[index]["data"]["title"], style: regularDefault.copyWith(fontWeight: FontWeight.w500)),
                       const SizedBox(height: Dimensions.space5),
-                      Text(data[index]["data"]["time-limit"], style: interRegularExtraSmall.copyWith(color: MyColor.primarySubTextColor)),
+                      Text(data[index]["data"]["time-limit"], style: regularExtraSmall.copyWith(color: MyColor.contentTextColor)),
                       const SizedBox(height: Dimensions.space5),
-                      Text("${data[index]["data"]["amount"]} USD", style: interRegularSmall.copyWith(fontWeight: FontWeight.w600)),
+                      Text("${data[index]["data"]["amount"]} USD", style: regularSmall.copyWith(fontWeight: FontWeight.w600)),
                     ],
                   )
                 ],
@@ -121,7 +121,7 @@ class _CardListState extends State<CardList> {
                     alignment: Alignment.center,
                     padding: const EdgeInsets.all(Dimensions.space5),
                     decoration: const BoxDecoration(
-                      color: MyColor.primaryColor100,
+                      color: MyColor.screenBgColor,
                       shape: BoxShape.circle
                     ),
                     child: SvgPicture.asset(MyImages.dotMenu, height: 13.5, width: 13.5)
