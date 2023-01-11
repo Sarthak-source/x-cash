@@ -1,7 +1,7 @@
-import '../../auth/sign_up_model/registration_response_model.dart';
+import '../auth/sign_up_model/registration_response_model.dart';
 
-class MakePaymentResponseModel {
-  MakePaymentResponseModel({
+class ExchangeMoneyResponseModel {
+  ExchangeMoneyResponseModel({
       String? remark, 
       String? status, 
       Message? message, 
@@ -12,7 +12,7 @@ class MakePaymentResponseModel {
     _data = data;
 }
 
-  MakePaymentResponseModel.fromJson(dynamic json) {
+  ExchangeMoneyResponseModel.fromJson(dynamic json) {
     _remark = json['remark'];
     _status = json['status'];
     _message = json['message'] != null ? Message.fromJson(json['message']) : null;
@@ -45,48 +45,55 @@ class MakePaymentResponseModel {
 
 class Data {
   Data({
-      List<String>? otpType, 
-      List<Wallets>? wallets, 
-      PaymentCharge? paymentCharge,}){
-    _otpType = otpType;
-    _wallets = wallets;
-    _paymentCharge = paymentCharge;
+      List<FromWallets>? fromWallets, 
+      List<ToWallets>? toWallets, 
+      ExchangeCharge? exchangeCharge,}){
+    _fromWallets = fromWallets;
+    _toWallets = toWallets;
+    _exchangeCharge = exchangeCharge;
 }
 
   Data.fromJson(dynamic json) {
-    _otpType = json['otp_type'] != null ? json['otp_type'].cast<String>() : [];
-    if (json['wallets'] != null) {
-      _wallets = [];
-      json['wallets'].forEach((v) {
-        _wallets?.add(Wallets.fromJson(v));
+    if (json['from_wallets'] != null) {
+      _fromWallets = [];
+      json['from_wallets'].forEach((v) {
+        _fromWallets?.add(FromWallets.fromJson(v));
       });
     }
-    _paymentCharge = json['payment_charge'] != null ? PaymentCharge.fromJson(json['payment_charge']) : null;
+    if (json['to_wallets'] != null) {
+      _toWallets = [];
+      json['to_wallets'].forEach((v) {
+        _toWallets?.add(ToWallets.fromJson(v));
+      });
+    }
+    _exchangeCharge = json['exchange_charge'] != null ? ExchangeCharge.fromJson(json['exchange_charge']) : null;
   }
-  List<String>? _otpType;
-  List<Wallets>? _wallets;
-  PaymentCharge? _paymentCharge;
+  List<FromWallets>? _fromWallets;
+  List<ToWallets>? _toWallets;
+  ExchangeCharge? _exchangeCharge;
 
-  List<String>? get otpType => _otpType;
-  List<Wallets>? get wallets => _wallets;
-  PaymentCharge? get paymentCharge => _paymentCharge;
+  List<FromWallets>? get fromWallets => _fromWallets;
+  List<ToWallets>? get toWallets => _toWallets;
+  ExchangeCharge? get exchangeCharge => _exchangeCharge;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    map['otp_type'] = _otpType;
-    if (_wallets != null) {
-      map['wallets'] = _wallets?.map((v) => v.toJson()).toList();
+    if (_fromWallets != null) {
+      map['from_wallets'] = _fromWallets?.map((v) => v.toJson()).toList();
     }
-    if (_paymentCharge != null) {
-      map['payment_charge'] = _paymentCharge?.toJson();
+    if (_toWallets != null) {
+      map['to_wallets'] = _toWallets?.map((v) => v.toJson()).toList();
+    }
+    if (_exchangeCharge != null) {
+      map['exchange_charge'] = _exchangeCharge?.toJson();
     }
     return map;
   }
 
 }
 
-class PaymentCharge {
-  PaymentCharge({
+class ExchangeCharge {
+  ExchangeCharge({
       int? id, 
       String? slug, 
       String? fixedCharge, 
@@ -123,7 +130,7 @@ class PaymentCharge {
     _updatedAt = updatedAt;
 }
 
-  PaymentCharge.fromJson(dynamic json) {
+  ExchangeCharge.fromJson(dynamic json) {
     _id = json['id'];
     _slug = json['slug'];
     _fixedCharge = json['fixed_charge'];
@@ -202,8 +209,8 @@ class PaymentCharge {
 
 }
 
-class Wallets {
-  Wallets({
+class ToWallets {
+  ToWallets({
       int? id, 
       String? userId, 
       String? userType, 
@@ -211,8 +218,8 @@ class Wallets {
       String? currencyCode, 
       String? balance, 
       String? createdAt, 
-      String? updatedAt, 
-      Currency? currency,}){
+      String? updatedAt,
+      ToWalletsCurrency? currency,}){
     _id = id;
     _userId = userId;
     _userType = userType;
@@ -224,16 +231,16 @@ class Wallets {
     _currency = currency;
 }
 
-  Wallets.fromJson(dynamic json) {
+  ToWallets.fromJson(dynamic json) {
     _id = json['id'];
-    _userId = json['user_id'].toString();
-    _userType = json['user_type'].toString();
-    _currencyId = json['currency_id'].toString();
-    _currencyCode = json['currency_code'].toString();
-    _balance = json['balance'] != null ? json['balance'].toString() : "0.00";
+    _userId = json['user_id'];
+    _userType = json['user_type'];
+    _currencyId = json['currency_id'];
+    _currencyCode = json['currency_code'];
+    _balance = json['balance'];
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
-    _currency = json['currency'] != null ? Currency.fromJson(json['currency']) : null;
+    _currency = json['currency'] != null ? ToWalletsCurrency.fromJson(json['currency']) : null;
   }
   int? _id;
   String? _userId;
@@ -243,7 +250,7 @@ class Wallets {
   String? _balance;
   String? _createdAt;
   String? _updatedAt;
-  Currency? _currency;
+  ToWalletsCurrency? _currency;
 
   int? get id => _id;
   String? get userId => _userId;
@@ -253,7 +260,7 @@ class Wallets {
   String? get balance => _balance;
   String? get createdAt => _createdAt;
   String? get updatedAt => _updatedAt;
-  Currency? get currency => _currency;
+  ToWalletsCurrency? get currency => _currency;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -273,12 +280,12 @@ class Wallets {
 
 }
 
-class Currency {
-  Currency({
+class ToWalletsCurrency {
+  ToWalletsCurrency({
       int? id, 
       String? currencyCode, 
       String? currencySymbol, 
-      String? currencyFullname, 
+      String? currencyFullName, 
       String? currencyType, 
       String? rate, 
       String? isDefault, 
@@ -288,7 +295,7 @@ class Currency {
     _id = id;
     _currencyCode = currencyCode;
     _currencySymbol = currencySymbol;
-    _currencyFullname = currencyFullname;
+    _currencyFullName = currencyFullName;
     _currencyType = currencyType;
     _rate = rate;
     _isDefault = isDefault;
@@ -297,11 +304,11 @@ class Currency {
     _updatedAt = updatedAt;
 }
 
-  Currency.fromJson(dynamic json) {
+  ToWalletsCurrency.fromJson(dynamic json) {
     _id = json['id'];
     _currencyCode = json['currency_code'];
     _currencySymbol = json['currency_symbol'];
-    _currencyFullname = json['currency_fullname'];
+    _currencyFullName = json['currency_FullName'];
     _currencyType = json['currency_type'];
     _rate = json['rate'];
     _isDefault = json['is_default'];
@@ -312,7 +319,7 @@ class Currency {
   int? _id;
   String? _currencyCode;
   String? _currencySymbol;
-  String? _currencyFullname;
+  String? _currencyFullName;
   String? _currencyType;
   String? _rate;
   String? _isDefault;
@@ -323,7 +330,7 @@ class Currency {
   int? get id => _id;
   String? get currencyCode => _currencyCode;
   String? get currencySymbol => _currencySymbol;
-  String? get currencyFullname => _currencyFullname;
+  String? get currencyFullName => _currencyFullName;
   String? get currencyType => _currencyType;
   String? get rate => _rate;
   String? get isDefault => _isDefault;
@@ -336,7 +343,7 @@ class Currency {
     map['id'] = _id;
     map['currency_code'] = _currencyCode;
     map['currency_symbol'] = _currencySymbol;
-    map['currency_fullname'] = _currencyFullname;
+    map['currency_FullName'] = _currencyFullName;
     map['currency_type'] = _currencyType;
     map['rate'] = _rate;
     map['is_default'] = _isDefault;
@@ -346,4 +353,149 @@ class Currency {
     return map;
   }
 
+}
+
+class FromWallets {
+  FromWallets({
+      int? id, 
+      String? userId, 
+      String? userType, 
+      String? currencyId, 
+      String? currencyCode, 
+      String? balance, 
+      String? createdAt, 
+      String? updatedAt,
+      FromWallets? currency,}){
+    _id = id;
+    _userId = userId;
+    _userType = userType;
+    _currencyId = currencyId;
+    _currencyCode = currencyCode;
+    _balance = balance;
+    _createdAt = createdAt;
+    _updatedAt = updatedAt;
+    _currency = currency;
+}
+
+  FromWallets.fromJson(dynamic json) {
+    _id = json['id'];
+    _userId = json['user_id'];
+    _userType = json['user_type'];
+    _currencyId = json['currency_id'];
+    _currencyCode = json['currency_code'];
+    _balance = json['balance'];
+    _createdAt = json['created_at'];
+    _updatedAt = json['updated_at'];
+    _currency = json['currency'] != null ? FromWallets.fromJson(json['currency']) : null;
+  }
+  int? _id;
+  String? _userId;
+  String? _userType;
+  String? _currencyId;
+  String? _currencyCode;
+  String? _balance;
+  String? _createdAt;
+  String? _updatedAt;
+  FromWallets? _currency;
+
+  int? get id => _id;
+  String? get userId => _userId;
+  String? get userType => _userType;
+  String? get currencyId => _currencyId;
+  String? get currencyCode => _currencyCode;
+  String? get balance => _balance;
+  String? get createdAt => _createdAt;
+  String? get updatedAt => _updatedAt;
+  FromWallets? get currency => _currency;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['id'] = _id;
+    map['user_id'] = _userId;
+    map['user_type'] = _userType;
+    map['currency_id'] = _currencyId;
+    map['currency_code'] = _currencyCode;
+    map['balance'] = _balance;
+    map['created_at'] = _createdAt;
+    map['updated_at'] = _updatedAt;
+    if (_currency != null) {
+      map['currency'] = _currency?.toJson();
+    }
+    return map;
+  }
+
+}
+
+class FromWalletsCurrency {
+  FromWalletsCurrency({
+      int? id, 
+      String? currencyCode, 
+      String? currencySymbol, 
+      String? currencyFullName, 
+      String? currencyType, 
+      String? rate, 
+      String? isDefault, 
+      String? status, 
+      String? createdAt, 
+      String? updatedAt,}){
+    _id = id;
+    _currencyCode = currencyCode;
+    _currencySymbol = currencySymbol;
+    _currencyFullName = currencyFullName;
+    _currencyType = currencyType;
+    _rate = rate;
+    _isDefault = isDefault;
+    _status = status;
+    _createdAt = createdAt;
+    _updatedAt = updatedAt;
+}
+
+  FromWalletsCurrency.fromJson(dynamic json) {
+    _id = json['id'];
+    _currencyCode = json['currency_code'];
+    _currencySymbol = json['currency_symbol'];
+    _currencyFullName = json['currency_FullName'];
+    _currencyType = json['currency_type'];
+    _rate = json['rate'];
+    _isDefault = json['is_default'];
+    _status = json['status'];
+    _createdAt = json['created_at'];
+    _updatedAt = json['updated_at'];
+  }
+  int? _id;
+  String? _currencyCode;
+  String? _currencySymbol;
+  String? _currencyFullName;
+  String? _currencyType;
+  String? _rate;
+  String? _isDefault;
+  String? _status;
+  String? _createdAt;
+  String? _updatedAt;
+
+  int? get id => _id;
+  String? get currencyCode => _currencyCode;
+  String? get currencySymbol => _currencySymbol;
+  String? get currencyFullName => _currencyFullName;
+  String? get currencyType => _currencyType;
+  String? get rate => _rate;
+  String? get isDefault => _isDefault;
+  String? get status => _status;
+  String? get createdAt => _createdAt;
+  String? get updatedAt => _updatedAt;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['id'] = _id;
+    map['currency_code'] = _currencyCode;
+    map['currency_symbol'] = _currencySymbol;
+    map['currency_FullName'] = _currencyFullName;
+    map['currency_type'] = _currencyType;
+    map['rate'] = _rate;
+    map['is_default'] = _isDefault;
+    map['status'] = _status;
+    map['created_at'] = _createdAt;
+    map['updated_at'] = _updatedAt;
+    return map;
+  }
 }

@@ -77,4 +77,7 @@ class UrlContainer{
 
   // money out
   static const String moneyOutUrl = "money-out";
+
+  // exchange money
+  static const String exchangeMoneyEndPoint = "exchange/money";
 }
