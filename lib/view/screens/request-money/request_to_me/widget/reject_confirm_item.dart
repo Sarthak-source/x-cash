@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
-import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/view/components/alert-dialog/custom_alert_dialog.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
@@ -43,7 +43,7 @@ class _RejectConfirmItemState extends State<RejectConfirmItem> {
                 child: const Icon(Icons.clear, color: MyColor.colorBlack, size: 15),
               ),
               const SizedBox(width: Dimensions.space15),
-              Text("Want to reject?", style: interRegularSmall.copyWith(fontWeight: FontWeight.w500))
+              Text("Want to reject?", style: regularSmall.copyWith(fontWeight: FontWeight.w500))
             ],
           ),
         ),
@@ -69,7 +69,7 @@ class _RejectConfirmItemState extends State<RejectConfirmItem> {
                 child: Image.asset(MyImages.mark, color: MyColor.colorBlack, height: 15, width: 15),
               ),
               const SizedBox(width: Dimensions.space15),
-              Text("Want to confirm?", style: interRegularSmall.copyWith(fontWeight: FontWeight.w500))
+              Text("Want to confirm?", style: regularSmall.copyWith(fontWeight: FontWeight.w500))
             ],
           ),
         ),

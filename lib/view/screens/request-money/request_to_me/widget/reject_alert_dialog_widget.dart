@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/my_images.dart';
-import 'package:xcash_app/core/utils/styles.dart';
+import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
 
@@ -18,8 +17,8 @@ class RejectAlertDialogWidget extends StatelessWidget {
         Container(
           height: 55, width: 55,
           alignment: Alignment.center,
-          decoration: const BoxDecoration(color: MyColor.primaryColor100, shape: BoxShape.circle),
-          child: Image.asset(MyImages.questionMark, color: MyColor.primaryColor, height: 25, width: 25),
+          decoration: const BoxDecoration(color: MyColor.secondaryScreenBgColor, shape: BoxShape.circle),
+          child: Image.asset("", color: MyColor.primaryColor, height: 25, width: 25),
         ),
         const SizedBox(height: Dimensions.space10),
         const BottomSheetHeaderText(text: "Are you sure want to reject?"),
@@ -35,13 +34,13 @@ class RejectAlertDialogWidget extends StatelessWidget {
                 alignment: Alignment.center,
                 padding: const EdgeInsets.all(Dimensions.space10),
                 decoration: BoxDecoration(
-                    color: MyColor.primaryColor100,
+                    color: MyColor.secondaryScreenBgColor,
                     borderRadius: BorderRadius.circular(8)
                 ),
                 child: Text(
                     "No",
                     textAlign: TextAlign.center,
-                    style: interRegularDefault.copyWith(color: MyColor.primaryColor, fontWeight: FontWeight.w500)
+                    style: regularDefault.copyWith(color: MyColor.primaryColor, fontWeight: FontWeight.w500)
                 ),
               ),
             ),
@@ -62,7 +61,7 @@ class RejectAlertDialogWidget extends StatelessWidget {
                 child: Text(
                     "Yes",
                     textAlign: TextAlign.center,
-                    style: interRegularDefault.copyWith(color: MyColor.colorWhite, fontWeight: FontWeight.w500)
+                    style: regularDefault.copyWith(color: MyColor.colorWhite, fontWeight: FontWeight.w500)
                 ),
               ),
             )
