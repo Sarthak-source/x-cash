@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
@@ -10,10 +11,9 @@ import 'package:xcash_app/data/controller/auth/forget_password/verify_password_c
 import 'package:xcash_app/data/repo/auth/login_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
-import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
+import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/text/default_text.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
 
 class VerifyForgetPassScreen extends StatefulWidget {
   const VerifyForgetPassScreen({Key? key}) : super(key: key);
@@ -82,7 +82,7 @@ class _VerifyForgetPassScreenState extends State<VerifyForgetPassScreen> {
                             appContext: context,
                             pastedTextStyle: regularDefault.copyWith(color: MyColor.getPrimaryColor()),
                             length: 6,
-                            textStyle: regularDefault.copyWith(color: MyColor.getPrimaryColor()),
+                            textStyle: regularDefault.copyWith(color: MyColor.getTextColor()),
                             obscureText: false,
                             obscuringCharacter: '*',
                             blinkWhenObscuring: false,
@@ -101,20 +101,20 @@ class _VerifyForgetPassScreenState extends State<VerifyForgetPassScreen> {
                                 selectedColor: MyColor.getPrimaryColor()
                             ),
                             cursorColor: MyColor.getTextColor(),
-                            animationDuration:
-                            const Duration(milliseconds: 100),
+                            animationDuration: const Duration(milliseconds: 100),
                             enableActiveFill: true,
                             keyboardType: TextInputType.number,
                             beforeTextPaste: (text) {
                               return true;
                             },
                             onChanged: (value) {
-                              controller.currentText = value;
+                              setState(() {
+                                controller.currentText = value;
+                              });
                             },
                           ),
                         ),
                         const SizedBox(height: Dimensions.space25),
-
                         controller.verifyLoading ? const RoundedLoadingBtn() : RoundedButton(
                             text: MyStrings.verify.tr,
                             press: () {

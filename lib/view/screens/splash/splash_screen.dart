@@ -1,10 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
-import 'package:xcash_app/core/utils/util.dart';
+import 'package:xcash_app/data/controller/localization/localization_controller.dart';
+import 'package:xcash_app/data/controller/splash/splash_controller.dart';
+import 'package:xcash_app/data/repo/auth/general_setting_repo.dart';
+import 'package:xcash_app/data/services/api_service.dart';
 
 class SplashScreen extends StatefulWidget {
 
@@ -18,43 +20,37 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    MyUtil.primaryTheme();
-    Timer(
-        const Duration(seconds: 5),(){
-      Get.toNamed(RouteHelper.onboardScreen);
-    }
-    );
+    Get.put(ApiClient(sharedPreferences: Get.find()));
+    Get.put(GeneralSettingRepo(apiClient: Get.find()));
+    Get.put(LocalizationController(sharedPreferences: Get.find()));
+    final controller = Get.put(SplashController(repo: Get.find(),localizationController: Get.find()));
     super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      controller.gotoNextPage();
+    });
   }
 
   @override
   void dispose() {
-
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: MyColor.primaryColor,
-      body: Stack(
-        children: [
-
-          /*Positioned(
-              top: -10, left: 0, right: 0,
-              child: Image.asset(MyImages.bg1)
-          ),*/
-
-          Align(
-            alignment: Alignment.center,
-            child: Image.asset(MyImages.appLogo, height: 50, width: 225),
+    return SafeArea(
+      child: GetBuilder<SplashController>(
+        builder: (controller) => Scaffold(
+          backgroundColor: controller.noInternet ? MyColor.colorWhite : MyColor.primaryColor,
+          body: Stack(
+            children: [
+              Align(
+                alignment: Alignment.center,
+                child: Image.asset(MyImages.appLogo, height: 50, width: 225),
+              ),
+            ],
           ),
-
-          /*Positioned(
-              bottom: -10, left: 0, right: 0,
-              child: Image.asset(MyImages.bg2)
-          ),*/
-        ],
+        ),
       ),
     );
   }

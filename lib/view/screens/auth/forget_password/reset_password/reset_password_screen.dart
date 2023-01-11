@@ -6,10 +6,8 @@ import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/auth/forget_password/reset_password_controller.dart';
-import 'package:xcash_app/data/controller/common/theme_controller.dart';
 import 'package:xcash_app/data/repo/auth/login_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
-import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
@@ -17,6 +15,8 @@ import 'package:xcash_app/view/components/text/default_text.dart';
 import 'package:xcash_app/view/components/text/header_text.dart';
 import 'package:xcash_app/view/components/will_pop_widget.dart';
 import 'package:xcash_app/view/screens/auth/registration/widget/validation_widget.dart';
+
+import '../../../../components/app-bar/custom_appbar.dart';
 
 
 class ResetPasswordScreen extends StatefulWidget {
@@ -32,7 +32,6 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
 
   @override
   void initState() {
-    ThemeController themeController = ThemeController(sharedPreferences: Get.find());
     Get.put(ApiClient(sharedPreferences: Get.find()));
     Get.put(LoginRepo(apiClient:Get.find()));
     final controller =Get.put(ResetPasswordController(loginRepo: Get.find()));
@@ -48,8 +47,6 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
 
   @override
   void dispose() {
-    ThemeController themeController = ThemeController(sharedPreferences: Get.find());
-    
     super.dispose();
   }
 

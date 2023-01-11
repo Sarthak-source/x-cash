@@ -79,4 +79,7 @@ class MyImages{
   static const String zipCode = "${basePath1}zipCode.png";
   static const String errorImage = '${basePath}Error.svg';
   static const String emailVerifyImage = "${basePath}message.svg";
+  static const String noDataImage = "${basePath}no_data.svg";
+
+  static const String noInternet = "assets/animation/no_internet.json";
 }

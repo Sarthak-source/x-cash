@@ -56,7 +56,7 @@ class LoginController extends GetxController{
     await loginRepo.apiClient.sharedPreferences.setString(SharedPreferenceHelper.userPhoneNumberKey, responseModel.data?.user?.mobile??'');
     await loginRepo.apiClient.sharedPreferences.setString(SharedPreferenceHelper.userNameKey, responseModel.data?.user?.username??'');
 
-    await loginRepo.sendUserToken();
+    // await loginRepo.sendUserToken();
 
     bool isProfileCompleteEnable = responseModel.data?.user?.regStep == '0'?true:false;
 

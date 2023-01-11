@@ -10,7 +10,7 @@ import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart'
 import 'package:xcash_app/view/components/buttons/circle_animated_button_with_text.dart';
 import 'package:xcash_app/view/screens/add-money/add_money_details/add_money.dart';
 import 'package:xcash_app/view/screens/exchange/exchange_money.dart';
-import 'package:xcash_app/view/screens/money-discharge/make_payment/payment_details.dart';
+import 'package:xcash_app/view/screens/money-discharge/make_payment/make_payment.dart';
 import 'package:xcash_app/view/screens/money-discharge/money_out/money_out_details.dart';
 import 'package:xcash_app/view/screens/request-money/request_money/request_money.dart';
 import 'package:xcash_app/view/screens/transfer/transfer_money.dart';
@@ -70,7 +70,7 @@ class _ItemsSectionTopPartState extends State<ItemsSectionTopPart> {
                 child: SvgPicture.asset(MyImages.makePayment, color: MyColor.primaryColor, height: 20, width: 20),
                 onTap: (){
                   CustomBottomSheet(
-                    child: const PaymentDetails()
+                    child: const MakePayment()
                   ).customBottomSheet(context);
                 },
               ),

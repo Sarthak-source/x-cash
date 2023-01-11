@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
@@ -10,10 +11,9 @@ import 'package:xcash_app/data/controller/auth/auth/sms_verification_controler.d
 import 'package:xcash_app/data/repo/auth/sms_email_verification_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
-import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
+import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/text/small_text.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
 
 
 class SmsVerificationScreen extends StatefulWidget {

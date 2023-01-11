@@ -2,6 +2,8 @@ import 'package:xcash_app/data/model/language/language_model.dart';
 
 class MyStrings{
 
+  static const String appName = "XCash";
+
   // onboard-screen
   static const String onboardTitle1 = "Welcome To Xcash\nWallet App";
   static const String onboardSubTitle1 = "Lorem Ipsum is simply dummy text of the printing\nand type setting industry";
@@ -269,10 +271,6 @@ class MyStrings{
   static const String in_ = 'In';
   static const String chargeMsg2 = "will cut from your selected wallet";
   static const String usernameEmptyMsg = "Username can't be empty";
-  static const String approved  = "Approved";
-  static const String succeed  = "Succeed";
-  static const String pending  = "Pending";
-  static const String rejected  = "Rejected";
   static const String initiated  = 'Initiated';
   static const String account = "Account";
   static const String recoverAccount = "Recover Account";
@@ -496,6 +494,13 @@ class MyStrings{
 
   static const String error                   = 'Error';
   static const String trxType                 = 'Trx Type';
+
+  // status
+  static const String approved  = "Approved";
+  static const String succeed  = "Succeed";
+  static const String pending  = "Pending";
+  static const String rejected  = "Rejected";
+  static const String completed  = "Completed";
 
 
 

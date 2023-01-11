@@ -11,7 +11,7 @@ Future<Map<String, Map<String, String>>> init()async{
 
   final sharedPreferences=await SharedPreferences.getInstance();
 
-  Get.lazyPut(() => sharedPreferences);
+  Get.lazyPut(() => sharedPreferences, fenix: true);
   Get.lazyPut(() => ApiClient(sharedPreferences: Get.find()));
   Get.lazyPut(() => GeneralSettingRepo(apiClient: Get.find()));
   Get.lazyPut(() => SplashRepo(apiClient: Get.find()));

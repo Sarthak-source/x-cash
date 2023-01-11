@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
@@ -10,9 +11,8 @@ import 'package:xcash_app/data/controller/auth/two_factor_controller.dart';
 import 'package:xcash_app/data/repo/auth/two_factor_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
-import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 
 
 class TwoFactorVerificationScreen extends StatefulWidget {
@@ -77,9 +77,9 @@ class _TwoFactorVerificationScreenState extends State<TwoFactorVerificationScree
                       padding: const EdgeInsets.symmetric(horizontal: Dimensions.space30),
                       child: PinCodeTextField(
                         appContext: context,
-                        pastedTextStyle: regularDefault.copyWith(color: MyColor.getPrimaryColor()),
+                        pastedTextStyle: regularDefault.copyWith(color: MyColor.getTextColor()),
                         length: 6,
-                        textStyle: regularDefault.copyWith(color: MyColor.getPrimaryColor()),
+                        textStyle: regularDefault.copyWith(color: MyColor.getTextColor()),
                         obscureText: false,
                         obscuringCharacter: '*',
                         blinkWhenObscuring: false,
@@ -91,13 +91,13 @@ class _TwoFactorVerificationScreenState extends State<TwoFactorVerificationScree
                             fieldHeight: 40,
                             fieldWidth: 40,
                             inactiveColor:  MyColor.getTextFieldDisableBorder(),
-                            inactiveFillColor: MyColor.getScreenBgColor(),
-                            activeFillColor: MyColor.getScreenBgColor(),
-                            activeColor: MyColor.getPrimaryColor(),
-                            selectedFillColor: MyColor.getScreenBgColor(),
-                            selectedColor: MyColor.getPrimaryColor()
+                            inactiveFillColor: MyColor.getTransparentColor(),
+                            activeFillColor: MyColor.getTransparentColor(),
+                            activeColor: MyColor.primaryColor,
+                            selectedFillColor: MyColor.getTransparentColor(),
+                            selectedColor: MyColor.primaryColor
                         ),
-                        cursorColor: MyColor.getTextColor(),
+                        cursorColor: MyColor.colorWhite,
                         animationDuration:
                         const Duration(milliseconds: 100),
                         enableActiveFill: true,
@@ -106,12 +106,14 @@ class _TwoFactorVerificationScreenState extends State<TwoFactorVerificationScree
                           return true;
                         },
                         onChanged: (value) {
-                          controller.currentText = value;
+                          setState(() {
+                            controller.currentText = value;
+                          });
                         },
                       ),
                     ),
                     const SizedBox(height: Dimensions.space30),
-                    controller.submitLoading?const RoundedLoadingBtn():RoundedButton(
+                    controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
                       press: (){
                         controller.verifyYourSms(controller.currentText);
                       },

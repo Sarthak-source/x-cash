@@ -57,7 +57,7 @@ class _ProfileCompleteScreenState extends State<ProfileCompleteScreen> {
 
           body: GetBuilder<ProfileCompleteController>(
             builder: (controller) => SingleChildScrollView(
-              padding: Dimensions.defaultPaddingHV,
+              padding: Dimensions.screenPaddingHV,
               child: Form(
                 key: formKey,
                 child: Column(
@@ -76,6 +76,7 @@ class _ProfileCompleteScreenState extends State<ProfileCompleteScreen> {
                       },
                     ),
                     const SizedBox(height: Dimensions.space25),
+
                     CustomTextField(
                       labelText: MyStrings.lastName.tr,
                       hintText: "${MyStrings.enterYour.tr} ${MyStrings.lastName.toLowerCase().tr}",
@@ -89,6 +90,7 @@ class _ProfileCompleteScreenState extends State<ProfileCompleteScreen> {
                       },
                     ),
                     const SizedBox(height: Dimensions.space25),
+
                     CustomTextField(
                       labelText: MyStrings.address,
                       hintText: "${MyStrings.enterYour.tr} ${MyStrings.address.toLowerCase().tr}",
@@ -102,6 +104,7 @@ class _ProfileCompleteScreenState extends State<ProfileCompleteScreen> {
                       },
                     ),
                     const SizedBox(height: Dimensions.space25),
+
                     CustomTextField(
                       labelText: MyStrings.state,
                       hintText: "${MyStrings.enterYour.tr} ${MyStrings.state.toLowerCase().tr}",
@@ -115,6 +118,7 @@ class _ProfileCompleteScreenState extends State<ProfileCompleteScreen> {
                       },
                     ),
                     const SizedBox(height: Dimensions.space25),
+
                     CustomTextField(
                       labelText: MyStrings.city.tr,
                       hintText: "${MyStrings.enterYour.tr} ${MyStrings.city.toLowerCase().tr}",
@@ -128,6 +132,7 @@ class _ProfileCompleteScreenState extends State<ProfileCompleteScreen> {
                       },
                     ),
                     const SizedBox(height: Dimensions.space25),
+
                     CustomTextField(
                       labelText: MyStrings.zipCode.tr,
                       hintText: "${MyStrings.enterYour.tr} ${MyStrings.zipCode.toLowerCase().tr}",
@@ -140,13 +145,12 @@ class _ProfileCompleteScreenState extends State<ProfileCompleteScreen> {
                       },
                     ),
                     const SizedBox(height: Dimensions.space35),
+
                     controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
                       text: MyStrings.updateProfile.tr,
-                      textColor: MyColor.getPrimaryButtonTextColor(),
                       press: (){
                         controller.updateProfile();
                       },
-                      color: MyColor.getPrimaryButtonColor(),
                     )
                   ],
                 ),

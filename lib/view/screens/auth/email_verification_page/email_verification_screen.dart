@@ -78,7 +78,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
             builder: (controller) => controller.isLoading ? Center(
               child: CircularProgressIndicator(color: MyColor.getPrimaryColor())
             ) : SingleChildScrollView(
-                padding: Dimensions.defaultPaddingHV,
+                padding: Dimensions.screenPaddingHV,
                 child: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -141,11 +141,9 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
 
                       controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
                         text: MyStrings.verify.tr,
-                        textColor: MyColor.getPrimaryButtonTextColor(),
                         press: (){
                           controller.verifyEmail(controller.currentText);
                         },
-                        color: MyColor.getPrimaryButtonColor(),
                       ),
                       const SizedBox(height: Dimensions.space30),
 

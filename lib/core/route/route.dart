@@ -1,17 +1,17 @@
 import 'package:get/get.dart';
 import 'package:xcash_app/view/components/bottom-nav-bar/bottom_nav_bar.dart';
 import 'package:xcash_app/view/screens/Profile/profile_screen.dart';
+import 'package:xcash_app/view/screens/account/change-password/change_password_screen.dart';
 import 'package:xcash_app/view/screens/add-money/add_money_history/add_money_history_screen.dart';
-import 'package:xcash_app/view/screens/auth/change_password/change_password_screen.dart';
 import 'package:xcash_app/view/screens/auth/email_verification_page/email_verification_screen.dart';
-import 'package:xcash_app/view/screens/auth/forgot_password/forgot_password_screen.dart';
+import 'package:xcash_app/view/screens/auth/forget_password/forget_password/forget_password.dart';
+import 'package:xcash_app/view/screens/auth/forget_password/reset_password/reset_password_screen.dart';
+import 'package:xcash_app/view/screens/auth/forget_password/verify_forget_password/verify_forget_password_screen.dart';
 import 'package:xcash_app/view/screens/auth/login/login_screen.dart';
 import 'package:xcash_app/view/screens/auth/profile_complete/profile_complete_screen.dart';
 import 'package:xcash_app/view/screens/auth/registration/registration_screen.dart';
-import 'package:xcash_app/view/screens/auth/reset_password/reset_password_screen.dart';
 import 'package:xcash_app/view/screens/auth/sms_verification_page/sms_verification_screen.dart';
 import 'package:xcash_app/view/screens/auth/two_factor_screen/two_factor_verification_screen.dart';
-import 'package:xcash_app/view/screens/auth/verify_forget_password/verify_forget_password_screen.dart';
 import 'package:xcash_app/view/screens/edit_profile/edit_profile_screen.dart';
 import 'package:xcash_app/view/screens/invoice/create_invoice/create_invoice_screen.dart';
 import 'package:xcash_app/view/screens/invoice/my_invoice/my_invoice_screen.dart';
@@ -64,7 +64,7 @@ class RouteHelper{
   List<GetPage> routes = [
     GetPage(name: splashScreen, page: () => const SplashScreen()),
     GetPage(name: loginScreen, page: () => const LoginScreen()),
-    GetPage(name: forgotPasswordScreen, page: () => const ForgotPasswordScreen()),
+    GetPage(name: forgotPasswordScreen, page: () => const ForgetPasswordScreen()),
     GetPage(name: changePasswordScreen, page: () => const ChangePasswordScreen()),
     GetPage(name: registrationScreen, page: () => const RegistrationScreen()),
     GetPage(name: profileCompleteScreen, page: () => const ProfileCompleteScreen()),

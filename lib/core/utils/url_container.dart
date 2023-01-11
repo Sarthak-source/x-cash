@@ -1,6 +1,6 @@
 class UrlContainer{
 
-  static const String domainUrl = 'https://script.viserlab.com/hyiplab/demo';
+  static const String domainUrl = 'https://sohan.thesoftking.com/xcash/v4';
   static const String baseUrl = '$domainUrl/api/';
 
 
@@ -70,7 +70,8 @@ class UrlContainer{
   static const String balanceTransfer         = 'balance-transfer';
 
 
-
-
-
+  // make payment
+  static const String makePaymentCheckMerchantUrl = "merchant/exist";
+  static const String makePaymentUrl = "make-payment";
+  static const String makePaymentVerifyOtpUrl = "make-payment";
 }
