@@ -17,7 +17,7 @@ class CustomAmountTextField extends StatefulWidget {
     required this.onChanged,
     this.autoFocus = false,
     this.inputAction,
-    this.readOnly = false
+    this.readOnly = false,
   }) : super(key: key);
 
   final String chargeText;
@@ -67,7 +67,7 @@ class _CustomAmountTextFieldState extends State<CustomAmountTextField> {
                         isFocus = focus;
                       });
                     },
-                    child: TextField(
+                    child: TextFormField(
                       cursorColor: MyColor.colorBlack,
                       readOnly: widget.readOnly,
                       controller: widget.controller,
