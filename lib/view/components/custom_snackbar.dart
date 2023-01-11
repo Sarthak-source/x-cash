@@ -39,7 +39,7 @@ class CustomSnackBar{
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 2,),
-          Text(message,style: regularDefault.copyWith(color: MyColor.getHeadingTextColor())),
+          Text(message,style: regularDefault.copyWith(color: MyColor.colorWhite)),
         ],
       ),
       dismissDirection: DismissDirection.horizontal,
@@ -47,7 +47,7 @@ class CustomSnackBar{
       titleText: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text((!isError? MyStrings.success.tr: MyStrings.error.tr).toLowerCase().capitalizeFirst??'',style: regularLarge.copyWith(color: MyColor.getHeadingTextColor())),
+          Text((!isError? MyStrings.success.tr: MyStrings.error.tr).toLowerCase().capitalizeFirst??'',style: regularLarge.copyWith(color: MyColor.colorWhite)),
           SvgPicture.asset(isError ? MyImages.errorImage : MyImages.errorImage, height: 25,width: 25,color:isError?MyColor.colorRed : MyColor.colorGreen)
         ],
       ),
@@ -92,7 +92,7 @@ class CustomSnackBar{
       titleText: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(MyStrings.error.tr.toLowerCase().capitalizeFirst??MyStrings.error.tr,style: semiBoldSmall.copyWith(fontSize: Dimensions.fontLarge, color: MyColor.getHeadingTextColor())),
+          Text(MyStrings.error.tr.toLowerCase().capitalizeFirst??MyStrings.error.tr,style: semiBoldSmall.copyWith(fontSize: Dimensions.fontLarge, color: MyColor.colorWhite)),
           SvgPicture.asset(MyImages.errorImage, height: 25,width: 25, color: MyColor.colorRed)
         ],
       ),
@@ -137,7 +137,7 @@ class CustomSnackBar{
       titleText: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(MyStrings.success.tr.toLowerCase().capitalizeFirst??MyStrings.success.tr,style: semiBoldSmall.copyWith(fontSize: Dimensions.fontLarge, color: MyColor.getHeadingTextColor())),
+          Text(MyStrings.success.tr.toLowerCase().capitalizeFirst??MyStrings.success.tr,style: semiBoldSmall.copyWith(fontSize: Dimensions.fontLarge, color: MyColor.colorWhite)),
         ],
       ),
       backgroundColor: MyColor.getHeadingTextColor(),
