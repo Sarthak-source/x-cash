@@ -74,4 +74,7 @@ class UrlContainer{
   static const String makePaymentCheckMerchantUrl = "merchant/exist";
   static const String makePaymentUrl = "make-payment";
   static const String makePaymentVerifyOtpUrl = "make-payment";
+
+  // money out
+  static const String moneyOutUrl = "money-out";
 }
