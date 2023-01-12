@@ -14,4 +14,17 @@ class ExchangeMoneyRepo{
 
     return responseModel;
   }
+
+  Future<ResponseModel> confirmExchangeMoney({required String amount, required String fromWalletId, required String toWalletId}) async{
+    String url = "${UrlContainer.baseUrl}${UrlContainer.confirmExchangeMoneyEndPoint}";
+    Map<String, String> map = {
+      "amount" : amount,
+      "from_wallet_id" : fromWalletId.toString(),
+      "to_wallet_id" : toWalletId.toString()
+    };
+
+    ResponseModel responseModel = await apiClient.request(url, Method.postMethod, map, passHeader: true);
+
+    return responseModel;
+  }
 }

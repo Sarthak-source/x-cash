@@ -365,7 +365,7 @@ class FromWallets {
       String? balance, 
       String? createdAt, 
       String? updatedAt,
-      FromWallets? currency,}){
+      FromWalletsCurrency? currency,}){
     _id = id;
     _userId = userId;
     _userType = userType;
@@ -386,7 +386,7 @@ class FromWallets {
     _balance = json['balance'];
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
-    _currency = json['currency'] != null ? FromWallets.fromJson(json['currency']) : null;
+    _currency = json['currency'] != null ? FromWalletsCurrency.fromJson(json['currency']) : null;
   }
   int? _id;
   String? _userId;
@@ -396,7 +396,7 @@ class FromWallets {
   String? _balance;
   String? _createdAt;
   String? _updatedAt;
-  FromWallets? _currency;
+  FromWalletsCurrency? _currency;
 
   int? get id => _id;
   String? get userId => _userId;
@@ -406,7 +406,7 @@ class FromWallets {
   String? get balance => _balance;
   String? get createdAt => _createdAt;
   String? get updatedAt => _updatedAt;
-  FromWallets? get currency => _currency;
+  FromWalletsCurrency? get currency => _currency;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
