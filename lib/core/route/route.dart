@@ -13,6 +13,7 @@ import 'package:xcash_app/view/screens/auth/registration/registration_screen.dar
 import 'package:xcash_app/view/screens/auth/sms_verification_page/sms_verification_screen.dart';
 import 'package:xcash_app/view/screens/auth/two_factor_screen/two_factor_verification_screen.dart';
 import 'package:xcash_app/view/screens/edit_profile/edit_profile_screen.dart';
+import 'package:xcash_app/view/screens/exchange/exchange_money_screen.dart';
 import 'package:xcash_app/view/screens/invoice/create_invoice/create_invoice_screen.dart';
 import 'package:xcash_app/view/screens/invoice/my_invoice/my_invoice_screen.dart';
 import 'package:xcash_app/view/screens/notification/notification_screen.dart';
@@ -61,6 +62,8 @@ class RouteHelper{
   static const String termsServiceScreen = "/terms_services_screen";
   static const String kycScreen = "/kyc_screen";
 
+  static const String exchangeMoneyScreen = "/exchange_money_screen";
+
   List<GetPage> routes = [
     GetPage(name: splashScreen, page: () => const SplashScreen()),
     GetPage(name: loginScreen, page: () => const LoginScreen()),
@@ -82,6 +85,8 @@ class RouteHelper{
     GetPage(name: termsServiceScreen, page: () => const TermsServicesScreen()),
     GetPage(name: transactionHistoryScreen, page: () => const TransactionHistoryScreen()),
     GetPage(name: requestToMeScreen, page: () => const RequestToMeScreen()),
+
+    GetPage(name: exchangeMoneyScreen, page: () => const ExchangeMoneyScreen()),
     // GetPage(name: kycScreen, page: () => const KycScreen()),
 
     GetPage(name: emailVerificationScreen,    page: () =>  EmailVerificationScreen(needSmsVerification: Get.arguments[0],isProfileCompleteEnabled: Get.arguments[1],needTwoFactor: Get.arguments[2],)),
