@@ -92,11 +92,11 @@ class CustomSnackBar{
       titleText: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(MyStrings.error.tr.toLowerCase().capitalizeFirst??MyStrings.error.tr,style: semiBoldSmall.copyWith(fontSize: Dimensions.fontLarge, color: MyColor.colorWhite)),
+          Text(MyStrings.error.tr.toLowerCase().capitalizeFirst??MyStrings.error.tr,style: semiBoldSmall.copyWith(fontSize: Dimensions.fontLarge, color: MyColor.getTextColor())),
           SvgPicture.asset(MyImages.errorImage, height: 25,width: 25, color: MyColor.colorRed)
         ],
       ),
-      backgroundColor: MyColor.colorBlack,
+      backgroundColor: MyColor.getCardBgColor(),
       borderRadius: 4,
       margin: const EdgeInsets.all(8),
       padding: const EdgeInsets.all(10),
