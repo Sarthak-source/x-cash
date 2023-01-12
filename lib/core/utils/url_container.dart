@@ -75,6 +75,9 @@ class UrlContainer{
   static const String makePaymentUrl = "make-payment";
   static const String makePaymentVerifyOtpUrl = "make-payment";
 
+  // add money
+  static const String addMoneyHistoryEndPoint = "deposit/history";
+
   // money out
   static const String moneyOutUrl = "money-out";
 
