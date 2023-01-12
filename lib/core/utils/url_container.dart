@@ -80,4 +80,5 @@ class UrlContainer{
 
   // exchange money
   static const String exchangeMoneyEndPoint = "exchange/money";
+  static const String confirmExchangeMoneyEndPoint = "exchange/money";
 }
