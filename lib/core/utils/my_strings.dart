@@ -503,6 +503,9 @@ class MyStrings{
   static const String rejected  = "Rejected";
   static const String completed  = "Completed";
 
+  static const String fromCurrency = "From Currency";
+  static const String toCurrency = "To Currency";
+
 
 
 
