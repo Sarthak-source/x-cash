@@ -38,37 +38,20 @@ class _HomeScreenState extends State<HomeScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: const [
                       TopSection(),
-
                       SizedBox(height: Dimensions.space30),
-
                       WalletSection(),
-
                       SizedBox(height: Dimensions.space20),
-
                       Expanded(
                         child: WalletCardSection()
                       ),
-
                       SizedBox(height: Dimensions.space20),
                     ],
                   ),
                 ),
               ),
             ),
-
             const SliverToBoxAdapter(
               child: ItemsSection(),
-              /*SizedBox(
-                child: Container(
-                  decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(20.0),
-                        topRight: Radius.circular(20.0),
-                      )
-                  ),
-                  child: const ItemsSection(),
-                ),
-              ),*/
             ),
           ],
         ),

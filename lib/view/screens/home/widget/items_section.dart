@@ -28,9 +28,7 @@ class _ItemsSectionState extends State<ItemsSection> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const ItemsSectionTopPart(),
-
             const SizedBox(height: Dimensions.space25),
-
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: Dimensions.space15),
               child: Row(
@@ -40,7 +38,6 @@ class _ItemsSectionState extends State<ItemsSection> {
                     MyStrings.insights,
                     style: regularDefault.copyWith(fontWeight: FontWeight.w500, height: 2.3),
                   ),
-
                   Row(
                     children: [
                       Text(
@@ -55,11 +52,8 @@ class _ItemsSectionState extends State<ItemsSection> {
                 ],
               ),
             ),
-
             const SizedBox(height: Dimensions.space15),
-
             const CardList(),
-
             const SizedBox(height: Dimensions.space20),
           ],
         ),
