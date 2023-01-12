@@ -64,14 +64,6 @@ class _ExchangeMoneyScreenState extends State<ExchangeMoneyScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                 CustomAmountTextField(
-                      labelText: MyStrings.amount,
-                      hintText: MyStrings.amountHint,
-                      onChanged: (value){},
-                      controller: controller.amountController,
-                      currency: controller.currency
-                  ),
-                 const SizedBox(height: Dimensions.space25),
                  Row(
                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                    children: [
@@ -151,6 +143,14 @@ class _ExchangeMoneyScreenState extends State<ExchangeMoneyScreen> {
                      )
                    ],
                  ),
+                 CustomAmountTextField(
+                    labelText: MyStrings.amount,
+                    hintText: MyStrings.amountHint,
+                    onChanged: (value){},
+                    controller: controller.amountController,
+                    currency: controller.currency
+                ),
+                 const SizedBox(height: Dimensions.space25),
                  const SizedBox(height: Dimensions.space30),
                  RoundedButton(
                    press: (){
