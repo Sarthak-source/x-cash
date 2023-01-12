@@ -95,7 +95,7 @@ class _CustomAmountTextFieldState extends State<CustomAmountTextField> {
               Container(
                 width: 48,
                 padding: const EdgeInsets.all(Dimensions.space5),
-                decoration: BoxDecoration(color: MyColor.getTextColor().withOpacity(0.04), borderRadius: BorderRadius.circular(5)),
+                decoration: BoxDecoration(color: MyColor.getPrimaryColor().withOpacity(0.05), borderRadius: BorderRadius.circular(5)),
                 alignment: Alignment.center,
                 child: Text(widget.currency, textAlign: TextAlign.center, style: regularDefault.copyWith(color: MyColor.getPrimaryColor(), fontWeight: FontWeight.w500)),
               )
