@@ -278,7 +278,7 @@ class Currency {
       int? id, 
       String? currencyCode, 
       String? currencySymbol, 
-      String? currencyFullname, 
+      String? currencyFullName, 
       String? currencyType, 
       String? rate, 
       String? isDefault, 
@@ -289,7 +289,7 @@ class Currency {
     _id = id;
     _currencyCode = currencyCode;
     _currencySymbol = currencySymbol;
-    _currencyFullname = currencyFullname;
+    _currencyFullName = currencyFullName;
     _currencyType = currencyType;
     _rate = rate;
     _isDefault = isDefault;
@@ -303,7 +303,7 @@ class Currency {
     _id = json['id'];
     _currencyCode = json['currency_code'];
     _currencySymbol = json['currency_symbol'];
-    _currencyFullname = json['currency_fullname'];
+    _currencyFullName = json['currency_FullName'];
     _currencyType = json['currency_type'];
     _rate = json['rate'];
     _isDefault = json['is_default'];
@@ -315,7 +315,7 @@ class Currency {
   int? _id;
   String? _currencyCode;
   String? _currencySymbol;
-  String? _currencyFullname;
+  String? _currencyFullName;
   String? _currencyType;
   String? _rate;
   String? _isDefault;
@@ -327,7 +327,7 @@ class Currency {
   int? get id => _id;
   String? get currencyCode => _currencyCode;
   String? get currencySymbol => _currencySymbol;
-  String? get currencyFullname => _currencyFullname;
+  String? get currencyFullName => _currencyFullName;
   String? get currencyType => _currencyType;
   String? get rate => _rate;
   String? get isDefault => _isDefault;
@@ -341,7 +341,7 @@ class Currency {
     map['id'] = _id;
     map['currency_code'] = _currencyCode;
     map['currency_symbol'] = _currencySymbol;
-    map['currency_fullname'] = _currencyFullname;
+    map['currency_FullName'] = _currencyFullName;
     map['currency_type'] = _currencyType;
     map['rate'] = _rate;
     map['is_default'] = _isDefault;
