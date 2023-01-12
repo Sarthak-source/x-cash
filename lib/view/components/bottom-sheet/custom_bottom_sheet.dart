@@ -16,15 +16,20 @@ class CustomBottomSheet{
       context: context,
       builder: (BuildContext context) => SingleChildScrollView(
         physics: const ClampingScrollPhysics(),
-        child: Container(
-          margin: isNeedMargin ? const EdgeInsets.only(left: 15, right: 15, bottom: 15) : EdgeInsets.zero,
-          padding: const EdgeInsets.symmetric(horizontal: Dimensions.space15, vertical: Dimensions.space20),
-          width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            color: MyColor.colorWhite,
-            borderRadius: isNeedMargin ? BorderRadius.circular(15) : const BorderRadius.vertical(top: Radius.circular(15))
+        child: AnimatedPadding(
+          padding: MediaQuery.of(context).viewInsets,
+          duration: const Duration(milliseconds: 50),
+          curve: Curves.decelerate,
+          child: Container(
+            margin: isNeedMargin ? const EdgeInsets.only(left: 15, right: 15, bottom: 15) : EdgeInsets.zero,
+            padding: const EdgeInsets.symmetric(horizontal: Dimensions.space15, vertical: Dimensions.space20),
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              color: MyColor.colorWhite,
+              borderRadius: isNeedMargin ? BorderRadius.circular(15) : const BorderRadius.vertical(top: Radius.circular(15))
+            ),
+            child: child,
           ),
-          child: child,
         ),
       )
     );
