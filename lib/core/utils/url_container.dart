@@ -77,6 +77,8 @@ class UrlContainer{
 
   // add money
   static const String addMoneyHistoryEndPoint = "deposit/history";
+  static const String addMoneyMethodEndPoint = "deposit/methods";
+  static const String addMoneyInsertEndPoint = "deposit/insert";
 
   // money out
   static const String moneyOutUrl = "money-out";
