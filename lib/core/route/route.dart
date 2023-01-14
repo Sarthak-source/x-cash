@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:xcash_app/view/components/bottom-nav-bar/bottom_nav_bar.dart';
 import 'package:xcash_app/view/screens/Profile/profile_screen.dart';
 import 'package:xcash_app/view/screens/account/change-password/change_password_screen.dart';
+import 'package:xcash_app/view/screens/add-money/add_money_details/add_money_screen.dart';
 import 'package:xcash_app/view/screens/add-money/add_money_history/add_money_history_screen.dart';
 import 'package:xcash_app/view/screens/auth/email_verification_page/email_verification_screen.dart';
 import 'package:xcash_app/view/screens/auth/forget_password/forget_password/forget_password.dart';
@@ -37,7 +38,10 @@ class RouteHelper{
   static const String otpScreen = "/otp_screen";
   static const String bottomNavBar = "/bottom_nav_bar";
   static const String myWalletScreen = "/my_wallet_screen";
+
   static const String addMoneyHistoryScreen = "/add_money_history_screen";
+  static const String addMoneyScreen = "/add_money_screen";
+
   static const String profileCompleteScreen = "/profile_complete_screen";
 
   static const String emailVerificationScreen ='/verify_email_screen' ;
@@ -73,7 +77,10 @@ class RouteHelper{
     GetPage(name: profileCompleteScreen, page: () => const ProfileCompleteScreen()),
     GetPage(name: bottomNavBar, page: () => const BottomNavBar()),
     GetPage(name: myWalletScreen, page: () => const MyWalletScreen()),
+
     GetPage(name: addMoneyHistoryScreen, page: () => const AddMoneyHistoryScreen()),
+    GetPage(name: addMoneyScreen, page: () => const AddMoneyScreen()),
+
     GetPage(name: myInvoiceScreen, page: () => const MyInvoiceScreen()),
     GetPage(name: createInvoiceScreen, page: () => const CreateInvoiceScreen()),
     GetPage(name: myVoucherScreen, page: () => const MyVoucherScreen()),
