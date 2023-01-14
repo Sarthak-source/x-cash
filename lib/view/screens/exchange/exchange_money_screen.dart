@@ -143,6 +143,7 @@ class _ExchangeMoneyScreenState extends State<ExchangeMoneyScreen> {
                      )
                    ],
                  ),
+                 const SizedBox(height: Dimensions.space20),
                  CustomAmountTextField(
                     labelText: MyStrings.amount,
                     hintText: MyStrings.amountHint,
@@ -150,7 +151,6 @@ class _ExchangeMoneyScreenState extends State<ExchangeMoneyScreen> {
                     controller: controller.amountController,
                     currency: controller.currency
                 ),
-                 const SizedBox(height: Dimensions.space25),
                  const SizedBox(height: Dimensions.space30),
                  RoundedButton(
                    press: (){
