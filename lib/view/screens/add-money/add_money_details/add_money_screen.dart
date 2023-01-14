@@ -150,7 +150,9 @@ class _AddMoneyScreenState extends State<AddMoneyScreen> {
 
                   const SizedBox(height: Dimensions.space30),
                   controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
-                    press: (){},
+                    press: (){
+                      controller.submitData();
+                    },
                     text: MyStrings.proceed,
                   )
                 ],

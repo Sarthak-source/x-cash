@@ -15,4 +15,17 @@ class AddMoneyMethodRepo{
 
     return responseModel;
   }
+
+  Future<ResponseModel> insertMoney({required String amount, required String methodCode, required String walletId}) async{
+
+    String url = "${UrlContainer.baseUrl}${UrlContainer.addMoneyInsertEndPoint}";
+    Map<String, String> map = {
+      "amount" : amount,
+      "method_code" : methodCode,
+      "wallet_id" : walletId
+    };
+
+    ResponseModel responseModel = await apiClient.request(url, Method.postMethod, map, passHeader: true);
+    return responseModel;
+  }
 }

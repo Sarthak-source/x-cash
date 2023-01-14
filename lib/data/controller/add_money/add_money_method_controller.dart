@@ -1,9 +1,9 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
+import 'package:xcash_app/data/model/add_money/add_money_insert_response_model.dart';
 import 'package:xcash_app/data/model/add_money/add_money_method_response_model.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/repo/add_money/add_money_method_repo.dart';
@@ -96,6 +96,42 @@ class AddMoneyMethodController extends GetxController{
   bool submitLoading = false;
   Future<void> submitData() async{
 
+    if(selectedWallet?.id.toString() == "-1"){
+      CustomSnackBar.error(errorList: [MyStrings.selectAWallet]);
+      return ;
+    }
+
+    if(selectedGateway?.id.toString() == "-1"){
+      CustomSnackBar.error(errorList: [MyStrings.selectGateway]);
+      return ;
+    }
+
+    String amount = amountController.text.toString();
+
+    submitLoading = true;
+    update();
+
+    ResponseModel responseModel = await addMoneyMethodRepo.insertMoney(
+        amount: amount,
+        methodCode: selectedGateway?.methodCode ?? "",
+        walletId: selectedWallet?.id.toString() ?? ""
+    );
+
+    if(responseModel.statusCode == 200){
+      AddMoneyInsertResponseModel model = AddMoneyInsertResponseModel.fromJson(jsonDecode(responseModel.responseJson));
+      if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
+        showWebView(model.data?.redirectUrl ?? "");
+      }
+      else {
+        CustomSnackBar.error(errorList: model.message?.error ?? [MyStrings.somethingWentWrong]);
+      }
+    }
+    else {
+      CustomSnackBar.error(errorList: [responseModel.message]);
+    }
+
+    submitLoading = false;
+    update();
   }
 
   String charge = "";
@@ -113,5 +149,11 @@ class AddMoneyMethodController extends GetxController{
     charge = '${Converter.twoDecimalPlaceFixedWithoutRounding('$totalCharge')} $currency';
     double payable = totalCharge + amount;
     payableText = '$payable $currency';
+    111
+    update();
+  }
+
+  void showWebView(String redirectUrl) {
+    //Get.offAndToNamed(RouteHelper.depositWebScreen, arguments: redirectUrl);
   }
 }
