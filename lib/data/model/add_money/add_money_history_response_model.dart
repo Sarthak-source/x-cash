@@ -68,7 +68,7 @@ class MainData {
 
 class Deposits {
   Deposits({
-      List<Data>? data,
+      List<DepositsData>? data,
       dynamic nextPageUrl, 
       String? path,
       }){
@@ -81,16 +81,16 @@ class Deposits {
     if (json['data'] != null) {
       _data = [];
       json['data'].forEach((v) {
-        _data?.add(Data.fromJson(v));
+        _data?.add(DepositsData.fromJson(v));
       });
     }
     _nextPageUrl = json['next_page_url'];
   }
-  List<Data>? _data;
+  List<DepositsData>? _data;
   dynamic _nextPageUrl;
   String? _path;
 
-  List<Data>? get data => _data;
+  List<DepositsData>? get data => _data;
   dynamic get nextPageUrl => _nextPageUrl;
   String? get path => _path;
 
@@ -106,8 +106,8 @@ class Deposits {
 
 }
 
-class Data {
-  Data({
+class DepositsData {
+  DepositsData({
       int? id, 
       String? userId, 
       String? userType, 
@@ -156,7 +156,7 @@ class Data {
     _currency = currency;
 }
 
-  Data.fromJson(dynamic json) {
+  DepositsData.fromJson(dynamic json) {
     _id = json['id'];
     _userId = json['user_id'].toString();
     _userType = json['user_type'].toString();
