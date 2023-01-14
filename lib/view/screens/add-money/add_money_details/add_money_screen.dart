@@ -14,6 +14,7 @@ import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
 import 'package:xcash_app/view/components/text/label_text.dart';
+import 'package:xcash_app/view/screens/add-money/add_money_details/widget/add_money_info_widget.dart';
 
 class AddMoneyScreen extends StatefulWidget {
   const AddMoneyScreen({Key? key}) : super(key: key);
@@ -127,15 +128,25 @@ class _AddMoneyScreenState extends State<AddMoneyScreen> {
                   CustomAmountTextField(
                     labelText: MyStrings.amount,
                     hintText: MyStrings.amountHint,
-                    onChanged: (value){},
                     currency: controller.currency,
                     controller: controller.amountController,
+                    onChanged: (value){
+                      if(value.toString().isEmpty){
+                        controller.changeInfoWidgetValue(0);
+                      }else{
+                        double amount = double.tryParse(value.toString())??0;
+                        controller.changeInfoWidgetValue(amount);
+                      }
+                    },
                   ),
                   const SizedBox(height: Dimensions.space5),
                   Text(
                     "${MyStrings.depositLimit}: ${controller.depositLimit}",
                     style: regularExtraSmall.copyWith(color: MyColor.getPrimaryColor(), fontWeight: FontWeight.w400),
                   ),
+                  const SizedBox(height: Dimensions.space20),
+
+                  controller.mainAmount > 0 ? const AddMoneyInfoWidget() : const SizedBox(),
 
                   const SizedBox(height: Dimensions.space30),
                   controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(

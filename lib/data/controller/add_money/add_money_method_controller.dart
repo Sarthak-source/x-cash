@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/add_money/add_money_method_response_model.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
@@ -22,6 +23,8 @@ class AddMoneyMethodController extends GetxController{
 
   TextEditingController amountController = TextEditingController();
   String amount = "";
+
+  double mainAmount = 0;
 
   List<AddMoneyWallets> walletList = [];
   List<Gateways> gatewayList = [];
@@ -44,8 +47,11 @@ class AddMoneyMethodController extends GetxController{
   }
 
   setGatewayMethod(Gateways? gateways){
+      String amt = amountController.text.toString();
+      mainAmount = amt.isEmpty ? 0 : double.tryParse(amt) ?? 0;
       selectedGateway = gateways;
       depositLimit = selectedGateway == gatewayList[0] ? "0.00 $currency": selectedGateway?.depositLimit ?? "0.00";
+      changeInfoWidgetValue(mainAmount);
       update();
   }
 
@@ -90,5 +96,22 @@ class AddMoneyMethodController extends GetxController{
   bool submitLoading = false;
   Future<void> submitData() async{
 
+  }
+
+  String charge = "";
+  String payable = "";
+  String payableText = '';
+  void changeInfoWidgetValue(double amount){
+    if(selectedGateway?.id.toString() == "-1"){
+      return ;
+    }
+    mainAmount = amount;
+    double percent = double.tryParse(selectedGateway?.percentCharge??'0')??0;
+    double percentCharge = (amount * percent) / 100;
+    double temCharge = double.tryParse(selectedGateway?.fixedCharge??'0')??0;
+    double totalCharge = percentCharge+temCharge;
+    charge = '${Converter.twoDecimalPlaceFixedWithoutRounding('$totalCharge')} $currency';
+    double payable = totalCharge + amount;
+    payableText = '$payable $currency';
   }
 }
