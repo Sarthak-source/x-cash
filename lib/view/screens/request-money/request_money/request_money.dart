@@ -22,7 +22,7 @@ class RequestMoney extends StatelessWidget {
           ],
         ),
 
-        const CustomDivider(height: Dimensions.space15),
+        const CustomDivider(space: Dimensions.space15),
 
         const RequestMoneyForm()
       ],

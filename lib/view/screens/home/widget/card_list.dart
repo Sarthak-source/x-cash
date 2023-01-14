@@ -98,16 +98,16 @@ class _CardListState extends State<CardList> {
                                 text: data[index]["data"]["title"] == "Money In" ? MyStrings.totalReceived : "Total Spent"
                             ),
 
-                            const CustomDivider(height: Dimensions.space15),
+                            const CustomDivider(space: Dimensions.space15),
 
                             RowIconTextWidget(
                                 image: MyImages.requestMoney1,
                                 text: data[index]["data"]["title"] == "Money In" ? MyStrings.requestMoney : "Send Money"
                             ),
 
-                            const CustomDivider(height: Dimensions.space15),
+                            const CustomDivider(space: Dimensions.space15),
 
-                            RowIconTextWidget(
+                            const RowIconTextWidget(
                                 image: MyImages.viewTransaction,
                                 text: MyStrings.viewTransactions
                             ),

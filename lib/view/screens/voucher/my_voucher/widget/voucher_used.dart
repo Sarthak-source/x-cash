@@ -98,7 +98,7 @@ class _VoucherUsedState extends State<VoucherUsed> {
                   ],
                 ),
 
-                const CustomDivider(height: Dimensions.space15),
+                const CustomDivider(space: Dimensions.space15),
 
                 Text("Used At - ${data[index]["usedAtDate"]} - ${data[index]["usedAtTime"]} am", style: regularSmall)
               ],

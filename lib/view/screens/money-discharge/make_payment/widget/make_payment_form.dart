@@ -140,7 +140,7 @@ class _MakePaymentFormState extends State<MakePaymentForm> {
                             BottomSheetCloseButton()
                           ],
                         ),
-                        const CustomDivider(height: Dimensions.space15),
+                        const CustomDivider(space: Dimensions.space15),
                       ],
                     )
                   ).customBottomSheet(context);

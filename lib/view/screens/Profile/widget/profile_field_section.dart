@@ -48,7 +48,7 @@ class _ProfileFieldSectionState extends State<ProfileFieldSection> {
             ],
           ),
 
-          const CustomDivider(height: Dimensions.space15),
+          const CustomDivider(space: Dimensions.space15),
 
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -65,7 +65,7 @@ class _ProfileFieldSectionState extends State<ProfileFieldSection> {
             ],
           ),
 
-          const CustomDivider(height: Dimensions.space15),
+          const CustomDivider(space: Dimensions.space15),
 
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -82,7 +82,7 @@ class _ProfileFieldSectionState extends State<ProfileFieldSection> {
             ],
           ),
 
-          const CustomDivider(height: Dimensions.space15),
+          const CustomDivider(space: Dimensions.space15),
 
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -99,7 +99,7 @@ class _ProfileFieldSectionState extends State<ProfileFieldSection> {
             ],
           ),
 
-          const CustomDivider(height: Dimensions.space15),
+          const CustomDivider(space: Dimensions.space15),
 
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -116,7 +116,7 @@ class _ProfileFieldSectionState extends State<ProfileFieldSection> {
             ],
           ),
 
-          const CustomDivider(height: Dimensions.space15),
+          const CustomDivider(space: Dimensions.space15),
 
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -133,7 +133,7 @@ class _ProfileFieldSectionState extends State<ProfileFieldSection> {
             ],
           ),
 
-          const CustomDivider(height: Dimensions.space15),
+          const CustomDivider(space: Dimensions.space15),
 
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -150,7 +150,7 @@ class _ProfileFieldSectionState extends State<ProfileFieldSection> {
             ],
           ),
 
-          const CustomDivider(height: Dimensions.space15),
+          const CustomDivider(space: Dimensions.space15),
 
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

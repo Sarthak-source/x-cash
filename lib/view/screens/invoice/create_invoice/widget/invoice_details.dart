@@ -31,7 +31,7 @@ class _InvoiceDetailsState extends State<InvoiceDetails> {
           children: [
             const BottomSheetHeaderText(text: MyStrings.invoiceDetails),
 
-            const CustomDivider(height: Dimensions.space15),
+            const CustomDivider(space: Dimensions.space15),
 
             Form(
               child: Column(
