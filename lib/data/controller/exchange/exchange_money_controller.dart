@@ -39,7 +39,6 @@ class ExchangeMoneyController extends GetxController{
 
   setToWalletMethod(ToWallets? toWallets){
     toWalletMethod = toWallets;
-    currency = toWalletMethod?.id==-1?'':toWalletMethod?.currencyCode ?? " ";
     update();
   }
 
