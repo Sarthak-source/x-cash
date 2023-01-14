@@ -140,7 +140,7 @@ class _MoneyOutFormState extends State<MoneyOutForm> {
                             BottomSheetCloseButton()
                           ],
                         ),
-                        const CustomDivider(height: Dimensions.space15),
+                        const CustomDivider(space: Dimensions.space15),
                       ],
                     )
                   ).customBottomSheet(context);
