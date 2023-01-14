@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/helper/string_format_helper.dart';
+import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/add_money/add_money_insert_response_model.dart';
 import 'package:xcash_app/data/model/add_money/add_money_method_response_model.dart';
@@ -149,11 +150,10 @@ class AddMoneyMethodController extends GetxController{
     charge = '${Converter.twoDecimalPlaceFixedWithoutRounding('$totalCharge')} $currency';
     double payable = totalCharge + amount;
     payableText = '$payable $currency';
-    111
     update();
   }
 
   void showWebView(String redirectUrl) {
-    //Get.offAndToNamed(RouteHelper.depositWebScreen, arguments: redirectUrl);
+    Get.offAndToNamed(RouteHelper.depositWebScreen, arguments: redirectUrl);
   }
 }
