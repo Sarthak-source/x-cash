@@ -29,9 +29,7 @@ class ActivityScreen extends StatelessWidget {
                   Get.toNamed(RouteHelper.transactionHistoryScreen);
                 },
             ),
-
-            const CustomDivider(height: Dimensions.space15),
-
+            const CustomDivider(space: Dimensions.space15),
             RowIconTextWidget(
                 isSvgPicture: true,
                 image: MyImages.requestMe,
@@ -40,9 +38,7 @@ class ActivityScreen extends StatelessWidget {
                   Get.toNamed(RouteHelper.requestToMeScreen);
                 },
             ),
-
-            const CustomDivider(height: Dimensions.space15),
-
+            const CustomDivider(space: Dimensions.space15),
             RowIconTextWidget(
                 isSvgPicture: true,
                 image: MyImages.addMoneyHistory,
@@ -51,9 +47,7 @@ class ActivityScreen extends StatelessWidget {
                   Get.toNamed(RouteHelper.addMoneyHistoryScreen);
                 },
             ),
-
-            const CustomDivider(height: Dimensions.space15),
-
+            const CustomDivider(space: Dimensions.space15),
             RowIconTextWidget(
               isSvgPicture: true,
               image: MyImages.myVoucher,
@@ -62,9 +56,7 @@ class ActivityScreen extends StatelessWidget {
                 Get.toNamed(RouteHelper.myVoucherScreen);
               },
             ),
-
-            const CustomDivider(height: Dimensions.space15),
-
+            const CustomDivider(space: Dimensions.space15),
             RowIconTextWidget(
                 isSvgPicture: true,
                 image: MyImages.withdrawHistory,
