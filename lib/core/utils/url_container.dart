@@ -14,6 +14,9 @@ class UrlContainer{
   static const String referralEndPoint = "my-referrals";
   static const String verify2FAUrl = 'verify-g2fa';
 
+  static const String otpVerify = 'otp-verify';
+  static const String otpResend = 'otp-resend';
+
 
 
   static const String verifyEmailEndPoint='verify-email';
