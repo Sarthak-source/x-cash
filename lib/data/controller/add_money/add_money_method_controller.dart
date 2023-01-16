@@ -154,6 +154,6 @@ class AddMoneyMethodController extends GetxController{
   }
 
   void showWebView(String redirectUrl) {
-    Get.offAndToNamed(RouteHelper.depositWebScreen, arguments: redirectUrl);
+    Get.offAndToNamed(RouteHelper.addMoneyWebScreen, arguments: redirectUrl);
   }
 }
