@@ -66,8 +66,6 @@ class AddMoneyMethodController extends GetxController{
     amountController.text = "";
 
     selectedWallet = AddMoneyWallets(id: -1, currencyCode: MyStrings.selectWallet);
-
-
     walletList.insert(0, selectedWallet!);
     setWallet(selectedWallet);
 

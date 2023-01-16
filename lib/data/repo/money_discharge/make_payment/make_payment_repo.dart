@@ -11,9 +11,35 @@ class MakePaymentRepo{
   Future<dynamic> getMakePaymentWallet() async{
 
     String url = "${UrlContainer.baseUrl}${UrlContainer.makePaymentUrl}";
-    print(url);
     ResponseModel responseModel = await apiClient.request(url, Method.getMethod, null, passHeader: true);
 
     return responseModel;
+  }
+
+
+  Future<ResponseModel> submitPayment({
+    required String walletId,
+    required String amount,
+    required String merchant,
+    required String otpType
+  }) async{
+
+    String url = "${UrlContainer.baseUrl}${UrlContainer.makePaymentVerifyOtpUrl}";
+
+    print(url.toString());
+
+    Map<String, String> params = {
+      "wallet_id" : walletId,
+      "amount" : amount,
+      "merchant" : merchant,
+      "otp_type" : otpType
+    };
+
+    print(params.toString());
+
+    ResponseModel responseModel = await apiClient.request(url, Method.postMethod,params,passHeader: true);
+
+    return responseModel;
+
   }
 }

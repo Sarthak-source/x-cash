@@ -37,7 +37,7 @@ class MoneyOutController extends GetxController{
     update();
   }
 
-  beforeInitLoadData() async{
+  loadData() async{
     currency = moneyOutRepo.apiClient.getCurrencyOrUsername();
     isLoading = true;
     update();

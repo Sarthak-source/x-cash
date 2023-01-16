@@ -107,7 +107,7 @@ class _MakePaymentFormState extends State<MakePaymentForm> {
               ),
               child: DropdownButton(
                 dropdownColor: MyColor.colorWhite,
-                value: controller.initialOtpType,
+                value: controller.selectedOtp,
                 elevation: 8,
                 icon: const Icon(Icons.keyboard_arrow_down, color: MyColor.primaryColor),
                 iconDisabledColor: Colors.red,
@@ -141,6 +141,9 @@ class _MakePaymentFormState extends State<MakePaymentForm> {
                           ],
                         ),
                         const CustomDivider(space: Dimensions.space15),
+                        RoundedButton(text: MyStrings.confirm, press: (){
+                          controller.submitPayment();
+                        })
                       ],
                     )
                   ).customBottomSheet(context);

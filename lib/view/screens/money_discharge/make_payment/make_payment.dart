@@ -8,7 +8,7 @@ import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
-import 'package:xcash_app/view/screens/money-discharge/make_payment/widget/make_payment_form.dart';
+import 'package:xcash_app/view/screens/money_discharge/make_payment/widget/make_payment_form.dart';
 
 class MakePayment extends StatefulWidget {
   const MakePayment({Key? key}) : super(key: key);
@@ -26,7 +26,7 @@ class _MakePaymentState extends State<MakePayment> {
     final controller = Get.put(MakePaymentController(makePaymentRepo: Get.find()));
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      controller.beforeInitLoadData();
+      controller.loadData();
     });
   }
   @override
