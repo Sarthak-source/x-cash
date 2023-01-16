@@ -3,6 +3,7 @@ import 'package:xcash_app/data/model/language/language_model.dart';
 class MyStrings{
 
   static const String appName = "XCash";
+  static const String noActionid = "No action id found";
 
   // onboard-screen
   static const String onboardTitle1 = "Welcome To Xcash\nWallet App";
@@ -505,6 +506,8 @@ class MyStrings{
 
   static const String fromCurrency = "From Currency";
   static const String toCurrency = "To Currency";
+
+  static const String otp = "OTP";
 
 
 
