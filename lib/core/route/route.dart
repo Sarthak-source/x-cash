@@ -18,6 +18,7 @@ import 'package:xcash_app/view/screens/edit_profile/edit_profile_screen.dart';
 import 'package:xcash_app/view/screens/exchange/exchange_money_screen.dart';
 import 'package:xcash_app/view/screens/invoice/create_invoice/create_invoice_screen.dart';
 import 'package:xcash_app/view/screens/invoice/my_invoice/my_invoice_screen.dart';
+import 'package:xcash_app/view/screens/money_discharge/make_payment/otp_screen.dart';
 import 'package:xcash_app/view/screens/notification/notification_screen.dart';
 import 'package:xcash_app/view/screens/request-money/request_to_me/request_to_me_screen.dart';
 import 'package:xcash_app/view/screens/splash/splash_screen.dart';
@@ -70,6 +71,7 @@ class RouteHelper{
 
   static const String exchangeMoneyScreen = "/exchange_money_screen";
 
+
   List<GetPage> routes = [
     GetPage(name: splashScreen, page: () => const SplashScreen()),
     GetPage(name: loginScreen, page: () => const LoginScreen()),
@@ -104,5 +106,7 @@ class RouteHelper{
     GetPage(name: verifyPassCodeScreen,       page: () =>  const VerifyForgetPassScreen()),
     GetPage(name: resetPasswordScreen,        page: () =>  const ResetPasswordScreen()),
     GetPage(name: twoFactorScreen,            page: () =>  TwoFactorVerificationScreen(isProfileCompleteEnable: Get.arguments)),
+
+    GetPage(name: otpScreen,                  page: () =>  OtpScreen(actionId:Get.arguments[0] ,nextRoute: Get.arguments[1],)),
   ];
 }
