@@ -10,7 +10,6 @@ import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart'
 import 'package:xcash_app/view/components/buttons/circle_animated_button_with_text.dart';
 import 'package:xcash_app/view/screens/money_discharge/make_payment/make_payment.dart';
 import 'package:xcash_app/view/screens/money_discharge/money_out/money_out_details.dart';
-import 'package:xcash_app/view/screens/request-money/request_money/request_money.dart';
 import 'package:xcash_app/view/screens/transfer/transfer_money.dart';
 
 class ItemsSectionTopPart extends StatefulWidget {
@@ -39,7 +38,6 @@ class _ItemsSectionTopPartState extends State<ItemsSectionTopPart> {
                 },
               ),
             ),
-            // exchange
             Expanded(
               child: CircleAnimatedButtonWithText(
                 buttonName: MyStrings.exchange,
@@ -49,8 +47,6 @@ class _ItemsSectionTopPartState extends State<ItemsSectionTopPart> {
                 onTap: () => Get.toNamed(RouteHelper.exchangeMoneyScreen)
               ),
             ),
-
-            // make payment
             Expanded(
               child: CircleAnimatedButtonWithText(
                 buttonName: MyStrings.makePayment,
@@ -64,8 +60,6 @@ class _ItemsSectionTopPartState extends State<ItemsSectionTopPart> {
                 },
               ),
             ),
-
-            // invoice
             Expanded(
               child: CircleAnimatedButtonWithText(
                 buttonName: MyStrings.inVoice,
@@ -80,11 +74,9 @@ class _ItemsSectionTopPartState extends State<ItemsSectionTopPart> {
           ],
         ),
         const SizedBox(height: Dimensions.space20),
-
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-
             // voucher
             Expanded(
               child: CircleAnimatedButtonWithText(
@@ -114,27 +106,17 @@ class _ItemsSectionTopPartState extends State<ItemsSectionTopPart> {
                 },
               ),
             ),
-
             Expanded(
-
               child: CircleAnimatedButtonWithText(
-
                 buttonName: MyStrings.requestMoney,
                 height: 40, width: 40,
                 backgroundColor: MyColor.colorWhite,
                 child: SvgPicture.asset(MyImages.requestMoney, color: MyColor.primaryColor, height: 20, width: 20),
-                onTap: (){
-                  CustomBottomSheet(
-                    child: const RequestMoney()
-                  ).customBottomSheet(context);
-                },
+                onTap: () => Get.toNamed(RouteHelper.requestMoneyScreen),
               ),
             ),
-
             Expanded(
-
               child: CircleAnimatedButtonWithText(
-
                 buttonName: MyStrings.withdraw,
                 height: 40, width: 40,
                 backgroundColor: MyColor.colorWhite,
