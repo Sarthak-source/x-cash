@@ -27,6 +27,7 @@ class CustomTextField extends StatefulWidget {
   final bool needLabel;
   final bool readOnly;
   final bool needRequiredSign;
+  final int maxLines;
 
  const CustomTextField({
     Key? key,
@@ -49,7 +50,8 @@ class CustomTextField extends StatefulWidget {
     this.inputAction = TextInputAction.next,
     this.needOutlineBorder = false,
     this.needLabel = true,
-    this.needRequiredSign = false
+    this.needRequiredSign = false,
+    this.maxLines = 1,
   }) : super(key: key);
 
   @override
@@ -69,6 +71,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         widget.needLabel ? LabelText(text: widget.labelText.toString()) : const SizedBox(),
         widget.needLabel ? const SizedBox(height: Dimensions.textToTextSpace): const SizedBox(),
         TextFormField(
+          maxLines: widget.maxLines,
           readOnly: widget.readOnly,
           style: regularDefault.copyWith(color: MyColor.getTextColor()),
           textAlign: TextAlign.left,
@@ -112,6 +115,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         )
       ],
     ) : TextFormField(
+      maxLines: widget.maxLines,
       readOnly: widget.readOnly,
       style: regularDefault.copyWith(color: MyColor.getTextColor()),
       textAlign: TextAlign.left,
