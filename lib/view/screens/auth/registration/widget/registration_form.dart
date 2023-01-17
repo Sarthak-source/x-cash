@@ -37,6 +37,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomTextField(
+                          needOutlineBorder: true,
                 labelText: MyStrings.username.tr,
                 hintText: MyStrings.enterYourUsername.tr,
                 controller: controller.userNameController,
@@ -58,6 +59,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
               ),
               const SizedBox(height: 25),
               CustomTextField(
+                          needOutlineBorder: true,
                 labelText: MyStrings.email.tr,
                 hintText: MyStrings.enterYourEmail.tr,
                 controller: controller.emailController,
@@ -109,6 +111,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                           const SizedBox(width: Dimensions.space5 + 3),
                           Expanded(
                             child: CustomTextField(
+                          needOutlineBorder: true,
                               labelText: MyStrings.phoneNo.tr,
                               hintText: MyStrings.enterYourPhoneNumber.tr,
                               controller: controller.mobileController,
@@ -133,6 +136,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                     controller.changePasswordFocus(hasFocus);
                   },
                   child: CustomTextField(
+                          needOutlineBorder: true,
                     isShowSuffixIcon: true,
                     isPassword: true,
                     labelText: MyStrings.password.tr,
@@ -152,6 +156,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                   )),
               const SizedBox(height: 25),
               CustomTextField(
+                          needOutlineBorder: true,
                 labelText: MyStrings.confirmPassword.tr,
                 hintText: MyStrings.confirmYourPassword.tr,
                 controller: controller.cPasswordController,

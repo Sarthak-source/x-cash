@@ -58,11 +58,9 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
             isShowBackBtn: true,
             bgColor: MyColor.getAppBarColor(),
           ),
-          body: SingleChildScrollView(
+          body: controller.isLoading ? const CustomLoader() : SingleChildScrollView(
             padding: Dimensions.screenPaddingHV,
-            child: controller.isLoading ? const Center(
-              child: CustomLoader()
-            ) : Form(
+            child: Form(
               key: formKey,
               child: Column(
                 children: [

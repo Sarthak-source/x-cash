@@ -38,6 +38,7 @@ class _InvoiceDetailsState extends State<InvoiceDetails> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CustomTextField(
+                          needOutlineBorder: true,
                       labelText: MyStrings.invoiceTo,
                       hintText: "Enter ${MyStrings.invoiceTo}",
                       onChanged: (value){}
@@ -45,6 +46,7 @@ class _InvoiceDetailsState extends State<InvoiceDetails> {
                   const SizedBox(height: Dimensions.space15),
 
                   CustomTextField(
+                          needOutlineBorder: true,
                       labelText: MyStrings.email,
                       hintText: "Enter ${MyStrings.email}",
                       onChanged: (value){}
@@ -52,6 +54,7 @@ class _InvoiceDetailsState extends State<InvoiceDetails> {
                   const SizedBox(height: Dimensions.space15),
 
                   CustomTextField(
+                          needOutlineBorder: true,
                       labelText: MyStrings.address,
                       hintText: "Enter ${MyStrings.address}",
                       onChanged: (value){}

@@ -77,6 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         CustomTextField(
+                          needOutlineBorder: true,
                           controller: controller.emailController,
                           labelText: MyStrings.usernameOrEmail.tr,
                           hintText: MyStrings.usernameOrEmailHint.tr,
@@ -97,6 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         const SizedBox(height: 35),
 
                         CustomTextField(
+                          needOutlineBorder: true,
                           labelText: MyStrings.password.tr,
                           hintText: MyStrings.passwordHint.tr,
                           controller: controller.passwordController,

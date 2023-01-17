@@ -60,7 +60,6 @@ class _VerifyForgetPassScreenState extends State<VerifyForgetPassScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         const SizedBox(height: Dimensions.space50),
-
                         Container(
                           height: 100, width: 100,
                           alignment: Alignment.center,
@@ -75,7 +74,6 @@ class _VerifyForgetPassScreenState extends State<VerifyForgetPassScreen> {
                           padding: const EdgeInsets.symmetric(horizontal: 25),
                             child: DefaultText(text: MyStrings.verifyPasswordSubText.tr, textAlign: TextAlign.center, textColor: MyColor.getContentTextColor())),
                         const SizedBox(height: Dimensions.space40),
-
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: Dimensions.space30),
                           child: PinCodeTextField(
@@ -127,7 +125,6 @@ class _VerifyForgetPassScreenState extends State<VerifyForgetPassScreen> {
                             }
                         ),
                         const SizedBox(height: Dimensions.space25),
-
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

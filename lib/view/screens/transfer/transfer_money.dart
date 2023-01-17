@@ -86,6 +86,7 @@ class _TransferMoneyState extends State<TransferMoney> {
               const SizedBox(height: Dimensions.space15),
 
               CustomTextField(
+                          needOutlineBorder: true,
                   labelText: MyStrings.agentUsernameEmail,
                   hintText: MyStrings.agentUsernameHint,
                   onChanged: (value){}

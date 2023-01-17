@@ -80,6 +80,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                           controller.changePasswordFocus(hasFocus);
                         },
                         child: CustomTextField(
+                            needOutlineBorder: true,
                             labelText: MyStrings.password.tr,
                             focusNode: controller.passwordFocusNode,
                             nextFocus: controller.confirmPasswordFocusNode,
@@ -100,8 +101,8 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                         ),
                       ),
                       const SizedBox(height: Dimensions.space25),
-
                       CustomTextField(
+                          needOutlineBorder: true,
                           inputAction: TextInputAction.done,
                           isPassword: true,
                           labelText: MyStrings.confirmPassword.tr,
@@ -120,7 +121,6 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                         },
                       ),
                       const SizedBox(height: Dimensions.space35),
-
                       controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
                         text: MyStrings.submit.tr,
                         press: () {

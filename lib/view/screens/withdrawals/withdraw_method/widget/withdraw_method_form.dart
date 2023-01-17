@@ -90,6 +90,7 @@ class _WithdrawMethodFormState extends State<WithdrawMethodForm> {
           const SizedBox(height: Dimensions.space15),
 
           CustomTextField(
+                          needOutlineBorder: true,
               labelText: MyStrings.provideNickName,
               hintText: "Enter ${MyStrings.provideNickName.toLowerCase()}",
               onChanged: (value){}
@@ -103,6 +104,7 @@ class _WithdrawMethodFormState extends State<WithdrawMethodForm> {
                 const SizedBox(height: Dimensions.space15),
 
                 CustomTextField(
+                          needOutlineBorder: true,
                     labelText: "Account No.",
                     hintText: "Enter account no.",
                     onChanged: (value){}
@@ -111,6 +113,7 @@ class _WithdrawMethodFormState extends State<WithdrawMethodForm> {
                 const SizedBox(height: Dimensions.space15),
 
                 CustomTextField(
+                          needOutlineBorder: true,
                     labelText: MyStrings.email,
                     hintText: "Enter ${MyStrings.email.toLowerCase()}",
                     onChanged: (value){}
@@ -126,6 +129,7 @@ class _WithdrawMethodFormState extends State<WithdrawMethodForm> {
               children: [
                 const SizedBox(height: Dimensions.space15),
                 CustomTextField(
+                          needOutlineBorder: true,
                     labelText: "Payoneer Email",
                     hintText: "Enter payoneer email",
                     onChanged: (value){}

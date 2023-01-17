@@ -64,6 +64,7 @@ class _ProfileCompleteScreenState extends State<ProfileCompleteScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CustomTextField(
+                          needOutlineBorder: true,
                       labelText: MyStrings.firstName.tr,
                       hintText: "${MyStrings.enterYour.tr} ${MyStrings.firstName.toLowerCase().tr}",
                       textInputType: TextInputType.text,
@@ -78,6 +79,7 @@ class _ProfileCompleteScreenState extends State<ProfileCompleteScreen> {
                     const SizedBox(height: Dimensions.space25),
 
                     CustomTextField(
+                          needOutlineBorder: true,
                       labelText: MyStrings.lastName.tr,
                       hintText: "${MyStrings.enterYour.tr} ${MyStrings.lastName.toLowerCase().tr}",
                       textInputType: TextInputType.text,
@@ -92,6 +94,7 @@ class _ProfileCompleteScreenState extends State<ProfileCompleteScreen> {
                     const SizedBox(height: Dimensions.space25),
 
                     CustomTextField(
+                          needOutlineBorder: true,
                       labelText: MyStrings.address,
                       hintText: "${MyStrings.enterYour.tr} ${MyStrings.address.toLowerCase().tr}",
                       textInputType: TextInputType.text,
@@ -106,6 +109,7 @@ class _ProfileCompleteScreenState extends State<ProfileCompleteScreen> {
                     const SizedBox(height: Dimensions.space25),
 
                     CustomTextField(
+                          needOutlineBorder: true,
                       labelText: MyStrings.state,
                       hintText: "${MyStrings.enterYour.tr} ${MyStrings.state.toLowerCase().tr}",
                       textInputType: TextInputType.text,
@@ -120,6 +124,7 @@ class _ProfileCompleteScreenState extends State<ProfileCompleteScreen> {
                     const SizedBox(height: Dimensions.space25),
 
                     CustomTextField(
+                          needOutlineBorder: true,
                       labelText: MyStrings.city.tr,
                       hintText: "${MyStrings.enterYour.tr} ${MyStrings.city.toLowerCase().tr}",
                       textInputType: TextInputType.text,
@@ -134,6 +139,7 @@ class _ProfileCompleteScreenState extends State<ProfileCompleteScreen> {
                     const SizedBox(height: Dimensions.space25),
 
                     CustomTextField(
+                          needOutlineBorder: true,
                       labelText: MyStrings.zipCode.tr,
                       hintText: "${MyStrings.enterYour.tr} ${MyStrings.zipCode.toLowerCase().tr}",
                       textInputType: TextInputType.text,

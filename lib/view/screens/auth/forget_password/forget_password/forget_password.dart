@@ -66,6 +66,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                             color: MyColor.getTextColor().withOpacity(0.8))),
                     const SizedBox(height: Dimensions.space40),
                     CustomTextField(
+                        needOutlineBorder: true,
                         labelText: MyStrings.usernameOrEmail.tr,
                         hintText: MyStrings.usernameOrEmailHint.tr,
                         textInputType: TextInputType.emailAddress,

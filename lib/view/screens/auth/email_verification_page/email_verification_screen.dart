@@ -97,7 +97,6 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                       const SizedBox(height: Dimensions.space50),
                       Text(MyStrings.viaEmailVerify.tr, maxLines: 2, textAlign: TextAlign.center,style: regularDefault.copyWith(color: MyColor.getLabelTextColor())),
                       const SizedBox(height: 30),
-
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: Dimensions.space30),
                         child: PinCodeTextField(
@@ -138,7 +137,6 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                         ),
                       ),
                       const SizedBox(height: Dimensions.space30),
-
                       controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
                         text: MyStrings.verify.tr,
                         press: (){
@@ -146,7 +144,6 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                         },
                       ),
                       const SizedBox(height: Dimensions.space30),
-
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [

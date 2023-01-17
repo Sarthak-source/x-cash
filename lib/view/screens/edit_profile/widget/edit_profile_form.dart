@@ -29,6 +29,7 @@ class _EditProfileFormState extends State<EditProfileForm> {
         child: Column(
           children: [
             CustomTextField(
+                          needOutlineBorder: true,
                 labelText: MyStrings.firstName,
                 hintText: "Enter ${MyStrings.firstName}",
                 onChanged: (value){}
@@ -36,6 +37,7 @@ class _EditProfileFormState extends State<EditProfileForm> {
             const SizedBox(height: Dimensions.space15),
 
             CustomTextField(
+                          needOutlineBorder: true,
                 labelText: MyStrings.lastName,
                 hintText: "Enter ${MyStrings.lastName}",
                 onChanged: (value){}
@@ -43,6 +45,7 @@ class _EditProfileFormState extends State<EditProfileForm> {
             const SizedBox(height: Dimensions.space15),
 
             CustomTextField(
+                          needOutlineBorder: true,
                 labelText: MyStrings.emailAddress,
                 hintText: "Enter ${MyStrings.emailAddress}",
                 onChanged: (value){}
@@ -50,6 +53,7 @@ class _EditProfileFormState extends State<EditProfileForm> {
             const SizedBox(height: Dimensions.space15),
 
             CustomTextField(
+                          needOutlineBorder: true,
                 labelText: MyStrings.address,
                 hintText: "Enter ${MyStrings.address}",
                 onChanged: (value){}
@@ -57,6 +61,7 @@ class _EditProfileFormState extends State<EditProfileForm> {
             const SizedBox(height: Dimensions.space15),
 
             CustomTextField(
+                          needOutlineBorder: true,
                 labelText: MyStrings.state,
                 hintText: "Enter ${MyStrings.state}",
                 onChanged: (value){}
@@ -64,6 +69,7 @@ class _EditProfileFormState extends State<EditProfileForm> {
             const SizedBox(height: Dimensions.space15),
 
             CustomTextField(
+                          needOutlineBorder: true,
                 labelText: MyStrings.zipCode,
                 hintText: "Enter ${MyStrings.zipCode}",
                 onChanged: (value){}
@@ -71,6 +77,7 @@ class _EditProfileFormState extends State<EditProfileForm> {
             const SizedBox(height: Dimensions.space15),
 
             CustomTextField(
+                          needOutlineBorder: true,
                 labelText: MyStrings.city,
                 hintText: "Enter ${MyStrings.city}",
                 onChanged: (value){}
@@ -78,6 +85,7 @@ class _EditProfileFormState extends State<EditProfileForm> {
             const SizedBox(height: Dimensions.space15),
 
             CustomTextField(
+                          needOutlineBorder: true,
                 labelText: MyStrings.country,
                 hintText: "Enter ${MyStrings.country}",
                 onChanged: (value){}

@@ -41,6 +41,7 @@ class _InvoiceItemsState extends State<InvoiceItems> {
                     SizedBox(
                       width: 120,
                       child: CustomTextField(
+                          needOutlineBorder: true,
                           labelText: MyStrings.itemName,
                           onChanged: (value){}
                       ),
@@ -49,6 +50,7 @@ class _InvoiceItemsState extends State<InvoiceItems> {
                     SizedBox(
                       width: 120,
                       child: CustomTextField(
+                          needOutlineBorder: true,
                           labelText: MyStrings.amount,
                           onChanged: (value){}
                       ),
@@ -91,6 +93,7 @@ class _InvoiceItemsState extends State<InvoiceItems> {
                       SizedBox(
                         width: 120,
                         child: CustomTextField(
+                          needOutlineBorder: true,
                             labelText: MyStrings.itemName,
                             onChanged: (value){}
                         ),
@@ -99,6 +102,7 @@ class _InvoiceItemsState extends State<InvoiceItems> {
                       SizedBox(
                         width: 120,
                         child: CustomTextField(
+                          needOutlineBorder: true,
                             labelText: MyStrings.amount,
                             onChanged: (value){}
                         ),
