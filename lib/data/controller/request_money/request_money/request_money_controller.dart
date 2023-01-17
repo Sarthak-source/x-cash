@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
+import 'package:xcash_app/data/model/authorization/authorization_response_model.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/request_money/request_money/request_money_response_model.dart';
 import 'package:xcash_app/data/repo/request_money/request_money_repo.dart';
@@ -17,16 +18,17 @@ class RequestMoneyController extends GetxController{
   String currency = "";
 
   Wallets? selectedWallet = Wallets();
-  String amount = "";
+  String totalCharge = "";
 
   TextEditingController amountController = TextEditingController();
+  TextEditingController requestToController = TextEditingController();
+  TextEditingController noteController = TextEditingController();
 
   List<Wallets> walletList = [];
 
   setWalletMethod(Wallets? wallets){
     selectedWallet = wallets;
     currency = selectedWallet?.id == -1 ? "" : selectedWallet?.currencyCode ?? "";
-
     update();
   }
 
@@ -38,6 +40,8 @@ class RequestMoneyController extends GetxController{
     walletList.clear();
 
     amountController.text = "";
+    requestToController.text = "";
+    noteController.text = "";
 
     selectedWallet = Wallets(id: -1, currencyCode: MyStrings.selectWallet);
     walletList.insert(0, selectedWallet!);
@@ -62,6 +66,35 @@ class RequestMoneyController extends GetxController{
     }
 
     isLoading = false;
+    update();
+  }
+
+  bool submitLoading = false;
+  Future<void> submitRequest() async{
+
+    submitLoading = true;
+    update();
+
+    String amount = amountController.text;
+    String walletId = selectedWallet?.id.toString() ?? "";
+    String username = requestToController.text;
+
+    ResponseModel responseModel = await requestMoneyRepo.submitRequestMoney(walletId: walletId, amount: amount, username: username);
+    if(responseModel.statusCode == 200){
+      AuthorizationResponseModel model = AuthorizationResponseModel.fromJson(jsonDecode(responseModel.responseJson));
+      if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
+        Get.back();
+        CustomSnackBar.error(errorList: model.message?.success ?? [MyStrings.requestSuccess]);
+      }
+      else{
+        CustomSnackBar.error(errorList: model.message?.error ?? [MyStrings.somethingWentWrong]);
+      }
+    }
+    else{
+      CustomSnackBar.error(errorList: [responseModel.message]);
+    }
+
+    submitLoading = false;
     update();
   }
 }
