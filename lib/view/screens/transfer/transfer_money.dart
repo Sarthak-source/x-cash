@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
+import 'package:xcash_app/data/controller/transfer/transfer_money_controller.dart';
+import 'package:xcash_app/data/repo/transfer/transfer_money_repo.dart';
+import 'package:xcash_app/data/services/api_service.dart';
+import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
-
-import 'package:xcash_app/view/components/divider/custom_divider.dart';
+import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
+import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
-import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
-import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
+import 'package:xcash_app/view/components/text/label_text.dart';
+
+import '../../../data/model/transfer/transfer_money_response_model.dart' as tm_model;
 
 class TransferMoney extends StatefulWidget {
   const TransferMoney({Key? key}) : super(key: key);
@@ -21,123 +26,146 @@ class TransferMoney extends StatefulWidget {
 
 class _TransferMoneyState extends State<TransferMoney> {
 
-  var selectedValue = "Select One";
-  List<String> items = ["Select One", "USD", "NGN", "BDT", "ETH"];
-  int selectedCard = 0;
+  @override
+  void initState() {
+    Get.put(ApiClient(sharedPreferences: Get.find()));
+    Get.put(TransferMoneyRepo(apiClient: Get.find()));
+    final controller = Get.put(TransferMoneyController(transferMoneyRepo: Get.find()));
 
-  var selectOtp = "Select OTP Type";
-  List<String> otpItems = ["Select OTP Type", "Email", "Sms"];
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      controller.loadData();
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const BottomSheetHeaderText(text: MyStrings.transferMoney),
-            GestureDetector(
-              onTap: () => Get.back(),
-              child: Container(
-                height: 30, width: 30,
-                alignment: Alignment.center,
-                padding: const EdgeInsets.all(Dimensions.space5),
-                decoration: const BoxDecoration(color: MyColor.screenBgColor, shape: BoxShape.circle),
-                child: const Icon(Icons.clear, color: MyColor.colorBlack, size: 15),
-              ),
-            )
-          ],
-        ),
-
-        const CustomDivider(),
-
-        Form(
-          child: Column(
-            children: [
-
-              Column(
+    return GetBuilder<TransferMoneyController>(
+      builder: (controller) => SafeArea(
+        child: Scaffold(
+          backgroundColor: MyColor.getScreenBgColor(),
+          appBar: CustomAppBar(
+            isShowBackBtn: true,
+            title: MyStrings.transferMoney,
+            bgColor: MyColor.getAppBarColor(),
+          ),
+          body: controller.isLoading ? const CustomLoader() : SingleChildScrollView(
+            padding: Dimensions.screenPaddingHV,
+            child: Form(
+              key: formKey,
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomDropDownTextField(
-                      labelText: MyStrings.selectWallet,
-                      hintText: selectedValue,
-                      selectedValue: selectedValue,
-                      onChanged: (value){
-                        setState(() {
-                          selectedValue = value.toString();
-                        });
+                  const LabelText(text: MyStrings.selectWallet),
+                  const SizedBox(height: 8),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    padding: const EdgeInsets.only(left: Dimensions.space15, right: Dimensions.space15,),
+                    decoration: BoxDecoration(
+                        color: MyColor.transparentColor,
+                        borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
+                        border: Border.all(color: MyColor.primaryColor, width: 0.5)
+                    ),
+                    child: DropdownButton<tm_model.Wallets>(
+                      dropdownColor: MyColor.colorWhite,
+                      value: controller.selectedWallet,
+                      elevation: 8,
+                      icon: const Icon(Icons.keyboard_arrow_down, color: MyColor.primaryColor),
+                      iconDisabledColor: Colors.red,
+                      iconEnabledColor : MyColor.primaryColor,
+                      isExpanded: true,
+                      underline: Container(height: 0, color: MyColor.primaryColor),
+                      onChanged: (tm_model.Wallets? newValue) {
+                        controller.setSelectedWallet(newValue);
                       },
-                      items: items.map((String val) {
-                        return DropdownMenuItem(
-                            value: val,
-                            child: Text(
-                              val,
-                              style: regularSmall,
-                            )
+                      items: controller.walletList.map((tm_model.Wallets wallet) {
+                        return DropdownMenuItem<tm_model.Wallets>(
+                          value: wallet,
+                          child: Text(wallet.currencyCode.toString(), style: regularDefault),
                         );
                       }).toList(),
+                    ),
                   ),
                   const SizedBox(height: Dimensions.space10 / 2),
-                  Text(MyStrings.chargeAmount, style: regularExtraSmall.copyWith(color: MyColor.primaryColor))
-                ],
-              ),
-
-              const SizedBox(height: Dimensions.space15),
-
-              CustomTextField(
-                          needOutlineBorder: true,
-                  labelText: MyStrings.agentUsernameEmail,
-                  hintText: MyStrings.agentUsernameHint,
-                  onChanged: (value){}
-              ),
-
-              const SizedBox(height: Dimensions.space15),
-
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                  Text(MyStrings.chargeAmount, style: regularExtraSmall.copyWith(color: MyColor.primaryColor)),
+                  
+                  const SizedBox(height: Dimensions.space20),
+                  
+                  CustomTextField(
+                      needOutlineBorder: true,
+                      controller: controller.receiverController,
+                      labelText: MyStrings.receiverUsernameEmail,
+                      hintText: MyStrings.receiverUsernameHint,
+                      onChanged: (value){}
+                  ),
+                  
+                  const SizedBox(height: Dimensions.space20),
+                  
                   CustomAmountTextField(
-                      labelText: MyStrings.amount,
-                      hintText: MyStrings.amountHint,
-                      onChanged: (value){},
-                      currency: '',
+                    labelText: MyStrings.amount,
+                    hintText: MyStrings.amountHint,
+                    onChanged: (value){},
+                    currency: controller.currency,
+                    controller: controller.amountController,
                   ),
                   const SizedBox(height: Dimensions.space10 / 2),
-                  Text(MyStrings.min_max_Amount, style: regularExtraSmall.copyWith(color: MyColor.primaryColor))
+                  Text(MyStrings.minMaxAmount, style: regularExtraSmall.copyWith(color: MyColor.primaryColor)),
+                  
+                  const SizedBox(height: Dimensions.space20),
+                  
+                  const LabelText(text: MyStrings.selectOtp),
+                  const SizedBox(height: 8),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    padding: const EdgeInsets.only(left: Dimensions.space15, right: Dimensions.space15,),
+                    decoration: BoxDecoration(
+                        color: MyColor.transparentColor,
+                        borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
+                        border: Border.all(color: MyColor.primaryColor, width: 0.5)
+                    ),
+                    child: DropdownButton(
+                      dropdownColor: MyColor.colorWhite,
+                      value: controller.selectedOtp,
+                      elevation: 8,
+                      icon: const Icon(Icons.keyboard_arrow_down, color: MyColor.primaryColor),
+                      iconDisabledColor: Colors.red,
+                      iconEnabledColor : MyColor.primaryColor,
+                      isExpanded: true,
+                      underline: Container(height: 0, color: MyColor.primaryColor),
+                      onChanged: (newValue) {
+                        controller.setSelectedOtp(newValue.toString());
+                      },
+                      items: controller.otpTypeList.map((value) {
+                        return DropdownMenuItem(
+                          value: value,
+                          child: Text(value.toString(), style: regularDefault),
+                        );
+                      }).toList(),
+                    ),
+                  ),
+                  const SizedBox(height: Dimensions.space25),
+                  controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
+                    press: (){
+                      if(formKey.currentState!.validate()){
+                        controller.submitTransferMoney();
+                      }
+                    },
+                    text: MyStrings.transferNow,
+                  )
                 ],
               ),
-
-              const SizedBox(height: Dimensions.space20),
-
-              CustomDropDownTextField(
-                  labelText: MyStrings.selectOtp,
-                  hintText: selectOtp,
-                  selectedValue: selectOtp,
-                  onChanged: (value){
-                    setState(() {
-                      selectOtp = value.toString();
-                    });
-                  },
-                  items: otpItems.map((String val){
-                    return DropdownMenuItem(
-                        value: val,
-                        child: Text(
-                          val,
-                          style: regularSmall,
-                        )
-                    );
-                  }).toList()
-              ),
-              const SizedBox(height: Dimensions.space25),
-              RoundedButton(
-                  press: (){},
-                  text: MyStrings.transferNow,
-              )
-            ],
+            ),
           ),
-        )
-      ],
+        ),
+      ),
     );
   }
 }
