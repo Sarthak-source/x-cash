@@ -88,9 +88,6 @@ class MakePaymentController extends GetxController{
   }
 
   bool submitLoading = false;
-
-
-
   void submitPayment() async{
 
     submitLoading = true;

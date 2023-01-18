@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/screens/request-money/request_to_me/widget/to_me_list.dart';
@@ -21,9 +22,11 @@ class _RequestToMeScreenState extends State<RequestToMeScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: MyColor.screenBgColor,
-        appBar: const CustomAppBar(
-          title: "Money Request",
-         /* actions: [
+        appBar: CustomAppBar(
+          title: MyStrings.moneyRequestToMe,
+          isShowBackBtn: true,
+          bgColor: MyColor.getAppBarColor(),
+          /* actions: [
             Padding(
               padding: const EdgeInsets.only(right: Dimensions.space15),
               child: GestureDetector(
@@ -46,10 +49,8 @@ class _RequestToMeScreenState extends State<RequestToMeScreen> {
           ],
           changeRoute: () => Get.back(),*/
         ),
-
         body: Column(
           children: [
-
             Padding(
               padding: const EdgeInsets.only(top: Dimensions.space20, left: Dimensions.space15, right: Dimensions.space15),
               child: Container(
@@ -67,16 +68,13 @@ class _RequestToMeScreenState extends State<RequestToMeScreen> {
                 ),
               ),
             ),
-
             const SizedBox(height: Dimensions.space20),
-
             selectedIndex == 0 ? const SizedBox() : const Expanded(child: ToMeList()),
           ],
         ),
       ),
     );
   }
-
   middleButtons(String buttonName, int index) {
     return Expanded(
       child: GestureDetector(
@@ -86,24 +84,20 @@ class _RequestToMeScreenState extends State<RequestToMeScreen> {
             });
           },
           child: index == selectedIndex ? Container(
-
             width: 150,
             alignment: Alignment.center,
             padding: const EdgeInsets.symmetric(vertical: Dimensions.space10 / 2, horizontal: Dimensions.space10),
             decoration: BoxDecoration(
-
                 color: index == selectedIndex ? MyColor.primaryColor : MyColor.primaryColor,
                 borderRadius: index == 0 ? const BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10)) :
                 const BorderRadius.only(topRight: Radius.circular(10), bottomRight: Radius.circular(10))
             ),
             child: Text(buttonName, textAlign: TextAlign.center, style: regularSmall.copyWith(color: index == selectedIndex ? MyColor.colorWhite : MyColor.primaryColor)),
           ) : Container(
-
             width: 150,
             alignment: Alignment.center,
             padding: const EdgeInsets.symmetric(vertical: Dimensions.space10 / 2, horizontal: Dimensions.space10),
             decoration: BoxDecoration(
-
                 color: Colors.transparent,
                 borderRadius: BorderRadius.circular(10)
             ),

@@ -59,7 +59,7 @@ class _CreateVoucherFormState extends State<CreateVoucherForm> {
                 currency: '',
               ),
               const SizedBox(height: Dimensions.space5),
-              Text(MyStrings.min_max_Amount, style: regularExtraSmall.copyWith(color: MyColor.primaryColor))
+              Text(MyStrings.minMaxAmount, style: regularExtraSmall.copyWith(color: MyColor.primaryColor))
             ],
           ),
           const SizedBox(height: Dimensions.space20),

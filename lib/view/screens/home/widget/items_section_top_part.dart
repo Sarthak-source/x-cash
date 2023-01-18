@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/buttons/circle_animated_button_with_text.dart';
-import 'package:xcash_app/view/screens/money_discharge/make_payment/make_payment.dart';
-import 'package:xcash_app/view/screens/money_discharge/money_out/money_out_details.dart';
 import 'package:xcash_app/view/screens/transfer/transfer_money.dart';
 
 class ItemsSectionTopPart extends StatefulWidget {
@@ -53,11 +51,7 @@ class _ItemsSectionTopPartState extends State<ItemsSectionTopPart> {
                 height: 40, width: 40,
                 backgroundColor: MyColor.colorWhite,
                 child: SvgPicture.asset(MyImages.makePayment, color: MyColor.primaryColor, height: 20, width: 20),
-                onTap: (){
-                  CustomBottomSheet(
-                    child: const MakePayment()
-                  ).customBottomSheet(context);
-                },
+                onTap: () => Get.toNamed(RouteHelper.makePaymentScreen)
               ),
             ),
             Expanded(
@@ -85,25 +79,17 @@ class _ItemsSectionTopPartState extends State<ItemsSectionTopPart> {
                 backgroundColor: MyColor.colorWhite,
                 child: Image.asset(MyImages.moneyOut2, color: MyColor.primaryColor, height: 20, width: 20),
                 onTap: (){
-                  CustomBottomSheet(
-                      child: const MoneyOutDetails()
-                  ).customBottomSheet(context);
+                  Get.toNamed(RouteHelper.moneyOutScreen);
                 },
               ),
             ),
-
-            // transfer
             Expanded(
               child: CircleAnimatedButtonWithText(
                 buttonName: MyStrings.transfer,
                 height: 40, width: 40,
                 backgroundColor: MyColor.colorWhite,
                 child: SvgPicture.asset(MyImages.transfer, color: MyColor.primaryColor, height: 20, width: 20),
-                onTap: (){
-                  CustomBottomSheet(
-                    child: const TransferMoney()
-                  ).customBottomSheet(context);
-                },
+                onTap: () => Get.toNamed(RouteHelper.transferMoneyScreen)
               ),
             ),
             Expanded(
