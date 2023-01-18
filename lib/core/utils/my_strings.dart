@@ -101,7 +101,9 @@ class MyStrings{
   // transfer-money
   static const String selectWallet = "Select Wallet";
   static const String agentUsernameEmail = "Agent Username / Email";
+  static const String receiverUsernameEmail = "Receiver Username / Email";
   static const String agentUsernameHint = "Enter agent username / email";
+  static const String receiverUsernameHint = "Enter receiver username / email";
   static const String amount = "Amount";
   static const String amountHint = "Enter amount";
   static const String otpBySMS = "OTP by SMS";
@@ -109,7 +111,7 @@ class MyStrings{
   static const String otpByGoogleAuth = "OTP by Google Authentication";
   static const String transferNow = "Transfer Now";
   static const String chargeAmount = "Charge : 50 USD";
-  static const String min_max_Amount = "Min: 50 USD -- Max: 1000 USD";
+  static const String minMaxAmount = "Min: 50 USD -- Max: 1000 USD";
 
   // add money-history bottom-sheet
   static const String date = "Date";
@@ -436,7 +438,7 @@ class MyStrings{
   static const String successfullyCodeResend  = 'Resend the code successfully';
   static const String resendCodeFail          = 'Failed to resend code';
   static const String somethingWentWrong      = 'Something went wrong';
-  static const String nocolorRedirectUrlFound      = 'No colorRedirect url found';
+  static const String noColorRedirectUrlFound = 'No colorRedirect url found';
   static const String invalidAmount           = 'Invalid amount';
   static const String searchResult            = 'Search Result';
   static const String resetPassMsg            = "Enter your email or username below to receive a password reset verification code";
@@ -508,6 +510,7 @@ class MyStrings{
   static const String toCurrency = "To Currency";
 
   static const String otp = "OTP";
+  static const String moneyRequestToMe = "Money Requests to Me";
 
 
 
