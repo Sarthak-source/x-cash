@@ -18,13 +18,16 @@ import 'package:xcash_app/view/screens/edit_profile/edit_profile_screen.dart';
 import 'package:xcash_app/view/screens/exchange/exchange_money_screen.dart';
 import 'package:xcash_app/view/screens/invoice/create_invoice/create_invoice_screen.dart';
 import 'package:xcash_app/view/screens/invoice/my_invoice/my_invoice_screen.dart';
+import 'package:xcash_app/view/screens/money_discharge/make_payment/make_payment.dart';
 import 'package:xcash_app/view/screens/money_discharge/make_payment/otp_screen.dart';
+import 'package:xcash_app/view/screens/money_discharge/money_out/money_out.dart';
 import 'package:xcash_app/view/screens/notification/notification_screen.dart';
 import 'package:xcash_app/view/screens/request-money/request_money/request_money.dart';
 import 'package:xcash_app/view/screens/request-money/request_to_me/request_to_me_screen.dart';
 import 'package:xcash_app/view/screens/splash/splash_screen.dart';
 import 'package:xcash_app/view/screens/terms-services/terms_services_screen.dart';
 import 'package:xcash_app/view/screens/transaction/transaction_history_screen.dart';
+import 'package:xcash_app/view/screens/transfer/transfer_money.dart';
 import 'package:xcash_app/view/screens/voucher/my_voucher/my_voucher_screen.dart';
 import 'package:xcash_app/view/screens/wallet/my_wallet_screen.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_history/withdraw_history_screen.dart';
@@ -74,6 +77,11 @@ class RouteHelper{
 
   static const String requestMoneyScreen = "/request_money_screen";
 
+  static const String makePaymentScreen = "/make_payment_screen";
+  static const String moneyOutScreen = "/money_out_screen";
+
+  static const String transferMoneyScreen = "/transfer_money_screen";
+
 
   List<GetPage> routes = [
     GetPage(name: splashScreen, page: () => const SplashScreen()),
@@ -104,14 +112,19 @@ class RouteHelper{
     GetPage(name: exchangeMoneyScreen, page: () => const ExchangeMoneyScreen()),
     // GetPage(name: kycScreen, page: () => const KycScreen()),
 
-    GetPage(name: emailVerificationScreen,    page: () =>  EmailVerificationScreen(needSmsVerification: Get.arguments[0],isProfileCompleteEnabled: Get.arguments[1],needTwoFactor: Get.arguments[2],)),
-    GetPage(name: smsVerificationScreen,      page: () =>  const SmsVerificationScreen()),
-    GetPage(name: verifyPassCodeScreen,       page: () =>  const VerifyForgetPassScreen()),
-    GetPage(name: resetPasswordScreen,        page: () =>  const ResetPasswordScreen()),
-    GetPage(name: twoFactorScreen,            page: () =>  TwoFactorVerificationScreen(isProfileCompleteEnable: Get.arguments)),
+    GetPage(name: emailVerificationScreen, page: () =>  EmailVerificationScreen(needSmsVerification: Get.arguments[0],isProfileCompleteEnabled: Get.arguments[1],needTwoFactor: Get.arguments[2],)),
+    GetPage(name: smsVerificationScreen, page: () =>  const SmsVerificationScreen()),
+    GetPage(name: verifyPassCodeScreen, page: () =>  const VerifyForgetPassScreen()),
+    GetPage(name: resetPasswordScreen, page: () =>  const ResetPasswordScreen()),
+    GetPage(name: twoFactorScreen, page: () =>  TwoFactorVerificationScreen(isProfileCompleteEnable: Get.arguments)),
 
-    GetPage(name: otpScreen,                  page: () =>  OtpScreen(actionId:Get.arguments[0] ,nextRoute: Get.arguments[1],)),
+    GetPage(name: otpScreen, page: () =>  OtpScreen(actionId:Get.arguments[0] ,nextRoute: Get.arguments[1],)),
 
-    GetPage(name: requestMoneyScreen,        page: () =>  const RequestMoneyScreen()),
+    GetPage(name: requestMoneyScreen, page: () =>  const RequestMoneyScreen()),
+
+    GetPage(name: makePaymentScreen, page: () =>  const MakePaymentScreen()),
+    GetPage(name: moneyOutScreen, page: () =>  const MoneyOutScreen()),
+
+    GetPage(name: transferMoneyScreen, page: () =>  const TransferMoney()),
   ];
 }
