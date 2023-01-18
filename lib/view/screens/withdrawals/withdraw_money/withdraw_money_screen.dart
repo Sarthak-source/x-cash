@@ -22,9 +22,9 @@ class WithdrawMoneyScreen extends StatefulWidget {
 class _WithdrawMoneyScreenState extends State<WithdrawMoneyScreen> {
 
   List<Map<String, dynamic>> data = [
-    {"bankImage" : MyImages.basic, "bankName" : MyStrings.basic, "amount" : MyStrings.min_max_Amount, "charge" : 2.00, "rate" : 1.00},
-    {"bankImage" : MyImages.payoneer, "bankName" : MyStrings.payoneer, "amount" : MyStrings.min_max_Amount, "charge" : 2.00, "rate" : 1.00},
-    {"bankImage" : MyImages.paypal, "bankName" : MyStrings.paypal, "amount" : MyStrings.min_max_Amount, "charge" : 2.00, "rate" : 1.00},
+    {"bankImage" : MyImages.basic, "bankName" : MyStrings.basic, "amount" : MyStrings.minMaxAmount, "charge" : 2.00, "rate" : 1.00},
+    {"bankImage" : MyImages.payoneer, "bankName" : MyStrings.payoneer, "amount" : MyStrings.minMaxAmount, "charge" : 2.00, "rate" : 1.00},
+    {"bankImage" : MyImages.paypal, "bankName" : MyStrings.paypal, "amount" : MyStrings.minMaxAmount, "charge" : 2.00, "rate" : 1.00},
   ];
 
   @override
