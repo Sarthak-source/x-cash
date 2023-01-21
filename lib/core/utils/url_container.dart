@@ -97,4 +97,6 @@ class UrlContainer{
 
   static const String transferMoneyEndPoint = "transfer/money";
   static const String transferMoneySubmitEndPoint = "transfer/money";
+
+  static const String walletsEndPoint = "wallets";
 }
