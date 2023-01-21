@@ -17,6 +17,8 @@ class MyStrings{
   static const String getStarted = "Get Started";
   static const String paymentPreview = "Payment Preview";
 
+  static const String enterTransactionNo = "Enter transaction no.";
+
   // login-screen
   static const String welcomeBack = "Welcome Back!";
   static const String loginSubTitle = "We happy to see you here again. Enter your\nusername and password";
@@ -27,7 +29,7 @@ class MyStrings{
   static const String rememberMe = "Remember Me";
   static const String forgotPassword = "Forgot Password?";
   static const String signIn = "Sign In";
-  static const String donotAccount = "Don't have an account?";
+  static const String doNotAccount = "Don't have an account?";
 
   // register-screen
   static const String createAnAccount = "Create An Account";
@@ -425,16 +427,16 @@ class MyStrings{
   static const String version = 'version';
   static const String logoutSuccessMsg = 'Sign Out Successfully';
   static  RegExp emailValidatorRegExp = RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
-  static const String invalidEmailMsg         = "Enter valid email";
-  static const String enterCurrentPass        = "Enter your current password";
-  static const String enterNewPass            = "Enter your new password";
-  static const String invalidPassMsg          = "Password must be contain 1 special character and number";
-  static const String kMatchPassError         = "Password doesn't match";
-  static const String kFirstNameNullError     = "Enter first name";
-  static const String kLastNameNullError      = "Enter last name";
-  static const String kShortUserNameError     = "Username must be 6 character";
-  static const String phoneNumber             = "Phone Number";
-  static const String passVerification        = 'Password Verification';
+  static const String invalidEmailMsg = "Enter valid email";
+  static const String enterCurrentPass = "Enter your current password";
+  static const String enterNewPass = "Enter your new password";
+  static const String invalidPassMsg = "Password must be contain 1 special character and number";
+  static const String kMatchPassError = "Password doesn't match";
+  static const String kFirstNameNullError = "Enter first name";
+  static const String kLastNameNullError = "Enter last name";
+  static const String kShortUserNameError = "Username must be 6 character";
+  static const String phoneNumber = "Phone Number";
+  static const String passVerification = 'Password Verification';
   static const String successfullyCodeResend  = 'Resend the code successfully';
   static const String resendCodeFail          = 'Failed to resend code';
   static const String somethingWentWrong      = 'Something went wrong';
@@ -506,14 +508,15 @@ class MyStrings{
   static const String rejected  = "Rejected";
   static const String completed  = "Completed";
 
+  static const String transactionType  = "Transaction Type";
+  static const String operationType  = "Operation Type";
+  static const String historyFrom  = "History From";
+
   static const String fromCurrency = "From Currency";
   static const String toCurrency = "To Currency";
 
   static const String otp = "OTP";
   static const String moneyRequestToMe = "Money Requests to Me";
-
-
-
 
 
   static List<LanguageModel> languages = [

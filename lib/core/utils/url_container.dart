@@ -26,11 +26,11 @@ class UrlContainer{
   static const String authorizationCodeEndPoint='authorization';
 
 
-  static const String dashBoardUrl='dashboard';
-  static const String depositHistoryUrl='deposit/history';
-  static const String depositMethodUrl='deposit/methods';
-  static const String depositInsertUrl='deposit/insert';
-  static const String transactionEndpoint='transactions';
+  static const String dashBoardUrl = 'dashboard';
+  static const String depositHistoryUrl = 'deposit/history';
+  static const String depositMethodUrl = 'deposit/methods';
+  static const String depositInsertUrl = 'deposit/insert';
+  static const String transactionEndpoint = 'transactions';
 
 
   //withdraw
