@@ -27,6 +27,8 @@ class _WalletCardSectionState extends State<WalletCardSection> {
         itemBuilder: (context, index) => Padding(
           padding: EdgeInsets.only(left: index == 0 ? 10 : 5, right: Dimensions.space10),
           child: CustomCard(
+            paddingTop: 12,
+            paddingBottom: 12,
             width: MediaQuery.of(context).size.width * 0.85,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,15 +39,11 @@ class _WalletCardSectionState extends State<WalletCardSection> {
                       isSvgImage: true,
                       image: MyImages.transferMoney,
                     ),
-
                     const SizedBox(width: Dimensions.space10),
-
                     Text("674,475,999,995,140.00 USD", style: regularLarge.copyWith(fontWeight: FontWeight.w600))
                   ],
                 ),
-
                 const CustomDivider(),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
