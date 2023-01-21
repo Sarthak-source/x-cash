@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
-import 'package:xcash_app/view/components/buttons/rounded_button.dart';
-
-import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
+import 'package:xcash_app/data/controller/transaction/transaction_history_controller.dart';
+import 'package:xcash_app/view/screens/transaction/widget/bottom_sheet.dart';
+import 'package:xcash_app/view/screens/transaction/widget/filter_row_widget.dart';
 
 class FiltersField extends StatefulWidget {
   const FiltersField({Key? key}) : super(key: key);
@@ -15,133 +18,145 @@ class FiltersField extends StatefulWidget {
 
 class _FiltersFieldState extends State<FiltersField> {
 
-  var selectValue1 = "All Type";
-  var selectValue2 = "All Operations";
-  var selectValue3 = "All Time";
-  var selectValue4 = "All Currency";
-
-  List<String> transactionTypes = ["All Type", "Plus Transaction", "Minus Transaction"];
-  List<String> operationTypes = ["All Operations", "Add Money", "Exchange Money"];
-  List<String> historyTypes = ["All Time", "Last 7 Days", "Last 15 Days"];
-  List<String> currencyTypes = ["All Currency", "TRX", "USD", "BCH", "BDT", "BTC", "BTL", "CNY", "ETH", "EUR"];
-
   @override
   Widget build(BuildContext context) {
-    return Container(
-        height: 80,
-        width: MediaQuery.of(context).size.width,
-        color: MyColor.transparentColor,
-        child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          physics: const BouncingScrollPhysics(),
-          child: Row(
+    return GetBuilder<TransactionHistoryController>(
+      builder: (controller) => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(MyStrings.transactionType, style: regularSmall.copyWith(color: MyColor.colorGrey)),
+                    const SizedBox(height: Dimensions.space10),
+                    SizedBox(
+                      width: 150,
+                      child: FilterRowWidget(
+                          fromTrx: true,
+                          text: controller.selectedTransactionType.isEmpty ? MyStrings.trxType : controller.selectedTransactionType,
+                          press: () {
+                            showTrxBottomSheet(controller.transactionTypeList, 1, context: context);
+                          }),
+                    ),
+                  ],
+                ),
+                const SizedBox(width: Dimensions.space15),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(MyStrings.operationType, style: regularSmall.copyWith(color: MyColor.colorGrey)),
+                    const SizedBox(height: Dimensions.space10),
+                    SizedBox(
+                      width: 150,
+                      child: FilterRowWidget(
+                          fromTrx: true,
+                          text: Converter.replaceUnderscoreWithSpace(controller.selectedOperationType.isEmpty ? MyStrings.any : controller.selectedOperationType),
+                          press: () {
+                            showTrxBottomSheet(controller.operationTypeList.map((e) => e.toString()).toList(), 2,context: context);
+                          }),
+                    ),
+                  ],
+                ),
+                const SizedBox(width: Dimensions.space15),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(MyStrings.historyFrom, style: regularSmall.copyWith(color: MyColor.colorGrey)),
+                    const SizedBox(height: Dimensions.space10),
+                    SizedBox(
+                      width: 150,
+                      child: FilterRowWidget(
+                          fromTrx: true,
+                          text: Converter.replaceUnderscoreWithSpace(controller.selectedHistoryFrom.isEmpty? MyStrings.any : controller.selectedHistoryFrom),
+                          press: () {
+                            showTrxBottomSheet(controller.historyFormList.map((e) => e.toString()).toList(), 3,context: context);
+                          }),
+                    ),
+                  ],
+                ),
+                const SizedBox(width: Dimensions.space15),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(MyStrings.walletCurrency, style: regularSmall.copyWith(color: MyColor.colorGrey)),
+                    const SizedBox(height: Dimensions.space10),
+                    SizedBox(
+                      width: 150,
+                      child: FilterRowWidget(
+                          fromTrx: true,
+                          text: Converter.replaceUnderscoreWithSpace(controller.selectedWalletCurrency.isEmpty? MyStrings.any : controller.selectedWalletCurrency),
+                          press: () {
+                            showTrxBottomSheet(controller.walletCurrencyList.map((e) => e.toString()).toList(), 4,context: context);
+                          }
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: Dimensions.space15),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              SizedBox(
-                width: 170,
-                child: CustomDropDownTextField(
-                    labelText: "Transaction Type",
-                    selectedValue: selectValue1,
-                    onChanged: (value){
-                      setState(() {
-                        selectValue1 = value.toString();
-                      });
-                    },
-                    items: transactionTypes.map((String val){
-                      return DropdownMenuItem(
-                          value: val,
-                          child: Text(
-                            val,
-                            style: regularSmall,
-                          )
-                      );
-                    }).toList()
+              Expanded(
+                flex: 3,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(MyStrings.transactionNo, style: regularSmall.copyWith(color: MyColor.colorGrey, fontWeight: FontWeight.w500)),
+                    const SizedBox(height: Dimensions.space5),
+                    SizedBox(
+                      height: 45,
+                      width: MediaQuery.of(context).size.width,
+                      child: TextFormField(
+                        cursorColor: MyColor.primaryColor,
+                        style: regularSmall.copyWith(color: MyColor.colorBlack),
+                        keyboardType: TextInputType.text,
+                        controller: controller.trxController,
+                        decoration: InputDecoration(
+                            hintText: MyStrings.enterTransactionNo,
+                            contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+                            hintStyle: regularSmall.copyWith(color: MyColor.hintTextColor),
+                            filled: true,
+                            fillColor: MyColor.transparentColor,
+                            border: const OutlineInputBorder(borderSide: BorderSide(color: MyColor.colorGrey, width: 0.5)),
+                            enabledBorder: const OutlineInputBorder(borderSide: BorderSide(color: MyColor.colorGrey, width: 0.5)),
+                            focusedBorder: const OutlineInputBorder(borderSide: BorderSide(color: MyColor.primaryColor, width: 0.5))
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-
               const SizedBox(width: Dimensions.space10),
-
-              SizedBox(
-                width: 170,
-                child: CustomDropDownTextField(
-                    labelText: "Operation Type",
-                    selectedValue: selectValue2,
-                    onChanged: (value){
-                      setState(() {
-                        selectValue2 = value.toString();
-                      });
-                    },
-                    items: operationTypes.map((String val){
-                      return DropdownMenuItem(
-                          value: val,
-                          child: Text(
-                            val,
-                            style: regularSmall,
-                          )
-                      );
-                    }).toList()
-                ),
-              ),
-
-              const SizedBox(width: Dimensions.space10),
-
-              SizedBox(
-                width: 170,
-                child: CustomDropDownTextField(
-                    labelText: "History Form",
-                    selectedValue: selectValue3,
-                    onChanged: (value){
-                      setState(() {
-                        selectValue3 = value.toString();
-                      });
-                    },
-                    items: historyTypes.map((String val){
-                      return DropdownMenuItem(
-                          value: val,
-                          child: Text(
-                            val,
-                            style: regularSmall,
-                          )
-                      );
-                    }).toList()
-                ),
-              ),
-
-              const SizedBox(width: Dimensions.space10),
-
-              SizedBox(
-                width: 170,
-                child: CustomDropDownTextField(
-                    labelText: "Wallet Currency",
-                    selectedValue: selectValue4,
-                    onChanged: (value){
-                      setState(() {
-                        selectValue4 = value.toString();
-                      });
-                    },
-                    items: currencyTypes.map((String val){
-                      return DropdownMenuItem(
-                          value: val,
-                          child: Text(
-                            val,
-                            style: regularSmall,
-                          )
-                      );
-                    }).toList()
-                ),
-              ),
-
-              const SizedBox(width: Dimensions.space10),
-
-              Padding(
-                padding: const EdgeInsets.only(top: 25),
-                child: RoundedButton(
-                    press: (){},
-                    text: "Apply",
+              InkWell(
+                onTap: () {
+                  controller.filterData();
+                },
+                child: Container(
+                  height: 45,
+                  width: 45,
+                  padding: const EdgeInsets.all(4),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(4), color: MyColor.primaryColor),
+                  child: const Icon(
+                      Icons.search_outlined,
+                      color: MyColor.colorWhite,
+                      size: 18
+                  ),
                 ),
               )
             ],
           ),
-        )
+          const SizedBox(height: Dimensions.space20),
+        ],
+      ),
     );
   }
 }

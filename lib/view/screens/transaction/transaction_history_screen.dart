@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xcash_app/core/route/route.dart';
+import 'package:xcash_app/core/helper/date_converter.dart';
+import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
-import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
-import 'package:xcash_app/view/components/card/custom_card.dart';
-import 'package:xcash_app/view/components/text-form-field/custom_search_field.dart';
+import 'package:xcash_app/data/controller/transaction/transaction_history_controller.dart';
+import 'package:xcash_app/data/repo/transaction/transaction_repo.dart';
+import 'package:xcash_app/data/services/api_service.dart';
+import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
+import 'package:xcash_app/view/components/custom_no_data_found_class.dart';
+import 'package:xcash_app/view/screens/transaction/widget/custom_transaction_card.dart';
 import 'package:xcash_app/view/screens/transaction/widget/filters_field.dart';
 
 class TransactionHistoryScreen extends StatefulWidget {
@@ -20,217 +24,131 @@ class TransactionHistoryScreen extends StatefulWidget {
 
 class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
 
-  bool isVisible = false;
-  bool isVisible2 = false;
+  final ScrollController scrollController = ScrollController();
 
-  List<Map<String, String>> data = [
-    {"image" : MyImages.arrowRightDown2, "title" : "Add Money", "date" : "Sep 12, 2022", "time" : "6:00 am", "amount" : "790.00 USD", "status" : "Successful"},
-    {"image" : MyImages.arrowRightUp2, "title" : "Exchange Money", "date" : "Sep 12, 2022", "time" : "6:00 am", "amount" : "800.00 USD", "status" : "Canceled"},
-    {"image" : MyImages.arrowRightDown2, "title" : "Add Money", "date" : "Sep 12, 2022", "time" : "6:00 am", "amount" : "790.00 USD", "status" : "Successful"},
-    {"image" : MyImages.arrowRightUp2, "title" : "Exchange Money", "date" : "Sep 12, 2022", "time" : "6:00 am", "amount" : "800.00 USD", "status" : "Canceled"},
-    {"image" : MyImages.arrowRightDown2, "title" : "Add Money", "date" : "Sep 12, 2022", "time" : "6:00 am", "amount" : "790.00 USD", "status" : "Successful"},
-    {"image" : MyImages.arrowRightUp2, "title" : "Exchange Money", "date" : "Sep 12, 2022", "time" : "6:00 am", "amount" : "800.00 USD", "status" : "Canceled"},
-    {"image" : MyImages.arrowRightDown2, "title" : "Add Money", "date" : "Sep 12, 2022", "time" : "6:00 am", "amount" : "790.00 USD", "status" : "Successful"},
-    {"image" : MyImages.arrowRightUp2, "title" : "Exchange Money", "date" : "Sep 12, 2022", "time" : "6:00 am", "amount" : "800.00 USD", "status" : "Canceled"},
-    {"image" : MyImages.arrowRightDown2, "title" : "Add Money", "date" : "Sep 12, 2022", "time" : "6:00 am", "amount" : "790.00 USD", "status" : "Successful"},
-    {"image" : MyImages.arrowRightUp2, "title" : "Exchange Money", "date" : "Sep 12, 2022", "time" : "6:00 am", "amount" : "800.00 USD", "status" : "Canceled"},
-    {"image" : MyImages.arrowRightDown2, "title" : "Add Money", "date" : "Sep 12, 2022", "time" : "6:00 am", "amount" : "790.00 USD", "status" : "Successful"},
-    {"image" : MyImages.arrowRightUp2, "title" : "Exchange Money", "date" : "Sep 12, 2022", "time" : "6:00 am", "amount" : "800.00 USD", "status" : "Canceled"},
-    {"image" : MyImages.arrowRightDown2, "title" : "Add Money", "date" : "Sep 12, 2022", "time" : "6:00 am", "amount" : "790.00 USD", "status" : "Successful"},
-    {"image" : MyImages.arrowRightUp2, "title" : "Exchange Money", "date" : "Sep 12, 2022", "time" : "6:00 am", "amount" : "800.00 USD", "status" : "Canceled"},
-    {"image" : MyImages.arrowRightDown2, "title" : "Add Money", "date" : "Sep 12, 2022", "time" : "6:00 am", "amount" : "790.00 USD", "status" : "Successful"},
-    {"image" : MyImages.arrowRightUp2, "title" : "Exchange Money", "date" : "Sep 12, 2022", "time" : "6:00 am", "amount" : "800.00 USD", "status" : "Canceled"},
-    {"image" : MyImages.arrowRightDown2, "title" : "Add Money", "date" : "Sep 12, 2022", "time" : "6:00 am", "amount" : "790.00 USD", "status" : "Successful"},
-    {"image" : MyImages.arrowRightUp2, "title" : "Exchange Money", "date" : "Sep 12, 2022", "time" : "6:00 am", "amount" : "800.00 USD", "status" : "Canceled"},
-    {"image" : MyImages.arrowRightDown2, "title" : "Add Money", "date" : "Sep 12, 2022", "time" : "6:00 am", "amount" : "790.00 USD", "status" : "Successful"},
-    {"image" : MyImages.arrowRightUp2, "title" : "Exchange Money", "date" : "Sep 12, 2022", "time" : "6:00 am", "amount" : "800.00 USD", "status" : "Canceled"},
-  ];
+  void scrollListener() {
+    if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
+      if (Get.find<TransactionHistoryController>().hasNext()) {
+        Get.find<TransactionHistoryController>().loadTransactionData();
+      }
+    }
+  }
 
-  List<String> title = ["Transaction Type", "Operation Type", "History From", "Wallet Currency"];
+  @override
+  void initState() {
+
+    Get.put(ApiClient(sharedPreferences: Get.find()));
+    Get.put(TransactionRepo(apiClient: Get.find()));
+    final controller = Get.put(TransactionHistoryController(transactionRepo: Get.find()));
+
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      controller.initialSelectedValue();
+      scrollController.addListener(scrollListener);
+    });
+  }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: MyColor.screenBgColor,
-        // app bar
-        appBar: const CustomAppBar(
-          title: "${MyStrings.transaction} History",
-          /*actions: [
-            GestureDetector(
-              onTap: (){
-                setState(() {
-                  isVisible = !isVisible;
-                });
-              },
-              child: Container(
-                alignment: Alignment.center,
-                padding: const EdgeInsets.all(Dimensions.space5),
-                decoration: const BoxDecoration(
-                  color: MyColor.transparentColor,
-                  shape: BoxShape.circle
-                ),
-                child: isVisible ? const Icon(Icons.clear, color: MyColor.colorRed, size: 20) : Image.asset(MyImages.search, color: MyColor.contentTextColor, height: 20, width: 20),
-              ),
+    return GetBuilder<TransactionHistoryController>(
+      builder: (controller) => SafeArea(
+        child: Scaffold(
+          backgroundColor: MyColor.screenBgColor,
+          appBar: AppBar(
+            backgroundColor: MyColor.getAppBarColor(),
+            elevation: 0,
+            title: Text(MyStrings.transaction, style: regularLarge.copyWith(color: MyColor.getAppBarContentColor())),
+            leading: IconButton(
+              onPressed: () => Get.back(),
+              icon: Icon(Icons.arrow_back, color: MyColor.getAppBarContentColor(), size: 20),
             ),
-
-            const SizedBox(width: Dimensions.space15),
-
-            GestureDetector(
-              onTap: (){
-                setState(() {
-                  isVisible2 = !isVisible2;
-                });
-              },
-              child: Container(
-                alignment: Alignment.center,
-                padding: const EdgeInsets.all(Dimensions.space5),
-                decoration: const BoxDecoration(
-                    color: MyColor.transparentColor,
-                    shape: BoxShape.circle
-                ),
-                child: Image.asset(MyImages.filter, color: isVisible2 ? MyColor.primaryColor : MyColor.contentTextColor, height: 20, width: 20),
-              ),
-            ),
-
-            const SizedBox(width: Dimensions.space15),
-          ],
-          changeRoute: () => Get.toNamed(RouteHelper.bottomNavBar),*/
-        ),
-
-        body: SingleChildScrollView(
-          physics: const ClampingScrollPhysics(),
-          padding: const EdgeInsets.symmetric(horizontal: Dimensions.space15, vertical: Dimensions.space20),
-          child: Column(
-            children: [
-              // search field
-              Visibility(
-                visible: isVisible,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CustomSearchField(
-                        showLabelText: false,
-                        hintText: "Search by transaction",
-                        onChanged: (value){},
-                        onPressed: (){}
+            actions: [
+              Padding(
+                padding: const EdgeInsets.only(right: Dimensions.space15),
+                child: GestureDetector(
+                  onTap: (){
+                    controller.changeSearchIcon();
+                  },
+                  child: Container(
+                    height: 30, width: 30,
+                    alignment: Alignment.center,
+                    decoration: const BoxDecoration(color: MyColor.colorWhite, shape: BoxShape.circle),
+                    child: controller.isSearch ? const Icon(
+                        Icons.clear,
+                        color: MyColor.primaryColor,
+                        size: 15
+                    ) : Image.asset(
+                        MyImages.filter,
+                        color: MyColor.primaryColor,
+                        height: 15, width: 15
                     ),
-                    const SizedBox(height: Dimensions.space20),
-                  ],
-                ),
-              ),
-
-              // filters field
-              Visibility(
-                visible: isVisible2,
-                child: Column(
-                  children: const [
-                    FiltersField(),
-
-                    SizedBox(height: Dimensions.space20),
-                  ],
-                ),
-              ),
-
-              // card list
-              ListView.separated(
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                physics: const NeverScrollableScrollPhysics(),
-                padding: EdgeInsets.zero,
-                itemCount: 20,
-                separatorBuilder: (context, index) => const SizedBox(height: Dimensions.space10),
-                itemBuilder: (context, index) => CustomCard(
-                  paddingTop: Dimensions.space15,
-                  paddingBottom: Dimensions.space15,
-                  isPress: true,
-                  onPressed: (){},
-                  width: MediaQuery.of(context).size.width,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Container(
-                            width: 50, height: 50,
-                            alignment: Alignment.center,
-                            padding: const EdgeInsets.all(2),
-                            decoration: BoxDecoration(
-                              color: MyColor.colorWhite,
-                              border: Border.all(color: borderColor("${data[index]['title']}"), width: 1.2),
-                              shape: BoxShape.circle
-                            ),
-                            child: Container(
-                              height: 45, width: 45,
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                color: getBgColor("${data[index]['title']}"),
-                                shape: BoxShape.circle
-                              ),
-                              child: Image.asset("${data[index]["image"]}", height: 12, width: 12),
-                            ),
-                          ),
-                          const SizedBox(width: Dimensions.space10),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("${data[index]["title"]}", style: regularDefault.copyWith(fontWeight: FontWeight.w500)),
-                              const SizedBox(height: 8),
-                              Text(
-                                  "${data[index]["date"]} - ${data[index]["time"]}",
-                                  style: regularSmall.copyWith(fontWeight: FontWeight.w500, color: MyColor.contentTextColor)
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text("${data[index]["amount"]}", style: regularDefault.copyWith(fontWeight: FontWeight.w500)),
-                          const SizedBox(height: 8),
-                          Container(
-                            alignment: Alignment.center,
-                            padding: const EdgeInsets.symmetric(vertical: Dimensions.space5 / 2, horizontal: Dimensions.space5),
-                            decoration: BoxDecoration(
-                                color: getStatusBgColor("${data[index]['status']}"),
-                                borderRadius: BorderRadius.circular(3),
-                            ),
-                            child: Text(
-                                "${data[index]['status']}",
-                                textAlign: TextAlign.center,
-                                style: regularSmall.copyWith(
-                                    color: getTextColor("${data[index]['status']}"),
-                                    fontWeight: FontWeight.w500
-                                )
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
                   ),
-                )
+                ),
               )
             ],
+          ),
+          body: controller.isLoading ? const CustomLoader() : Padding(
+            padding: const EdgeInsets.symmetric(horizontal: Dimensions.space15, vertical: Dimensions.space20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Visibility(
+                  visible: controller.isSearch,
+                  child: const FiltersField(),
+                ),
+
+                Expanded(
+                  child: controller.transactionList.isEmpty && controller.filterLoading == false ? const Center(
+                    child: NoDataOrInternetScreen(),
+                  ) : controller.filterLoading ? const CustomLoader() : SizedBox(
+                    height: MediaQuery.of(context).size.height,
+                    child: ListView.separated(
+                        controller: scrollController,
+                        physics: const BouncingScrollPhysics(),
+                        shrinkWrap: true,
+                        padding: EdgeInsets.zero,
+                        scrollDirection: Axis.vertical,
+                        itemCount: controller.transactionList.length + 1,
+                        separatorBuilder: (context, index) => const SizedBox(height: Dimensions.space10),
+                        itemBuilder: (context, index) {
+                          if(controller.transactionList.length == index){
+                            return controller.hasNext() ? Container(
+                                height: 40,
+                                width: MediaQuery.of(context).size.width,
+                                margin: const EdgeInsets.all(5),
+                                child: const CustomLoader()
+                            ) : const SizedBox();
+                          }
+
+                          return  GestureDetector(
+                            onTap: (){},
+                            child: CustomTransactionCard(
+                                index: index,
+                                detailsText: "${controller.transactionList[index].details ?? ""} ${controller.transactionList[index].receiverUser?.username ?? ""}",
+                                trxData: controller.transactionList[index].trx ?? "",
+                                dateData: DateConverter.isoStringToLocalDateOnly(controller.transactionList[index].createdAt ?? ""),
+                                amountData: "${controller.transactionList[index].trxType} ${Converter.twoDecimalPlaceFixedWithoutRounding(controller.transactionList[index].amount.toString())} "
+                                    "${controller.transactionList[index].currency?.currencyCode ?? ''}",
+                                postBalanceData: "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.transactionList[index].postBalance.toString())} "
+                                    "${controller.transactionList[index].currency?.currencyCode ?? ''}"
+                            ),
+                          );
+                        }
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
     );
-  }
-
-  Color getTextColor(String status){
-    return status == "Canceled" ? MyColor.colorRed : MyColor.colorGreen;
-  }
-  Color getStatusBgColor(String status){
-    return status == "Canceled" ? MyColor.colorRed100 : MyColor.colorGreen100;
-  }
-
-  Color getBgColor(String title){
-    return title == "Add Money" ? MyColor.colorGreen100 : MyColor.colorRed100;
-  }
-
-  Color borderColor(String title){
-    return title == "Add Money" ? MyColor.colorGreen : MyColor.colorRed;
   }
 }
