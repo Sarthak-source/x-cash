@@ -39,7 +39,7 @@ class TransferMoneyController extends GetxController{
     update();
   }
 
-  Future<void> loadData() async{
+  Future<void> loadData(String walletId) async{
     isLoading = true;
     update();
 
@@ -60,7 +60,16 @@ class TransferMoneyController extends GetxController{
       if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
         List<tm_model.Wallets>? tempWalletList = model.data?.wallets;
         if(tempWalletList != null && tempWalletList.isNotEmpty){
-          walletList.addAll(tempWalletList);
+          if(walletId.isNotEmpty){
+            for (tm_model.Wallets value in tempWalletList) {
+              walletList.add(value);
+              if(value.id.toString()==walletId){
+                setSelectedWallet(value);
+              }
+            }
+          }else{
+            walletList.addAll(tempWalletList);
+          }
         }
 
         List<String>? tempOtpList = model.data?.otpType;

@@ -103,7 +103,7 @@ class _MyWalletScreenState extends State<MyWalletScreen> {
                         ),
                         GestureDetector(
                           onTap: (){
-                            Get.toNamed(RouteHelper.transferMoneyScreen,arguments: controller.walletList[index].id.toString());
+                            Get.toNamed(RouteHelper.transferMoneyScreen, arguments: controller.walletList[index].id.toString());
                           },
                           child: Container(
                             height: 30, width: 30,

@@ -35,7 +35,8 @@ class _TransferMoneyState extends State<TransferMoney> {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      controller.loadData();
+      String walletId = Get.arguments??'';
+      controller.loadData(walletId);
     });
   }
 
