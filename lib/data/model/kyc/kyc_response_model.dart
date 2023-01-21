@@ -1,5 +1,3 @@
-
-
 import 'dart:io';
 
 import '../auth/sign_up_model/registration_response_model.dart';
@@ -89,7 +87,7 @@ class Form {
 class FormModel {
   String? name;
   String? label;
-  String? isrequired;
+  String? isRequired;
   String? extensions;
   List<String>? options;
   String? type;
@@ -97,6 +95,6 @@ class FormModel {
   File? imageFile;
   List<String>?cbSelected;
 
-  FormModel(this.name, this.label, this.isrequired, this.extensions, this.options, this.type,this.selectedValue,{this.cbSelected,this.imageFile});
+  FormModel(this.name, this.label, this.isRequired, this.extensions, this.options, this.type,this.selectedValue,{this.cbSelected,this.imageFile});
 
 }

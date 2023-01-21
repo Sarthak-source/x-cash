@@ -61,6 +61,12 @@ class MyStrings{
   static const String email = "Email";
   static const String address = "Address";
 
+  static const String kyc = 'KYC';
+  static const String isRequired = 'is required';
+  static const String chooseFile = 'Choose File';
+  static const String kycUnderReviewMsg = 'Your KYC is under review';
+  static const String kycAlreadyVerifiedMsg = 'You are already verified';
+
   // otp-screen
   static const String otpVerify = "OTP Verify";
   static const String enterOtpSent = "Enter the otp sent to ";
@@ -261,8 +267,6 @@ class MyStrings{
   static const String confirmToInvestOn = "Confirm to invest on";
   static const String invest = 'Invest';
   static const String interest = 'Interest';
-  static const String kyc = 'KYC';
-  static const String isrequired = 'is required';
   static const String googleAuthenticatorCode = 'Google Authenticator Code';
   static const String twoFactorAuth = 'Two Factor Authentication';
   static const String twoFactorMsg = 'Enter 6-digit code from your two factor authenticator APP.';
@@ -389,11 +393,8 @@ class MyStrings{
   static const String kycData = 'KYC Data';
   static const String noDataFound = 'No Data Found';
   static const String chooseOption = 'Choose option';
-  static const String chooseFile = 'Choose File';
   static const String gallery = "Gallery";
   static const String camera = "Camera";
-  static const String kycUnderReviewMsg       = 'Your KYC is under review';
-  static const String kycAlreadyVerifiedMsg   = 'You are already verified';
   static const String gateway = 'Gateway';
   static const String paymentMethod = 'Payment Method';
   static const String iAgreeWith = "I agree with";

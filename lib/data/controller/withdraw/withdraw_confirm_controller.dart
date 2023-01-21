@@ -86,9 +86,9 @@ class WithdrawConfirmController extends GetxController {
   List<String> hasError() {
     List<String> errorList = [];
     for (var element in formList) {
-      if (element.isrequired == 'required') {
+      if (element.isRequired == 'required') {
         if (element.selectedValue == '' || element.selectedValue == selectOne ) {
-          errorList.add('${element.name} ${MyStrings.isrequired}');
+          errorList.add('${element.name} ${MyStrings.isRequired}');
         }
       }
     }

@@ -83,8 +83,7 @@ class KycController extends GetxController {
 
 
     if (list.isNotEmpty) {
-      CustomSnackBar.showCustomSnackBar(
-          errorList: list, msg: [], isError: true);
+      CustomSnackBar.showCustomSnackBar(errorList: list, msg: [], isError: true);
       return;
     }
     submitLoading=true;
@@ -108,18 +107,18 @@ class KycController extends GetxController {
     List<String> errorList = [];
     errorList.clear();
     for (var element in formList) {
-      if (element.isrequired == 'required') {
+      if (element.isRequired == 'required') {
         if(element.type=='checkbox'){
           if (element.cbSelected == null ) {
-            errorList.add('${element.name} ${MyStrings.isrequired}');
+            errorList.add('${element.name} ${MyStrings.isRequired}');
           }
         }else if(element.type=='file'){
           if (element.imageFile==null) {
-            errorList.add('${element.name} ${MyStrings.isrequired}');
+            errorList.add('${element.name} ${MyStrings.isRequired}');
           }
         }else{
           if (element.selectedValue == '' || element.selectedValue == selectOne) {
-            errorList.add('${element.name} ${MyStrings.isrequired}');
+            errorList.add('${element.name} ${MyStrings.isRequired}');
           }
         }
 

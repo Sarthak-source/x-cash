@@ -136,7 +136,7 @@ class Form {
 class FormModel {
   String? name;
   String? label;
-  String? isrequired;
+  String? isRequired;
   String? extensions;
   List<String>? options;
   String? type;
@@ -144,7 +144,7 @@ class FormModel {
   File? file;
   List<String>?cbSelected;
 
-  FormModel(this.name, this.label, this.isrequired, this.extensions,
+  FormModel(this.name, this.label, this.isRequired, this.extensions,
       this.options, this.type,this.selectedValue,{this.cbSelected,this.file});
 
 }

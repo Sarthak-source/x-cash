@@ -84,4 +84,7 @@ class MyImages{
   static const String noInternet = "assets/animation/no_internet.json";
 
   static const String moneyAdd = "${basePath1}money_add.png";
+
+  static const String pendingIcon = "assets/images/pending.svg";
+  static const String verifiedIcon = "assets/images/verified.svg";
 }

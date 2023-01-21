@@ -1,7 +1,6 @@
 import 'dart:convert';
-import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
 
+import 'package:http/http.dart' as http;
 import 'package:xcash_app/core/utils/method.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/url_container.dart';
@@ -18,20 +17,17 @@ class KycRepo {
 
   Future<KycResponseModel> getKycData() async {
     String url = '${UrlContainer.baseUrl}${UrlContainer.kycFormUrl}';
-    ResponseModel responseModel =
-    await apiClient.request(url, Method.getMethod, null, passHeader: true);
+    ResponseModel responseModel = await apiClient.request(url, Method.getMethod, null, passHeader: true);
 
     if (responseModel.statusCode == 200) {
-      KycResponseModel model =
-      KycResponseModel.fromJson(jsonDecode(responseModel.responseJson));
+      KycResponseModel model = KycResponseModel.fromJson(jsonDecode(responseModel.responseJson));
       if (model.status == 'success') {
         return model;
       } else {
 
         if(model.remark?.toLowerCase() != 'already_verified' && model.remark?.toLowerCase() != 'under_review') {
-          CustomSnackBar.showCustomSnackBar(errorList: model.message?.error ?? [MyStrings.somethingWentWrong.tr], msg: [], isError: true);
+          CustomSnackBar.showCustomSnackBar(errorList: model.message?.error ?? [MyStrings.somethingWentWrong], msg: [], isError: true);
         }
-
         return model;
       }
     } else {
@@ -39,22 +35,16 @@ class KycRepo {
     }
   }
 
-
-
   List<Map<String,String>>fieldList=[];
   List<ModelDynamicValue>filesList=[];
 
-
-
   Future<AuthorizationResponseModel> submitKycData(List<FormModel> list) async {
-
 
     apiClient.initToken();
     await modelToMap(list);
     String url = '${UrlContainer.baseUrl}${UrlContainer.kycSubmitUrl}';
 
-    var request= http.MultipartRequest('POST',Uri.parse(url));
-
+    var request=http.MultipartRequest('POST',Uri.parse(url));
 
     Map<String,String>finalMap={};
 

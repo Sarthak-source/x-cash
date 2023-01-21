@@ -9,6 +9,7 @@ import 'package:xcash_app/view/screens/auth/email_verification_page/email_verifi
 import 'package:xcash_app/view/screens/auth/forget_password/forget_password/forget_password.dart';
 import 'package:xcash_app/view/screens/auth/forget_password/reset_password/reset_password_screen.dart';
 import 'package:xcash_app/view/screens/auth/forget_password/verify_forget_password/verify_forget_password_screen.dart';
+import 'package:xcash_app/view/screens/auth/kyc/kyc.dart';
 import 'package:xcash_app/view/screens/auth/login/login_screen.dart';
 import 'package:xcash_app/view/screens/auth/profile_complete/profile_complete_screen.dart';
 import 'package:xcash_app/view/screens/auth/registration/registration_screen.dart';
@@ -126,5 +127,6 @@ class RouteHelper{
     GetPage(name: moneyOutScreen, page: () =>  const MoneyOutScreen()),
 
     GetPage(name: transferMoneyScreen, page: () =>  const TransferMoney()),
+    GetPage(name: kycScreen,                    page: () => const KycScreen()),
   ];
 }
