@@ -158,7 +158,7 @@ class MyStrings{
   static const String usedAt = "Used at - ";
 
   // colorRedeem voucher
-  static const String RedeemVoucher = "colorRedeem Voucher";
+  static const String redeemVoucher = "Redeem Voucher";
   static const String voucherNumber = "Voucher Number";
   static const String colorRedeem = "colorRedeem";
 
