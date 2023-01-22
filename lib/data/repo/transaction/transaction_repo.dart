@@ -16,8 +16,11 @@ class TransactionRepo{
     String walletCurrency = ""
   }) async{
 
-    if(transactionType.toLowerCase() == "all type" || (transactionType.toLowerCase() != 'plus_trx' && transactionType.toLowerCase() != "minus_trx")){
+    if(transactionType.isEmpty || transactionType.toLowerCase() == "all type"){
       transactionType = "";
+    } else{
+     transactionType = transactionType=='plus'?'plus_trx':transactionType=='minus'?'minus_trx':'';
+     print('formated trx type: $transactionType');
     }
 
     if(operationType.isEmpty || operationType.toLowerCase() == "all operations"){
@@ -34,6 +37,7 @@ class TransactionRepo{
 
     String url = "${UrlContainer.baseUrl}${UrlContainer.transactionEndpoint}?page=$page&type=$transactionType&operation=$operationType&time=$historyFrom&currency=$walletCurrency&search=$searchText";
 
+    print(url);
     ResponseModel responseModel = await apiClient.request(url, Method.getMethod, null, passHeader: true);
     return responseModel;
   }

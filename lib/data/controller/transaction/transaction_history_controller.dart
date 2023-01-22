@@ -57,6 +57,9 @@ class TransactionHistoryController extends GetxController{
   void initialSelectedValue() async{
     page = 0;
     selectedTransactionType = "All Type";
+    selectedOperationType = "";
+    selectedHistoryFrom = "";
+    selectedWalletCurrency = "";
 
     trxController.text = "";
     trxSearchText = "";
@@ -85,6 +88,7 @@ class TransactionHistoryController extends GetxController{
       walletCurrencyList.insert(0, "All Currency");
     }
 
+    print('trx type: ${selectedTransactionType}');
     ResponseModel responseModel = await transactionRepo.getTransactionData(
       page,
       searchText: trxSearchText,
@@ -142,6 +146,44 @@ class TransactionHistoryController extends GetxController{
     update();
   }
 
+  Future<void> loadFilteredTransactions() async{
+
+    page = page + 1;
+
+    if(page == 1){
+      transactionList.clear();
+    }
+
+    ResponseModel responseModel = await transactionRepo.getTransactionData(
+        page,
+        searchText: trxSearchText,
+        transactionType: selectedTransactionType.toLowerCase(),
+        operationType: selectedOperationType.toLowerCase(),
+        historyFrom: selectedHistoryFrom.toLowerCase(),
+        walletCurrency: selectedWalletCurrency.toLowerCase()
+    );
+
+    if(responseModel.statusCode == 200){
+      transaction.TransactionResponseModel model = transaction.TransactionResponseModel.fromJson(jsonDecode(responseModel.responseJson));
+      nextPageUrl = model.data?.transactions?.nextPageUrl;
+
+      if(model.status.toString().toLowerCase() == "success"){
+        List<transaction.Data>? tempDataList = model.data?.transactions?.data;
+        if(tempDataList != null && tempDataList.isNotEmpty){
+          transactionList.addAll(tempDataList);
+        }
+      }
+      else{
+        CustomSnackBar.error(errorList: model.message?.error ?? [MyStrings.somethingWentWrong]);
+      }
+    }
+    else{
+      CustomSnackBar.error(errorList: [responseModel.message]);
+    }
+
+    update();
+  }
+
   bool filterLoading = false;
 
   Future<void> filterData() async{
@@ -150,8 +192,7 @@ class TransactionHistoryController extends GetxController{
     filterLoading = true;
     update();
     transactionList.clear();
-
-    await loadTransactionData();
+    await loadFilteredTransactions();
     filterLoading = false;
     update();
   }
