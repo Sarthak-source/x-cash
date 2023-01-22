@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
@@ -74,11 +75,7 @@ class _MyVoucherScreenState extends State<MyVoucherScreen> {
                 icon: Icon(Icons.card_giftcard, color: MyColor.getAppBarContentColor(), size: 20),
               ),
               IconButton(
-                onPressed: (){
-                  CustomBottomSheet(
-                      child: const CreateVoucher()
-                  ).customBottomSheet(context);
-                },
+                onPressed: () => Get.toNamed(RouteHelper.createVoucherScreen),
                 icon: Icon(Icons.add_circle_outline_rounded, color: MyColor.getAppBarContentColor(), size: 20),
               ),
             ],
