@@ -10,6 +10,7 @@ class OtpRepo {
   OtpRepo({required this.apiClient});
 
   Future<ResponseModel> verify(String code, String actionId) async {
+
     final map = {
       'code': code,
       'action_id': actionId,
@@ -22,8 +23,11 @@ class OtpRepo {
   }
 
   Future<ResponseModel> resendVerifyCode(String actionId) async {
+    final map = {
+      'action_id': actionId,
+    };
     String url = '${UrlContainer.baseUrl}${UrlContainer.otpResend}';
-    ResponseModel response = await apiClient.request(url, Method.postMethod, null, passHeader: true);
+    ResponseModel response = await apiClient.request(url, Method.postMethod, map, passHeader: true);
     return response;
   }
 }

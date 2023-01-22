@@ -5,11 +5,15 @@ import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/voucher/create_voucher_controller.dart';
+import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
+import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
+import 'package:xcash_app/view/components/divider/custom_divider.dart';
 
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
+import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
 import 'package:xcash_app/view/components/text/label_text.dart';
 
 import '../../../../../data/model/voucher/create_voucher_response_model.dart';
@@ -108,8 +112,30 @@ class _CreateVoucherFormState extends State<CreateVoucherForm> {
               ),
             ),
             const SizedBox(height: Dimensions.space30),
-            controller.submitLoading ? const RoundedLoadingBtn() :RoundedButton(
-              press: (){},
+            RoundedButton(
+              press: (){
+                if(formKey.currentState!.validate()){
+                  CustomBottomSheet(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: const [
+                              BottomSheetHeaderText(text: MyStrings.paymentPreview),
+                              BottomSheetCloseButton()
+                            ],
+                          ),
+                          const CustomDivider(space: Dimensions.space15),
+                          controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
+                            text: MyStrings.confirm,
+                            press: (){}
+                          )
+                        ],
+                      )
+                  ).customBottomSheet(context);
+                }
+              },
               text: MyStrings.createVoucher,
             )
           ],

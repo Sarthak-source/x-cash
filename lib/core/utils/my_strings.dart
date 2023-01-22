@@ -221,6 +221,8 @@ class MyStrings{
   static const String min = "Min: ";
   static const String max = "Max: ";
 
+  static const String limit = "Limit: ";
+
   // add withdraw method
   static const String addWithdrawMethod = "Add Withdraw Method";
   static const String selectMethod = "Select Method";
