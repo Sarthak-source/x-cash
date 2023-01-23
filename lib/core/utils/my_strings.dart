@@ -91,6 +91,9 @@ class MyStrings{
   static const String moneyOut = "Money Out";
   static const String viewMore = "View More";
 
+  static const String voucherRedeemLog = "Voucher Redeem Log";
+  static const String redeemLog = "Redeem Log";
+
   // bottom-nav
   static const String home = "Home";
   static const String activity = "Activity";
@@ -155,7 +158,7 @@ class MyStrings{
   static const String notUsed = "Not Used";
   static const String used = "Used";
   static const String createdAt = "Created at : ";
-  static const String usedAt = "Used at - ";
+  static const String usedAt = "Used at";
 
   // colorRedeem voucher
   static const String redeemVoucher = "Redeem Voucher";
@@ -520,6 +523,8 @@ class MyStrings{
 
   static const String otp = "OTP";
   static const String moneyRequestToMe = "Money Requests to Me";
+
+  static const String voucherCode = "Voucher Code";
 
 
   static List<LanguageModel> languages = [
