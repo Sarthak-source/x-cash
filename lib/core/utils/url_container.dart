@@ -104,4 +104,5 @@ class UrlContainer{
   static const String voucherListEndPoint = "voucher/list";
   static const String createVoucherEndPoint = "create/voucher";
   static const String submitCreateVoucherEndPoint = "create/voucher";
+  static const String redeemLogEndPoint = "voucher/redeem/log";
 }
