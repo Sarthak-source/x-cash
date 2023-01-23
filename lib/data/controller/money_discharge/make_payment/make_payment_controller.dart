@@ -105,7 +105,7 @@ class MakePaymentController extends GetxController{
       if(model.status?.toLowerCase()=='success'){
         String actionId = model.data?.actionId??'';
         if(actionId.isNotEmpty){
-          Get.toNamed(RouteHelper.otpScreen,arguments: [actionId,RouteHelper.bottomNavBar]);
+          Get.toNamed(RouteHelper.otpScreen,arguments: [actionId, RouteHelper.bottomNavBar]);
         } else{
           CustomSnackBar.error(errorList: [MyStrings.noActionid]);
         }

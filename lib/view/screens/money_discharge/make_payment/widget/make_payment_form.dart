@@ -126,7 +126,7 @@ class _MakePaymentFormState extends State<MakePaymentForm> {
               ),
             ),
             const SizedBox(height: Dimensions.space20),
-            controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
+            RoundedButton(
               press: (){
                 if(formKey.currentState!.validate()){
                   CustomBottomSheet(
@@ -141,9 +141,12 @@ class _MakePaymentFormState extends State<MakePaymentForm> {
                           ],
                         ),
                         const CustomDivider(space: Dimensions.space15),
-                        RoundedButton(text: MyStrings.confirm, press: (){
-                          controller.submitPayment();
-                        })
+                        controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
+                            text: MyStrings.confirm,
+                            press: (){
+                              controller.submitPayment();
+                            }
+                        )
                       ],
                     )
                   ).customBottomSheet(context);
