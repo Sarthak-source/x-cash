@@ -20,6 +20,7 @@ class VoucherListController extends GetxController{
   int page = 0;
   String currency = "";
   String notUsed = "Not Used";
+  String used = "Used";
 
   void initialState() async{
     page = 0;
