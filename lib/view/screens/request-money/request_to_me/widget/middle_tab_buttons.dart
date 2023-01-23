@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/style.dart';
-import 'package:xcash_app/data/controller/request_money/request_to_me/my_request_history_controller.dart';
-import 'package:xcash_app/data/controller/voucher/voucher_list_controller.dart';
 
 class MiddleTabButtons extends StatelessWidget {
 
