@@ -84,7 +84,7 @@ class RequestMoneyController extends GetxController{
       AuthorizationResponseModel model = AuthorizationResponseModel.fromJson(jsonDecode(responseModel.responseJson));
       if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
         Get.back();
-        CustomSnackBar.error(errorList: model.message?.success ?? [MyStrings.requestSuccess]);
+        CustomSnackBar.success(successList: model.message?.success ?? [MyStrings.requestSuccess]);
       }
       else{
         CustomSnackBar.error(errorList: model.message?.error ?? [MyStrings.somethingWentWrong]);
