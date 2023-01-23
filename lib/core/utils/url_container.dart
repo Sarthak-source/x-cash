@@ -86,6 +86,7 @@ class UrlContainer{
 
   // money out
   static const String moneyOutUrl = "money-out";
+  static const String submitMoneyOutUrl = "money-out";
 
   // request money
   static const String requestMoneyEndPoint = "request/money";
