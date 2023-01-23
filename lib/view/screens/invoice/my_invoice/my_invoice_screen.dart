@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
-import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/card/custom_card.dart';
 import 'package:xcash_app/view/screens/invoice/my_invoice/widget/my_invoice_bottom_sheet.dart';
 
@@ -23,10 +22,15 @@ class _MyInvoiceScreenState extends State<MyInvoiceScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: MyColor.screenBgColor,
-        appBar: const CustomAppBar(
-          isShowBackBtn: true,
-          title: MyStrings.myInvoice,
-          /*actions: [
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: MyColor.getAppBarColor(),
+          title: Text(MyStrings.myInvoice, style: regularDefault.copyWith(color: MyColor.getAppBarContentColor())),
+          leading: GestureDetector(
+            onTap: () => Get.back(),
+            child: Icon(Icons.arrow_back, color: MyColor.getAppBarContentColor(), size: 20),
+          ),
+          actions: [
             Padding(
               padding: const EdgeInsets.only(right: Dimensions.space15),
               child: GestureDetector(
@@ -45,7 +49,6 @@ class _MyInvoiceScreenState extends State<MyInvoiceScreen> {
               ),
             )
           ],
-          changeRoute: () => Get.toNamed(RouteHelper.bottomNavBar),*/
         ),
         body: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(vertical: Dimensions.space20, horizontal: Dimensions.space15),
