@@ -20,7 +20,7 @@ import 'package:xcash_app/view/screens/exchange/exchange_money_screen.dart';
 import 'package:xcash_app/view/screens/invoice/create_invoice/create_invoice_screen.dart';
 import 'package:xcash_app/view/screens/invoice/my_invoice/my_invoice_screen.dart';
 import 'package:xcash_app/view/screens/money_discharge/make_payment/make_payment.dart';
-import 'package:xcash_app/view/screens/money_discharge/make_payment/otp_screen.dart';
+import 'package:xcash_app/view/screens/otp/otp_screen.dart';
 import 'package:xcash_app/view/screens/money_discharge/money_out/money_out.dart';
 import 'package:xcash_app/view/screens/notification/notification_screen.dart';
 import 'package:xcash_app/view/screens/request-money/request_money/request_money.dart';

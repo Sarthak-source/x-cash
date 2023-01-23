@@ -2,24 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
-import 'package:xcash_app/data/controller/auth/auth/email_verification_controler.dart';
-import 'package:xcash_app/data/repo/auth/general_setting_repo.dart';
-import 'package:xcash_app/data/repo/auth/sms_email_verification_repo.dart';
-import 'package:xcash_app/data/repo/money_discharge/make_payment/make_payment_repo.dart';
 import 'package:xcash_app/data/repo/opt_repo/opt_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
-import 'package:xcash_app/view/components/will_pop_widget.dart';
 
-import '../../../../data/controller/otp_controller/otp_controller.dart';
+import '../../../data/controller/otp_controller/otp_controller.dart';
 
 
 class OtpScreen extends StatefulWidget {
