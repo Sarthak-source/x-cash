@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/authorization/authorization_response_model.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
@@ -107,8 +108,12 @@ class TransferMoneyController extends GetxController{
     if(responseModel.statusCode == 200){
       AuthorizationResponseModel model = AuthorizationResponseModel.fromJson(jsonDecode(responseModel.responseJson));
       if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
-        Get.back();
-        CustomSnackBar.success(successList: model.message?.success ?? [MyStrings.requestSuccess]);
+        String actionId = model.data?.actionId??'';
+        if(actionId.isNotEmpty){
+          Get.toNamed(RouteHelper.otpScreen,arguments: [actionId, RouteHelper.bottomNavBar]);
+        } else{
+          CustomSnackBar.error(errorList: [MyStrings.noActionid]);
+        }
       }
       else{
         CustomSnackBar.error(errorList: model.message?.error ?? [MyStrings.somethingWentWrong]);
