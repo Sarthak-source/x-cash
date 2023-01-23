@@ -31,6 +31,7 @@ import 'package:xcash_app/view/screens/transaction/transaction_history_screen.da
 import 'package:xcash_app/view/screens/transfer/transfer_money.dart';
 import 'package:xcash_app/view/screens/voucher/create_voucher/create_voucher.dart';
 import 'package:xcash_app/view/screens/voucher/my_voucher/my_voucher_screen.dart';
+import 'package:xcash_app/view/screens/voucher/redeem_log/redeem_log_screen.dart';
 import 'package:xcash_app/view/screens/wallet/my_wallet_screen.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_history/withdraw_history_screen.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_money/withdraw_money_screen.dart';
@@ -85,6 +86,7 @@ class RouteHelper{
   static const String transferMoneyScreen = "/transfer_money_screen";
 
   static const String createVoucherScreen = "/create_voucher_screen";
+  static const String redeemLogScreen = "/redeem_log_screen";
 
 
   List<GetPage> routes = [
@@ -133,5 +135,6 @@ class RouteHelper{
     GetPage(name: kycScreen, page: () => const KycScreen()),
 
     GetPage(name: createVoucherScreen, page: () => const CreateVoucherScreen()),
+    GetPage(name: redeemLogScreen, page: () => const RedeemLogScreen()),
   ];
 }
