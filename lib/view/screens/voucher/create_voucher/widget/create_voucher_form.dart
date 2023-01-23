@@ -129,7 +129,9 @@ class _CreateVoucherFormState extends State<CreateVoucherForm> {
                           const CustomDivider(space: Dimensions.space15),
                           controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
                             text: MyStrings.confirm,
-                            press: (){}
+                            press: (){
+                              controller.submitCreateVoucher();
+                            }
                           )
                         ],
                       )

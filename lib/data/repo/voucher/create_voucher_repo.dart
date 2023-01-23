@@ -15,4 +15,18 @@ class CreateVoucherRepo{
     ResponseModel responseModel = await apiClient.request(url, Method.getMethod, null, passHeader: true);
     return responseModel;
   }
+
+  Future<ResponseModel> submitCreateVoucher({required String amount, required String walletId, required String otpType}) async{
+
+    String url = "${UrlContainer.baseUrl}${UrlContainer.submitCreateVoucherEndPoint}";
+
+    Map<String, String> params = {
+      "wallet_id" : walletId,
+      "amount" : amount,
+      "otp_type" : otpType
+    };
+
+    ResponseModel responseModel = await apiClient.request(url, Method.postMethod, params, passHeader: true);
+    return responseModel;
+  }
 }
