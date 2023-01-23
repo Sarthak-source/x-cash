@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:xcash_app/core/helper/date_converter.dart';
+import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
+import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
+import 'package:xcash_app/data/controller/request_money/request_to_me/my_request_history_controller.dart';
+import 'package:xcash_app/data/repo/request_money/my_request_history_repo.dart';
+import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
-import 'package:xcash_app/view/screens/request-money/request_to_me/widget/to_me_list.dart';
+import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
+import 'package:xcash_app/view/components/custom_no_data_found_class.dart';
+import 'package:xcash_app/view/screens/request-money/request_to_me/widget/middle_tab_buttons.dart';
+import 'package:xcash_app/view/screens/request-money/request_to_me/widget/my_request_list_item.dart';
+import 'package:xcash_app/view/screens/request-money/request_to_me/widget/to_me_list_item.dart';
 
 class RequestToMeScreen extends StatefulWidget {
   const RequestToMeScreen({Key? key}) : super(key: key);
@@ -15,94 +27,110 @@ class RequestToMeScreen extends StatefulWidget {
 
 class _RequestToMeScreenState extends State<RequestToMeScreen> {
 
-  int selectedIndex = 0;
+  final ScrollController scrollController = ScrollController();
+
+  void scrollListener() {
+    if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
+      if (Get.find<MyRequestHistoryController>().hasNext()) {
+        Get.find<MyRequestHistoryController>().loadHistoryData();
+      }
+    }
+  }
+
+  @override
+  void initState() {
+
+    Get.put(ApiClient(sharedPreferences: Get.find()));
+    Get.put(MyRequestHistoryRepo(apiClient: Get.find()));
+    Get.put(MyRequestHistoryController(myRequestHistoryRepo: Get.find()));
+
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Get.find<MyRequestHistoryController>().initialStateData();
+      scrollController.addListener(scrollListener);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: MyColor.screenBgColor,
-        appBar: CustomAppBar(
-          title: MyStrings.moneyRequestToMe,
-          isShowBackBtn: true,
-          bgColor: MyColor.getAppBarColor(),
-          /* actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: Dimensions.space15),
-              child: GestureDetector(
-                onTap: (){
-                  CustomBottomSheet(
-                    child: const RequestMoney()
-                  ).customBottomSheet(context);
-                },
+    return GetBuilder<MyRequestHistoryController>(
+      builder: (controller) => SafeArea(
+        child: Scaffold(
+          backgroundColor: MyColor.screenBgColor,
+          appBar: CustomAppBar(
+            title: MyStrings.moneyRequestToMe,
+            isShowBackBtn: true,
+            bgColor: MyColor.getAppBarColor(),
+          ),
+          body:  Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: Dimensions.space20, left: Dimensions.space15, right: Dimensions.space15),
                 child: Container(
-                  height: 25, width: 25,
-                  alignment: Alignment.center,
+                  height: 40,
+                  width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
-                      color: MyColor.colorWhite, border: Border.all(color: MyColor.primaryColor, width: 1.5),
-                      shape: BoxShape.circle
+                    color: MyColor.colorWhite,
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                  child: const Icon(Icons.add, color: MyColor.primaryColor, size: 15),
+                  child: Row(
+                    children: [
+                      MiddleTabButtons(buttonName: MyStrings.myRequests, activeButton: controller.isMyRequest,press: (){
+                        if(!controller.isMyRequest){
+                          controller.changeTabState(true);
+                        }
+                      },),
+                      MiddleTabButtons(buttonName: MyStrings.toMe, activeButton: !controller.isMyRequest,press: (){
+                        if(controller.isMyRequest){
+                          controller.changeTabState(false);
+                        }
+                      },),
+                    ],
+                  ),
                 ),
               ),
-            )
-          ],
-          changeRoute: () => Get.back(),*/
-        ),
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: Dimensions.space20, left: Dimensions.space15, right: Dimensions.space15),
-              child: Container(
-                height: 40,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                  color: MyColor.colorWhite,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Row(
-                  children: [
-                    middleButtons("My Request", 0),
-                    middleButtons("To Me", 1),
-                  ],
-                ),
+              const SizedBox(height: Dimensions.space20),
+              Expanded(
+                child: controller.isLoading ? const CustomLoader() : controller.myRequestList.isEmpty ? const NoDataOrInternetScreen() : SizedBox(
+                    height: MediaQuery.of(context).size.height,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: Dimensions.space15),
+                      child: ListView.separated(
+                        shrinkWrap: true,
+                        controller: scrollController,
+                        padding: EdgeInsets.zero,
+                        physics: const BouncingScrollPhysics(),
+                        itemCount: controller.myRequestList.length + 1,
+                        separatorBuilder: (context, index) => const SizedBox(height: Dimensions.space10),
+                        itemBuilder: (context, index){
+                          if(controller.myRequestList.length == index){
+                            return controller.hasNext() ? Container(
+                                height: 40,
+                                width: MediaQuery.of(context).size.width,
+                                margin: const EdgeInsets.all(5),
+                                child: const CustomLoader()
+                            ) : const SizedBox();
+                          }
+                          return controller.isMyRequest ? MyRequestListItem(
+                            name: "${controller.myRequestList[index].receiver?.firstname ?? ""} ${controller.myRequestList[index].receiver?.lastname ?? ""}",
+                            date: DateConverter.isoStringToLocalDateOnly(controller.myRequestList[index].createdAt ?? ""),
+                            amount: "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.myRequestList[index].requestAmount ?? "")} "
+                                "${controller.myRequestList[index].currency?.currencyCode ?? ""}",
+                          ): ToMeListItem(
+                            name: "${controller.myRequestList[index].sender?.firstname ?? ""} ${controller.myRequestList[index].sender?.lastname ?? ""}",
+                            date: DateConverter.isoStringToLocalDateOnly(controller.myRequestList[index].createdAt ?? ""),
+                            amount: "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.myRequestList[index].requestAmount ?? "")} "
+                                "${controller.myRequestList[index].currency?.currencyCode ?? ""}",
+                          );
+                        },
+                      ),
+                    ),
+                  )
               ),
-            ),
-            const SizedBox(height: Dimensions.space20),
-            selectedIndex == 0 ? const SizedBox() : const Expanded(child: ToMeList()),
-          ],
+            ],
+          ),
         ),
-      ),
-    );
-  }
-  middleButtons(String buttonName, int index) {
-    return Expanded(
-      child: GestureDetector(
-          onTap: (){
-            setState(() {
-              selectedIndex = index;
-            });
-          },
-          child: index == selectedIndex ? Container(
-            width: 150,
-            alignment: Alignment.center,
-            padding: const EdgeInsets.symmetric(vertical: Dimensions.space10 / 2, horizontal: Dimensions.space10),
-            decoration: BoxDecoration(
-                color: index == selectedIndex ? MyColor.primaryColor : MyColor.primaryColor,
-                borderRadius: index == 0 ? const BorderRadius.only(topLeft: Radius.circular(10), bottomLeft: Radius.circular(10)) :
-                const BorderRadius.only(topRight: Radius.circular(10), bottomRight: Radius.circular(10))
-            ),
-            child: Text(buttonName, textAlign: TextAlign.center, style: regularSmall.copyWith(color: index == selectedIndex ? MyColor.colorWhite : MyColor.primaryColor)),
-          ) : Container(
-            width: 150,
-            alignment: Alignment.center,
-            padding: const EdgeInsets.symmetric(vertical: Dimensions.space10 / 2, horizontal: Dimensions.space10),
-            decoration: BoxDecoration(
-                color: Colors.transparent,
-                borderRadius: BorderRadius.circular(10)
-            ),
-            child: Text(buttonName, textAlign: TextAlign.center, style: regularSmall.copyWith(color: MyColor.primaryColor)),
-          )
       ),
     );
   }
