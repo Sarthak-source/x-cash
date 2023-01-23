@@ -15,4 +15,24 @@ class MoneyOutRepo{
 
     return responseModel;
   }
+
+  Future<ResponseModel> submitMoneyOut({
+    required String walletId,
+    required String amount,
+    required String agent,
+    required String otpType
+  }) async{
+
+    String url = "${UrlContainer.baseUrl}${UrlContainer.submitMoneyOutUrl}";
+
+    Map<String, String> params = {
+      "wallet_id" : walletId,
+      "amount" : amount,
+      "agent" : agent,
+      "otp_type" : otpType
+    };
+
+    ResponseModel responseModel = await apiClient.request(url, Method.postMethod, params, passHeader: true);
+    return responseModel;
+  }
 }

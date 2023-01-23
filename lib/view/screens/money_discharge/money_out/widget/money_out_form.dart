@@ -63,7 +63,7 @@ class _MoneyOutFormState extends State<MoneyOutForm> {
               ),
               child: DropdownButton<Wallets>(
                 dropdownColor: MyColor.colorWhite,
-                value: controller.walletsMethod,
+                value: controller.selectedWallet,
                 elevation: 8,
                 icon: const Icon(Icons.keyboard_arrow_down, color: MyColor.primaryColor),
                 iconDisabledColor: Colors.red,
@@ -107,7 +107,7 @@ class _MoneyOutFormState extends State<MoneyOutForm> {
               ),
               child: DropdownButton(
                 dropdownColor: MyColor.colorWhite,
-                value: controller.initialOtpType,
+                value: controller.selectedOtp,
                 elevation: 8,
                 icon: const Icon(Icons.keyboard_arrow_down, color: MyColor.primaryColor),
                 iconDisabledColor: Colors.red,
@@ -126,7 +126,7 @@ class _MoneyOutFormState extends State<MoneyOutForm> {
               ),
             ),
             const SizedBox(height: Dimensions.space20),
-            controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
+            RoundedButton(
               press: (){
                 if(formKey.currentState!.validate()){
                   CustomBottomSheet(
@@ -141,6 +141,12 @@ class _MoneyOutFormState extends State<MoneyOutForm> {
                           ],
                         ),
                         const CustomDivider(space: Dimensions.space15),
+                        controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
+                            text: MyStrings.confirm,
+                            press: (){
+                              controller.submitMoneyOut();
+                            }
+                        )
                       ],
                     )
                   ).customBottomSheet(context);

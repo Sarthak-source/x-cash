@@ -2,7 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
+import 'package:xcash_app/data/model/authorization/authorization_response_model.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/money_discharge/money_out/money_out_response_model.dart';
 import 'package:xcash_app/data/repo/money_discharge/money_out/money_out_repo.dart';
@@ -15,8 +17,8 @@ class MoneyOutController extends GetxController{
 
   bool isLoading = true;
   String currency = "";
-  Wallets? walletsMethod = Wallets();
-  String initialOtpType = "";
+  Wallets? selectedWallet = Wallets();
+  String selectedOtp = "";
   String amount = "";
   String totalCharge = "";
   String payable = "";
@@ -28,12 +30,12 @@ class MoneyOutController extends GetxController{
   List<String> otpTypeList = [];
 
   setWalletMethod(Wallets? wallet){
-    walletsMethod = wallet;
+    selectedWallet = wallet;
     update();
   }
 
   setOtpMethod(String? otp){
-    initialOtpType = otp ?? "";
+    selectedOtp = otp ?? "";
     update();
   }
 
@@ -65,8 +67,8 @@ class MoneyOutController extends GetxController{
           walletList.addAll(tempWalletList);
         }
         if(tempWalletList.isNotEmpty){
-          walletsMethod = walletList[0];
-          setWalletMethod(walletsMethod);
+          selectedWallet = walletList[0];
+          setWalletMethod(selectedWallet);
         }
 
         List<String>? tempOtpList = model.data?.otpType;
@@ -74,8 +76,8 @@ class MoneyOutController extends GetxController{
           otpTypeList.addAll(tempOtpList);
         }
         if(tempOtpList.isNotEmpty){
-          initialOtpType = otpTypeList[0];
-          setOtpMethod(initialOtpType);
+          selectedOtp = otpTypeList[0];
+          setOtpMethod(selectedOtp);
         }
 
         amount = amountController.text;
@@ -90,8 +92,35 @@ class MoneyOutController extends GetxController{
   }
 
   bool submitLoading = false;
-  void submitLoadingState(){
-    submitLoading = !submitLoading;
+  Future<void> submitMoneyOut() async{
+    submitLoading = true;
+    update();
+
+    String agentName = agentController.text;
+    String walletId = selectedWallet?.id.toString()??'';
+    String amount = amountController.text;
+    String otpType = selectedOtp.toLowerCase().toString();
+
+    ResponseModel response = await moneyOutRepo.submitMoneyOut(walletId: walletId, amount: amount, agent: agentName, otpType: otpType);
+    if(response.statusCode==200){
+      AuthorizationResponseModel model = AuthorizationResponseModel.fromJson(jsonDecode(response.responseJson));
+      if(model.status?.toLowerCase()=='success'){
+        String actionId = model.data?.actionId??'';
+        if(actionId.isNotEmpty){
+          Get.toNamed(RouteHelper.otpScreen, arguments: [actionId, RouteHelper.bottomNavBar]);
+        }
+        else{
+          CustomSnackBar.error(errorList: [MyStrings.noActionid]);
+        }
+
+      } else{
+
+      }
+    } else{
+      CustomSnackBar.error(errorList: [response.message]);
+    }
+
+    submitLoading = false;
     update();
   }
 }
