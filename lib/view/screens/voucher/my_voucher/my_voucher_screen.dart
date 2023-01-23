@@ -10,10 +10,8 @@ import 'package:xcash_app/data/repo/voucher/voucher_list_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
-import 'package:xcash_app/view/screens/voucher/create_voucher/create_voucher.dart';
-import 'package:xcash_app/view/screens/voucher/my_voucher/widget/middle_tab_buttons.dart';
-import 'package:xcash_app/view/screens/voucher/my_voucher/widget/voucher_not_used.dart';
-import 'package:xcash_app/view/screens/voucher/my_voucher/widget/voucher_used.dart';
+import 'package:xcash_app/view/components/custom_no_data_found_class.dart';
+import 'package:xcash_app/view/screens/voucher/my_voucher/widget/voucher_list_card.dart';
 import 'package:xcash_app/view/screens/voucher/redeem_voucher/redeem_voucher.dart';
 
 class MyVoucherScreen extends StatefulWidget {
@@ -80,32 +78,18 @@ class _MyVoucherScreenState extends State<MyVoucherScreen> {
               ),
             ],
           ),
-          body: controller.isLoading ? const CustomLoader() : Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: Dimensions.space20, left: Dimensions.space15, right: Dimensions.space15),
-                child: Container(
-                  height: 40,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    color: MyColor.colorWhite,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Row(
-                    children: [
-                      MiddleTabButtons(buttonName: MyStrings.notUsed, activeButton: controller.activeTab),
-                      MiddleTabButtons(buttonName: MyStrings.used, activeButton: !controller.activeTab),
-                    ],
-                  ),
-                ),
-              ),
-              const SizedBox(height: Dimensions.space20),
-              controller.activeTab ? const Expanded(
-                  child: VoucherNotUsed()
-              ) : const Expanded(
-                  child: VoucherUsed()
-              ),
-            ],
+          body: controller.isLoading ? const CustomLoader() : Padding(
+            padding: Dimensions.screenPaddingHV,
+            child: Column(
+              children: [
+                Expanded(
+                    child: controller.voucherList.isEmpty ? const NoDataOrInternetScreen() : SizedBox(
+                      height: MediaQuery.of(context).size.height,
+                        child: const VoucherListCard()
+                    )
+                )
+              ],
+            ),
           ),
         ),
       ),
