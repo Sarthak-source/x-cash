@@ -92,6 +92,7 @@ class UrlContainer{
   static const String requestMoneyEndPoint = "request/money";
   static const String requestMoneySubmitEndPoint = "request/money";
   static const String requestToMeEndPoint = "requests";
+  static const String myRequestHistoryEndPoint = "my/requested/history";
 
   // exchange money
   static const String exchangeMoneyEndPoint = "exchange/money";
