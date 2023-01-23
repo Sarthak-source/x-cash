@@ -162,8 +162,10 @@ class MyStrings{
 
   // colorRedeem voucher
   static const String redeemVoucher = "Redeem Voucher";
-  static const String voucherNumber = "Voucher Number";
-  static const String colorRedeem = "colorRedeem";
+  static const String voucherCode = "Voucher Code";
+  static const String enterVoucherCode = "Enter voucher code";
+  static const String errorMsgVoucherCode = "Please enter voucher code";
+  static const String redeem = "Redeem";
 
   // provide details
   static const String provideDetails = "Provide Details";
@@ -523,8 +525,6 @@ class MyStrings{
 
   static const String otp = "OTP";
   static const String moneyRequestToMe = "Money Requests to Me";
-
-  static const String voucherCode = "Voucher Code";
 
 
   static List<LanguageModel> languages = [
