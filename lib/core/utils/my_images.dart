@@ -37,7 +37,7 @@ class MyImages{
   static const String mail = "${basePath1}mail.png";
   static const String makePayment = "${basePath}makePayment.svg";
   static const String mark = "${basePath}mark.svg";
-  static const String menu = "${basePath}menu.svg";
+  static const String menu = "${basePath1}menu.png";
   static const String moneyIn = "${basePath}moneyIn.svg";
   static const String moneyOut = "${basePath}moneyOut.svg";
   static const String myInvoice = "${basePath}myInvoice.svg";
@@ -53,7 +53,7 @@ class MyImages{
   static const String payoneer = "${basePath1}payoneer.png";
   static const String paypal = "${basePath1}paypal.png";
   static const String phone = "${basePath1}phone.png";
-  static const String requestMe = "${basePath}requestMe.svg";
+  static const String requestMe = "${basePath1}requestMe.png";
   static const String requestMoney = "${basePath}requestMoney.svg";
   static const String requestMoney1 = "${basePath1}requestMoney1.png";
   static const String scan = "${basePath}scan.svg";
@@ -63,14 +63,14 @@ class MyImages{
   static const String security = "${basePath}security.svg";
   static const String state = "${basePath1}state.png";
   static const String termServices = "${basePath1}termsServices.png";
-  static const String transaction = "${basePath}transaction.svg";
+  static const String transaction = "${basePath1}transaction.png";
   static const String transaction1 = "${basePath}transaction1.svg";
   static const String transfer = "${basePath}transfer.svg";
   static const String transferMoney = "${basePath}transferMoney.svg";
   static const String user1 = "${basePath1}user1.png";
   static const String userProfile = "${basePath1}userProfile.png";
   static const String userProfile2 = "${basePath}userProfile2.svg";
-  static const String voucher = "${basePath}voucher.svg";
+  static const String voucher = "${basePath1}voucher.png";
   static const String withdraw = "${basePath}withdraw.svg";
   static const String withdrawHistory = "${basePath}withdrawHistory.svg";
   static const String dotMenu = "${basePath}dots.svg";
