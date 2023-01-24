@@ -7,7 +7,11 @@ import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
+import 'package:xcash_app/data/controller/home/home_controller.dart';
+import 'package:xcash_app/data/repo/home/home_repo.dart';
+import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/buttons/circle_animated_button_with_text.dart';
+import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/image/circle_shape_image.dart';
 import 'package:xcash_app/view/screens/home/widget/insight_section.dart';
@@ -27,26 +31,47 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
   @override
+  void initState() {
+    Get.put(ApiClient(sharedPreferences: Get.find()));
+    Get.put(HomeRepo(apiClient: Get.find()));
+    final controller = Get.put(HomeController(homeRepo: Get.find()));
+
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      controller.initialData();
+    });
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: MyColor.getScreenBgColor(),
-        body: SingleChildScrollView(
-          padding: const EdgeInsets.only(bottom: Dimensions.space20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              TopSection(),
-              MainItemSection(),
-              SizedBox(height: Dimensions.space10),
-              WalletSection(),
-              SizedBox(height: Dimensions.space10),
-              QuickLinkSection(),
-              SizedBox(height: Dimensions.space10),
-              InsightSection(),
-              SizedBox(height: Dimensions.space10),
-              LatestTransactionSection()
-            ],
+    return GetBuilder<HomeController>(
+      builder: (controller) => SafeArea(
+        child: Scaffold(
+          backgroundColor: MyColor.getScreenBgColor(),
+          body: controller.isLoading ? const CustomLoader() : SingleChildScrollView(
+            padding: const EdgeInsets.only(bottom: Dimensions.space20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                TopSection(),
+                MainItemSection(),
+                SizedBox(height: Dimensions.space10),
+                WalletSection(),
+                SizedBox(height: Dimensions.space10),
+                QuickLinkSection(),
+                SizedBox(height: Dimensions.space10),
+                InsightSection(),
+                SizedBox(height: Dimensions.space10),
+                LatestTransactionSection()
+              ],
+            ),
           ),
         ),
       ),
