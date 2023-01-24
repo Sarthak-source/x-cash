@@ -10,7 +10,7 @@ class MyImages{
   static const String amount = "${basePath1}amount.png";
   static const String appLogo = "${basePath1}appLogo.png";
   static const String arrowDown = "${basePath}arrow_down.svg";
-  static const String arrowRightDown = "${basePath}arrow_right_down.svg";
+  static const String arrowRightDown = "${basePath1}arrow_right_down.png";
   static const String arrowRightDown2 = "${basePath1}arrow_right_down.png";
   static const String arrowRightUp = "${basePath1}arrow_right_up.png";
   static const String arrowRightUp2 = "${basePath1}arrow_right_up2.png";
