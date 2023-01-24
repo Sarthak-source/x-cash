@@ -12,7 +12,6 @@ import 'package:xcash_app/data/repo/transaction/transaction_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/custom_no_data_found_class.dart';
-import 'package:xcash_app/view/screens/transaction/widget/custom_transaction_card.dart';
 import 'package:xcash_app/view/screens/transaction/widget/filters_field.dart';
 
 class TransactionHistoryScreen extends StatefulWidget {
