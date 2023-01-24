@@ -128,17 +128,63 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                           }
 
                           return  GestureDetector(
-                            onTap: (){},
-                            child: CustomTransactionCard(
-                                index: index,
-                                detailsText: "${controller.transactionList[index].details ?? ""} ${controller.transactionList[index].receiverUser?.username ?? ""}",
-                                trxData: controller.transactionList[index].trx ?? "",
-                                dateData: DateConverter.isoStringToLocalDateOnly(controller.transactionList[index].createdAt ?? ""),
-                                amountData: "${controller.transactionList[index].trxType} ${Converter.twoDecimalPlaceFixedWithoutRounding(controller.transactionList[index].amount.toString())} "
-                                    "${controller.transactionList[index].currency?.currencyCode ?? ''}",
-                                postBalanceData: "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.transactionList[index].postBalance.toString())} "
-                                    "${controller.transactionList[index].currency?.currencyCode ?? ''}"
-                            ),
+                              onTap: (){},
+                              child: Container(
+                                width: MediaQuery.of(context).size.width,
+                                padding: const EdgeInsets.symmetric(vertical: Dimensions.space15, horizontal: Dimensions.space10),
+                                decoration: BoxDecoration(color: MyColor.getCardBgColor(), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Container(
+                                            height: 35, width: 35,
+                                            alignment: Alignment.center,
+                                            decoration: BoxDecoration(
+                                                color: controller.transactionList[index].trxType == "-" ? MyColor.colorRed.withOpacity(0.2) : MyColor.colorGreen.withOpacity(0.2),
+                                                shape: BoxShape.circle
+                                            ),
+                                            child: Icon(
+                                              controller.transactionList[index].trxType == "-" ? Icons.arrow_upward : Icons.arrow_downward,
+                                              color: controller.transactionList[index].trxType == "-" ? MyColor.colorRed : MyColor.colorGreen,
+                                              size: 20,
+                                            )
+                                        ),
+                                        const SizedBox(width: Dimensions.space10),
+                                        Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "${controller.transactionList[index].remark}".replaceAll("_", " ").toUpperCase(),
+                                              style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600),
+                                            ),
+                                            const SizedBox(height: Dimensions.space10),
+                                            Text(
+                                              controller.transactionList[index].details ?? "",
+                                              style: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.5)),
+                                            )
+                                          ],
+                                        )
+                                      ],
+                                    ),
+                                    Column(
+                                      crossAxisAlignment: CrossAxisAlignment.end,
+                                      children: [
+                                        Text(
+                                          DateConverter.isoStringToLocalDateOnly(controller.transactionList[index].createdAt ?? ""),
+                                          style: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.5)),
+                                        ),
+                                        const SizedBox(height: Dimensions.space10),
+                                        Text(
+                                            "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.transactionList[index].amount ?? "")} ${controller.transactionList[index].currency?.currencyCode ?? ""}",
+                                            style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600)
+                                        )
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              )
                           );
                         }
                     ),
