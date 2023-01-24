@@ -16,8 +16,11 @@ class MyStrings{
   static const String next = "Next";
   static const String getStarted = "Get Started";
   static const String paymentPreview = "Payment Preview";
+  static const String seeMore = "See More";
 
   static const String enterTransactionNo = "Enter transaction no.";
+  static const String quickLink = "Quick Links";
+  static const String latestTransactions = "Latest Transactions";
 
   // login-screen
   static const String welcomeBack = "Welcome Back!";
@@ -89,7 +92,7 @@ class MyStrings{
   static const String insights = "Insights";
   static const String moneyIn = "Money In";
   static const String moneyOut = "Money Out";
-  static const String viewMore = "View More";
+  static const String seeAll = "See All";
 
   static const String voucherRedeemLog = "Voucher Redeem Log";
   static const String redeemLog = "Redeem Log";
@@ -100,6 +103,7 @@ class MyStrings{
 
   // home bottom-sheet
   static const String totalReceived = "Total Received";
+  static const String totalSpent = "Total Spent";
   static const String viewTransactions = "View Transactions";
 
   static const String transaction = "Transaction";
@@ -131,6 +135,7 @@ class MyStrings{
   static const String payableAmount = "Payable amount";
   static const String payableAfterCharge = "Payable after Charge";
   static const String sendFromNumber = "Send From Number";
+  static const String sendMoney = "Send Money";
   static const String status = "Status";
   static const String screenShot = "Screenshot";
 
