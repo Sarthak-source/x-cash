@@ -1,106 +1,92 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
+
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
+import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/withdraw/withdraw_history_response_model.dart';
-import 'package:xcash_app/data/repo/withdraw/withdraw_repo.dart';
+import 'package:xcash_app/data/repo/withdraw/withdraw_history_repo.dart';
+import 'package:xcash_app/view/components/custom_snackbar.dart';
 
-class WithdrawHistoryController extends GetxController {
+class WithdrawHistoryController extends GetxController{
 
-  WithdrawRepo repo;
+  WithdrawHistoryRepo withdrawHistoryRepo;
+  WithdrawHistoryController({required this.withdrawHistoryRepo});
 
-  String searchText = "";
-  WithdrawHistoryController({required this.repo});
-  WithdrawHistoryResponseModel withdrawHistoryResponseModel = WithdrawHistoryResponseModel();
   bool isLoading = true;
-  String? nextPageUrl ='';
-  List<WithdrawListModel>historyList=[];
-  String gsCurrency = '';
+  WithdrawHistoryResponseModel model = WithdrawHistoryResponseModel();
+
+  List<Data> withdrawList = [];
 
   int page = 0;
+  String? nextPageUrl;
+  TextEditingController searchController = TextEditingController();
 
-  initData() async{
-    historyList.clear();
-    isLoading=true;
+  void initialData() async{
+    page = 0;
+    searchController.text = "";
+    withdrawList.clear();
+    isLoading = true;
     update();
-    withdrawHistoryResponseModel= await repo.getAllWithdrawHistory(page, searchText: searchText);
 
-   if(withdrawHistoryResponseModel.data!=null){
-     nextPageUrl=withdrawHistoryResponseModel.data?.withdrawals?.nextPageUrl;
-     List<WithdrawListModel>?list=withdrawHistoryResponseModel.data?.withdrawals?.data;
-     if(list!=null && list.isNotEmpty){
-       historyList.addAll(list);
-     }
-   }
-   isLoading=false;
-   update();
+    await loadData();
+    isLoading = false;
+    update();
   }
 
-
-  void fetchNewList() async{
-
+  Future<void> loadData() async{
     page = page + 1;
-    withdrawHistoryResponseModel = await repo.getAllWithdrawHistory(page, searchText: searchText);
 
-    if(withdrawHistoryResponseModel.data!=null){
-      nextPageUrl=withdrawHistoryResponseModel.data?.withdrawals?.nextPageUrl;
-      List<WithdrawListModel>?list=withdrawHistoryResponseModel.data?.withdrawals?.data;
-      if(list!=null && list.isNotEmpty){
-        historyList.addAll(list);
-      }
+    if(page == 1){
+      withdrawList.clear();
     }
 
+    String searchText = searchController.text;
+    ResponseModel responseModel = await withdrawHistoryRepo.getData(page, searchText: searchText);
+    if(responseModel.statusCode == 200){
+      model = WithdrawHistoryResponseModel.fromJson(jsonDecode(responseModel.responseJson));
+      nextPageUrl = model.data?.withdraws?.nextPageUrl;
+
+      if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
+        List<Data>? tempWithdrawList = model.data?.withdraws?.data;
+        if(tempWithdrawList != null && tempWithdrawList.isNotEmpty){
+          withdrawList.addAll(tempWithdrawList);
+        }
+      }
+      else{
+        CustomSnackBar.error(errorList: model.message?.error ?? [MyStrings.somethingWentWrong]);
+      }
+    }
+    else{
+      CustomSnackBar.error(errorList: [responseModel.message]);
+    }
+
+    isLoading = false;
     update();
   }
 
-  void searchList() async{
-    withdrawHistoryResponseModel = await repo.getAllWithdrawHistory(page, searchText: searchText);
-    historyList.clear();
-    if(withdrawHistoryResponseModel.data!=null){
-      List<WithdrawListModel>?list=withdrawHistoryResponseModel.data?.withdrawals?.data;
-      if(list!=null && list.isNotEmpty){
-        historyList.addAll(list);
-      }
-    }
-    update();
-  }
-
-  bool hasNext() {
-    return nextPageUrl!=null && nextPageUrl!.isNotEmpty? true : false;
-  }
-
-  void clearData() {
-    page=0;
-    historyList.clear();
-    nextPageUrl='';
-  }
-
-  /// filter data
   bool filterLoading = false;
   Future<void> filterData()async{
-    searchText = searchController.text;
     page=0;
     filterLoading = true;
     update();
-    await initData();
 
+    await loadData();
     filterLoading=false;
     update();
   }
 
   bool isSearch = false;
-  TextEditingController searchController = TextEditingController();
-  void changeSearchStatus() async{
+  void changeSearchStatus(){
     isSearch = ! isSearch;
     update();
-    if(!isSearch){
-      page = 0;
-      searchController.text = '';
-      searchText = '';
-      historyList.clear();
-      isLoading = true;
-      update();
 
-      await initData();
-      isLoading = false;
+    if(!isSearch){
+      initialData();
     }
+  }
+
+  bool hasNext(){
+    return nextPageUrl != null && nextPageUrl!.isNotEmpty && nextPageUrl != 'null'? true : false;
   }
 }

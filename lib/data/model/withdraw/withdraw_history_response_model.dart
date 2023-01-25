@@ -1,5 +1,3 @@
-
-
 import '../auth/sign_up_model/registration_response_model.dart';
 
 class WithdrawHistoryResponseModel {
@@ -20,7 +18,6 @@ class WithdrawHistoryResponseModel {
     _message = json['message'] != null ? Message.fromJson(json['message']) : null;
     _data = json['data'] != null ? MainData.fromJson(json['data']) : null;
   }
-
   String? _remark;
   String? _status;
   Message? _message;
@@ -48,55 +45,53 @@ class WithdrawHistoryResponseModel {
 
 class MainData {
   MainData({
-      Withdrawals? withdrawals,}){
-    _withdrawals = withdrawals;
+      Withdraws? withdraws,}){
+    _withdraws = withdraws;
 }
 
   MainData.fromJson(dynamic json) {
-    _withdrawals = json['withdrawals'] != null ? Withdrawals.fromJson(json['withdrawals']) : null;
+    _withdraws = json['withdraws'] != null ? Withdraws.fromJson(json['withdraws']) : null;
   }
-  Withdrawals? _withdrawals;
+  Withdraws? _withdraws;
 
-  Withdrawals? get withdrawals => _withdrawals;
+  Withdraws? get withdraws => _withdraws;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    if (_withdrawals != null) {
-      map['withdrawals'] = _withdrawals?.toJson();
+    if (_withdraws != null) {
+      map['withdraws'] = _withdraws?.toJson();
     }
     return map;
   }
 
 }
 
-class Withdrawals {
-  Withdrawals({
-      List<WithdrawListModel>? data,
-      dynamic nextPageUrl, 
-      String? path
-      }){
+class Withdraws {
+  Withdraws({
+      List<Data>? data,
+      String? nextPageUrl, 
+      String? path}){
     _data = data;
     _nextPageUrl = nextPageUrl;
     _path = path;
 }
 
-  Withdrawals.fromJson(dynamic json) {
+  Withdraws.fromJson(dynamic json) {
     if (json['data'] != null) {
       _data = [];
       json['data'].forEach((v) {
-        _data?.add(WithdrawListModel.fromJson(v));
+        _data?.add(Data.fromJson(v));
       });
     }
     _nextPageUrl = json['next_page_url'];
     _path = json['path'];
   }
-  List<WithdrawListModel>? _data;
-  dynamic _nextPageUrl;
+  List<Data>? _data;
+  String? _nextPageUrl;
   String? _path;
 
-
-  List<WithdrawListModel>? get data => _data;
-  dynamic get nextPageUrl => _nextPageUrl;
+  List<Data>? get data => _data;
+  String? get nextPageUrl => _nextPageUrl;
   String? get path => _path;
 
   Map<String, dynamic> toJson() {
@@ -111,173 +106,197 @@ class Withdrawals {
 
 }
 
-
-class WithdrawListModel {
-  WithdrawListModel({
-      int? id,
-      String? methodId,
-      String? userId,
+class Data {
+  Data({
+      int? id, 
+      String? methodId, 
+      String? userId, 
+      String? userType, 
       String? amount, 
+      String? currencyId, 
+      String? walletId, 
       String? currency, 
       String? rate, 
       String? charge, 
       String? trx, 
       String? finalAmount, 
-      String? afterCharge,
-      String? status,
+      String? afterCharge, 
+      dynamic withdrawInformation, 
+      String? status, 
       dynamic adminFeedback, 
       String? createdAt, 
       String? updatedAt, 
-      Method? method,}){
+      dynamic method, 
+      Curr? curr,}){
     _id = id;
+    _methodId = methodId;
+    _userId = userId;
+    _userType = userType;
     _amount = amount;
+    _currencyId = currencyId;
+    _walletId = walletId;
     _currency = currency;
     _rate = rate;
     _charge = charge;
     _trx = trx;
     _finalAmount = finalAmount;
     _afterCharge = afterCharge;
+    _withdrawInformation = withdrawInformation;
+    _status = status;
     _adminFeedback = adminFeedback;
     _createdAt = createdAt;
     _updatedAt = updatedAt;
     _method = method;
+    _curr = curr;
 }
 
-  WithdrawListModel.fromJson(dynamic json) {
+  Data.fromJson(dynamic json) {
     _id = json['id'];
-    _amount = json['amount'].toString();
+    _methodId = json['method_id'].toString();
+    _userId = json['user_id'].toString();
+    _userType = json['user_type'].toString();
+    _amount = json['amount'] != null ? json['amount'].toString() : "";
+    _currencyId = json['currency_id'].toString();
+    _walletId = json['wallet_id'].toString();
     _currency = json['currency'].toString();
     _rate = json['rate'].toString();
     _charge = json['charge'].toString();
     _trx = json['trx'].toString();
     _finalAmount = json['final_amount'].toString();
     _afterCharge = json['after_charge'].toString();
+    _withdrawInformation = json['withdraw_information'];
     _status = json['status'].toString();
-    _adminFeedback = json['admin_feedback'].toString();
+    _adminFeedback = json['admin_feedback'];
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
-    _method = json['method'] != null ? Method.fromJson(json['method']) : null;
+    _method = json['method'];
+    _curr = json['curr'] != null ? Curr.fromJson(json['curr']) : null;
   }
   int? _id;
-  int? _methodId;
-  int? _userId;
+  String? _methodId;
+  String? _userId;
+  String? _userType;
   String? _amount;
+  String? _currencyId;
+  String? _walletId;
   String? _currency;
   String? _rate;
   String? _charge;
   String? _trx;
   String? _finalAmount;
   String? _afterCharge;
+  dynamic _withdrawInformation;
   String? _status;
   dynamic _adminFeedback;
   String? _createdAt;
   String? _updatedAt;
-  Method? _method;
+  dynamic _method;
+  Curr? _curr;
 
   int? get id => _id;
-  int? get methodId => _methodId;
-  int? get userId => _userId;
+  String? get methodId => _methodId;
+  String? get userId => _userId;
+  String? get userType => _userType;
   String? get amount => _amount;
+  String? get currencyId => _currencyId;
+  String? get walletId => _walletId;
   String? get currency => _currency;
   String? get rate => _rate;
   String? get charge => _charge;
   String? get trx => _trx;
   String? get finalAmount => _finalAmount;
   String? get afterCharge => _afterCharge;
+  dynamic get withdrawInformation => _withdrawInformation;
   String? get status => _status;
   dynamic get adminFeedback => _adminFeedback;
   String? get createdAt => _createdAt;
   String? get updatedAt => _updatedAt;
-  Method? get method => _method;
+  dynamic get method => _method;
+  Curr? get curr => _curr;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['id'] = _id;
     map['method_id'] = _methodId;
     map['user_id'] = _userId;
+    map['user_type'] = _userType;
     map['amount'] = _amount;
+    map['currency_id'] = _currencyId;
+    map['wallet_id'] = _walletId;
     map['currency'] = _currency;
     map['rate'] = _rate;
     map['charge'] = _charge;
     map['trx'] = _trx;
     map['final_amount'] = _finalAmount;
     map['after_charge'] = _afterCharge;
+    map['withdraw_information'] = _withdrawInformation;
     map['status'] = _status;
     map['admin_feedback'] = _adminFeedback;
     map['created_at'] = _createdAt;
     map['updated_at'] = _updatedAt;
-    if (_method != null) {
-      map['method'] = _method?.toJson();
+    map['method'] = _method;
+    if (_curr != null) {
+      map['curr'] = _curr?.toJson();
     }
     return map;
   }
 
 }
 
-class Method {
-  Method({
-      int? id,
-      String? name, 
-      String? minLimit, 
-      String? maxLimit, 
-      String? fixedCharge, 
+class Curr {
+  Curr({
+      int? id, 
+      String? currencyCode, 
+      String? currencySymbol, 
+      String? currencyFullName, 
+      String? currencyType, 
       String? rate, 
-      String? percentCharge, 
-      String? currency, 
-      String? description, 
-      String? status,
+      String? isDefault, 
+      String? status, 
       String? createdAt, 
       String? updatedAt,}){
     _id = id;
-    _name = name;
-    _minLimit = minLimit;
-    _maxLimit = maxLimit;
-    _fixedCharge = fixedCharge;
+    _currencyCode = currencyCode;
+    _currencySymbol = currencySymbol;
+    _currencyFullName = currencyFullName;
+    _currencyType = currencyType;
     _rate = rate;
-    _percentCharge = percentCharge;
-    _currency = currency;
-    _description = description;
+    _isDefault = isDefault;
     _status = status;
     _createdAt = createdAt;
     _updatedAt = updatedAt;
 }
 
-  Method.fromJson(dynamic json) {
+  Curr.fromJson(dynamic json) {
     _id = json['id'];
-    _name = json['name'].toString();
-    _minLimit = json['min_limit'].toString();
-    _maxLimit = json['max_limit'].toString();
-    _fixedCharge = json['fixed_charge'].toString();
+    _currencyCode = json['currency_code'].toString();
+    _currencySymbol = json['currency_symbol'].toString();
+    _currencyFullName = json['currency_FullName'].toString();
+    _currencyType = json['currency_type'].toString();
     _rate = json['rate'].toString();
-    _percentCharge = json['percent_charge'].toString();
-    _currency = json['currency'].toString();
-    _description = json['description'].toString();
+    _isDefault = json['is_default'].toString();
     _status = json['status'].toString();
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
   }
   int? _id;
-  String? _name;
-  String? _minLimit;
-  String? _maxLimit;
-  String? _fixedCharge;
+  String? _currencyCode;
+  String? _currencySymbol;
+  String? _currencyFullName;
+  String? _currencyType;
   String? _rate;
-  String? _percentCharge;
-  String? _currency;
-  String? _description;
+  String? _isDefault;
   String? _status;
   String? _createdAt;
   String? _updatedAt;
 
   int? get id => _id;
-  String? get name => _name;
-  String? get minLimit => _minLimit;
-  String? get maxLimit => _maxLimit;
-  String? get fixedCharge => _fixedCharge;
+  String? get currencyCode => _currencyCode;
+  String? get currencySymbol => _currencySymbol;
+  String? get currencyFullName => _currencyFullName;
+  String? get currencyType => _currencyType;
   String? get rate => _rate;
-  String? get percentCharge => _percentCharge;
-  String? get currency => _currency;
-  String? get description => _description;
+  String? get isDefault => _isDefault;
   String? get status => _status;
   String? get createdAt => _createdAt;
   String? get updatedAt => _updatedAt;
@@ -285,14 +304,12 @@ class Method {
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['id'] = _id;
-    map['name'] = _name;
-    map['min_limit'] = _minLimit;
-    map['max_limit'] = _maxLimit;
-    map['fixed_charge'] = _fixedCharge;
+    map['currency_code'] = _currencyCode;
+    map['currency_symbol'] = _currencySymbol;
+    map['currency_FullName'] = _currencyFullName;
+    map['currency_type'] = _currencyType;
     map['rate'] = _rate;
-    map['percent_charge'] = _percentCharge;
-    map['currency'] = _currency;
-    map['description'] = _description;
+    map['is_default'] = _isDefault;
     map['status'] = _status;
     map['created_at'] = _createdAt;
     map['updated_at'] = _updatedAt;
