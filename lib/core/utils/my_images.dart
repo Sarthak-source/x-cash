@@ -38,8 +38,6 @@ class MyImages{
   static const String makePayment = "${basePath}makePayment.svg";
   static const String mark = "${basePath}mark.svg";
   static const String menu = "${basePath1}menu.png";
-  static const String moneyIn = "${basePath}moneyIn.svg";
-  static const String moneyOut = "${basePath}moneyOut.svg";
   static const String myInvoice = "${basePath}myInvoice.svg";
   static const String myProfile = "${basePath1}myProfile.png";
   static const String myVoucher = "${basePath}myVoucher.svg";
@@ -87,4 +85,12 @@ class MyImages{
 
   static const String pendingIcon = "assets/images/pending.svg";
   static const String verifiedIcon = "assets/images/verified.svg";
+
+  static const String moneyHistory = "${basePath1}money_history.png";
+  static const String voucherRedeem = "${basePath1}voucher_redeem.png";
+  static const String moneyOut = "${basePath1}money_out.png";
+  static const String redeemLog = "${basePath1}redeem_log.png";
+  static const String makePayment1 = "${basePath1}make_payment.png";
+  static const String invoice1 = "${basePath1}invoice_1.png";
+  static const String addMoney_1 = "${basePath1}add_money.png";
 }
