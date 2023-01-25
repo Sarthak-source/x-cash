@@ -32,9 +32,12 @@ class _WithdrawMoneyScreenState extends State<WithdrawMoneyScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: MyColor.screenBgColor,
-        appBar: const CustomAppBar(
-          title: MyStrings.withdrawMoney,
-          /*actions: [
+        appBar: AppBar(
+          elevation: 0,
+          title: Text(MyStrings.withdrawMoney, style: regularDefault.copyWith(color: MyColor.getAppBarContentColor())),
+          backgroundColor: MyColor.getAppBarColor(),
+          leading: IconButton(onPressed: () => Get.back(), icon: Icon(Icons.arrow_back, color: MyColor.getAppBarContentColor(), size: 20)),
+          actions: [
             Padding(
               padding: const EdgeInsets.only(right: Dimensions.space15),
               child: GestureDetector(
@@ -44,17 +47,14 @@ class _WithdrawMoneyScreenState extends State<WithdrawMoneyScreen> {
                   ).customBottomSheet(context);
                 },
                 child: Container(
-                  height: 25, width: 25,
+                  height: 30, width: 30,
                   alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      color: MyColor.colorWhite, border: Border.all(color: MyColor.contentTextColor.withOpacity(0.8), width: 1.5),
-                      shape: BoxShape.circle
-                  ),
-                  child: Icon(Icons.add, color: MyColor.contentTextColor.withOpacity(0.8), size: 15),
+                  decoration: const BoxDecoration(color: MyColor.colorWhite, shape: BoxShape.circle),
+                  child: Icon(Icons.add, color: MyColor.getPrimaryColor(), size: 15),
                 ),
               ),
             )
-          ],*/
+          ],
         ),
         body: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(vertical: Dimensions.space20, horizontal: Dimensions.space15),
