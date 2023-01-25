@@ -120,8 +120,8 @@ class Data {
       String? charge, 
       String? trx, 
       String? finalAmount, 
-      String? afterCharge, 
-      dynamic withdrawInformation, 
+      String? afterCharge,
+      List<WithdrawInfoModel>? withdrawInformation,
       String? status, 
       dynamic adminFeedback, 
       String? createdAt, 
@@ -164,7 +164,12 @@ class Data {
     _trx = json['trx'].toString();
     _finalAmount = json['final_amount'].toString();
     _afterCharge = json['after_charge'].toString();
-    _withdrawInformation = json['withdraw_information'];
+    if (json['withdraw_information'] != null) {
+      _withdrawInformation = [];
+      json['withdraw_information'].forEach((v) {
+        _withdrawInformation?.add(WithdrawInfoModel.fromJson(v));
+      });
+    }
     _status = json['status'].toString();
     _adminFeedback = json['admin_feedback'];
     _createdAt = json['created_at'];
@@ -185,7 +190,7 @@ class Data {
   String? _trx;
   String? _finalAmount;
   String? _afterCharge;
-  dynamic _withdrawInformation;
+  List<WithdrawInfoModel>? _withdrawInformation;
   String? _status;
   dynamic _adminFeedback;
   String? _createdAt;
@@ -206,7 +211,7 @@ class Data {
   String? get trx => _trx;
   String? get finalAmount => _finalAmount;
   String? get afterCharge => _afterCharge;
-  dynamic get withdrawInformation => _withdrawInformation;
+  List<WithdrawInfoModel>? get withdrawInformation => _withdrawInformation;
   String? get status => _status;
   dynamic get adminFeedback => _adminFeedback;
   String? get createdAt => _createdAt;
@@ -317,3 +322,71 @@ class Curr {
   }
 
 }
+
+class WithdrawInfo {
+  WithdrawInfo({List<WithdrawInfoModel>?list}){
+    _list=list;
+  }
+
+  List<WithdrawInfoModel>? _list=[];
+  List<WithdrawInfoModel>? get list => _list;
+
+  WithdrawInfo.fromJson(dynamic json) {
+
+    json['withdraw_information'].forEach((e) {
+     WithdrawInfoModel model = WithdrawInfoModel(
+        name:e.value['name'],
+        type:e.value['type'],
+        value:(e.value['value'] as List).map((e) => e as String).toList(),
+      );
+      _list?.add(model);
+    });
+
+
+  }
+
+
+}
+
+
+class WithdrawInfoModel {
+  WithdrawInfoModel({
+      String? name,
+      String? type,
+      List<String>?value
+  }){
+
+   _name = name;
+   _type = type;
+   _value = value;
+}
+
+  WithdrawInfoModel.fromJson(dynamic json) {
+    _name = json['name'].toString();
+    _type = json['type'].toString();
+    String runTimeType = json['value'].runtimeType.toString();
+    print(json['value']);
+    print('run time type:$runtimeType');
+    if(runTimeType=='String'){
+      _value = [json['value'].toString()];
+    } else{
+      _value = json['value']!=null?(json['value'] as List).map((e) => e as String).toList():[];
+    }
+
+  }
+
+
+  String? _name;
+  String? _type;
+  List<String>?  _value;
+
+
+
+  String? get name => _name;
+  String? get type => _type;
+  List<String>? get value => _value;
+
+
+}
+
+
