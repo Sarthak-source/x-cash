@@ -9,6 +9,7 @@ import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/view/components/buttons/circle_animated_button_with_text.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
+import 'package:xcash_app/view/screens/home/components/quick_links_item_bottom_sheet.dart';
 
 class QuickLinkSection extends StatelessWidget {
   const QuickLinkSection({Key? key}) : super(key: key);
@@ -65,9 +66,7 @@ class QuickLinkSection extends StatelessWidget {
                   height: 40, width: 40,
                   backgroundColor: MyColor.screenBgColor,
                   child: Image.asset(MyImages.menu, height: 20, width: 20),
-                  onTap: (){
-                    // bottom sheet
-                  },
+                  onTap: () => QuickLinkItemBottomSheet.quickLinkItemBottomSheet(context)
                 ),
               ),
             ],

@@ -55,49 +55,34 @@ class _CircleAnimatedButtonWithTextState extends State<CircleAnimatedButtonWithT
 
   @override
   Widget build(BuildContext context) {
-
     _scale = 1 - _controller.value;
-
     return  Center(
-
       child: GestureDetector(
-
         onTap: widget.onTap,
         onTapDown: _tapDown,
         onTapUp: _tapUp,
         child: Transform.scale(
-
           scale: _scale,
           child: Column(
-
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-
-              _animatedButton(),
+              Container(
+                  height: widget.height,
+                  width: widget.width,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      color: widget.backgroundColor,
+                      shape: BoxShape.circle
+                  ),
+                  child: widget.child
+              ),
               const SizedBox(height: 10),
-
               Text(widget.buttonName, textAlign: TextAlign.center, style: regularExtraSmall.copyWith(color: MyColor.primaryTextColor, fontWeight: FontWeight.w600))
             ],
           ),
         ),
 
       ),
-    );
-  }
-
-  Widget  _animatedButton() {
-
-    return Container(
-
-        height: widget.height,
-        width: widget.width,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-
-            color: widget.backgroundColor,
-            shape: BoxShape.circle
-        ),
-        child: widget.child
     );
   }
 

@@ -7,6 +7,7 @@ import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/view/components/buttons/circle_animated_button_with_text.dart';
+import 'package:xcash_app/view/screens/home/components/main_items_bottom_sheet.dart';
 
 class MainItemSection extends StatelessWidget {
   const MainItemSection({Key? key}) : super(key: key);
@@ -21,7 +22,7 @@ class MainItemSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
                 child: CircleAnimatedButtonWithText(
@@ -30,7 +31,7 @@ class MainItemSection extends StatelessWidget {
                   backgroundColor: MyColor.screenBgColor,
                   child: SvgPicture.asset(MyImages.addMoney, color: MyColor.primaryColor, height: 20, width: 20),
                   onTap: (){
-                    Get.toNamed(RouteHelper.addMoneyHistoryScreen);
+                    Get.toNamed(RouteHelper.addMoneyScreen);
                   },
                 ),
               ),
@@ -104,9 +105,7 @@ class MainItemSection extends StatelessWidget {
                   height: 40, width: 40,
                   backgroundColor: MyColor.screenBgColor,
                   child: Image.asset(MyImages.menu, color: MyColor.primaryColor, height: 20, width: 20),
-                  onTap: (){
-
-                  },
+                  onTap: () => MainItemBottomSheet.mainItemBottomSheet(context)
                 ),
               ),
             ],
