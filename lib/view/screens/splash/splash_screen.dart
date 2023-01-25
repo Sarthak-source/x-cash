@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
+import 'package:xcash_app/core/utils/util.dart';
 import 'package:xcash_app/data/controller/localization/localization_controller.dart';
 import 'package:xcash_app/data/controller/splash/splash_controller.dart';
 import 'package:xcash_app/data/repo/auth/general_setting_repo.dart';
@@ -20,6 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
+    MyUtils.splashScreen();
     Get.put(ApiClient(sharedPreferences: Get.find()));
     Get.put(GeneralSettingRepo(apiClient: Get.find()));
     Get.put(LocalizationController(sharedPreferences: Get.find()));
@@ -33,6 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void dispose() {
+    MyUtils.allScreen();
     super.dispose();
   }
 

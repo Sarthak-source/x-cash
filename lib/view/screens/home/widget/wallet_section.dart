@@ -50,7 +50,7 @@ class WalletSection extends StatelessWidget {
             ),
             const CustomDivider(space: Dimensions.space15),
             SizedBox(
-              height: 105,
+              height: 120,
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
@@ -93,7 +93,17 @@ class WalletSection extends StatelessWidget {
                                   MyStrings.transferMoney,
                                   style: regularSmall.copyWith(color: MyColor.contentTextColor),
                                 ),
-                                const Icon(Icons.arrow_forward_ios_outlined, color: MyColor.primaryColor, size: 16)
+                                GestureDetector(
+                                  onTap: (){
+                                    Get.toNamed(RouteHelper.transferMoneyScreen, arguments: controller.walletList[index].id.toString());
+                                  },
+                                  child: Container(
+                                    height: 30, width: 30,
+                                    alignment: Alignment.center,
+                                    decoration: BoxDecoration(color: Colors.grey[100], shape: BoxShape.circle),
+                                    child: const Icon(Icons.arrow_forward, color: MyColor.primaryColor, size: 15),
+                                  ),
+                                )
                               ],
                             )
                           ],

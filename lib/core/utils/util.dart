@@ -1,19 +1,19 @@
 import 'package:flutter/services.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 
-class MyUtil{
+class MyUtils{
 
-  static primaryTheme(){
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-        statusBarColor: MyColor.primaryColor,
+  static splashScreen(){
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        statusBarColor: MyColor.getPrimaryColor(),
         statusBarIconBrightness: Brightness.light,
-        systemNavigationBarColor: MyColor.primaryColor,
+        systemNavigationBarColor: MyColor.getPrimaryColor(),
         systemNavigationBarIconBrightness: Brightness.light));
   }
 
-  static secondaryTheme(){
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-        statusBarColor: MyColor.primaryColor,
+  static allScreen(){
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        statusBarColor: MyColor.getPrimaryColor(),
         statusBarIconBrightness: Brightness.light,
         systemNavigationBarColor: MyColor.colorWhite,
         systemNavigationBarIconBrightness: Brightness.dark));

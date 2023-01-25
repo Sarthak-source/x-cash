@@ -94,7 +94,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
             ],
           ),
           body: controller.isLoading ? const CustomLoader() : Padding(
-            padding: const EdgeInsets.symmetric(horizontal: Dimensions.space15, vertical: Dimensions.space20),
+            padding: const EdgeInsets.only(top: Dimensions.space20, left: Dimensions.space15, right: Dimensions.space15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -102,7 +102,6 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                   visible: controller.isSearch,
                   child: const FiltersField(),
                 ),
-
                 Expanded(
                   child: controller.transactionList.isEmpty && controller.filterLoading == false ? const Center(
                     child: NoDataOrInternetScreen(),
@@ -159,9 +158,14 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                                               style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600),
                                             ),
                                             const SizedBox(height: Dimensions.space10),
-                                            Text(
-                                              controller.transactionList[index].details ?? "",
-                                              style: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.5)),
+                                            SizedBox(
+                                              width: 150,
+                                              child: Text(
+                                                controller.transactionList[index].details ?? "",
+                                                style: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.5)),
+                                                overflow: TextOverflow.ellipsis,
+                                                maxLines: 2,
+                                              ),
                                             )
                                           ],
                                         )

@@ -20,9 +20,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   void initState() {
-    MyUtil.secondaryTheme();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
