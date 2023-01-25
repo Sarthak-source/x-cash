@@ -96,6 +96,7 @@ class MyStrings{
 
   static const String voucherRedeemLog = "Voucher Redeem Log";
   static const String redeemLog = "Redeem Log";
+  static const String dataNotFound = "Data not found";
 
   // bottom-nav
   static const String home = "Home";
