@@ -6,10 +6,16 @@ import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/withdraw/withdraw_history_controller.dart';
+import 'package:xcash_app/data/model/withdraw/withdraw_history_response_model.dart';
 import 'package:xcash_app/data/repo/withdraw/withdraw_history_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
+import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
+import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/custom_no_data_found_class.dart';
+import 'package:xcash_app/view/components/custom_snackbar.dart';
+import 'package:xcash_app/view/components/divider/custom_divider.dart';
+import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_history/widget/withdraw_log_card.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_history/widget/withdraw_log_top.dart';
 
@@ -21,12 +27,12 @@ class WithdrawHistoryScreen extends StatefulWidget {
 }
 
 class _WithdrawHistoryScreenState extends State<WithdrawHistoryScreen> {
-
   final ScrollController scrollController = ScrollController();
 
-  void scrollListener(){
-    if(scrollController.position.pixels == scrollController.position.maxScrollExtent){
-      if(Get.find<WithdrawHistoryController>().hasNext()){
+  void scrollListener() {
+    if (scrollController.position.pixels ==
+        scrollController.position.maxScrollExtent) {
+      if (Get.find<WithdrawHistoryController>().hasNext()) {
         Get.find<WithdrawHistoryController>().loadData();
       }
     }
@@ -36,7 +42,8 @@ class _WithdrawHistoryScreenState extends State<WithdrawHistoryScreen> {
   void initState() {
     Get.put(ApiClient(sharedPreferences: Get.find()));
     Get.put(WithdrawHistoryRepo(apiClient: Get.find()));
-    final controller = Get.put(WithdrawHistoryController(withdrawHistoryRepo: Get.find()));
+    final controller =
+        Get.put(WithdrawHistoryController(withdrawHistoryRepo: Get.find()));
 
     super.initState();
 
@@ -59,27 +66,35 @@ class _WithdrawHistoryScreenState extends State<WithdrawHistoryScreen> {
         child: Scaffold(
           backgroundColor: MyColor.screenBgColor,
           appBar: AppBar(
-            title: Text(MyStrings.withdrawHistory, style: regularDefault.copyWith(color: MyColor.getAppBarContentColor())),
+            title: Text(MyStrings.withdrawHistory,
+                style: regularDefault.copyWith(
+                    color: MyColor.getAppBarContentColor())),
             backgroundColor: MyColor.getAppBarColor(),
             elevation: 0,
             leading: IconButton(
-              onPressed: (){
+              onPressed: () {
                 Get.back();
               },
-              icon: Icon(Icons.arrow_back, size: 20, color: MyColor.getAppBarContentColor()),
+              icon: Icon(Icons.arrow_back,
+                  size: 20, color: MyColor.getAppBarContentColor()),
             ),
             actions: [
               Padding(
                 padding: const EdgeInsets.only(right: Dimensions.space15),
                 child: InkWell(
-                  onTap: (){
+                  onTap: () {
                     controller.changeSearchStatus();
                   },
                   child: Container(
-                    height: 30, width: 30,
+                    height: 30,
+                    width: 30,
                     alignment: Alignment.center,
-                    decoration: const BoxDecoration(color: MyColor.colorWhite, shape: BoxShape.circle),
-                    child: Icon(controller.isSearch ? Icons.clear : Icons.search, color: MyColor.primaryColor, size: 15),
+                    decoration: const BoxDecoration(
+                        color: MyColor.colorWhite, shape: BoxShape.circle),
+                    child: Icon(
+                        controller.isSearch ? Icons.clear : Icons.search,
+                        color: MyColor.primaryColor,
+                        size: 15),
                   ),
                 ),
               ),
@@ -88,51 +103,88 @@ class _WithdrawHistoryScreenState extends State<WithdrawHistoryScreen> {
                 child: InkWell(
                   onTap: () => Get.toNamed(RouteHelper.withdrawMoneyScreen),
                   child: Container(
-                    height: 30, width: 30,
+                    height: 30,
+                    width: 30,
                     alignment: Alignment.center,
-                    decoration: const BoxDecoration(color: MyColor.colorWhite, shape: BoxShape.circle),
-                    child: const Icon(Icons.add, color: MyColor.primaryColor, size: 15),
+                    decoration: const BoxDecoration(
+                        color: MyColor.colorWhite, shape: BoxShape.circle),
+                    child: const Icon(Icons.add,
+                        color: MyColor.primaryColor, size: 15),
                   ),
                 ),
               )
             ],
           ),
           body: controller.isLoading ? const CustomLoader() : Padding(
-            padding: const EdgeInsets.only(top: Dimensions.space20, left: Dimensions.space15, right: Dimensions.space15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Visibility(
-                  visible: controller.isSearch,
+                  padding: const EdgeInsets.only(top: Dimensions.space20, left: Dimensions.space15, right: Dimensions.space15),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      WithdrawLogTop(),
-                      SizedBox(height: 20),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: controller.withdrawList.isEmpty && controller.filterLoading == false ? const Center(
-                    child: NoDataOrInternetScreen(),
-                  ) : controller.filterLoading ? const CustomLoader() : SizedBox(
-                    height: MediaQuery.of(context).size.height,
-                    child: ListView.separated(
-                      shrinkWrap: true,
-                      scrollDirection: Axis.vertical,
-                      physics: const BouncingScrollPhysics(),
-                      padding: EdgeInsets.zero,
-                      controller: scrollController,
-                      itemCount: controller.withdrawList.length+1,
-                      separatorBuilder: (context, index) => const SizedBox(height: Dimensions.space10),
-                      itemBuilder: (context, index) {
+                    children: [
+                      Visibility(
+                        visible: controller.isSearch,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            WithdrawLogTop(),
+                            SizedBox(height: 20),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        child: controller.withdrawList.isEmpty && controller.filterLoading == false ? const Center(
+                          child: NoDataOrInternetScreen(),
+                        ) : controller.filterLoading ? const CustomLoader() : SizedBox(
+                        height: MediaQuery.of(context).size.height,
+                        child: ListView.separated(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          physics: const BouncingScrollPhysics(),
+                          padding: EdgeInsets.zero,
+                          controller: scrollController,
+                          itemCount: controller.withdrawList.length + 1,
+                          separatorBuilder: (context, index) => const SizedBox(height: Dimensions.space10),
+                          itemBuilder: (context, index) {
+                            if (controller.withdrawList.length == index) {
+                              return controller.hasNext() ? const CustomLoader(isPagination: true) : const SizedBox();
+                            }
+                            return WithdrawLogCard(
+                              index: index,
+                              press: (){
+                                CustomBottomSheet(
+                                  child: controller.withdrawList[index].withdrawInformation == null ? Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: const [
+                                          BottomSheetHeaderText(text: MyStrings.details),
+                                          BottomSheetCloseButton()
+                                        ],
+                                      ),
+                                      const CustomDivider(space: Dimensions.space10),
+                                      Text(
+                                        MyStrings.dataNotFound,
+                                        style: regularLarge.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600),
+                                      )
+                                    ],
+                                  ) : Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: const [
+                                          BottomSheetHeaderText(text: MyStrings.details),
+                                          BottomSheetCloseButton()
+                                        ],
+                                      ),
+                                      const CustomDivider(space: Dimensions.space10),
 
-                        if(controller.withdrawList.length == index){
-                          return controller.hasNext()?const CustomLoader(isPagination: true,) : const SizedBox();
-                        }
-
-                        return WithdrawLogCard(index: index);
-                      },
+                                    ],
+                                  )
+                                ).customBottomSheet(context);
+                              },
+                            );
+                        },
                     ),
                   ),
                 )

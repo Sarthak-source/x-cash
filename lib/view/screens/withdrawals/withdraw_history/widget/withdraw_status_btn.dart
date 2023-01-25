@@ -15,9 +15,9 @@ class WithdrawStatusBtn extends StatelessWidget {
       alignment: Alignment.center,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
-          border: Border.all(color: status == "1" ? MyColor.colorGreen
-              : status == "2" ? Colors.orangeAccent
-              : status == "3" ? Colors.red : MyColor.colorGreen)
+          color: status == "1" ? MyColor.colorGreen.withOpacity(0.2)
+              : status == "2" ? Colors.orangeAccent.withOpacity(0.2)
+              : status == "3" ? Colors.red.withOpacity(0.2) : MyColor.colorGreen.withOpacity(0.2)
       ),
       child: Text(
         status == "1" ? MyStrings.approved
