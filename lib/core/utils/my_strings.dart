@@ -530,6 +530,7 @@ class MyStrings{
 
   static const String otp = "OTP";
   static const String moneyRequestToMe = "Money Requests to Me";
+  static const String moreOptions = "More Options";
 
 
   static List<LanguageModel> languages = [
