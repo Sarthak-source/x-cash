@@ -24,6 +24,7 @@ class _TopSectionState extends State<TopSection> {
         decoration: BoxDecoration(color: MyColor.getPrimaryColor()),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,7 +57,7 @@ class _TopSectionState extends State<TopSection> {
               child: InkWell(
                   onTap: () => controller.changeState(),
                   child: Container(
-                      height: 25,
+                      height: 30,
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(50)),
