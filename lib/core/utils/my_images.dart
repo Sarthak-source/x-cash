@@ -93,4 +93,5 @@ class MyImages{
   static const String makePayment1 = "${basePath1}make_payment.png";
   static const String invoice1 = "${basePath1}invoice_1.png";
   static const String addMoney_1 = "${basePath1}add_money.png";
+  static const String withdrawMoney = "${basePath1}withdraw_money.png";
 }
