@@ -232,7 +232,7 @@ class MyStrings{
   static const String min = "Min: ";
   static const String max = "Max: ";
 
-  static const String limit = "Limit: ";
+  static const String limit = "Limit";
 
   // add withdraw method
   static const String addWithdrawMethod = "Add Withdraw Method";
@@ -517,6 +517,7 @@ class MyStrings{
 
   // status
   static const String approved  = "Approved";
+  static const String enabled  = "Enabled";
   static const String succeed  = "Succeed";
   static const String pending  = "Pending";
   static const String rejected  = "Rejected";
