@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
@@ -201,7 +202,7 @@ class _WithdrawHistoryScreenState extends State<WithdrawHistoryScreen> {
                                               Padding(
                                                 padding: const EdgeInsets.symmetric(horizontal: Dimensions.space15),
                                                 child: Text(
-                                                  controller.withdrawList[index].withdrawInformation![infoIndex].value!.toList().toString(),
+                                                  Converter.removeQuotationAndSpecialCharacterFromString(controller.withdrawList[index].withdrawInformation![infoIndex].value!.toList().toString()),
                                                   style: regularSmall.copyWith(color: MyColor.getTextColor()),
                                                 ),
                                               )
