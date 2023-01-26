@@ -7,12 +7,12 @@ class CircleShapeImage extends StatefulWidget {
   final String image;
   final Color backgroundColor, imageColor;
   final double imageSize;
-  bool isSvgImage;
-  CircleShapeImage({
+  final bool isSvgImage;
+  const CircleShapeImage({
     Key? key,
     this.backgroundColor = MyColor.screenBgColor,
     this.imageColor = MyColor.primaryColor,
-    this.imageSize = 16,
+    this.imageSize = 15,
     required this.image,
     this.isSvgImage = false
   }) : super(key: key);
@@ -25,7 +25,7 @@ class _CircleShapeImageState extends State<CircleShapeImage> {
   @override
   Widget build(BuildContext context) {
     return widget.isSvgImage ? Container(
-      height: 35, width: 35,
+      height: 30, width: 30,
       padding: const EdgeInsets.all(Dimensions.space10),
       alignment: Alignment.center,
       decoration: BoxDecoration(
@@ -34,7 +34,7 @@ class _CircleShapeImageState extends State<CircleShapeImage> {
       ),
       child: SvgPicture.asset(widget.image, color: widget.imageColor, height: widget.imageSize, width: widget.imageSize),
     ) : Container(
-      height: 35, width: 35,
+      height: 30, width: 30,
       padding: const EdgeInsets.all(Dimensions.space10),
       alignment: Alignment.center,
       decoration: BoxDecoration(
