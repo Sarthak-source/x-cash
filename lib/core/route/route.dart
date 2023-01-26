@@ -35,6 +35,7 @@ import 'package:xcash_app/view/screens/voucher/redeem_log/redeem_log_screen.dart
 import 'package:xcash_app/view/screens/wallet/my_wallet_screen.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_history/withdraw_history_screen.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_money/withdraw_money_screen.dart';
+import 'package:xcash_app/view/screens/withdrawals/withdraw_preview/withdraw_preview_screen.dart';
 
 class RouteHelper{
 
@@ -68,6 +69,7 @@ class RouteHelper{
   static const String requestToMeScreen = "/request_to_me_screen";
 
   static const String withdrawMoneyScreen = "/withdraw_money_screen";
+  static const String withdrawPreviewScreen = "/withdraw_preview_screen";
   static const String withdrawHistoryScreen = "/withdraw_history_screen";
 
   static const String notificationScreen = "/notification_screen";
@@ -107,6 +109,7 @@ class RouteHelper{
     GetPage(name: createInvoiceScreen, page: () => const CreateInvoiceScreen()),
     GetPage(name: myVoucherScreen, page: () => const MyVoucherScreen()),
     GetPage(name: withdrawMoneyScreen, page: () => const WithdrawMoneyScreen()),
+    GetPage(name: withdrawPreviewScreen, page: () => const WithdrawPreviewScreen()),
     GetPage(name: withdrawHistoryScreen, page: () => const WithdrawHistoryScreen()),
     GetPage(name: notificationScreen, page: () => const NotificationScreen()),
     GetPage(name: profileScreen, page: () => const ProfileScreen()),
