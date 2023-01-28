@@ -86,8 +86,7 @@ class Withdraw {
       String? charge, 
       String? trx, 
       String? finalAmount, 
-      String? afterCharge, 
-      List<WithdrawInformation>? withdrawInformation, 
+      String? afterCharge,
       String? status, 
       dynamic adminFeedback, 
       String? createdAt, 
@@ -107,7 +106,6 @@ class Withdraw {
     _trx = trx;
     _finalAmount = finalAmount;
     _afterCharge = afterCharge;
-    _withdrawInformation = withdrawInformation;
     _status = status;
     _adminFeedback = adminFeedback;
     _createdAt = createdAt;
@@ -130,12 +128,6 @@ class Withdraw {
     _trx = json['trx'];
     _finalAmount = json['final_amount'];
     _afterCharge = json['after_charge'];
-    if (json['withdraw_information'] != null) {
-      _withdrawInformation = [];
-      json['withdraw_information'].forEach((v) {
-        _withdrawInformation?.add(WithdrawInformation.fromJson(v));
-      });
-    }
     _status = json['status'];
     _adminFeedback = json['admin_feedback'];
     _createdAt = json['created_at'];
@@ -156,7 +148,6 @@ class Withdraw {
   String? _trx;
   String? _finalAmount;
   String? _afterCharge;
-  List<WithdrawInformation>? _withdrawInformation;
   String? _status;
   dynamic _adminFeedback;
   String? _createdAt;
@@ -177,7 +168,6 @@ class Withdraw {
   String? get trx => _trx;
   String? get finalAmount => _finalAmount;
   String? get afterCharge => _afterCharge;
-  List<WithdrawInformation>? get withdrawInformation => _withdrawInformation;
   String? get status => _status;
   dynamic get adminFeedback => _adminFeedback;
   String? get createdAt => _createdAt;
@@ -200,9 +190,6 @@ class Withdraw {
     map['trx'] = _trx;
     map['final_amount'] = _finalAmount;
     map['after_charge'] = _afterCharge;
-    if (_withdrawInformation != null) {
-      map['withdraw_information'] = _withdrawInformation?.map((v) => v.toJson()).toList();
-    }
     map['status'] = _status;
     map['admin_feedback'] = _adminFeedback;
     map['created_at'] = _createdAt;
@@ -530,39 +517,6 @@ class Method {
     map['currencies'] = _currencies;
     map['created_at'] = _createdAt;
     map['updated_at'] = _updatedAt;
-    return map;
-  }
-
-}
-
-class WithdrawInformation {
-  WithdrawInformation({
-      String? name, 
-      String? type, 
-      String? value,}){
-    _name = name;
-    _type = type;
-    _value = value;
-}
-
-  WithdrawInformation.fromJson(dynamic json) {
-    _name = json['name'];
-    _type = json['type'];
-    _value = json['value'];
-  }
-  String? _name;
-  String? _type;
-  String? _value;
-
-  String? get name => _name;
-  String? get type => _type;
-  String? get value => _value;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['name'] = _name;
-    map['type'] = _type;
-    map['value'] = _value;
     return map;
   }
 

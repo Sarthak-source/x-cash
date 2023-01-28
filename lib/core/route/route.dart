@@ -34,6 +34,7 @@ import 'package:xcash_app/view/screens/voucher/my_voucher/my_voucher_screen.dart
 import 'package:xcash_app/view/screens/voucher/redeem_log/redeem_log_screen.dart';
 import 'package:xcash_app/view/screens/wallet/my_wallet_screen.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_history/withdraw_history_screen.dart';
+import 'package:xcash_app/view/screens/withdrawals/withdraw_method/withdraw_method.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_money/withdraw_money_screen.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_preview/withdraw_preview_screen.dart';
 
@@ -71,6 +72,7 @@ class RouteHelper{
   static const String withdrawMoneyScreen = "/withdraw_money_screen";
   static const String withdrawPreviewScreen = "/withdraw_preview_screen";
   static const String withdrawHistoryScreen = "/withdraw_history_screen";
+  static const String withdrawMethodScreen = "/withdraw_method_screen";
 
   static const String notificationScreen = "/notification_screen";
   static const String profileScreen = "/profile_screen";
@@ -108,9 +110,12 @@ class RouteHelper{
     GetPage(name: myInvoiceScreen, page: () => const MyInvoiceScreen()),
     GetPage(name: createInvoiceScreen, page: () => const CreateInvoiceScreen()),
     GetPage(name: myVoucherScreen, page: () => const MyVoucherScreen()),
+
     GetPage(name: withdrawMoneyScreen, page: () => const WithdrawMoneyScreen()),
     GetPage(name: withdrawPreviewScreen, page: () => const WithdrawPreviewScreen()),
     GetPage(name: withdrawHistoryScreen, page: () => const WithdrawHistoryScreen()),
+    GetPage(name: withdrawMethodScreen, page: () => const WithdrawMethodScreen()),
+
     GetPage(name: notificationScreen, page: () => const NotificationScreen()),
     GetPage(name: profileScreen, page: () => const ProfileScreen()),
     GetPage(name: editProfileScreen, page: () => const EditProfileScreen()),
@@ -119,7 +124,7 @@ class RouteHelper{
     GetPage(name: requestToMeScreen, page: () => const RequestToMeScreen()),
 
     GetPage(name: exchangeMoneyScreen, page: () => const ExchangeMoneyScreen()),
-    // GetPage(name: kycScreen, page: () => const KycScreen()),
+    GetPage(name: kycScreen, page: () => const KycScreen()),
 
     GetPage(name: emailVerificationScreen, page: () =>  EmailVerificationScreen(needSmsVerification: Get.arguments[0],isProfileCompleteEnabled: Get.arguments[1],needTwoFactor: Get.arguments[2],)),
     GetPage(name: smsVerificationScreen, page: () =>  const SmsVerificationScreen()),
