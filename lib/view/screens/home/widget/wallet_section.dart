@@ -73,15 +73,19 @@ class WalletSection extends StatelessWidget {
                           children: [
                             Row(
                               children: [
-                                CircleShapeImage(
+                                const CircleShapeImage(
                                   backgroundColor: MyColor.colorWhite,
                                   isSvgImage: true,
                                   image: MyImages.transferMoney,
                                 ),
                                 const SizedBox(width: Dimensions.space15),
-                                Text(
-                                  "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.walletList[index].balance ?? "")} ${controller.walletList[index].currencyCode}",
-                                  style: regularLarge.copyWith(fontWeight: FontWeight.w600)
+                                Expanded(
+                                  child: Text(
+                                    "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.walletList[index].balance ?? "")} ${controller.walletList[index].currencyCode}",
+                                    style: regularLarge.copyWith(fontWeight: FontWeight.w600),
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 2,
+                                  ),
                                 )
                               ],
                             ),
@@ -118,6 +122,5 @@ class WalletSection extends StatelessWidget {
         ),
       ),
     );
-
   }
 }
