@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/helper/string_format_helper.dart';
+import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
@@ -70,9 +71,7 @@ class _WithdrawMoneyScreenState extends State<WithdrawMoneyScreen> {
                 padding: const EdgeInsets.only(right: Dimensions.space15),
                 child: GestureDetector(
                   onTap: (){
-                    CustomBottomSheet(
-                        child: const WithdrawMethod()
-                    ).customBottomSheet(context);
+                    Get.toNamed(RouteHelper.withdrawMethodScreen);
                   },
                   child: Container(
                     height: 30, width: 30,
@@ -218,6 +217,7 @@ class _WithdrawMoneyScreenState extends State<WithdrawMoneyScreen> {
                                         text: MyStrings.submit,
                                         press: (){
                                           controller.submitData(
+                                              methodName: controller.withdrawMoneyList[index].withdrawMethod?.name ?? "",
                                               methodId: controller.withdrawMoneyList[index].withdrawMethod?.id.toString() ?? "",
                                               userMethodId: controller.withdrawMoneyList[index].id.toString()
                                           );

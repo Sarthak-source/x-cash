@@ -74,11 +74,13 @@ class WithdrawMoneyController extends GetxController{
   }
 
   bool submitLoading = false;
-  Future<void> submitData({required String methodId, required String userMethodId}) async{
+  Future<void> submitData({required String methodName, required String methodId, required String userMethodId}) async{
 
     String amount = amountController.text.toString();
     submitLoading = true;
     update();
+
+    String withdrawMethodName = methodName;
 
     ResponseModel responseModel = await withdrawMoneyRepo.submitWithdrawMoney(
       methodId: methodId,
@@ -91,7 +93,7 @@ class WithdrawMoneyController extends GetxController{
       if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
         trx = model.data?.trx ?? "";
 
-        Get.toNamed(RouteHelper.withdrawMoneyScreen, arguments: trx);
+        Get.toNamed(RouteHelper.withdrawPreviewScreen, arguments: [withdrawMethodName, trx, amountController.text]);
 
       }
       else{

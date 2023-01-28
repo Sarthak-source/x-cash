@@ -36,4 +36,16 @@ class WithdrawMoneyRepo{
     ResponseModel responseModel = await apiClient.request(url, Method.getMethod, null, passHeader: true);
     return responseModel;
   }
+
+  Future<ResponseModel> submitData({required String otpType, required String trx}) async{
+
+    String url = "${UrlContainer.baseUrl}${UrlContainer.withdrawMoneySubmitUrl}";
+    Map<String, String> params = {
+      "otp_type" : otpType,
+      "trx" : trx
+    };
+
+    ResponseModel responseModel = await apiClient.request(url, Method.postMethod, params, passHeader: true);
+    return responseModel;
+  }
 }
