@@ -128,9 +128,6 @@ class KycController extends GetxController {
   }
 
 
-
-
-
   void changeSelectedValue(value, int index) {
     formList[index].selectedValue = value;
     update();

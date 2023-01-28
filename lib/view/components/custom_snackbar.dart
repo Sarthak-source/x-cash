@@ -39,7 +39,7 @@ class CustomSnackBar{
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 2,),
-          Text(message,style: regularDefault.copyWith(color: MyColor.colorWhite)),
+          Text(message,style: regularDefault.copyWith(color: MyColor.colorBlack)),
         ],
       ),
       dismissDirection: DismissDirection.horizontal,
@@ -47,7 +47,7 @@ class CustomSnackBar{
       titleText: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text((!isError? MyStrings.success.tr: MyStrings.error.tr).toLowerCase().capitalizeFirst??'',style: regularLarge.copyWith(color: MyColor.colorWhite)),
+          Text((!isError? MyStrings.success.tr: MyStrings.error.tr).toLowerCase().capitalizeFirst??'',style: regularLarge.copyWith(color: MyColor.colorBlack)),
           SvgPicture.asset(isError ? MyImages.errorImage : MyImages.errorImage, height: 25,width: 25,color:isError?MyColor.colorRed : MyColor.colorGreen)
         ],
       ),
@@ -129,7 +129,7 @@ class CustomSnackBar{
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 2,),
-          Text(message,style: regularDefault.copyWith(color: MyColor.colorWhite)),
+          Text(message,style: regularDefault.copyWith(color: MyColor.colorBlack)),
         ],
       ),
       dismissDirection: DismissDirection.horizontal,
@@ -137,7 +137,7 @@ class CustomSnackBar{
       titleText: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(MyStrings.success.tr.toLowerCase().capitalizeFirst??MyStrings.success.tr,style: semiBoldSmall.copyWith(fontSize: Dimensions.fontLarge, color: MyColor.colorWhite)),
+          Text(MyStrings.success.tr.toLowerCase().capitalizeFirst??MyStrings.success.tr,style: semiBoldSmall.copyWith(fontSize: Dimensions.fontLarge, color: MyColor.colorBlack)),
         ],
       ),
       backgroundColor: MyColor.getHeadingTextColor(),

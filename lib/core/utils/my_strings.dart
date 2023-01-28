@@ -34,6 +34,8 @@ class MyStrings{
   static const String signIn = "Sign In";
   static const String doNotAccount = "Don't have an account?";
 
+  static const String nickNameEmptyMsg = "Nickname field can't be empty";
+
   // register-screen
   static const String createAnAccount = "Create An Account";
   static const String registerSubTitle = "Create you account, it takes less than a minute enter your details";
@@ -425,6 +427,7 @@ class MyStrings{
   static const String enterConfirmPassword = 'Enter confirm password';
   static const String addWithdraw = "Add Withdraw";
   static const String enterAmount = "Enter Amount";
+  static const String enterAmountMsg = "Please enter an amount";
   static const String hint = "0.0";
   static const String withdrawMethod = "Withdraw Method";
   static const String withdrawPreview = "Withdraw Preview";

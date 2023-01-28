@@ -5,11 +5,11 @@ import 'package:xcash_app/core/utils/style.dart';
 
 class CustomDropDownTextField extends StatefulWidget {
 
-  final Object selectedValue;
+  final dynamic selectedValue;
   final String? labelText;
   final String? hintText;
-  final Function(Object?)? onChanged;
-  final List<DropdownMenuItem<Object>>? items;
+  final Function(dynamic)? onChanged;
+  final List<DropdownMenuItem<dynamic>>? items;
   final Color? fillColor;
   final Color? focusColor;
   final Color? dropDownColor;
@@ -44,11 +44,6 @@ class _CustomDropDownTextFieldState extends State<CustomDropDownTextField> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
 
-        Text(
-          widget.labelText.toString(),
-          style: regularSmall.copyWith(height: 1.452),
-        ),
-        const SizedBox(height: Dimensions.space10),
 
         SizedBox(
           height: 50,
