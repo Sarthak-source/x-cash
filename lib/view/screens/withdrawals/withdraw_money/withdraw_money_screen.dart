@@ -194,7 +194,7 @@ class _WithdrawMoneyScreenState extends State<WithdrawMoneyScreen> {
                             ),
                             onPressed: (){
                               CustomBottomSheet(
-                                  child: Column(
+                                  child: GetBuilder<WithdrawMoneyController>(builder: (sheetController)=>Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Row(
@@ -224,7 +224,7 @@ class _WithdrawMoneyScreenState extends State<WithdrawMoneyScreen> {
                                         },
                                       )
                                     ],
-                                  )
+                                  ))
                               ).customBottomSheet(context);
                             },
                           );

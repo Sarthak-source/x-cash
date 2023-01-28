@@ -76,7 +76,13 @@ class WithdrawMoneyController extends GetxController{
   bool submitLoading = false;
   Future<void> submitData({required String methodName, required String methodId, required String userMethodId}) async{
 
+
     String amount = amountController.text.toString();
+    if(amount.isEmpty){
+      CustomSnackBar.error(errorList: [MyStrings.enterAmountMsg]);
+      return;
+    }
+
     submitLoading = true;
     update();
 
@@ -88,13 +94,13 @@ class WithdrawMoneyController extends GetxController{
       amount: amount
     );
 
+    print(responseModel.responseJson);
+
     if(responseModel.statusCode == 200){
       SubmitWithdrawMoneyResponseModel model = SubmitWithdrawMoneyResponseModel.fromJson(jsonDecode(responseModel.responseJson));
       if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
         trx = model.data?.trx ?? "";
-
         Get.toNamed(RouteHelper.withdrawPreviewScreen, arguments: [withdrawMethodName, trx, amountController.text]);
-
       }
       else{
         CustomSnackBar.error(errorList: model.message?.error ?? [MyStrings.somethingWentWrong]);
@@ -106,5 +112,6 @@ class WithdrawMoneyController extends GetxController{
 
     submitLoading = false;
     update();
+
   }
 }
