@@ -88,6 +88,12 @@ class MyStrings{
   static const String voucher = "Voucher";
   static const String transfer = "Transfer";
   static const String requestMoney = "Request Money";
+
+  static const String requestedAmount = "Requested Amount: ";
+  static const String withdrawCharge = "Withdraw Charge: ";
+  static const String youWillGet = "You will get: ";
+  static const String yourBalanceWillBe = "Your Balance will be: ";
+
   static const String withdraw = "Withdrawals";
   static const String insights = "Insights";
   static const String moneyIn = "Money In";
@@ -421,6 +427,7 @@ class MyStrings{
   static const String enterAmount = "Enter Amount";
   static const String hint = "0.0";
   static const String withdrawMethod = "Withdraw Method";
+  static const String withdrawPreview = "Withdraw Preview";
   static const String searchByTrxId = "Search by trx id";
   static const String noTrxFound = "No Transaction Found";
   static const String trxId = "Trx Id";
