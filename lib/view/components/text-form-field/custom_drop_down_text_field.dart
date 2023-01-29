@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/style.dart';
+import 'package:xcash_app/view/components/text/label_text.dart';
 
 class CustomDropDownTextField extends StatefulWidget {
 
@@ -15,6 +16,7 @@ class CustomDropDownTextField extends StatefulWidget {
   final Color? dropDownColor;
   final Color? iconColor;
   final double radius;
+  final bool needLabel;
 
   const CustomDropDownTextField({
     Key? key,
@@ -23,11 +25,12 @@ class CustomDropDownTextField extends StatefulWidget {
     required this.selectedValue,
     required this.onChanged,
     required this.items,
-    this.fillColor = MyColor.colorWhite,
+    this.fillColor = MyColor.transparentColor,
     this.focusColor = MyColor.colorWhite,
     this.dropDownColor = MyColor.colorWhite,
     this.iconColor = MyColor.colorGrey,
-    this.radius = 3
+    this.radius = 3,
+    this.needLabel = true
   }) : super(key: key);
 
   @override
@@ -40,11 +43,10 @@ class _CustomDropDownTextFieldState extends State<CustomDropDownTextField> {
   Widget build(BuildContext context) {
 
     return Column(
-
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-
-
+        widget.needLabel ? LabelText(text: widget.labelText.toString()) : const SizedBox(),
+        widget.needLabel ? const SizedBox(height: Dimensions.textToTextSpace) : const SizedBox(),
         SizedBox(
           height: 50,
           child: DropdownButtonFormField(
