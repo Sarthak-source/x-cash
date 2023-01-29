@@ -18,7 +18,7 @@ import 'package:xcash_app/view/screens/auth/two_factor_screen/two_factor_verific
 import 'package:xcash_app/view/screens/edit_profile/edit_profile_screen.dart';
 import 'package:xcash_app/view/screens/exchange/exchange_money_screen.dart';
 import 'package:xcash_app/view/screens/invoice/create_invoice/create_invoice_screen.dart';
-import 'package:xcash_app/view/screens/invoice/my_invoice/my_invoice_screen.dart';
+import 'package:xcash_app/view/screens/invoice/my_invoice/invoice_screen.dart';
 import 'package:xcash_app/view/screens/money_discharge/make_payment/make_payment.dart';
 import 'package:xcash_app/view/screens/otp/otp_screen.dart';
 import 'package:xcash_app/view/screens/money_discharge/money_out/money_out.dart';
@@ -34,7 +34,9 @@ import 'package:xcash_app/view/screens/voucher/my_voucher/my_voucher_screen.dart
 import 'package:xcash_app/view/screens/voucher/redeem_log/redeem_log_screen.dart';
 import 'package:xcash_app/view/screens/wallet/my_wallet_screen.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_history/withdraw_history_screen.dart';
-import 'package:xcash_app/view/screens/withdrawals/withdraw_method/withdraw_method.dart';
+import 'package:xcash_app/view/screens/withdrawals/withdraw_method/add_withdraw_method.dart';
+import 'package:xcash_app/view/screens/withdrawals/withdraw_method/add_withdraw_method.dart';
+import 'package:xcash_app/view/screens/withdrawals/withdraw_method/withdraw_method_screen.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_money/withdraw_money_screen.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_preview/withdraw_preview_screen.dart';
 
@@ -62,7 +64,7 @@ class RouteHelper{
   static const String twoFactorScreen = "/two-factor-screen";
   static const String resetPasswordScreen = '/reset_pass_screen' ;
 
-  static const String myInvoiceScreen = "/my_invoice_screen";
+  static const String invoiceScreen = "/invoice_screen";
   static const String createInvoiceScreen = "/create_invoice_screen";
   static const String transactionHistoryScreen = "/transaction_history_screen";
 
@@ -72,6 +74,7 @@ class RouteHelper{
   static const String withdrawMoneyScreen = "/withdraw_money_screen";
   static const String withdrawPreviewScreen = "/withdraw_preview_screen";
   static const String withdrawHistoryScreen = "/withdraw_history_screen";
+  static const String addWithdrawMethodScreen = "/add_withdraw_method_screen";
   static const String withdrawMethodScreen = "/withdraw_method_screen";
 
   static const String notificationScreen = "/notification_screen";
@@ -107,7 +110,7 @@ class RouteHelper{
     GetPage(name: addMoneyScreen, page: () => const AddMoneyScreen()),
     GetPage(name: addMoneyWebScreen, page: () => AddMoneyWebView(redirectUrl: Get.arguments)),
 
-    GetPage(name: myInvoiceScreen, page: () => const MyInvoiceScreen()),
+    GetPage(name: invoiceScreen, page: () => const InvoiceScreen()),
     GetPage(name: createInvoiceScreen, page: () => const CreateInvoiceScreen()),
     GetPage(name: myVoucherScreen, page: () => const MyVoucherScreen()),
 
@@ -115,6 +118,7 @@ class RouteHelper{
     GetPage(name: withdrawPreviewScreen, page: () => const WithdrawPreviewScreen()),
     GetPage(name: withdrawHistoryScreen, page: () => const WithdrawHistoryScreen()),
     GetPage(name: withdrawMethodScreen, page: () => const WithdrawMethodScreen()),
+    GetPage(name: addWithdrawMethodScreen, page: () => const AddWithdrawMethodScreen()),
 
     GetPage(name: notificationScreen, page: () => const NotificationScreen()),
     GetPage(name: profileScreen, page: () => const ProfileScreen()),
