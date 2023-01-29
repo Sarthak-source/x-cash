@@ -12,13 +12,13 @@ import 'package:xcash_app/data/repo/withdraw/withdraw_method_repo.dart';
 import 'package:xcash_app/view/components/custom_snackbar.dart';
 
 class WithdrawMethodController extends GetxController {
-  WithdrawMethodRepo withdrawMethodRepo;
 
+  WithdrawMethodRepo withdrawMethodRepo;
   WithdrawMethodController({required this.withdrawMethodRepo});
 
   bool isLoading = true;
-  WithdrawMethod? selectedMethod;
-  List<CurrencyModel> currencyList = [];
+  late WithdrawMethod? selectedMethod;
+  List<CurrencyModel> selectedCurrencyList = [];
   List<CurrencyModel> allCurrencyList = [];
   List<FormModel> formList = [];
   List<WithdrawMethod> methodList = [];
@@ -26,22 +26,22 @@ class WithdrawMethodController extends GetxController {
   setSelectedMethod(WithdrawMethod? withdrawMethod) async{
     selectedMethod = withdrawMethod;
     loadCurrency(selectedMethod);
-    await loadForm(selectedMethod);
+    await loadForm(withdrawMethod);
     update();
   }
 
   void loadCurrency(WithdrawMethod? method){
 
     List<String>?temCurModel = method?.currencies;
-    currencyList.clear();
-    currencyList.insert(0, CurrencyModel(curName: MyStrings.selectOne, curId: '-1'));
-    selectedCurrencyModel = currencyList[0];
+    selectedCurrencyList.clear();
+    selectedCurrencyList.insert(0, CurrencyModel(curName: MyStrings.selectOne, curId: '-1'));
+    selectedCurrencyModel = selectedCurrencyList[0];
 
     if(temCurModel!=null && temCurModel.isNotEmpty){
       for (var methodCur in temCurModel) {
         for (var element in allCurrencyList) {
           if(methodCur.toString()==element.curId){
-            currencyList.add(element);
+            selectedCurrencyList.add(element);
           }
         }
       }
@@ -66,9 +66,7 @@ class WithdrawMethodController extends GetxController {
 
     ResponseModel responseModel = await withdrawMethodRepo.getData();
     if (responseModel.statusCode == 200) {
-      AddWithdrawMethodResponseModel model =
-          AddWithdrawMethodResponseModel.fromJson(
-              jsonDecode(responseModel.responseJson));
+      AddWithdrawMethodResponseModel model = AddWithdrawMethodResponseModel.fromJson(jsonDecode(responseModel.responseJson));
 
       if (model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()) {
         List<WithdrawMethod>? tempMethodList = model.data?.withdrawMethod;
@@ -92,10 +90,11 @@ class WithdrawMethodController extends GetxController {
     update();
   }
 
-
   Future<void> loadForm(WithdrawMethod? model) async {
+
     formList.clear();
     List<FormModel>? tempFormList = model?.form?.list;
+
     if (tempFormList != null && tempFormList.isNotEmpty) {
       for (var element in tempFormList) {
         if (element.type == 'select') {
@@ -121,7 +120,6 @@ class WithdrawMethodController extends GetxController {
 
   }
 
-
   bool submitLoading=false;
   TextEditingController nameController = TextEditingController();
   CurrencyModel selectedCurrencyModel = CurrencyModel(curName: MyStrings.selectOne, curId: '-1');
@@ -129,6 +127,7 @@ class WithdrawMethodController extends GetxController {
   submitData() async {
 
     List<String> list = hasError();
+
     if (list.isNotEmpty) {
       CustomSnackBar.showCustomSnackBar(errorList: list, msg: [], isError: true);
       return;
@@ -200,9 +199,7 @@ class WithdrawMethodController extends GetxController {
     List<String>list=value.split('_');
     int index=int.parse(list[0]);
     bool status=list[1]=='true'?true:false;
-
     List<String>?selectedValue=formList[listIndex].cbSelected;
-
     if(selectedValue!=null){
       String? value=formList[listIndex].options?[index];
       if(status){
@@ -252,7 +249,6 @@ class WithdrawMethodController extends GetxController {
     update();
     return;
   }
-
 
 
 }

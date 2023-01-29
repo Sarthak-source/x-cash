@@ -9,14 +9,14 @@ import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_method/widget/withdraw_method_form.dart';
 
-class WithdrawMethodScreen extends StatefulWidget {
-  const WithdrawMethodScreen({Key? key}) : super(key: key);
+class AddWithdrawMethodScreen extends StatefulWidget {
+  const AddWithdrawMethodScreen({Key? key}) : super(key: key);
 
   @override
-  State<WithdrawMethodScreen> createState() => _WithdrawMethodScreenState();
+  State<AddWithdrawMethodScreen> createState() => _AddWithdrawMethodScreenState();
 }
 
-class _WithdrawMethodScreenState extends State<WithdrawMethodScreen> {
+class _AddWithdrawMethodScreenState extends State<AddWithdrawMethodScreen> {
   
   
   @override
@@ -38,7 +38,7 @@ class _WithdrawMethodScreenState extends State<WithdrawMethodScreen> {
       child: Scaffold(
         backgroundColor: MyColor.getScreenBgColor(),
         appBar: CustomAppBar(
-          title: MyStrings.withdrawMethod,
+          title: MyStrings.addWithdrawMethod,
           bgColor: MyColor.getAppBarColor(),
         ),
         body: SingleChildScrollView(

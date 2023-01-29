@@ -10,7 +10,7 @@ import 'package:xcash_app/data/controller/withdraw/withdraw_history_controller.d
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/text/default_text.dart';
 import 'package:xcash_app/view/components/text/small_text.dart';
-import 'package:xcash_app/view/screens/withdrawals/withdraw_history/widget/withdraw_status_btn.dart';
+import 'package:xcash_app/view/screens/withdrawals/withdraw_history/widget/status_widget.dart';
 
 class WithdrawLogCard extends StatelessWidget {
   final int index;
@@ -76,7 +76,10 @@ class WithdrawLogCard extends StatelessWidget {
                       )
                     ],
                   ),
-                  WithdrawStatusBtn(status: controller.withdrawList[index].status??'')
+                  StatusWidget(
+                    status: controller.getStatusOrColor(index),
+                    color: controller.getStatusOrColor(index,isStatus: false)
+                  )
                 ],
               ),
             ],

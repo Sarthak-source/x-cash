@@ -17,6 +17,8 @@ import 'package:xcash_app/view/screens/auth/kyc/widget/widget/choose_file_list_i
 
 import '../../../../../data/model/withdraw/add_withdraw_method_response_model.dart' as withdraw;
 
+
+
 class WithdrawMethodForm extends StatefulWidget {
 
   const WithdrawMethodForm({Key? key}) : super(key: key);
@@ -59,7 +61,7 @@ class _WithdrawMethodFormState extends State<WithdrawMethodForm> {
                 onChanged: (value) {
                   controller.setSelectedCurrency(value);
                 },
-                items: controller.currencyList.map((withdraw.CurrencyModel val) {
+                items: controller.selectedCurrencyList.map((withdraw.CurrencyModel val) {
                   return DropdownMenuItem<withdraw.CurrencyModel>(
                     value: val,
                     child: Text(
@@ -69,9 +71,7 @@ class _WithdrawMethodFormState extends State<WithdrawMethodForm> {
                   );
                 }).toList(),
               ),
-
               const SizedBox(height: Dimensions.space15),
-
               CustomTextField(
                   needOutlineBorder: true,
                   controller: controller.nameController,
@@ -79,7 +79,6 @@ class _WithdrawMethodFormState extends State<WithdrawMethodForm> {
                   hintText: MyStrings.provideNickName.toLowerCase(),
                   onChanged: (value) {}
               ),
-
               Visibility(
                 visible: true,
                 child:   Column(
@@ -186,7 +185,7 @@ class _WithdrawMethodFormState extends State<WithdrawMethodForm> {
 
               const SizedBox(height: Dimensions.space25),
 
-              controller.isLoading?const RoundedLoadingBtn():RoundedButton(
+              controller.submitLoading?const RoundedLoadingBtn():RoundedButton(
                   press: () {
                     controller.submitData();
                   },

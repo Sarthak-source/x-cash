@@ -28,9 +28,10 @@ class WithdrawMethodRepo {
   List<ModelDynamicValue>filesList = [];
 
   Future<AuthorizationResponseModel> submitData(String name,String methodId,String currencyId,List<FormModel> list) async {
+
     apiClient.initToken();
     await modelToMap(list);
-    String url = '${UrlContainer.baseUrl}${UrlContainer.kycSubmitUrl}';
+    String url = '${UrlContainer.baseUrl}${UrlContainer.addWithdrawMethodUrl}';
 
     var request = http.MultipartRequest('POST', Uri.parse(url));
 
@@ -40,8 +41,7 @@ class WithdrawMethodRepo {
       finalMap.addAll(element);
     }
 
-    request.headers.addAll(
-        <String, String>{'Authorization': 'Bearer ${apiClient.token}'});
+    request.headers.addAll(<String, String>{'Authorization': 'Bearer ${apiClient.token}'});
 
     request.fields.addAll({
       'name':name,
@@ -51,31 +51,15 @@ class WithdrawMethodRepo {
 
     for (var file in filesList) {
       request.files.add(http.MultipartFile(
-          file.key ?? '', file.value.readAsBytes().asStream(),
-          file.value.lengthSync(), filename: file.value.path
-          .split('/')
-          .last));
+          file.key ?? '', file.value.readAsBytes().asStream(), file.value.lengthSync(), filename: file.value.path.split('/').last));
     }
 
     request.fields.addAll(finalMap);
 
-    request.fields.forEach((key, value) {
-      print('key:$key ----> value: $value');
-    });
-
-    request.files.forEach((element) {
-      print('key:${element.filename} ----> value: ${element.field}');
-    });
-
     http.StreamedResponse response = await request.send();
 
-
-
     String jsonResponse = await response.stream.bytesToString();
-    print(jsonResponse);
-    AuthorizationResponseModel model = AuthorizationResponseModel.fromJson(
-        jsonDecode(jsonResponse));
-
+    AuthorizationResponseModel model = AuthorizationResponseModel.fromJson(jsonDecode(jsonResponse));
 
     return model;
   }

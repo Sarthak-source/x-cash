@@ -20,7 +20,7 @@ import 'package:xcash_app/view/components/custom_no_data_found_class.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
-import 'package:xcash_app/view/screens/withdrawals/withdraw_method/withdraw_method.dart';
+import 'package:xcash_app/view/screens/withdrawals/withdraw_method/add_withdraw_method.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_money/widget/withdraw_money_status.dart';
 
 class WithdrawMoneyScreen extends StatefulWidget {
@@ -71,7 +71,7 @@ class _WithdrawMoneyScreenState extends State<WithdrawMoneyScreen> {
                 padding: const EdgeInsets.only(right: Dimensions.space15),
                 child: GestureDetector(
                   onTap: (){
-                    Get.toNamed(RouteHelper.withdrawMethodScreen);
+                    Get.toNamed(RouteHelper.addWithdrawMethodScreen);
                   },
                   child: Container(
                     height: 30, width: 30,
