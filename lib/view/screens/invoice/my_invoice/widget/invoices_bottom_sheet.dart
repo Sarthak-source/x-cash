@@ -81,20 +81,6 @@ class InvoicesBottomSheet{
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          MyStrings.email,
-                          style: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.6)),
-                        ),
-                        const SizedBox(height: Dimensions.space5),
-                        Text(
-                          controller.invoiceList[index].email ?? "",
-                          style: regularDefault.copyWith(color: MyColor.getTextColor()),
-                        )
-                      ],
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text(
                           MyStrings.paymentStatus,
                           style: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.6)),
                         ),
@@ -104,7 +90,21 @@ class InvoicesBottomSheet{
                           color: controller.getPaymentStatusOrColor(index, isStatus: false),
                         )
                       ],
-                    )
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Text(
+                          MyStrings.amount,
+                          style: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.6)),
+                        ),
+                        const SizedBox(height: Dimensions.space5),
+                        Text(
+                          "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.invoiceList[index].totalAmount ?? "",)} ${controller.invoiceList[index].currency?.currencyCode ?? ""}",
+                          style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600),
+                        )
+                      ],
+                    ),
                   ],
                 ),
                 const SizedBox(height: Dimensions.space15),
@@ -115,12 +115,12 @@ class InvoicesBottomSheet{
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          MyStrings.amount,
+                          MyStrings.email,
                           style: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.6)),
                         ),
                         const SizedBox(height: Dimensions.space5),
                         Text(
-                          "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.invoiceList[index].totalAmount ?? "",)} ${controller.invoiceList[index].currency?.currencyCode ?? ""}",
+                          controller.invoiceList[index].email ?? "",
                           style: regularDefault.copyWith(color: MyColor.getTextColor()),
                         )
                       ],
