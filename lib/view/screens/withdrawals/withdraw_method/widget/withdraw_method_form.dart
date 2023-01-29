@@ -130,6 +130,7 @@ class _WithdrawMethodFormState extends State<WithdrawMethodForm> {
                                     FormRow(label: model.name??'', isRequired: model.isRequired=='optional'?false:true),
                                     const SizedBox(height: Dimensions.textToTextSpace,),
                                     CustomDropDownTextField(
+                                      needLabel: false,
                                       onChanged: (value){
                                         controller.changeSelectedValue(value,index);
                                       },selectedValue: model.selectedValue, items:model.options?.map((String val) {
