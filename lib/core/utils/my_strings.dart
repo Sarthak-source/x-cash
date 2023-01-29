@@ -64,7 +64,9 @@ class MyStrings{
   static const String userName = "Username";
   static const String userNameHint = "Enter username";
   static const String email = "Email";
+  static const String enterEmail = "Enter email";
   static const String address = "Address";
+  static const String enterAddress = "Enter address";
 
   static const String copy = "Copy";
   static const String view = "View";
@@ -204,6 +206,7 @@ class MyStrings{
   // invoice details
   static const String invoiceDetails = "Invoice Details";
   static const String invoiceTo = "Invoice To";
+  static const String enterInvoiceTo = "Enter invoice to";
   static const String yourWallet = "Your Wallet";
 
   // invoice items
