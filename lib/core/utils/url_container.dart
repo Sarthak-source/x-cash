@@ -115,4 +115,7 @@ class UrlContainer{
   static const String submitCreateVoucherEndPoint = "create/voucher";
   static const String redeemLogEndPoint = "voucher/redeem/log";
   static const String voucherRedeemEndPoint = "voucher/redeem";
+
+  // invoice
+  static const String allInvoiceUrl = "invoice/all";
 }
