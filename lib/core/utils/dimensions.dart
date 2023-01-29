@@ -25,6 +25,8 @@ class Dimensions{
 
   // widget space
   static const double space5 = 5;
+  static const double space8 = 8;
+  static const double space3 = 3;
   static const double space10 = 10;
   static const double space15 = 15;
   static const double space20 = 20;
