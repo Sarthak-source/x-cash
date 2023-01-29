@@ -66,6 +66,10 @@ class MyStrings{
   static const String email = "Email";
   static const String address = "Address";
 
+  static const String copy = "Copy";
+  static const String view = "View";
+  static const String edit = "Edit";
+
   static const String kyc = 'KYC';
   static const String isRequired = 'is required';
   static const String chooseFile = 'Choose File';
@@ -120,7 +124,10 @@ class MyStrings{
   static const String addMoneyHistory = "Add Money History";
   static const String myVoucher = "My Voucher";
   static const String withdrawHistory = "Withdraw History";
-  static const String myInvoice = "My Invoice";
+
+  static const String invoices = "Invoices";
+  static const String invoicesTo = "Invoice To";
+  static const String paymentStatus = "Payment Status";
 
   // transfer-money
   static const String selectWallet = "Select Wallet";
@@ -190,7 +197,6 @@ class MyStrings{
   static const String discarded = "Discarded";
   static const String inVoice = "Invoice";
   static const String createdDate = "Created Date";
-  static const String paymentStatus = "Payment Status";
   static const String issued = "Issued:";
   static const String download = "Download";
   static const String createInvoice = "Create Invoice";
@@ -543,6 +549,10 @@ class MyStrings{
   static const String otp = "OTP";
   static const String moneyRequestToMe = "Money Requests to Me";
   static const String moreOptions = "More Options";
+
+  static const String paid = "Paid";
+  static const String unpaid = "Unpaid";
+  static const String notPublished = "Not Published";
 
 
   static List<LanguageModel> languages = [
