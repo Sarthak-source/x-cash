@@ -69,6 +69,7 @@ dependencies:
   firebase_analytics: ^9.3.2
   firebase_core: ^1.21.0
   firebase_core_platform_interface: 4.5.1
+  animated_floating_buttons: ^0.0.2
   file_picker: ^5.2.4
   awesome_dialog: ^3.0.2
   connectivity_plus: ^2.3.6+1
