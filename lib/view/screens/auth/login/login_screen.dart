@@ -149,13 +149,15 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ],
                               ),
                             ),
-                            Expanded(child: TextButton(
-                              onPressed: (){
-                                controller.clearTextField();
-                                Get.toNamed(RouteHelper.forgotPasswordScreen);
-                              },
-                              child: DefaultText(text: MyStrings.forgotPassword.tr, textColor: MyColor.getTextColor()),
-                            ))
+                            Expanded(
+                              child: InkWell(
+                                onTap: (){
+                                  controller.clearTextField();
+                                  Get.toNamed(RouteHelper.forgotPasswordScreen);
+                                },
+                                child: DefaultText(text: MyStrings.forgotPassword.tr, textColor: MyColor.getTextColor()),
+                              )
+                            )
                           ],
                         ),
                         const SizedBox(height: 25),
