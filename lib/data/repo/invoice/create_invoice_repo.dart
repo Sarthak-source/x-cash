@@ -32,19 +32,22 @@ class CreateInvoiceRepo{
       "email" : email,
       "address" : address,
       "currency_id" : curId,
-      "item_name[]" : firstInvoice,
-      "amount[]" : firstInvoiceAmount
+      "item_name[0]" : firstInvoice,
+      "amount[0]" : firstInvoiceAmount
     };
 
+    int i = 0;
     for (var invoice in invoiceItemList) {
       String invoiceItemName = invoice.itemNameController.text;
       String invoiceAmount = invoice.amountController.text;
 
       if(invoiceItemName.isNotEmpty && invoiceAmount.isNotEmpty){
-        params['item_name[]'] = invoiceItemName;
-        params['amount[]'] = invoiceAmount;
+        i = i+1;
+        params['item_name[$i]'] = invoiceItemName;
+        params['amount[$i]'] = invoiceAmount;
       }
     }
+
 
     ResponseModel responseModel = await apiClient.request(url, Method.postMethod, params, passHeader: true);
     return responseModel;
