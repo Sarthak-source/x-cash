@@ -98,13 +98,10 @@ class CreateVoucherController extends GetxController{
     if(response.statusCode==200){
       AuthorizationResponseModel model = AuthorizationResponseModel.fromJson(jsonDecode(response.responseJson));
       if(model.status?.toLowerCase()=='success'){
-        String actionId = model.data?.actionId??'';
-        if(actionId.isNotEmpty){
-          Get.toNamed(RouteHelper.otpScreen,arguments: [actionId, RouteHelper.bottomNavBar]);
-        }
-        else{
-          CustomSnackBar.error(errorList: [MyStrings.noActionid]);
-        }
+        Get.toNamed(RouteHelper.otpScreen,arguments: [RouteHelper.bottomNavBar]);
+      }
+      else{
+          CustomSnackBar.error(errorList: model.message?.error ?? [MyStrings.somethingWentWrong]);
       }
     }
     else{
