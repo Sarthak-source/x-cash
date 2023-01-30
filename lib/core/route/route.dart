@@ -19,6 +19,7 @@ import 'package:xcash_app/view/screens/edit_profile/edit_profile_screen.dart';
 import 'package:xcash_app/view/screens/exchange/exchange_money_screen.dart';
 import 'package:xcash_app/view/screens/invoice/create_invoice/create_invoice_screen.dart';
 import 'package:xcash_app/view/screens/invoice/my_invoice/invoice_screen.dart';
+import 'package:xcash_app/view/screens/invoice/update_invoice/update_invoice_screen.dart';
 import 'package:xcash_app/view/screens/money_discharge/make_payment/make_payment.dart';
 import 'package:xcash_app/view/screens/otp/otp_screen.dart';
 import 'package:xcash_app/view/screens/money_discharge/money_out/money_out.dart';
@@ -66,6 +67,8 @@ class RouteHelper{
 
   static const String invoiceScreen = "/invoice_screen";
   static const String createInvoiceScreen = "/create_invoice_screen";
+  static const String updateInvoiceScreen = "/update_invoice_screen";
+
   static const String transactionHistoryScreen = "/transaction_history_screen";
 
   static const String myVoucherScreen = "/my_voucher_screen";
@@ -112,6 +115,8 @@ class RouteHelper{
 
     GetPage(name: invoiceScreen, page: () => const InvoiceScreen()),
     GetPage(name: createInvoiceScreen, page: () => const CreateInvoiceScreen()),
+    GetPage(name: updateInvoiceScreen, page: () => const UpdateInvoiceScreen()),
+
     GetPage(name: myVoucherScreen, page: () => const MyVoucherScreen()),
 
     GetPage(name: withdrawMoneyScreen, page: () => const WithdrawMoneyScreen()),
