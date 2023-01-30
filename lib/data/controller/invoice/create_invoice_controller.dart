@@ -1,10 +1,13 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xcash_app/core/helper/string_format_helper.dart';
+import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
+import 'package:xcash_app/data/model/authorization/authorization_response_model.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/invoice/create_invoice_response_model.dart';
+import 'package:xcash_app/data/model/invoice/invoice_items_model.dart';
 import 'package:xcash_app/data/repo/invoice/create_invoice_repo.dart';
 import 'package:xcash_app/view/components/custom_snackbar.dart';
 
@@ -27,6 +30,9 @@ class CreateInvoiceController extends GetxController{
   TextEditingController emailController = TextEditingController();
   TextEditingController addressController = TextEditingController();
 
+  TextEditingController itemController = TextEditingController();
+  TextEditingController amountController = TextEditingController();
+
 
   void increaseNumberField(){
     invoiceItemList.add(InvoiceItemsModel(itemNameController: TextEditingController(), amountController: TextEditingController()));
@@ -36,6 +42,24 @@ class CreateInvoiceController extends GetxController{
   void decreaseNumberField(int index){
     invoiceItemList.removeAt(index);
     update();
+  }
+
+  String  totalInvoiceAmount = '';
+  void calculateInvoiceAmount(){
+
+    double totalAmount = 0;
+
+    double firstInvoiceAmount = double.tryParse(amountController.text.toString())??0;
+    totalAmount = totalAmount + firstInvoiceAmount ;
+
+    for (var invoice in invoiceItemList) {
+      double  invoiceAmount = double.tryParse(invoice.amountController.text)??0;
+      totalAmount = totalAmount + invoiceAmount;
+    }
+
+    totalInvoiceAmount = '${Converter.twoDecimalPlaceFixedWithoutRounding(totalAmount.toString())} ${selectedCurrency?.currencyCode??''}';
+    update();
+
   }
 
 
@@ -80,12 +104,62 @@ class CreateInvoiceController extends GetxController{
     isLoading = false;
     update();
   }
-}
 
-class InvoiceItemsModel{
+  bool isSubmitLoading = false;
+  Future <void> submitInvoice() async{
+    isSubmitLoading = true;
+    update();
 
-  final TextEditingController itemNameController;
-  final TextEditingController amountController;
+    String invoiceTo = invoiceToController.text.toString();
+    String email = emailController.text.toString();
+    String address = addressController.text.toString();
+    String curId = selectedCurrency?.id.toString()??'';
 
-  const InvoiceItemsModel({required this.itemNameController, required this.amountController});
+    if(invoiceTo.isEmpty){
+      CustomSnackBar.error(errorList: ["Please, fill up invoice to field"]);
+      return ;
+    }
+    if(email.isEmpty){
+      CustomSnackBar.error(errorList: ["Please, fill up email field"]);
+      return ;
+    }
+    if(address.isEmpty){
+      CustomSnackBar.error(errorList: ["Please, fill up address field"]);
+      return ;
+    }
+    if(curId == "0"){
+      CustomSnackBar.error(errorList: ["Please, select your wallet"]);
+      return ;
+    }
+
+    String firstInvoice = itemController.text.toString();
+    String firstInvoiceAmount = amountController.text.toString();
+
+    if(firstInvoice.isEmpty){
+      CustomSnackBar.error(errorList: ["Please, fill up item name field"]);
+      return ;
+    } if(firstInvoiceAmount.isEmpty){
+      CustomSnackBar.error(errorList: ["Please, fill up amount field"]);
+      return ;
+    }
+
+    ResponseModel responseModel = await createInvoiceRepo.createInvoice(invoiceTo,email,address,curId,firstInvoice,firstInvoiceAmount,invoiceItemList);
+    if(responseModel.statusCode == 200){
+      AuthorizationResponseModel model = AuthorizationResponseModel.fromJson(jsonDecode(responseModel.responseJson));
+      if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
+        Get.offAndToNamed(RouteHelper.invoiceScreen);
+        CustomSnackBar.success(successList: model.message?.success ?? [MyStrings.requestSuccess]);
+      }
+      else{
+        CustomSnackBar.error(errorList: model.message?.error ?? [MyStrings.somethingWentWrong]);
+      }
+    }
+    else{
+      CustomSnackBar.error(errorList: [responseModel.message]);
+      return ;
+    }
+
+    isSubmitLoading = false;
+    update();
+  }
 }

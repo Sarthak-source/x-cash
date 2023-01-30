@@ -25,63 +25,60 @@ class _InvoiceDetailsState extends State<InvoiceDetails> {
     return GetBuilder<CreateInvoiceController>(
        builder: (controller) => CustomCard(
          width: MediaQuery.of(context).size.width,
-         child: Padding(
-           padding: const EdgeInsets.symmetric(vertical: Dimensions.space10),
-           child: Column(
-             crossAxisAlignment: CrossAxisAlignment.start,
-             children: [
-               const BottomSheetHeaderText(text: MyStrings.invoiceDetails),
-               const CustomDivider(space: Dimensions.space15),
-               Form(
-                 key: controller.formKey,
-                 child: Column(
-                   crossAxisAlignment: CrossAxisAlignment.start,
-                   children: [
-                     CustomTextField(
-                         needOutlineBorder: true,
-                         labelText: MyStrings.invoiceTo,
-                         hintText: MyStrings.enterInvoiceTo,
-                         controller: controller.invoiceToController,
-                         onChanged: (value){}
-                     ),
-                     const SizedBox(height: Dimensions.space15),
-                     CustomTextField(
-                         needOutlineBorder: true,
-                         labelText: MyStrings.email,
-                         hintText: MyStrings.enterEmail,
-                         controller: controller.emailController,
-                         onChanged: (value){}
-                     ),
-                     const SizedBox(height: Dimensions.space15),
-                     CustomTextField(
-                         needOutlineBorder: true,
-                         labelText: MyStrings.address,
-                         hintText: MyStrings.enterAddress,
-                         controller: controller.addressController,
-                         onChanged: (value){}
-                     ),
-                     const SizedBox(height: Dimensions.space15),
-                     CustomDropDownTextField(
-                         labelText: MyStrings.yourWallet,
-                         selectedValue: controller.selectedCurrency,
-                         onChanged: (value){
-                           controller.setSelectedCurrency(value);
-                         },
-                         items: controller.currencyList.map((Currencies val){
-                           return DropdownMenuItem<Currencies>(
-                               value: val,
-                               child: Text(
-                                 val.currencyCode ?? "",
-                                 style: regularSmall,
-                               )
-                           );
-                         }).toList()
-                     ),
-                   ],
-                 ),
-               )
-             ],
-           ),
+         child: Column(
+           crossAxisAlignment: CrossAxisAlignment.start,
+           children: [
+             const BottomSheetHeaderText(text: MyStrings.invoiceDetails),
+             const CustomDivider(space: Dimensions.space15),
+             Form(
+               key: controller.formKey,
+               child: Column(
+                 crossAxisAlignment: CrossAxisAlignment.start,
+                 children: [
+                   CustomTextField(
+                       needOutlineBorder: true,
+                       labelText: MyStrings.invoiceTo,
+                       hintText: MyStrings.enterInvoiceTo,
+                       controller: controller.invoiceToController,
+                       onChanged: (value){}
+                   ),
+                   const SizedBox(height: Dimensions.space15),
+                   CustomTextField(
+                       needOutlineBorder: true,
+                       labelText: MyStrings.email,
+                       hintText: MyStrings.enterEmail,
+                       controller: controller.emailController,
+                       onChanged: (value){}
+                   ),
+                   const SizedBox(height: Dimensions.space15),
+                   CustomTextField(
+                       needOutlineBorder: true,
+                       labelText: MyStrings.address,
+                       hintText: MyStrings.enterAddress,
+                       controller: controller.addressController,
+                       onChanged: (value){}
+                   ),
+                   const SizedBox(height: Dimensions.space15),
+                   CustomDropDownTextField(
+                       labelText: MyStrings.yourWallet,
+                       selectedValue: controller.selectedCurrency,
+                       onChanged: (value){
+                         controller.setSelectedCurrency(value);
+                       },
+                       items: controller.currencyList.map((Currencies val){
+                         return DropdownMenuItem<Currencies>(
+                             value: val,
+                             child: Text(
+                               val.currencyCode ?? "",
+                               style: regularSmall,
+                             )
+                         );
+                       }).toList()
+                   ),
+                 ],
+               ),
+             )
+           ],
          ),
        )
     );
