@@ -119,4 +119,6 @@ class UrlContainer{
   // invoice
   static const String allInvoiceUrl = "invoice/all";
   static const String invoiceCreateUrl = "invoice/create";
+  static const String invoiceEditUrl = "invoice/edit";
+  static const String invoiceUpdateUrl = "invoice/update";
 }
