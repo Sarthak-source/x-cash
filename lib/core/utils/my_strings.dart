@@ -22,6 +22,10 @@ class MyStrings{
   static const String quickLink = "Quick Links";
   static const String latestTransactions = "Latest Transactions";
 
+  static const String sendToEmail = 'Send to Email';
+  static const String publishInvoice = 'Publish Invoice';
+  static const String discardInvoice = 'Discard Invoice';
+
   // login-screen
   static const String welcomeBack = "Welcome Back!";
   static const String loginSubTitle = "We happy to see you here again. Enter your\nusername and password";
