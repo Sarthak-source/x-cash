@@ -71,7 +71,7 @@ class _WithdrawMoneyScreenState extends State<WithdrawMoneyScreen> {
                 padding: const EdgeInsets.only(right: Dimensions.space15),
                 child: GestureDetector(
                   onTap: (){
-                    Get.toNamed(RouteHelper.addWithdrawMethodScreen);
+                    Get.toNamed(RouteHelper.withdrawMethodScreen);
                   },
                   child: Container(
                     height: 30, width: 30,
