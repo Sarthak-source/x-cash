@@ -116,24 +116,26 @@ class _CreateVoucherFormState extends State<CreateVoucherForm> {
               press: (){
                 if(formKey.currentState!.validate()){
                   CustomBottomSheet(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: const [
-                              BottomSheetHeaderText(text: MyStrings.paymentPreview),
-                              BottomSheetCloseButton()
-                            ],
-                          ),
-                          const CustomDivider(space: Dimensions.space15),
-                          controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
-                            text: MyStrings.confirm,
-                            press: (){
-                              controller.submitCreateVoucher();
-                            }
-                          )
-                        ],
+                      child: GetBuilder<CreateVoucherController>(
+                        builder: (controller) => Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: const [
+                                BottomSheetHeaderText(text: MyStrings.paymentPreview),
+                                BottomSheetCloseButton()
+                              ],
+                            ),
+                            const CustomDivider(space: Dimensions.space15),
+                            controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
+                                text: MyStrings.confirm,
+                                press: (){
+                                  controller.submitCreateVoucher();
+                                }
+                            )
+                          ],
+                        ),
                       )
                   ).customBottomSheet(context);
                 }
