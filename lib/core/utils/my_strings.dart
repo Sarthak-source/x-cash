@@ -90,9 +90,12 @@ class MyStrings{
   static const String myWallet = "My Wallets";
   static const String transferMoney = "Transfer Money";
   static const String addMoney = "Add Money";
+  static const String addItems = "Add Items";
   static const String exchange = "Exchange";
   static const String makePayment = "Make Payment";
   static const String invoice = "Invoice";
+  static const String updateInvoice = "Update Invoice";
+
   static const String voucher = "Voucher";
   static const String transfer = "Transfer";
   static const String requestMoney = "Request Money";
@@ -119,6 +122,7 @@ class MyStrings{
   // home bottom-sheet
   static const String totalReceived = "Total Received";
   static const String totalSpent = "Total Spent";
+  static const String totalAmount = "Total Amount";
   static const String viewTransactions = "View Transactions";
 
   static const String transaction = "Transaction";
