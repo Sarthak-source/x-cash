@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/helper/date_converter.dart';
 import 'package:xcash_app/core/helper/string_format_helper.dart';
+import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
@@ -156,7 +157,10 @@ class InvoicesBottomSheet{
                     const SizedBox(width: Dimensions.space15),
                     controller.invoiceList[index].status == "0" ? Expanded(
                       child: InVoiceActionButton(
-                        press: (){},
+                        press: () => Get.toNamed(
+                            RouteHelper.updateInvoiceScreen,
+                            arguments: [controller.invoiceList[index].invoiceNum, controller.invoiceList[index].currencyId]
+                        ),
                         text: MyStrings.edit,
                         bgColor: MyColor.primaryColor,
                         iconData: Icons.edit_calendar_sharp,
