@@ -32,7 +32,7 @@ class RoundedLoadingBtn extends StatelessWidget {
               shadowColor: MyColor.transparentColor,
               padding:  EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: verticalPadding-3),
               textStyle: TextStyle(color: textColor, fontSize: 14, fontWeight: FontWeight.w500)),
-          child: SizedBox(width:20, height:20, child: CircularProgressIndicator(color: MyColor.getPrimaryButtonTextColor(), strokeWidth: 2)),
+          child: SizedBox(width:20, height:20, child: CircularProgressIndicator(color: textColor, strokeWidth: 2)),
         )
       ),
     );

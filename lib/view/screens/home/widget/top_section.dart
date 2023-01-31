@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/home/home_controller.dart';
 
@@ -72,7 +73,7 @@ class _TopSectionState extends State<TopSection> {
                             AnimatedOpacity(
                                 opacity: controller.isBalance ? 1 : 0,
                                 duration: const Duration(milliseconds: 300),
-                                child: Text("Balance", style: regularSmall.copyWith(fontWeight: FontWeight.w500))
+                                child: Text(MyStrings.balance.tr, style: regularSmall.copyWith(fontWeight: FontWeight.w500))
                             ),
                             AnimatedPositioned(
                                 duration: const Duration(milliseconds: 1100),
