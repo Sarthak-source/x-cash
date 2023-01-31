@@ -8,6 +8,7 @@ import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/voucher/voucher_list_controller.dart';
 import 'package:xcash_app/data/repo/voucher/voucher_list_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
+import 'package:xcash_app/view/components/app-bar/action_button_icon_widget.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/custom_no_data_found_class.dart';
@@ -64,18 +65,10 @@ class _MyVoucherScreenState extends State<MyVoucherScreen> {
             title: Text(MyStrings.myVoucher, style: regularLarge.copyWith(color: MyColor.getAppBarContentColor())),
             backgroundColor: MyColor.getAppBarColor(),
             actions: [
-              IconButton(
-                onPressed: (){
-                  CustomBottomSheet(
-                      child: const RedeemVoucher()
-                  ).customBottomSheet(context);
-                },
-                icon: Icon(Icons.card_giftcard, color: MyColor.getAppBarContentColor(), size: 20),
-              ),
-              IconButton(
-                onPressed: () => Get.toNamed(RouteHelper.createVoucherScreen),
-                icon: Icon(Icons.add_circle_outline_rounded, color: MyColor.getAppBarContentColor(), size: 20),
-              ),
+              ActionButtonIconWidget(
+                  pressed: () => Get.toNamed(RouteHelper.createVoucherScreen),
+                  icon: Icons.add
+              )
             ],
           ),
           body: controller.isLoading ? const CustomLoader() : Padding(
