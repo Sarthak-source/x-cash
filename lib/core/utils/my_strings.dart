@@ -3,7 +3,10 @@ import 'package:xcash_app/data/model/language/language_model.dart';
 class MyStrings{
 
   static const String appName = "XCash";
-  static const String noActionid = "No action id found";
+  static const String noActionId = "No action id found";
+  static const String areYouSure = "Are you sure want to reject?";
+  static const String yes = "Yes";
+  static const String no = "No";
 
   // onboard-screen
   static const String onboardTitle1 = "Welcome To Xcash\nWallet App";
@@ -118,6 +121,7 @@ class MyStrings{
   static const String moneyIn = "Money In";
   static const String moneyOut = "Money Out";
   static const String seeAll = "See All";
+  static const String see = "See";
 
   static const String voucherRedeemLog = "Voucher Redeem Log";
   static const String redeemLog = "Redeem Log";
@@ -241,8 +245,6 @@ class MyStrings{
 
   // alert dialog
   static const String areYouSureReject = "Are you sure want to\nreject?";
-  static const String no = "No";
-  static const String yes = "Yes";
 
   // request details
   static const String requestDetails = "Request Details";
@@ -379,6 +381,7 @@ class MyStrings{
   static const String and = '&';
   static const String any = 'Any';
   static const String balanceTransfer = "Balance Transfer";
+  static const String balance = "Balance";
   static const String completePlan = "Completed Invest";
   static const String referralLink = "Referral Link";
   static const String total = "Total";
@@ -504,6 +507,8 @@ class MyStrings{
   static const String selectACountry          = "Select a country";
   static const String requestFail             = "Request Failed";
   static const String requestSuccess          = "Request Success";
+
+  static const String requestFrom          = "Request from";
   static const String loginFailedTryAgain     = 'Login failed,please try again';
 
   static const String selectOne               = "Select One";
@@ -548,10 +553,12 @@ class MyStrings{
 
   // status
   static const String approved  = "Approved";
+  static const String accept  = "Accept";
   static const String enabled  = "Enabled";
   static const String succeed  = "Succeed";
   static const String pending  = "Pending";
   static const String rejected  = "Rejected";
+  static const String reject  = "Reject";
   static const String completed  = "Completed";
 
   static const String transactionType  = "Transaction Type";
