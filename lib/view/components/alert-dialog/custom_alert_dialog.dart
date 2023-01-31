@@ -17,13 +17,13 @@ class CustomAlertDialog{
     showDialog(
       context: context,
       builder: (BuildContext context) => Dialog(
-        insetPadding: const EdgeInsets.symmetric(horizontal: Dimensions.space40 * 1.5),
+        insetPadding: const EdgeInsets.symmetric(horizontal: Dimensions.space40),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
         child: SingleChildScrollView(
           physics: const ClampingScrollPhysics(),
           child: Container(
             padding: isHorizontalPadding ?
-            const EdgeInsets.symmetric(horizontal: Dimensions.space15, vertical: Dimensions.space10) : const EdgeInsets.symmetric(vertical: Dimensions.space10),
+            const EdgeInsets.symmetric(horizontal: Dimensions.space15, vertical: Dimensions.space10) : const EdgeInsets.symmetric(vertical: Dimensions.space15),
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: MyColor.colorWhite,

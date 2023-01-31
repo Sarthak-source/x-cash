@@ -15,8 +15,8 @@ class CircleAnimatedButtonWithText extends StatefulWidget {
     required this.buttonName,
     required this.child,
     required this.onTap,
-    required this.height,
-    required this.width,
+    this.height = 40,
+    this.width = 40,
     required this.backgroundColor,
   }) : super(key: key);
 
@@ -77,7 +77,7 @@ class _CircleAnimatedButtonWithTextState extends State<CircleAnimatedButtonWithT
                   child: widget.child
               ),
               const SizedBox(height: 10),
-              Text(widget.buttonName, textAlign: TextAlign.center, style: regularExtraSmall.copyWith(color: MyColor.primaryTextColor, fontWeight: FontWeight.w600))
+              Text(widget.buttonName, textAlign: TextAlign.center, style: regularExtraSmall.copyWith(color: MyColor.primaryTextColor, fontWeight: FontWeight.w500))
             ],
           ),
         ),
