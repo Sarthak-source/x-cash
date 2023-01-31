@@ -9,9 +9,21 @@ class MyRequestHistoryRepo{
   MyRequestHistoryRepo({required this.apiClient});
 
   Future<ResponseModel> getHistoryData(int page,{bool isMyRequest = false}) async{
-    String url = "${UrlContainer.baseUrl}${isMyRequest?UrlContainer.myRequestHistoryEndPoint:UrlContainer.requestToMeEndPoint}?page=$page";
-    print(url);
+    String url = "${UrlContainer.baseUrl}${isMyRequest ? UrlContainer.myRequestHistoryEndPoint : UrlContainer.requestToMeEndPoint}?page=$page";
     ResponseModel responseModel = await apiClient.request(url, Method.getMethod, null, passHeader: true);
+    return responseModel;
+  }
+
+  Future<ResponseModel> requestReject({required String requestId}) async{
+
+    String url = "${UrlContainer.baseUrl}${UrlContainer.requestRejectUrl}";
+    print(url);
+    print(requestId);
+
+    Map<String, String> params = {"request_id" : requestId};
+
+    ResponseModel responseModel = await apiClient.request(url, Method.postMethod, params, passHeader: true);
+    print(responseModel.responseJson);
     return responseModel;
   }
 }

@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:xcash_app/core/helper/date_converter.dart';
-import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
-import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/request_money/request_to_me/my_request_history_controller.dart';
 import 'package:xcash_app/data/repo/request_money/my_request_history_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
@@ -112,17 +107,7 @@ class _RequestToMeScreenState extends State<RequestToMeScreen> {
                                 child: const CustomLoader()
                             ) : const SizedBox();
                           }
-                          return controller.isMyRequest ? MyRequestListItem(
-                            name: "${controller.myRequestList[index].receiver?.firstname ?? ""} ${controller.myRequestList[index].receiver?.lastname ?? ""}",
-                            date: DateConverter.isoStringToLocalDateOnly(controller.myRequestList[index].createdAt ?? ""),
-                            amount: "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.myRequestList[index].requestAmount ?? "")} "
-                                "${controller.myRequestList[index].currency?.currencyCode ?? ""}",
-                          ): ToMeListItem(
-                            name: "${controller.myRequestList[index].sender?.firstname ?? ""} ${controller.myRequestList[index].sender?.lastname ?? ""}",
-                            date: DateConverter.isoStringToLocalDateOnly(controller.myRequestList[index].createdAt ?? ""),
-                            amount: "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.myRequestList[index].requestAmount ?? "")} "
-                                "${controller.myRequestList[index].currency?.currencyCode ?? ""}",
-                          );
+                          return controller.isMyRequest ? MyRequestListItem(index: index): ToMeListItem(index: index);
                         },
                       ),
                     ),
