@@ -113,8 +113,7 @@ class Data {
       String? userId, 
       String? userType, 
       String? methodId, 
-      String? currencyId, 
-      List<UserData>? userData, 
+      String? currencyId,
       String? status, 
       String? createdAt, 
       String? updatedAt, 
@@ -126,7 +125,6 @@ class Data {
     _userType = userType;
     _methodId = methodId;
     _currencyId = currencyId;
-    _userData = userData;
     _status = status;
     _createdAt = createdAt;
     _updatedAt = updatedAt;
@@ -141,12 +139,6 @@ class Data {
     _userType = json['user_type'].toString();
     _methodId = json['method_id'].toString();
     _currencyId = json['currency_id'].toString();
-    if (json['user_data'] != null) {
-      _userData = [];
-      json['user_data'].forEach((v) {
-        _userData?.add(UserData.fromJson(v));
-      });
-    }
     _status = json['status'].toString();
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
@@ -159,7 +151,6 @@ class Data {
   String? _userType;
   String? _methodId;
   String? _currencyId;
-  List<UserData>? _userData;
   String? _status;
   String? _createdAt;
   String? _updatedAt;
@@ -172,7 +163,6 @@ class Data {
   String? get userType => _userType;
   String? get methodId => _methodId;
   String? get currencyId => _currencyId;
-  List<UserData>? get userData => _userData;
   String? get status => _status;
   String? get createdAt => _createdAt;
   String? get updatedAt => _updatedAt;
@@ -187,9 +177,6 @@ class Data {
     map['user_type'] = _userType;
     map['method_id'] = _methodId;
     map['currency_id'] = _currencyId;
-    if (_userData != null) {
-      map['user_data'] = _userData?.map((v) => v.toJson()).toList();
-    }
     map['status'] = _status;
     map['created_at'] = _createdAt;
     map['updated_at'] = _updatedAt;
@@ -391,39 +378,6 @@ class WithdrawMethod {
     map['updated_at'] = _updatedAt;
     map['withdraw_min_limit'] = _withdrawMinLimit;
     map['withdraw_max_limit'] = _withdrawMaxLimit;
-    return map;
-  }
-
-}
-
-class UserData {
-  UserData({
-      String? name, 
-      String? type, 
-      String? value,}){
-    _name = name;
-    _type = type;
-    _value = value;
-}
-
-  UserData.fromJson(dynamic json) {
-    _name = json['name'];
-    _type = json['type'];
-    _value = json['value'];
-  }
-  String? _name;
-  String? _type;
-  String? _value;
-
-  String? get name => _name;
-  String? get type => _type;
-  String? get value => _value;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['name'] = _name;
-    map['type'] = _type;
-    map['value'] = _value;
     return map;
   }
 

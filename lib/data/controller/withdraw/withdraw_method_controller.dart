@@ -1,6 +1,10 @@
+import 'dart:convert';
 import 'package:get/get.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
+import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/withdraw/withdraw_method_response_model.dart';
 import 'package:xcash_app/data/repo/withdraw/withdraw_method_repo.dart';
+import 'package:xcash_app/view/components/custom_snackbar.dart';
 
 class WithdrawMethodController extends GetxController{
 
@@ -9,12 +13,17 @@ class WithdrawMethodController extends GetxController{
 
   bool isLoading = true;
   WithdrawMethodResponseModel model = WithdrawMethodResponseModel();
-  Data? addMethod = Data();
+  late Data? addMethod;
 
   List<Data> methodList = [];
 
   int page = 0;
   String? nextPageUrl;
+
+  setAddMethod(Data? data) async{
+    addMethod = data;
+    update();
+  }
 
   void initialData() async{
     page = 0;
@@ -33,6 +42,32 @@ class WithdrawMethodController extends GetxController{
     if(page == 1){
       methodList.clear();
     }
+
+    addMethod = Data(id: -1, name: MyStrings.addNewMethod);
+    methodList.insert(0, addMethod!);
+    setAddMethod(addMethod);
+
+    ResponseModel responseModel = await withdrawMethodRepo.getMethodData(page);
+    if(responseModel.statusCode == 200){
+      model = WithdrawMethodResponseModel.fromJson(jsonDecode(responseModel.responseJson));
+      nextPageUrl =  model.data?.methods?.nextPageUrl;
+
+      if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
+        List<Data>? tempMethodList = model.data?.methods?.data;
+        if(tempMethodList != null && tempMethodList.isNotEmpty){
+          methodList.addAll(tempMethodList);
+        }
+      }
+      else{
+        CustomSnackBar.error(errorList: model.message?.error ?? [MyStrings.somethingWentWrong]);
+      }
+    }
+    else{
+      CustomSnackBar.error(errorList: [responseModel.message]);
+    }
+
+    isLoading = false;
+    update();
   }
 
   bool hasNext(){
