@@ -139,8 +139,8 @@ class VoucherCharge {
     _dailyRequestAcceptLimit = json['daily_request_accept_limit'].toString();
     _voucherLimit = json['voucher_limit'].toString();
     _cap = json['cap'].toString();
-    _createdAt = json['created_at'].toString();
-    _updatedAt = json['updated_at'].toString();
+    _createdAt = json['created_at'];
+    _updatedAt = json['updated_at'];
   }
   int? _id;
   String? _slug;
@@ -231,8 +231,8 @@ class Wallets {
     _currencyId = json['currency_id'].toString();
     _currencyCode = json['currency_code'].toString();
     _balance = json['balance'] != null ? json['balance'].toString() : "";
-    _createdAt = json['created_at'].toString();
-    _updatedAt = json['updated_at'].toString();
+    _createdAt = json['created_at'];
+    _updatedAt = json['updated_at'];
     _currency = json['currency'] != null ? Currency.fromJson(json['currency']) : null;
   }
   int? _id;
@@ -278,14 +278,15 @@ class Currency {
       int? id, 
       String? currencyCode, 
       String? currencySymbol, 
-      String? currencyFullName, 
+      String? currencyFullName,
       String? currencyType, 
       String? rate, 
       String? isDefault, 
       String? status, 
       String? createdAt, 
       String? updatedAt, 
-      String? voucherLimit,}){
+      String? voucherMinLimit,
+      String? voucherMaxLimit,}){
     _id = id;
     _currencyCode = currencyCode;
     _currencySymbol = currencySymbol;
@@ -296,21 +297,23 @@ class Currency {
     _status = status;
     _createdAt = createdAt;
     _updatedAt = updatedAt;
-    _voucherLimit = voucherLimit;
+    _voucherMinLimit = voucherMinLimit;
+    _voucherMaxLimit = voucherMaxLimit;
 }
 
   Currency.fromJson(dynamic json) {
     _id = json['id'];
     _currencyCode = json['currency_code'].toString();
     _currencySymbol = json['currency_symbol'].toString();
-    _currencyFullName = json['currency_FullName'].toString();
+    _currencyFullName = json['currency_fullname'].toString();
     _currencyType = json['currency_type'].toString();
     _rate = json['rate'].toString();
     _isDefault = json['is_default'].toString();
     _status = json['status'].toString();
-    _createdAt = json['created_at'].toString();
-    _updatedAt = json['updated_at'].toString();
-    _voucherLimit = json['voucher_limit'].toString();
+    _createdAt = json['created_at'];
+    _updatedAt = json['updated_at'];
+    _voucherMinLimit = json['voucher_min_limit'].toString();
+    _voucherMaxLimit = json['voucher_max_limit'].toString();
   }
   int? _id;
   String? _currencyCode;
@@ -322,7 +325,8 @@ class Currency {
   String? _status;
   String? _createdAt;
   String? _updatedAt;
-  String? _voucherLimit;
+  String? _voucherMinLimit;
+  String? _voucherMaxLimit;
 
   int? get id => _id;
   String? get currencyCode => _currencyCode;
@@ -334,21 +338,24 @@ class Currency {
   String? get status => _status;
   String? get createdAt => _createdAt;
   String? get updatedAt => _updatedAt;
-  String? get voucherLimit => _voucherLimit;
+  String? get voucherMinLimit => _voucherMinLimit;
+  String? get voucherMaxLimit => _voucherMaxLimit;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['id'] = _id;
     map['currency_code'] = _currencyCode;
     map['currency_symbol'] = _currencySymbol;
-    map['currency_FullName'] = _currencyFullName;
+    map['currency_fullname'] = _currencyFullName;
     map['currency_type'] = _currencyType;
     map['rate'] = _rate;
     map['is_default'] = _isDefault;
     map['status'] = _status;
     map['created_at'] = _createdAt;
     map['updated_at'] = _updatedAt;
-    map['voucher_limit'] = _voucherLimit;
+    map['voucher_min_limit'] = _voucherMinLimit;
+    map['voucher_max_limit'] = _voucherMaxLimit;
     return map;
   }
+
 }

@@ -24,6 +24,9 @@ class CreateVoucherController extends GetxController{
   String selectedOtp = "";
   String amount = "";
 
+  String minLimit = "";
+  String maxLimit = "";
+
   TextEditingController amountController = TextEditingController();
 
   List<Wallets> walletList = [];
