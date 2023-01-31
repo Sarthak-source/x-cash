@@ -51,7 +51,7 @@ class MyImages{
   static const String payoneer = "${basePath1}payoneer.png";
   static const String paypal = "${basePath1}paypal.png";
   static const String phone = "${basePath1}phone.png";
-  static const String requestMe = "${basePath1}requestMe.png";
+  static const String requestMe = "${basePath1}request_me.png";
   static const String requestMoney = "${basePath}requestMoney.svg";
   static const String requestMoney1 = "${basePath1}requestMoney1.png";
   static const String scan = "${basePath}scan.svg";
@@ -69,7 +69,9 @@ class MyImages{
   static const String userProfile = "${basePath1}userProfile.png";
   static const String userProfile2 = "${basePath}userProfile2.svg";
   static const String voucher = "${basePath1}voucher.png";
+  static const String voucherBadge = "${basePath1}badge.png";
   static const String withdraw = "${basePath}withdraw.svg";
+  static const String withdrawMethod = "${basePath1}withdraw_method.png";
   static const String withdrawHistory = "${basePath}withdrawHistory.svg";
   static const String dotMenu = "${basePath}dots.svg";
   static const String viewTransaction = "${basePath1}viewTransaction.png";
@@ -94,5 +96,7 @@ class MyImages{
   static const String invoice1 = "${basePath1}invoice_1.png";
   static const String addMoney_1 = "${basePath1}add_money.png";
   static const String withdrawMoney = "${basePath1}withdraw_money.png";
+  static const String moneyWithdraw = "${basePath1}money_withdraw.png";
   static const String addNewMethod = "${basePath1}add_new_method.png";
+  static const String reject = "${basePath1}rejected.png";
 }
