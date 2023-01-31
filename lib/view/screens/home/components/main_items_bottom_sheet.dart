@@ -45,7 +45,6 @@ class MainItemBottomSheet{
                   Expanded(
                     child: CircleAnimatedButtonWithText(
                       buttonName: MyStrings.addMoneyHistory,
-                      height: 40, width: 40,
                       backgroundColor: MyColor.screenBgColor,
                       child: Image.asset(MyImages.moneyHistory, color: MyColor.primaryColor, height: 20, width: 20),
                       onTap: (){
@@ -56,7 +55,6 @@ class MainItemBottomSheet{
                   Expanded(
                     child: CircleAnimatedButtonWithText(
                       buttonName: MyStrings.moneyOut,
-                      height: 40, width: 40,
                       backgroundColor: MyColor.screenBgColor,
                       child: Image.asset(MyImages.moneyOut, color: MyColor.primaryColor, height: 20, width: 20),
                       onTap: (){
@@ -66,19 +64,34 @@ class MainItemBottomSheet{
                   ),
                   Expanded(
                     child: CircleAnimatedButtonWithText(
-                      buttonName: MyStrings.voucher,
-                      height: 40, width: 40,
+                      buttonName: MyStrings.requestToMe,
                       backgroundColor: MyColor.screenBgColor,
-                      child: SvgPicture.asset(MyImages.myVoucher, color: MyColor.primaryColor, height: 20, width: 20),
+                      child: Image.asset(MyImages.requestMe, color: MyColor.primaryColor, height: 20, width: 20),
                       onTap: (){
-                        Get.toNamed(RouteHelper.myVoucherScreen);
+                        Get.toNamed(RouteHelper.requestToMeScreen);
                       },
                     ),
                   ),
                   Expanded(
                     child: CircleAnimatedButtonWithText(
+                      buttonName: MyStrings.createVoucher,
+                      backgroundColor: MyColor.screenBgColor,
+                      child: SvgPicture.asset(MyImages.myVoucher, color: MyColor.primaryColor, height: 20, width: 20),
+                      onTap: (){
+                        Get.toNamed(RouteHelper.createVoucherScreen);
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: Dimensions.space15),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: CircleAnimatedButtonWithText(
                       buttonName: MyStrings.redeemVoucher,
-                      height: 40, width: 40,
                       backgroundColor: MyColor.screenBgColor,
                       child: Image.asset(MyImages.voucherRedeem, color: MyColor.primaryColor, height: 20, width: 20),
                       onTap: (){
@@ -86,6 +99,36 @@ class MainItemBottomSheet{
                         CustomBottomSheet(
                             child: const RedeemVoucher()
                         ).customBottomSheet(context);
+                      },
+                    ),
+                  ),
+                  Expanded(
+                    child: CircleAnimatedButtonWithText(
+                      buttonName: MyStrings.withdrawMoney,
+                      backgroundColor: MyColor.screenBgColor,
+                      child: Image.asset(MyImages.moneyWithdraw, color: MyColor.primaryColor, height: 20, width: 20),
+                      onTap: (){
+                        Get.toNamed(RouteHelper.withdrawMoneyScreen);
+                      },
+                    ),
+                  ),
+                  Expanded(
+                    child: CircleAnimatedButtonWithText(
+                      buttonName: MyStrings.redeemLog,
+                      backgroundColor: MyColor.screenBgColor,
+                      child: Image.asset(MyImages.redeemLog, color: MyColor.primaryColor, height: 20, width: 20),
+                      onTap: (){
+                        Get.toNamed(RouteHelper.redeemLogScreen);
+                      },
+                    ),
+                  ),
+                  Expanded(
+                    child: CircleAnimatedButtonWithText(
+                      buttonName: MyStrings.withdrawMethod,
+                      backgroundColor: MyColor.screenBgColor,
+                      child: Image.asset(MyImages.withdrawMethod, color: MyColor.primaryColor, height: 20, width: 20),
+                      onTap: (){
+                        Get.toNamed(RouteHelper.withdrawMethodScreen);
                       },
                     ),
                   ),

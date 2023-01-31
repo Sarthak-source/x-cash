@@ -28,7 +28,7 @@ class WalletSection extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  MyStrings.myWallet,
+                  MyStrings.myWallet.tr,
                   style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w500),
                 ),
                 InkWell(
@@ -40,7 +40,7 @@ class WalletSection extends StatelessWidget {
                     color: MyColor.transparentColor,
                     padding: const EdgeInsets.all(Dimensions.space5),
                     child: Text(
-                      MyStrings.seeAll,
+                      MyStrings.seeAll.tr,
                       textAlign: TextAlign.center,
                       style: regularSmall.copyWith(color: MyColor.getPrimaryColor()),
                     ),
@@ -50,7 +50,7 @@ class WalletSection extends StatelessWidget {
             ),
             const CustomDivider(space: Dimensions.space15),
             SizedBox(
-              height: 120,
+              height: MediaQuery.of(context).size.height * 0.15,
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,

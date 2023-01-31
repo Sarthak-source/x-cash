@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
@@ -85,6 +86,7 @@ class QuickLinkItemBottomSheet{
                 ),
                 const SizedBox(height: Dimensions.space10),
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Expanded(
@@ -96,6 +98,30 @@ class QuickLinkItemBottomSheet{
                         onTap: (){
                           Get.toNamed(RouteHelper.addMoneyScreen);
                         },
+                      ),
+                    ),
+                    Expanded(
+                      child: CircleAnimatedButtonWithText(
+                          buttonName: MyStrings.transaction.tr,
+                          backgroundColor: MyColor.screenBgColor,
+                          child: Image.asset(MyImages.transaction, color: MyColor.primaryColor, height: 20, width: 20),
+                          onTap: () => Get.toNamed(RouteHelper.transactionHistoryScreen)
+                      ),
+                    ),
+                    Expanded(
+                      child: CircleAnimatedButtonWithText(
+                          buttonName: MyStrings.transfer.tr,
+                          backgroundColor: MyColor.screenBgColor,
+                          child: SvgPicture.asset(MyImages.transfer, color: MyColor.primaryColor, height: 20, width: 20),
+                          onTap: () => Get.toNamed(RouteHelper.transferMoneyScreen)
+                      ),
+                    ),
+                    Expanded(
+                      child: CircleAnimatedButtonWithText(
+                        buttonName: MyStrings.voucher.tr,
+                        backgroundColor: MyColor.screenBgColor,
+                        child: Image.asset(MyImages.voucherBadge, color: MyColor.primaryColor, height: 20, width: 20),
+                        onTap: () => Get.toNamed(RouteHelper.myVoucherScreen),
                       ),
                     ),
                   ],

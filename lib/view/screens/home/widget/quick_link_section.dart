@@ -29,12 +29,12 @@ class QuickLinkSection extends StatelessWidget {
           ),
           const CustomDivider(space: Dimensions.space15),
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Expanded(
                 child: CircleAnimatedButtonWithText(
                   buttonName: MyStrings.exchange,
-                  height: 40, width: 40,
                   backgroundColor: MyColor.screenBgColor,
                   child: SvgPicture.asset(MyImages.exchange, color: MyColor.primaryColor, height: 20, width: 20),
                   onTap: (){
@@ -45,7 +45,6 @@ class QuickLinkSection extends StatelessWidget {
               Expanded(
                 child: CircleAnimatedButtonWithText(
                     buttonName: MyStrings.withdrawMoney,
-                    height: 40, width: 40,
                     backgroundColor: MyColor.screenBgColor,
                     child: SvgPicture.asset(MyImages.withdraw, color: MyColor.primaryColor, height: 20, width: 20),
                     onTap: () => Get.toNamed(RouteHelper.withdrawMoneyScreen)
@@ -54,7 +53,6 @@ class QuickLinkSection extends StatelessWidget {
               Expanded(
                 child: CircleAnimatedButtonWithText(
                     buttonName: MyStrings.createVoucher,
-                    height: 40, width: 40,
                     backgroundColor: MyColor.screenBgColor,
                     child: Image.asset(MyImages.voucher, color: MyColor.primaryColor, height: 20, width: 20),
                     onTap: () => Get.toNamed(RouteHelper.createVoucherScreen)
@@ -63,7 +61,6 @@ class QuickLinkSection extends StatelessWidget {
               Expanded(
                 child: CircleAnimatedButtonWithText(
                   buttonName: MyStrings.seeMore,
-                  height: 40, width: 40,
                   backgroundColor: MyColor.screenBgColor,
                   child: Image.asset(MyImages.menu, height: 20, width: 20),
                   onTap: () => QuickLinkItemBottomSheet.quickLinkItemBottomSheet(context)

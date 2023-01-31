@@ -22,12 +22,12 @@ class MainItemSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
                 child: CircleAnimatedButtonWithText(
-                  buttonName: MyStrings.addMoney,
-                  height: 40, width: 40,
+                  buttonName: MyStrings.addMoney.tr,
                   backgroundColor: MyColor.screenBgColor,
                   child: SvgPicture.asset(MyImages.addMoney, color: MyColor.primaryColor, height: 20, width: 20),
                   onTap: (){
@@ -37,8 +37,7 @@ class MainItemSection extends StatelessWidget {
               ),
               Expanded(
                 child: CircleAnimatedButtonWithText(
-                    buttonName: MyStrings.transfer,
-                    height: 40, width: 40,
+                    buttonName: MyStrings.transfer.tr,
                     backgroundColor: MyColor.screenBgColor,
                     child: SvgPicture.asset(MyImages.transfer, color: MyColor.primaryColor, height: 20, width: 20),
                     onTap: () => Get.toNamed(RouteHelper.transferMoneyScreen)
@@ -46,8 +45,7 @@ class MainItemSection extends StatelessWidget {
               ),
               Expanded(
                 child: CircleAnimatedButtonWithText(
-                    buttonName: MyStrings.makePayment,
-                    height: 40, width: 40,
+                    buttonName: MyStrings.makePayment.tr,
                     backgroundColor: MyColor.screenBgColor,
                     child: SvgPicture.asset(MyImages.makePayment, color: MyColor.primaryColor, height: 20, width: 20),
                     onTap: () => Get.toNamed(RouteHelper.makePaymentScreen)
@@ -55,7 +53,7 @@ class MainItemSection extends StatelessWidget {
               ),
               Expanded(
                 child: CircleAnimatedButtonWithText(
-                  buttonName: MyStrings.withdraw,
+                  buttonName: MyStrings.withdraw.tr,
                   height: 40, width: 40,
                   backgroundColor: MyColor.screenBgColor,
                   child: SvgPicture.asset(MyImages.withdraw, color: MyColor.primaryColor, height: 20, width: 20),
@@ -68,12 +66,12 @@ class MainItemSection extends StatelessWidget {
           ),
           const SizedBox(height: Dimensions.space20),
           Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
                 child: CircleAnimatedButtonWithText(
-                  buttonName: MyStrings.requestMoney,
-                  height: 40, width: 40,
+                  buttonName: MyStrings.requestMoney.tr,
                   backgroundColor: MyColor.screenBgColor,
                   child: SvgPicture.asset(MyImages.requestMoney, color: MyColor.primaryColor, height: 20, width: 20),
                   onTap: (){
@@ -83,8 +81,7 @@ class MainItemSection extends StatelessWidget {
               ),
               Expanded(
                 child: CircleAnimatedButtonWithText(
-                    buttonName: MyStrings.transaction,
-                    height: 40, width: 40,
+                    buttonName: MyStrings.transaction.tr,
                     backgroundColor: MyColor.screenBgColor,
                     child: Image.asset(MyImages.transaction, color: MyColor.primaryColor, height: 20, width: 20),
                     onTap: () => Get.toNamed(RouteHelper.transactionHistoryScreen)
@@ -92,17 +89,15 @@ class MainItemSection extends StatelessWidget {
               ),
               Expanded(
                 child: CircleAnimatedButtonWithText(
-                  buttonName: MyStrings.requestToMe,
-                  height: 40, width: 40,
+                  buttonName: MyStrings.voucher.tr,
                   backgroundColor: MyColor.screenBgColor,
-                  child: Image.asset(MyImages.requestMe, color: MyColor.primaryColor, height: 20, width: 20),
-                  onTap: () => Get.toNamed(RouteHelper.requestToMeScreen),
+                  child: Image.asset(MyImages.voucherBadge, color: MyColor.primaryColor, height: 20, width: 20),
+                  onTap: () => Get.toNamed(RouteHelper.myVoucherScreen),
                 ),
               ),
               Expanded(
                 child: CircleAnimatedButtonWithText(
-                  buttonName: MyStrings.seeMore,
-                  height: 40, width: 40,
+                  buttonName: MyStrings.seeMore.tr,
                   backgroundColor: MyColor.screenBgColor,
                   child: Image.asset(MyImages.menu, color: MyColor.primaryColor, height: 20, width: 20),
                   onTap: () => MainItemBottomSheet.mainItemBottomSheet(context)
