@@ -110,7 +110,7 @@ class MoneyOutController extends GetxController{
           Get.toNamed(RouteHelper.otpScreen, arguments: [actionId, RouteHelper.bottomNavBar]);
         }
         else{
-          CustomSnackBar.error(errorList: [MyStrings.noActionid]);
+          CustomSnackBar.error(errorList: [MyStrings.noActionId]);
         }
 
       } else{
