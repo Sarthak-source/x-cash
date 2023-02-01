@@ -4,23 +4,23 @@ import 'package:xcash_app/core/utils/style.dart';
 
 
 
-class CustomDropDownTextField extends StatefulWidget {
+class CustomDropDownWithTextField extends StatefulWidget {
 
   final String? title, selectedValue;
   final List<String>? list;
   final ValueChanged? onChanged;
 
-  const CustomDropDownTextField({Key? key,
+  const CustomDropDownWithTextField({Key? key,
     this.title,
     this.selectedValue,
     this.list,
     this.onChanged, }) : super(key: key);
 
   @override
-  State<CustomDropDownTextField> createState() => _CustomDropDownTextFieldState();
+  State<CustomDropDownWithTextField> createState() => _CustomDropDownWithTextFieldState();
 }
 
-class _CustomDropDownTextFieldState extends State<CustomDropDownTextField> {
+class _CustomDropDownWithTextFieldState extends State<CustomDropDownWithTextField> {
 
   @override
   void initState() {

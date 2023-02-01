@@ -124,7 +124,7 @@ class _KycScreenState extends State<KycScreen> {
                                           children: [
                                             FormRow(label: model.name??'', isRequired: model.isRequired=='optional'?false:true),
                                             const SizedBox(height: Dimensions.textToTextSpace,),
-                                            CustomDropDownTextField(list: model.options??[],onChanged: (value){
+                                            CustomDropDownWithTextField(list: model.options??[],onChanged: (value){
                                               controller.changeSelectedValue(value,index);
                                             },selectedValue: model.selectedValue,),
                                           ],
