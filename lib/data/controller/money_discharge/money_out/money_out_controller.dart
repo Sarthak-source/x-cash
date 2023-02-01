@@ -115,9 +115,6 @@ class MoneyOutController extends GetxController{
         else{
           CustomSnackBar.error(errorList: [MyStrings.noActionId]);
         }
-
-      } else{
-
       }
     } else{
       CustomSnackBar.error(errorList: [response.message]);
