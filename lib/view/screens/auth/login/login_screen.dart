@@ -122,41 +122,37 @@ class _LoginScreenState extends State<LoginScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Expanded(
-                              child: Row(
-                                children: [
-                                  SizedBox(
-                                    width: 25,
-                                    height: 25,
-                                    child: Checkbox(
-                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
-                                        activeColor: MyColor.transparentColor,
-                                        checkColor: MyColor.getPrimaryColor(),
-                                        value: controller.remember,
-                                        side: MaterialStateBorderSide.resolveWith(
-                                              (states) => BorderSide(
-                                              width: 1.0,
-                                              color: controller.remember ? MyColor.getTextFieldEnableBorder() : MyColor.getTextFieldDisableBorder()
-                                          ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: 25,
+                                  height: 25,
+                                  child: Checkbox(
+                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
+                                      activeColor: MyColor.transparentColor,
+                                      checkColor: MyColor.getPrimaryColor(),
+                                      value: controller.remember,
+                                      side: MaterialStateBorderSide.resolveWith(
+                                            (states) => BorderSide(
+                                            width: 1.0,
+                                            color: controller.remember ? MyColor.getTextFieldEnableBorder() : MyColor.getTextFieldDisableBorder()
                                         ),
-                                        onChanged: (value){
-                                          controller.changeRememberMe();
-                                        }
-                                    ),
+                                      ),
+                                      onChanged: (value){
+                                        controller.changeRememberMe();
+                                      }
                                   ),
-                                  const SizedBox(width: 8),
-                                  DefaultText(text: MyStrings.rememberMe.tr, textColor: MyColor.getTextColor())
-                                ],
-                              ),
+                                ),
+                                const SizedBox(width: 8),
+                                DefaultText(text: MyStrings.rememberMe.tr, textColor: MyColor.getTextColor())
+                              ],
                             ),
-                            Expanded(
-                              child: InkWell(
-                                onTap: (){
-                                  controller.clearTextField();
-                                  Get.toNamed(RouteHelper.forgotPasswordScreen);
-                                },
-                                child: DefaultText(text: MyStrings.forgotPassword.tr, textColor: MyColor.getTextColor()),
-                              )
+                            InkWell(
+                              onTap: (){
+                                controller.clearTextField();
+                                Get.toNamed(RouteHelper.forgotPasswordScreen);
+                              },
+                              child: DefaultText(text: MyStrings.forgotPassword.tr, textColor: MyColor.getTextColor()),
                             )
                           ],
                         ),

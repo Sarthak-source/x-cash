@@ -11,58 +11,44 @@ import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
 
-class WithdrawMoneyBottomSheet{
+class WithdrawMoneyBottomSheet extends StatelessWidget {
+  final int index;
+  const WithdrawMoneyBottomSheet({Key? key, required this.index}) : super(key: key);
 
-  static void bottomSheet(BuildContext context, {required int index}){
-
-    showModalBottomSheet(
-        isScrollControlled: true,
-        backgroundColor: MyColor.transparentColor,
-        context: context,
-        builder: (BuildContext context) => GetBuilder<WithdrawMoneyController>(
-          builder: (controller) => SingleChildScrollView(
-            physics: const ClampingScrollPhysics(),
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: Dimensions.space15, vertical: Dimensions.space20),
-              width: MediaQuery.of(context).size.width,
-              decoration: const BoxDecoration(
-                  color: MyColor.colorWhite,
-                  borderRadius: BorderRadius.vertical(top: Radius.circular(15))
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      BottomSheetHeaderText(text: MyStrings.withdrawMoney),
-                      BottomSheetCloseButton()
-                    ],
-                  ),
-                  const CustomDivider(space: Dimensions.space15),
-                  CustomAmountTextField(
-                      labelText: MyStrings.amount,
-                      hintText: MyStrings.amountHint,
-                      currency: controller.withdrawMoneyList[index].currency?.currencyCode ?? "",
-                      controller: controller.amountController,
-                      onChanged: (value){}
-                  ),
-                  const SizedBox(height: Dimensions.space25),
-                  controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
-                    text: MyStrings.submit,
-                    press: (){
-                      controller.submitData(
-                          methodName: controller.withdrawMoneyList[index].withdrawMethod?.name ?? "",
-                          methodId: controller.withdrawMoneyList[index].withdrawMethod?.id.toString() ?? "",
-                          userMethodId: controller.withdrawMoneyList[index].id.toString()
-                      );
-                    },
-                  )
-                ],
-              ),
-            ),
+  @override
+  Widget build(BuildContext context) {
+    return GetBuilder<WithdrawMoneyController>(
+      builder: (controller) => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: const [
+              BottomSheetHeaderText(text: MyStrings.withdrawMoney),
+              BottomSheetCloseButton()
+            ],
           ),
-        )
+          const CustomDivider(space: Dimensions.space15),
+          CustomAmountTextField(
+              labelText: MyStrings.amount,
+              hintText: MyStrings.amountHint,
+              currency: controller.withdrawMoneyList[index].currency?.currencyCode ?? "",
+              controller: controller.amountController,
+              onChanged: (value){}
+          ),
+          const SizedBox(height: Dimensions.space25),
+          controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
+            text: MyStrings.submit,
+            press: (){
+              controller.submitData(
+                  methodName: controller.withdrawMoneyList[index].withdrawMethod?.name ?? "",
+                  methodId: controller.withdrawMoneyList[index].withdrawMethod?.id.toString() ?? "",
+                  userMethodId: controller.withdrawMoneyList[index].id.toString()
+              );
+            },
+          )
+        ],
+      ),
     );
   }
 }

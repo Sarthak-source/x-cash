@@ -10,6 +10,7 @@ import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/withdraw/withdraw_money_controller.dart';
 import 'package:xcash_app/data/repo/withdraw/withdraw_money_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
+import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/card/custom_card.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/custom_no_data_found_class.dart';
@@ -181,7 +182,7 @@ class _WithdrawMoneyScreenState extends State<WithdrawMoneyScreen> {
                         ),
                       ],
                     ),
-                    onPressed: () => WithdrawMoneyBottomSheet.bottomSheet(context, index: index)
+                    onPressed: () => CustomBottomSheet(child: WithdrawMoneyBottomSheet(index: index)).customBottomSheet(context)
                   );
                 }
             ),
