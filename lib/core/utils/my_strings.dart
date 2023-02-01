@@ -22,6 +22,9 @@ class MyStrings{
   static const String paymentPreview = "Payment Preview";
   static const String seeMore = "See More";
 
+  static const String beforeCharge = "Before Charge";
+  static const String remainingBalance = "Remaining Balance";
+
   static const String enterTransactionNo = "Enter transaction no.";
   static const String quickLink = "Quick Links";
   static const String latestTransactions = "Latest Transactions";
@@ -139,6 +142,7 @@ class MyStrings{
   static const String viewTransactions = "View Transactions";
 
   static const String transaction = "Transaction";
+  static const String transactionId = "Transaction ID";
   static const String requestToMe = "Request to Me";
   static const String addMoneyHistory = "Add Money History";
   static const String myVoucher = "My Voucher";
@@ -234,10 +238,8 @@ class MyStrings{
   // money request
   static const String myRequests = "My Requests";
   static const String toMe = "To me";
-  static const String demoUser = "demouser demouser";
   static const String walletCurrency = "Wallet Currency";
   static const String note = "Note";
-  static const String remainingBalance = "Remaining Balance";
   static const String wantToReject = "Want to reject?";
   static const String wantToConfirm = "Want to confirm?";
   static const String areYouSureConfirm = "Are you sure want to confirm?";

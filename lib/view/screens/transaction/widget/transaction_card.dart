@@ -9,13 +9,14 @@ import 'package:xcash_app/data/controller/transaction/transaction_history_contro
 
 class TransactionCard extends StatelessWidget {
   final int index;
-  const TransactionCard({Key? key, required this.index}) : super(key: key);
+  final VoidCallback press;
+  const TransactionCard({Key? key, required this.index, required this.press}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<TransactionHistoryController>(
       builder: (controller) => GestureDetector(
-          onTap: (){},
+          onTap: press,
           child: Container(
             width: MediaQuery.of(context).size.width,
             padding: const EdgeInsets.symmetric(vertical: Dimensions.space15, horizontal: Dimensions.space10),

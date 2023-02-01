@@ -8,10 +8,12 @@ import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/transaction/transaction_history_controller.dart';
 import 'package:xcash_app/data/repo/transaction/transaction_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
+import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/custom_no_data_found_class.dart';
 import 'package:xcash_app/view/screens/transaction/widget/filters_field.dart';
 import 'package:xcash_app/view/screens/transaction/widget/transaction_card.dart';
+import 'package:xcash_app/view/screens/transaction/widget/transaction_history_bottom_sheet.dart';
 
 class TransactionHistoryScreen extends StatefulWidget {
   const TransactionHistoryScreen({Key? key}) : super(key: key);
@@ -124,7 +126,10 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                             ) : const SizedBox();
                           }
 
-                          return  TransactionCard(index: index);
+                          return  TransactionCard(
+                            index: index,
+                            press: () => CustomBottomSheet(child: TransactionHistoryBottomSheet(index: index)).customBottomSheet(context),
+                          );
                         }
                     ),
                   ),

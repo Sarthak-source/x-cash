@@ -77,7 +77,6 @@ class TransactionHistoryController extends GetxController{
     page = page + 1;
 
     if(page == 1){
-      currency = transactionRepo.apiClient.getCurrencyOrUsername();
       operationTypeList.clear();
       historyFormList.clear();
       walletCurrencyList.clear();
