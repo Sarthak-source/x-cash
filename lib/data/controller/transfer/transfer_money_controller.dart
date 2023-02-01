@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/authorization/authorization_response_model.dart';
@@ -17,6 +18,8 @@ class TransferMoneyController extends GetxController{
 
   bool isLoading = true;
   String currency = "";
+  String minLimit = "";
+  String maxLimit = "";
 
   tm_model.TransferMoneyResponseModel model = tm_model.TransferMoneyResponseModel();
   tm_model.Wallets? selectedWallet = tm_model.Wallets();
@@ -32,6 +35,11 @@ class TransferMoneyController extends GetxController{
   setSelectedWallet(tm_model.Wallets? wallet){
     selectedWallet = wallet;
     currency = selectedWallet?.id == -1 ? "" : selectedWallet?.currencyCode ?? "";
+    String amt = amountController.text.toString();
+    mainAmount = amt.isEmpty ? 0 : double.tryParse(amt) ?? 0;
+    changeInfoWidget(mainAmount);
+    minLimit = Converter.twoDecimalPlaceFixedWithoutRounding(selectedWallet?.id == -1 ? "" : selectedWallet?.currency?.transferMinLimit ?? "");
+    maxLimit = Converter.twoDecimalPlaceFixedWithoutRounding(selectedWallet?.id == -1 ? "" : selectedWallet?.currency?.transferMaxLimit ?? "");
     update();
   }
 
@@ -124,6 +132,25 @@ class TransferMoneyController extends GetxController{
     }
 
     submitLoading = false;
+    update();
+  }
+
+  double mainAmount = 0;
+  String charge = "";
+  String payableText = '';
+  void changeInfoWidget(double amount){
+    if(selectedWallet?.id.toString() == "-1"){
+      return ;
+    }
+
+    mainAmount = amount;
+    double percent = double.tryParse(model.data?.transferCharge?.percentCharge ?? "0") ?? 0;
+    double percentCharge = (amount * percent) / 100;
+    double temCharge = double.tryParse(model.data?.transferCharge?.fixedCharge ?? "0") ?? 0;
+    double totalCharge = percentCharge+temCharge;
+    charge = '${Converter.twoDecimalPlaceFixedWithoutRounding('$totalCharge')} $currency';
+    double payable = totalCharge + amount;
+    payableText = '$payable $currency';
     update();
   }
 }
