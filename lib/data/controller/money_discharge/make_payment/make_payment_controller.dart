@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/authorization/authorization_response_model.dart';
@@ -22,6 +23,7 @@ class MakePaymentController extends GetxController{
   String amount = "";
   String totalCharge = "";
   String payable = "";
+  MakePaymentResponseModel model = MakePaymentResponseModel();
 
   TextEditingController merchantController = TextEditingController();
   TextEditingController amountController  = TextEditingController();
@@ -32,6 +34,9 @@ class MakePaymentController extends GetxController{
   setWalletMethod(Wallets? wallet){
     walletsMethod = wallet;
     currency = walletsMethod?.id == -1 ? "" : walletsMethod?.currencyCode ?? "";
+    String amt = amountController.text.toString();
+    mainAmount = amt.isEmpty ? 0 : double.tryParse(amt) ?? 0;
+    changeInfoWidget(mainAmount);
     update();
   }
 
@@ -59,7 +64,7 @@ class MakePaymentController extends GetxController{
     otpTypeList.insert(0, MyStrings.selectOtp);
 
     if(responseModel.statusCode == 200){
-      MakePaymentResponseModel model = MakePaymentResponseModel.fromJson(jsonDecode(responseModel.responseJson));
+      model = MakePaymentResponseModel.fromJson(jsonDecode(responseModel.responseJson));
 
       if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
         List<Wallets>? tempWalletList = model.data?.wallets;
@@ -122,5 +127,22 @@ class MakePaymentController extends GetxController{
 
   }
 
+  double mainAmount = 0;
+  String charge = "";
+  String payableText = '';
+  void changeInfoWidget(double amount){
+    if(walletsMethod?.id.toString() == "-1"){
+      return ;
+    }
 
+    mainAmount = amount;
+    double percent = double.tryParse(model.data?.paymentCharge?.percentCharge ?? "0") ?? 0;
+    double percentCharge = (amount * percent) / 100;
+    double temCharge = double.tryParse(model.data?.paymentCharge?.fixedCharge ?? "0") ?? 0;
+    double totalCharge = percentCharge+temCharge;
+    charge = '${Converter.twoDecimalPlaceFixedWithoutRounding('$totalCharge')} $currency';
+    double payable = totalCharge + amount;
+    payableText = '$payable $currency';
+    update();
+  }
 }
