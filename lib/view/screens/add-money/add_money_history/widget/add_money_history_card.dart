@@ -8,9 +8,9 @@ import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/add_money/add_money_history_controller.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
-import 'package:xcash_app/view/components/status/history_status_section.dart';
 import 'package:xcash_app/view/components/text/default_text.dart';
 import 'package:xcash_app/view/components/text/small_text.dart';
+import 'package:xcash_app/view/screens/withdrawals/withdraw_history/widget/status_widget.dart';
 
 class AddMoneyHistoryCard extends StatelessWidget {
   final int index;
@@ -55,6 +55,7 @@ class AddMoneyHistoryCard extends StatelessWidget {
             ),
             const CustomDivider(space: Dimensions.space10),
             Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
@@ -68,7 +69,10 @@ class AddMoneyHistoryCard extends StatelessWidget {
                     )
                   ],
                 ),
-                HistoryStatusSection(status: controller.depositList[index].status ?? '')
+                StatusWidget(
+                    status: controller.getStatusOrColor(index),
+                    color: controller.getStatusOrColor(index,isStatus: false)
+                )
               ],
             ),
           ],

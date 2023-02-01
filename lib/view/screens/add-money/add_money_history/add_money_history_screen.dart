@@ -8,12 +8,9 @@ import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/add_money/add_money_history_controller.dart';
 import 'package:xcash_app/data/repo/add_money/add_money_history_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
-import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
-import 'package:xcash_app/view/components/card/custom_card.dart';
+import 'package:xcash_app/view/components/app-bar/action_button_icon_widget.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/custom_no_data_found_class.dart';
-import 'package:xcash_app/view/screens/add-money/add_money_details/add_money_screen.dart';
-import 'package:xcash_app/view/screens/add-money/add_money_history/widget/add_money_history_bottom_sheet.dart';
 import 'package:xcash_app/view/screens/add-money/add_money_history/widget/add_money_history_card.dart';
 import 'package:xcash_app/view/screens/add-money/add_money_history/widget/add_money_history_filter_widget.dart';
 
@@ -71,36 +68,13 @@ class _AddMoneyHistoryScreenState extends State<AddMoneyHistoryScreen> {
             title: Text(MyStrings.addMoneyHistory, style: regularDefault.copyWith(color: MyColor.appBarContentColor)),
             backgroundColor: MyColor.getAppBarColor(),
             actions: [
-              Padding(
-                padding: const EdgeInsets.only(right: Dimensions.space15),
-                child: InkWell(
-                  onTap: (){
-                    controller.changeSearchStatus();
-                  },
-                  child: Container(
-                    height: 30, width: 30,
-                    alignment: Alignment.center,
-                    decoration: const BoxDecoration(color: MyColor.colorWhite, shape: BoxShape.circle),
-                    child: Icon(controller.isSearch ? Icons.clear : Icons.search, color: MyColor.primaryColor, size: 15),
-                  ),
-                ),
+              ActionButtonIconWidget(
+                  pressed: () => controller.changeSearchStatus(),
+                  icon: controller.isSearch ? Icons.clear : Icons.search,
               ),
-              Padding(
-                padding: const EdgeInsets.only(right: Dimensions.space15),
-                child: GestureDetector(
-                  onTap: (){
-                    Get.toNamed(RouteHelper.addMoneyScreen);
-                  },
-                  child: Container(
-                    height: 30, width: 30,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        color: MyColor.colorWhite, border: Border.all(color: MyColor.primaryColor, width: 1.5),
-                        shape: BoxShape.circle
-                    ),
-                    child: const Icon(Icons.add, color: MyColor.primaryColor, size: 15),
-                  ),
-                ),
+              ActionButtonIconWidget(
+                pressed: () => Get.toNamed(RouteHelper.addMoneyScreen),
+                icon: Icons.add,
               ),
             ],
           ),

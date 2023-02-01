@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
-import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 
 class StatusWidget extends StatelessWidget {
