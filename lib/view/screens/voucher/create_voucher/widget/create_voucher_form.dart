@@ -39,35 +39,16 @@ class _CreateVoucherFormState extends State<CreateVoucherForm> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const LabelText(text: MyStrings.selectWallet),
-            const SizedBox(height: 8),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              padding: const EdgeInsets.only(left: Dimensions.space15, right: Dimensions.space15,),
-              decoration: BoxDecoration(
-                  color: MyColor.transparentColor,
-                  borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
-                  border: Border.all(color: MyColor.primaryColor, width: 0.5)
-              ),
-              child: DropdownButton<Wallets>(
-                dropdownColor: MyColor.colorWhite,
-                value: controller.selectedWallet,
-                elevation: 8,
-                icon: const Icon(Icons.keyboard_arrow_down, color: MyColor.primaryColor),
-                iconDisabledColor: Colors.red,
-                iconEnabledColor : MyColor.primaryColor,
-                isExpanded: true,
-                underline: Container(height: 0, color: MyColor.primaryColor),
-                onChanged: (Wallets? newValue) {
-                  controller.setSelectedWallet(newValue);
-                },
-                items: controller.walletList.map((Wallets wallet) {
-                  return DropdownMenuItem<Wallets>(
-                    value: wallet,
-                    child: Text(wallet.currencyCode.toString(), style: regularDefault),
-                  );
-                }).toList(),
-              ),
+            CustomDropDownTextField(
+              labelText: MyStrings.selectWallet,
+              selectedValue: controller.selectedWallet,
+              onChanged: (value) => controller.setSelectedWallet(value),
+              items: controller.walletList.map((Wallets wallet) {
+                return DropdownMenuItem<Wallets>(
+                  value: wallet,
+                  child: Text(wallet.currencyCode.toString(), style: regularDefault),
+                );
+              }).toList(),
             ),
             const SizedBox(height: Dimensions.space15),
             Column(
@@ -76,16 +57,20 @@ class _CreateVoucherFormState extends State<CreateVoucherForm> {
                 CustomAmountTextField(
                   labelText: MyStrings.amount,
                   hintText: MyStrings.amountHint,
-                  onChanged: (value){},
+                  onChanged: (value){
+                    if(value.toString().isEmpty){
+                      controller.changeInfoWidget(0);
+                    }else{
+                      double amount = double.tryParse(value.toString())??0;
+                      controller.changeInfoWidget(amount);
+                    }
+                  },
                   currency: controller.currency,
                   controller: controller.amountController,
                 ),
                 const SizedBox(height: Dimensions.textToTextSpace),
                 Text(
-                  "${MyStrings.limit}: "
-                  "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.selectedWallet?.currency?.voucherMinLimit ?? "0.00")} "
-                  "- ${Converter.twoDecimalPlaceFixedWithoutRounding(controller.selectedWallet?.currency?.voucherMaxLimit ?? "0.00")} "
-                      "${controller.selectedWallet?.currencyCode == MyStrings.selectAWallet ? "" :  controller.selectedWallet?.currencyCode?? ""}",
+                  "${MyStrings.limit}: ${controller.minLimit} - ${controller.maxLimit} ${controller.currency}",
                   style: regularExtraSmall.copyWith(color: MyColor.getPrimaryColor()),
                 )
               ],

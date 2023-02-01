@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/authorization/authorization_response_model.dart';
@@ -35,6 +36,11 @@ class CreateVoucherController extends GetxController{
   setSelectedWallet(Wallets? wallet){
     selectedWallet = wallet;
     currency = selectedWallet?.id == -1 ? "" : selectedWallet?.currencyCode ?? "";
+    String amt = amountController.text.toString();
+    mainAmount = amt.isEmpty ? 0 : double.tryParse(amt) ?? 0;
+    changeInfoWidget(mainAmount);
+    minLimit = Converter.twoDecimalPlaceFixedWithoutRounding(selectedWallet?.id.toString() == "-1" ? "0" : selectedWallet?.currency?.voucherMinLimit ?? "");
+    maxLimit = Converter.twoDecimalPlaceFixedWithoutRounding(selectedWallet?.id.toString() == "-1" ? "0" : selectedWallet?.currency?.voucherMaxLimit ?? "");
     update();
   }
 
@@ -101,7 +107,12 @@ class CreateVoucherController extends GetxController{
     if(response.statusCode==200){
       AuthorizationResponseModel model = AuthorizationResponseModel.fromJson(jsonDecode(response.responseJson));
       if(model.status?.toLowerCase()=='success'){
-        Get.toNamed(RouteHelper.otpScreen,arguments: [RouteHelper.bottomNavBar]);
+        String actionId = model.data?.actionId??'';
+        if(actionId.isNotEmpty){
+          Get.toNamed(RouteHelper.otpScreen,arguments: [actionId, RouteHelper.bottomNavBar]);
+        } else{
+          CustomSnackBar.error(errorList: [MyStrings.noActionId]);
+        }
       }
       else{
           CustomSnackBar.error(errorList: model.message?.error ?? [MyStrings.somethingWentWrong]);
@@ -112,6 +123,25 @@ class CreateVoucherController extends GetxController{
     }
 
     submitLoading = false;
+    update();
+  }
+
+  double mainAmount = 0;
+  String charge = "";
+  String payableText = '';
+  void changeInfoWidget(double amount){
+    if(selectedWallet?.id.toString() == "-1"){
+      return ;
+    }
+
+    mainAmount = amount;
+    double percent = double.tryParse(model.data?.voucherCharge?.percentCharge ?? "0") ?? 0;
+    double percentCharge = (amount * percent) / 100;
+    double temCharge = double.tryParse(model.data?.voucherCharge?.fixedCharge ?? "0") ?? 0;
+    double totalCharge = percentCharge+temCharge;
+    charge = '${Converter.twoDecimalPlaceFixedWithoutRounding('$totalCharge')} $currency';
+    double payable = totalCharge + amount;
+    payableText = '$payable $currency';
     update();
   }
 }

@@ -141,7 +141,7 @@ class RouteHelper{
     GetPage(name: resetPasswordScreen, page: () =>  const ResetPasswordScreen()),
     GetPage(name: twoFactorScreen, page: () =>  TwoFactorVerificationScreen(isProfileCompleteEnable: Get.arguments)),
 
-    GetPage(name: otpScreen, page: () =>  OtpScreen(actionId:Get.arguments[0] ,nextRoute: Get.arguments[1],)),
+    GetPage(name: otpScreen, page: () =>  OtpScreen(actionId:Get.arguments[0], nextRoute: Get.arguments[1])),
 
     GetPage(name: requestMoneyScreen, page: () =>  const RequestMoneyScreen()),
 
