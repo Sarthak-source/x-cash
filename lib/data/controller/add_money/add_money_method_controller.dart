@@ -20,7 +20,8 @@ class AddMoneyMethodController extends GetxController{
   AddMoneyWallets? selectedWallet = AddMoneyWallets();
   Gateways? selectedGateway = Gateways();
   String initialOtpType = "";
-  String depositLimit = "";
+  String depositMinLimit = "";
+  String depositMaxLimit = "";
 
   TextEditingController amountController = TextEditingController();
   String amount = "";
@@ -51,7 +52,8 @@ class AddMoneyMethodController extends GetxController{
       String amt = amountController.text.toString();
       mainAmount = amt.isEmpty ? 0 : double.tryParse(amt) ?? 0;
       selectedGateway = gateways;
-      depositLimit = selectedGateway == gatewayList[0] ? "0.00 $currency": selectedGateway?.depositLimit ?? "0.00";
+      depositMinLimit = Converter.twoDecimalPlaceFixedWithoutRounding(selectedGateway == gatewayList[0] ? "0.00" : selectedGateway?.depositMinLimit ?? "0.00");
+      depositMaxLimit = Converter.twoDecimalPlaceFixedWithoutRounding(selectedGateway == gatewayList[0] ? "0.00" : selectedGateway?.depositMaxLimit ?? "0.00");
       changeInfoWidgetValue(mainAmount);
       update();
   }

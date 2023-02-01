@@ -13,6 +13,7 @@ import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
+import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
 import 'package:xcash_app/view/components/text/label_text.dart';
 import 'package:xcash_app/view/screens/add-money/add_money_details/widget/add_money_info_widget.dart';
 
@@ -52,7 +53,7 @@ class _AddMoneyScreenState extends State<AddMoneyScreen> {
           child: Scaffold(
             backgroundColor: MyColor.getScreenBgColor(),
             appBar: CustomAppBar(
-              title: MyStrings.addMoney,
+              title: MyStrings.addMoney.tr,
               isShowBackBtn: true,
               bgColor: MyColor.getAppBarColor(),
             ),
@@ -61,70 +62,34 @@ class _AddMoneyScreenState extends State<AddMoneyScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const LabelText(text: MyStrings.selectWallet),
-                  const SizedBox(height: 8),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    padding: const EdgeInsets.only(left: Dimensions.space15, right: Dimensions.space15,),
-                    decoration: BoxDecoration(
-                        color: MyColor.transparentColor,
-                        borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
-                        border: Border.all(color: MyColor.primaryColor, width: 0.5)
-                    ),
-                    child: DropdownButton<AddMoneyWallets>(
-                      dropdownColor: MyColor.colorWhite,
-                      value: controller.selectedWallet,
-                      elevation: 8,
-                      icon: const Icon(Icons.keyboard_arrow_down, color: MyColor.primaryColor),
-                      iconDisabledColor: Colors.red,
-                      iconEnabledColor : MyColor.primaryColor,
-                      isExpanded: true,
-                      underline: Container(height: 0, color: MyColor.primaryColor),
-                      onChanged: (AddMoneyWallets? newValue) {
-                        controller.setWallet(newValue);
-                      },
-                      items: controller.walletList.map((AddMoneyWallets wallet) {
-                        return DropdownMenuItem<AddMoneyWallets>(
-                          value: wallet,
-                          child: Text(wallet.currencyCode.toString(), style: regularDefault),
-                        );
-                      }).toList(),
-                    ),
+                  CustomDropDownTextField(
+                    labelText: MyStrings.selectWallet,
+                    selectedValue: controller.selectedWallet,
+                    onChanged: (newValue) {
+                      controller.setWallet(newValue);
+                    },
+                    items: controller.walletList.map((AddMoneyWallets wallet) {
+                      return DropdownMenuItem<AddMoneyWallets>(
+                        value: wallet,
+                        child: Text(wallet.currencyCode.toString(), style: regularDefault),
+                      );
+                    }).toList(),
                   ),
                   const SizedBox(height: Dimensions.space20),
-
-                  const LabelText(text: MyStrings.selectGateway),
-                  const SizedBox(height: 8),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    padding: const EdgeInsets.only(left: Dimensions.space15, right: Dimensions.space15,),
-                    decoration: BoxDecoration(
-                        color: MyColor.transparentColor,
-                        borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
-                        border: Border.all(color: MyColor.primaryColor, width: 0.5)
-                    ),
-                    child: DropdownButton<Gateways>(
-                      dropdownColor: MyColor.colorWhite,
-                      value: controller.selectedGateway,
-                      elevation: 8,
-                      icon: const Icon(Icons.keyboard_arrow_down, color: MyColor.primaryColor),
-                      iconDisabledColor: Colors.red,
-                      iconEnabledColor : MyColor.primaryColor,
-                      isExpanded: true,
-                      underline: Container(height: 0, color: MyColor.primaryColor),
-                      onChanged: (Gateways? newValue) {
-                        controller.setGatewayMethod(newValue);
-                      },
-                      items: controller.gatewayList.map((Gateways gateways) {
-                        return DropdownMenuItem<Gateways>(
-                          value: gateways,
-                          child: Text(gateways.name.toString(), style: regularDefault),
-                        );
-                      }).toList(),
-                    ),
+                  CustomDropDownTextField(
+                    labelText: MyStrings.selectGateway,
+                    selectedValue: controller.selectedGateway,
+                    onChanged: (newValue) {
+                      controller.setGatewayMethod(newValue);
+                    },
+                    items: controller.gatewayList.map((Gateways gateways) {
+                      return DropdownMenuItem<Gateways>(
+                        value: gateways,
+                        child: Text(gateways.name.toString(), style: regularDefault),
+                      );
+                    }).toList(),
                   ),
                   const SizedBox(height: Dimensions.space20),
-
                   CustomAmountTextField(
                     labelText: MyStrings.amount,
                     hintText: MyStrings.amountHint,
@@ -141,13 +106,11 @@ class _AddMoneyScreenState extends State<AddMoneyScreen> {
                   ),
                   const SizedBox(height: Dimensions.space5),
                   Text(
-                    "${MyStrings.depositLimit}: ${controller.depositLimit}",
+                    "${MyStrings.depositLimit}: ${controller.depositMinLimit} - ${controller.depositMaxLimit} ${controller.currency}",
                     style: regularExtraSmall.copyWith(color: MyColor.getPrimaryColor(), fontWeight: FontWeight.w400),
                   ),
                   const SizedBox(height: Dimensions.space20),
-
                   controller.mainAmount > 0 ? const AddMoneyInfoWidget() : const SizedBox(),
-
                   const SizedBox(height: Dimensions.space30),
                   controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
                     press: (){

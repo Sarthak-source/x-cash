@@ -93,9 +93,9 @@ class AddMoneyWallets {
     _userType = json['user_type'].toString();
     _currencyId = json['currency_id'].toString();
     _currencyCode = json['currency_code'].toString();
-    _balance = json['balance'] != null ? json['balance'].toString() : "0.00";
-    _createdAt = json['created_at'].toString();
-    _updatedAt = json['updated_at'].toString();
+    _balance = json['balance'] != null ? json['balance'].toString() : "";
+    _createdAt = json['created_at'];
+    _updatedAt = json['updated_at'];
     _currency = json['currency'] != null ? Currency.fromJson(json['currency']) : null;
   }
   int? _id;
@@ -166,13 +166,13 @@ class Currency {
     _id = json['id'];
     _currencyCode = json['currency_code'].toString();
     _currencySymbol = json['currency_symbol'].toString();
-    _currencyFullName = json['currency_fullName'].toString();
+    _currencyFullName = json['currency_fullname'].toString();
     _currencyType = json['currency_type'].toString();
     _rate = json['rate'].toString();
     _isDefault = json['is_default'].toString();
     _status = json['status'].toString();
-    _createdAt = json['created_at'].toString();
-    _updatedAt = json['updated_at'].toString();
+    _createdAt = json['created_at'];
+    _updatedAt = json['updated_at'];
     if (json['gateways'] != null) {
       _gateways = [];
       json['gateways'].forEach((v) {
@@ -209,7 +209,7 @@ class Currency {
     map['id'] = _id;
     map['currency_code'] = _currencyCode;
     map['currency_symbol'] = _currencySymbol;
-    map['currency_fullName'] = _currencyFullName;
+    map['currency_fullname'] = _currencyFullName;
     map['currency_type'] = _currencyType;
     map['rate'] = _rate;
     map['is_default'] = _isDefault;
@@ -241,7 +241,8 @@ class Gateways {
       dynamic gatewayParameter, 
       String? createdAt, 
       String? updatedAt, 
-      String? depositLimit,}){
+      String? depositMinLimit,
+      String? depositMaxLimit,}){
     _id = id;
     _name = name;
     _currency = currency;
@@ -257,7 +258,8 @@ class Gateways {
     _gatewayParameter = gatewayParameter;
     _createdAt = createdAt;
     _updatedAt = updatedAt;
-    _depositLimit = depositLimit;
+    _depositMinLimit = depositMinLimit;
+    _depositMaxLimit = depositMaxLimit;
 }
 
   Gateways.fromJson(dynamic json) {
@@ -265,18 +267,19 @@ class Gateways {
     _name = json['name'];
     _currency = json['currency'];
     _symbol = json['symbol'];
-    _methodCode = json['method_code'];
-    _gatewayAlias = json['gateway_alias'];
-    _minAmount = json['min_amount'];
-    _maxAmount = json['max_amount'];
-    _percentCharge = json['percent_charge'];
-    _fixedCharge = json['fixed_charge'];
-    _rate = json['rate'];
-    _image = json['image'];
+    _methodCode = json['method_code'].toString();
+    _gatewayAlias = json['gateway_alias'].toString();
+    _minAmount = json['min_amount'].toString();
+    _maxAmount = json['max_amount'].toString();
+    _percentCharge = json['percent_charge'].toString();
+    _fixedCharge = json['fixed_charge'].toString();
+    _rate = json['rate'].toString();
+    _image = json['image'] != null ? json['image'].toString() : "";
     _gatewayParameter = json['gateway_parameter'];
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
-    _depositLimit = json['deposit_limit'];
+    _depositMinLimit = json['deposit_min_limit'].toString();
+    _depositMaxLimit = json['deposit_max_limit'].toString();
   }
   int? _id;
   String? _name;
@@ -293,7 +296,8 @@ class Gateways {
   dynamic _gatewayParameter;
   String? _createdAt;
   String? _updatedAt;
-  String? _depositLimit;
+  String? _depositMinLimit;
+  String? _depositMaxLimit;
 
   int? get id => _id;
   String? get name => _name;
@@ -310,7 +314,8 @@ class Gateways {
   dynamic get gatewayParameter => _gatewayParameter;
   String? get createdAt => _createdAt;
   String? get updatedAt => _updatedAt;
-  String? get depositLimit => _depositLimit;
+  String? get depositMinLimit => _depositMinLimit;
+  String? get depositMaxLimit => _depositMaxLimit;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -329,7 +334,8 @@ class Gateways {
     map['gateway_parameter'] = _gatewayParameter;
     map['created_at'] = _createdAt;
     map['updated_at'] = _updatedAt;
-    map['deposit_limit'] = _depositLimit;
+    map['deposit_min_limit'] = _depositMinLimit;
+    map['deposit_max_limit'] = _depositMaxLimit;
     return map;
   }
 

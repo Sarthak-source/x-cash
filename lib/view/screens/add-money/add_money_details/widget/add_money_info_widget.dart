@@ -21,7 +21,7 @@ class AddMoneyInfoWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomRow(firstText: MyStrings.amount, lastText: controller.mainAmount.toString()),
+            CustomRow(firstText: MyStrings.amount, lastText: "${controller.mainAmount.toString()} ${controller.currency}"),
             const SizedBox(height: Dimensions.space10),
             CustomRow(firstText: MyStrings.charge, lastText: controller.charge),
             const SizedBox(height: Dimensions.space10),
