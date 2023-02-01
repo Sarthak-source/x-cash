@@ -116,19 +116,19 @@ class CreateInvoiceController extends GetxController{
     String curId = selectedCurrency?.id.toString()??'';
 
     if(invoiceTo.isEmpty){
-      CustomSnackBar.error(errorList: ["Please, fill up invoice to field"]);
+      CustomSnackBar.error(errorList: [MyStrings.invoiceFieldErrorMsg]);
       return ;
     }
     if(email.isEmpty){
-      CustomSnackBar.error(errorList: ["Please, fill up email field"]);
+      CustomSnackBar.error(errorList: [MyStrings.invoiceEmailFieldErrorMsg]);
       return ;
     }
     if(address.isEmpty){
-      CustomSnackBar.error(errorList: ["Please, fill up address field"]);
+      CustomSnackBar.error(errorList: [MyStrings.invoiceAddressFieldErrorMsg]);
       return ;
     }
     if(curId == "0"){
-      CustomSnackBar.error(errorList: ["Please, select your wallet"]);
+      CustomSnackBar.error(errorList: [MyStrings.invoiceWalletErrorMsg]);
       return ;
     }
 
@@ -136,10 +136,10 @@ class CreateInvoiceController extends GetxController{
     String firstInvoiceAmount = amountController.text.toString();
 
     if(firstInvoice.isEmpty){
-      CustomSnackBar.error(errorList: ["Please, fill up item name field"]);
+      CustomSnackBar.error(errorList: [MyStrings.invoiceItemNameErrorMsg]);
       return ;
     } if(firstInvoiceAmount.isEmpty){
-      CustomSnackBar.error(errorList: ["Please, fill up amount field"]);
+      CustomSnackBar.error(errorList: [MyStrings.invoiceAmountErrorMsg]);
       return ;
     }
 

@@ -579,6 +579,13 @@ class MyStrings{
   static const String unpaid = "Unpaid";
   static const String notPublished = "Not Published";
 
+  static const String invoiceFieldErrorMsg = "Please, fill up invoice to field";
+  static const String invoiceEmailFieldErrorMsg = "Please, fill up email field";
+  static const String invoiceAddressFieldErrorMsg = "Please, fill up address field";
+  static const String invoiceWalletErrorMsg = "Please, select your wallet";
+  static const String invoiceItemNameErrorMsg = "Please, fill up item name field";
+  static const String invoiceAmountErrorMsg = "Please, fill up amount field";
+
 
   static List<LanguageModel> languages = [
     LanguageModel(imageUrl: '', languageName: 'English', countryCode: 'US', languageCode: 'en'),
