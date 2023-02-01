@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/authorization/authorization_response_model.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
@@ -17,8 +18,11 @@ class RequestMoneyController extends GetxController{
   bool isLoading = true;
   String currency = "";
 
+  RequestMoneyResponseModel model = RequestMoneyResponseModel();
+
   Wallets? selectedWallet = Wallets();
   String totalCharge = "";
+  String limit = "";
 
   TextEditingController amountController = TextEditingController();
   TextEditingController requestToController = TextEditingController();
@@ -29,6 +33,11 @@ class RequestMoneyController extends GetxController{
   setWalletMethod(Wallets? wallets){
     selectedWallet = wallets;
     currency = selectedWallet?.id == -1 ? "" : selectedWallet?.currencyCode ?? "";
+    limit = selectedWallet?.id.toString() == "-1" ? "0" : selectedWallet?.currency?.moneyRequestLimit ?? "";
+    totalCharge = selectedWallet?.id.toString() == "-1" ? "0" : model.data?.transferCharge?.fixedCharge ?? "";
+    String amt = amountController.text.toString();
+    mainAmount = amt.isEmpty ? 0 : double.tryParse(amt) ?? 0;
+    changeInfoWidget(mainAmount);
     update();
   }
 
@@ -48,7 +57,7 @@ class RequestMoneyController extends GetxController{
     setWalletMethod(selectedWallet);
 
     if(responseModel.statusCode == 200){
-      RequestMoneyResponseModel model = RequestMoneyResponseModel.fromJson(jsonDecode(responseModel.responseJson));
+      model = RequestMoneyResponseModel.fromJson(jsonDecode(responseModel.responseJson));
 
       if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
 
@@ -95,6 +104,25 @@ class RequestMoneyController extends GetxController{
     }
 
     submitLoading = false;
+    update();
+  }
+
+  double mainAmount = 0;
+  String charge = "";
+  String payableText = '';
+  void changeInfoWidget(double amount){
+    if(selectedWallet?.id.toString() == "-1"){
+      return ;
+    }
+
+    mainAmount = amount;
+    double percent = double.tryParse(model.data?.transferCharge?.percentCharge ?? "0") ?? 0;
+    double percentCharge = (amount * percent) / 100;
+    double temCharge = double.tryParse(model.data?.transferCharge?.fixedCharge ?? "0") ?? 0;
+    double totalCharge = percentCharge+temCharge;
+    charge = '${Converter.twoDecimalPlaceFixedWithoutRounding('$totalCharge')} $currency';
+    double payable = totalCharge + amount;
+    payableText = '$payable $currency';
     update();
   }
 }
