@@ -102,7 +102,7 @@ class QuickLinkItemBottomSheet{
                     ),
                     Expanded(
                       child: CircleAnimatedButtonWithText(
-                          buttonName: MyStrings.transaction.tr,
+                          buttonName: MyStrings.transaction,
                           backgroundColor: MyColor.screenBgColor,
                           child: Image.asset(MyImages.transaction, color: MyColor.primaryColor, height: 20, width: 20),
                           onTap: () => Get.toNamed(RouteHelper.transactionHistoryScreen)
@@ -110,7 +110,7 @@ class QuickLinkItemBottomSheet{
                     ),
                     Expanded(
                       child: CircleAnimatedButtonWithText(
-                          buttonName: MyStrings.transfer.tr,
+                          buttonName: MyStrings.transfer,
                           backgroundColor: MyColor.screenBgColor,
                           child: SvgPicture.asset(MyImages.transfer, color: MyColor.primaryColor, height: 20, width: 20),
                           onTap: () => Get.toNamed(RouteHelper.transferMoneyScreen)
@@ -118,7 +118,7 @@ class QuickLinkItemBottomSheet{
                     ),
                     Expanded(
                       child: CircleAnimatedButtonWithText(
-                        buttonName: MyStrings.voucher.tr,
+                        buttonName: MyStrings.voucher,
                         backgroundColor: MyColor.screenBgColor,
                         child: Image.asset(MyImages.voucherBadge, color: MyColor.primaryColor, height: 20, width: 20),
                         onTap: () => Get.toNamed(RouteHelper.myVoucherScreen),

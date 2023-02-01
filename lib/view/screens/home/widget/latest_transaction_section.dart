@@ -30,7 +30,7 @@ class LatestTransactionSection extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  MyStrings.latestTransactions,
+                  MyStrings.latestTransactions.tr,
                   style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w500),
                 ),
                 InkWell(
@@ -42,7 +42,7 @@ class LatestTransactionSection extends StatelessWidget {
                     color: MyColor.transparentColor,
                     padding: const EdgeInsets.all(Dimensions.space5),
                     child: Text(
-                      MyStrings.seeAll,
+                      MyStrings.seeAll.tr,
                       textAlign: TextAlign.center,
                       style: regularSmall.copyWith(color: MyColor.getPrimaryColor()),
                     ),

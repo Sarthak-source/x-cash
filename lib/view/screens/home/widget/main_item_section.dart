@@ -27,7 +27,7 @@ class MainItemSection extends StatelessWidget {
             children: [
               Expanded(
                 child: CircleAnimatedButtonWithText(
-                  buttonName: MyStrings.addMoney.tr,
+                  buttonName: MyStrings.addMoney,
                   backgroundColor: MyColor.screenBgColor,
                   child: SvgPicture.asset(MyImages.addMoney, color: MyColor.primaryColor, height: 20, width: 20),
                   onTap: (){
@@ -37,7 +37,7 @@ class MainItemSection extends StatelessWidget {
               ),
               Expanded(
                 child: CircleAnimatedButtonWithText(
-                    buttonName: MyStrings.transfer.tr,
+                    buttonName: MyStrings.transfer,
                     backgroundColor: MyColor.screenBgColor,
                     child: SvgPicture.asset(MyImages.transfer, color: MyColor.primaryColor, height: 20, width: 20),
                     onTap: () => Get.toNamed(RouteHelper.transferMoneyScreen)
@@ -45,7 +45,7 @@ class MainItemSection extends StatelessWidget {
               ),
               Expanded(
                 child: CircleAnimatedButtonWithText(
-                    buttonName: MyStrings.makePayment.tr,
+                    buttonName: MyStrings.makePayment,
                     backgroundColor: MyColor.screenBgColor,
                     child: SvgPicture.asset(MyImages.makePayment, color: MyColor.primaryColor, height: 20, width: 20),
                     onTap: () => Get.toNamed(RouteHelper.makePaymentScreen)
@@ -53,7 +53,7 @@ class MainItemSection extends StatelessWidget {
               ),
               Expanded(
                 child: CircleAnimatedButtonWithText(
-                  buttonName: MyStrings.withdraw.tr,
+                  buttonName: MyStrings.withdraw,
                   height: 40, width: 40,
                   backgroundColor: MyColor.screenBgColor,
                   child: SvgPicture.asset(MyImages.withdraw, color: MyColor.primaryColor, height: 20, width: 20),
@@ -71,7 +71,7 @@ class MainItemSection extends StatelessWidget {
             children: [
               Expanded(
                 child: CircleAnimatedButtonWithText(
-                  buttonName: MyStrings.requestMoney.tr,
+                  buttonName: MyStrings.requestMoney,
                   backgroundColor: MyColor.screenBgColor,
                   child: SvgPicture.asset(MyImages.requestMoney, color: MyColor.primaryColor, height: 20, width: 20),
                   onTap: (){
@@ -81,7 +81,7 @@ class MainItemSection extends StatelessWidget {
               ),
               Expanded(
                 child: CircleAnimatedButtonWithText(
-                    buttonName: MyStrings.transaction.tr,
+                    buttonName: MyStrings.transaction,
                     backgroundColor: MyColor.screenBgColor,
                     child: Image.asset(MyImages.transaction, color: MyColor.primaryColor, height: 20, width: 20),
                     onTap: () => Get.toNamed(RouteHelper.transactionHistoryScreen)
@@ -89,7 +89,7 @@ class MainItemSection extends StatelessWidget {
               ),
               Expanded(
                 child: CircleAnimatedButtonWithText(
-                  buttonName: MyStrings.voucher.tr,
+                  buttonName: MyStrings.voucher,
                   backgroundColor: MyColor.screenBgColor,
                   child: Image.asset(MyImages.voucherBadge, color: MyColor.primaryColor, height: 20, width: 20),
                   onTap: () => Get.toNamed(RouteHelper.myVoucherScreen),
@@ -97,7 +97,7 @@ class MainItemSection extends StatelessWidget {
               ),
               Expanded(
                 child: CircleAnimatedButtonWithText(
-                  buttonName: MyStrings.seeMore.tr,
+                  buttonName: MyStrings.seeMore,
                   backgroundColor: MyColor.screenBgColor,
                   child: Image.asset(MyImages.menu, color: MyColor.primaryColor, height: 20, width: 20),
                   onTap: () => MainItemBottomSheet.mainItemBottomSheet(context)

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/style.dart';
 
@@ -77,7 +78,7 @@ class _CircleAnimatedButtonWithTextState extends State<CircleAnimatedButtonWithT
                   child: widget.child
               ),
               const SizedBox(height: 10),
-              Text(widget.buttonName, textAlign: TextAlign.center, style: regularExtraSmall.copyWith(color: MyColor.primaryTextColor, fontWeight: FontWeight.w500))
+              Text(widget.buttonName.tr, textAlign: TextAlign.center, style: regularExtraSmall.copyWith(color: MyColor.primaryTextColor, fontWeight: FontWeight.w500))
             ],
           ),
         ),

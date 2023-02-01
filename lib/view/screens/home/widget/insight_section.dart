@@ -25,13 +25,11 @@ class InsightSection extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  MyStrings.insights,
+                  MyStrings.insights.tr,
                   style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w500),
                 ),
                 InkWell(
-                  onTap: (){
-                    Get.toNamed(RouteHelper.myWalletScreen);
-                  },
+                  onTap: (){},
                   child: Container(
                     alignment: Alignment.center,
                     color: MyColor.transparentColor,
@@ -62,7 +60,7 @@ class InsightSection extends StatelessWidget {
                           Text(MyStrings.moneyIn, style: regularDefault.copyWith(fontWeight: FontWeight.w600)),
                           const SizedBox(width: Dimensions.space5),
                           Text(
-                              "( Last 7 days )",
+                              "( Last 7 days )", // dynamic hobe
                               style: regularSmall.copyWith(color: MyColor.colorGrey.withOpacity(0.5))
                           ),
                         ],
@@ -76,7 +74,7 @@ class InsightSection extends StatelessWidget {
                           GestureDetector(
                             onTap: (){},
                             child: Text(
-                              MyStrings.totalReceived,
+                              MyStrings.totalReceived.tr,
                               textAlign: TextAlign.center,
                               style: regularDefault.copyWith(decoration: TextDecoration.underline, color: MyColor.getTextColor().withOpacity(0.5)),
                             ),
@@ -92,7 +90,7 @@ class InsightSection extends StatelessWidget {
                               Get.toNamed(RouteHelper.requestMoneyScreen);
                             },
                             child: Text(
-                              MyStrings.requestMoney,
+                              MyStrings.requestMoney.tr,
                               style: regularDefault.copyWith(color: MyColor.getPrimaryColor()),
                             ),
                           ),
@@ -101,7 +99,7 @@ class InsightSection extends StatelessWidget {
                               Get.toNamed(RouteHelper.transactionHistoryScreen);
                             },
                             child: Text(
-                              MyStrings.viewTransactions,
+                              MyStrings.viewTransactions.tr,
                               style: regularDefault.copyWith(color: MyColor.getPrimaryColor()),
                             ),
                           ),
@@ -124,7 +122,7 @@ class InsightSection extends StatelessWidget {
                           Text(MyStrings.moneyOut, style: regularDefault.copyWith(fontWeight: FontWeight.w600)),
                           const SizedBox(width: Dimensions.space5),
                           Text(
-                              "( Last 7 days )",
+                              "( Last 7 days )", // dynamic
                               style: regularSmall.copyWith(color: MyColor.colorGrey.withOpacity(0.5))
                           ),
                         ],
@@ -138,7 +136,7 @@ class InsightSection extends StatelessWidget {
                           GestureDetector(
                             onTap: (){},
                             child: Text(
-                              MyStrings.totalSpent,
+                              MyStrings.totalSpent.tr,
                               textAlign: TextAlign.center,
                               style: regularDefault.copyWith(decoration: TextDecoration.underline, color: MyColor.getTextColor().withOpacity(0.5)),
                             ),
@@ -154,7 +152,7 @@ class InsightSection extends StatelessWidget {
                               Get.toNamed(RouteHelper.transferMoneyScreen);
                             },
                             child: Text(
-                              MyStrings.sendMoney,
+                              MyStrings.sendMoney.tr,
                               style: regularDefault.copyWith(color: MyColor.getPrimaryColor()),
                             ),
                           ),
@@ -163,7 +161,7 @@ class InsightSection extends StatelessWidget {
                               Get.toNamed(RouteHelper.transactionHistoryScreen);
                             },
                             child: Text(
-                              MyStrings.viewTransactions,
+                              MyStrings.viewTransactions.tr,
                               style: regularDefault.copyWith(color: MyColor.getPrimaryColor()),
                             ),
                           ),
