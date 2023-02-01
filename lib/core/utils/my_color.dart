@@ -4,7 +4,7 @@ class MyColor{
 
   static const Color primaryColor = Color(0xff7966FF);
   static const Color secondaryColor = Color(0xffF6F7FE);
-  static const Color screenBgColor = Color(0xffF1EFFF);
+  static const Color screenBgColor = Color(0xFFf2f2f2);
   static const Color secondaryScreenBgColor = Color(0xffC9C2FF);
   static const Color primaryTextColor = Color(0xff262626);
   static const Color contentTextColor = Color(0xff777777);
