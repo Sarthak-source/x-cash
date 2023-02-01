@@ -46,5 +46,5 @@ class Dimensions{
   static const double cardRadius = 8;
   static const double bottomSheetRadius = 15;
 
-  static const double textToTextSpace = 15;
+  static const double textToTextSpace = 8;
 }
