@@ -383,14 +383,14 @@ class Wallets {
 
   Wallets.fromJson(dynamic json) {
     _id = json['id'];
-    _userId = json['user_id'];
+    _userId = json['user_id'].toString();
     _userType = json['user_type'];
-    _currencyId = json['currency_id'];
-    _currencyCode = json['currency_code'];
-    _balance = json['balance'];
+    _currencyId = json['currency_id'].toString();
+    _currencyCode = json['currency_code'].toString();
+    _balance = json['balance'] != null ? json['balance'].toString() : "";
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
-    _transactions = json['transactions'];
+    _transactions = json['transactions'].toString();
     _currency = json['currency'] != null ? WalletsCurrency.fromJson(json['currency']) : null;
   }
   int? _id;
@@ -460,13 +460,13 @@ class WalletsCurrency {
 
   WalletsCurrency.fromJson(dynamic json) {
     _id = json['id'];
-    _currencyCode = json['currency_code'];
+    _currencyCode = json['currency_code'].toString();
     _currencySymbol = json['currency_symbol'];
     _currencyFullName = json['currency_FullName'];
-    _currencyType = json['currency_type'];
-    _rate = json['rate'];
-    _isDefault = json['is_default'];
-    _status = json['status'];
+    _currencyType = json['currency_type'].toString();
+    _rate = json['rate'].toString();
+    _isDefault = json['is_default'].toString();
+    _status = json['status'].toString();
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
   }
@@ -586,7 +586,7 @@ class User {
     _ts = json['ts'].toString();
     _tv = json['tv'].toString();
     _tsc = json['tsc'].toString();
-    _banReason = json['ban_reason'];
+    _banReason = json['ban_reason'] != null ? json['ban_reason'].toString() : "";
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
   }
