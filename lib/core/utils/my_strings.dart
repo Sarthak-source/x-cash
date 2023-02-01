@@ -7,6 +7,7 @@ class MyStrings{
   static const String areYouSure = "Are you sure want to reject?";
   static const String yes = "Yes";
   static const String no = "No";
+  static const String nid = "NID";
 
   // onboard-screen
   static const String onboardTitle1 = "Welcome To Xcash\nWallet App";
