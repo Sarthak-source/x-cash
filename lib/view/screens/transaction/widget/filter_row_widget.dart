@@ -10,7 +10,7 @@ class FilterRowWidget extends StatefulWidget {
   final Callback press;
   final bool isFilterBtn;
   final Color bgColor;
-  const FilterRowWidget({Key? key,this.bgColor = MyColor.screenBgColor,this.isFilterBtn=false,this.iconColor = MyColor.primaryColor,required this.text,required this.press,this.fromTrx=false}) : super(key: key);
+  const FilterRowWidget({Key? key,this.bgColor = MyColor.transparentColor,this.isFilterBtn=false,this.iconColor = MyColor.primaryColor,required this.text,required this.press,this.fromTrx=false}) : super(key: key);
 
   @override
   State<FilterRowWidget> createState() => _FilterRowWidgetState();
