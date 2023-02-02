@@ -77,14 +77,14 @@ class Deposit {
       int? userId, 
       String? userType, 
       String? walletId, 
-      int? currencyId, 
+      String? currencyId,
       String? methodCode, 
       String? methodCurrency, 
-      String? amount, 
-      double? charge, 
-      int? rate, 
-      double? finalAmo, 
-      int? btcAmo, 
+      String? amount,
+      String? charge,
+      String? rate,
+      String? finalAmo,
+      String? btcAmo,
       String? btcWallet, 
       String? trx, 
       String? updatedAt, 
@@ -110,18 +110,18 @@ class Deposit {
 
   Deposit.fromJson(dynamic json) {
     _userId = json['user_id'];
-    _userType = json['user_type'];
-    _walletId = json['wallet_id'];
-    _currencyId = json['currency_id'];
-    _methodCode = json['method_code'];
-    _methodCurrency = json['method_currency'];
-    _amount = json['amount'];
-    _charge = json['charge'];
-    _rate = json['rate'];
-    _finalAmo = json['final_amo'];
-    _btcAmo = json['btc_amo'];
-    _btcWallet = json['btc_wallet'];
-    _trx = json['trx'];
+    _userType = json['user_type'].toString();
+    _walletId = json['wallet_id'].toString();
+    _currencyId = json['currency_id'].toString();
+    _methodCode = json['method_code'].toString();
+    _methodCurrency = json['method_currency'].toString();
+    _amount = json['amount'].toString();
+    _charge = json['charge'].toString();
+    _rate = json['rate'].toString();
+    _finalAmo = json['final_amo'].toString();
+    _btcAmo = json['btc_amo'].toString();
+    _btcWallet = json['btc_wallet'].toString();
+    _trx = json['trx'].toString();
     _updatedAt = json['updated_at'];
     _createdAt = json['created_at'];
     _id = json['id'];
@@ -129,14 +129,14 @@ class Deposit {
   int? _userId;
   String? _userType;
   String? _walletId;
-  int? _currencyId;
+  String? _currencyId;
   String? _methodCode;
   String? _methodCurrency;
   String? _amount;
-  double? _charge;
-  int? _rate;
-  double? _finalAmo;
-  int? _btcAmo;
+  String? _charge;
+  String? _rate;
+  String? _finalAmo;
+  String? _btcAmo;
   String? _btcWallet;
   String? _trx;
   String? _updatedAt;
@@ -146,14 +146,14 @@ class Deposit {
   int? get userId => _userId;
   String? get userType => _userType;
   String? get walletId => _walletId;
-  int? get currencyId => _currencyId;
+  String? get currencyId => _currencyId;
   String? get methodCode => _methodCode;
   String? get methodCurrency => _methodCurrency;
   String? get amount => _amount;
-  double? get charge => _charge;
-  int? get rate => _rate;
-  double? get finalAmo => _finalAmo;
-  int? get btcAmo => _btcAmo;
+  String? get charge => _charge;
+  String? get rate => _rate;
+  String? get finalAmo => _finalAmo;
+  String? get btcAmo => _btcAmo;
   String? get btcWallet => _btcWallet;
   String? get trx => _trx;
   String? get updatedAt => _updatedAt;
