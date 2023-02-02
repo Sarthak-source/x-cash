@@ -30,7 +30,7 @@ class SplashController extends GetxController  {
     noInternet=false;
     update();
 
-    initShacolorRedData();
+    initSharedData();
 
 
     try{
@@ -91,7 +91,7 @@ class SplashController extends GetxController  {
   }
 
 
-  Future<bool> initShacolorRedData() {
+  Future<bool> initSharedData() {
 
     if(!repo.apiClient.sharedPreferences.containsKey(SharedPreferenceHelper.countryCode)) {
       return repo.apiClient.sharedPreferences.setString(SharedPreferenceHelper.countryCode, MyStrings.languages[0].countryCode);
@@ -113,7 +113,6 @@ class SplashController extends GetxController  {
         var resJson = jsonDecode(response.responseJson);
         saveLanguageList(response.responseJson);
         var value = jsonDecode(resJson['data']['file']) as Map<String,dynamic>;
-        print(value.toString());
         Map<String,String> json = {};
         value.forEach((key, value) {
           json[key] = value.toString();
