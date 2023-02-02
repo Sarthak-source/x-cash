@@ -53,8 +53,11 @@ class MyStrings{
   static const String personalAccount = "Personal Account";
   static const String companyAccount = "Company Account";
   static const String firstName = "First Name";
+  static const String enterFirstName = "Enter first name";
   static const String lastName = "Last Name";
+  static const String enterLastName = "Enter last name";
   static const String country = "Country";
+  static const String enterYourCountry = "Enter your country";
   static const String mobileNumber = "Mobile Number";
   static const String emailAddress = "E-mail Address";
   static const String confirmPassword = "Confirm Password";
@@ -304,8 +307,11 @@ class MyStrings{
   static const String name = "Name";
   static const String phone = "Phone";
   static const String zipCode = "Zip Code";
+  static const String enterYourZipCode = "Enter your zip code";
   static const String state = "State";
+  static const String enterYourState = "Enter your state";
   static const String city = "City";
+  static const String enterYourCity = "Enter your city";
   static const String editProfile = "Edit Profile";
   static const String updateProfile = "Update Profile";
 
