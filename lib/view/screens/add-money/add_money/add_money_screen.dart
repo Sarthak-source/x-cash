@@ -14,8 +14,7 @@ import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
-import 'package:xcash_app/view/components/text/label_text.dart';
-import 'package:xcash_app/view/screens/add-money/add_money_details/widget/add_money_info_widget.dart';
+import 'package:xcash_app/view/screens/add-money/add_money/widget/add_money_info_widget.dart';
 
 class AddMoneyScreen extends StatefulWidget {
   const AddMoneyScreen({Key? key}) : super(key: key);

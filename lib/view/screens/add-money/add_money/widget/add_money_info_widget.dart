@@ -4,7 +4,7 @@ import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/controller/add_money/add_money_method_controller.dart';
-import 'package:xcash_app/view/screens/add-money/add_money_details/widget/custom_row.dart';
+import 'package:xcash_app/view/screens/add-money/add_money/widget/custom_row.dart';
 
 class AddMoneyInfoWidget extends StatelessWidget {
   const AddMoneyInfoWidget({Key? key}) : super(key: key);
