@@ -45,6 +45,7 @@ class HomeController extends GetxController{
     ResponseModel responseModel = await homeRepo.getData();
     if(responseModel.statusCode == 200){
       model = HomeResponseModel.fromJson(jsonDecode(responseModel.responseJson));
+
       if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
         username = model.data?.user?.username ?? "";
         userBalance = "$defaultCurrencySymbol${Converter.twoDecimalPlaceFixedWithoutRounding(model.data?.user?.balance ?? "")}";

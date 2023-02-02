@@ -28,25 +28,9 @@ class RedeemLogCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SmallText(text: MyStrings.voucherCode, textStyle: regularSmall.copyWith(color: MyColor.getLabelTextColor().withOpacity(0.6))),
-                    const SizedBox(height: Dimensions.space5),
-                    DefaultText(text: controller.redeemLogList[index].voucherCode ?? "", textColor: MyColor.getTextColor())
-                  ],
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SmallText(text: MyStrings.usedAt, textStyle: regularSmall.copyWith(color: MyColor.getLabelTextColor().withOpacity(0.6))),
-                    const SizedBox(height: Dimensions.space5),
-                    DefaultText(
-                        text: DateConverter.isoStringToLocalDateOnly(controller.redeemLogList[index].createdAt ?? ""),
-                        textColor: MyColor.getTextColor()
-                    )
-                  ],
-                ),
+                DefaultText(text: MyStrings.voucherCode, textColor: MyColor.getLabelTextColor().withOpacity(0.6)),
+                const SizedBox(height: Dimensions.space5),
+                DefaultText(text: controller.redeemLogList[index].voucherCode ?? "", textColor: MyColor.getTextColor())
               ],
             ),
             const CustomDivider(space: Dimensions.space15),
@@ -64,6 +48,17 @@ class RedeemLogCard extends StatelessWidget {
                     )
                   ],
                 ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    SmallText(text: MyStrings.usedAt, textStyle: regularSmall.copyWith(color: MyColor.getLabelTextColor().withOpacity(0.6))),
+                    const SizedBox(height: Dimensions.space5),
+                    DefaultText(
+                        text: DateConverter.isoStringToLocalDateOnly(controller.redeemLogList[index].createdAt ?? ""),
+                        textColor: MyColor.getTextColor()
+                    )
+                  ],
+                )
               ],
             ),
           ],

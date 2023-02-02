@@ -54,11 +54,10 @@ class MoneyOutController extends GetxController{
     amountController.text = "";
     agentController.text = "";
 
-    Wallets wallets_ = Wallets(
-      id: -2,
-      currencyCode: MyStrings.selectAWallet
-    );
-    walletList.insert(0, wallets_);
+    selectedWallet = Wallets(id: -1, currencyCode: MyStrings.selectAWallet);
+    walletList.insert(0, selectedWallet!);
+    setWalletMethod(selectedWallet);
+
     otpTypeList.insert(0, MyStrings.selectOtp);
 
     if(responseModel.statusCode == 200){
@@ -66,12 +65,8 @@ class MoneyOutController extends GetxController{
 
       if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
         List<Wallets>? tempWalletList = model.data?.wallets;
-        if(tempWalletList != null || tempWalletList!.isNotEmpty){
+        if(tempWalletList != null && tempWalletList.isNotEmpty){
           walletList.addAll(tempWalletList);
-        }
-        if(tempWalletList.isNotEmpty){
-          selectedWallet = walletList[0];
-          setWalletMethod(selectedWallet);
         }
 
         List<String>? tempOtpList = model.data?.otpType;

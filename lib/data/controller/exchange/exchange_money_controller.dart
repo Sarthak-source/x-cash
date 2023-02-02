@@ -52,13 +52,13 @@ class ExchangeMoneyController extends GetxController{
 
     amountController.text = "";
 
-    FromWallets fromWallets_ = FromWallets(id: -1, currencyCode: MyStrings.selectOne);
-    fromWalletList.insert(0, fromWallets_);
-    setFromWalletMethod(fromWalletList[0]);
+    fromWalletMethod = FromWallets(id: -1, currencyCode: MyStrings.selectOne);
+    fromWalletList.insert(0, fromWalletMethod!);
+    setFromWalletMethod(fromWalletMethod);
 
-    ToWallets toWallets_ = ToWallets(id: -1, currencyCode: MyStrings.selectOne);
-    toWalletList.insert(0, toWallets_);
-    setToWalletMethod(toWalletList[0]);
+    toWalletMethod = ToWallets(id: -1, currencyCode: MyStrings.selectOne);
+    toWalletList.insert(0, toWalletMethod!);
+    setToWalletMethod(toWalletMethod);
 
     if(responseModel.statusCode == 200){
       ExchangeMoneyResponseModel model = ExchangeMoneyResponseModel.fromJson(jsonDecode(responseModel.responseJson));
@@ -66,21 +66,13 @@ class ExchangeMoneyController extends GetxController{
       if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
 
         List<FromWallets>? tempFromWallets = model.data?.fromWallets;
-        if(tempFromWallets != null || tempFromWallets!.isNotEmpty){
+        if(tempFromWallets != null && tempFromWallets.isNotEmpty){
           fromWalletList.addAll(tempFromWallets);
-        }
-        if(tempFromWallets.isNotEmpty){
-          fromWalletMethod = fromWalletList[0];
-          setFromWalletMethod(fromWalletMethod);
         }
 
         List<ToWallets>? tempToWallets = model.data?.toWallets;
-        if(tempToWallets != null || tempToWallets!.isNotEmpty){
+        if(tempToWallets != null && tempToWallets.isNotEmpty){
           toWalletList.addAll(tempToWallets);
-        }
-        if(tempToWallets.isNotEmpty){
-          toWalletMethod = toWalletList[0];
-          setToWalletMethod(toWalletMethod);
         }
 
         amount = amountController.text;

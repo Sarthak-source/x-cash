@@ -22,6 +22,7 @@ class LatestTransactionCard extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: Dimensions.space15, horizontal: Dimensions.space10),
             decoration: BoxDecoration(color: MyColor.getScreenBgColor(), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
@@ -48,9 +49,14 @@ class LatestTransactionCard extends StatelessWidget {
                           style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600),
                         ),
                         const SizedBox(height: Dimensions.space10),
-                        Text(
-                          controller.trxList[index].details ?? "",
-                          style: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.5)),
+                        SizedBox(
+                          width: 150,
+                          child: Text(
+                            controller.trxList[index].details ?? "",
+                            style: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.5)),
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 2,
+                          ),
                         )
                       ],
                     )
