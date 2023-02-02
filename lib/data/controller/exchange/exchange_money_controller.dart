@@ -54,9 +54,11 @@ class ExchangeMoneyController extends GetxController{
 
     FromWallets fromWallets_ = FromWallets(id: -1, currencyCode: MyStrings.selectOne);
     fromWalletList.insert(0, fromWallets_);
+    setFromWalletMethod(fromWalletList[0]);
 
     ToWallets toWallets_ = ToWallets(id: -1, currencyCode: MyStrings.selectOne);
     toWalletList.insert(0, toWallets_);
+    setToWalletMethod(toWalletList[0]);
 
     if(responseModel.statusCode == 200){
       ExchangeMoneyResponseModel model = ExchangeMoneyResponseModel.fromJson(jsonDecode(responseModel.responseJson));

@@ -14,6 +14,7 @@ import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
+import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
 import 'package:xcash_app/view/components/text/label_text.dart';
 import 'package:xcash_app/view/screens/exchange/widget/exchange_money_bottom_sheet.dart';
 
@@ -68,77 +69,35 @@ class _ExchangeMoneyScreenState extends State<ExchangeMoneyScreen> {
                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                    children: [
                      Expanded(
-                         child: Column(
-                           crossAxisAlignment: CrossAxisAlignment.start,
-                           children: [
-                             const LabelText(text: MyStrings.fromCurrency),
-                             const SizedBox(height: 8),
-                             Container(
-                               width: MediaQuery.of(context).size.width,
-                               padding: const EdgeInsets.only(left: Dimensions.space15, right: Dimensions.space15,),
-                               decoration: BoxDecoration(
-                                 color: MyColor.primaryColor,
-                                 borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
-                               ),
-                               child: DropdownButton<FromWallets>(
-                                 dropdownColor: MyColor.primaryColor,
-                                 value: controller.fromWalletMethod,
-                                 elevation: 8,
-                                 icon: const Icon(Icons.arrow_drop_down_outlined, color: MyColor.colorWhite),
-                                 iconDisabledColor: Colors.red,
-                                 iconEnabledColor : MyColor.primaryColor,
-                                 isExpanded: true,
-                                 underline: Container(height: 0, color: MyColor.primaryColor),
-                                 onChanged: (FromWallets? newValue) {
-                                   controller.setFromWalletMethod(newValue);
-                                 },
-                                 items: controller.fromWalletList.map((FromWallets wallet) {
-                                   return DropdownMenuItem<FromWallets>(
-                                     value: wallet,
-                                     child: Text(wallet.currencyCode.toString(), style: regularDefault.copyWith(color: MyColor.colorWhite)),
-                                   );
-                                 }).toList(),
-                               ),
-                             ),
-                           ],
+                         child: CustomDropDownTextField(
+                           dropDownColor: MyColor.primaryColor,
+                           labelText: MyStrings.fromCurrency,
+                           selectedValue: controller.fromWalletMethod,
+                           onChanged: (newValue) {
+                             controller.setFromWalletMethod(newValue);
+                           },
+                           items: controller.fromWalletList.map((FromWallets wallet) {
+                             return DropdownMenuItem<FromWallets>(
+                               value: wallet,
+                               child: Text(wallet.currencyCode.toString(), style: regularDefault.copyWith(color: MyColor.colorBlack)),
+                             );
+                           }).toList(),
                          )
                      ),
                      const SizedBox(width: Dimensions.space20),
                      Expanded(
-                       child: Column(
-                         crossAxisAlignment: CrossAxisAlignment.start,
-                         children: [
-                           const LabelText(text: MyStrings.toCurrency),
-                           const SizedBox(height: 8),
-                           Container(
-                               width: MediaQuery.of(context).size.width,
-                               padding: const EdgeInsets.only(left: Dimensions.space15, right: Dimensions.space15,),
-                               decoration: BoxDecoration(
-                                   color: MyColor.transparentColor,
-                                   borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
-                                   border: Border.all(color: MyColor.borderColor, width: 0.5)
-                               ),
-                               child: DropdownButton<ToWallets>(
-                                 dropdownColor: MyColor.colorWhite,
-                                 value: controller.toWalletMethod,
-                                 elevation: 8,
-                                 icon: const Icon(Icons.arrow_drop_down_outlined, color: MyColor.colorBlack),
-                                 iconDisabledColor: Colors.red,
-                                 iconEnabledColor : MyColor.primaryColor,
-                                 isExpanded: true,
-                                 underline: Container(height: 0, color: MyColor.primaryColor),
-                                 onChanged: (ToWallets? newValue) {
-                                   controller.setToWalletMethod(newValue);
-                                 },
-                                 items: controller.toWalletList.map((ToWallets wallet) {
-                                   return DropdownMenuItem<ToWallets>(
-                                     value: wallet,
-                                     child: Text(wallet.currencyCode.toString(), style: regularDefault.copyWith(color: MyColor.colorBlack)),
-                                   );
-                                 }).toList(),
-                               )
-                           ),
-                         ],
+                       child: CustomDropDownTextField(
+                         labelText: MyStrings.toCurrency,
+                         selectedValue: controller.toWalletMethod,
+                         onChanged: (newValue) {
+                           controller.setToWalletMethod(newValue);
+                         },
+                         items: controller.toWalletList.map((ToWallets wallet) {
+                           return DropdownMenuItem<ToWallets>(
+                             value: wallet,
+                             child: Text(wallet.currencyCode.toString(), style: regularDefault.copyWith(color: MyColor.colorBlack)),
+                           );
+                         }).toList(),
                        ),
                      )
                    ],
