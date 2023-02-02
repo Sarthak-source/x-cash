@@ -62,7 +62,7 @@ class QuickLinkSection extends StatelessWidget {
                 child: CircleAnimatedButtonWithText(
                   buttonName: MyStrings.seeMore,
                   backgroundColor: MyColor.screenBgColor,
-                  child: Image.asset(MyImages.menu, height: 20, width: 20),
+                  child: Image.asset(MyImages.dMenu, height: 20, width: 20, color: MyColor.primaryColor),
                   onTap: () => QuickLinkItemBottomSheet.quickLinkItemBottomSheet(context)
                 ),
               ),

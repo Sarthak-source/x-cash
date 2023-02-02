@@ -7,6 +7,7 @@ class UrlContainer{
 
   static const String registrationEndPoint='register';
   static const String loginEndPoint='login';
+  static const String logoutUrl='logout';
   static const String userDashboardEndPoint='user/home';
   static const String userLogoutEndPoint='logout';
   static const String forgetPasswordEndPoint='password/email';

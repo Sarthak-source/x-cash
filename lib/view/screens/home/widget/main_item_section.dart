@@ -83,7 +83,7 @@ class MainItemSection extends StatelessWidget {
                 child: CircleAnimatedButtonWithText(
                     buttonName: MyStrings.transaction,
                     backgroundColor: MyColor.screenBgColor,
-                    child: Image.asset(MyImages.transaction, color: MyColor.primaryColor, height: 20, width: 20),
+                    child: Image.asset(MyImages.dTransaction, color: MyColor.primaryColor, height: 20, width: 20),
                     onTap: () => Get.toNamed(RouteHelper.transactionHistoryScreen)
                 ),
               ),
@@ -99,7 +99,7 @@ class MainItemSection extends StatelessWidget {
                 child: CircleAnimatedButtonWithText(
                   buttonName: MyStrings.seeMore,
                   backgroundColor: MyColor.screenBgColor,
-                  child: Image.asset(MyImages.menu, color: MyColor.primaryColor, height: 20, width: 20),
+                  child: Image.asset(MyImages.dMenu, height: 20, width: 20, color: MyColor.primaryColor),
                   onTap: () => MainItemBottomSheet.mainItemBottomSheet(context)
                 ),
               ),
