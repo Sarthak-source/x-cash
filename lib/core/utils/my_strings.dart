@@ -414,6 +414,7 @@ class MyStrings{
   static const String conversion = "Conversion";
   static const String transactionNo = "Transaction No.";
   static const String ourPrivacyPolicy = "Our Privacy Policy";
+  static const String privacyPolicy = "Privacy & Policy";
   static const String howLongWeRetain = "How Long We Retain";
   static const String yourData = "What we don't do with your data";
   static const String protectionActCompliance = "Protection Act Compliance";
