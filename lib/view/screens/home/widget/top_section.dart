@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
@@ -30,11 +31,14 @@ class _TopSectionState extends State<TopSection> {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  height: 40, width: 40,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(image: AssetImage(MyImages.userProfile), fit: BoxFit.fill)
+                GestureDetector(
+                  onTap: () => Get.toNamed(RouteHelper.profileScreen),
+                  child: Container(
+                    height: 40, width: 40,
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(image: AssetImage(MyImages.userProfile), fit: BoxFit.fill)
+                    ),
                   ),
                 ),
                 const SizedBox(width: Dimensions.space10),
