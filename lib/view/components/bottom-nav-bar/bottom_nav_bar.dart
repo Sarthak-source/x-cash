@@ -4,9 +4,8 @@ import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/style.dart';
-import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
-import 'package:xcash_app/view/screens/activity/activity_screen.dart';
 import 'package:xcash_app/view/screens/home/home_screen.dart';
+import 'package:xcash_app/view/screens/menu/menu_screen.dart';
 
 class BottomNavBar extends StatefulWidget {
 
@@ -19,7 +18,8 @@ class BottomNavBar extends StatefulWidget {
 class _BottomNavBarState extends State<BottomNavBar> {
 
   List<Widget> screens = [
-    const HomeScreen()
+    const HomeScreen(),
+    const MenuScreen()
   ];
 
   int currentIndex = 0;
@@ -45,7 +45,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               navBarItem(MyImages.home, 0, "Home"),
-              navBarItem(MyImages.activity, 1, "Activity"),
+              navBarItem(MyImages.menu, 1, "Menu"),
             ],
           ),
         ),
@@ -72,16 +72,9 @@ class _BottomNavBarState extends State<BottomNavBar> {
   navBarItem(String imagePath, int index, String label) {
     return GestureDetector(
       onTap: (){
-        if(index != 1){
           setState(() {
             currentIndex = index;
           });
-        }
-        else{
-          CustomBottomSheet(
-            child: const ActivityScreen()
-          ).customBottomSheet(context);
-        }
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -94,7 +87,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
               color: index == currentIndex ? MyColor.screenBgColor : Colors.grey.withOpacity(0.2),
               shape: BoxShape.circle
             ),
-            child: SvgPicture.asset(
+            child: Image.asset(
               imagePath, color: index == currentIndex ? MyColor.primaryColor : MyColor.iconColor,
               width: 16, height: 16,
             ),
