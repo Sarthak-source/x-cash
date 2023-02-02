@@ -27,7 +27,7 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
           child: Column(
             children: [
               CustomTextField(
-                          needOutlineBorder: true,
+                needOutlineBorder: true,
                 labelText: MyStrings.currentPassword.tr,
                 hintText: MyStrings.enterCurrentPassword.tr,
                 onChanged: (value){
@@ -46,7 +46,7 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
               ),
               const SizedBox(height: 20),
               CustomTextField(
-                          needOutlineBorder: true,
+                  needOutlineBorder: true,
                   labelText: MyStrings.newPassword.tr,
                   hintText: MyStrings.enterNewPassword.tr,
                   onChanged: (value){
@@ -65,7 +65,7 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
               ),
               const SizedBox(height: 20),
               CustomTextField(
-                          needOutlineBorder: true,
+                  needOutlineBorder: true,
                   labelText: MyStrings.confirmPassword.tr,
                   hintText: MyStrings.enterConfirmPassword.tr,
                   onChanged: (value){

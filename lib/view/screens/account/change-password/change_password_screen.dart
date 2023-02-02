@@ -67,7 +67,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                     ),
                   ),
                   const SizedBox(height: 50),
-
                   const ChangePasswordForm()
                 ],
               ),

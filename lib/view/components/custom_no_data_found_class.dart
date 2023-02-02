@@ -40,6 +40,7 @@ class _NoDataOrInternetScreenState extends State<NoDataOrInternetScreen> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      height: MediaQuery.of(context).size.height,
       child: Padding(
         padding: const EdgeInsets.all(2),
         child: ListView(
