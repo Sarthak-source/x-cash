@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/auth/auth/registration_controller.dart';
@@ -12,15 +13,14 @@ class CountryBottomSheet{
         context: context,
         builder: (BuildContext context){
           return Container(
-            height: MediaQuery.of(context).size.height*.8,
-            padding: const EdgeInsets.all(20),
+            height: MediaQuery.of(context).size.height * 0.8,
+            padding: const EdgeInsets.symmetric(vertical: Dimensions.space10, horizontal: Dimensions.space15),
             decoration: BoxDecoration(
                 color: MyColor.getScreenBgColor(),
-                borderRadius: const BorderRadius.only(topLeft: Radius.circular(25),topRight: Radius.circular(25))
+                borderRadius: const BorderRadius.only(topLeft: Radius.circular(20),topRight: Radius.circular(20))
             ),
             child: Column(
               children: [
-                const SizedBox(height: 8,),
                 Center(
                   child: Container(
                     height: 5,
@@ -28,7 +28,7 @@ class CountryBottomSheet{
                     padding: const EdgeInsets.all(1),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
-                      color: MyColor.colorGrey.withOpacity(0.4),
+                      color: MyColor.colorGrey.withOpacity(0.2),
                     ),
 
                   ),
@@ -60,11 +60,11 @@ class CountryBottomSheet{
                               margin: const EdgeInsets.all(5),
                               decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(4),
-                                  color: MyColor.colorGrey.withOpacity(0.2)
+                                  border: Border.all(color: MyColor.colorGrey.withOpacity(0.2))
                               ),
                               child: Text(
                                   '+${controller.countryList[index].dialCode}  ${controller.countryList[index].country}',
-                                  style: regularDefault.copyWith(color: MyColor.getPrimaryColor())
+                                  style: regularDefault.copyWith(color: MyColor.getTextColor())
                               ),
                             ),
                           ),

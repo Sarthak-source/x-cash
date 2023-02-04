@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/style.dart';
 
@@ -16,22 +17,26 @@ class CountryTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: press,
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children:  [
-            Text(text,style: regularDefault.copyWith(color: MyColor.getTextColor()),),
-            Icon(Icons.expand_more_rounded,color: MyColor.getPrimaryColor(),size: 20,)
-          ],
-          ),
-          const SizedBox(height: 12,),
-          Container(
-            decoration: BoxDecoration(
-            border: Border(bottom:BorderSide(color: MyColor.getTextFieldDisableBorder()))
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        padding: const EdgeInsets.symmetric(vertical: Dimensions.space15, horizontal: Dimensions.space15),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
+          border: Border.all(color: MyColor.getTextFieldDisableBorder())
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children:  [
+            Text(
+              text,
+              style: regularDefault.copyWith(color: MyColor.getTextColor())
             ),
-          ),
-        ],
+            Icon(
+              Icons.expand_more_rounded,color: MyColor.getPrimaryColor(),
+              size: 20
+            )
+          ],
+        ),
       ),
     );
   }

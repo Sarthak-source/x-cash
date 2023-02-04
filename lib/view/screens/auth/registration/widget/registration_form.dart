@@ -10,6 +10,7 @@ import 'package:xcash_app/data/controller/auth/auth/registration_controller.dart
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
+import 'package:xcash_app/view/components/text/label_text.dart';
 import 'package:xcash_app/view/screens/auth/registration/widget/country_bottom_sheet.dart';
 import 'package:xcash_app/view/screens/auth/registration/widget/validation_widget.dart';
 
@@ -37,7 +38,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomTextField(
-                          needOutlineBorder: true,
+                needOutlineBorder: true,
                 labelText: MyStrings.username.tr,
                 hintText: MyStrings.enterYourUsername.tr,
                 controller: controller.userNameController,
@@ -59,7 +60,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
               ),
               const SizedBox(height: 25),
               CustomTextField(
-                          needOutlineBorder: true,
+                needOutlineBorder: true,
                 labelText: MyStrings.email.tr,
                 hintText: MyStrings.enterYourEmail.tr,
                 controller: controller.emailController,
@@ -92,6 +93,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      const LabelText(text: MyStrings.phoneNo),
+                      const SizedBox(height: Dimensions.textToTextSpace),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.end,
@@ -102,7 +105,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
                                 color: MyColor.transparentColor,
-                                border: Border(bottom: BorderSide(color: controller.countryName == null ? MyColor.getTextFieldDisableBorder() : MyColor.getTextFieldEnableBorder()))
+                                borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
+                                border: Border.all(color: controller.countryName == null ? MyColor.getTextFieldDisableBorder() : MyColor.getTextFieldEnableBorder(), width: 0.5)
                             ),
                             child: Text("+${controller.mobileCode}",
                               style: regularDefault.copyWith(color: MyColor.getPrimaryColor()),
@@ -111,7 +115,8 @@ class _RegistrationFormState extends State<RegistrationForm> {
                           const SizedBox(width: Dimensions.space5 + 3),
                           Expanded(
                             child: CustomTextField(
-                          needOutlineBorder: true,
+                              needOutlineBorder: true,
+                              needLabel: false,
                               labelText: MyStrings.phoneNo.tr,
                               hintText: MyStrings.enterYourPhoneNumber.tr,
                               controller: controller.mobileController,
