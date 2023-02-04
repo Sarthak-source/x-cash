@@ -7,7 +7,7 @@ import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/view/components/buttons/circle_animated_button_with_text.dart';
-import 'package:xcash_app/view/screens/home/components/main_items_bottom_sheet.dart';
+import 'package:xcash_app/view/screens/bottom_nav_section/home/components/main_items_bottom_sheet.dart';
 
 class MainItemSection extends StatelessWidget {
   const MainItemSection({Key? key}) : super(key: key);
@@ -83,7 +83,7 @@ class MainItemSection extends StatelessWidget {
                 child: CircleAnimatedButtonWithText(
                     buttonName: MyStrings.transaction,
                     backgroundColor: MyColor.screenBgColor,
-                    child: Image.asset(MyImages.dTransaction, color: MyColor.primaryColor, height: 20, width: 20),
+                    child: SvgPicture.asset(MyImages.transaction, color: MyColor.primaryColor, height: 20, width: 20),
                     onTap: () => Get.toNamed(RouteHelper.transactionHistoryScreen)
                 ),
               ),
@@ -91,7 +91,7 @@ class MainItemSection extends StatelessWidget {
                 child: CircleAnimatedButtonWithText(
                   buttonName: MyStrings.voucher,
                   backgroundColor: MyColor.screenBgColor,
-                  child: Image.asset(MyImages.voucherBadge, color: MyColor.primaryColor, height: 20, width: 20),
+                  child: SvgPicture.asset(MyImages.voucher, color: MyColor.primaryColor, height: 20, width: 20),
                   onTap: () => Get.toNamed(RouteHelper.myVoucherScreen),
                 ),
               ),
@@ -99,7 +99,7 @@ class MainItemSection extends StatelessWidget {
                 child: CircleAnimatedButtonWithText(
                   buttonName: MyStrings.seeMore,
                   backgroundColor: MyColor.screenBgColor,
-                  child: Image.asset(MyImages.dMenu, height: 20, width: 20, color: MyColor.primaryColor),
+                  child: SvgPicture.asset(MyImages.seeMore, height: 20, width: 20, color: MyColor.primaryColor),
                   onTap: () => MainItemBottomSheet.mainItemBottomSheet(context)
                 ),
               ),

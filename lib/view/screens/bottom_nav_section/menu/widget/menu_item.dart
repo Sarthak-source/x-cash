@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/style.dart';
@@ -31,10 +33,10 @@ class MenuItems extends StatelessWidget {
                   height: 35, width: 35,
                   alignment: Alignment.center,
                   decoration: const BoxDecoration(color: MyColor.screenBgColor, shape: BoxShape.circle),
-                  child: Image.asset(imageSrc, color: MyColor.colorBlack, height: 17.5, width: 17.5),
+                  child: SvgPicture.asset(imageSrc, color: MyColor.colorBlack, height: 17.5, width: 17.5),
                 ),
                 const SizedBox(width: Dimensions.space15),
-                Text(label, style: regularDefault.copyWith(color: MyColor.colorBlack))
+                Text(label.tr, style: regularDefault.copyWith(color: MyColor.colorBlack))
               ],
             ),
             Container(

@@ -40,8 +40,8 @@ class _MakePaymentFormState extends State<MakePaymentForm> {
           children: [
             CustomTextField(
               needOutlineBorder: true,
-              labelText: MyStrings.merchantUsernameEmail,
-              hintText: MyStrings.merchantUsernameEmailHint,
+              labelText: MyStrings.merchantUsernameEmail.tr,
+              hintText: MyStrings.merchantUsernameEmailHint.tr,
               onChanged: (value){},
               controller: controller.merchantController,
               validator: (value) {
@@ -54,7 +54,7 @@ class _MakePaymentFormState extends State<MakePaymentForm> {
             ),
             const SizedBox(height: Dimensions.space15),
             CustomDropDownTextField(
-              labelText: MyStrings.selectWallet,
+              labelText: MyStrings.selectWallet.tr,
               selectedValue: controller.walletsMethod,
               onChanged: (value) => controller.setWalletMethod(value),
               items: controller.walletList.map((Wallets wallet) {
@@ -66,7 +66,7 @@ class _MakePaymentFormState extends State<MakePaymentForm> {
             ),
             const SizedBox(height: Dimensions.space15),
             CustomAmountTextField(
-              labelText: MyStrings.amount,
+              labelText: MyStrings.amount.tr,
               hintText: MyStrings.amountHint,
               onChanged: (value){
                 if(value.toString().isEmpty){
@@ -81,7 +81,7 @@ class _MakePaymentFormState extends State<MakePaymentForm> {
             ),
             const SizedBox(height: Dimensions.space15),
             CustomDropDownTextField(
-              labelText: MyStrings.selectOtp,
+              labelText: MyStrings.selectOtp.tr,
               selectedValue: controller.selectedOtp,
               onChanged: (value) => controller.setOtpMethod(value),
               items: controller.otpTypeList.map((value) {

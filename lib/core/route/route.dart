@@ -23,7 +23,7 @@ import 'package:xcash_app/view/screens/invoice/update_invoice/update_invoice_scr
 import 'package:xcash_app/view/screens/money_discharge/make_payment/make_payment.dart';
 import 'package:xcash_app/view/screens/otp/otp_screen.dart';
 import 'package:xcash_app/view/screens/money_discharge/money_out/money_out.dart';
-import 'package:xcash_app/view/screens/notification/notification_screen.dart';
+import 'package:xcash_app/view/screens/privacy_policy/privacy_policy_screen.dart';
 import 'package:xcash_app/view/screens/request-money/request_money/request_money.dart';
 import 'package:xcash_app/view/screens/request-money/request_to_me/request_to_me_screen.dart';
 import 'package:xcash_app/view/screens/splash/splash_screen.dart';
@@ -35,7 +35,6 @@ import 'package:xcash_app/view/screens/voucher/my_voucher/my_voucher_screen.dart
 import 'package:xcash_app/view/screens/voucher/redeem_log/redeem_log_screen.dart';
 import 'package:xcash_app/view/screens/wallet/my_wallet_screen.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_history/withdraw_history_screen.dart';
-import 'package:xcash_app/view/screens/withdrawals/withdraw_method/add_withdraw_method.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_method/add_withdraw_method.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_method/withdraw_method_screen.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_money/withdraw_money_screen.dart';
@@ -97,6 +96,7 @@ class RouteHelper{
 
   static const String createVoucherScreen = "/create_voucher_screen";
   static const String redeemLogScreen = "/redeem_log_screen";
+  static const String privacyScreen = "/privacy_screen";
 
 
   List<GetPage> routes = [
@@ -124,8 +124,6 @@ class RouteHelper{
     GetPage(name: withdrawHistoryScreen, page: () => const WithdrawHistoryScreen()),
     GetPage(name: withdrawMethodScreen, page: () => const WithdrawMethodScreen()),
     GetPage(name: addWithdrawMethodScreen, page: () => const AddWithdrawMethodScreen()),
-
-    GetPage(name: notificationScreen, page: () => const NotificationScreen()),
     GetPage(name: profileScreen, page: () => const ProfileScreen()),
     GetPage(name: editProfileScreen, page: () => const EditProfileScreen()),
     GetPage(name: termsServiceScreen, page: () => const TermsServicesScreen()),
@@ -153,5 +151,6 @@ class RouteHelper{
 
     GetPage(name: createVoucherScreen, page: () => const CreateVoucherScreen()),
     GetPage(name: redeemLogScreen, page: () => const RedeemLogScreen()),
+    GetPage(name: privacyScreen, page: () => const PrivacyPolicyScreen()),
   ];
 }

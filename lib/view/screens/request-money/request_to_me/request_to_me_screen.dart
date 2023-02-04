@@ -54,7 +54,7 @@ class _RequestToMeScreenState extends State<RequestToMeScreen> {
         child: Scaffold(
           backgroundColor: MyColor.screenBgColor,
           appBar: CustomAppBar(
-            title: MyStrings.moneyRequestToMe,
+            title: MyStrings.moneyRequestToMe.tr,
             isShowBackBtn: true,
             bgColor: MyColor.getAppBarColor(),
           ),
@@ -71,12 +71,12 @@ class _RequestToMeScreenState extends State<RequestToMeScreen> {
                   ),
                   child: Row(
                     children: [
-                      MiddleTabButtons(buttonName: MyStrings.myRequests, activeButton: controller.isMyRequest,press: (){
+                      MiddleTabButtons(buttonName: MyStrings.myRequests.tr, activeButton: controller.isMyRequest,press: (){
                         if(!controller.isMyRequest){
                           controller.changeTabState(true);
                         }
                       },),
-                      MiddleTabButtons(buttonName: MyStrings.toMe, activeButton: !controller.isMyRequest,press: (){
+                      MiddleTabButtons(buttonName: MyStrings.toMe.tr, activeButton: !controller.isMyRequest,press: (){
                         if(controller.isMyRequest){
                           controller.changeTabState(false);
                         }

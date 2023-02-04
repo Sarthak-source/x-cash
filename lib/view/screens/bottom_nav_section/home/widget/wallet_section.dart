@@ -75,8 +75,7 @@ class WalletSection extends StatelessWidget {
                               children: [
                                 const CircleShapeImage(
                                   backgroundColor: MyColor.colorWhite,
-                                  isSvgImage: true,
-                                  image: MyImages.transferMoney,
+                                  image: MyImages.withdrawMoney,
                                 ),
                                 const SizedBox(width: Dimensions.space15),
                                 Expanded(

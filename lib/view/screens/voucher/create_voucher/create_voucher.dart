@@ -46,7 +46,7 @@ class _CreateVoucherScreenState extends State<CreateVoucherScreen> {
           backgroundColor: MyColor.getScreenBgColor(),
           appBar: CustomAppBar(
             isShowBackBtn: true,
-            title: MyStrings.createVoucher,
+            title: MyStrings.createVoucher.tr,
             bgColor: MyColor.getAppBarColor(),
           ),
           body: controller.isLoading ? const CustomLoader() : const SingleChildScrollView(

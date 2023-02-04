@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/withdraw/withdraw_method_response_model.dart';
@@ -72,5 +74,22 @@ class WithdrawMethodController extends GetxController{
 
   bool hasNext(){
     return nextPageUrl != null && nextPageUrl!.isNotEmpty && nextPageUrl != 'null'? true : false;
+  }
+
+  dynamic getStatusOrColor(int index,{bool isStatus = true}){
+    String status = methodList[index].status??'';
+
+    if(isStatus){
+      String text = status == "1" ? MyStrings.enabled
+          : status == "2" ? MyStrings.pending
+          : status == "3" ? MyStrings.rejected
+          : "";
+      return text;
+    } else{
+      Color color = status == "1" ? MyColor.colorGreen
+          : status == "2" ? MyColor.colorOrange
+          : status == "3" ? MyColor.colorRed : MyColor.colorGreen;
+      return color;
+    }
   }
 }

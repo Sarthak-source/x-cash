@@ -59,7 +59,7 @@ class _RedeemLogScreenState extends State<RedeemLogScreen> {
           backgroundColor: MyColor.getScreenBgColor(),
           appBar: CustomAppBar(
             isShowBackBtn: true,
-            title: MyStrings.voucherRedeemLog,
+            title: MyStrings.voucherRedeemLog.tr,
             bgColor: MyColor.getAppBarColor(),
           ),
           body: controller.isLoading ? const CustomLoader() : Padding(

@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:get/get.dart';
-import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/about/privacy_response_model.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/repo/privacy_repo/privacy_repo.dart';
@@ -13,38 +12,38 @@ class PrivacyController extends GetxController{
   PrivacyRepo repo;
   bool isLoading=true;
 
-  List<AllPolicy> policyList=[];
+  List<PolicyPages>list=[];
+
   late var selectedHtml='';
 
   PrivacyController({required this.repo});
 
   void loadData()async{
-    ResponseModel model=await repo.loadPrivacyAndPolicy();
+    ResponseModel model=await repo.loadAboutData();
     if(model.statusCode==200){
       PrivacyResponseModel responseModel=PrivacyResponseModel.fromJson(jsonDecode(model.responseJson));
-      List<AllPolicy>?tempPolicyList = responseModel.data?.allPolicy;
-      if(tempPolicyList !=null && tempPolicyList.isNotEmpty){
-        policyList.addAll(tempPolicyList);
+      if(responseModel.data?.policyPages !=null && responseModel.data!.policyPages!=null && responseModel.data!.policyPages!.isNotEmpty){
+        list.clear();
+
+        list.addAll(responseModel.data!.policyPages!);
         changeIndex(0);
         updateLoading(false);
-      } else{
-        CustomSnackBar.error(errorList: responseModel.message?.error??[MyStrings.somethingWentWrong]);
       }
     }else{
-      CustomSnackBar.error(errorList: [model.message]);
-      updateLoading(false);
+       CustomSnackBar.showCustomSnackBar(errorList: [model.message], msg: [], isError: false);
+       updateLoading(false);
     }
   }
 
 
   void changeIndex(int index){
     selectedIndex=index;
-    selectedHtml = policyList[index].dataValues?.details??'';
+    selectedHtml = list[index].dataValues?.description??'';
     update();
   }
 
   updateLoading(bool status){
-    isLoading = status;
+    isLoading=status;
     update();
   }
 }

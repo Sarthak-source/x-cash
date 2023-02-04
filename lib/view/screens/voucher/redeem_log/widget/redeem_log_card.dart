@@ -7,6 +7,7 @@ import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/voucher/redeem_log_controller.dart';
+import 'package:xcash_app/view/components/column_widget/card_column.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/text/default_text.dart';
 import 'package:xcash_app/view/components/text/small_text.dart';
@@ -28,7 +29,7 @@ class RedeemLogCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                DefaultText(text: MyStrings.voucherCode, textColor: MyColor.getLabelTextColor().withOpacity(0.6)),
+                DefaultText(text: MyStrings.voucherCode.tr, textColor: MyColor.getLabelTextColor().withOpacity(0.6)),
                 const SizedBox(height: Dimensions.space5),
                 DefaultText(text: controller.redeemLogList[index].voucherCode ?? "", textColor: MyColor.getTextColor())
               ],
@@ -37,27 +38,14 @@ class RedeemLogCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SmallText(text: MyStrings.amount, textStyle: regularSmall.copyWith(color: MyColor.getLabelTextColor().withOpacity(0.6))),
-                    const SizedBox(height: Dimensions.space5),
-                    DefaultText(
-                        text: Converter.twoDecimalPlaceFixedWithoutRounding(controller.redeemLogList[index].amount ?? ""),
-                        textColor: MyColor.getTextColor()
-                    )
-                  ],
+                CardColumn(
+                    header: MyStrings.amount.tr,
+                    body: Converter.twoDecimalPlaceFixedWithoutRounding(controller.redeemLogList[index].amount ?? "")
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    SmallText(text: MyStrings.usedAt, textStyle: regularSmall.copyWith(color: MyColor.getLabelTextColor().withOpacity(0.6))),
-                    const SizedBox(height: Dimensions.space5),
-                    DefaultText(
-                        text: DateConverter.isoStringToLocalDateOnly(controller.redeemLogList[index].createdAt ?? ""),
-                        textColor: MyColor.getTextColor()
-                    )
-                  ],
+                CardColumn(
+                    alignmentEnd: true,
+                    header: MyStrings.usedAt.tr,
+                    body: DateConverter.isoStringToLocalDateOnly(controller.redeemLogList[index].createdAt ?? "")
                 )
               ],
             ),

@@ -9,7 +9,7 @@ import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/view/components/buttons/circle_animated_button_with_text.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
-import 'package:xcash_app/view/screens/home/components/quick_links_item_bottom_sheet.dart';
+import 'package:xcash_app/view/screens/bottom_nav_section/home/components/quick_links_item_bottom_sheet.dart';
 
 class QuickLinkSection extends StatelessWidget {
   const QuickLinkSection({Key? key}) : super(key: key);
@@ -54,7 +54,7 @@ class QuickLinkSection extends StatelessWidget {
                 child: CircleAnimatedButtonWithText(
                     buttonName: MyStrings.createVoucher,
                     backgroundColor: MyColor.screenBgColor,
-                    child: Image.asset(MyImages.voucher, color: MyColor.primaryColor, height: 20, width: 20),
+                    child: SvgPicture.asset(MyImages.voucher, color: MyColor.primaryColor, height: 20, width: 20),
                     onTap: () => Get.toNamed(RouteHelper.createVoucherScreen)
                 ),
               ),
@@ -62,7 +62,7 @@ class QuickLinkSection extends StatelessWidget {
                 child: CircleAnimatedButtonWithText(
                   buttonName: MyStrings.seeMore,
                   backgroundColor: MyColor.screenBgColor,
-                  child: Image.asset(MyImages.dMenu, height: 20, width: 20, color: MyColor.primaryColor),
+                  child: SvgPicture.asset(MyImages.seeMore, height: 20, width: 20, color: MyColor.primaryColor),
                   onTap: () => QuickLinkItemBottomSheet.quickLinkItemBottomSheet(context)
                 ),
               ),

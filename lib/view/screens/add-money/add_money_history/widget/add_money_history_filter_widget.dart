@@ -20,7 +20,7 @@ class AddMoneyHistoryFilterWidget extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(MyStrings.transactionNo, style: regularSmall.copyWith(color: MyColor.getLabelTextColor(), fontWeight: FontWeight.w500)),
+                Text(MyStrings.transactionNo.tr, style: regularSmall.copyWith(color: MyColor.getLabelTextColor(), fontWeight: FontWeight.w500)),
                 const SizedBox(height: Dimensions.space5),
                 SizedBox(
                   height: 45,
@@ -31,7 +31,7 @@ class AddMoneyHistoryFilterWidget extends StatelessWidget {
                     keyboardType: TextInputType.text,
                     controller: controller.searchController,
                     decoration: InputDecoration(
-                        hintText: MyStrings.searchByTrxId,
+                        hintText: MyStrings.searchByTrxId.tr,
                         contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
                         hintStyle: regularSmall.copyWith(color: MyColor.hintTextColor),
                         filled: true,

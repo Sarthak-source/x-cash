@@ -15,7 +15,7 @@ import 'package:xcash_app/view/components/card/custom_card.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/custom_no_data_found_class.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
-import 'package:xcash_app/view/screens/withdrawals/withdraw_money/widget/withdraw_money_status.dart';
+import 'package:xcash_app/view/screens/withdrawals/withdraw_history/widget/status_widget.dart';
 
 class WithdrawMethodScreen extends StatefulWidget {
   const WithdrawMethodScreen({Key? key}) : super(key: key);
@@ -149,7 +149,10 @@ class _WithdrawMethodScreenState extends State<WithdrawMethodScreen> {
                                 )
                               ],
                             ),
-                            WithdrawMoneyStatus(status: controller.methodList[index].withdrawMethod?.status ?? "")
+                            StatusWidget(
+                                status: controller.getStatusOrColor(index),
+                                color: controller.getStatusOrColor(index, isStatus: false)
+                            )
                           ],
                         ),
                         const CustomDivider(space: Dimensions.space10),

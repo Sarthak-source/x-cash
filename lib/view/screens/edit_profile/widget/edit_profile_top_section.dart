@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/style.dart';
+import 'package:xcash_app/data/controller/account/profile_controller.dart';
 
 class EditProfileTopSection extends StatefulWidget {
   const EditProfileTopSection({Key? key}) : super(key: key);
@@ -14,62 +16,64 @@ class EditProfileTopSection extends StatefulWidget {
 class _EditProfileTopSectionState extends State<EditProfileTopSection> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 150,
-      width: MediaQuery.of(context).size.width,
-      padding: const EdgeInsets.symmetric(vertical: Dimensions.space15),
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-          color: MyColor.colorWhite,
-          borderRadius: BorderRadius.circular(10)
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Stack(
-            children: [
-              Container(
-                height: 65, width: 65,
-                alignment: Alignment.center,
-                padding: const EdgeInsets.symmetric(vertical: Dimensions.space10 / 2, horizontal: Dimensions.space10 / 2),
-                decoration: const BoxDecoration(
-                  color: MyColor.screenBgColor,
-                  shape: BoxShape.circle,
-                ),
-                child: Container(
-                  height: 60, width: 60,
+    return GetBuilder<ProfileController>(
+      builder: (controller) => Container(
+        height: 150,
+        width: MediaQuery.of(context).size.width,
+        padding: const EdgeInsets.symmetric(vertical: Dimensions.space15),
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+            color: MyColor.colorWhite,
+            borderRadius: BorderRadius.circular(10)
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Stack(
+              children: [
+                Container(
+                  height: 65, width: 65,
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.symmetric(vertical: Dimensions.space10 / 2, horizontal: Dimensions.space10 / 2),
                   decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(image: AssetImage(MyImages.userProfile), fit: BoxFit.fill)
+                    color: MyColor.screenBgColor,
+                    shape: BoxShape.circle,
                   ),
-                ),
-              ),
-              Positioned(
-                bottom: 0,
-                right: 0,
-                child: GestureDetector(
-                  onTap: (){},
                   child: Container(
-                    alignment: Alignment.center,
-                    height: 25, width: 25,
-                    decoration: const BoxDecoration(color: MyColor.primaryColor, shape: BoxShape.circle),
-                    child: const Icon(Icons.camera_alt, color: MyColor.colorWhite, size: 12.5),
+                    height: 60, width: 60,
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(image: AssetImage(MyImages.profile), fit: BoxFit.fill)
+                    ),
                   ),
                 ),
-              )
-            ],
-          ),
+                Positioned(
+                  bottom: 0,
+                  right: 0,
+                  child: GestureDetector(
+                    onTap: (){},
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 25, width: 25,
+                      decoration: const BoxDecoration(color: MyColor.primaryColor, shape: BoxShape.circle),
+                      child: const Icon(Icons.camera_alt, color: MyColor.colorWhite, size: 12.5),
+                    ),
+                  ),
+                )
+              ],
+            ),
 
-          const SizedBox(height: Dimensions.space15),
+            const SizedBox(height: Dimensions.space15),
 
-          Text(
-            "William Anne",
-            textAlign: TextAlign.center,
-            style: regularLarge.copyWith(fontWeight: FontWeight.w500),
-          )
-        ],
-      ),
+            Text(
+              "${controller.firstNameController.text}${controller.lastNameController.text}",
+              textAlign: TextAlign.center,
+              style: regularLarge.copyWith(fontWeight: FontWeight.w500),
+            )
+          ],
+        ),
+      )
     );
   }
 }

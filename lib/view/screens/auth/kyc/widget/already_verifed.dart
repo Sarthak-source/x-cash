@@ -30,7 +30,7 @@ class _AlreadyVerifiedWidgetState extends State<AlreadyVerifiedWidget> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SvgPicture.asset(widget.isPending?MyImages.pendingIcon:MyImages.verifiedIcon,height: 100,width: 100,fit: BoxFit.cover,),
+          SvgPicture.asset(widget.isPending ? MyImages.pendingIcon : MyImages.verifiedIcon,height: 100,width: 100,fit: BoxFit.cover,),
           const SizedBox(height: 25,),
           Text(widget.isPending?MyStrings.kycUnderReviewMsg:MyStrings.kycAlreadyVerifiedMsg,style: regularDefault.copyWith(color: MyColor.colorBlack,fontSize: Dimensions.fontExtraLarge,)),
           const SizedBox(height: 40,)

@@ -49,7 +49,7 @@ class _AddWithdrawMethodScreenState extends State<AddWithdrawMethodScreen> {
         child: Scaffold(
           backgroundColor: MyColor.getScreenBgColor(),
           appBar: CustomAppBar(
-            title: MyStrings.addWithdrawMethod,
+            title: MyStrings.addWithdrawMethod.tr,
             bgColor: MyColor.getAppBarColor(),
           ),
           body: controller.isLoading ? const CustomLoader(): SingleChildScrollView(
@@ -59,7 +59,7 @@ class _AddWithdrawMethodScreenState extends State<AddWithdrawMethodScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CustomDropDownTextField(
-                    labelText: MyStrings.selectMethod,
+                    labelText: MyStrings.selectMethod.tr,
                     selectedValue: controller.selectedMethod,
                     onChanged: (value) {
                       controller.setSelectedMethod(value);
@@ -76,7 +76,7 @@ class _AddWithdrawMethodScreenState extends State<AddWithdrawMethodScreen> {
                   ),
                   const SizedBox(height: Dimensions.space15),
                   CustomDropDownTextField(
-                    labelText: MyStrings.selectCurrency,
+                    labelText: MyStrings.selectCurrency.tr,
                     selectedValue: controller.selectedCurrencyModel,
                     onChanged: (value) {
                       controller.setSelectedCurrency(value);
@@ -95,7 +95,7 @@ class _AddWithdrawMethodScreenState extends State<AddWithdrawMethodScreen> {
                   CustomTextField(
                       needOutlineBorder: true,
                       controller: controller.nameController,
-                      labelText: MyStrings.provideNickName,
+                      labelText: MyStrings.provideNickName.tr,
                       hintText: MyStrings.provideNickName.toLowerCase(),
                       onChanged: (value) {}
                   ),
@@ -122,10 +122,10 @@ class _AddWithdrawMethodScreenState extends State<AddWithdrawMethodScreen> {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         CustomTextField(
-                                            hintText: (model.name??'').toString().capitalizeFirst,
+                                            hintText: (model.name?.tr ??'').toString().capitalizeFirst,
                                             needLabel: true,
                                             needOutlineBorder: true,
-                                            labelText: model.name??'',
+                                            labelText: model.name?.tr ??'',
                                             onChanged: (value){
                                               controller.changeSelectedValue(value, index);
                                             }),
@@ -137,8 +137,8 @@ class _AddWithdrawMethodScreenState extends State<AddWithdrawMethodScreen> {
                                         CustomTextField(
                                             needLabel: true,
                                             needOutlineBorder: true,
-                                            labelText: model.name??'',
-                                            hintText: (model.name??'').capitalizeFirst,
+                                            labelText: model.name?.tr ??'',
+                                            hintText: (model.name?.tr ??'').capitalizeFirst,
                                             onChanged: (value){
                                               controller.changeSelectedValue(value, index);
                                             }),
@@ -147,7 +147,7 @@ class _AddWithdrawMethodScreenState extends State<AddWithdrawMethodScreen> {
                                     ):model.type=='select'?Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        FormRow(label: model.name??'', isRequired: model.isRequired=='optional'?false:true),
+                                        FormRow(label: model.name?.tr ??'', isRequired: model.isRequired=='optional'?false:true),
                                         const SizedBox(height: Dimensions.textToTextSpace,),
                                         CustomDropDownTextField(
                                           needLabel: false,
@@ -166,7 +166,7 @@ class _AddWithdrawMethodScreenState extends State<AddWithdrawMethodScreen> {
                                     ):model.type=='radio'?Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        FormRow(label: model.name??'', isRequired: model.isRequired=='optional'?false:true),
+                                        FormRow(label: model.name?.tr ??'', isRequired: model.isRequired=='optional'?false:true),
                                         CustomRadioButton(title:model.name,selectedIndex:controller.formList[index].options?.indexOf(model.selectedValue??'')??0,list: model.options??[],onChanged: (selectedIndex){
                                           controller.changeSelectedRadioBtnValue(index,selectedIndex);
                                         },),
@@ -174,7 +174,7 @@ class _AddWithdrawMethodScreenState extends State<AddWithdrawMethodScreen> {
                                     ):model.type=='checkbox'?Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        FormRow(label: model.name??'', isRequired: model.isRequired=='optional'?false:true),
+                                        FormRow(label: model.name?.tr ??'', isRequired: model.isRequired=='optional'?false:true),
                                         CustomCheckBox(selectedValue:controller.formList[index].cbSelected,list: model.options??[],onChanged: (value){
                                           controller.changeSelectedCheckBoxValue(index,value);
                                         },),
@@ -182,7 +182,7 @@ class _AddWithdrawMethodScreenState extends State<AddWithdrawMethodScreen> {
                                     ):model.type=='file'?Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        FormRow(label: model.name??'', isRequired: model.isRequired=='optional'?false:true),
+                                        FormRow(label: model.name?.tr ??'', isRequired: model.isRequired=='optional'?false:true),
                                         Padding(
                                             padding: const EdgeInsets.symmetric(vertical: Dimensions.textToTextSpace),
                                             child: SizedBox(

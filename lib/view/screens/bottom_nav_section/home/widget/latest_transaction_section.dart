@@ -1,8 +1,5 @@
-import 'package:animated_floating_buttons/animated_floating_buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xcash_app/core/helper/date_converter.dart';
-import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
@@ -12,8 +9,8 @@ import 'package:xcash_app/data/controller/home/home_controller.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/custom_no_data_found_class.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
-import 'package:xcash_app/view/screens/home/widget/latest_transaction__bottom_sheet.dart';
-import 'package:xcash_app/view/screens/home/widget/latest_transaction_card.dart';
+import 'package:xcash_app/view/screens/bottom_nav_section/home/widget/latest_transaction__bottom_sheet.dart';
+import 'package:xcash_app/view/screens/bottom_nav_section/home/widget/latest_transaction_card.dart';
 
 class LatestTransactionSection extends StatelessWidget {
   const LatestTransactionSection({Key? key}) : super(key: key);

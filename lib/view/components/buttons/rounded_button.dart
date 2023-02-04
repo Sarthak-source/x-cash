@@ -45,7 +45,7 @@ class RoundedButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(cornerRadius),
               color: isColorChange ? color : MyColor.getPrimaryButtonColor()
           ),
-          child: Center(child: Text(text,style:TextStyle(color: isColorChange ? textColor : MyColor.getPrimaryButtonTextColor(), fontSize: 14, fontWeight: FontWeight.w500)))),
+          child: Center(child: Text(text.tr,style:TextStyle(color: isColorChange ? textColor : MyColor.getPrimaryButtonTextColor(), fontSize: 14, fontWeight: FontWeight.w500)))),
     ):
     isOutlined? Material(
       child: InkWell(
@@ -58,7 +58,7 @@ class RoundedButton extends StatelessWidget {
                 borderRadius: BorderRadius.circular(cornerRadius),
                 color: isColorChange ? color : MyColor.getPrimaryButtonColor()
             ),
-            child: Center(child: Text(text,style:TextStyle(color: isColorChange ? textColor : MyColor.getPrimaryButtonTextColor(), fontSize: 14, fontWeight: FontWeight.w500)))),
+            child: Center(child: Text(text.tr,style:TextStyle(color: isColorChange ? textColor : MyColor.getPrimaryButtonTextColor(), fontSize: 14, fontWeight: FontWeight.w500)))),
       ),
     ): SizedBox(
       width: size.width * width,

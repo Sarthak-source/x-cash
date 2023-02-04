@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/route/route.dart';
+import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/withdraw/submit_withdraw_money_response_model.dart';
@@ -94,8 +95,6 @@ class WithdrawMoneyController extends GetxController{
       amount: amount
     );
 
-    print(responseModel.responseJson);
-
     if(responseModel.statusCode == 200){
       SubmitWithdrawMoneyResponseModel model = SubmitWithdrawMoneyResponseModel.fromJson(jsonDecode(responseModel.responseJson));
       if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
@@ -113,5 +112,22 @@ class WithdrawMoneyController extends GetxController{
     submitLoading = false;
     update();
 
+  }
+
+  dynamic getStatusOrColor(int index,{bool isStatus = true}){
+    String status = withdrawMoneyList[index].status??'';
+
+    if(isStatus){
+      String text = status == "1" ? MyStrings.enabled
+          : status == "2" ? MyStrings.pending
+          : status == "3" ? MyStrings.rejected
+          : "";
+      return text;
+    } else{
+      Color color = status == "1" ? MyColor.colorGreen
+          : status == "2" ? MyColor.colorOrange
+          : status == "3" ? MyColor.colorRed : MyColor.colorGreen;
+      return color;
+    }
   }
 }

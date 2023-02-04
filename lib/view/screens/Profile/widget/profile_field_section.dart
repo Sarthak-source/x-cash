@@ -1,15 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xcash_app/core/utils/my_strings.dart';
-import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
-import 'package:xcash_app/core/utils/style.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/controller/account/profile_controller.dart';
-import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/column_widget/card_column.dart';
-
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/image/circle_shape_image.dart';
 
@@ -38,7 +34,7 @@ class _ProfileFieldSectionState extends State<ProfileFieldSection> {
           children: [
             Row(
               children: [
-                const CircleShapeImage(image: MyImages.user),
+                const CircleShapeImage(image: MyImages.name),
                 const SizedBox(width: Dimensions.space15),
                 CardColumn(
                     header: MyStrings.name,
@@ -49,7 +45,7 @@ class _ProfileFieldSectionState extends State<ProfileFieldSection> {
             const CustomDivider(space: Dimensions.space15),
             Row(
               children: [
-                const CircleShapeImage(image: MyImages.paperPlan),
+                const CircleShapeImage(image: MyImages.email),
                 const SizedBox(width: Dimensions.space15),
                 CardColumn(
                     header: MyStrings.email,

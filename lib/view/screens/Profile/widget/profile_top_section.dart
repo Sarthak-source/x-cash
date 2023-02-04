@@ -31,7 +31,7 @@ class _ProfileTopSectionState extends State<ProfileTopSection> {
           children: [
             const CircleAvatar(
               radius: 25,
-              backgroundImage: AssetImage(MyImages.userProfile),
+              backgroundImage: AssetImage(MyImages.profile),
             ),
             const SizedBox(height: Dimensions.space10),
             Row(

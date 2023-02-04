@@ -6,12 +6,12 @@ import 'package:xcash_app/data/controller/home/home_controller.dart';
 import 'package:xcash_app/data/repo/home/home_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
-import 'package:xcash_app/view/screens/home/widget/insight_section.dart';
-import 'package:xcash_app/view/screens/home/widget/latest_transaction_section.dart';
-import 'package:xcash_app/view/screens/home/widget/main_item_section.dart';
-import 'package:xcash_app/view/screens/home/widget/quick_link_section.dart';
-import 'package:xcash_app/view/screens/home/widget/top_section.dart';
-import 'package:xcash_app/view/screens/home/widget/wallet_section.dart';
+import 'package:xcash_app/view/screens/bottom_nav_section/home/widget/insight_section.dart';
+import 'package:xcash_app/view/screens/bottom_nav_section/home/widget/latest_transaction_section.dart';
+import 'package:xcash_app/view/screens/bottom_nav_section/home/widget/main_item_section.dart';
+import 'package:xcash_app/view/screens/bottom_nav_section/home/widget/quick_link_section.dart';
+import 'package:xcash_app/view/screens/bottom_nav_section/home/widget/top_section.dart';
+import 'package:xcash_app/view/screens/bottom_nav_section/home/widget/wallet_section.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

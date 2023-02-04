@@ -37,7 +37,7 @@ class _FiltersFieldState extends State<FiltersField> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(MyStrings.transactionType, style: regularSmall.copyWith(color: MyColor.colorGrey)),
+                      Text(MyStrings.transactionType.tr, style: regularSmall.copyWith(color: MyColor.colorGrey)),
                       const SizedBox(height: Dimensions.space10),
                       SizedBox(
                         width: 150,
@@ -54,7 +54,7 @@ class _FiltersFieldState extends State<FiltersField> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(MyStrings.operationType, style: regularSmall.copyWith(color: MyColor.colorGrey)),
+                      Text(MyStrings.operationType.tr, style: regularSmall.copyWith(color: MyColor.colorGrey)),
                       const SizedBox(height: Dimensions.space10),
                       SizedBox(
                         width: 150,
@@ -71,7 +71,7 @@ class _FiltersFieldState extends State<FiltersField> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(MyStrings.historyFrom, style: regularSmall.copyWith(color: MyColor.colorGrey)),
+                      Text(MyStrings.historyFrom.tr, style: regularSmall.copyWith(color: MyColor.colorGrey)),
                       const SizedBox(height: Dimensions.space10),
                       SizedBox(
                         width: 150,
@@ -88,7 +88,7 @@ class _FiltersFieldState extends State<FiltersField> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(MyStrings.walletCurrency, style: regularSmall.copyWith(color: MyColor.colorGrey)),
+                      Text(MyStrings.walletCurrency.tr, style: regularSmall.copyWith(color: MyColor.colorGrey)),
                       const SizedBox(height: Dimensions.space10),
                       SizedBox(
                         width: 150,
@@ -115,7 +115,7 @@ class _FiltersFieldState extends State<FiltersField> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(MyStrings.transactionNo, style: regularSmall.copyWith(color: MyColor.colorGrey, fontWeight: FontWeight.w500)),
+                      Text(MyStrings.transactionNo.tr, style: regularSmall.copyWith(color: MyColor.colorGrey, fontWeight: FontWeight.w500)),
                       const SizedBox(height: Dimensions.space5),
                       SizedBox(
                         height: 45,
@@ -126,7 +126,7 @@ class _FiltersFieldState extends State<FiltersField> {
                           keyboardType: TextInputType.text,
                           controller: controller.trxController,
                           decoration: InputDecoration(
-                              hintText: MyStrings.enterTransactionNo,
+                              hintText: MyStrings.enterTransactionNo.tr,
                               contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
                               hintStyle: regularSmall.copyWith(color: MyColor.hintTextColor),
                               filled: true,

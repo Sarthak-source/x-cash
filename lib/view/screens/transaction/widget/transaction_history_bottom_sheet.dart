@@ -31,12 +31,12 @@ class TransactionHistoryBottomSheet extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               CardColumn(
-                header: MyStrings.transactionId,
+                header: MyStrings.transactionId.tr,
                 body: controller.transactionList[index].trx ?? "",
               ),
               CardColumn(
                 alignmentEnd: true,
-                header: MyStrings.wallet,
+                header: MyStrings.wallet.tr,
                 body: controller.transactionList[index].currency?.currencyCode ?? "",
               )
             ],
@@ -46,13 +46,13 @@ class TransactionHistoryBottomSheet extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               CardColumn(
-                header: MyStrings.beforeCharge,
+                header: MyStrings.beforeCharge.tr,
                 body: "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.transactionList[index].beforeCharge ?? "")} "
                     "${controller.transactionList[index].currency?.currencyCode ?? ""}",
               ),
               CardColumn(
                 alignmentEnd: true,
-                header: MyStrings.charge,
+                header: MyStrings.charge.tr,
                 body: "${controller.transactionList[index].chargeType} "
                     "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.transactionList[index].charge ?? "")} "
                     "${controller.transactionList[index].currency?.currencyCode ?? ""}",
@@ -64,7 +64,7 @@ class TransactionHistoryBottomSheet extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               CardColumn(
-                header: MyStrings.remainingBalance,
+                header: MyStrings.remainingBalance.tr,
                 body: "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.transactionList[index].postBalance ?? "")} ${controller.transactionList[index].currency?.currencyCode ?? ""}",
               ),
             ],

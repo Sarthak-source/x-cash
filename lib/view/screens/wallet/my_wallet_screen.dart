@@ -50,7 +50,7 @@ class _MyWalletScreenState extends State<MyWalletScreen> {
         child: Scaffold(
           backgroundColor: MyColor.screenBgColor,
           appBar: CustomAppBar(
-            title: MyStrings.myWallet,
+            title: MyStrings.myWallet.tr,
             isShowBackBtn: true,
             bgColor: MyColor.getAppBarColor(),
           ),
@@ -76,7 +76,6 @@ class _MyWalletScreenState extends State<MyWalletScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     CircleShapeImage(
-                      isSvgImage: true,
                       image: controller.image,
                     ),
                     const SizedBox(height: Dimensions.space10),
@@ -98,7 +97,7 @@ class _MyWalletScreenState extends State<MyWalletScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          MyStrings.transferMoney,
+                          MyStrings.transferMoney.tr,
                           style: regularSmall.copyWith(color: MyColor.contentTextColor),
                         ),
                         GestureDetector(

@@ -76,7 +76,7 @@ class _RedeemVoucherState extends State<RedeemVoucher> {
                     children: [
                       Image.asset(MyImages.email, color: MyColor.colorWhite, height: 16, width: 16),
                       const SizedBox(width: Dimensions.space10),
-                      Text(MyStrings.redeemLog, style: regularSmall.copyWith(color: MyColor.colorWhite, fontWeight: FontWeight.w500))
+                      Text(MyStrings.redeemLog.tr, style: regularSmall.copyWith(color: MyColor.colorWhite, fontWeight: FontWeight.w500))
                     ],
                   ),
                 ),
@@ -88,8 +88,8 @@ class _RedeemVoucherState extends State<RedeemVoucher> {
             key: formKey,
             child: CustomTextField(
               needOutlineBorder: true,
-              labelText: MyStrings.voucherCode,
-              hintText: MyStrings.enterVoucherCode,
+              labelText: MyStrings.voucherCode.tr,
+              hintText: MyStrings.enterVoucherCode.tr,
               controller: controller.codeController,
               onChanged: (value){},
               validator: (value){

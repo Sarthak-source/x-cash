@@ -14,7 +14,7 @@ class WalletController extends GetxController{
   WalletController({required this.walletRepo});
 
   bool isLoading = true;
-  String image = MyImages.transferMoney;
+  String image = MyImages.withdrawMoney;
   wallet_model.Wallets? wallets = wallet_model.Wallets();
 
   List<wallet_model.Wallets> walletList = [];

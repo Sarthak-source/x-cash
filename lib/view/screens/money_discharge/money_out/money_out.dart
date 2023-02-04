@@ -42,7 +42,7 @@ class _MoneyOutScreenState extends State<MoneyOutScreen> {
           backgroundColor: MyColor.getScreenBgColor(),
           appBar: CustomAppBar(
             isShowBackBtn: true,
-            title: MyStrings.moneyOut,
+            title: MyStrings.moneyOut.tr,
             bgColor: MyColor.getAppBarColor(),
           ),
           body: controller.isLoading ? const CustomLoader() : const SingleChildScrollView(

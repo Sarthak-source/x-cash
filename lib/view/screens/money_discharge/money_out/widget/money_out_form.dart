@@ -40,8 +40,8 @@ class _MoneyOutFormState extends State<MoneyOutForm> {
           children: [
             CustomTextField(
               needOutlineBorder: true,
-              labelText: MyStrings.agentUsernameEmail,
-              hintText: MyStrings.agentUsernameHint,
+              labelText: MyStrings.agentUsernameEmail.tr,
+              hintText: MyStrings.agentUsernameHint.tr,
               onChanged: (value){},
               controller: controller.agentController,
               validator: (value) {
@@ -54,7 +54,7 @@ class _MoneyOutFormState extends State<MoneyOutForm> {
             ),
             const SizedBox(height: Dimensions.space15),
             CustomDropDownTextField(
-              labelText: MyStrings.selectWallet,
+              labelText: MyStrings.selectWallet.tr,
               selectedValue: controller.selectedWallet,
               onChanged: (value) => controller.setWalletMethod(value),
               items: controller.walletList.map((Wallets wallet) {
@@ -65,28 +65,23 @@ class _MoneyOutFormState extends State<MoneyOutForm> {
               }).toList(),
             ),
             const SizedBox(height: Dimensions.space15),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CustomAmountTextField(
-                  labelText: MyStrings.amount,
-                  hintText: MyStrings.amountHint,
-                  onChanged: (value){
-                    if(value.toString().isEmpty){
-                      controller.changeInfoWidget(0);
-                    }else{
-                      double amount = double.tryParse(value.toString())??0;
-                      controller.changeInfoWidget(amount);
-                    }
-                  },
-                  currency: controller.currency,
-                  controller: controller.amountController,
-                ),
-              ],
+            CustomAmountTextField(
+              labelText: MyStrings.amount.tr,
+              hintText: MyStrings.amountHint.tr,
+              onChanged: (value){
+                if(value.toString().isEmpty){
+                  controller.changeInfoWidget(0);
+                }else{
+                  double amount = double.tryParse(value.toString())??0;
+                  controller.changeInfoWidget(amount);
+                }
+              },
+              currency: controller.currency,
+              controller: controller.amountController,
             ),
             const SizedBox(height: Dimensions.space15),
             CustomDropDownTextField(
-              labelText: MyStrings.selectOtp,
+              labelText: MyStrings.selectOtp.tr,
               selectedValue: controller.selectedOtp,
               onChanged: (value) => controller.setOtpMethod(value),
               items: controller.otpTypeList.map((value) {

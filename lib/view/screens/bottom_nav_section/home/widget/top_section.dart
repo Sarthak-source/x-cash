@@ -37,7 +37,7 @@ class _TopSectionState extends State<TopSection> {
                     height: 40, width: 40,
                     decoration: const BoxDecoration(
                         shape: BoxShape.circle,
-                        image: DecorationImage(image: AssetImage(MyImages.userProfile), fit: BoxFit.fill)
+                        image: DecorationImage(image: AssetImage(MyImages.profile), fit: BoxFit.fill)
                     ),
                   ),
                 ),

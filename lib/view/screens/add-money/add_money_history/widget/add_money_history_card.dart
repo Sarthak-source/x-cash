@@ -7,6 +7,7 @@ import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/add_money/add_money_history_controller.dart';
+import 'package:xcash_app/view/components/column_widget/card_column.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/text/default_text.dart';
 import 'package:xcash_app/view/components/text/small_text.dart';
@@ -29,27 +30,14 @@ class AddMoneyHistoryCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SmallText(text: MyStrings.trx, textStyle: regularSmall.copyWith(color: MyColor.colorBlack.withOpacity(0.6))),
-                    const SizedBox(height: Dimensions.space5),
-                    DefaultText(
-                      text: controller.depositList[index].trx ?? "",
-                      textColor: MyColor.colorBlack,
-                    )
-                  ],
+                CardColumn(
+                    header: MyStrings.trx,
+                    body: controller.depositList[index].trx ?? ""
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    SmallText(text: MyStrings.date, textStyle: regularSmall.copyWith(color: MyColor.colorBlack.withOpacity(0.6))),
-                    const SizedBox(height: Dimensions.space5),
-                    DefaultText(
-                      text: DateConverter.isoStringToLocalDateOnly(controller.depositList[index].createdAt ?? ""),
-                      textColor: MyColor.colorBlack,
-                    )
-                  ],
+                CardColumn(
+                    alignmentEnd: true,
+                    header: MyStrings.date,
+                    body: DateConverter.isoStringToLocalDateOnly(controller.depositList[index].createdAt ?? "")
                 ),
               ],
             ),
@@ -58,16 +46,9 @@ class AddMoneyHistoryCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SmallText(text: MyStrings.amount, textStyle: regularSmall.copyWith(color: MyColor.colorBlack.withOpacity(0.6))),
-                    const SizedBox(height: Dimensions.space5),
-                    DefaultText(
-                      text: "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.depositList[index].finalAmo ?? "")} ${controller.depositList[index].methodCurrency}",
-                      textColor: MyColor.colorBlack,
-                    )
-                  ],
+                CardColumn(
+                    header: MyStrings.amount,
+                    body: "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.depositList[index].finalAmo ?? "")} ${controller.depositList[index].methodCurrency}"
                 ),
                 StatusWidget(
                     status: controller.getStatusOrColor(index),

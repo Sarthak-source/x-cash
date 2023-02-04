@@ -55,7 +55,7 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
         child: Scaffold(
           backgroundColor: MyColor.getScreenBgColor(),
           appBar: CustomAppBar(
-            title: MyStrings.requestMoney,
+            title: MyStrings.requestMoney.tr,
             isShowBackBtn: true,
             bgColor: MyColor.getAppBarColor(),
           ),
@@ -69,7 +69,7 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       CustomDropDownTextField(
-                        labelText: MyStrings.selectWallet,
+                        labelText: MyStrings.selectWallet.tr,
                         selectedValue: controller.selectedWallet,
                         onChanged: (value) => controller.setWalletMethod(value),
                         items: controller.walletList.map((Wallets wallet) {
@@ -80,7 +80,7 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                         }).toList(),
                       ),
                       const SizedBox(height: Dimensions.space5),
-                      Text("${MyStrings.totalCharge}: ${controller.totalCharge} ${controller.currency}", style: regularExtraSmall.copyWith(color: MyColor.primaryColor))
+                      Text("${MyStrings.totalCharge.tr}: ${controller.totalCharge} ${controller.currency}", style: regularExtraSmall.copyWith(color: MyColor.primaryColor))
                     ],
                   ),
                   const SizedBox(height: Dimensions.space15),
@@ -89,8 +89,8 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                     children: [
                       CustomAmountTextField(
                         controller: controller.amountController,
-                        labelText: MyStrings.amountToRequest,
-                        hintText: MyStrings.amountHint,
+                        labelText: MyStrings.amountToRequest.tr,
+                        hintText: MyStrings.amountHint.tr,
                         onChanged: (value){
                           if(value.toString().isEmpty){
                             controller.changeInfoWidget(0);
@@ -112,8 +112,8 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                   CustomTextField(
                       needOutlineBorder: true,
                       controller: controller.requestToController,
-                      labelText: MyStrings.requestTo,
-                      hintText: MyStrings.enterEmailOrUserName,
+                      labelText: MyStrings.requestTo.tr,
+                      hintText: MyStrings.enterEmailOrUserName.tr,
                       onChanged: (value){
                         if(value == null && value.toString().isEmpty){
                           CustomSnackBar.error(errorList: [MyStrings.enterEmailOrUserName]);
@@ -125,7 +125,7 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                     controller: controller.noteController,
                     needOutlineBorder: true,
                     maxLines: 4,
-                    labelText: MyStrings.noteForRecipient,
+                    labelText: MyStrings.noteForRecipient.tr,
                     onChanged: (value){},
                   ),
                   const SizedBox(height: Dimensions.space25),

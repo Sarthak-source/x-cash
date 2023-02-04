@@ -36,11 +36,11 @@ class MyRequestListItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CardColumn(
-                    header: MyStrings.requestFrom,
+                    header: MyStrings.requestTo.tr,
                     body: "${controller.myRequestList[index].receiver?.firstname ?? "-"} ${controller.myRequestList[index].receiver?.lastname ?? "-"}"
                 ),
                 CardColumn(
-                    header: MyStrings.date,
+                    header: MyStrings.date.tr,
                     body: DateConverter.isoStringToLocalDateOnly(controller.myRequestList[index].createdAt ?? ""),
                     alignmentEnd: true
                 )
@@ -52,7 +52,7 @@ class MyRequestListItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 CardColumn(
-                    header: MyStrings.amount,
+                    header: MyStrings.amount.tr,
                     body: "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.myRequestList[index].requestAmount ?? "")} "
                     "${controller.myRequestList[index].currency?.currencyCode ?? ""}"
                 ),

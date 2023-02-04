@@ -7,6 +7,7 @@ import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/withdraw/withdraw_history_controller.dart';
+import 'package:xcash_app/view/components/column_widget/card_column.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/text/default_text.dart';
 import 'package:xcash_app/view/components/text/small_text.dart';
@@ -36,28 +37,15 @@ class WithdrawLogCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SmallText(text: MyStrings.trx, textStyle: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.6))),
-                      const SizedBox(height: Dimensions.space5),
-                      DefaultText(
-                        text: controller.withdrawList[index].trx ?? "",
-                        textColor: MyColor.colorBlack,
-                      )
-                    ],
+                  CardColumn(
+                      header: MyStrings.trx.tr,
+                      body: controller.withdrawList[index].trx ?? ""
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      SmallText(text: MyStrings.date, textStyle: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.6))),
-                      const SizedBox(height: Dimensions.space5),
-                      DefaultText(
-                        text: DateConverter.isoStringToLocalDateOnly(controller.withdrawList[index].createdAt ?? ""),
-                        textColor: MyColor.colorBlack,
-                      )
-                    ],
-                  ),
+                  CardColumn(
+                      alignmentEnd: true,
+                      header: MyStrings.date.tr,
+                      body: DateConverter.isoStringToLocalDateOnly(controller.withdrawList[index].createdAt ?? "")
+                  )
                 ],
               ),
               const CustomDivider(space: Dimensions.space10),
@@ -65,16 +53,9 @@ class WithdrawLogCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SmallText(text: MyStrings.amount, textStyle: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.6))),
-                      const SizedBox(height: Dimensions.space5),
-                      DefaultText(
-                        text: "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.withdrawList[index].finalAmount ?? "")} ${controller.withdrawList[index].currency}",
-                        textColor: MyColor.colorBlack,
-                      )
-                    ],
+                  CardColumn(
+                      header: MyStrings.amount.tr,
+                      body: "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.withdrawList[index].finalAmount ?? "")} ${controller.withdrawList[index].currency}"
                   ),
                   StatusWidget(
                     status: controller.getStatusOrColor(index),

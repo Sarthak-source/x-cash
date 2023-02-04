@@ -43,19 +43,9 @@ class _VoucherListCardState extends State<VoucherListCard> {
                       controller.voucherList[index].voucherCode ?? "",
                       style: regularLarge.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600),
                     ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(vertical: Dimensions.space5, horizontal: Dimensions.space10),
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: controller.voucherList[index].isUsed == "0" ? Colors.orange[100] : MyColor.colorGreen100
-                      ),
-                      child: Text(
-                        controller.voucherList[index].isUsed == "0" ? controller.notUsed : controller.used,
-                        style: regularExtraSmall.copyWith(
-                          color: controller.voucherList[index].isUsed == "0" ? Colors.orange : MyColor.colorGreen
-                        ),
-                      ),
+                    Text(
+                      DateConverter.isoStringToLocalDateOnly(controller.voucherList[index].createdAt ?? ""),
+                      style: regularDefault.copyWith(color: MyColor.getTextColor()),
                     ),
                   ],
                 ),
@@ -64,13 +54,23 @@ class _VoucherListCardState extends State<VoucherListCard> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      DateConverter.isoStringToLocalDateOnly(controller.voucherList[index].createdAt ?? ""),
-                      style: regularDefault.copyWith(color: MyColor.getTextColor()),
-                    ),
-                    Text(
                       "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.voucherList[index].amount ?? "")} "
                       "${controller.voucherList[index].currency?.currencyCode ?? ""}",
                       style: regularLarge.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(vertical: Dimensions.space5, horizontal: Dimensions.space10),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          border: Border.all(color: controller.voucherList[index].isUsed == "0" ? MyColor.colorOrange : MyColor.colorGreen)
+                      ),
+                      child: Text(
+                        controller.voucherList[index].isUsed == "0" ? controller.notUsed : controller.used,
+                        style: regularExtraSmall.copyWith(
+                            color: controller.voucherList[index].isUsed == "0" ? MyColor.colorOrange : MyColor.colorGreen
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -78,7 +78,7 @@ class _VoucherListCardState extends State<VoucherListCard> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    const Text("${MyStrings.usedAt}: ", style: regularSmall),
+                    Text("${MyStrings.usedAt.tr}: ", style: regularSmall),
                     Text(
                       controller.voucherList[index].isUsed == "0" ? "N/A" : DateConverter.isoStringToLocalDateOnly(controller.voucherList[index].createdAt ?? ""),
                       style: regularDefault

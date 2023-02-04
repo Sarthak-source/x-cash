@@ -53,7 +53,7 @@ class _NoDataOrInternetScreenState extends State<NoDataOrInternetScreen> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height*widget.imageHeight,
                   width: widget.isNoInternet?MediaQuery.of(context).size.width*.6:MediaQuery.of(context).size.width*.4,
-                  child: widget.isNoInternet?Lottie.asset(MyImages.noInternet,height:  MediaQuery.of(context).size.height*widget.imageHeight,width: MediaQuery.of(context).size.width*.6,):SvgPicture.asset(widget.image,height: 100,width: 100,color: MyColor.colorGrey,),
+                  child: widget.isNoInternet? Lottie.asset(MyImages.noInternet,height:  MediaQuery.of(context).size.height*widget.imageHeight,width: MediaQuery.of(context).size.width*.6,):SvgPicture.asset(widget.image,height: 100,width: 100,color: MyColor.colorGrey,),
                 ),
                 Center(
                     child: Padding(

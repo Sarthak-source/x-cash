@@ -1,21 +1,23 @@
+
+
 import '../auth/sign_up_model/registration_response_model.dart';
 
 class PrivacyResponseModel {
   PrivacyResponseModel({
-    String? remark,
-    String? status,
-    Message? message,
-    Data? data,}){
+      String? remark, 
+      String? status, 
+      Message? message,
+      Data? data,}){
     _remark = remark;
     _status = status;
     _message = message;
     _data = data;
-  }
+}
 
   PrivacyResponseModel.fromJson(dynamic json) {
     _remark = json['remark'];
-    _status = json['status']!=null? json['status'].toString():'error';
-    _message = json['message'] != null ? Message.fromJson(json['message']) : null;
+    _status = json['status'].toString();
+    _message = json['message'] != null ? Message.fromJson(json['message']):null;
     _data = json['data'] != null ? Data.fromJson(json['data']) : null;
   }
   String? _remark;
@@ -32,7 +34,10 @@ class PrivacyResponseModel {
     final map = <String, dynamic>{};
     map['remark'] = _remark;
     map['status'] = _status;
-    if (_message != null) {
+   if(_message!=null){
+      map['message'] = _message?.toJson();
+    }
+    if(_message!=null){
       map['message'] = _message?.toJson();
     }
     if (_data != null) {
@@ -45,52 +50,52 @@ class PrivacyResponseModel {
 
 class Data {
   Data({
-    List<AllPolicy>? allPolicy,}){
-    _allPolicy = allPolicy;
-  }
+      List<PolicyPages>? policyPages,}){
+    _policyPages = policyPages;
+}
 
   Data.fromJson(dynamic json) {
-    if (json['policy'] != null) {
-      _allPolicy = [];
-      json['policy'].forEach((v) {
-        _allPolicy?.add(AllPolicy.fromJson(v));
+    if (json['policy_pages'] != null) {
+      _policyPages = [];
+      json['policy_pages'].forEach((v) {
+        _policyPages?.add(PolicyPages.fromJson(v));
       });
     }
   }
-  List<AllPolicy>? _allPolicy;
+  List<PolicyPages>? _policyPages;
 
-  List<AllPolicy>? get allPolicy => _allPolicy;
+  List<PolicyPages>? get policyPages => _policyPages;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    if (_allPolicy != null) {
-      map['policy'] = _allPolicy?.map((v) => v.toJson()).toList();
+    if (_policyPages != null) {
+      map['policy_pages'] = _policyPages?.map((v) => v.toJson()).toList();
     }
     return map;
   }
 
 }
 
-class AllPolicy {
-  AllPolicy({
-    int? id,
-    String? dataKeys,
-    DataValues? dataValues,
-    String? createdAt,
-    String? updatedAt,}){
+class PolicyPages {
+  PolicyPages({
+      int? id, 
+      String? dataKeys, 
+      DataValues? dataValues, 
+      String? createdAt, 
+      String? updatedAt,}){
     _id = id;
     _dataKeys = dataKeys;
     _dataValues = dataValues;
     _createdAt = createdAt;
     _updatedAt = updatedAt;
-  }
+}
 
-  AllPolicy.fromJson(dynamic json) {
+  PolicyPages.fromJson(dynamic json) {
     _id = json['id'];
-    _dataKeys = json['data_keys'];
+    _dataKeys = json['data_keys'].toString();
     _dataValues = json['data_values'] != null ? DataValues.fromJson(json['data_values']) : null;
-    _createdAt = json['created_at'];
-    _updatedAt = json['updated_at'];
+    _createdAt = json['created_at'].toString();
+    _updatedAt = json['updated_at'].toString();
   }
   int? _id;
   String? _dataKeys;
@@ -120,26 +125,26 @@ class AllPolicy {
 
 class DataValues {
   DataValues({
-    String? title,
-    String? details,}){
+      String? title, 
+      String? description,}){
     _title = title;
-    _details = details;
-  }
+    _description = description;
+}
 
   DataValues.fromJson(dynamic json) {
-    _title = json['title'];
-    _details = json['details'];
+    _title = json['title'].toString();
+    _description = json['description'].toString();
   }
   String? _title;
-  String? _details;
+  String? _description;
 
   String? get title => _title;
-  String? get details => _details;
+  String? get description => _description;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['title'] = _title;
-    map['details'] = _details;
+    map['description'] = _description;
     return map;
   }
 

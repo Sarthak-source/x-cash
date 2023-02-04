@@ -57,7 +57,7 @@ class _TransferMoneyState extends State<TransferMoney> {
           backgroundColor: MyColor.getScreenBgColor(),
           appBar: CustomAppBar(
             isShowBackBtn: true,
-            title: MyStrings.transferMoney,
+            title: MyStrings.transferMoney.tr,
             bgColor: MyColor.getAppBarColor(),
           ),
           body: controller.isLoading ? const CustomLoader() : SingleChildScrollView(
@@ -68,7 +68,7 @@ class _TransferMoneyState extends State<TransferMoney> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CustomDropDownTextField(
-                    labelText: MyStrings.selectWallet,
+                    labelText: MyStrings.selectWallet.tr,
                     selectedValue: controller.selectedWallet,
                     onChanged: (value) => controller.setSelectedWallet(value),
                     items: controller.walletList.map((tm_model.Wallets wallet) {
@@ -80,21 +80,21 @@ class _TransferMoneyState extends State<TransferMoney> {
                   ),
                   const SizedBox(height: Dimensions.space5),
                   Text(
-                    "${MyStrings.totalCharge}: ${controller.model.data?.transferCharge?.fixedCharge ?? ""} ${controller.currency}",
+                    "${MyStrings.totalCharge.tr}: ${controller.model.data?.transferCharge?.fixedCharge ?? ""} ${controller.currency}",
                     style: regularExtraSmall.copyWith(color: MyColor.primaryColor),
                   ),
                   const SizedBox(height: Dimensions.space20),
                   CustomTextField(
                       needOutlineBorder: true,
                       controller: controller.receiverController,
-                      labelText: MyStrings.receiverUsernameEmail,
-                      hintText: MyStrings.receiverUsernameHint,
+                      labelText: MyStrings.receiverUsernameEmail.tr,
+                      hintText: MyStrings.receiverUsernameHint.tr,
                       onChanged: (value){}
                   ),
                   const SizedBox(height: Dimensions.space20),
                   CustomAmountTextField(
-                    labelText: MyStrings.amount,
-                    hintText: MyStrings.amountHint,
+                    labelText: MyStrings.amount.tr,
+                    hintText: MyStrings.amountHint.tr,
                     onChanged: (value){
                       if(value.toString().isEmpty){
                         controller.changeInfoWidget(0);
@@ -108,41 +108,20 @@ class _TransferMoneyState extends State<TransferMoney> {
                   ),
                   const SizedBox(height: Dimensions.space5),
                   Text(
-                      "${MyStrings.limit}: ${controller.minLimit} - ${controller.maxLimit} ${controller.currency}",
+                      "${MyStrings.limit.tr}: ${controller.minLimit} - ${controller.maxLimit} ${controller.currency}",
                       style: regularExtraSmall.copyWith(color: MyColor.primaryColor)
                   ),
-                  
                   const SizedBox(height: Dimensions.space20),
-                  
-                  const LabelText(text: MyStrings.selectOtp),
-                  const SizedBox(height: 8),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    padding: const EdgeInsets.only(left: Dimensions.space15, right: Dimensions.space15,),
-                    decoration: BoxDecoration(
-                        color: MyColor.transparentColor,
-                        borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
-                        border: Border.all(color: MyColor.primaryColor, width: 0.5)
-                    ),
-                    child: DropdownButton(
-                      dropdownColor: MyColor.colorWhite,
-                      value: controller.selectedOtp,
-                      elevation: 8,
-                      icon: const Icon(Icons.keyboard_arrow_down, color: MyColor.primaryColor),
-                      iconDisabledColor: Colors.red,
-                      iconEnabledColor : MyColor.primaryColor,
-                      isExpanded: true,
-                      underline: Container(height: 0, color: MyColor.primaryColor),
-                      onChanged: (newValue) {
-                        controller.setSelectedOtp(newValue.toString());
-                      },
-                      items: controller.otpTypeList.map((value) {
-                        return DropdownMenuItem(
-                          value: value,
-                          child: Text(value.toString(), style: regularDefault),
-                        );
-                      }).toList(),
-                    ),
+                  CustomDropDownTextField(
+                    labelText: MyStrings.selectOtp.tr,
+                    selectedValue: controller.selectedOtp,
+                    onChanged: (value) => controller.setSelectedOtp(value),
+                    items: controller.otpTypeList.map((value) {
+                      return DropdownMenuItem(
+                        value: value,
+                        child: Text(value.toString(), style: regularDefault),
+                      );
+                    }).toList(),
                   ),
                   const SizedBox(height: Dimensions.space25),
                   RoundedButton(

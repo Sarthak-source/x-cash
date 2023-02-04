@@ -42,7 +42,7 @@ class _MakePaymentScreenState extends State<MakePaymentScreen> {
           backgroundColor: MyColor.getScreenBgColor(),
           appBar: CustomAppBar(
             isShowBackBtn: true,
-            title: MyStrings.makePayment,
+            title: MyStrings.makePayment.tr,
             bgColor: MyColor.getAppBarColor(),
           ),
           body: controller.isLoading ? const CustomLoader() : const SingleChildScrollView(

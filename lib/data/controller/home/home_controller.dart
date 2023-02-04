@@ -48,7 +48,7 @@ class HomeController extends GetxController{
 
       if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
         username = model.data?.user?.username ?? "";
-        userBalance = "$defaultCurrencySymbol${Converter.twoDecimalPlaceFixedWithoutRounding(model.data?.user?.balance ?? "")}";
+        userBalance = model.data?.totalSiteBalance ?? "";
         email = model.data?.user?.email ?? "";
         totalMoneyIn = "${Converter.twoDecimalPlaceFixedWithoutRounding(model.data?.moneyInOut?.totalMoneyIn ?? "")} $defaultCurrency";
         totalMoneyOut = "${Converter.twoDecimalPlaceFixedWithoutRounding(model.data?.moneyInOut?.totalMoneyOut ?? "")} $defaultCurrency";

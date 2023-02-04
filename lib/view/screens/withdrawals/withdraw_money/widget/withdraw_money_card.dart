@@ -1,0 +1,122 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:xcash_app/core/helper/string_format_helper.dart';
+import 'package:xcash_app/core/utils/dimensions.dart';
+import 'package:xcash_app/core/utils/my_color.dart';
+import 'package:xcash_app/core/utils/my_images.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
+import 'package:xcash_app/core/utils/style.dart';
+import 'package:xcash_app/data/controller/withdraw/withdraw_money_controller.dart';
+import 'package:xcash_app/view/components/divider/custom_divider.dart';
+import 'package:xcash_app/view/screens/withdrawals/withdraw_history/widget/status_widget.dart';
+
+class WithdrawMoneyCard extends StatelessWidget {
+  final int index;
+  final VoidCallback press;
+
+  const WithdrawMoneyCard({
+    Key? key,
+    required this.index,
+    required this.press
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GetBuilder<WithdrawMoneyController>(
+      builder: (controller) => GestureDetector(
+        onTap: press,
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          padding: const EdgeInsets.symmetric(vertical: Dimensions.space15, horizontal: Dimensions.space15),
+          decoration: BoxDecoration(color: MyColor.getCardBgColor(), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: 35, width: 35,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(color: MyColor.getPrimaryColor().withOpacity(0.2), shape: BoxShape.circle),
+                        child: Image.asset(MyImages.withdrawMoney, color: MyColor.getPrimaryColor(), height: 17, width: 17),
+                      ),
+                      const SizedBox(width: Dimensions.space15),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                              controller.withdrawMoneyList[index].name ?? "",
+                              style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600)
+                          ),
+                          const SizedBox(height: Dimensions.space5),
+                          Text(
+                              "${controller.withdrawMoneyList[index].withdrawMethod?.name ?? ""} - ${controller.withdrawMoneyList[index].currency?.currencyCode ?? ""}",
+                              style: regularSmall.copyWith(color: MyColor.getPrimaryColor())
+                          ),
+                          const SizedBox(height: Dimensions.space10),
+                        ],
+                      )
+                    ],
+                  ),
+                  StatusWidget(
+                      status: controller.getStatusOrColor(index),
+                      color: controller.getStatusOrColor(index, isStatus: false)
+                  )
+                ],
+              ),
+              const CustomDivider(space: Dimensions.space10),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        MyStrings.limit.tr,
+                        style: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.6)),
+                      ),
+                      const SizedBox(height: Dimensions.space5),
+                      Text(
+                          "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.withdrawMoneyList[index].withdrawMethod?.withdrawMinLimit ?? "")} ~ "
+                              "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.withdrawMoneyList[index].withdrawMethod?.withdrawMaxLimit ?? "")} "
+                              "${controller.withdrawMoneyList[index].currency?.currencyCode ?? ""}",
+                          style: regularSmall.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600)
+                      ),
+                    ],
+                  ),
+                  const SizedBox(width: Dimensions.space10),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        MyStrings.charge.tr,
+                        style: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.6)),
+                      ),
+                      const SizedBox(height: Dimensions.space5),
+                      controller.withdrawMoneyList[index].withdrawMethod?.id == 4 ? Text(
+                          "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.withdrawMoneyList[index].withdrawMethod?.withdrawMinLimit ?? "")} "
+                              "${controller.withdrawMoneyList[index].currency?.currencyCode ?? ""} + "
+                              "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.withdrawMoneyList[index].withdrawMethod?.percentCharge ?? "")}%",
+                          style: regularSmall.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600)
+                      ) : Text(
+                          "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.withdrawMoneyList[index].withdrawMethod?.withdrawMaxLimit ?? "")} "
+                              "${controller.withdrawMoneyList[index].currency?.currencyCode ?? ""} + "
+                              "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.withdrawMoneyList[index].withdrawMethod?.percentCharge ?? "")}%",
+                          style: regularSmall.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600)
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -4,8 +4,8 @@ import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/style.dart';
-import 'package:xcash_app/view/screens/home/home_screen.dart';
-import 'package:xcash_app/view/screens/menu/menu_screen.dart';
+import 'package:xcash_app/view/screens/bottom_nav_section/home/home_screen.dart';
+import 'package:xcash_app/view/screens/bottom_nav_section/menu/menu_screen.dart';
 
 class BottomNavBar extends StatefulWidget {
 
@@ -45,7 +45,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               navBarItem(MyImages.home, 0, "Home"),
-              navBarItem(MyImages.menu, 1, "Menu"),
+              navBarItem(MyImages.bottomMenu, 1, "Menu"),
             ],
           ),
         ),
@@ -62,7 +62,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           alignment: Alignment.center,
           padding: const EdgeInsets.all(Dimensions.space10),
           decoration: const BoxDecoration(color: MyColor.primaryColor, shape: BoxShape.circle),
-          child: SvgPicture.asset(MyImages.scan, color: MyColor.screenBgColor, width: 30, height: 30),
+          child: Image.asset(MyImages.scan, color: MyColor.screenBgColor, width: 30, height: 30),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

@@ -61,11 +61,11 @@ class _AddMoneyHistoryScreenState extends State<AddMoneyHistoryScreen> {
           backgroundColor: MyColor.screenBgColor,
           appBar: AppBar(
             elevation: 0,
-            leading: GestureDetector(
-              onTap: () => Get.toNamed(RouteHelper.bottomNavBar),
-              child: Icon(Icons.arrow_back, color: MyColor.getAppBarContentColor(), size: 20),
+            leading: IconButton(
+              onPressed: () => Get.toNamed(RouteHelper.bottomNavBar),
+              icon: Icon(Icons.arrow_back, color: MyColor.getAppBarContentColor(), size: 20),
             ),
-            title: Text(MyStrings.addMoneyHistory, style: regularDefault.copyWith(color: MyColor.appBarContentColor)),
+            title: Text(MyStrings.addMoneyHistory.tr, style: regularDefault.copyWith(color: MyColor.appBarContentColor)),
             backgroundColor: MyColor.getAppBarColor(),
             actions: [
               ActionButtonIconWidget(

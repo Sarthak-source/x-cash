@@ -13,7 +13,7 @@ import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
-import 'package:xcash_app/view/components/text/label_text.dart';
+import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
 
 class WithdrawPreviewScreen extends StatefulWidget {
   const WithdrawPreviewScreen({Key? key}) : super(key: key);
@@ -59,7 +59,7 @@ class _WithdrawPreviewScreenState extends State<WithdrawPreviewScreen> {
         child: Scaffold(
           backgroundColor: MyColor.getScreenBgColor(),
           appBar: CustomAppBar(
-            title: MyStrings.withdrawPreview,
+            title: MyStrings.withdrawPreview.tr,
             bgColor: MyColor.getAppBarColor(),
           ),
           body: controller.isLoading ? const CustomLoader() : SingleChildScrollView(
@@ -78,14 +78,14 @@ class _WithdrawPreviewScreenState extends State<WithdrawPreviewScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        methodName, style: regularDefault.copyWith(fontWeight: FontWeight.w600),
+                        methodName.tr, style: regularDefault.copyWith(fontWeight: FontWeight.w600),
                       ),
                       const CustomDivider(space: Dimensions.space15),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            MyStrings.requestedAmount,
+                            MyStrings.requestedAmount.tr,
                             style: regularDefault.copyWith(color: MyColor.getTextColor().withOpacity(0.6)),
                           ),
                           Text(
@@ -99,7 +99,7 @@ class _WithdrawPreviewScreenState extends State<WithdrawPreviewScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            MyStrings.withdrawCharge,
+                            MyStrings.withdrawCharge.tr,
                             style: regularDefault.copyWith(color: MyColor.getTextColor().withOpacity(0.6)),
                           ),
                           Text(
@@ -113,7 +113,7 @@ class _WithdrawPreviewScreenState extends State<WithdrawPreviewScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            MyStrings.youWillGet,
+                            MyStrings.youWillGet.tr,
                             style: regularDefault.copyWith(color: MyColor.getTextColor().withOpacity(0.6)),
                           ),
                           Text(
@@ -127,7 +127,7 @@ class _WithdrawPreviewScreenState extends State<WithdrawPreviewScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            MyStrings.yourBalanceWillBe,
+                            MyStrings.yourBalanceWillBe.tr,
                             style: regularDefault.copyWith(color: MyColor.getTextColor().withOpacity(0.6)),
                           ),
                           Text(
@@ -140,35 +140,18 @@ class _WithdrawPreviewScreenState extends State<WithdrawPreviewScreen> {
                   ),
                 ),
                 const SizedBox(height: Dimensions.space20),
-                const LabelText(text: MyStrings.selectOtp),
-                const SizedBox(height: 8),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  padding: const EdgeInsets.only(left: Dimensions.space15, right: Dimensions.space15,),
-                  decoration: BoxDecoration(
-                      color: MyColor.transparentColor,
-                      borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
-                      border: Border.all(color: MyColor.primaryColor, width: 0.5)
-                  ),
-                  child: DropdownButton(
-                    dropdownColor: MyColor.colorWhite,
-                    value: controller.selectedOtp,
-                    elevation: 8,
-                    icon: const Icon(Icons.keyboard_arrow_down, color: MyColor.primaryColor),
-                    iconDisabledColor: Colors.red,
-                    iconEnabledColor : MyColor.primaryColor,
-                    isExpanded: true,
-                    underline: Container(height: 0, color: MyColor.primaryColor),
-                    onChanged: (newValue) {
-                      controller.setSelectedOTP(newValue.toString());
-                    },
-                    items: controller.otpTypeList.map((value) {
-                      return DropdownMenuItem(
-                        value: value,
-                        child: Text(value.toString(), style: regularDefault),
-                      );
-                    }).toList(),
-                  ),
+                CustomDropDownTextField(
+                  labelText: MyStrings.selectOtp.tr,
+                  selectedValue: controller.selectedOtp,
+                  onChanged: (newValue) {
+                    controller.setSelectedOTP(newValue.toString());
+                  },
+                  items: controller.otpTypeList.map((value) {
+                    return DropdownMenuItem(
+                      value: value,
+                      child: Text(value.toString(), style: regularDefault),
+                    );
+                  }).toList(),
                 ),
                 const SizedBox(height: Dimensions.space25),
                 controller.isLoading ? const RoundedLoadingBtn() : RoundedButton(

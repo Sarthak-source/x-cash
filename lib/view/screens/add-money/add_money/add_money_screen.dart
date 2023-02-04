@@ -62,7 +62,7 @@ class _AddMoneyScreenState extends State<AddMoneyScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CustomDropDownTextField(
-                    labelText: MyStrings.selectWallet,
+                    labelText: MyStrings.selectWallet.tr,
                     selectedValue: controller.selectedWallet,
                     onChanged: (newValue) {
                       controller.setWallet(newValue);
@@ -76,7 +76,7 @@ class _AddMoneyScreenState extends State<AddMoneyScreen> {
                   ),
                   const SizedBox(height: Dimensions.space20),
                   CustomDropDownTextField(
-                    labelText: MyStrings.selectGateway,
+                    labelText: MyStrings.selectGateway.tr,
                     selectedValue: controller.selectedGateway,
                     onChanged: (newValue) {
                       controller.setGatewayMethod(newValue);
@@ -90,8 +90,8 @@ class _AddMoneyScreenState extends State<AddMoneyScreen> {
                   ),
                   const SizedBox(height: Dimensions.space20),
                   CustomAmountTextField(
-                    labelText: MyStrings.amount,
-                    hintText: MyStrings.amountHint,
+                    labelText: MyStrings.amount.tr,
+                    hintText: MyStrings.amountHint.tr,
                     currency: controller.currency,
                     controller: controller.amountController,
                     onChanged: (value){
@@ -105,7 +105,7 @@ class _AddMoneyScreenState extends State<AddMoneyScreen> {
                   ),
                   const SizedBox(height: Dimensions.space5),
                   Text(
-                    "${MyStrings.depositLimit}: ${controller.depositMinLimit} - ${controller.depositMaxLimit} ${controller.currency}",
+                    "${MyStrings.depositLimit.tr}: ${controller.depositMinLimit} - ${controller.depositMaxLimit} ${controller.currency}",
                     style: regularExtraSmall.copyWith(color: MyColor.getPrimaryColor(), fontWeight: FontWeight.w400),
                   ),
                   const SizedBox(height: Dimensions.space20),

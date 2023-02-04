@@ -9,11 +9,9 @@ import 'package:xcash_app/data/controller/voucher/voucher_list_controller.dart';
 import 'package:xcash_app/data/repo/voucher/voucher_list_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/action_button_icon_widget.dart';
-import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/custom_no_data_found_class.dart';
 import 'package:xcash_app/view/screens/voucher/my_voucher/widget/voucher_list_card.dart';
-import 'package:xcash_app/view/screens/voucher/redeem_voucher/redeem_voucher.dart';
 
 class MyVoucherScreen extends StatefulWidget {
   const MyVoucherScreen({Key? key}) : super(key: key);
@@ -62,7 +60,11 @@ class _MyVoucherScreenState extends State<MyVoucherScreen> {
           backgroundColor: MyColor.screenBgColor,
           appBar: AppBar(
             elevation: 0,
-            title: Text(MyStrings.myVoucher, style: regularLarge.copyWith(color: MyColor.getAppBarContentColor())),
+            leading: IconButton(
+              onPressed: () => Get.back(),
+              icon: Icon(Icons.arrow_back, color: MyColor.getAppBarContentColor(), size: 20),
+            ),
+            title: Text(MyStrings.myVoucher.tr, style: regularLarge.copyWith(color: MyColor.getAppBarContentColor())),
             backgroundColor: MyColor.getAppBarColor(),
             actions: [
               ActionButtonIconWidget(

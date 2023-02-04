@@ -11,7 +11,7 @@ import 'package:xcash_app/data/repo/menu_repo/menu_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/will_pop_widget.dart';
-import 'package:xcash_app/view/screens/menu/widget/menu_item.dart';
+import 'package:xcash_app/view/screens/bottom_nav_section/menu/widget/menu_item.dart';
 
 class MenuScreen extends StatefulWidget {
   const MenuScreen({Key? key}) : super(key: key);
@@ -60,8 +60,8 @@ class _MenuScreenState extends State<MenuScreen> {
                     child: Column(
                       children: [
                         MenuItems(
-                            imageSrc: MyImages.profile,
-                            label: MyStrings.profile,
+                            imageSrc: MyImages.user,
+                            label: MyStrings.profile.tr,
                             onPressed: () => Get.toNamed(RouteHelper.profileScreen)
                         ),
                         const CustomDivider(space: Dimensions.space10),
@@ -72,20 +72,26 @@ class _MenuScreenState extends State<MenuScreen> {
                         ),
                         const CustomDivider(space: Dimensions.space10),
                         MenuItems(
-                            imageSrc: MyImages.atm,
-                            label: MyStrings.withdraw,
+                            imageSrc: MyImages.menuWithdraw_1,
+                            label: MyStrings.withdraw.tr,
                             onPressed: () => Get.toNamed(RouteHelper.withdrawHistoryScreen)
                         ),
                         const CustomDivider(space: Dimensions.space10),
                         MenuItems(
-                            imageSrc: MyImages.menuTransfer,
-                            label: MyStrings.transfer,
+                            imageSrc: MyImages.menuTransfer_1,
+                            label: MyStrings.transfer.tr,
                             onPressed: () => Get.toNamed(RouteHelper.transferMoneyScreen)
                         ),
                         const CustomDivider(space: Dimensions.space10),
                         MenuItems(
-                            imageSrc: MyImages.menuTransaction,
-                            label: MyStrings.transaction,
+                            imageSrc: MyImages.menuInvoice_1,
+                            label: MyStrings.invoice.tr,
+                            onPressed: () => Get.toNamed(RouteHelper.invoiceScreen)
+                        ),
+                        const CustomDivider(space: Dimensions.space10),
+                        MenuItems(
+                            imageSrc: MyImages.menuTransaction_1,
+                            label: MyStrings.transaction.tr,
                             onPressed: () => Get.toNamed(RouteHelper.transactionHistoryScreen)
                         ),
                       ],
@@ -103,14 +109,16 @@ class _MenuScreenState extends State<MenuScreen> {
                         children: [
                           MenuItems(
                               imageSrc: MyImages.language,
-                              label: MyStrings.language,
+                              label: MyStrings.language.tr,
                               onPressed: (){}
                           ),
                           const CustomDivider(space: Dimensions.space10),
                           MenuItems(
-                              imageSrc: MyImages.privacy,
-                              label: MyStrings.privacyPolicy,
-                              onPressed: (){}
+                              imageSrc: MyImages.policy,
+                              label: MyStrings.privacyPolicy.tr,
+                              onPressed: (){
+                                Get.toNamed(RouteHelper.privacyScreen);
+                              }
                           ),
                           const CustomDivider(space: Dimensions.space10),
                           controller.logoutLoading ? const Align(
@@ -121,7 +129,7 @@ class _MenuScreenState extends State<MenuScreen> {
                             ),
                           ) : MenuItems(
                               imageSrc: MyImages.logout,
-                              label: MyStrings.logout,
+                              label: MyStrings.logout.tr,
                               onPressed: () => controller.logout()
                           )
                         ],

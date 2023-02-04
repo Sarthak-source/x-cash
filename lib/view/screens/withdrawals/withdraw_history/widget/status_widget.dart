@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/style.dart';
 
@@ -17,6 +18,6 @@ class StatusWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(4),
           border: Border.all(color: color)
       ),
-      child: Text(status,style: regularSmall.copyWith(color: color)));
+      child: Text(status.tr, style: regularSmall.copyWith(color: color)));
   }
 }
