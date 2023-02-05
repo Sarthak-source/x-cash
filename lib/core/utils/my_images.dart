@@ -52,7 +52,7 @@ class MyImages{
   static const String emailVerifyImage = "assets/images/message.svg";
   static const String pendingIcon = "assets/icons/pending.svg";
   static const String verifiedIcon = "assets/icons/verified.svg";
-  static const String noDataImage = "assets/icons/no_data.svg";
+  static const String noDataImage = "assets/images/no_data.svg";
   static const String errorImage = "assets/images/Error.svg";
 
   static const String noInternet = "assets/animation/no_internet.json";

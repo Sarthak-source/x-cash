@@ -8,7 +8,9 @@ class ActionButtonIconWidget extends StatelessWidget {
   final VoidCallback pressed;
   final double size;
   final double spacing;
-  final IconData icon;
+  final IconData? icon;
+  final bool isImage;
+  final String? imageSrc;
 
   const ActionButtonIconWidget({
     Key? key,
@@ -17,7 +19,9 @@ class ActionButtonIconWidget extends StatelessWidget {
     required this.pressed,
     this.size = 30,
     this.spacing = 15,
-    required this.icon
+    this.icon,
+    this.imageSrc,
+    this.isImage = false
   }) : super(key: key);
 
   @override
@@ -29,7 +33,16 @@ class ActionButtonIconWidget extends StatelessWidget {
         alignment: Alignment.center,
         margin: EdgeInsets.only(right: spacing),
         decoration: BoxDecoration(color: backgroundColor, shape: BoxShape.circle),
-        child: Icon(icon, color: iconColor, size: size / 2),
+        child: isImage ? Image.asset(
+          imageSrc!,
+          color: iconColor,
+          height: size / 2,
+          width: size / 2
+        ) : Icon(
+          icon,
+          color: iconColor,
+          size: size / 2
+        ),
       ),
     );
   }

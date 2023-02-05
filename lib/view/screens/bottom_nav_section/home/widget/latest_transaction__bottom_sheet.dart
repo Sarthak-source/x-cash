@@ -53,7 +53,7 @@ class LatestTransactionBottomSheet extends StatelessWidget {
               CardColumn(
                 alignmentEnd: true,
                 header: MyStrings.charge,
-                body: "${controller.trxList[index].chargeType} "
+                body: "${controller.trxList[index].chargeType ?? ""} "
                     "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.trxList[index].charge ?? "")} "
                     "${controller.trxList[index].currency?.currencyCode ?? ""}",
               )

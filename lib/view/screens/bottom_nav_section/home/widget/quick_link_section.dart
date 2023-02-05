@@ -54,7 +54,7 @@ class QuickLinkSection extends StatelessWidget {
                 child: CircleAnimatedButtonWithText(
                     buttonName: MyStrings.createVoucher,
                     backgroundColor: MyColor.screenBgColor,
-                    child: SvgPicture.asset(MyImages.voucher, color: MyColor.primaryColor, height: 20, width: 20),
+                    child: SvgPicture.asset(MyImages.createVoucher, color: MyColor.primaryColor, height: 20, width: 20),
                     onTap: () => Get.toNamed(RouteHelper.createVoucherScreen)
                 ),
               ),

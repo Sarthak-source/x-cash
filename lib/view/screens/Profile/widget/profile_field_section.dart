@@ -71,7 +71,7 @@ class _ProfileFieldSectionState extends State<ProfileFieldSection> {
                 const SizedBox(width: Dimensions.space15),
                 CardColumn(
                     header: MyStrings.address,
-                    body: controller.model.data?.user?.address?.country ?? ""
+                    body: controller.model.data?.user?.address?.address ?? ""
                 )
               ],
             ),
