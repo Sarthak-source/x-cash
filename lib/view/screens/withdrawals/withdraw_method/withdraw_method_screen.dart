@@ -201,7 +201,9 @@ class _WithdrawMethodScreenState extends State<WithdrawMethodScreen> {
                         ),
                       ],
                     ),
-                    onPressed: (){},
+                    onPressed: (){
+                      Get.toNamed(RouteHelper.editWithdrawMethod);
+                    },
                   );
                 }
             )

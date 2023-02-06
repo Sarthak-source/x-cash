@@ -36,6 +36,7 @@ import 'package:xcash_app/view/screens/voucher/redeem_log/redeem_log_screen.dart
 import 'package:xcash_app/view/screens/wallet/my_wallet_screen.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_history/withdraw_history_screen.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_method/add_withdraw_method.dart';
+import 'package:xcash_app/view/screens/withdrawals/withdraw_method/edit_withdraw_method.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_method/withdraw_method_screen.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_money/withdraw_money_screen.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_preview/withdraw_preview_screen.dart';
@@ -78,6 +79,7 @@ class RouteHelper{
   static const String withdrawHistoryScreen = "/withdraw_history_screen";
   static const String addWithdrawMethodScreen = "/add_withdraw_method_screen";
   static const String withdrawMethodScreen = "/withdraw_method_screen";
+  static const String editWithdrawMethod = "/withdraw_method_edit_screen";
 
   static const String notificationScreen = "/notification_screen";
   static const String profileScreen = "/profile_screen";
@@ -124,6 +126,8 @@ class RouteHelper{
     GetPage(name: withdrawHistoryScreen, page: () => const WithdrawHistoryScreen()),
     GetPage(name: withdrawMethodScreen, page: () => const WithdrawMethodScreen()),
     GetPage(name: addWithdrawMethodScreen, page: () => const AddWithdrawMethodScreen()),
+    GetPage(name: editWithdrawMethod, page: () => const EditWithdrawMethod()),
+
     GetPage(name: profileScreen, page: () => const ProfileScreen()),
     GetPage(name: editProfileScreen, page: () => const EditProfileScreen()),
     GetPage(name: termsServiceScreen, page: () => const TermsServicesScreen()),

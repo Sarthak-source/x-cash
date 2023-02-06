@@ -302,6 +302,7 @@ class MyStrings{
   static const String selectOtp = "Select OTP";
   static const String continueDownload = "Continue Download";
   static const String submit = "Submit";
+  static const String updateMethod = "Update Method";
 
   // profile
   static const String name = "Name";
@@ -466,6 +467,7 @@ class MyStrings{
   static const String enterAmountMsg = "Please enter an amount";
   static const String hint = "0.0";
   static const String withdrawMethod = "Withdraw Method";
+  static const String withdrawMethodEdit = "Withdraw Method Edit";
   static const String withdrawPreview = "Withdraw Preview";
   static const String searchByTrxId = "Search by trx id";
   static const String noTrxFound = "No Transaction Found";
