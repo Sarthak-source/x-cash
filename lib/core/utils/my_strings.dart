@@ -522,6 +522,8 @@ class MyStrings{
   static const String loginFailedTryAgain     = 'Login failed,please try again';
 
   static const String selectOne               = "Select One";
+  static const String selectFromCurrency      = "Select from currency";
+  static const String selectToCurrency      = "Select to currency";
   static const String sms                     = 'SMS';
 
   //no internet
