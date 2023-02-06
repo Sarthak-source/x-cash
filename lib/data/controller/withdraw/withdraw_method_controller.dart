@@ -80,15 +80,12 @@ class WithdrawMethodController extends GetxController{
     String status = methodList[index].status??'';
 
     if(isStatus){
-      String text = status == "1" ? MyStrings.enabled
-          : status == "2" ? MyStrings.pending
-          : status == "3" ? MyStrings.rejected
-          : "";
+      String text = status == "0" ? MyStrings.disabled
+          : status == "1" ? MyStrings.enabled : "";
       return text;
     } else{
-      Color color = status == "1" ? MyColor.colorGreen
-          : status == "2" ? MyColor.colorOrange
-          : status == "3" ? MyColor.colorRed : MyColor.colorGreen;
+      Color color = status == "0" ? MyColor.colorOrange
+          : status == "1" ? MyColor.colorGreen : MyColor.colorGreen;
       return color;
     }
   }

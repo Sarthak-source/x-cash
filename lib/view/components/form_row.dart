@@ -18,7 +18,7 @@ class FormRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Text(label,style: semiBoldExtraLarge.copyWith(fontSize: Dimensions.fontDefault,color: MyColor.labelTextColor)),
+        Text(label, style: regularDefault.copyWith(color: MyColor.labelTextColor)),
         Text(isRequired?' *':'',style: boldDefault.copyWith(color: Colors.red))
       ],
     );

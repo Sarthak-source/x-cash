@@ -571,6 +571,7 @@ class MyStrings{
   static const String approved  = "Approved";
   static const String accept  = "Accept";
   static const String enabled  = "Enabled";
+  static const String disabled  = "Disabled";
   static const String succeed  = "Succeed";
   static const String pending  = "Pending";
   static const String rejected  = "Rejected";
