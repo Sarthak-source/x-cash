@@ -5,10 +5,12 @@ import 'package:xcash_app/core/utils/my_color.dart';
 class CustomDivider extends StatelessWidget {
 
   final double space;
+  final Color color;
 
   const CustomDivider({
     Key? key,
     this.space = Dimensions.space20,
+    this.color = MyColor.colorBlack
   }) : super(key: key);
 
   @override
@@ -19,7 +21,7 @@ class CustomDivider extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(height: space),
-        Divider(color: MyColor.primaryColor.withOpacity(0.2), height: 0.5, thickness: 1),
+        Divider(color: color.withOpacity(0.2), height: 0.5, thickness: 0.5),
         SizedBox(height: space),
       ],
     );
