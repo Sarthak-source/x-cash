@@ -11,11 +11,9 @@ import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
-import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
-import 'package:xcash_app/view/components/text/label_text.dart';
 import 'package:xcash_app/view/screens/exchange/widget/exchange_money_bottom_sheet.dart';
 
 class ExchangeMoneyScreen extends StatefulWidget {
@@ -70,16 +68,19 @@ class _ExchangeMoneyScreenState extends State<ExchangeMoneyScreen> {
                    children: [
                      Expanded(
                          child: CustomDropDownTextField(
+                           radius: Dimensions.defaultRadius,
                            dropDownColor: MyColor.primaryColor,
                            labelText: MyStrings.fromCurrency,
                            selectedValue: controller.fromWalletMethod,
+                           fillColor: MyColor.primaryColor,
+                           iconColor: MyColor.colorWhite,
                            onChanged: (newValue) {
                              controller.setFromWalletMethod(newValue);
                            },
                            items: controller.fromWalletList.map((FromWallets wallet) {
                              return DropdownMenuItem<FromWallets>(
                                value: wallet,
-                               child: Text(wallet.currencyCode.toString(), style: regularDefault.copyWith(color: MyColor.colorBlack)),
+                               child: Text(wallet.currencyCode.toString(), style: regularDefault.copyWith(color: MyColor.colorWhite)),
                              );
                            }).toList(),
                          )
@@ -87,6 +88,7 @@ class _ExchangeMoneyScreenState extends State<ExchangeMoneyScreen> {
                      const SizedBox(width: Dimensions.space20),
                      Expanded(
                        child: CustomDropDownTextField(
+                         radius: Dimensions.defaultRadius,
                          labelText: MyStrings.toCurrency,
                          selectedValue: controller.toWalletMethod,
                          onChanged: (newValue) {
