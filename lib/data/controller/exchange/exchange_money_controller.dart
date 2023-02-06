@@ -89,12 +89,12 @@ class ExchangeMoneyController extends GetxController{
   bool canExchange(){
 
     if(fromWalletMethod?.id == -1){
-      CustomSnackBar.error(errorList: [MyStrings.selectOne]);
+      CustomSnackBar.error(errorList: [MyStrings.selectFromCurrency]);
       return false;
     }
 
     if(toWalletMethod?.id == -1){
-      CustomSnackBar.error(errorList: [MyStrings.selectOne]);
+      CustomSnackBar.error(errorList: [MyStrings.selectToCurrency]);
       return false;
     }
 
