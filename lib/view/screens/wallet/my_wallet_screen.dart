@@ -10,7 +10,6 @@ import 'package:xcash_app/data/controller/wallet/wallet_controller.dart';
 import 'package:xcash_app/data/repo/wallet/wallet_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
-import 'package:xcash_app/view/components/card/custom_card.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/image/circle_shape_image.dart';
@@ -65,12 +64,14 @@ class _MyWalletScreenState extends State<MyWalletScreen> {
               physics: const NeverScrollableScrollPhysics(),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                childAspectRatio: MediaQuery.of(context).size.width > 400 ? 2.4 : 1,
+                childAspectRatio: MediaQuery.of(context).size.width > 400 ? 2 : 1,
                 crossAxisSpacing: 12,
                 mainAxisSpacing: 12,
               ),
-              itemBuilder: (context, index) => CustomCard(
+              itemBuilder: (context, index) => Container(
                 width: MediaQuery.of(context).size.width,
+                padding: const EdgeInsets.symmetric(vertical: Dimensions.space12, horizontal: Dimensions.space15),
+                decoration: BoxDecoration(color: MyColor.getCardBgColor(), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -80,17 +81,17 @@ class _MyWalletScreenState extends State<MyWalletScreen> {
                     ),
                     const SizedBox(height: Dimensions.space10),
                     Row(
-                     children: [
-                        Text(
-                          Converter.twoDecimalPlaceFixedWithoutRounding(controller.walletList[index].balance ?? ""),
-                          style: regularLarge.copyWith(fontWeight: FontWeight.w600)
-                        ),
-                        const SizedBox(width: Dimensions.space5),
-                        Text(
-                          controller.walletList[index].currency?.currencyCode ?? "",
-                          style: regularLarge.copyWith(fontWeight: FontWeight.w600)
-                        )
-                      ]
+                        children: [
+                          Text(
+                              Converter.twoDecimalPlaceFixedWithoutRounding(controller.walletList[index].balance ?? ""),
+                              style: regularLarge.copyWith(fontWeight: FontWeight.w600)
+                          ),
+                          const SizedBox(width: Dimensions.space5),
+                          Text(
+                              controller.walletList[index].currency?.currencyCode ?? "",
+                              style: regularLarge.copyWith(fontWeight: FontWeight.w600)
+                          )
+                        ]
                     ),
                     const CustomDivider(space: Dimensions.space15),
                     Row(
