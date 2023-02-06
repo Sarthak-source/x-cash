@@ -7,6 +7,8 @@ import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/home/home_controller.dart';
+import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
+import 'package:xcash_app/view/screens/bottom_nav_section/home/widget/balance_bottom_sheet.dart';
 
 class TopSection extends StatefulWidget {
   const TopSection({Key? key}) : super(key: key);
@@ -59,7 +61,9 @@ class _TopSectionState extends State<TopSection> {
             ),
             const SizedBox(width: Dimensions.space15),
             GestureDetector(
-              onTap: () => controller.changeState(),
+              onTap: () => CustomBottomSheet(
+                child: const BalanceBottomSheet()
+              ).customBottomSheet(context),
               child: Container(
                 padding: const EdgeInsets.symmetric(vertical: Dimensions.space5, horizontal: Dimensions.space20),
                 decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(50)),

@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
+import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/add_money/add_money_method_controller.dart';
 import 'package:xcash_app/data/model/add_money/add_money_method_response_model.dart';
 import 'package:xcash_app/data/repo/add_money/add_money_method_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
+import 'package:xcash_app/view/components/app-bar/action_button_icon_widget.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
@@ -51,10 +54,21 @@ class _AddMoneyScreenState extends State<AddMoneyScreen> {
       builder: (controller) => SafeArea(
           child: Scaffold(
             backgroundColor: MyColor.getScreenBgColor(),
-            appBar: CustomAppBar(
-              title: MyStrings.addMoney.tr,
-              isShowBackBtn: true,
-              bgColor: MyColor.getAppBarColor(),
+            appBar: AppBar(
+              elevation: 0,
+              backgroundColor: MyColor.getAppBarColor(),
+              title: Text(MyStrings.addMoney.tr, style: regularDefault.copyWith(color: MyColor.getAppBarContentColor())),
+              leading: IconButton(
+                onPressed: () => Get.back(),
+                icon: Icon(Icons.arrow_back, color: MyColor.getAppBarContentColor(), size: 20),
+              ),
+              actions: [
+                ActionButtonIconWidget(
+                  pressed: () => Get.toNamed(RouteHelper.addMoneyHistoryScreen),
+                  isImage: true,
+                  imageSrc: MyImages.moneyHistory,
+                )
+              ],
             ),
             body: controller.isLoading ? const CustomLoader() : SingleChildScrollView(
               padding: Dimensions.screenPaddingHV,

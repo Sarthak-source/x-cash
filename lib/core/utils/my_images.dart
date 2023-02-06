@@ -39,6 +39,7 @@ class MyImages{
   static const String withdrawMoney = "assets/images/wallet.png";
   static const String reject = "assets/images/reject.png";
   static const String name = "assets/images/user.png";
+  static const String moneyHistory = "assets/images/money_history.png";
 
   static const String user = "assets/images/user.svg";
   static const String changePassword = "assets/images/change_password.svg";

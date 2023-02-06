@@ -92,7 +92,7 @@ class _AddMoneyWebViewState extends State<AddMoneyWebView> {
             return FloatingActionButton(
               backgroundColor: MyColor.colorRed,
               onPressed: () async {
-                Get.offAndToNamed(RouteHelper.addMoneyScreen);
+                Get.offAndToNamed(RouteHelper.addMoneyHistoryScreen);
               },
               child: const Icon(Icons.cancel,color: MyColor.colorWhite,size: 30,),
             );

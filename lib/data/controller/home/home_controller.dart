@@ -102,4 +102,13 @@ class HomeController extends GetxController{
        update();
     });
   }
+
+  int index = 0;
+  void changeIndex(){
+    print(walletList.length);
+    for(int i = 0; i < walletList.length; i++){
+      index = i + 1;
+    }
+    update();
+  }
 }

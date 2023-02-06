@@ -33,14 +33,12 @@ class AddMoneyHistoryController extends GetxController{
   }
 
   void initialSelectedValue() async{
-
     currency = addMoneyHistoryRepo.apiClient.getCurrencyOrUsername();
     page = 0;
     searchController.text = '';
     depositList.clear();
     isLoading = true;
     update();
-
     await loadAddMoneyHistory();
     isLoading = false;
     update();
@@ -52,9 +50,7 @@ class AddMoneyHistoryController extends GetxController{
     if(page == 1){
       depositList.clear();
     }
-
     String searchText = searchController.text;
-
     ResponseModel responseModel = await addMoneyHistoryRepo.getAddMoneyHistoryData(page, searchText: searchText);
     if(responseModel.statusCode == 200){
       AddMoneyHistoryResponseModel model = AddMoneyHistoryResponseModel.fromJson(jsonDecode(responseModel.responseJson));
