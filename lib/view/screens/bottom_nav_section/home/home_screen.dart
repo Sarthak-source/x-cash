@@ -48,7 +48,6 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Scaffold(
           backgroundColor: MyColor.getScreenBgColor(),
           body: controller.isLoading ? const CustomLoader() : SingleChildScrollView(
-            padding: const EdgeInsets.only(bottom: Dimensions.space20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const [

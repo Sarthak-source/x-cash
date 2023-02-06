@@ -8,7 +8,6 @@ import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/home/home_controller.dart';
-import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/image/circle_shape_image.dart';
 
 class WalletSection extends StatelessWidget {
@@ -48,72 +47,65 @@ class WalletSection extends StatelessWidget {
                 )
               ],
             ),
-            const CustomDivider(space: Dimensions.space15),
+            const SizedBox(height: Dimensions.space15),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.15,
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ListView.separated(
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      physics: const NeverScrollableScrollPhysics(),
-                      clipBehavior: Clip.none,
-                      itemCount: controller.walletList.length,
-                      separatorBuilder: (context, index) => const SizedBox(width: Dimensions.space10),
-                      itemBuilder: (context, index) => Container(
-                        width: MediaQuery.of(context).size.width * 0.75,
-                        padding: const EdgeInsets.symmetric(vertical: Dimensions.space10, horizontal: Dimensions.space15),
-                        decoration: BoxDecoration(color: MyColor.getScreenBgColor(), borderRadius: BorderRadius.circular(10)),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                  children: List.generate(controller.walletList.length, (index) => Container(
+                    width: MediaQuery.of(context).size.width * 0.75,
+                    margin: const EdgeInsets.only(right: Dimensions.space10),
+                    padding: const EdgeInsets.symmetric(vertical: Dimensions.space10, horizontal: Dimensions.space15),
+                    decoration: BoxDecoration(
+                      color: MyColor.getCardBgColor(),
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(color: MyColor.colorGrey.withOpacity(0.2), width: 0.5)
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
                           children: [
-                            Row(
-                              children: [
-                                const CircleShapeImage(
-                                  backgroundColor: MyColor.colorWhite,
-                                  image: MyImages.withdrawMoney,
-                                ),
-                                const SizedBox(width: Dimensions.space15),
-                                Expanded(
-                                  child: Text(
-                                    "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.walletList[index].balance ?? "")} ${controller.walletList[index].currencyCode}",
-                                    style: regularLarge.copyWith(fontWeight: FontWeight.w600),
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLines: 2,
-                                  ),
-                                )
-                              ],
+                            const CircleShapeImage(
+                              backgroundColor: MyColor.colorWhite,
+                              image: MyImages.withdrawMoney,
                             ),
-                            const CustomDivider(space: Dimensions.space15),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  MyStrings.transferMoney,
-                                  style: regularSmall.copyWith(color: MyColor.contentTextColor),
-                                ),
-                                GestureDetector(
-                                  onTap: (){
-                                    Get.toNamed(RouteHelper.transferMoneyScreen, arguments: controller.walletList[index].id.toString());
-                                  },
-                                  child: Container(
-                                    height: 30, width: 30,
-                                    alignment: Alignment.center,
-                                    decoration: BoxDecoration(color: Colors.grey[100], shape: BoxShape.circle),
-                                    child: const Icon(Icons.arrow_forward, color: MyColor.primaryColor, size: 15),
-                                  ),
-                                )
-                              ],
+                            const SizedBox(width: Dimensions.space15),
+                            Expanded(
+                              child: Text(
+                                "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.walletList[index].balance ?? "")} ${controller.walletList[index].currencyCode}",
+                                style: regularLarge.copyWith(fontWeight: FontWeight.w600),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 2,
+                              ),
                             )
                           ],
                         ),
-                      ),
+                        const SizedBox(height: Dimensions.space20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              MyStrings.transferMoney,
+                              style: regularSmall.copyWith(color: MyColor.contentTextColor),
+                            ),
+                            GestureDetector(
+                              onTap: (){
+                                Get.toNamed(RouteHelper.transferMoneyScreen, arguments: controller.walletList[index].id.toString());
+                              },
+                              child: Container(
+                                height: 30, width: 30,
+                                alignment: Alignment.center,
+                                decoration: BoxDecoration(color: Colors.grey[100], shape: BoxShape.circle),
+                                child: const Icon(Icons.arrow_forward, color: MyColor.primaryColor, size: 15),
+                              ),
+                            )
+                          ],
+                        )
+                      ],
                     ),
-                  ],
+                  ))
                 )
               ),
             ),

@@ -25,8 +25,8 @@ class _TopSectionState extends State<TopSection> {
         padding: const EdgeInsets.symmetric(vertical: Dimensions.space20, horizontal: Dimensions.space10),
         decoration: BoxDecoration(color: MyColor.getPrimaryColor()),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,44 +58,13 @@ class _TopSectionState extends State<TopSection> {
               ],
             ),
             const SizedBox(width: Dimensions.space15),
-            Expanded(
-              child: InkWell(
-                  onTap: () => controller.changeState(),
-                  child: Container(
-                      height: 30,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(50)),
-                      child: Stack(
-                          alignment: Alignment.center,
-                          children: [
-                            AnimatedOpacity(
-                                opacity: controller.isBalanceShown ? 1 : 0,
-                                duration: const Duration(milliseconds: 500),
-                                child: Text(controller.userBalance, style: regularSmall.copyWith(color: MyColor.primaryColor, fontWeight: FontWeight.w600))
-                            ),
-                            AnimatedOpacity(
-                                opacity: controller.isBalance ? 1 : 0,
-                                duration: const Duration(milliseconds: 300),
-                                child: Text(MyStrings.balance.tr, style: regularSmall.copyWith(fontWeight: FontWeight.w500))
-                            ),
-                            AnimatedPositioned(
-                                duration: const Duration(milliseconds: 1100),
-                                left: controller.isAnimated == false ? 5 : 147,
-                                curve: Curves.fastOutSlowIn,
-                                child: FittedBox(
-                                  child: Container(
-                                    height: 15, width: 15,
-                                    alignment: Alignment.center,
-                                    decoration: const BoxDecoration(color: MyColor.primaryColor, shape: BoxShape.circle),
-                                    child: Icon(controller.isAnimated == true ? Icons.visibility : Icons.visibility_off, color: MyColor.colorWhite, size: 10),
-                                  ),
-                                )
-                            )
-                          ]
-                      )
-                  )
-              ),
+            GestureDetector(
+              onTap: () => controller.changeState(),
+              child: Container(
+                padding: const EdgeInsets.symmetric(vertical: Dimensions.space5, horizontal: Dimensions.space20),
+                decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(50)),
+                child: Text(MyStrings.balance, style: regularSmall.copyWith(fontWeight: FontWeight.w500))
+              )
             ),
           ],
         ),

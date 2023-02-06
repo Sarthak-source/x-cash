@@ -8,7 +8,6 @@ import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/view/components/buttons/circle_animated_button_with_text.dart';
-import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/screens/bottom_nav_section/home/components/quick_links_item_bottom_sheet.dart';
 
 class QuickLinkSection extends StatelessWidget {
@@ -27,7 +26,7 @@ class QuickLinkSection extends StatelessWidget {
             MyStrings.quickLink,
             style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w500),
           ),
-          const CustomDivider(space: Dimensions.space15),
+          const SizedBox(height: Dimensions.space15),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceAround,

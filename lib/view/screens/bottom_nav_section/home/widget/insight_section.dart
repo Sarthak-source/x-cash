@@ -16,7 +16,7 @@ class InsightSection extends StatelessWidget {
     return GetBuilder<HomeController>(
       builder: (controller) => Container(
         width: MediaQuery.of(context).size.width,
-        padding: const EdgeInsets.all(Dimensions.space10),
+        padding: const EdgeInsets.all(Dimensions.space15),
         decoration: BoxDecoration(color: MyColor.getCardBgColor()),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,49 +28,39 @@ class InsightSection extends StatelessWidget {
                   MyStrings.insights.tr,
                   style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w500),
                 ),
-                InkWell(
-                  onTap: (){},
-                  child: Container(
-                    alignment: Alignment.center,
-                    color: MyColor.transparentColor,
-                    padding: const EdgeInsets.all(Dimensions.space5),
-                    child: Text(
-                      MyStrings.selectOne,
-                      textAlign: TextAlign.center,
-                      style: regularSmall.copyWith(color: MyColor.getPrimaryColor()),
-                    ),
-                  ),
+                Text(
+                  "( Last 7 days )",
+                  textAlign: TextAlign.center,
+                  style: regularSmall.copyWith(color: MyColor.getPrimaryColor()),
                 )
               ],
             ),
-            const CustomDivider(space: Dimensions.space15),
+            const SizedBox(height: Dimensions.space15),
             Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  padding: const EdgeInsets.symmetric(vertical: Dimensions.space10, horizontal: Dimensions.space15),
-                  decoration: BoxDecoration(color: MyColor.getScreenBgColor(), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
+                  padding: const EdgeInsets.symmetric(vertical: Dimensions.space12, horizontal: Dimensions.space15),
+                  decoration: BoxDecoration(
+                      color: MyColor.getCardBgColor(),
+                      border: Border.all(width: 0.5, color: MyColor.colorGrey.withOpacity(0.2)),
+                      borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(MyStrings.moneyIn, style: regularDefault.copyWith(fontWeight: FontWeight.w600)),
-                          const SizedBox(width: Dimensions.space5),
-                          Text(
-                              "( Last 7 days )", // dynamic hobe
-                              style: regularSmall.copyWith(color: MyColor.colorGrey.withOpacity(0.5))
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(MyStrings.moneyIn, style: regularDefault.copyWith(fontWeight: FontWeight.w600)),
+                              const SizedBox(height: Dimensions.space10),
+                              Text(controller.totalMoneyIn, style: regularLarge.copyWith(fontWeight: FontWeight.w600)),
+                            ],
                           ),
-                        ],
-                      ),
-                      const SizedBox(height: Dimensions.space10),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(controller.totalMoneyIn, style: regularLarge.copyWith(fontWeight: FontWeight.w600)),
-                          const SizedBox(height: Dimensions.space10),
                           GestureDetector(
                             onTap: (){},
                             child: Text(
@@ -108,31 +98,30 @@ class InsightSection extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: Dimensions.space10),
+                const SizedBox(height: Dimensions.space15),
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  padding: const EdgeInsets.symmetric(vertical: Dimensions.space10, horizontal: Dimensions.space15),
-                  decoration: BoxDecoration(color: MyColor.getScreenBgColor(), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
+                  padding: const EdgeInsets.symmetric(vertical: Dimensions.space12, horizontal: Dimensions.space15),
+                  decoration: BoxDecoration(
+                    color: MyColor.getCardBgColor(),
+                    border: Border.all(width: 0.5, color: MyColor.colorGrey.withOpacity(0.2)),
+                    borderRadius: BorderRadius.circular(Dimensions.defaultRadius)
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(MyStrings.moneyOut, style: regularDefault.copyWith(fontWeight: FontWeight.w600)),
-                          const SizedBox(width: Dimensions.space5),
-                          Text(
-                              "( Last 7 days )", // dynamic
-                              style: regularSmall.copyWith(color: MyColor.colorGrey.withOpacity(0.5))
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(MyStrings.moneyOut.tr, style: regularDefault.copyWith(fontWeight: FontWeight.w600)),
+                              const SizedBox(height: Dimensions.space10),
+                              Text(controller.totalMoneyOut, style: regularLarge.copyWith(fontWeight: FontWeight.w600)),
+                            ],
                           ),
-                        ],
-                      ),
-                      const SizedBox(height: Dimensions.space10),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(controller.totalMoneyOut, style: regularLarge.copyWith(fontWeight: FontWeight.w600)),
-                          const SizedBox(height: Dimensions.space10),
                           GestureDetector(
                             onTap: (){},
                             child: Text(

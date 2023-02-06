@@ -45,8 +45,8 @@ class TransactionCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "${controller.transactionList[index].remark}".replaceAll("_", " ").toUpperCase(),
-                          style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600),
+                          "${controller.transactionList[index].remark}".replaceAll("_", " ").toTitleCase(),
+                          style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w500),
                         ),
                         const SizedBox(height: Dimensions.space10),
                         SizedBox(

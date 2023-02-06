@@ -49,19 +49,19 @@ class LatestTransactionSection extends StatelessWidget {
                 )
               ],
             ),
-            const CustomDivider(space: Dimensions.space15),
+            const SizedBox(height: Dimensions.space20),
             controller.trxList.isEmpty ? const Center(
               child: NoDataOrInternetScreen(),
-            ) : ListView.separated(
+            ) : ListView.builder(
                 physics: const BouncingScrollPhysics(),
                 shrinkWrap: true,
                 padding: EdgeInsets.zero,
                 scrollDirection: Axis.vertical,
                 itemCount: controller.trxList.length,
-                separatorBuilder: (context, index) => const SizedBox(height: Dimensions.space10),
                 itemBuilder: (context, index) {
                   return LatestTransactionCard(
                     index: index,
+                    isShowDivider: controller.trxList.length-1!=index,
                     press: () => CustomBottomSheet(
                         child: LatestTransactionBottomSheet(index: index)
                     ).customBottomSheet(context)
