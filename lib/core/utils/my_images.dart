@@ -29,6 +29,7 @@ class MyImages{
   static const String bottomMenu = "assets/images/bottom_menu.png";
   static const String scan = "assets/images/scan.png";
   static const String email = "assets/images/email.png";
+  static const String copy = "assets/images/copy.png";
   static const String phone = "assets/images/phone.png";
   static const String address = "assets/images/address.png";
   static const String state = "assets/images/state.png";

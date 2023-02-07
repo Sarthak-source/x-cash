@@ -109,7 +109,7 @@ class CreateVoucherController extends GetxController{
       if(model.status?.toLowerCase()=='success'){
         String actionId = model.data?.actionId??'';
         if(actionId.isNotEmpty){
-          Get.toNamed(RouteHelper.otpScreen,arguments: [actionId, RouteHelper.bottomNavBar]);
+          Get.toNamed(RouteHelper.otpScreen,arguments: [actionId, RouteHelper.myVoucherScreen]);
         } else{
           CustomSnackBar.error(errorList: [MyStrings.noActionId]);
         }
@@ -129,6 +129,7 @@ class CreateVoucherController extends GetxController{
   double mainAmount = 0;
   String charge = "";
   String payableText = '';
+
   void changeInfoWidget(double amount){
     if(selectedWallet?.id.toString() == "-1"){
       return ;

@@ -120,7 +120,7 @@ class _TransferMoneyState extends State<TransferMoney> {
                     items: controller.otpTypeList.map((value) {
                       return DropdownMenuItem(
                         value: value,
-                        child: Text(value.toString(), style: regularDefault),
+                        child: Text(value.toString().toTitleCase(), style: regularDefault),
                       );
                     }).toList(),
                   ),

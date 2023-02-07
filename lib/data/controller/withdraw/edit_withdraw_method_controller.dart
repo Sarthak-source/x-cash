@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/authorization/authorization_response_model.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
@@ -176,6 +177,7 @@ class EditWithdrawMethodController extends GetxController {
     AuthorizationResponseModel response =await repo.submitData(id, methodId, name, status, formList);
 
     if(response.status?.toLowerCase()==MyStrings.success.toLowerCase()){
+      Get.offAndToNamed(RouteHelper.withdrawMethodScreen);
       CustomSnackBar.success(successList: response.message?.success??[MyStrings.success.tr]);
     }else{
       CustomSnackBar.error(errorList: response.message?.error??[MyStrings.requestFail.tr]);

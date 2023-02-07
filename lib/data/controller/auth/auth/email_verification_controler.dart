@@ -51,7 +51,7 @@ class EmailVerificationController extends GetxController {
 
       if (model.status == MyStrings.success) {
 
-          CustomSnackBar.error(errorList: model.message?.success??[(MyStrings.emailVerificationSuccess)]);
+          CustomSnackBar.success(successList: model.message?.success??[(MyStrings.emailVerificationSuccess)]);
 
           if(needSmsVerification){
             Get.offAndToNamed(RouteHelper.smsVerificationScreen, arguments: [isProfileCompleteEnable,needTwoFactor]);

@@ -53,7 +53,7 @@ class TransactionHistoryBottomSheet extends StatelessWidget {
               CardColumn(
                 alignmentEnd: true,
                 header: MyStrings.charge.tr,
-                body: "${controller.transactionList[index].chargeType} "
+                body: "${controller.transactionList[index].chargeType ?? ""} "
                     "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.transactionList[index].charge ?? "")} "
                     "${controller.transactionList[index].currency?.currencyCode ?? ""}",
               )

@@ -11,7 +11,6 @@ import 'package:xcash_app/data/model/add_money/add_money_method_response_model.d
 import 'package:xcash_app/data/repo/add_money/add_money_method_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/action_button_icon_widget.dart';
-import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';

@@ -105,6 +105,8 @@ class MyStrings{
   static const String transferMoney = "Transfer Money";
   static const String addMoney = "Add Money";
 
+  static const String invoicePaymentUrl = "Invoice Payment Url";
+
   static const String addNewMethod = "Add new method";
   static const String chooseNewWithdrawMethod = "Choose a new withdraw method";
 

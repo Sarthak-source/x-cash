@@ -27,8 +27,8 @@ class BottomSheetRow extends StatelessWidget {
         Row(
           children: [
             Container(
+              height: 35, width: 35,
               alignment: Alignment.center,
-              padding: const EdgeInsets.all(Dimensions.space10),
               decoration: const BoxDecoration(color: MyColor.colorBlack, shape: BoxShape.circle),
               child: Text(currencySymbol!, textAlign: TextAlign.center, style: regularDefault.copyWith(color: MyColor.colorWhite)),
             ),

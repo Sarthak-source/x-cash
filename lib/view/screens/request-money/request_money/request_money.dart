@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
@@ -103,7 +104,7 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                       ),
                       const SizedBox(height: Dimensions.space5),
                       Text(
-                          "${MyStrings.limit}: ${controller.limit}",
+                          "${MyStrings.limit}: ${Converter.twoDecimalPlaceFixedWithoutRounding(controller.limit)}",
                           style: regularExtraSmall.copyWith(color: MyColor.primaryColor)
                       )
                     ],

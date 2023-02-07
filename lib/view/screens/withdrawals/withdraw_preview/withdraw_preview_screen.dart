@@ -149,12 +149,12 @@ class _WithdrawPreviewScreenState extends State<WithdrawPreviewScreen> {
                   items: controller.otpTypeList.map((value) {
                     return DropdownMenuItem(
                       value: value,
-                      child: Text(value.toString(), style: regularDefault),
+                      child: Text(value.toString().toTitleCase(), style: regularDefault),
                     );
                   }).toList(),
                 ),
                 const SizedBox(height: Dimensions.space25),
-                controller.isLoading ? const RoundedLoadingBtn() : RoundedButton(
+                controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
                     text: MyStrings.confirm,
                     press: (){
                       controller.submitMoney(trxId: trxId);

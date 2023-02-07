@@ -31,6 +31,7 @@ class WithdrawMoneyController extends GetxController{
 
   void initialData() async{
     page = 0;
+    amountController.text = "";
     withdrawMoneyList.clear();
     isLoading = true;
     update();
@@ -76,7 +77,6 @@ class WithdrawMoneyController extends GetxController{
 
   bool submitLoading = false;
   Future<void> submitData({required String methodName, required String methodId, required String userMethodId}) async{
-
 
     String amount = amountController.text.toString();
     if(amount.isEmpty){

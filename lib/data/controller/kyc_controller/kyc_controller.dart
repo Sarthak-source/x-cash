@@ -93,9 +93,9 @@ class KycController extends GetxController {
 
     if(response.status?.toLowerCase()==MyStrings.success.toLowerCase()){
       isAlreadyPending = true;
-      CustomSnackBar.error(errorList: response.message?.success??[MyStrings.success.tr]);
+      CustomSnackBar.success(successList: response.message?.success ?? [MyStrings.success.tr]);
     }else{
-      CustomSnackBar.error(errorList: response.message?.error??[MyStrings.requestFail.tr]);
+      CustomSnackBar.error(errorList: response.message?.error ?? [MyStrings.requestFail.tr]);
     }
 
     submitLoading=false;

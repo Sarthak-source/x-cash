@@ -83,7 +83,7 @@ class RegistrationController extends GetxController {
     SignUpModel model = getUserData();
     final responseModel = await registrationRepo.registerUser(model);
     if (responseModel.status?.toLowerCase() == MyStrings.success.toLowerCase()) {
-      CustomSnackBar.error(errorList: responseModel.message?.success ??[MyStrings.success.tr]);
+      CustomSnackBar.success(successList: responseModel.message?.success ??[MyStrings.success.tr]);
       checkAndGotoNextStep(responseModel);
     } else {
       CustomSnackBar.error(errorList:responseModel.message?.error ?? [MyStrings.somethingWentWrong.tr]);

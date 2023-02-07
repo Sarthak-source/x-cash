@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
@@ -87,7 +88,7 @@ class _MakePaymentFormState extends State<MakePaymentForm> {
               items: controller.otpTypeList.map((value) {
                 return DropdownMenuItem(
                   value: value,
-                  child: Text(value.toString(), style: regularDefault),
+                  child: Text(value.toString().toTitleCase(), style: regularDefault),
                 );
               }).toList(),
             ),
