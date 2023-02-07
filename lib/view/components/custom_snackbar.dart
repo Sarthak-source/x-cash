@@ -68,35 +68,35 @@ class CustomSnackBar{
   }
   static  error({required List<String>errorList,int duration=5}){
     String message='';
-      if(errorList.isEmpty){
-        message = MyStrings.somethingWentWrong.tr;
-      }else{
-        for (var element in errorList) {
-          String tempMessage = element.tr;
-          message = message.isEmpty?tempMessage:"$message\n$tempMessage";
-        }
+    if(errorList.isEmpty){
+      message = MyStrings.somethingWentWrong.tr;
+    }else{
+      for (var element in errorList) {
+        String tempMessage = element.tr;
+        message = message.isEmpty?tempMessage:"$message\n$tempMessage";
       }
-      message = Converter.removeQuotationAndSpecialCharacterFromString(message);
+    }
+    message = Converter.removeQuotationAndSpecialCharacterFromString(message);
     Get.rawSnackbar(
-      progressIndicatorBackgroundColor: MyColor.colorRed,
-      progressIndicatorValueColor: const AlwaysStoppedAnimation<Color>(MyColor.colorRed),
+      progressIndicatorBackgroundColor: MyColor.transparentColor,
+      progressIndicatorValueColor: const AlwaysStoppedAnimation<Color>(Colors.transparent),
       messageText: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 2,),
-          Text(message,style: regularDefault.copyWith(color: MyColor.getHeadingTextColor())),
+          Text(message,style: regularDefault.copyWith(color: MyColor.colorWhite ),),
         ],
       ),
       dismissDirection: DismissDirection.horizontal,
-      snackPosition: SnackPosition.TOP,
+      snackPosition: SnackPosition.BOTTOM,
       titleText: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(MyStrings.error.tr.toLowerCase().capitalizeFirst??MyStrings.error.tr,style: semiBoldSmall.copyWith(fontSize: Dimensions.fontLarge, color: MyColor.getTextColor())),
-          SvgPicture.asset(MyImages.errorImage, height: 25,width: 25, color: MyColor.colorRed)
+          SvgPicture.asset(MyImages.errorImage, height: 20,width: 20,color: MyColor.colorWhite),
+          const SizedBox(width: 5),
+          Text(MyStrings.error.tr.capitalizeFirst??'',style: semiBoldSmall.copyWith(fontSize: Dimensions.fontLarge,color: MyColor.colorWhite)),
         ],
       ),
-      backgroundColor: MyColor.getCardBgColor(),
+      backgroundColor: MyColor.colorRed,
       borderRadius: 4,
       margin: const EdgeInsets.all(8),
       padding: const EdgeInsets.all(10),
@@ -104,27 +104,28 @@ class CustomSnackBar{
       isDismissible: true,
       forwardAnimationCurve: Curves.easeIn,
       showProgressIndicator: true,
-      leftBarIndicatorColor: MyColor.getScreenBgColor(),
+      leftBarIndicatorColor: MyColor.transparentColor,
       animationDuration: const Duration(seconds: 1),
-      borderColor: MyColor.borderColor,
+      borderColor: MyColor.transparentColor,
       reverseAnimationCurve:Curves.easeOut,
       borderWidth: 2,
     );
   }
+
   static  success({required List<String>successList,int duration=5}){
     String message='';
-      if(successList.isEmpty){
-        message = MyStrings.somethingWentWrong.tr;
-      }else{
-        for (var element in successList) {
-          String tempMessage = element.tr;
-          message = message.isEmpty?tempMessage:"$message\n$tempMessage";
-        }
+    if(successList.isEmpty){
+      message = MyStrings.somethingWentWrong.tr;
+    }else{
+      for (var element in successList) {
+        String tempMessage = element.tr;
+        message = message.isEmpty?tempMessage:"$message\n$tempMessage";
       }
-      message = Converter.removeQuotationAndSpecialCharacterFromString(message);
+    }
+    message = Converter.removeQuotationAndSpecialCharacterFromString(message);
     Get.rawSnackbar(
-      progressIndicatorBackgroundColor:  MyColor.colorGreen,
-      progressIndicatorValueColor: const AlwaysStoppedAnimation<Color>(MyColor.colorGreen),
+      progressIndicatorBackgroundColor: MyColor.colorGreen,
+      progressIndicatorValueColor: const AlwaysStoppedAnimation<Color>(MyColor.transparentColor),
       messageText: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -133,24 +134,25 @@ class CustomSnackBar{
         ],
       ),
       dismissDirection: DismissDirection.horizontal,
-      snackPosition: SnackPosition.TOP,
+      snackPosition: SnackPosition.BOTTOM,
       titleText: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(MyStrings.success.tr.toLowerCase().capitalizeFirst??MyStrings.success.tr,style: semiBoldSmall.copyWith(fontSize: Dimensions.fontLarge, color: MyColor.colorWhite)),
+          SvgPicture.asset(MyImages.successImage,height: 20,width: 20,color: MyColor.colorWhite,),
+          const SizedBox(width: 5,),
+          Text(MyStrings.success.tr,style: semiBoldSmall.copyWith(fontSize: Dimensions.fontLarge, color: MyColor.colorWhite)),
         ],
       ),
-      backgroundColor: MyColor.getHeadingTextColor(),
+      backgroundColor: MyColor.colorGreen,
       borderRadius: 4,
       margin: const EdgeInsets.all(8),
       padding: const EdgeInsets.all(10),
       duration:  Duration(seconds: duration),
       isDismissible: true,
-      forwardAnimationCurve: Curves.easeIn,
+      forwardAnimationCurve: Curves.easeInOutCubicEmphasized,
       showProgressIndicator: true,
-      leftBarIndicatorColor: MyColor.getScreenBgColor(),
-      animationDuration: const Duration(seconds: 1),
-      borderColor: MyColor.borderColor,
+      leftBarIndicatorColor: MyColor.transparentColor,
+      animationDuration: const Duration(seconds: 2),
+      borderColor: MyColor.transparentColor,
       reverseAnimationCurve:Curves.easeOut,
       borderWidth: 2,
     );
