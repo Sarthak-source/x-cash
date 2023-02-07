@@ -55,7 +55,15 @@ class MyImages{
   static const String verifiedIcon = "assets/icons/verified.svg";
   static const String noDataImage = "assets/images/no_data.svg";
   static const String errorImage = "assets/images/Error.svg";
-  static const String successImage = "assets/icons/success_icon.svg";
+  static const String successImage = "assets/images/success_icon.png";
+
+  static const String usDollar = "assets/icons/coins/dollar.png";
+  static const String bdTaka = "assets/icons/coins/taka.png";
+  static const String indRupee = "assets/icons/coins/inr.png";
+  static const String pakRupee = "assets/icons/coins/pkr.png";
+  static const String slRupee = "assets/icons/coins/lkr.png";
+  static const String btc = "assets/icons/coins/btc.png";
+  static const String ngn = "assets/icons/coins/ngn.png";
 
   static const String noInternet = "assets/animation/no_internet.json";
 }

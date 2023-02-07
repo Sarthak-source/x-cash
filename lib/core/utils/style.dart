@@ -51,42 +51,6 @@ const TextStyle lightOverLarge = TextStyle(
     fontWeight: FontWeight.w300,
     fontSize: Dimensions.fontOverLarge
 );
-const TextStyle lightHeader1 = TextStyle(
-    fontFamily: 'Lora',
-    color: MyColor.primaryTextColor,
-    fontWeight: FontWeight.w300,
-    fontSize: Dimensions.fontHeader1
-);
-const TextStyle lightHeader2 = TextStyle(
-    fontFamily: 'Lora',
-    color: MyColor.primaryTextColor,
-    fontWeight: FontWeight.w300,
-    fontSize: Dimensions.fontHeader2
-);
-const TextStyle lightHeader3 = TextStyle(
-    fontFamily: 'Lora',
-    color: MyColor.primaryTextColor,
-    fontWeight: FontWeight.w300,
-    fontSize: Dimensions.fontHeader3
-);
-const TextStyle lightHeader4 = TextStyle(
-    fontFamily: 'Lora',
-    color: MyColor.primaryTextColor,
-    fontWeight: FontWeight.w300,
-    fontSize: Dimensions.fontHeader4
-);
-const TextStyle lightHeader5 = TextStyle(
-    fontFamily: 'Lora',
-    color: MyColor.primaryTextColor,
-    fontWeight: FontWeight.w300,
-    fontSize: Dimensions.fontHeader5
-);
-const TextStyle lightHeader6 = TextStyle(
-    fontFamily: 'Lora',
-    color: MyColor.primaryTextColor,
-    fontWeight: FontWeight.w300,
-    fontSize: Dimensions.fontHeader6
-);
 
 // regular-font
 const TextStyle regularOverSmall = TextStyle(
@@ -136,42 +100,6 @@ const TextStyle regularOverLarge = TextStyle(
     color: MyColor.primaryTextColor,
     fontWeight: FontWeight.w400,
     fontSize: Dimensions.fontOverLarge
-);
-const TextStyle regularHeader1 = TextStyle(
-    fontFamily: 'Lora',
-    color: MyColor.primaryTextColor,
-    fontWeight: FontWeight.w400,
-    fontSize: Dimensions.fontHeader1
-);
-const TextStyle regularHeader2 = TextStyle(
-    fontFamily: 'Lora',
-    color: MyColor.primaryTextColor,
-    fontWeight: FontWeight.w400,
-    fontSize: Dimensions.fontHeader2
-);
-const TextStyle regularHeader3 = TextStyle(
-    fontFamily: 'Lora',
-    color: MyColor.primaryTextColor,
-    fontWeight: FontWeight.w400,
-    fontSize: Dimensions.fontHeader3
-);
-const TextStyle regularHeader4 = TextStyle(
-    fontFamily: 'Lora',
-    color: MyColor.primaryTextColor,
-    fontWeight: FontWeight.w400,
-    fontSize: Dimensions.fontHeader4
-);
-const TextStyle regularHeader5 = TextStyle(
-    fontFamily: 'Lora',
-    color: MyColor.primaryTextColor,
-    fontWeight: FontWeight.w400,
-    fontSize: Dimensions.fontHeader5
-);
-const TextStyle regularHeader6 = TextStyle(
-    fontFamily: 'Lora',
-    color: MyColor.primaryTextColor,
-    fontWeight: FontWeight.w400,
-    fontSize: Dimensions.fontHeader6
 );
 
 // medium-font
@@ -223,42 +151,6 @@ const TextStyle mediumOverLarge = TextStyle(
     fontWeight: FontWeight.w500,
     fontSize: Dimensions.fontOverLarge
 );
-const TextStyle mediumHeader1 = TextStyle(
-    fontFamily: 'Lora',
-    color: MyColor.primaryTextColor,
-    fontWeight: FontWeight.w500,
-    fontSize: Dimensions.fontHeader1
-);
-const TextStyle mediumHeader2 = TextStyle(
-    fontFamily: 'Lora',
-    color: MyColor.primaryTextColor,
-    fontWeight: FontWeight.w500,
-    fontSize: Dimensions.fontHeader2
-);
-const TextStyle mediumHeader3 = TextStyle(
-    fontFamily: 'Lora',
-    color: MyColor.primaryTextColor,
-    fontWeight: FontWeight.w500,
-    fontSize: Dimensions.fontHeader3
-);
-const TextStyle mediumHeader4 = TextStyle(
-    fontFamily: 'Lora',
-    color: MyColor.primaryTextColor,
-    fontWeight: FontWeight.w500,
-    fontSize: Dimensions.fontHeader4
-);
-const TextStyle mediumHeader5 = TextStyle(
-    fontFamily: 'Lora',
-    color: MyColor.primaryTextColor,
-    fontWeight: FontWeight.w500,
-    fontSize: Dimensions.fontHeader5
-);
-const TextStyle mediumHeader6 = TextStyle(
-    fontFamily: 'Lora',
-    color: MyColor.primaryTextColor,
-    fontWeight: FontWeight.w500,
-    fontSize: Dimensions.fontHeader6
-);
 
 // semi-bold
 const TextStyle semiBoldOverSmall = TextStyle(
@@ -309,42 +201,6 @@ const TextStyle semiBoldOverLarge = TextStyle(
     fontWeight: FontWeight.w600,
     fontSize: Dimensions.fontOverLarge
 );
-const TextStyle semiBoldHeader1 = TextStyle(
-    fontFamily: 'Lora',
-    color: MyColor.primaryTextColor,
-    fontWeight: FontWeight.w600,
-    fontSize: Dimensions.fontHeader1
-);
-const TextStyle semiBoldHeader2 = TextStyle(
-    fontFamily: 'Lora',
-    color: MyColor.primaryTextColor,
-    fontWeight: FontWeight.w600,
-    fontSize: Dimensions.fontHeader2
-);
-const TextStyle semiBoldHeader3 = TextStyle(
-    fontFamily: 'Lora',
-    color: MyColor.primaryTextColor,
-    fontWeight: FontWeight.w600,
-    fontSize: Dimensions.fontHeader3
-);
-const TextStyle semiBoldHeader4 = TextStyle(
-    fontFamily: 'Lora',
-    color: MyColor.primaryTextColor,
-    fontWeight: FontWeight.w600,
-    fontSize: Dimensions.fontHeader4
-);
-const TextStyle semiBoldHeader5 = TextStyle(
-    fontFamily: 'Lora',
-    color: MyColor.primaryTextColor,
-    fontWeight: FontWeight.w600,
-    fontSize: Dimensions.fontHeader5
-);
-const TextStyle semiBoldHeader6 = TextStyle(
-    fontFamily: 'Lora',
-    color: MyColor.primaryTextColor,
-    fontWeight: FontWeight.w600,
-    fontSize: Dimensions.fontHeader6
-);
 
 // semi-bold
 const TextStyle boldOverSmall = TextStyle(
@@ -394,40 +250,4 @@ const TextStyle boldOverLarge = TextStyle(
     color: MyColor.primaryTextColor,
     fontWeight: FontWeight.w700,
     fontSize: Dimensions.fontOverLarge
-);
-const TextStyle boldHeader1 = TextStyle(
-    fontFamily: 'Lora',
-    color: MyColor.primaryTextColor,
-    fontWeight: FontWeight.w700,
-    fontSize: Dimensions.fontHeader1
-);
-const TextStyle boldHeader2 = TextStyle(
-    fontFamily: 'Lora',
-    color: MyColor.primaryTextColor,
-    fontWeight: FontWeight.w700,
-    fontSize: Dimensions.fontHeader2
-);
-const TextStyle boldHeader3 = TextStyle(
-    fontFamily: 'Lora',
-    color: MyColor.primaryTextColor,
-    fontWeight: FontWeight.w700,
-    fontSize: Dimensions.fontHeader3
-);
-const TextStyle boldHeader4 = TextStyle(
-    fontFamily: 'Lora',
-    color: MyColor.primaryTextColor,
-    fontWeight: FontWeight.w700,
-    fontSize: Dimensions.fontHeader4
-);
-const TextStyle boldHeader5 = TextStyle(
-    fontFamily: 'Lora',
-    color: MyColor.primaryTextColor,
-    fontWeight: FontWeight.w700,
-    fontSize: Dimensions.fontHeader5
-);
-const TextStyle boldHeader6 = TextStyle(
-    fontFamily: 'Lora',
-    color: MyColor.primaryTextColor,
-    fontWeight: FontWeight.w700,
-    fontSize: Dimensions.fontHeader6
 );

@@ -5,7 +5,7 @@ import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/voucher/voucher_list_response_model.dart';
 import 'package:xcash_app/data/repo/voucher/voucher_list_repo.dart';
-import 'package:xcash_app/view/components/custom_snackbar.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
 class VoucherListController extends GetxController{
 

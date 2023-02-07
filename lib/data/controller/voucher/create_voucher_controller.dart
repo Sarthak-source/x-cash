@@ -9,7 +9,7 @@ import 'package:xcash_app/data/model/authorization/authorization_response_model.
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/voucher/create_voucher_response_model.dart';
 import 'package:xcash_app/data/repo/voucher/create_voucher_repo.dart';
-import 'package:xcash_app/view/components/custom_snackbar.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
 class CreateVoucherController extends GetxController{
 

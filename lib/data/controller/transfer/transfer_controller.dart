@@ -8,7 +8,7 @@ import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/profile/profile_response_model.dart';
 import 'package:xcash_app/data/repo/account/profile_repo.dart';
 import 'package:xcash_app/data/repo/balance_transfer_repo/balance_transfer_repo.dart';
-import 'package:xcash_app/view/components/custom_snackbar.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
 class BalanceTransferController extends GetxController {
 
@@ -80,12 +80,12 @@ class BalanceTransferController extends GetxController {
     String amount   = amountController.text.toString();
 
     if(username.isEmpty){
-      CustomSnackBar.showCustomSnackBar(errorList: [MyStrings.usernameEmptyMsg.tr], msg: [], isError: true);
+      CustomSnackBar.error(errorList: [MyStrings.usernameEmptyMsg.tr]);
       return;
     }
 
     if(amount.isEmpty){
-      CustomSnackBar.showCustomSnackBar(errorList: [(MyStrings.invalidAmount.tr)], msg: [], isError: true);
+      CustomSnackBar.error(errorList: [(MyStrings.invalidAmount.tr)]);
       return;
     }
 
@@ -99,10 +99,10 @@ class BalanceTransferController extends GetxController {
         clearInputField();
         CustomSnackBar.success(successList: model.message?.success??[MyStrings.requestSuccess],);
       }else{
-        CustomSnackBar.showCustomSnackBar(errorList:  model.message?.error??[MyStrings.requestFail], msg:[], isError:true);
+        CustomSnackBar.error(errorList:  model.message?.error??[MyStrings.requestFail]);
       }
     }else{
-      CustomSnackBar.showCustomSnackBar(errorList: [response.message], msg: [], isError: true);
+      CustomSnackBar.error(errorList: [response.message]);
     }
 
     submitLoading = false;

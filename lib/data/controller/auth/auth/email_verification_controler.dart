@@ -6,7 +6,7 @@ import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/authorization/authorization_response_model.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/repo/auth/sms_email_verification_repo.dart';
-import 'package:xcash_app/view/components/custom_snackbar.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
 class EmailVerificationController extends GetxController {
 
@@ -37,7 +37,7 @@ class EmailVerificationController extends GetxController {
   Future<void> verifyEmail(String text) async {
 
     if (text.isEmpty) {
-      CustomSnackBar.showCustomSnackBar(errorList: [MyStrings.otpFieldEmptyMsg], msg: [], isError: true);
+      CustomSnackBar.error(errorList: [MyStrings.otpFieldEmptyMsg]);
       return;
     }
 
@@ -51,7 +51,7 @@ class EmailVerificationController extends GetxController {
 
       if (model.status == MyStrings.success) {
 
-          CustomSnackBar.showCustomSnackBar(errorList: [], msg: model.message?.success??[(MyStrings.emailVerificationSuccess)] , isError: false);
+          CustomSnackBar.error(errorList: model.message?.success??[(MyStrings.emailVerificationSuccess)]);
 
           if(needSmsVerification){
             Get.offAndToNamed(RouteHelper.smsVerificationScreen, arguments: [isProfileCompleteEnable,needTwoFactor]);
@@ -64,11 +64,11 @@ class EmailVerificationController extends GetxController {
           }
 
       } else {
-        CustomSnackBar.showCustomSnackBar(errorList: model.message?.error??[(MyStrings.emailVerificationFailed)] , msg: [], isError: true);
+        CustomSnackBar.error(errorList: model.message?.error??[(MyStrings.emailVerificationFailed)]);
       }
     }
     else {
-      CustomSnackBar.showCustomSnackBar(errorList: [responseModel.message] , msg: [], isError: true);
+      CustomSnackBar.error(errorList: [responseModel.message]);
     }
     submitLoading=false;
     update();

@@ -9,7 +9,7 @@ import 'package:xcash_app/data/model/authorization/authorization_response_model.
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/withdraw/add_withdraw_method_response_model.dart';
 import 'package:xcash_app/data/repo/withdraw/add_withdraw_method_repo.dart';
-import 'package:xcash_app/view/components/custom_snackbar.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
 class AddWithdrawMethodController extends GetxController {
 
@@ -129,7 +129,7 @@ class AddWithdrawMethodController extends GetxController {
     List<String> list = hasError();
 
     if (list.isNotEmpty) {
-      CustomSnackBar.showCustomSnackBar(errorList: list, msg: [], isError: true);
+      CustomSnackBar.error(errorList: list);
       return;
     }
 
@@ -148,9 +148,9 @@ class AddWithdrawMethodController extends GetxController {
     AuthorizationResponseModel response =await addWithdrawMethodRepo.submitData(name,methodId,currencyId,formList);
 
     if(response.status?.toLowerCase()==MyStrings.success.toLowerCase()){
-      CustomSnackBar.showCustomSnackBar(errorList: [], msg: response.message?.success??[MyStrings.success.tr], isError: false);
+      CustomSnackBar.success(successList: response.message?.success??[MyStrings.success.tr]);
     }else{
-      CustomSnackBar.showCustomSnackBar(errorList: response.message?.error??[MyStrings.requestFail.tr], msg: [], isError: true);
+      CustomSnackBar.error(errorList: response.message?.error??[MyStrings.requestFail.tr]);
     }
 
     submitLoading=false;

@@ -9,7 +9,7 @@ import 'package:xcash_app/data/model/authorization/authorization_response_model.
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/money_discharge/make_payment/make_payment_response_model.dart';
 import 'package:xcash_app/data/repo/money_discharge/make_payment/make_payment_repo.dart';
-import 'package:xcash_app/view/components/custom_snackbar.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
 class MakePaymentController extends GetxController{
 
@@ -85,7 +85,7 @@ class MakePaymentController extends GetxController{
       }
     }
     else{
-      CustomSnackBar.showCustomSnackBar(errorList: [responseModel.message], msg: [], isError: true);
+      CustomSnackBar.error(errorList: [responseModel.message]);
     }
 
     isLoading = false;

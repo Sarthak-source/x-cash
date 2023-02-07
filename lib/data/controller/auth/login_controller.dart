@@ -8,7 +8,7 @@ import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/auth/login/login_response_model.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/repo/auth/login_repo.dart';
-import 'package:xcash_app/view/components/custom_snackbar.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
 class LoginController extends GetxController{
 
@@ -101,11 +101,11 @@ class LoginController extends GetxController{
        checkAndGotoNextStep(loginModel);
         return;
       }else{
-        CustomSnackBar.showCustomSnackBar(errorList: loginModel.message?.error??[MyStrings.loginFailedTryAgain], msg: [], isError: true);
+        CustomSnackBar.error(errorList: loginModel.message?.error??[MyStrings.loginFailedTryAgain]);
       }
     }
     else{
-      CustomSnackBar.showCustomSnackBar(errorList: [model.message], msg: [], isError: true);
+      CustomSnackBar.error(errorList: [model.message]);
     }
     isSubmitLoading = false;
     update();

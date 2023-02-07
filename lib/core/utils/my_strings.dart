@@ -393,6 +393,7 @@ class MyStrings{
   static const String balanceTransfer = "Balance Transfer";
   static const String balance = "Balance";
   static const String xCashBalance = "xCash Balance";
+  static const String estimateBalance = "* Estimate total balance based on the most recent conversion rate.";
   static const String available = "Available";
   static const String completePlan = "Completed Invest";
   static const String referralLink = "Referral Link";

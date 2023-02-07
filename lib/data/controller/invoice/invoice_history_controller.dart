@@ -7,7 +7,7 @@ import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/invoice/invoice_history_response_model.dart';
 import 'package:xcash_app/data/repo/invoice/invoice_history_repo.dart';
-import 'package:xcash_app/view/components/custom_snackbar.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
 class InvoiceHistoryController extends GetxController{
 

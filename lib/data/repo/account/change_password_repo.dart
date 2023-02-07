@@ -7,7 +7,7 @@ import 'package:xcash_app/core/utils/url_container.dart';
 import 'package:xcash_app/data/model/authorization/authorization_response_model.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/services/api_service.dart';
-import 'package:xcash_app/view/components/custom_snackbar.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
 class ChangePasswordRepo{
 
@@ -25,16 +25,13 @@ class ChangePasswordRepo{
    AuthorizationResponseModel model=AuthorizationResponseModel.fromJson(jsonDecode(responseModel.responseJson));
    if(model.message?.success!=null && model.message!.success!.isNotEmpty){
 
-    CustomSnackBar.showCustomSnackBar(
-        errorList: [],
-        msg: model.message?.success??[MyStrings.passwordChanged.tr],
-        isError: false);
+    CustomSnackBar.success(successList: model.message?.success??[MyStrings.passwordChanged.tr]);
 
     return true;
 
    }else{
 
-    CustomSnackBar.showCustomSnackBar(errorList: model.message?.error??[MyStrings.requestFail.tr], msg: [], isError: true);
+    CustomSnackBar.error(errorList: model.message?.error??[MyStrings.requestFail.tr]);
     return false;
 
    }

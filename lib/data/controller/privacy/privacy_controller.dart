@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:xcash_app/data/model/about/privacy_response_model.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/repo/privacy_repo/privacy_repo.dart';
-import 'package:xcash_app/view/components/custom_snackbar.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
 
 class PrivacyController extends GetxController{
@@ -30,7 +30,7 @@ class PrivacyController extends GetxController{
         updateLoading(false);
       }
     }else{
-       CustomSnackBar.showCustomSnackBar(errorList: [model.message], msg: [], isError: false);
+       CustomSnackBar.error(errorList: [model.message]);
        updateLoading(false);
     }
   }

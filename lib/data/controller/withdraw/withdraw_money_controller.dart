@@ -9,7 +9,7 @@ import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/withdraw/submit_withdraw_money_response_model.dart';
 import 'package:xcash_app/data/model/withdraw/withdraw_money_response_model.dart' as wm_model;
 import 'package:xcash_app/data/repo/withdraw/withdraw_money_repo.dart';
-import 'package:xcash_app/view/components/custom_snackbar.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
 class WithdrawMoneyController extends GetxController{
 

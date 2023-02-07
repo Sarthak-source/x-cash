@@ -7,7 +7,7 @@ import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/authorization/authorization_response_model.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/repo/auth/sms_email_verification_repo.dart';
-import 'package:xcash_app/view/components/custom_snackbar.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
 class SmsVerificationController extends GetxController {
 
@@ -36,7 +36,7 @@ class SmsVerificationController extends GetxController {
 
 
     if (currentText.isEmpty) {
-      CustomSnackBar.showCustomSnackBar(errorList: [MyStrings.otpFieldEmptyMsg.tr], msg: [], isError: true);
+      CustomSnackBar.error(errorList: [MyStrings.otpFieldEmptyMsg.tr]);
       return;
     }
 
@@ -50,23 +50,17 @@ class SmsVerificationController extends GetxController {
 
       if (model.status == MyStrings.success) {
 
-        CustomSnackBar.showCustomSnackBar(
-            errorList: [],
-            msg:model.message?.success??['${MyStrings.sms.tr} ${MyStrings.verificationSuccess.tr}'] ,
-            isError:false);
+        CustomSnackBar.success(successList: model.message?.success??['${MyStrings.sms.tr} ${MyStrings.verificationSuccess.tr}']);
 
         Get.offAndToNamed(isProfileCompleteEnable? RouteHelper.profileCompleteScreen:RouteHelper.bottomNavBar);
 
       } else {
 
-        CustomSnackBar.showCustomSnackBar(
-            errorList: model.message?.error??['${MyStrings.sms.tr} ${MyStrings.verificationFailed}'] ,
-            msg: [],
-            isError: true);
+        CustomSnackBar.error(errorList: model.message?.error??['${MyStrings.sms.tr} ${MyStrings.verificationFailed}']);
 
       }
     } else {
-      CustomSnackBar.showCustomSnackBar(errorList: [responseModel.message] , msg: [], isError: true);
+      CustomSnackBar.error(errorList: [responseModel.message]);
     }
 
     submitLoading = false;

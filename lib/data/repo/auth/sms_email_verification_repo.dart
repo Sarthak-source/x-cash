@@ -6,7 +6,7 @@ import 'package:xcash_app/core/utils/url_container.dart';
 import 'package:xcash_app/data/model/authorization/authorization_response_model.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/services/api_service.dart';
-import 'package:xcash_app/view/components/custom_snackbar.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
 class SmsEmailVerificationRepo {
   ApiClient apiClient;

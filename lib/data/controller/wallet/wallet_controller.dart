@@ -6,7 +6,7 @@ import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/wallet/wallets_response_model.dart' as wallet_model;
 import 'package:xcash_app/data/repo/wallet/wallet_repo.dart';
-import 'package:xcash_app/view/components/custom_snackbar.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
 class WalletController extends GetxController{
 

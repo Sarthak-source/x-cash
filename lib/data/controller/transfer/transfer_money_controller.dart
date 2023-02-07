@@ -9,7 +9,7 @@ import 'package:xcash_app/data/model/authorization/authorization_response_model.
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/transfer/transfer_money_response_model.dart' as tm_model;
 import 'package:xcash_app/data/repo/transfer/transfer_money_repo.dart';
-import 'package:xcash_app/view/components/custom_snackbar.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
 class TransferMoneyController extends GetxController{
 

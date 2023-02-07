@@ -9,7 +9,7 @@ import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/invoice/create_invoice_response_model.dart';
 import 'package:xcash_app/data/model/invoice/invoice_items_model.dart';
 import 'package:xcash_app/data/repo/invoice/create_invoice_repo.dart';
-import 'package:xcash_app/view/components/custom_snackbar.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
 class CreateInvoiceController extends GetxController{
 

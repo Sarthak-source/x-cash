@@ -12,7 +12,7 @@ import 'package:xcash_app/data/model/general_setting/general_settings_response_m
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/repo/auth/general_setting_repo.dart';
 import 'package:xcash_app/data/repo/auth/signup_repo.dart';
-import 'package:xcash_app/view/components/custom_snackbar.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 import 'package:xcash_app/view/screens/auth/registration/model/error_model.dart';
 
 class RegistrationController extends GetxController {
@@ -67,13 +67,13 @@ class RegistrationController extends GetxController {
   signUpUser() async {
 
     if (countryName == null) {
-      CustomSnackBar.showCustomSnackBar(errorList: [MyStrings.selectACountry], msg: [], isError: true);
+      CustomSnackBar.error(errorList: [MyStrings.selectACountry]);
       update();
       return;
     }
 
     if(mobileController.text.isEmpty) {
-      CustomSnackBar.showCustomSnackBar(errorList: [MyStrings.enterYourPhoneNumber], msg: [], isError: true);
+      CustomSnackBar.error(errorList: [MyStrings.enterYourPhoneNumber]);
       return;
     }
 
@@ -83,10 +83,10 @@ class RegistrationController extends GetxController {
     SignUpModel model = getUserData();
     final responseModel = await registrationRepo.registerUser(model);
     if (responseModel.status?.toLowerCase() == MyStrings.success.toLowerCase()) {
-      CustomSnackBar.showCustomSnackBar(errorList: [''],msg:responseModel.message?.success ??[MyStrings.success.tr],isError: false);
+      CustomSnackBar.error(errorList: responseModel.message?.success ??[MyStrings.success.tr]);
       checkAndGotoNextStep(responseModel);
     } else {
-      CustomSnackBar.showCustomSnackBar(errorList:responseModel.message?.error ?? [MyStrings.somethingWentWrong.tr],msg: [],isError: true);
+      CustomSnackBar.error(errorList:responseModel.message?.error ?? [MyStrings.somethingWentWrong.tr]);
     }
     submitLoading=false;
     update();
@@ -197,7 +197,7 @@ class RegistrationController extends GetxController {
         registrationRepo.apiClient.storeGeneralSetting(model);
       } else {
         List<String>message=[MyStrings.somethingWentWrong.tr];
-        CustomSnackBar.showCustomSnackBar(errorList:model.message?.error??message, msg:[], isError: true);
+        CustomSnackBar.error(errorList:model.message?.error??message);
         return;
       }
     }else{
@@ -205,7 +205,7 @@ class RegistrationController extends GetxController {
         noInternet=true;
         update();
       }
-      CustomSnackBar.showCustomSnackBar(errorList:[response.message], msg:[], isError: true);
+      CustomSnackBar.error(errorList:[response.message]);
       return;
     }
 
@@ -238,8 +238,8 @@ class RegistrationController extends GetxController {
       update();
       return;
     } else {
-      CustomSnackBar.showCustomSnackBar(
-          errorList: [mainResponse.message], msg: [], isError: true);
+      CustomSnackBar.error(
+          errorList: [mainResponse.message]);
 
       countryLoading = false;
       update();

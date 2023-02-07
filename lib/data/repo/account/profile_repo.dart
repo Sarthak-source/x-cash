@@ -10,7 +10,7 @@ import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/profile/profile_response_model.dart';
 import 'package:xcash_app/data/model/user_post_model/user_post_model.dart';
 import 'package:xcash_app/data/services/api_service.dart';
-import 'package:xcash_app/view/components/custom_snackbar.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
 class ProfileRepo {
   ApiClient apiClient;
@@ -49,10 +49,10 @@ class ProfileRepo {
 
 
       if(model.status?.toLowerCase()==MyStrings.success.toLowerCase()){
-        CustomSnackBar.showCustomSnackBar(errorList: [], msg: model.message?.success??[MyStrings.success], isError: false);
+        CustomSnackBar.success(successList: model.message?.success??[MyStrings.success]);
         return true;
       }else{
-        CustomSnackBar.showCustomSnackBar(errorList: model.message?.error??[MyStrings.requestFail.tr], msg: [], isError: false);
+        CustomSnackBar.error(errorList: model.message?.error??[MyStrings.requestFail.tr]);
         return false;
       }
 

@@ -3,7 +3,7 @@ import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/auth/verification/email_verification_model.dart';
 import 'package:xcash_app/data/repo/auth/login_repo.dart';
-import 'package:xcash_app/view/components/custom_snackbar.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
 class VerifyPasswordController extends GetxController{
   LoginRepo loginRepo;

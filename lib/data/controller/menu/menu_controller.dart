@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/repo/menu_repo/menu_repo.dart';
-import 'package:xcash_app/view/components/custom_snackbar.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
 class MenuController extends GetxController{
 
@@ -16,7 +16,7 @@ class MenuController extends GetxController{
     update();
 
     await menuRepo.logout();
-    CustomSnackBar.showCustomSnackBar(errorList: [], msg: [MyStrings.logoutSuccessMsg], isError: false);
+    CustomSnackBar.success(successList: [MyStrings.logoutSuccessMsg]);
 
     logoutLoading = false;
     update();

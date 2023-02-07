@@ -9,7 +9,7 @@ import 'package:xcash_app/data/controller/localization/localization_controller.d
 import 'package:xcash_app/data/model/general_setting/general_settings_response_model.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/repo/auth/general_setting_repo.dart';
-import 'package:xcash_app/view/components/custom_snackbar.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
 
 
@@ -61,7 +61,7 @@ class SplashController extends GetxController  {
       }
       else {
         List<String>message=[MyStrings.somethingWentWrong];
-        CustomSnackBar.showCustomSnackBar(errorList:model.message?.error??message, msg:[], isError: true);
+        CustomSnackBar.error(errorList:model.message?.error??message);
         return;
       }
     }else{
@@ -69,7 +69,7 @@ class SplashController extends GetxController  {
         noInternet=true;
         update();
       }
-      CustomSnackBar.showCustomSnackBar(errorList:[response.message], msg:[], isError: true);
+      CustomSnackBar.error(errorList:[response.message]);
       return;
     }
 
@@ -120,11 +120,11 @@ class SplashController extends GetxController  {
         language['${localizationController.locale.languageCode}_${localizationController.locale.countryCode}'] = json;
         Get.addTranslations(Messages(languages: language).keys);
       }catch(e){
-        CustomSnackBar.showCustomSnackBar(errorList: [e.toString()], msg: [], isError: true);
+        CustomSnackBar.error(errorList: [e.toString()]);
       }
 
     } else{
-      CustomSnackBar.showCustomSnackBar(errorList: [response.message], msg: [], isError: true);
+      CustomSnackBar.error(errorList: [response.message]);
     }
 
   }

@@ -6,7 +6,7 @@ import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/profile/profile_response_model.dart';
 import 'package:xcash_app/data/model/user_post_model/user_post_model.dart';
 import 'package:xcash_app/data/repo/account/profile_repo.dart';
-import 'package:xcash_app/view/components/custom_snackbar.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
 
 
@@ -52,10 +52,10 @@ class ProfileCompleteController extends GetxController {
 
 
     if(firstName.isEmpty){
-      CustomSnackBar.showCustomSnackBar(errorList: [MyStrings.kFirstNameNullError], msg: [], isError: true);
+      CustomSnackBar.error(errorList: [MyStrings.kFirstNameNullError]);
       return;
     }else if(lastName.isEmpty){
-      CustomSnackBar.showCustomSnackBar(errorList: [MyStrings.kLastNameNullError], msg: [], isError:true);
+      CustomSnackBar.error(errorList: [MyStrings.kLastNameNullError]);
       return;
     }
 

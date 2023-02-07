@@ -8,7 +8,7 @@ import 'package:xcash_app/core/utils/url_container.dart';
 import 'package:xcash_app/data/model/auth/verification/email_verification_model.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/services/api_service.dart';
-import 'package:xcash_app/view/components/custom_snackbar.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
 
 class LoginRepo {
@@ -84,8 +84,7 @@ class LoginRepo {
       model.setCode(200);
       return model;
     } else {
-      CustomSnackBar.showCustomSnackBar(
-          errorList: model.message!.error ?? [], msg: [''], isError: true);
+      CustomSnackBar.error(errorList: model.message!.error ?? []);
       model.setCode(400);
       return model;
     }

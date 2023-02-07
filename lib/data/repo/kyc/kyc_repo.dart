@@ -8,7 +8,7 @@ import 'package:xcash_app/data/model/authorization/authorization_response_model.
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/kyc/kyc_response_model.dart';
 import 'package:xcash_app/data/services/api_service.dart';
-import 'package:xcash_app/view/components/custom_snackbar.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
 class KycRepo {
 
@@ -26,7 +26,7 @@ class KycRepo {
       } else {
 
         if(model.remark?.toLowerCase() != 'already_verified' && model.remark?.toLowerCase() != 'under_review') {
-          CustomSnackBar.showCustomSnackBar(errorList: model.message?.error ?? [MyStrings.somethingWentWrong], msg: [], isError: true);
+          CustomSnackBar.error(errorList: model.message?.error ?? [MyStrings.somethingWentWrong]);
         }
         return model;
       }

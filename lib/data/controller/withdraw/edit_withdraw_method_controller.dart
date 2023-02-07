@@ -8,7 +8,7 @@ import 'package:xcash_app/data/model/authorization/authorization_response_model.
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/withdraw/edit_withdraw_method_response_model.dart';
 import 'package:xcash_app/data/repo/withdraw/edit_withdraw_method_repo.dart';
-import 'package:xcash_app/view/components/custom_snackbar.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
 class EditWithdrawMethodController extends GetxController {
 
@@ -160,7 +160,7 @@ class EditWithdrawMethodController extends GetxController {
     List<String> errorList = hasError();
 
     if (errorList.isNotEmpty) {
-      CustomSnackBar.showCustomSnackBar(errorList: errorList, msg: [], isError: true);
+      CustomSnackBar.error(errorList: errorList);
       return;
     }
 
@@ -180,9 +180,9 @@ class EditWithdrawMethodController extends GetxController {
     AuthorizationResponseModel response =await repo.submitData(id,'',name,status,formList);
 
     if(response.status?.toLowerCase()==MyStrings.success.toLowerCase()){
-      CustomSnackBar.showCustomSnackBar(errorList: [], msg: response.message?.success??[MyStrings.success.tr], isError: false);
+      CustomSnackBar.success(successList: response.message?.success??[MyStrings.success.tr]);
     }else{
-      CustomSnackBar.showCustomSnackBar(errorList: response.message?.error??[MyStrings.requestFail.tr], msg: [], isError: true);
+      CustomSnackBar.error(errorList: response.message?.error??[MyStrings.requestFail.tr]);
     }
 
     submitLoading=false;

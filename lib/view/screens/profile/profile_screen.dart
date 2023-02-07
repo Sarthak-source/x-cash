@@ -8,7 +8,6 @@ import 'package:xcash_app/data/repo/account/profile_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
-import 'package:xcash_app/view/screens/Profile/widget/profile_field_section.dart';
 import 'package:xcash_app/view/screens/Profile/widget/profile_top_section.dart';
 
 class ProfileScreen extends StatefulWidget {

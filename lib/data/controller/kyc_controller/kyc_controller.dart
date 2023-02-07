@@ -5,7 +5,7 @@ import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/authorization/authorization_response_model.dart';
 import 'package:xcash_app/data/model/kyc/kyc_response_model.dart';
 import 'package:xcash_app/data/repo/kyc/kyc_repo.dart';
-import 'package:xcash_app/view/components/custom_snackbar.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
 
 class KycController extends GetxController {
@@ -83,7 +83,7 @@ class KycController extends GetxController {
 
 
     if (list.isNotEmpty) {
-      CustomSnackBar.showCustomSnackBar(errorList: list, msg: [], isError: true);
+      CustomSnackBar.error(errorList: list);
       return;
     }
     submitLoading=true;
@@ -93,9 +93,9 @@ class KycController extends GetxController {
 
     if(response.status?.toLowerCase()==MyStrings.success.toLowerCase()){
       isAlreadyPending = true;
-      CustomSnackBar.showCustomSnackBar(errorList: [], msg: response.message?.success??[MyStrings.success.tr], isError: false);
+      CustomSnackBar.error(errorList: response.message?.success??[MyStrings.success.tr]);
     }else{
-      CustomSnackBar.showCustomSnackBar(errorList: response.message?.error??[MyStrings.requestFail.tr], msg: [], isError: true);
+      CustomSnackBar.error(errorList: response.message?.error??[MyStrings.requestFail.tr]);
     }
 
     submitLoading=false;

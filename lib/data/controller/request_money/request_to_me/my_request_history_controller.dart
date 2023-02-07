@@ -6,7 +6,7 @@ import 'package:xcash_app/data/model/authorization/authorization_response_model.
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/request_money/my_request_response_model.dart' as rq_model;
 import 'package:xcash_app/data/repo/request_money/my_request_history_repo.dart';
-import 'package:xcash_app/view/components/custom_snackbar.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
 class MyRequestHistoryController extends GetxController{
 

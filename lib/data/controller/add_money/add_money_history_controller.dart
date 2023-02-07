@@ -7,7 +7,7 @@ import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/add_money/add_money_history_response_model.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/repo/add_money/add_money_history_repo.dart';
-import 'package:xcash_app/view/components/custom_snackbar.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
 class AddMoneyHistoryController extends GetxController{
 
@@ -63,11 +63,11 @@ class AddMoneyHistoryController extends GetxController{
         }
       }
       else{
-        CustomSnackBar.showCustomSnackBar(errorList: model.message?.error ?? [MyStrings.somethingWentWrong], msg: [], isError: true);
+        CustomSnackBar.error(errorList: model.message?.error ?? [MyStrings.somethingWentWrong]);
       }
     }
     else{
-      CustomSnackBar.showCustomSnackBar(errorList: [responseModel.message], msg: [], isError: true);
+      CustomSnackBar.error(errorList: [responseModel.message]);
     }
 
     isLoading = false;
