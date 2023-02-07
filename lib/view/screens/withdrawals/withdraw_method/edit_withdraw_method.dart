@@ -30,15 +30,15 @@ class _EditWithdrawMethodState extends State<EditWithdrawMethod> {
 
   @override
   void initState() {
-    final String methodId = Get.arguments[0];
-    final String status = Get.arguments[1];
+    final String id = Get.arguments;
+
     Get.put(ApiClient(sharedPreferences: Get.find()));
     Get.put(EditWithdrawMethodRepo(apiClient: Get.find()));
     final controller = Get.put(EditWithdrawMethodController(repo: Get.find()));
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      controller.loadData(methodId,status);
+      controller.loadData(id);
     });
 
   }
@@ -186,7 +186,7 @@ class _EditWithdrawMethodState extends State<EditWithdrawMethod> {
                         style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600),
                       ),
                       Switch(
-                          value: controller.isSwitched,
+                          value: controller.status=='1',
                           onChanged: (value) => controller.changeStatus()
                       )
                     ],

@@ -15,11 +15,11 @@ class EditWithdrawMethodRepo {
   ApiClient apiClient;
   EditWithdrawMethodRepo({required this.apiClient});
 
-  Future<ResponseModel> getData(String methodId) async {
-    String url = "${UrlContainer.baseUrl}${UrlContainer.withdrawMethodEdit}$methodId";
+  Future<ResponseModel> getData(String id) async {
+    String url = "${UrlContainer.baseUrl}${UrlContainer.withdrawMethodEdit}/$id";
+    print(url);
 
-    ResponseModel responseModel = await apiClient.request(
-        url, Method.getMethod, null, passHeader: true);
+    ResponseModel responseModel = await apiClient.request(url, Method.getMethod, null, passHeader: true);
 
     return responseModel;
   }
@@ -31,11 +31,13 @@ class EditWithdrawMethodRepo {
   List<ModelDynamicValue>filesList = [];
 
 
-  Future<AuthorizationResponseModel> submitData(String id,String methodId,String name,String status,List<FormModel> list) async {
+  Future<AuthorizationResponseModel> submitData(String id, String methodId, String name, String status, List<FormModel> list) async {
+    print(id);
+    print(methodId);
 
     apiClient.initToken();
     await modelToMap(list);
-    String url = '${UrlContainer.baseUrl}${UrlContainer.addWithdrawMethodUrl}';
+    String url = '${UrlContainer.baseUrl}${UrlContainer.withdrawMethodUpdate}';
 
     var request = http.MultipartRequest('POST', Uri.parse(url));
 
@@ -48,7 +50,7 @@ class EditWithdrawMethodRepo {
     request.headers.addAll(<String, String>{'Authorization': 'Bearer ${apiClient.token}'});
 
     request.fields.addAll({
-      'id':name,
+      'id':id,
       'method_id':methodId,
       'name':name,
       'status':status

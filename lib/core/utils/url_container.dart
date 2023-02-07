@@ -43,7 +43,8 @@ class UrlContainer{
   static const String withdrawMoneySubmitUrl='withdraw/money/submit';
   static const String addWithdrawMethodUrl='withdraw/add-method';
   static const String withdrawMethodUrl='withdraw/methods';
-  static const String withdrawMethodEdit='withdraw/edit-method/';
+  static const String withdrawMethodEdit='withdraw/edit-method';
+  static const String withdrawMethodUpdate='withdraw/method/update';
 
 
   static const String planEndPoint = "invest/plans";

@@ -20,32 +20,28 @@ class EditWithdrawMethodController extends GetxController {
   bool isLoading = true;
   List<FormModel> formList = [];
 
-  String status = '';
-  String methodId = '';
+  String status = "";
 
-  bool isSwitched = false;
   void changeStatus(){
-    if(isSwitched == false){
-      status = "0";
-      update();
-    }
-    else{
+    if(status=='0'){
       status = "1";
       update();
     }
-    print(status);
+    else{
+      status = "0";
+      update();
+    }
   }
 
 
 
-  Future<void> loadData(String methodId,String status) async {
-    this.status = status;
-    this.methodId = methodId;
+  Future<void> loadData(String id) async {
+
     isLoading = true;
     formList.clear();
     update();
 
-    ResponseModel responseModel = await repo.getData(methodId);
+    ResponseModel responseModel = await repo.getData(id);
     if (responseModel.statusCode == 200) {
       model = EditWithdrawMethodResponseModel.fromJson(jsonDecode(responseModel.responseJson));
       status = model.data?.withdrawMethod?.status ?? "";
@@ -155,7 +151,7 @@ class EditWithdrawMethodController extends GetxController {
   bool submitLoading=false;
   TextEditingController nameController = TextEditingController();
 
-  submitData() async {
+  Future<void> submitData() async {
 
     List<String> errorList = hasError();
 
@@ -174,10 +170,10 @@ class EditWithdrawMethodController extends GetxController {
     submitLoading=true;
     update();
 
-    String  id = '';
-    String  status = '';
+    String  id = model.data?.withdrawMethod?.id.toString() ?? "";
+    String methodId = model.data?.withdrawMethod?.methodId ?? "";
 
-    AuthorizationResponseModel response =await repo.submitData(id,'',name,status,formList);
+    AuthorizationResponseModel response =await repo.submitData(id, methodId, name, status, formList);
 
     if(response.status?.toLowerCase()==MyStrings.success.toLowerCase()){
       CustomSnackBar.success(successList: response.message?.success??[MyStrings.success.tr]);

@@ -202,8 +202,8 @@ class _WithdrawMethodScreenState extends State<WithdrawMethodScreen> {
                       ],
                     ),
                     onPressed: (){
-                      String methodId = controller.methodList[index].id.toString()??'';
-                      Get.toNamed(RouteHelper.editWithdrawMethod,arguments: [methodId,controller.methodList[index].status]);
+                      String id = controller.methodList[index].id.toString()??'';
+                      Get.toNamed(RouteHelper.editWithdrawMethod, arguments: id);
                     },
                   );
                 }
