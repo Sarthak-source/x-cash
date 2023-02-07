@@ -38,8 +38,8 @@ class TransferMoneyController extends GetxController{
     String amt = amountController.text.toString();
     mainAmount = amt.isEmpty ? 0 : double.tryParse(amt) ?? 0;
     changeInfoWidget(mainAmount);
-    minLimit = Converter.twoDecimalPlaceFixedWithoutRounding(selectedWallet?.id == -1 ? "" : selectedWallet?.currency?.transferMinLimit ?? "");
-    maxLimit = Converter.twoDecimalPlaceFixedWithoutRounding(selectedWallet?.id == -1 ? "" : selectedWallet?.currency?.transferMaxLimit ?? "");
+    minLimit = Converter.twoDecimalPlaceFixedWithoutRounding(selectedWallet?.id == -1 ? "0" : selectedWallet?.currency?.transferMinLimit ?? "");
+    maxLimit = Converter.twoDecimalPlaceFixedWithoutRounding(selectedWallet?.id == -1 ? "0" : selectedWallet?.currency?.transferMaxLimit ?? "");
     update();
   }
 

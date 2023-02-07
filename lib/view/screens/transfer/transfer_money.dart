@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
@@ -80,7 +81,7 @@ class _TransferMoneyState extends State<TransferMoney> {
                   ),
                   const SizedBox(height: Dimensions.space5),
                   Text(
-                    "${MyStrings.totalCharge.tr}: ${controller.model.data?.transferCharge?.fixedCharge ?? ""} ${controller.currency}",
+                    "${MyStrings.totalCharge.tr}: ${Converter.twoDecimalPlaceFixedWithoutRounding(controller.model.data?.transferCharge?.fixedCharge ?? "")} ${controller.currency}",
                     style: regularExtraSmall.copyWith(color: MyColor.primaryColor),
                   ),
                   const SizedBox(height: Dimensions.space20),
