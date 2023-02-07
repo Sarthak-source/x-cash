@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xcash_app/core/utils/my_color.dart';
+import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/style.dart';
@@ -7,6 +9,7 @@ import 'package:xcash_app/data/controller/invoice/update_invoice_controller.dart
 import 'package:xcash_app/data/model/invoice/update_invoice_response_model.dart' as model;
 import 'package:xcash_app/view/components/card/custom_card.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
+import 'package:xcash_app/view/components/image/circle_shape_image.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
@@ -35,7 +38,13 @@ class _UpdateInvoiceDetailsState extends State<UpdateInvoiceDetails> {
          child: Column(
            crossAxisAlignment: CrossAxisAlignment.start,
            children: [
-             const BottomSheetHeaderText(text: MyStrings.invoiceDetails),
+             Row(
+               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+               children: [
+                 const BottomSheetHeaderText(text: MyStrings.invoiceDetails),
+                 BottomSheetHeaderText(text: "#${widget.invoiceNumber}"),
+               ],
+             ),
              const CustomDivider(space: Dimensions.space15),
              Form(
                child: Column(
