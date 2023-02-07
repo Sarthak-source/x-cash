@@ -66,8 +66,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: const [
                       ProfileTopSection(),
-                      SizedBox(height: Dimensions.space10),
-                      ProfileFieldSection()
                     ],
                   ),
                 ),
