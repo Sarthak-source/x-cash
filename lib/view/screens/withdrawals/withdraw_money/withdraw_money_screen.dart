@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
+import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/withdraw/withdraw_money_controller.dart';
@@ -60,8 +61,9 @@ class _WithdrawMoneyScreenState extends State<WithdrawMoneyScreen> {
             leading: IconButton(onPressed: () => Get.back(), icon: Icon(Icons.arrow_back, color: MyColor.getAppBarContentColor(), size: 20)),
             actions: [
               ActionButtonIconWidget(
+                  isImage: true,
                   pressed: () => Get.toNamed(RouteHelper.withdrawMethodScreen),
-                  icon: Icons.add
+                  imageSrc: MyImages.withdrawMethod
               )
             ],
           ),

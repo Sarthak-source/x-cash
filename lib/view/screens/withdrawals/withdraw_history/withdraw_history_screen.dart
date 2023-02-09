@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
+import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/withdraw/withdraw_history_controller.dart';
@@ -82,8 +83,9 @@ class _WithdrawHistoryScreenState extends State<WithdrawHistoryScreen> {
                   icon: controller.isSearch ? Icons.clear : Icons.search,
               ),
               ActionButtonIconWidget(
-                pressed: () => Get.toNamed(RouteHelper.withdrawMoneyScreen),
-                icon: Icons.add,
+                isImage: true,
+                pressed: () => Get.toNamed(RouteHelper.withdrawMethodScreen),
+                imageSrc: MyImages.withdrawMethod,
               )
             ],
           ),
