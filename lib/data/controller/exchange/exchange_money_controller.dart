@@ -126,6 +126,7 @@ class ExchangeMoneyController extends GetxController{
       AuthorizationResponseModel model = AuthorizationResponseModel.fromJson(jsonDecode(responseModel.responseJson));
       if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
         Get.back();
+        amountController.text = "";
         CustomSnackBar.success(successList: model.message?.success ?? ["Money Exchange Successfully"]);
       }
       else{
