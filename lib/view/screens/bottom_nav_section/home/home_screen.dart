@@ -11,7 +11,6 @@ import 'package:xcash_app/view/screens/bottom_nav_section/home/widget/latest_tra
 import 'package:xcash_app/view/screens/bottom_nav_section/home/widget/main_item_section.dart';
 import 'package:xcash_app/view/screens/bottom_nav_section/home/widget/quick_link_section.dart';
 import 'package:xcash_app/view/screens/bottom_nav_section/home/widget/top_section.dart';
-import 'package:xcash_app/view/screens/bottom_nav_section/home/widget/wallet_section.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
