@@ -55,8 +55,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 SizedBox(height: Dimensions.space10),
                 MainItemSection(),
                 SizedBox(height: Dimensions.space10),
-                WalletSection(),
-                SizedBox(height: Dimensions.space10),
+                /*WalletSection(),
+                SizedBox(height: Dimensions.space10),*/
                 QuickLinkSection(),
                 SizedBox(height: Dimensions.space10),
                 InsightSection(),
