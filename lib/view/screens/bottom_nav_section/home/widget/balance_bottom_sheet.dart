@@ -61,7 +61,7 @@ class _BalanceBottomSheetState extends State<BalanceBottomSheet> {
                   showSymbol: true,
                   currencySymbol: controller.walletList[index].currency?.currencySymbol ?? "",
                   header: controller.walletList[index].currencyCode ?? "",
-                  body: "${controller.walletList[index].currency?.currencySymbol ?? ""} ${Converter.twoDecimalPlaceFixedWithoutRounding(controller.walletList[index].balance ?? "")}"
+                  body: "${controller.walletList[index].currency?.currencySymbol ?? ""}${Converter.twoDecimalPlaceFixedWithoutRounding(controller.walletList[index].balance ?? "")}"
               ),
             ),
           ),
