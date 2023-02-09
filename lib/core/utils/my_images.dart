@@ -17,6 +17,7 @@ class MyImages{
   static const String menuVoucher = "assets/images/menu_voucher.svg";
   static const String menuWithdraw = "assets/images/menu_withdraw.svg";
   static const String menuWithdrawMethod = "assets/images/menu_withdraw_method.svg";
+  static const String withdrawMethod = "assets/images/withdraw_method.png";
   static const String requestMoney = "assets/images/request_money.svg";
   static const String menuRequestToMe = "assets/images/request_to_me.svg";
   static const String transaction = "assets/images/transaction.svg";
