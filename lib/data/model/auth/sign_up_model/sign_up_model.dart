@@ -7,6 +7,7 @@ class SignUpModel{
   final String countryCode;
   final String country;
   final String mobileCode;
+  String? companyName;
 
   SignUpModel({
     required this.mobile,
@@ -17,5 +18,6 @@ class SignUpModel{
     required this.countryCode,
     required this.country,
     required this.mobileCode,
+    this.companyName,
   });
 }

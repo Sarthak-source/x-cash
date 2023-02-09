@@ -39,6 +39,7 @@ class RegistrationController extends GetxController {
   final FocusNode countryNameFocusNode = FocusNode();
   final FocusNode mobileFocusNode = FocusNode();
   final FocusNode userNameFocusNode = FocusNode();
+  final FocusNode companyNameFocusNode = FocusNode();
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -48,6 +49,7 @@ class RegistrationController extends GetxController {
   final TextEditingController mobileController = TextEditingController();
   final TextEditingController countryController = TextEditingController();
   final TextEditingController userNameController = TextEditingController();
+  final TextEditingController companyNameController = TextEditingController();
 
 
   String? email;
@@ -109,6 +111,7 @@ class RegistrationController extends GetxController {
 
   SignUpModel getUserData() {
     SignUpModel model = SignUpModel(
+        companyName: companyNameController.text.toString(),
         mobile: mobileController.text.toString(),
         email: emailController.text.toString(),
         agree: agreeTC ? true : false,
@@ -166,6 +169,7 @@ class RegistrationController extends GetxController {
     mobileController.text     = '';
     countryController.text    = '';
     userNameController.text   = '';
+    companyNameController.text   = '';
   }
 
   clearAllData() {
@@ -287,4 +291,9 @@ class RegistrationController extends GetxController {
     update();
   }
 
+  bool isActiveAccount = true;
+  void changeState(bool activeState){
+    isActiveAccount = activeState;
+    update();
+  }
 }

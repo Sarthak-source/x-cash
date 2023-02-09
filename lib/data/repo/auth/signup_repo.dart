@@ -35,6 +35,7 @@ class RegistrationRepo {
   }
 
   Map<String, dynamic> modelToMap(SignUpModel model) {
+    print(model.toString());
 
     Map<String, dynamic> bodyFields = {
       'mobile':model.mobile,
@@ -46,6 +47,7 @@ class RegistrationRepo {
       'country_code': model.countryCode, //model.country_code,
       'country': model.country, //model.country,
       "mobile_code": model.mobileCode,
+      "company_name": model.companyName!.isEmpty ? "" : model.companyName,
     };
 
     return bodyFields;
