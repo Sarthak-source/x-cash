@@ -66,5 +66,8 @@ class MyImages{
   static const String btc = "assets/icons/coins/btc.png";
   static const String ngn = "assets/icons/coins/ngn.png";
 
+  static const String personalAcc = "assets/images/personal.png";
+  static const String companyAcc = "assets/images/company.png";
+
   static const String noInternet = "assets/animation/no_internet.json";
 }
