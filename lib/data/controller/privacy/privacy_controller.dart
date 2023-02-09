@@ -38,7 +38,7 @@ class PrivacyController extends GetxController{
 
   void changeIndex(int index){
     selectedIndex=index;
-    selectedHtml = list[index].dataValues?.description??'';
+    selectedHtml = list[index].dataValues?.details??'';
     update();
   }
 

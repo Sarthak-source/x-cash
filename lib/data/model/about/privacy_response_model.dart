@@ -1,12 +1,8 @@
-
-
-import '../auth/sign_up_model/registration_response_model.dart';
-
 class PrivacyResponseModel {
   PrivacyResponseModel({
       String? remark, 
       String? status, 
-      Message? message,
+      Message? message, 
       Data? data,}){
     _remark = remark;
     _status = status;
@@ -16,8 +12,8 @@ class PrivacyResponseModel {
 
   PrivacyResponseModel.fromJson(dynamic json) {
     _remark = json['remark'];
-    _status = json['status'].toString();
-    _message = json['message'] != null ? Message.fromJson(json['message']):null;
+    _status = json['status'];
+    _message = json['message'] != null ? Message.fromJson(json['message']) : null;
     _data = json['data'] != null ? Data.fromJson(json['data']) : null;
   }
   String? _remark;
@@ -34,10 +30,7 @@ class PrivacyResponseModel {
     final map = <String, dynamic>{};
     map['remark'] = _remark;
     map['status'] = _status;
-   if(_message!=null){
-      map['message'] = _message?.toJson();
-    }
-    if(_message!=null){
+    if (_message != null) {
       map['message'] = _message?.toJson();
     }
     if (_data != null) {
@@ -92,10 +85,10 @@ class PolicyPages {
 
   PolicyPages.fromJson(dynamic json) {
     _id = json['id'];
-    _dataKeys = json['data_keys'].toString();
+    _dataKeys = json['data_keys'];
     _dataValues = json['data_values'] != null ? DataValues.fromJson(json['data_values']) : null;
-    _createdAt = json['created_at'].toString();
-    _updatedAt = json['updated_at'].toString();
+    _createdAt = json['created_at'];
+    _updatedAt = json['updated_at'];
   }
   int? _id;
   String? _dataKeys;
@@ -126,25 +119,46 @@ class PolicyPages {
 class DataValues {
   DataValues({
       String? title, 
-      String? description,}){
+      String? details,}){
     _title = title;
-    _description = description;
+    _details = details;
 }
 
   DataValues.fromJson(dynamic json) {
-    _title = json['title'].toString();
-    _description = json['description'].toString();
+    _title = json['title'];
+    _details = json['details'];
   }
   String? _title;
-  String? _description;
+  String? _details;
 
   String? get title => _title;
-  String? get description => _description;
+  String? get details => _details;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['title'] = _title;
-    map['description'] = _description;
+    map['details'] = _details;
+    return map;
+  }
+
+}
+
+class Message {
+  Message({
+      List<String>? success,}){
+    _success = success;
+}
+
+  Message.fromJson(dynamic json) {
+    _success = json['success'] != null ? json['success'].cast<String>() : [];
+  }
+  List<String>? _success;
+
+  List<String>? get success => _success;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['success'] = _success;
     return map;
   }
 

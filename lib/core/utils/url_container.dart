@@ -63,8 +63,7 @@ class UrlContainer{
   static const String investStoreUrl = 'invest/store';
 
   //privacy policy
-  static const String privacyPolicyEndPoint='policy';
-  static const String faqEndPoint='faq';
+  static const String privacyPolicyEndPoint='policy-pages';
 
   //profile
   static const String getProfileEndPoint='user-info';

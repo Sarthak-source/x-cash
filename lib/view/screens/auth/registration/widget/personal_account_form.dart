@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
@@ -16,15 +17,15 @@ import 'package:xcash_app/view/screens/auth/registration/widget/validation_widge
 
 import 'country_text_field.dart';
 
-class RegistrationForm extends StatefulWidget {
+class PersonalAccountForm extends StatefulWidget {
 
-  const RegistrationForm({Key? key}) : super(key: key);
+  const PersonalAccountForm({Key? key}) : super(key: key);
 
   @override
-  State<RegistrationForm> createState() => _RegistrationFormState();
+  State<PersonalAccountForm> createState() => _PersonalAccountFormState();
 }
 
-class _RegistrationFormState extends State<RegistrationForm> {
+class _PersonalAccountFormState extends State<PersonalAccountForm> {
 
   final formKey = GlobalKey<FormState>();
 
@@ -224,7 +225,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
               )),
               const SizedBox(height: 35),
               controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
-                  text: MyStrings.signUp.toUpperCase().tr,
+                  text: MyStrings.signUp.tr,
                   press: (){
                     if (formKey.currentState!.validate()) {
                       controller.signUpUser();
