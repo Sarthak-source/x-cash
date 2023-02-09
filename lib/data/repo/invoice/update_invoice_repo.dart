@@ -50,9 +50,31 @@ class UpdateInvoiceRepo{
       }
     }
 
-    print(params.toString());
-
     ResponseModel responseModel = await apiClient.request(url, Method.postMethod, params, passHeader: true);
+    return responseModel;
+  }
+
+  Future<ResponseModel> sendToEmail(String invoiceId) async{
+
+    String url = "${UrlContainer.baseUrl}${UrlContainer.invoiceSendEmailUrl}$invoiceId";
+
+    ResponseModel responseModel = await apiClient.request(url, Method.getMethod, null, passHeader: true);
+    return responseModel;
+  }
+
+  Future<ResponseModel> publishInvoice(String invoiceId) async{
+
+    String url = "${UrlContainer.baseUrl}${UrlContainer.invoicePublishUrl}$invoiceId";
+
+    ResponseModel responseModel = await apiClient.request(url, Method.getMethod, null, passHeader: true);
+    return responseModel;
+  }
+
+  Future<ResponseModel> discardInvoice(String invoiceId) async{
+
+    String url = "${UrlContainer.baseUrl}${UrlContainer.invoiceDiscardUrl}$invoiceId";
+
+    ResponseModel responseModel = await apiClient.request(url, Method.getMethod, null, passHeader: true);
     return responseModel;
   }
 }

@@ -66,15 +66,15 @@ class _UpdateInvoiceScreenState extends State<UpdateInvoiceScreen> {
               actions: [
                 ActionButtonIconWidget(
                   icon: Icons.email_outlined,
-                  pressed: (){},
+                  pressed: () => controller.invoiceSendToEmail(),
                 ),
                 ActionButtonIconWidget(
                   icon: Icons.publish,
-                  pressed: (){},
+                  pressed: () => controller.publishInvoice(),
                 ),
                 ActionButtonIconWidget(
                   icon: Icons.cancel_outlined,
-                  pressed: (){},
+                  pressed: () => controller.discardInvoice(),
                 ),
               ],
               backgroundColor: MyColor.getAppBarColor(),

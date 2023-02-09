@@ -142,4 +142,58 @@ class UpdateInvoiceController extends GetxController{
     submitLoading = false;
     update();
   }
+
+  Future<void> invoiceSendToEmail() async{
+    String invoiceId = model.data?.invoice?.id.toString() ?? "";
+
+    ResponseModel responseModel = await updateInvoiceRepo.sendToEmail(invoiceId);
+    if(responseModel.statusCode == 200){
+      AuthorizationResponseModel model = AuthorizationResponseModel.fromJson(jsonDecode(responseModel.responseJson));
+      if(model.status.toString().toLowerCase() == "success"){
+        CustomSnackBar.success(successList: model.message?.success ?? [MyStrings.requestSuccess]);
+      }
+      else{
+        CustomSnackBar.error(errorList: model.message?.error ?? [MyStrings.somethingWentWrong]);
+      }
+    }
+    else{
+      CustomSnackBar.error(errorList: [responseModel.message]);
+    }
+  }
+
+  Future<void> publishInvoice() async{
+    String invoiceId = model.data?.invoice?.id.toString() ?? "";
+
+    ResponseModel responseModel = await updateInvoiceRepo.publishInvoice(invoiceId);
+    if(responseModel.statusCode == 200){
+      AuthorizationResponseModel model = AuthorizationResponseModel.fromJson(jsonDecode(responseModel.responseJson));
+      if(model.status.toString().toLowerCase() == "success"){
+        CustomSnackBar.success(successList: model.message?.success ?? [MyStrings.requestSuccess]);
+      }
+      else{
+        CustomSnackBar.error(errorList: model.message?.error ?? [MyStrings.somethingWentWrong]);
+      }
+    }
+    else{
+      CustomSnackBar.error(errorList: [responseModel.message]);
+    }
+  }
+
+  Future<void> discardInvoice() async{
+    String invoiceId = model.data?.invoice?.id.toString() ?? "";
+
+    ResponseModel responseModel = await updateInvoiceRepo.discardInvoice(invoiceId);
+    if(responseModel.statusCode == 200){
+      AuthorizationResponseModel model = AuthorizationResponseModel.fromJson(jsonDecode(responseModel.responseJson));
+      if(model.status.toString().toLowerCase() == "success"){
+        CustomSnackBar.success(successList: model.message?.success ?? [MyStrings.requestSuccess]);
+      }
+      else{
+        CustomSnackBar.error(errorList: model.message?.error ?? [MyStrings.somethingWentWrong]);
+      }
+    }
+    else{
+      CustomSnackBar.error(errorList: [responseModel.message]);
+    }
+  }
 }
