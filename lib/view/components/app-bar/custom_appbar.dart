@@ -78,7 +78,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
               setState(() {
                 hasNotification=false;
               });
-          });},child: SvgPicture.asset(hasNotification? MyIcons.activeNotificationIcon: MyIcons.inActiveNotificationIcon,height: 25,width: 25,)),
+          });},child: SvgPicture.asset(hasNotification? MyIcons.activeNotificationIcon: MyIcons.activeNotificationIcon,height: 25,width: 25,)),
         ):const SizedBox.shrink(),
         const SizedBox(width: 10,)
       ],
@@ -91,7 +91,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
           setState(() {
             hasNotification=false;
           });
-        });},child: SvgPicture.asset(hasNotification?MyIcons.activeNotificationIcon:MyIcons.inActiveNotificationIcon,height: 28,width: 28,)):const SizedBox.shrink(),
+        });},child: SvgPicture.asset(hasNotification?MyIcons.activeNotificationIcon:MyIcons.activeNotificationIcon,height: 28,width: 28,)):const SizedBox.shrink(),
         const SizedBox(width: 10)],
       automaticallyImplyLeading: false,
     );
