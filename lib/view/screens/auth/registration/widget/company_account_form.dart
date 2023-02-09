@@ -161,7 +161,7 @@ class _CompanyAccountFormState extends State<CompanyAccountForm> {
                     controller.changePasswordFocus(hasFocus);
                   },
                   child: CustomTextField(
-                          needOutlineBorder: true,
+                    needOutlineBorder: true,
                     isShowSuffixIcon: true,
                     isPassword: true,
                     labelText: MyStrings.password.tr,
@@ -181,7 +181,7 @@ class _CompanyAccountFormState extends State<CompanyAccountForm> {
                   )),
               const SizedBox(height: 25),
               CustomTextField(
-                          needOutlineBorder: true,
+                needOutlineBorder: true,
                 labelText: MyStrings.confirmPassword.tr,
                 hintText: MyStrings.confirmYourPassword.tr,
                 controller: controller.cPasswordController,
@@ -208,8 +208,8 @@ class _CompanyAccountFormState extends State<CompanyAccountForm> {
                     height: 25,
                     child: Checkbox(
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
-                        activeColor: MyColor.transparentColor,
-                        checkColor: MyColor.getPrimaryColor(),
+                        activeColor: MyColor.primaryColor,
+                        checkColor: MyColor.colorWhite,
                         value: controller.agreeTC,
                         side: MaterialStateBorderSide.resolveWith(
                               (states) => BorderSide(
@@ -229,7 +229,7 @@ class _CompanyAccountFormState extends State<CompanyAccountForm> {
                       const SizedBox(width: 3),
                       GestureDetector(
                         onTap: (){
-                          //Get.toNamed(RouteHelper.privacyScreen);
+                          Get.toNamed(RouteHelper.privacyScreen);
                         },
                         child: Text(MyStrings.policies.tr.toLowerCase(), style: GoogleFonts.inter(
                             color: MyColor.getPrimaryColor(),

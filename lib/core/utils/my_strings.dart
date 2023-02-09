@@ -48,7 +48,7 @@ class MyStrings{
   static const String nickNameEmptyMsg = "Nickname field can't be empty";
 
   // register-screen
-  static const String createAnAccount = "Create An Account";
+  static const String createAnAccount = "Create an Account";
   static const String registerSubTitle = "Create you account, it takes less than a minute enter your details";
   static const String personalAccount = "Personal Account";
   static const String companyAccount = "Company Account";

@@ -15,7 +15,7 @@ class Dimensions{
   // button height
   static const double defaultButtonH = 45;
 
-  static const double defaultRadius = 5;
+  static const double defaultRadius = 4;
 
   // widget space
   static const double space5 = 5;

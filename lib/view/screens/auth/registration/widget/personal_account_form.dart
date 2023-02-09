@@ -129,7 +129,8 @@ class _PersonalAccountFormState extends State<PersonalAccountForm> {
                               },
                             ),
                           )
-                        ],),
+                        ]
+                      ),
                       const SizedBox(height: 25),
                     ],
                   )
@@ -142,7 +143,7 @@ class _PersonalAccountFormState extends State<PersonalAccountForm> {
                     controller.changePasswordFocus(hasFocus);
                   },
                   child: CustomTextField(
-                          needOutlineBorder: true,
+                    needOutlineBorder: true,
                     isShowSuffixIcon: true,
                     isPassword: true,
                     labelText: MyStrings.password.tr,
@@ -162,7 +163,7 @@ class _PersonalAccountFormState extends State<PersonalAccountForm> {
                   )),
               const SizedBox(height: 25),
               CustomTextField(
-                          needOutlineBorder: true,
+                needOutlineBorder: true,
                 labelText: MyStrings.confirmPassword.tr,
                 hintText: MyStrings.confirmYourPassword.tr,
                 controller: controller.cPasswordController,
@@ -210,7 +211,7 @@ class _PersonalAccountFormState extends State<PersonalAccountForm> {
                       const SizedBox(width: 3),
                       GestureDetector(
                         onTap: (){
-                          //Get.toNamed(RouteHelper.privacyScreen);
+                          Get.toNamed(RouteHelper.privacyScreen);
                         },
                         child: Text(MyStrings.policies.tr.toLowerCase(), style: GoogleFonts.inter(
                             color: MyColor.getPrimaryColor(),
