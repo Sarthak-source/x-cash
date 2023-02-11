@@ -93,7 +93,7 @@ class MyStrings{
   static const String kycAlreadyVerifiedMsg = 'You are already verified';
 
   // otp-screen
-  static const String otpVerify = "OTP Verify";
+  static const String otpVerify = "OTP Verification";
   static const String enterOtpSent = "Enter the otp sent to ";
   static const String verify = "Verify";
   static const String donotReceiveCode = "Don't receive code ?";
@@ -130,6 +130,7 @@ class MyStrings{
   static const String moneyIn = "Money In";
   static const String moneyOut = "Money Out";
   static const String seeAll = "See All";
+  static const String seeAllWallets = "See all Wallets";
   static const String see = "See";
 
   static const String voucherRedeemLog = "Voucher Redeem Log";
@@ -353,7 +354,7 @@ class MyStrings{
   static const String phoneNo = "Phone No.";
   static const String passwordResetEmailSentTo = 'Password reset email sent to';
   static const String emailVerification = "Email Verification";
-  static const String viaEmailVerify = "We've sent you an access code via email for email verification";
+  static const String viaEmailVerify = "Please check your email to get a six digit OTP\nOTP will be expired in the next";
   static const String didNotReceiveCode = "Didn't Receive Code?";
   static const String resend = "Resend";
   static const String smsVerification = "Sms Verification";
