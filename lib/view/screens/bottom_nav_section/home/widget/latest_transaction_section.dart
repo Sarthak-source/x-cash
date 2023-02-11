@@ -7,8 +7,7 @@ import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/home/home_controller.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
-import 'package:xcash_app/view/components/custom_no_data_found_class.dart';
-import 'package:xcash_app/view/components/divider/custom_divider.dart';
+import 'package:xcash_app/view/components/no_data.dart';
 import 'package:xcash_app/view/screens/bottom_nav_section/home/widget/latest_transaction__bottom_sheet.dart';
 import 'package:xcash_app/view/screens/bottom_nav_section/home/widget/latest_transaction_card.dart';
 
@@ -51,7 +50,7 @@ class LatestTransactionSection extends StatelessWidget {
             ),
             const SizedBox(height: Dimensions.space20),
             controller.trxList.isEmpty ? const Center(
-              child: NoDataOrInternetScreen(),
+              child: NoDataWidget(),
             ) : ListView.builder(
                 physics: const BouncingScrollPhysics(),
                 shrinkWrap: true,

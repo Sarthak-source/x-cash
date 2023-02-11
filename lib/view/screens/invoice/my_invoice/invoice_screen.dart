@@ -13,6 +13,7 @@ import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/custom_no_data_found_class.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
+import 'package:xcash_app/view/components/no_data.dart';
 import 'package:xcash_app/view/screens/invoice/my_invoice/widget/invoice_card.dart';
 import 'package:xcash_app/view/screens/invoice/my_invoice/widget/invoices_bottom_sheet.dart';
 
@@ -87,11 +88,11 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
               )
             ],
           ),
-          body: controller.isLoading ? const CustomLoader() : SingleChildScrollView(
+          body: controller.isLoading ? const CustomLoader() : controller.invoiceList.isEmpty ? const Center(
+            child: NoDataWidget(),
+          ) : SingleChildScrollView(
             padding: const EdgeInsets.symmetric(vertical: Dimensions.space20, horizontal: Dimensions.space15),
-            child: controller.invoiceList.isEmpty ? const Center(
-              child: NoDataOrInternetScreen(),
-            ): ListView.separated(
+            child: ListView.separated(
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
                 physics: const NeverScrollableScrollPhysics(),

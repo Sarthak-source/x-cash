@@ -47,18 +47,7 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
         body: GetBuilder<PrivacyController>(
           builder: (controller) => SizedBox(
             width: MediaQuery.of(context).size.width,
-            child: controller.isLoading
-                ? SizedBox(
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width,
-                child: const Center(
-                  child: SizedBox(
-                      height: 35,
-                      width: 35,
-                      child: CustomLoader()
-                  ),
-                )
-            ) : Column(
+            child: controller.isLoading ? const CustomLoader() : Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
@@ -93,14 +82,18 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
                   ),
                 ),
                 const SizedBox(height: Dimensions.space15),
-                Expanded( child:  SingleChildScrollView(child: Container(
-                    padding: const EdgeInsets.all(20),
-                    width: double.infinity,
-                    color: Colors.transparent,
-                    child: HtmlWidget(
-                        controller.selectedHtml,
-                        textStyle: regularDefault.copyWith(color: Colors.black),
-                        onLoadingBuilder: (context, element, loadingProgress) => const CustomLoader()
+                Expanded(
+                    child:  SingleChildScrollView(
+                      child: Container(
+                        padding: const EdgeInsets.all(20),
+                        width: double.infinity,
+                        color: Colors.transparent,
+                        child: HtmlWidget(
+                          controller.selectedHtml,
+                          textStyle: regularDefault.copyWith(color: Colors.black),
+                          onLoadingBuilder: (context, element, loadingProgress) => const Center(
+                            child: CustomLoader()
+                      )
                     )
                   )
                 )

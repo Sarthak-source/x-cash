@@ -14,20 +14,19 @@ import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 showExitDialog(BuildContext context){
 
     AwesomeDialog(
+      padding: const EdgeInsets.symmetric(vertical: Dimensions.space10),
       context: context,
       dialogType: DialogType.noHeader,
       dialogBackgroundColor: MyColor.getCardBgColor(),
-      width: 300,
-      buttonsBorderRadius: const BorderRadius.all(
-        Radius.circular(2),
-      ),
+      width: MediaQuery.of(context).size.width,
+      buttonsBorderRadius: BorderRadius.circular(Dimensions.defaultRadius),
       dismissOnTouchOutside: true,
       dismissOnBackKeyPress: true,
       onDismissCallback: (type) {},
       headerAnimationLoop: false,
       animType: AnimType.bottomSlide,
       title: MyStrings.exitTitle.tr,
-      titleTextStyle: regularDefault.copyWith(color: MyColor.colorWhite, fontSize: Dimensions.fontLarge),
+      titleTextStyle: regularLarge.copyWith(color: MyColor.colorBlack, fontWeight: FontWeight.w600),
       showCloseIcon: false,
       btnCancel: RoundedButton(text: MyStrings.no.tr, press: (){
         Navigator.pop(context);

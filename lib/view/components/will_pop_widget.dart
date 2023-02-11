@@ -24,6 +24,7 @@ class WillPopWidget extends StatelessWidget {
             return Future.value(false);
           }
         },
-        child: child);
+        child: child
+    );
   }
 }

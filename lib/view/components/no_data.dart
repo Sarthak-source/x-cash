@@ -11,19 +11,17 @@ class NoDataWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SvgPicture.asset(MyImages.noDataImage, height: 70, width: 70, color: MyColor.primaryColor),
-          const SizedBox(height: Dimensions.space15),
-          Text(
-            MyStrings.noDataFound,
-            style: regularLarge.copyWith(color: MyColor.getTextColor().withOpacity(0.6)),
-          )
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SvgPicture.asset(MyImages.noDataImage, height: 70, width: 70, color: MyColor.primaryColor),
+        const SizedBox(height: Dimensions.space15),
+        Text(
+          MyStrings.noDataFound,
+          style: regularLarge.copyWith(color: MyColor.getTextColor().withOpacity(0.6)),
+        )
+      ],
     );
   }
 }

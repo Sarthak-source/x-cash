@@ -80,6 +80,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                           controller.changePasswordFocus(hasFocus);
                         },
                         child: CustomTextField(
+                            animatedLabel: true,
                             needOutlineBorder: true,
                             labelText: MyStrings.password.tr,
                             focusNode: controller.passwordFocusNode,
@@ -102,6 +103,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                       ),
                       const SizedBox(height: Dimensions.space25),
                       CustomTextField(
+                          animatedLabel: true,
                           needOutlineBorder: true,
                           inputAction: TextInputAction.done,
                           isPassword: true,

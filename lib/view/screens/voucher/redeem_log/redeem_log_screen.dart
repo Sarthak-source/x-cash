@@ -9,6 +9,7 @@ import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/custom_no_data_found_class.dart';
+import 'package:xcash_app/view/components/no_data.dart';
 import 'package:xcash_app/view/screens/voucher/redeem_log/widget/redeem_log_card.dart';
 
 class RedeemLogScreen extends StatefulWidget {
@@ -69,7 +70,7 @@ class _RedeemLogScreenState extends State<RedeemLogScreen> {
               children: [
                 Expanded(
                   child: controller.redeemLogList.isEmpty ? const Center(
-                    child: NoDataOrInternetScreen(),
+                    child: NoDataWidget(),
                   ) : SizedBox(
                     height: MediaQuery.of(context).size.height,
                     child: ListView.separated(

@@ -10,6 +10,7 @@ import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/withdraw/withdraw_method_controller.dart';
 import 'package:xcash_app/data/repo/withdraw/withdraw_method_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
+import 'package:xcash_app/view/components/app-bar/action_button_icon_widget.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/card/custom_card.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
@@ -57,9 +58,20 @@ class _WithdrawMethodScreenState extends State<WithdrawMethodScreen> {
       builder: (controller) => SafeArea(
         child: Scaffold(
           backgroundColor: MyColor.getScreenBgColor(),
-          appBar: CustomAppBar(
-            title: MyStrings.withdrawMethod,
-            bgColor: MyColor.getPrimaryColor(),
+          appBar: AppBar(
+            title: Text(MyStrings.withdrawMethod, style: regularDefault.copyWith(color: MyColor.getAppBarContentColor())),
+            backgroundColor: MyColor.getPrimaryColor(),
+            elevation: 0,
+            leading: IconButton(
+              onPressed: () => Get.back(),
+              icon: Icon(Icons.arrow_back, color: MyColor.getAppBarContentColor(), size: 20),
+            ),
+            actions: [
+              ActionButtonIconWidget(
+                pressed: () => Get.toNamed(RouteHelper.withdrawMoneyScreen),
+                icon: Icons.add,
+              )
+            ],
           ),
           body: controller.isLoading ? const CustomLoader() : SingleChildScrollView(
             padding: Dimensions.screenPaddingHV,

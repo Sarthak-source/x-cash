@@ -80,6 +80,11 @@ class _MoneyOutFormState extends State<MoneyOutForm> {
               currency: controller.currency,
               controller: controller.amountController,
             ),
+            const SizedBox(height: Dimensions.space5),
+            Text(
+                "${MyStrings.limit}: ${controller.minLimit} - ${controller.maxLimit} ${controller.currency}",
+                style: regularExtraSmall.copyWith(color: MyColor.primaryColor)
+            ),
             const SizedBox(height: Dimensions.space15),
             CustomDropDownTextField(
               labelText: MyStrings.selectOtp.tr,

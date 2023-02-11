@@ -118,8 +118,8 @@ class ExchangeMoneyController extends GetxController{
 
     ResponseModel responseModel = await exchangeMoneyRepo.confirmExchangeMoney(
         amount: amount,
-        fromWalletId: fromWalletMethod?.currencyId ?? '-1',
-        toWalletId: toWalletMethod?.currencyId ?? '-1'
+        fromWalletId: fromWalletMethod?.id.toString() ?? '-1',
+        toWalletId: toWalletMethod?.id.toString() ?? '-1'
     );
 
     if(responseModel.statusCode == 200){
@@ -149,12 +149,12 @@ class ExchangeMoneyController extends GetxController{
 
   void calculateExchangeAmount(double userAmount){
 
-    if(fromWalletMethod?.currencyId == '-1'){
+    if(fromWalletMethod?.id.toString() == '-1'){
       CustomSnackBar.error(errorList: [MyStrings.selectOne]);
       return ;
     }
 
-    if(toWalletMethod?.currencyId == '-1'){
+    if(toWalletMethod?.id.toString() == '-1'){
       CustomSnackBar.error(errorList: [MyStrings.selectOne]);
       return ;
     }

@@ -20,13 +20,9 @@ class RegistrationRepo {
 
     String url ='${UrlContainer.baseUrl}${UrlContainer.registrationEndPoint}';
 
-
     final res=await apiClient.request(url, Method.postMethod, map,passHeader: true,isOnlyAcceptType: true);
 
-
-
     final json = jsonDecode(res.responseJson);
-
 
     RegistrationResponseModel responseModel = RegistrationResponseModel
         .fromJson(json);
@@ -35,7 +31,6 @@ class RegistrationRepo {
   }
 
   Map<String, dynamic> modelToMap(SignUpModel model) {
-    print(model.toString());
 
     Map<String, dynamic> bodyFields = {
       'mobile':model.mobile,
@@ -47,7 +42,7 @@ class RegistrationRepo {
       'country_code': model.countryCode, //model.country_code,
       'country': model.country, //model.country,
       "mobile_code": model.mobileCode,
-      "company_name": model.companyName!.isEmpty ? "" : model.companyName,
+      "company_name": model.companyName,
     };
 
     return bodyFields;

@@ -11,6 +11,7 @@ import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/action_button_icon_widget.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/custom_no_data_found_class.dart';
+import 'package:xcash_app/view/components/no_data.dart';
 import 'package:xcash_app/view/screens/voucher/my_voucher/widget/voucher_list_card.dart';
 
 class MyVoucherScreen extends StatefulWidget {
@@ -78,7 +79,9 @@ class _MyVoucherScreenState extends State<MyVoucherScreen> {
             child: Column(
               children: [
                 Expanded(
-                    child: controller.voucherList.isEmpty ? const NoDataOrInternetScreen() : SizedBox(
+                    child: controller.voucherList.isEmpty ? const Center(
+                      child: NoDataWidget(),
+                    ) : SizedBox(
                       height: MediaQuery.of(context).size.height,
                         child: const VoucherListCard()
                     )

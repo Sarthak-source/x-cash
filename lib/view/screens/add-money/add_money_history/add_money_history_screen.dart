@@ -10,7 +10,7 @@ import 'package:xcash_app/data/repo/add_money/add_money_history_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/action_button_icon_widget.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
-import 'package:xcash_app/view/components/custom_no_data_found_class.dart';
+import 'package:xcash_app/view/components/no_data.dart';
 import 'package:xcash_app/view/screens/add-money/add_money_history/widget/add_money_history_card.dart';
 import 'package:xcash_app/view/screens/add-money/add_money_history/widget/add_money_history_filter_widget.dart';
 
@@ -78,7 +78,9 @@ class _AddMoneyHistoryScreenState extends State<AddMoneyHistoryScreen> {
               ),
             ],
           ),
-          body: controller.isLoading ? const CustomLoader() : Padding(
+          body: controller.isLoading ? const CustomLoader() : controller.depositList.isEmpty ? const Center(
+            child: NoDataWidget(),
+          ) : Padding(
             padding: Dimensions.screenPaddingHV,
             child: Column(
               children: [
@@ -94,7 +96,7 @@ class _AddMoneyHistoryScreenState extends State<AddMoneyHistoryScreen> {
                 ),
                 Expanded(
                   child: controller.depositList.isEmpty && controller.filterLoading == false ? const Center(
-                    child: NoDataOrInternetScreen(),
+                    child: NoDataWidget(),
                   ) : controller.filterLoading ? const CustomLoader() : SizedBox(
                     height: MediaQuery.of(context).size.height,
                     child: ListView.separated(

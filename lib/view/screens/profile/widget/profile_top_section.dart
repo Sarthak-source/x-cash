@@ -54,7 +54,7 @@ class _ProfileTopSectionState extends State<ProfileTopSection> {
                 )
               ],
             ),
-            const SizedBox(height: Dimensions.space20),
+            const SizedBox(height: Dimensions.space40),
             Row(
               children: [
                 const CircleShapeImage(image: MyImages.name),

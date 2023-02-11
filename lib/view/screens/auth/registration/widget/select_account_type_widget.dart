@@ -27,6 +27,7 @@ class SelectAccountTypeWidget extends StatelessWidget {
         onTap: press,
         child: Container(
           width: MediaQuery.of(context).size.width,
+          margin: const EdgeInsets.only(left: Dimensions.space3, right: Dimensions.space3),
           padding: const EdgeInsets.symmetric(vertical: Dimensions.space10, horizontal: Dimensions.space3),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(Dimensions.defaultRadius),

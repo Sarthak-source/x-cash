@@ -10,7 +10,7 @@ import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/action_button_icon_widget.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
-import 'package:xcash_app/view/components/custom_no_data_found_class.dart';
+import 'package:xcash_app/view/components/no_data.dart';
 import 'package:xcash_app/view/screens/transaction/widget/filters_field.dart';
 import 'package:xcash_app/view/screens/transaction/widget/transaction_card.dart';
 import 'package:xcash_app/view/screens/transaction/widget/transaction_history_bottom_sheet.dart';
@@ -23,6 +23,7 @@ class TransactionHistoryScreen extends StatefulWidget {
 }
 
 class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
+  late String trxType;
 
   final ScrollController scrollController = ScrollController();
 
@@ -44,6 +45,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      trxType = Get.arguments ?? "";
       controller.initialSelectedValue();
       scrollController.addListener(scrollListener);
     });
@@ -77,7 +79,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
               ),
             ],
           ),
-          body: controller.isLoading ? const CustomLoader() : Padding(
+          body: controller.isLoading ? const CustomLoader() :  Padding(
             padding: const EdgeInsets.only(top: Dimensions.space20, left: Dimensions.space15, right: Dimensions.space15),
             child: SingleChildScrollView(
               child: Column(
@@ -88,7 +90,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                     child: const FiltersField(),
                   ),
                   controller.transactionList.isEmpty && controller.filterLoading == false ? const Center(
-                    child: NoDataOrInternetScreen(),
+                      child: NoDataWidget()
                   ) : controller.filterLoading ? const CustomLoader() : Expanded(
                     flex: 0,
                     child: ListView.separated(
@@ -111,7 +113,9 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
 
                           return  TransactionCard(
                             index: index,
-                            press: () => CustomBottomSheet(child: TransactionHistoryBottomSheet(index: index)).customBottomSheet(context),
+                            press: () => CustomBottomSheet(
+                              child: TransactionHistoryBottomSheet(index: index)
+                            ).customBottomSheet(context),
                           );
                         }
                     ),

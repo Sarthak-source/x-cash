@@ -70,7 +70,19 @@ class _MenuScreenState extends State<MenuScreen> {
                             label: MyStrings.changePassword,
                             onPressed: () => Get.toNamed(RouteHelper.changePasswordScreen)
                         ),
-                        const CustomDivider(space: Dimensions.space10),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: Dimensions.space10),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    padding: const EdgeInsets.symmetric(vertical: Dimensions.space15, horizontal: Dimensions.space15),
+                    decoration: BoxDecoration(
+                      color: MyColor.colorWhite,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Column(
+                      children: [
                         MenuItems(
                             imageSrc: MyImages.menuWithdraw_1,
                             label: MyStrings.withdraw.tr,

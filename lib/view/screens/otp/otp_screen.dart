@@ -12,6 +12,7 @@ import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
+import 'package:xcash_app/view/components/timer/timer.dart';
 
 import '../../../data/controller/otp_controller/otp_controller.dart';
 
@@ -73,35 +74,31 @@ class _OtpScreenState extends State<OtpScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const SizedBox(height: Dimensions.space30),
-                    Container(
-                      height: 100, width: 100,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          color: MyColor.getCardBgColor(),
-                          shape: BoxShape.circle
-                      ),
-                      child: SvgPicture.asset(MyImages.emailVerifyImage, height: 50, width: 50, color: MyColor.getPrimaryColor()),
+                    Image.asset(MyImages.otpImage, height: 70, width: 70),
+                    const SizedBox(height: Dimensions.space30),
+                    Text(MyStrings.viaEmailVerify.tr, maxLines: 2, textAlign: TextAlign.center, style: regularDefault.copyWith(color: MyColor.getLabelTextColor(), height: 2)),
+                    const SizedBox(height: Dimensions.space30),
+                    SizedBox(
+                      height: 100,
+                      width: 100,
+                      child: OtpTimer(
+                        onTimeComplete: (){}
+                      )
                     ),
-                    const SizedBox(height: Dimensions.space50),
-                    Text(MyStrings.viaEmailVerify.tr, maxLines: 2, textAlign: TextAlign.center,style: regularDefault.copyWith(color: MyColor.getLabelTextColor())),
-                    const SizedBox(height: 30),
+                    const SizedBox(height: Dimensions.space30),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: Dimensions.space30),
                       child: PinCodeTextField(
                         appContext: context,
                         pastedTextStyle: regularDefault.copyWith(color: MyColor.getPrimaryColor()),
                         length: 6,
-                        textStyle: regularDefault.copyWith(color: MyColor.getPrimaryColor()),
-                        obscureText: false,
+                        textStyle: regularLarge.copyWith(color: MyColor.getPrimaryColor()),
                         obscuringCharacter: '*',
-                        blinkWhenObscuring: false,
                         animationType: AnimationType.fade,
                         pinTheme: PinTheme(
-                            shape: PinCodeFieldShape.box,
+                            shape: PinCodeFieldShape.circle,
                             borderWidth: 1,
                             borderRadius: BorderRadius.circular(5),
-                            fieldHeight: 40,
-                            fieldWidth: 40,
                             inactiveColor:  MyColor.getTextFieldDisableBorder(),
                             inactiveFillColor: MyColor.getScreenBgColor(),
                             activeFillColor: MyColor.getScreenBgColor(),
@@ -118,11 +115,11 @@ class _OtpScreenState extends State<OtpScreen> {
                           return true;
                         },
                         onChanged: (value) {
-                            controller.currentText = value;
+                          controller.currentText = value;
                         },
                       ),
                     ),
-                    const SizedBox(height: Dimensions.space30),
+                    const SizedBox(height: Dimensions.space20),
                     controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
                       text: MyStrings.verify.tr,
                       press: (){

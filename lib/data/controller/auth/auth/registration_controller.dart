@@ -65,7 +65,8 @@ class RegistrationController extends GetxController {
 
   RegExp regex = RegExp(r'[!@#$%^&*(),.?":{}|<>]');
 
-  bool submitLoading=false;
+  bool submitLoading = false;
+
   signUpUser() async {
 
     if (countryName == null) {

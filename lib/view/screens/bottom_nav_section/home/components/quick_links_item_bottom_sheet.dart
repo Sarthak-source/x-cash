@@ -65,7 +65,7 @@ class QuickLinkItemBottomSheet{
                         buttonName: MyStrings.redeemLog,
                         height: 40, width: 40,
                         backgroundColor: MyColor.screenBgColor,
-                        child: SvgPicture.asset(MyImages.menuRedeemLog, color: MyColor.primaryColor, height: 20, width: 20),
+                        child: Image.asset(MyImages.menuRedeemLog, color: MyColor.primaryColor, height: 20, width: 20),
                         onTap: (){
                           Get.toNamed(RouteHelper.redeemLogScreen);
                         },

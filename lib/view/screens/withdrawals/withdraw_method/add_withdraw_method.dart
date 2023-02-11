@@ -122,8 +122,8 @@ class _AddWithdrawMethodScreenState extends State<AddWithdrawMethodScreen> {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         CustomTextField(
+                                            animatedLabel: true,
                                             hintText: (model.name?.tr ??'').toString().capitalizeFirst,
-                                            needLabel: true,
                                             needOutlineBorder: true,
                                             labelText: model.name?.tr ??'',
                                             onChanged: (value){
@@ -135,7 +135,7 @@ class _AddWithdrawMethodScreenState extends State<AddWithdrawMethodScreen> {
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         CustomTextField(
-                                            needLabel: true,
+                                            animatedLabel: true,
                                             needOutlineBorder: true,
                                             labelText: model.name?.tr ??'',
                                             hintText: (model.name?.tr ??'').capitalizeFirst,

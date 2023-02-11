@@ -96,9 +96,9 @@ class _KycScreenState extends State<KycScreen> {
                                         model.type=='text'?Column(
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
-                                          CustomTextField(
+                                            CustomTextField(
+                                                animatedLabel: true,
                                                 hintText: (model.name??'').toString().capitalizeFirst,
-                                                needLabel: true,
                                                 needOutlineBorder: true,
                                                 labelText: model.name??'',
                                                 onChanged: (value){
@@ -110,7 +110,7 @@ class _KycScreenState extends State<KycScreen> {
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                             CustomTextField(
-                                                needLabel: true,
+                                                animatedLabel: true,
                                                 needOutlineBorder: true,
                                                 labelText: model.name??'',
                                                 hintText: (model.name??'').capitalizeFirst,

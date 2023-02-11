@@ -66,7 +66,7 @@ class MainItemBottomSheet{
                     child: CircleAnimatedButtonWithText(
                       buttonName: MyStrings.requestToMe,
                       backgroundColor: MyColor.screenBgColor,
-                      child: SvgPicture.asset(MyImages.menuRequestToMe, color: MyColor.primaryColor, height: 20, width: 20),
+                      child: Image.asset(MyImages.menuRequestToMe1, color: MyColor.primaryColor, height: 20, width: 20),
                       onTap: (){
                         Get.toNamed(RouteHelper.requestToMeScreen);
                       },
@@ -93,7 +93,7 @@ class MainItemBottomSheet{
                     child: CircleAnimatedButtonWithText(
                       buttonName: MyStrings.redeemVoucher,
                       backgroundColor: MyColor.screenBgColor,
-                      child: SvgPicture.asset(MyImages.menuRedeemLog, color: MyColor.primaryColor, height: 20, width: 20),
+                      child: SvgPicture.asset(MyImages.menuRedeemVoucher, color: MyColor.primaryColor, height: 20, width: 20),
                       onTap: (){
                         Get.back();
                         CustomBottomSheet(
@@ -116,7 +116,7 @@ class MainItemBottomSheet{
                     child: CircleAnimatedButtonWithText(
                       buttonName: MyStrings.redeemLog,
                       backgroundColor: MyColor.screenBgColor,
-                      child: SvgPicture.asset(MyImages.menuRedeemLog, color: MyColor.primaryColor, height: 20, width: 20),
+                      child: Image.asset(MyImages.menuRedeemLog, color: MyColor.primaryColor, height: 20, width: 20),
                       onTap: (){
                         Get.toNamed(RouteHelper.redeemLogScreen);
                       },

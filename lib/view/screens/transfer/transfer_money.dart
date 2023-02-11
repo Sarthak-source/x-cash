@@ -15,7 +15,6 @@ import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
-import 'package:xcash_app/view/components/text/label_text.dart';
 import 'package:xcash_app/view/screens/transfer/widget/transfer_money_bottom_sheet.dart';
 
 import '../../../data/model/transfer/transfer_money_response_model.dart' as tm_model;

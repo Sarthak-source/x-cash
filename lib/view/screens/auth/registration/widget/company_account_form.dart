@@ -241,28 +241,13 @@ class _CompanyAccountFormState extends State<CompanyAccountForm> {
               )),
               const SizedBox(height: Dimensions.space30),
               controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
-                  text: MyStrings.signUp.toUpperCase().tr,
+                  text: MyStrings.signUp.tr,
                   press: (){
                     if (formKey.currentState!.validate()) {
                       controller.signUpUser();
                     }
                   }
               ),
-              const SizedBox(height: Dimensions.space30),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(MyStrings.alreadyAccount.tr, style: regularLarge.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w500)),
-                  const SizedBox(width: Dimensions.space5),
-                  TextButton(
-                    onPressed: (){
-                      controller.clearAllData();
-                      Get.offAndToNamed(RouteHelper.loginScreen);
-                    },
-                    child: Text(MyStrings.signIn.tr, style: regularLarge.copyWith(color: MyColor.getPrimaryColor())),
-                  )
-                ],
-              )
             ],
           ),
         );

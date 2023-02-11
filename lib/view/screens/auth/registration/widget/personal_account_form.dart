@@ -230,21 +230,6 @@ class _PersonalAccountFormState extends State<PersonalAccountForm> {
                     }
                   }
               ),
-              const SizedBox(height: Dimensions.space30),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(MyStrings.alreadyAccount.tr, style: regularLarge.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w500)),
-                  const SizedBox(width: Dimensions.space5),
-                  TextButton(
-                    onPressed: (){
-                      controller.clearAllData();
-                      Get.offAndToNamed(RouteHelper.loginScreen);
-                    },
-                    child: Text(MyStrings.signIn.tr, style: regularLarge.copyWith(color: MyColor.getPrimaryColor())),
-                  )
-                ],
-              )
             ],
           ),
         );

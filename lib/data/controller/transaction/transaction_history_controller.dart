@@ -87,7 +87,6 @@ class TransactionHistoryController extends GetxController{
       walletCurrencyList.insert(0, "All Currency");
     }
 
-    print('trx type: ${selectedTransactionType}');
     ResponseModel responseModel = await transactionRepo.getTransactionData(
       page,
       searchText: trxSearchText,

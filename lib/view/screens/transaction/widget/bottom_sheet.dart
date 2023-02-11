@@ -79,8 +79,8 @@ showTrxBottomSheet(List<String>? list, int callFrom, {required BuildContext cont
                                   padding: const EdgeInsets.all(15),
                                   margin: const EdgeInsets.all(5),
                                   decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(4),
-                                    color: MyColor.screenBgColor.withOpacity(.5)
+                                    borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
+                                      border: Border.all(color: MyColor.colorGrey.withOpacity(0.2))
                                   ),
                                   child: Text(
                                     ' ${callFrom == 2 ? Converter.replaceUnderscoreWithSpace(list[index].capitalizeFirst??''):list[index]}',

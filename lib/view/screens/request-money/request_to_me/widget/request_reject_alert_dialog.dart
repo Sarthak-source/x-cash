@@ -26,7 +26,7 @@ class RequestRejectAlertDialog extends StatelessWidget {
           const SizedBox(height: Dimensions.space10),
           Text(
             MyStrings.areYouSureReject,
-            style: regularDefault.copyWith(color: MyColor.getPrimaryColor(), fontWeight: FontWeight.w600),
+            style: regularLarge.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600),
             textAlign: TextAlign.center,
           ),
           const CustomDivider(space: Dimensions.space15),
@@ -35,6 +35,7 @@ class RequestRejectAlertDialog extends StatelessWidget {
             children: [
               Expanded(
                 child: RoundedButton(
+                    horizontalPadding: 3,verticalPadding: 3,
                     color: MyColor.colorBlack,
                     text: MyStrings.cancel,
                     press: (){
@@ -45,6 +46,7 @@ class RequestRejectAlertDialog extends StatelessWidget {
               const SizedBox(width: Dimensions.space15),
               Expanded(
                 child: controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
+                    horizontalPadding: 3,verticalPadding: 3,
                     color: MyColor.colorRed,
                     text: MyStrings.reject,
                     press: (){

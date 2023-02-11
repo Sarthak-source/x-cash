@@ -23,6 +23,8 @@ class MoneyOutController extends GetxController{
   String amount = "";
   String totalCharge = "";
   String payable = "";
+  String minLimit = "";
+  String maxLimit = "";
 
   MoneyOutResponseModel model = MoneyOutResponseModel();
 
@@ -34,6 +36,9 @@ class MoneyOutController extends GetxController{
 
   setWalletMethod(Wallets? wallet){
     selectedWallet = wallet;
+    minLimit = Converter.twoDecimalPlaceFixedWithoutRounding(selectedWallet?.id == -1 ? "0" : selectedWallet?.currency?.moneyOutMinLimit.toString() ?? "");
+    maxLimit = Converter.twoDecimalPlaceFixedWithoutRounding(selectedWallet?.id == -1 ? "0" : selectedWallet?.currency?.moneyOutMaxLimit.toString() ?? "");
+    currency = selectedWallet?.id == -1 ? "" : selectedWallet?.currencyCode ?? "";
     update();
   }
 
@@ -43,7 +48,6 @@ class MoneyOutController extends GetxController{
   }
 
   loadData() async{
-    currency = moneyOutRepo.apiClient.getCurrencyOrUsername();
     isLoading = true;
     update();
 
@@ -62,7 +66,6 @@ class MoneyOutController extends GetxController{
 
     if(responseModel.statusCode == 200){
       model = MoneyOutResponseModel.fromJson(jsonDecode(responseModel.responseJson));
-
       if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
         List<Wallets>? tempWalletList = model.data?.wallets;
         if(tempWalletList != null && tempWalletList.isNotEmpty){

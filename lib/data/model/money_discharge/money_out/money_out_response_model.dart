@@ -278,77 +278,83 @@ class Currency {
       int? id, 
       String? currencyCode, 
       String? currencySymbol, 
-      String? currencyFullName, 
+      String? currencyFullname, 
       String? currencyType, 
       String? rate, 
       String? isDefault, 
       String? status, 
       String? createdAt, 
       String? updatedAt, 
-      String? moneyOutLimit,}){
+      double? moneyOutMinLimit, 
+      double? moneyOutMaxLimit,}){
     _id = id;
     _currencyCode = currencyCode;
     _currencySymbol = currencySymbol;
-    _currencyFullName = currencyFullName;
+    _currencyFullname = currencyFullname;
     _currencyType = currencyType;
     _rate = rate;
     _isDefault = isDefault;
     _status = status;
     _createdAt = createdAt;
     _updatedAt = updatedAt;
-    _moneyOutLimit = moneyOutLimit;
+    _moneyOutMinLimit = moneyOutMinLimit;
+    _moneyOutMaxLimit = moneyOutMaxLimit;
 }
 
   Currency.fromJson(dynamic json) {
     _id = json['id'];
     _currencyCode = json['currency_code'];
     _currencySymbol = json['currency_symbol'];
-    _currencyFullName = json['currency_FullName'];
+    _currencyFullname = json['currency_fullname'];
     _currencyType = json['currency_type'];
     _rate = json['rate'];
     _isDefault = json['is_default'];
     _status = json['status'];
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
-    _moneyOutLimit = json['money_out_limit'];
+    _moneyOutMinLimit = json['money_out_min_limit'];
+    _moneyOutMaxLimit = json['money_out_max_limit'];
   }
   int? _id;
   String? _currencyCode;
   String? _currencySymbol;
-  String? _currencyFullName;
+  String? _currencyFullname;
   String? _currencyType;
   String? _rate;
   String? _isDefault;
   String? _status;
   String? _createdAt;
   String? _updatedAt;
-  String? _moneyOutLimit;
+  double? _moneyOutMinLimit;
+  double? _moneyOutMaxLimit;
 
   int? get id => _id;
   String? get currencyCode => _currencyCode;
   String? get currencySymbol => _currencySymbol;
-  String? get currencyFullName => _currencyFullName;
+  String? get currencyFullname => _currencyFullname;
   String? get currencyType => _currencyType;
   String? get rate => _rate;
   String? get isDefault => _isDefault;
   String? get status => _status;
   String? get createdAt => _createdAt;
   String? get updatedAt => _updatedAt;
-  String? get moneyOutLimit => _moneyOutLimit;
+  double? get moneyOutMinLimit => _moneyOutMinLimit;
+  double? get moneyOutMaxLimit => _moneyOutMaxLimit;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['id'] = _id;
     map['currency_code'] = _currencyCode;
     map['currency_symbol'] = _currencySymbol;
-    map['currency_FullName'] = _currencyFullName;
+    map['currency_fullname'] = _currencyFullname;
     map['currency_type'] = _currencyType;
     map['rate'] = _rate;
     map['is_default'] = _isDefault;
     map['status'] = _status;
     map['created_at'] = _createdAt;
     map['updated_at'] = _updatedAt;
-    map['money_out_limit'] = _moneyOutLimit;
+    map['money_out_min_limit'] = _moneyOutMinLimit;
+    map['money_out_max_limit'] = _moneyOutMaxLimit;
     return map;
   }
 

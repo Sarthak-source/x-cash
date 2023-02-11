@@ -9,6 +9,7 @@ import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/custom_no_data_found_class.dart';
+import 'package:xcash_app/view/components/no_data.dart';
 import 'package:xcash_app/view/screens/request-money/request_to_me/widget/middle_tab_buttons.dart';
 import 'package:xcash_app/view/screens/request-money/request_to_me/widget/my_request_list_item.dart';
 import 'package:xcash_app/view/screens/request-money/request_to_me/widget/to_me_list_item.dart';
@@ -87,7 +88,7 @@ class _RequestToMeScreenState extends State<RequestToMeScreen> {
               ),
               const SizedBox(height: Dimensions.space20),
               Expanded(
-                child: controller.isLoading ? const CustomLoader() : controller.myRequestList.isEmpty ? const NoDataOrInternetScreen() : SizedBox(
+                child: controller.isLoading ? const CustomLoader() : controller.myRequestList.isEmpty ? const NoDataWidget() : SizedBox(
                     height: MediaQuery.of(context).size.height,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: Dimensions.space15),

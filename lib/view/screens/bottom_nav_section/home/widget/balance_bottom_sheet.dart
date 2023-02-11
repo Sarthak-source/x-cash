@@ -50,19 +50,42 @@ class _BalanceBottomSheetState extends State<BalanceBottomSheet> {
             padding: EdgeInsets.zero,
             itemCount: controller.walletList.length,
             separatorBuilder: (context, index) => const SizedBox(height: Dimensions.space8),
-            itemBuilder: (context, index) => Container(
-              width: MediaQuery.of(context).size.width,
-              padding: const EdgeInsets.symmetric(vertical: Dimensions.space10, horizontal: Dimensions.space15),
-              decoration: BoxDecoration(
-                  border: Border.all(color: MyColor.colorGrey.withOpacity(0.2), width: 0.5),
-                  borderRadius: BorderRadius.circular(Dimensions.defaultRadius)
+            itemBuilder: (context, index) => GestureDetector(
+              onTap: (){
+                Get.toNamed(RouteHelper.transferMoneyScreen, arguments: controller.walletList[index].id.toString());
+              },
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                padding: const EdgeInsets.symmetric(vertical: Dimensions.space10, horizontal: Dimensions.space15),
+                decoration: BoxDecoration(
+                    border: Border.all(color: MyColor.colorGrey.withOpacity(0.2), width: 0.5),
+                    borderRadius: BorderRadius.circular(Dimensions.defaultRadius)
+                ),
+                child: BottomSheetRow(
+                    showSymbol: true,
+                    currencySymbol: controller.walletList[index].currency?.currencySymbol ?? "",
+                    header: controller.walletList[index].currencyCode ?? "",
+                    body: "${controller.walletList[index].currency?.currencySymbol ?? ""}${Converter.twoDecimalPlaceFixedWithoutRounding(controller.walletList[index].balance ?? "")}"
+                ),
               ),
-              child: BottomSheetRow(
-                  showSymbol: true,
-                  currencySymbol: controller.walletList[index].currency?.currencySymbol ?? "",
-                  header: controller.walletList[index].currencyCode ?? "",
-                  body: "${controller.walletList[index].currency?.currencySymbol ?? ""}${Converter.twoDecimalPlaceFixedWithoutRounding(controller.walletList[index].balance ?? "")}"
-              ),
+            ),
+          ),
+          const SizedBox(height: Dimensions.space20),
+          GestureDetector(
+            onTap: () => Get.toNamed(RouteHelper.myWalletScreen),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  alignment: Alignment.center,
+                  padding: const EdgeInsets.symmetric(vertical: Dimensions.space8, horizontal: Dimensions.space15),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: MyColor.colorGrey.withOpacity(0.2), width: 0.5),
+                      borderRadius: BorderRadius.circular(Dimensions.defaultRadius)
+                  ),
+                  child: Text(MyStrings.seeAllWallets, style: regularDefault.copyWith(color: MyColor.primaryColor)),
+                ),
+              ],
             ),
           ),
           const SizedBox(height: Dimensions.space20),
