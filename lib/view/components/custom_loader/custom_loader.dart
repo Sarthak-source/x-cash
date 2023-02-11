@@ -1,37 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
+import 'package:xcash_app/view/components/indicator/indicator.dart';
 
 class CustomLoader extends StatelessWidget {
 
-  const CustomLoader({Key? key,this.isPagination = false,this.isFullScreen = false}) : super(key: key);
-
   final bool isFullScreen;
   final bool isPagination;
+  final double strokeWidth;
+
+  const CustomLoader({
+    Key? key,
+    this.isFullScreen = false,
+    this.isPagination = false,
+    this.strokeWidth = 1
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return isFullScreen?Container(
+    return isFullScreen?SizedBox(
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
-      padding: const EdgeInsets.all(10),
-      child: Center(
-        child: CircularProgressIndicator(
-          color: MyColor.getPrimaryColor(),
-        ),
+      child: const Center(
+          child: SpinKitCircle(
+            color: MyColor.primaryColor,
+          )
       ),
-    ): isPagination?
-    Center(
-      child:  Padding(
+    ):isPagination?Center(child: Padding(
         padding: const EdgeInsets.all(10),
-        child: CircularProgressIndicator(
-          color: MyColor.getPrimaryColor(),
-        ),
-      ),
-    ):
-    Center(
-      child: CircularProgressIndicator(
-        color: MyColor.getPrimaryColor(),
-      ),
+        child: LoadingIndicator(strokeWidth: strokeWidth,))):
+    const Center(
+        child: SpinKitCircle(
+          color: MyColor.primaryColor,
+        )
     );
   }
 }
