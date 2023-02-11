@@ -12,7 +12,6 @@ import 'package:xcash_app/data/repo/auth/signup_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/custom_no_data_found_class.dart';
-import 'package:xcash_app/view/components/image/circle_shape_image.dart';
 import 'package:xcash_app/view/components/text/default_text.dart';
 import 'package:xcash_app/view/components/text/header_text.dart';
 import 'package:xcash_app/view/components/will_pop_widget.dart';

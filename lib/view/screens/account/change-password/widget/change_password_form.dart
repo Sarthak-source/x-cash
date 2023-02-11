@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/controller/account/change_password_controller.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
@@ -27,9 +28,9 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
           child: Column(
             children: [
               CustomTextField(
+                animatedLabel: true,
                 needOutlineBorder: true,
                 labelText: MyStrings.currentPassword.tr,
-                hintText: MyStrings.enterCurrentPassword.tr,
                 onChanged: (value){
                   return ;
                 },
@@ -44,8 +45,9 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
                 isShowSuffixIcon: true,
                 isPassword: true,
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: Dimensions.space20),
               CustomTextField(
+                  animatedLabel: true,
                   needOutlineBorder: true,
                   labelText: MyStrings.newPassword.tr,
                   hintText: MyStrings.enterNewPassword.tr,
@@ -63,11 +65,11 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
                   isShowSuffixIcon: true,
                   isPassword: true,
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: Dimensions.space20),
               CustomTextField(
+                  animatedLabel: true,
                   needOutlineBorder: true,
                   labelText: MyStrings.confirmPassword.tr,
-                  hintText: MyStrings.enterConfirmPassword.tr,
                   onChanged: (value){
                     return ;
                   },
@@ -82,7 +84,7 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
                   isShowSuffixIcon: true,
                   isPassword: true,
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: Dimensions.space25),
               controller.submitLoading?
               const RoundedLoadingBtn():
               RoundedButton(

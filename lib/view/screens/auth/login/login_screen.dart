@@ -77,10 +77,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         CustomTextField(
+                          animatedLabel: true,
                           needOutlineBorder: true,
                           controller: controller.emailController,
                           labelText: MyStrings.usernameOrEmail.tr,
-                          hintText: MyStrings.usernameOrEmailHint.tr,
                           onChanged: (value){},
                           focusNode: controller.emailFocusNode,
                           nextFocus: controller.passwordFocusNode,
@@ -94,13 +94,11 @@ class _LoginScreenState extends State<LoginScreen> {
                             }
                           },
                         ),
-
-                        const SizedBox(height: 35),
-
+                        const SizedBox(height: Dimensions.space20),
                         CustomTextField(
+                          animatedLabel: true,
                           needOutlineBorder: true,
                           labelText: MyStrings.password.tr,
-                          hintText: MyStrings.passwordHint.tr,
                           controller: controller.passwordController,
                           focusNode: controller.passwordFocusNode,
                           onChanged: (value){},

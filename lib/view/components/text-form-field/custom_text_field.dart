@@ -24,10 +24,10 @@ class CustomTextField extends StatefulWidget {
   final bool isCountryPicker;
   final TextInputAction inputAction;
   final bool needOutlineBorder;
-  final bool needLabel;
   final bool readOnly;
   final bool needRequiredSign;
   final int maxLines;
+  final bool animatedLabel;
 
  const CustomTextField({
     Key? key,
@@ -49,9 +49,9 @@ class CustomTextField extends StatefulWidget {
     this.isCountryPicker = false,
     this.inputAction = TextInputAction.next,
     this.needOutlineBorder = false,
-    this.needLabel = true,
     this.needRequiredSign = false,
     this.maxLines = 1,
+    this.animatedLabel = false
   }) : super(key: key);
 
   @override
@@ -65,11 +65,53 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
 
-    return widget.needOutlineBorder ? Column(
+    return widget.needOutlineBorder ? widget.animatedLabel ? TextFormField(
+      maxLines: widget.maxLines,
+      readOnly: widget.readOnly,
+      style: regularDefault.copyWith(color: MyColor.getTextColor()),
+      textAlign: TextAlign.left,
+      cursorColor: MyColor.getTextColor(),
+      controller: widget.controller,
+      autofocus: false,
+      textInputAction: widget.inputAction,
+      enabled: widget.isEnable,
+      focusNode: widget.focusNode,
+      validator: widget.validator,
+      keyboardType: widget.textInputType,
+      obscureText: widget.isPassword?obscureText:false,
+      decoration: InputDecoration(
+        contentPadding: const EdgeInsets.only(top: 5, left: 15, right: 15, bottom: 5),
+        labelText: widget.labelText,
+        labelStyle: regularDefault.copyWith(color: MyColor.getLabelTextColor()),
+        fillColor: MyColor.transparentColor,
+        filled: true,
+        border: OutlineInputBorder(borderSide: BorderSide(color: MyColor.getTextFieldDisableBorder()), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
+        focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: MyColor.getTextFieldEnableBorder()), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
+        enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: MyColor.getTextFieldDisableBorder()), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
+        suffixIcon: widget.isShowSuffixIcon
+            ? widget.isPassword
+            ? IconButton(
+            icon: Icon(obscureText ? Icons.visibility_off : Icons.visibility, color: MyColor.hintTextColor, size: 20),
+            onPressed: _toggle)
+            : widget.isIcon
+            ? IconButton(
+          onPressed: widget.onSuffixTap,
+          icon:  Icon(
+            widget.isSearch ? Icons.search_outlined : widget.isCountryPicker ? Icons.arrow_drop_down_outlined:Icons.camera_alt_outlined,
+            size: 25,
+            color: MyColor.getPrimaryColor(),
+          ),
+        )
+            : null
+            : null,
+      ),
+      onFieldSubmitted: (text) => widget.nextFocus != null ? FocusScope.of(context).requestFocus(widget.nextFocus) : null,
+      onChanged: (text)=> widget.onChanged!(text),
+    ) : Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        widget.needLabel ? LabelText(text: widget.labelText.toString()) : const SizedBox(),
-        widget.needLabel ? const SizedBox(height: Dimensions.textToTextSpace): const SizedBox(),
+        LabelText(text: widget.labelText.toString()),
+        const SizedBox(height: Dimensions.textToTextSpace),
         TextFormField(
           maxLines: widget.maxLines,
           readOnly: widget.readOnly,

@@ -39,9 +39,9 @@ class _PersonalAccountFormState extends State<PersonalAccountForm> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomTextField(
+                animatedLabel: true,
                 needOutlineBorder: true,
                 labelText: MyStrings.username.tr,
-                hintText: MyStrings.enterYourUsername.tr,
                 controller: controller.userNameController,
                 focusNode: controller.userNameFocusNode,
                 textInputType: TextInputType.text,
@@ -59,11 +59,11 @@ class _PersonalAccountFormState extends State<PersonalAccountForm> {
                   return;
                 },
               ),
-              const SizedBox(height: 25),
+              const SizedBox(height: Dimensions.space20),
               CustomTextField(
+                animatedLabel: true,
                 needOutlineBorder: true,
                 labelText: MyStrings.email.tr,
-                hintText: MyStrings.enterYourEmail.tr,
                 controller: controller.emailController,
                 focusNode: controller.emailFocusNode,
                 textInputType: TextInputType.emailAddress,
@@ -81,21 +81,19 @@ class _PersonalAccountFormState extends State<PersonalAccountForm> {
                   return;
                 },
               ),
-              const SizedBox(height: 25),
+              const SizedBox(height: Dimensions.space20),
               CountryTextField(
                 press: (){
                   CountryBottomSheet.bottomSheet(context, controller);
                 },
                 text:controller.countryName == null?MyStrings.selectACountry.tr:(controller.countryName)!.tr,
               ),
-              const SizedBox(height: 25),
+              const SizedBox(height: Dimensions.space20),
               Visibility(
                   visible: controller.countryName != null ,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const LabelText(text: MyStrings.phoneNo),
-                      const SizedBox(height: Dimensions.textToTextSpace),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.end,
@@ -116,10 +114,9 @@ class _PersonalAccountFormState extends State<PersonalAccountForm> {
                           const SizedBox(width: Dimensions.space5 + 3),
                           Expanded(
                             child: CustomTextField(
+                              animatedLabel: true,
                               needOutlineBorder: true,
-                              needLabel: false,
                               labelText: MyStrings.phoneNo.tr,
-                              hintText: MyStrings.enterYourPhoneNumber.tr,
                               controller: controller.mobileController,
                               focusNode: controller.mobileFocusNode,
                               textInputType: TextInputType.phone,
@@ -131,7 +128,7 @@ class _PersonalAccountFormState extends State<PersonalAccountForm> {
                           )
                         ]
                       ),
-                      const SizedBox(height: 25),
+                      const SizedBox(height: Dimensions.space20),
                     ],
                   )
               ),
@@ -143,6 +140,7 @@ class _PersonalAccountFormState extends State<PersonalAccountForm> {
                     controller.changePasswordFocus(hasFocus);
                   },
                   child: CustomTextField(
+                    animatedLabel: true,
                     needOutlineBorder: true,
                     isShowSuffixIcon: true,
                     isPassword: true,
@@ -150,7 +148,6 @@ class _PersonalAccountFormState extends State<PersonalAccountForm> {
                     controller: controller.passwordController,
                     focusNode: controller.passwordFocusNode,
                     nextFocus: controller.confirmPasswordFocusNode,
-                    hintText: MyStrings.enterYourPassword_.tr,
                     textInputType: TextInputType.text,
                     onChanged: (value) {
                       if(controller.checkPasswordStrength){
@@ -161,11 +158,11 @@ class _PersonalAccountFormState extends State<PersonalAccountForm> {
                       return controller.validatePassword(value ?? '');
                     },
                   )),
-              const SizedBox(height: 25),
+              const SizedBox(height: Dimensions.space20),
               CustomTextField(
+                animatedLabel: true,
                 needOutlineBorder: true,
                 labelText: MyStrings.confirmPassword.tr,
-                hintText: MyStrings.confirmYourPassword.tr,
                 controller: controller.cPasswordController,
                 focusNode: controller.confirmPasswordFocusNode,
                 inputAction: TextInputAction.done,
@@ -180,7 +177,7 @@ class _PersonalAccountFormState extends State<PersonalAccountForm> {
                   }
                 },
               ),
-              const SizedBox(height: 25),
+              const SizedBox(height: Dimensions.space25),
               Visibility(
                 visible: controller.needAgree,
                 child: Row(
@@ -204,11 +201,11 @@ class _PersonalAccountFormState extends State<PersonalAccountForm> {
                         },
                     ),
                   ),
-                  const SizedBox(width: 8,),
+                  const SizedBox(width: Dimensions.space8),
                   Row(
                     children: [
                       Text(MyStrings.iAgreeWith.tr, style: regularDefault.copyWith(color: MyColor.getTextColor())),
-                      const SizedBox(width: 3),
+                      const SizedBox(width: Dimensions.space3),
                       GestureDetector(
                         onTap: (){
                           Get.toNamed(RouteHelper.privacyScreen);
@@ -219,12 +216,12 @@ class _PersonalAccountFormState extends State<PersonalAccountForm> {
                             decorationColor: MyColor.getPrimaryColor()
                         )),
                       ),
-                      const SizedBox(width: 3),
+                      const SizedBox(width: Dimensions.space3),
                     ],
                   ),
                 ],
               )),
-              const SizedBox(height: 35),
+              const SizedBox(height: Dimensions.space30),
               controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
                   text: MyStrings.signUp.tr,
                   press: (){
@@ -233,7 +230,7 @@ class _PersonalAccountFormState extends State<PersonalAccountForm> {
                     }
                   }
               ),
-              const SizedBox(height: Dimensions.space35),
+              const SizedBox(height: Dimensions.space30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

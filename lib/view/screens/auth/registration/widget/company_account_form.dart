@@ -10,7 +10,6 @@ import 'package:xcash_app/data/controller/auth/auth/registration_controller.dart
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
-import 'package:xcash_app/view/components/text/label_text.dart';
 import 'package:xcash_app/view/screens/auth/registration/widget/country_bottom_sheet.dart';
 import 'package:xcash_app/view/screens/auth/registration/widget/validation_widget.dart';
 
@@ -40,7 +39,7 @@ class _CompanyAccountFormState extends State<CompanyAccountForm> {
               CustomTextField(
                 needOutlineBorder: true,
                 labelText: MyStrings.companyName.tr,
-                hintText: MyStrings.companyNameHint.tr,
+                animatedLabel: true,
                 controller: controller.companyNameController,
                 focusNode: controller.companyNameFocusNode,
                 textInputType: TextInputType.text,
@@ -56,11 +55,11 @@ class _CompanyAccountFormState extends State<CompanyAccountForm> {
                   return;
                 },
               ),
-              const SizedBox(height: 25),
+              const SizedBox(height: Dimensions.space20),
               CustomTextField(
                 needOutlineBorder: true,
                 labelText: MyStrings.username.tr,
-                hintText: MyStrings.enterYourUsername.tr,
+                animatedLabel: true,
                 controller: controller.userNameController,
                 focusNode: controller.userNameFocusNode,
                 textInputType: TextInputType.text,
@@ -78,11 +77,11 @@ class _CompanyAccountFormState extends State<CompanyAccountForm> {
                   return;
                 },
               ),
-              const SizedBox(height: 25),
+              const SizedBox(height: Dimensions.space20),
               CustomTextField(
                 needOutlineBorder: true,
                 labelText: MyStrings.email.tr,
-                hintText: MyStrings.enterYourEmail.tr,
+                animatedLabel: true,
                 controller: controller.emailController,
                 focusNode: controller.emailFocusNode,
                 textInputType: TextInputType.emailAddress,
@@ -100,21 +99,19 @@ class _CompanyAccountFormState extends State<CompanyAccountForm> {
                   return;
                 },
               ),
-              const SizedBox(height: 25),
+              const SizedBox(height: Dimensions.space20),
               CountryTextField(
                 press: (){
                   CountryBottomSheet.bottomSheet(context, controller);
                 },
                 text:controller.countryName == null?MyStrings.selectACountry.tr:(controller.countryName)!.tr,
               ),
-              const SizedBox(height: 25),
+              const SizedBox(height: Dimensions.space20),
               Visibility(
                   visible: controller.countryName != null ,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const LabelText(text: MyStrings.phoneNo),
-                      const SizedBox(height: Dimensions.textToTextSpace),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.end,
@@ -132,13 +129,12 @@ class _CompanyAccountFormState extends State<CompanyAccountForm> {
                               style: regularDefault.copyWith(color: MyColor.getPrimaryColor()),
                             ),
                           ),
-                          const SizedBox(width: Dimensions.space5 + 3),
+                          const SizedBox(width: Dimensions.space8),
                           Expanded(
                             child: CustomTextField(
+                              animatedLabel: true,
                               needOutlineBorder: true,
-                              needLabel: false,
                               labelText: MyStrings.phoneNo.tr,
-                              hintText: MyStrings.enterYourPhoneNumber.tr,
                               controller: controller.mobileController,
                               focusNode: controller.mobileFocusNode,
                               textInputType: TextInputType.phone,
@@ -148,8 +144,9 @@ class _CompanyAccountFormState extends State<CompanyAccountForm> {
                               },
                             ),
                           )
-                        ],),
-                      const SizedBox(height: 25),
+                        ]
+                      ),
+                      const SizedBox(height: Dimensions.space20),
                     ],
                   )
               ),
@@ -161,6 +158,7 @@ class _CompanyAccountFormState extends State<CompanyAccountForm> {
                     controller.changePasswordFocus(hasFocus);
                   },
                   child: CustomTextField(
+                    animatedLabel: true,
                     needOutlineBorder: true,
                     isShowSuffixIcon: true,
                     isPassword: true,
@@ -168,7 +166,6 @@ class _CompanyAccountFormState extends State<CompanyAccountForm> {
                     controller: controller.passwordController,
                     focusNode: controller.passwordFocusNode,
                     nextFocus: controller.confirmPasswordFocusNode,
-                    hintText: MyStrings.enterYourPassword_.tr,
                     textInputType: TextInputType.text,
                     onChanged: (value) {
                       if(controller.checkPasswordStrength){
@@ -179,11 +176,11 @@ class _CompanyAccountFormState extends State<CompanyAccountForm> {
                       return controller.validatePassword(value ?? '');
                     },
                   )),
-              const SizedBox(height: 25),
+              const SizedBox(height: Dimensions.space20),
               CustomTextField(
                 needOutlineBorder: true,
                 labelText: MyStrings.confirmPassword.tr,
-                hintText: MyStrings.confirmYourPassword.tr,
+                animatedLabel: true,
                 controller: controller.cPasswordController,
                 focusNode: controller.confirmPasswordFocusNode,
                 inputAction: TextInputAction.done,
@@ -198,7 +195,7 @@ class _CompanyAccountFormState extends State<CompanyAccountForm> {
                   }
                 },
               ),
-              const SizedBox(height: 25),
+              const SizedBox(height: Dimensions.space20),
               Visibility(
                 visible: controller.needAgree,
                 child: Row(
@@ -242,7 +239,7 @@ class _CompanyAccountFormState extends State<CompanyAccountForm> {
                   ),
                 ],
               )),
-              const SizedBox(height: 35),
+              const SizedBox(height: Dimensions.space30),
               controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
                   text: MyStrings.signUp.toUpperCase().tr,
                   press: (){
@@ -251,7 +248,7 @@ class _CompanyAccountFormState extends State<CompanyAccountForm> {
                     }
                   }
               ),
-              const SizedBox(height: Dimensions.space35),
+              const SizedBox(height: Dimensions.space30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
