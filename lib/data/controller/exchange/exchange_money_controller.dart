@@ -150,12 +150,12 @@ class ExchangeMoneyController extends GetxController{
   void calculateExchangeAmount(double userAmount){
 
     if(fromWalletMethod?.id.toString() == '-1'){
-      CustomSnackBar.error(errorList: [MyStrings.selectOne]);
+      CustomSnackBar.error(errorList: [MyStrings.selectFromCurrency]);
       return ;
     }
 
     if(toWalletMethod?.id.toString() == '-1'){
-      CustomSnackBar.error(errorList: [MyStrings.selectOne]);
+      CustomSnackBar.error(errorList: [MyStrings.selectToCurrency]);
       return ;
     }
 

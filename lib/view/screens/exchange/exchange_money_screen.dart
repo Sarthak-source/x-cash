@@ -10,11 +10,13 @@ import 'package:xcash_app/data/repo/exchange/exchange_money_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
+import 'package:xcash_app/view/components/bottom-sheet/custom_modal_bottom_sheet.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
-import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
+import 'package:xcash_app/view/components/text/label_text.dart';
 import 'package:xcash_app/view/screens/exchange/widget/exchange_money_bottom_sheet.dart';
+import 'package:xcash_app/view/screens/transaction/widget/filter_row_widget.dart';
 
 class ExchangeMoneyScreen extends StatefulWidget {
   const ExchangeMoneyScreen({Key? key}) : super(key: key);
@@ -67,44 +69,152 @@ class _ExchangeMoneyScreenState extends State<ExchangeMoneyScreen> {
                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                    children: [
                      Expanded(
-                         child: CustomDropDownTextField(
-                           radius: Dimensions.defaultRadius,
-                           dropDownColor: MyColor.primaryColor,
-                           labelText: MyStrings.fromCurrency,
-                           selectedValue: controller.fromWalletMethod,
-                           fillColor: MyColor.primaryColor,
-                           iconColor: MyColor.colorWhite,
-                           onChanged: (newValue) {
-                             controller.setFromWalletMethod(newValue);
-                           },
-                           items: controller.fromWalletList.map((FromWallets wallet) {
-                             return DropdownMenuItem<FromWallets>(
-                               value: wallet,
-                               child: Text(wallet.currencyCode.toString(), style: regularDefault.copyWith(color: MyColor.colorWhite)),
-                             );
-                           }).toList(),
+                         child: Column(
+                           crossAxisAlignment: CrossAxisAlignment.start,
+                           children: [
+                             const LabelText(text: MyStrings.fromCurrency),
+                             const SizedBox(height: Dimensions.textToTextSpace),
+                             FilterRowWidget(
+                                 borderColor: controller.fromWalletMethod?.id.toString() == "-1" ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
+                                 text: "${controller.fromWalletMethod?.id.toString() == "-1" ? MyStrings.selectOne : controller.fromWalletMethod?.currencyCode}",
+                                 press: () => customModalBottomSheet(
+                                   context: context,
+                                   child: Column(
+                                     crossAxisAlignment: CrossAxisAlignment.start,
+                                     children: [
+                                       Align(
+                                         alignment: Alignment.topCenter,
+                                         child: Container(
+                                           height: 5,
+                                           width: 50,
+                                           padding: const EdgeInsets.all(1),
+                                           decoration: BoxDecoration(
+                                             borderRadius: BorderRadius.circular(8),
+                                             color: MyColor.colorGrey.withOpacity(0.1),
+                                           ),
+                                         ),
+                                       ),
+                                       const SizedBox(height: Dimensions.space15),
+                                       Expanded(
+                                         child: ListView.builder(
+                                             padding: EdgeInsets.zero,
+                                             physics: const BouncingScrollPhysics(),
+                                             itemCount: controller.fromWalletList.length,
+                                             shrinkWrap: true,
+                                             itemBuilder: (context, index) {
+                                               return Material(
+                                                 color: Colors.transparent,
+                                                 child: InkWell(
+                                                   onTap: () {
+                                                     final controller = Get.find<ExchangeMoneyController>();
+                                                     FromWallets selectedValue = controller.fromWalletList[index];
+                                                     controller.setFromWalletMethod(selectedValue);
+                                                     Navigator.pop(context);
+
+                                                     FocusScopeNode currentFocus = FocusScope.of(context);
+                                                     if (!currentFocus.hasPrimaryFocus) {
+                                                       currentFocus.unfocus();
+                                                     }
+                                                   },
+                                                   child: Container(
+                                                     padding: const EdgeInsets.all(15),
+                                                     margin: const EdgeInsets.all(5),
+                                                     decoration: BoxDecoration(
+                                                         borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
+                                                         border: Border.all(color: MyColor.colorGrey.withOpacity(0.2))
+                                                     ),
+                                                     child: Text(
+                                                       controller.fromWalletList[index].currencyCode ?? "",
+                                                       style: regularDefault,
+                                                     ),
+                                                   ),
+                                                 ),
+                                               );
+                                             }),
+                                       )
+                                     ],
+                                   )
+                                 )
+                             ),
+                           ],
                          )
                      ),
                      const SizedBox(width: Dimensions.space20),
                      Expanded(
-                       child: CustomDropDownTextField(
-                         radius: Dimensions.defaultRadius,
-                         labelText: MyStrings.toCurrency,
-                         selectedValue: controller.toWalletMethod,
-                         onChanged: (newValue) {
-                           controller.setToWalletMethod(newValue);
-                         },
-                         items: controller.toWalletList.map((ToWallets wallet) {
-                           return DropdownMenuItem<ToWallets>(
-                             value: wallet,
-                             child: Text(wallet.currencyCode.toString(), style: regularDefault.copyWith(color: MyColor.colorBlack)),
-                           );
-                         }).toList(),
-                       ),
+                       child: Column(
+                         crossAxisAlignment: CrossAxisAlignment.start,
+                         children: [
+                           const LabelText(text: MyStrings.toCurrency),
+                           const SizedBox(height: Dimensions.textToTextSpace),
+                           FilterRowWidget(
+                               borderColor: controller.toWalletMethod?.id.toString() == "-1" ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
+                               text: "${controller.toWalletMethod?.id.toString() == "-1" ? MyStrings.selectOne : controller.toWalletMethod?.currencyCode}",
+                               press: () => customModalBottomSheet(
+                                   context: context,
+                                   child: Column(
+                                     crossAxisAlignment: CrossAxisAlignment.start,
+                                     children: [
+                                       Align(
+                                         alignment: Alignment.topCenter,
+                                         child: Container(
+                                           height: 5,
+                                           width: 50,
+                                           padding: const EdgeInsets.all(1),
+                                           decoration: BoxDecoration(
+                                             borderRadius: BorderRadius.circular(8),
+                                             color: MyColor.colorGrey.withOpacity(0.1),
+                                           ),
+                                         ),
+                                       ),
+                                       const SizedBox(height: Dimensions.space15),
+                                       Expanded(
+                                         child: ListView.builder(
+                                             padding: EdgeInsets.zero,
+                                             physics: const BouncingScrollPhysics(),
+                                             itemCount: controller.toWalletList.length,
+                                             shrinkWrap: true,
+                                             itemBuilder: (context, index) {
+                                               return Material(
+                                                 color: Colors.transparent,
+                                                 child: InkWell(
+                                                   onTap: () {
+                                                     final controller = Get.find<ExchangeMoneyController>();
+                                                     ToWallets selectedValue = controller.toWalletList[index];
+                                                     controller.setToWalletMethod(selectedValue);
+                                                     Navigator.pop(context);
+
+                                                     FocusScopeNode currentFocus = FocusScope.of(context);
+                                                     if (!currentFocus.hasPrimaryFocus) {
+                                                       currentFocus.unfocus();
+                                                     }
+                                                   },
+                                                   child: Container(
+                                                     padding: const EdgeInsets.all(15),
+                                                     margin: const EdgeInsets.all(5),
+                                                     decoration: BoxDecoration(
+                                                         borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
+                                                         border: Border.all(color: MyColor.colorGrey.withOpacity(0.2))
+                                                     ),
+                                                     child: Text(
+                                                       controller.toWalletList[index].currencyCode ?? "",
+                                                       style: regularDefault,
+                                                     ),
+                                                   ),
+                                                 ),
+                                               );
+                                             }),
+                                       )
+                                     ],
+                                   )
+                               )
+                           ),
+                         ],
+                       )
                      )
                    ],
                  ),
                  const SizedBox(height: Dimensions.space20),
+
                  CustomAmountTextField(
                     labelText: MyStrings.amount,
                     hintText: MyStrings.amountHint,
@@ -113,6 +223,7 @@ class _ExchangeMoneyScreenState extends State<ExchangeMoneyScreen> {
                     currency: controller.currency
                 ),
                  const SizedBox(height: Dimensions.space30),
+
                  RoundedButton(
                    press: (){
                      if(controller.canExchange()){

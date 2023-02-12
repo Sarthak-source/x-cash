@@ -13,6 +13,7 @@ import 'package:xcash_app/view/components/app-bar/action_button_icon_widget.dart
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/custom_no_data_found_class.dart';
+import 'package:xcash_app/view/components/no_data.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_money/widget/withdraw_money_bottom_sheet.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_money/widget/withdraw_money_card.dart';
 
@@ -71,7 +72,7 @@ class _WithdrawMoneyScreenState extends State<WithdrawMoneyScreen> {
             physics: const BouncingScrollPhysics(),
             padding: Dimensions.screenPaddingHV,
             child: controller.withdrawMoneyList.isEmpty ? const Center(
-              child: NoDataOrInternetScreen(),
+              child: NoDataWidget(),
             ) : ListView.separated(
                 shrinkWrap: true,
                 padding: EdgeInsets.zero,

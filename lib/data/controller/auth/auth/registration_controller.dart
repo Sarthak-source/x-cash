@@ -111,6 +111,7 @@ class RegistrationController extends GetxController {
   }
 
   SignUpModel getUserData() {
+
     SignUpModel model = SignUpModel(
         companyName: companyNameController.text.toString(),
         mobile: mobileController.text.toString(),

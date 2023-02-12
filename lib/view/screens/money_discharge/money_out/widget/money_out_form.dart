@@ -19,6 +19,9 @@ import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
 import 'package:xcash_app/view/components/text/label_text.dart';
 import 'package:xcash_app/view/screens/money_discharge/money_out/widget/money_out_bottom_sheet.dart';
+import 'package:xcash_app/view/screens/money_discharge/money_out/widget/money_out_otp_bottom_sheet.dart';
+import 'package:xcash_app/view/screens/money_discharge/money_out/widget/money_out_wallet_bottom_sheet.dart';
+import 'package:xcash_app/view/screens/transaction/widget/filter_row_widget.dart';
 
 class MoneyOutForm extends StatefulWidget {
   const MoneyOutForm({Key? key}) : super(key: key);
@@ -54,18 +57,16 @@ class _MoneyOutFormState extends State<MoneyOutForm> {
               },
             ),
             const SizedBox(height: Dimensions.space15),
-            CustomDropDownTextField(
-              labelText: MyStrings.selectWallet.tr,
-              selectedValue: controller.selectedWallet,
-              onChanged: (value) => controller.setWalletMethod(value),
-              items: controller.walletList.map((Wallets wallet) {
-                return DropdownMenuItem<Wallets>(
-                  value: wallet,
-                  child: Text(wallet.currencyCode.toString(), style: regularDefault),
-                );
-              }).toList(),
+
+            const LabelText(text: MyStrings.selectWallet),
+            const SizedBox(height: Dimensions.textToTextSpace),
+            FilterRowWidget(
+                borderColor: controller.selectedWallet?.id.toString() == "-1" ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
+                text: "${controller.selectedWallet?.id.toString() == "-1" ? MyStrings.selectWallet : controller.selectedWallet?.currencyCode}",
+                press: () => moneyOutWalletBottomSheet(controller.walletList, context: context)
             ),
             const SizedBox(height: Dimensions.space15),
+
             CustomAmountTextField(
               labelText: MyStrings.amount.tr,
               hintText: MyStrings.amountHint.tr,
@@ -86,16 +87,13 @@ class _MoneyOutFormState extends State<MoneyOutForm> {
                 style: regularExtraSmall.copyWith(color: MyColor.primaryColor)
             ),
             const SizedBox(height: Dimensions.space15),
-            CustomDropDownTextField(
-              labelText: MyStrings.selectOtp.tr,
-              selectedValue: controller.selectedOtp,
-              onChanged: (value) => controller.setOtpMethod(value),
-              items: controller.otpTypeList.map((value) {
-                return DropdownMenuItem(
-                  value: value,
-                  child: Text(value.toString().toTitleCase(), style: regularDefault),
-                );
-              }).toList(),
+
+            const LabelText(text: MyStrings.selectOtp),
+            const SizedBox(height: Dimensions.textToTextSpace),
+            FilterRowWidget(
+                borderColor: controller.selectedOtp == MyStrings.selectOtp ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
+                text: controller.selectedOtp.toTitleCase(),
+                press: () => moneyOutOtpBottomSheet(controller.otpTypeList, context: context)
             ),
             const SizedBox(height: Dimensions.space20),
             RoundedButton(

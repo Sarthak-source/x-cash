@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:lottie/lottie.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
@@ -11,17 +12,21 @@ class NoDataWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SvgPicture.asset(MyImages.noDataImage, height: 70, width: 70, color: MyColor.primaryColor),
-        const SizedBox(height: Dimensions.space15),
-        Text(
-          MyStrings.noDataFound,
-          style: regularLarge.copyWith(color: MyColor.getTextColor().withOpacity(0.6)),
-        )
-      ],
+    return Container(
+      alignment: Alignment.center,
+      margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height / 4),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Lottie.asset(MyImages.noData, height: 150, width: 150),
+          const SizedBox(height: Dimensions.space3),
+          Text(
+            MyStrings.noDataFound,
+            style: regularLarge.copyWith(color: MyColor.getTextColor()),
+          )
+        ],
+      ),
     );
   }
 }

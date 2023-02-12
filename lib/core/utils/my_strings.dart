@@ -453,7 +453,7 @@ class MyStrings{
   static const String kycVerification = 'KYC Verification';
   static const String notification = 'Notifications';
   static const String kycData = 'KYC Data';
-  static const String noDataFound = 'No Data Found';
+  static const String noDataFound = 'Sorry! there are no data to show';
   static const String chooseOption = 'Choose option';
   static const String gallery = "Gallery";
   static const String camera = "Camera";
@@ -532,6 +532,7 @@ class MyStrings{
   static const String selectOne               = "Select One";
   static const String selectFromCurrency      = "Select from currency";
   static const String selectToCurrency      = "Select to currency";
+  static const String sameWalletErrorMsg      = "Can't exchange currency in same wallet";
   static const String sms                     = 'SMS';
 
   //no internet

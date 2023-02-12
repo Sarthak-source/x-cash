@@ -15,7 +15,11 @@ import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
+import 'package:xcash_app/view/components/text/label_text.dart';
+import 'package:xcash_app/view/screens/transaction/widget/filter_row_widget.dart';
 import 'package:xcash_app/view/screens/transfer/widget/transfer_money_bottom_sheet.dart';
+import 'package:xcash_app/view/screens/transfer/widget/transfer_money_otp_bottom_sheet.dart';
+import 'package:xcash_app/view/screens/transfer/widget/transfer_money_wallet_bottom_sheet.dart';
 
 import '../../../data/model/transfer/transfer_money_response_model.dart' as tm_model;
 
@@ -67,16 +71,14 @@ class _TransferMoneyState extends State<TransferMoney> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomDropDownTextField(
-                    labelText: MyStrings.selectWallet.tr,
-                    selectedValue: controller.selectedWallet,
-                    onChanged: (value) => controller.setSelectedWallet(value),
-                    items: controller.walletList.map((tm_model.Wallets wallet) {
-                      return DropdownMenuItem<tm_model.Wallets>(
-                        value: wallet,
-                        child: Text(wallet.currencyCode.toString(), style: regularDefault),
-                      );
-                    }).toList(),
+                  const LabelText(text: MyStrings.selectWallet),
+                  const SizedBox(height: Dimensions.textToTextSpace),
+                  FilterRowWidget(
+                      borderColor: controller.selectedWallet?.id.toString() == "-1" ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
+                      text: "${controller.selectedWallet?.id.toString() == "-1" ? MyStrings.selectWallet : controller.selectedWallet?.currencyCode}",
+                      press: () {
+                        showTransferMoneyWalletBottomSheet(controller.walletList, context: context);
+                      }
                   ),
                   const SizedBox(height: Dimensions.space5),
                   Text(
@@ -112,16 +114,14 @@ class _TransferMoneyState extends State<TransferMoney> {
                       style: regularExtraSmall.copyWith(color: MyColor.primaryColor)
                   ),
                   const SizedBox(height: Dimensions.space20),
-                  CustomDropDownTextField(
-                    labelText: MyStrings.selectOtp.tr,
-                    selectedValue: controller.selectedOtp,
-                    onChanged: (value) => controller.setSelectedOtp(value),
-                    items: controller.otpTypeList.map((value) {
-                      return DropdownMenuItem(
-                        value: value,
-                        child: Text(value.toString().toTitleCase(), style: regularDefault),
-                      );
-                    }).toList(),
+                  const LabelText(text: MyStrings.selectOtp),
+                  const SizedBox(height: Dimensions.textToTextSpace),
+                  FilterRowWidget(
+                      borderColor: controller.selectedOtp == MyStrings.selectOtp ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
+                      text: controller.selectedOtp.toTitleCase(),
+                      press: () {
+                        showTransferMoneyOTPBottomSheet(controller.otpTypeList, context: context);
+                      }
                   ),
                   const SizedBox(height: Dimensions.space25),
                   RoundedButton(

@@ -18,20 +18,22 @@ class CustomLoader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return isFullScreen?SizedBox(
+    return isFullScreen ? SizedBox(
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
       child: const Center(
-          child: SpinKitCircle(
+          child: SpinKitThreeBounce(
             color: MyColor.primaryColor,
+            size: 20.0,
           )
       ),
     ):isPagination?Center(child: Padding(
         padding: const EdgeInsets.all(10),
         child: LoadingIndicator(strokeWidth: strokeWidth,))):
     const Center(
-        child: SpinKitCircle(
+        child: SpinKitThreeBounce(
           color: MyColor.primaryColor,
+          size: 20.0,
         )
     );
   }

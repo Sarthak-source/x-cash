@@ -26,6 +26,7 @@ class MyImages{
   static const String transfer = "assets/images/transfer.svg";
   static const String voucher = "assets/images/voucher.svg";
   static const String withdraw = "assets/images/withdraw.svg";
+  static const String moneyWithdraw = "assets/images/money_withdraw.png";
 
   static const String profile = "assets/images/profile.png";
   static const String home = "assets/images/home.png";
@@ -74,4 +75,5 @@ class MyImages{
   static const String companyAcc = "assets/images/company.png";
 
   static const String noInternet = "assets/animation/no_internet.json";
+  static const String noData = "assets/animation/no-data.json";
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/style.dart';
@@ -10,6 +11,9 @@ import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
+import 'package:xcash_app/view/components/text/label_text.dart';
+import 'package:xcash_app/view/screens/invoice/create_invoice/widget/create_invoice_wallet_bottom_sheet.dart';
+import 'package:xcash_app/view/screens/transaction/widget/filter_row_widget.dart';
 
 class InvoiceDetails extends StatefulWidget {
   const InvoiceDetails({Key? key}) : super(key: key);
@@ -59,21 +63,15 @@ class _InvoiceDetailsState extends State<InvoiceDetails> {
                        onChanged: (value){}
                    ),
                    const SizedBox(height: Dimensions.space15),
-                   CustomDropDownTextField(
-                       labelText: MyStrings.yourWallet,
-                       selectedValue: controller.selectedCurrency,
-                       onChanged: (value){
-                         controller.setSelectedCurrency(value);
-                       },
-                       items: controller.currencyList.map((Currencies val){
-                         return DropdownMenuItem<Currencies>(
-                             value: val,
-                             child: Text(
-                               val.currencyCode ?? "",
-                               style: regularSmall,
-                             )
-                         );
-                       }).toList()
+
+                   const LabelText(text: MyStrings.yourWallet),
+                   const SizedBox(height: Dimensions.textToTextSpace),
+                   FilterRowWidget(
+                       borderColor: controller.selectedCurrency?.id.toString() == "-1" ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
+                       text: "${controller.selectedCurrency?.id.toString() == "-1" ? MyStrings.selectWallet : controller.selectedCurrency?.currencyCode}",
+                       press: () {
+                         createInvoiceWalletBottomSheet(controller.currencyList, context: context);
+                       }
                    ),
                  ],
                ),

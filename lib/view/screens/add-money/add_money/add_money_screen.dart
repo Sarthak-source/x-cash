@@ -7,7 +7,6 @@ import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/add_money/add_money_method_controller.dart';
-import 'package:xcash_app/data/model/add_money/add_money_method_response_model.dart';
 import 'package:xcash_app/data/repo/add_money/add_money_method_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/action_button_icon_widget.dart';
@@ -15,8 +14,11 @@ import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
-import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
+import 'package:xcash_app/view/components/text/label_text.dart';
 import 'package:xcash_app/view/screens/add-money/add_money/widget/add_money_info_widget.dart';
+import 'package:xcash_app/view/screens/add-money/add_money/widget/money_gateway_bottom_sheet.dart';
+import 'package:xcash_app/view/screens/add-money/add_money/widget/money_wallet_bottom_sheet.dart';
+import 'package:xcash_app/view/screens/transaction/widget/filter_row_widget.dart';
 
 class AddMoneyScreen extends StatefulWidget {
   const AddMoneyScreen({Key? key}) : super(key: key);
@@ -74,34 +76,28 @@ class _AddMoneyScreenState extends State<AddMoneyScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomDropDownTextField(
-                    labelText: MyStrings.selectWallet.tr,
-                    selectedValue: controller.selectedWallet,
-                    onChanged: (newValue) {
-                      controller.setWallet(newValue);
-                    },
-                    items: controller.walletList.map((AddMoneyWallets wallet) {
-                      return DropdownMenuItem<AddMoneyWallets>(
-                        value: wallet,
-                        child: Text(wallet.currencyCode.toString(), style: regularDefault),
-                      );
-                    }).toList(),
+                  const LabelText(text: MyStrings.selectWallet),
+                  const SizedBox(height: Dimensions.textToTextSpace),
+                  FilterRowWidget(
+                      borderColor: controller.selectedWallet?.id.toString() == "-1" ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
+                      text: "${controller.selectedWallet?.id.toString() == "-1" ? MyStrings.selectWallet : controller.selectedWallet?.currencyCode}",
+                      press: () {
+                        showMoneyWalletBottomSheet(controller.walletList, context: context);
+                      }
                   ),
                   const SizedBox(height: Dimensions.space20),
-                  CustomDropDownTextField(
-                    labelText: MyStrings.selectGateway.tr,
-                    selectedValue: controller.selectedGateway,
-                    onChanged: (newValue) {
-                      controller.setGatewayMethod(newValue);
-                    },
-                    items: controller.gatewayList.map((Gateways gateways) {
-                      return DropdownMenuItem<Gateways>(
-                        value: gateways,
-                        child: Text(gateways.name.toString(), style: regularDefault),
-                      );
-                    }).toList(),
+
+                  const LabelText(text: MyStrings.selectGateway),
+                  const SizedBox(height: Dimensions.textToTextSpace),
+                  FilterRowWidget(
+                      borderColor: controller.selectedGateway?.id.toString() == "-1" ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
+                      text: "${controller.selectedGateway?.id.toString() == "-1" ? MyStrings.selectGateway : controller.selectedGateway?.name}",
+                      press: () {
+                        showMoneyGatewayBottomSheet(controller.gatewayList, context: context);
+                      }
                   ),
                   const SizedBox(height: Dimensions.space20),
+
                   CustomAmountTextField(
                     labelText: MyStrings.amount.tr,
                     hintText: MyStrings.amountHint.tr,

@@ -19,6 +19,9 @@ import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
 import 'package:xcash_app/view/components/text/label_text.dart';
 import 'package:xcash_app/view/screens/money_discharge/make_payment/widget/make_payment_bottom_sheet.dart';
+import 'package:xcash_app/view/screens/money_discharge/make_payment/widget/make_payment_otp_bottom_sheet.dart';
+import 'package:xcash_app/view/screens/money_discharge/make_payment/widget/make_payment_wallet_bottom_sheet.dart';
+import 'package:xcash_app/view/screens/transaction/widget/filter_row_widget.dart';
 
 class MakePaymentForm extends StatefulWidget {
   const MakePaymentForm({Key? key}) : super(key: key);
@@ -54,18 +57,21 @@ class _MakePaymentFormState extends State<MakePaymentForm> {
               },
             ),
             const SizedBox(height: Dimensions.space15),
-            CustomDropDownTextField(
-              labelText: MyStrings.selectWallet.tr,
-              selectedValue: controller.walletsMethod,
-              onChanged: (value) => controller.setWalletMethod(value),
-              items: controller.walletList.map((Wallets wallet) {
-                return DropdownMenuItem<Wallets>(
-                  value: wallet,
-                  child: Text(wallet.currencyCode.toString(), style: regularDefault),
-                );
-              }).toList(),
+
+            const LabelText(text: MyStrings.selectWallet),
+            const SizedBox(height: Dimensions.textToTextSpace),
+            SizedBox(
+              height: 50,
+              child: FilterRowWidget(
+                  borderColor: controller.walletsMethod?.id.toString() == "-1" ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
+                  text: "${controller.walletsMethod?.id.toString() == "-1" ? MyStrings.selectWallet : controller.walletsMethod?.currencyCode}",
+                  press: () {
+                    showMakePaymentWalletBottomSheet(controller.walletList, context: context);
+                  }
+              ),
             ),
             const SizedBox(height: Dimensions.space15),
+
             CustomAmountTextField(
               labelText: MyStrings.amount.tr,
               hintText: MyStrings.amountHint,
@@ -81,18 +87,21 @@ class _MakePaymentFormState extends State<MakePaymentForm> {
               controller: controller.amountController,
             ),
             const SizedBox(height: Dimensions.space15),
-            CustomDropDownTextField(
-              labelText: MyStrings.selectOtp.tr,
-              selectedValue: controller.selectedOtp,
-              onChanged: (value) => controller.setOtpMethod(value),
-              items: controller.otpTypeList.map((value) {
-                return DropdownMenuItem(
-                  value: value,
-                  child: Text(value.toString().toTitleCase(), style: regularDefault),
-                );
-              }).toList(),
+
+            const LabelText(text: MyStrings.selectOtp),
+            const SizedBox(height: Dimensions.textToTextSpace),
+            SizedBox(
+              height: 50,
+              child: FilterRowWidget(
+                  borderColor: controller.selectedOtp == MyStrings.selectOtp ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
+                  text: controller.selectedOtp.toTitleCase(),
+                  press: () {
+                    showMakePaymentOTPBottomSheet(controller.otpTypeList, context: context);
+                  }
+              ),
             ),
             const SizedBox(height: Dimensions.space20),
+
             RoundedButton(
               press: (){
                 if(formKey.currentState!.validate()){

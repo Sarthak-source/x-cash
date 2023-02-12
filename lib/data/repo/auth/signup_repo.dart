@@ -41,9 +41,12 @@ class RegistrationRepo {
       'password_confirmation':model.password,//password and confirm password check from front end panel
       'country_code': model.countryCode, //model.country_code,
       'country': model.country, //model.country,
-      "mobile_code": model.mobileCode,
-      "company_name": model.companyName,
+      "mobile_code": model.mobileCode
     };
+
+    if(model.companyName!=null && model.companyName!.isNotEmpty){
+      bodyFields['company_name']=model.companyName;
+    }
 
     return bodyFields;
   }

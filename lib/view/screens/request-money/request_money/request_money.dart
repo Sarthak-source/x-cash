@@ -16,7 +16,10 @@ import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
+import 'package:xcash_app/view/components/text/label_text.dart';
 import 'package:xcash_app/view/screens/request-money/request_money/widget/request_money_bottom_sheet.dart';
+import 'package:xcash_app/view/screens/request-money/request_money/widget/request_money_wallet_bottom_sheet.dart';
+import 'package:xcash_app/view/screens/transaction/widget/filter_row_widget.dart';
 
 import '../../../../data/model/request_money/request_money/request_money_response_model.dart';
 
@@ -69,16 +72,14 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      CustomDropDownTextField(
-                        labelText: MyStrings.selectWallet.tr,
-                        selectedValue: controller.selectedWallet,
-                        onChanged: (value) => controller.setWalletMethod(value),
-                        items: controller.walletList.map((Wallets wallet) {
-                          return DropdownMenuItem<Wallets>(
-                            value: wallet,
-                            child: Text(wallet.currencyCode.toString(), style: regularDefault),
-                          );
-                        }).toList(),
+                      const LabelText(text: MyStrings.selectWallet),
+                      const SizedBox(height: Dimensions.textToTextSpace),
+                      FilterRowWidget(
+                          borderColor: controller.selectedWallet?.id.toString() == "-1" ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
+                          text: "${controller.selectedWallet?.id.toString() == "-1" ? MyStrings.selectWallet : controller.selectedWallet?.currencyCode}",
+                          press: () {
+                            requestMoneyWalletBottomSheet(controller.walletList, context: context);
+                          }
                       ),
                       const SizedBox(height: Dimensions.space5),
                       Text("${MyStrings.totalCharge.tr}: ${controller.totalCharge} ${controller.currency}", style: regularExtraSmall.copyWith(color: MyColor.primaryColor))

@@ -68,8 +68,9 @@ class _WithdrawMethodScreenState extends State<WithdrawMethodScreen> {
             ),
             actions: [
               ActionButtonIconWidget(
+                isImage: true,
                 pressed: () => Get.toNamed(RouteHelper.withdrawMoneyScreen),
-                icon: Icons.add,
+                imageSrc: MyImages.moneyWithdraw,
               )
             ],
           ),
