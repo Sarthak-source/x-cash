@@ -156,15 +156,13 @@ class MoneyOutController extends GetxController{
       CheckAgentResponseModel model = CheckAgentResponseModel.fromJson(jsonDecode(responseModel.responseJson));
       if(model.status.toString().toLowerCase() == "success"){
         isAgentFound = true;
-        validAgent = "Valid agent for money out";
+        validAgent = MyStrings.validAgentMsg;
         update();
-        //CustomSnackBar.success(successList: model.message?.success ?? [MyStrings.requestSuccess]);
       }
       else{
         isAgentFound = false;
-        invalidAgent = "Agent not found";
+        invalidAgent = MyStrings.invalidAgentMsg;
         update();
-        //CustomSnackBar.error(errorList: model.message?.error ?? [MyStrings.somethingWentWrong]);
       }
     }
     else{
