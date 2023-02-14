@@ -614,7 +614,7 @@ class MyStrings{
 
 
   static List<LanguageModel> languages = [
-    LanguageModel(imageUrl: '', languageName: 'English', countryCode: 'US', languageCode: 'en'),
-    LanguageModel(imageUrl: '', languageName: 'Arabic', countryCode: 'SA', languageCode: 'ar'),
+    LanguageModel(languageName: 'English', countryCode: 'US', languageCode: 'en'),
+    LanguageModel(languageName: 'Arabic', countryCode: 'SA', languageCode: 'ar'),
   ];
 }
