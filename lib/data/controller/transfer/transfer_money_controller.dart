@@ -145,13 +145,20 @@ class TransferMoneyController extends GetxController{
     }
 
     mainAmount = amount;
+    double rate = double.tryParse(selectedWallet?.currency?.rate ?? "0") ?? 0;
     double percent = double.tryParse(model.data?.transferCharge?.percentCharge ?? "0") ?? 0;
-    double percentCharge = (amount * percent) / 100;
+    double percentCharge = amount * percent / 100;
     double temCharge = double.tryParse(model.data?.transferCharge?.fixedCharge ?? "0") ?? 0;
-    double totalCharge = percentCharge+temCharge;
+    double fixedCharge = temCharge / rate;
+    double totalCharge = percentCharge + fixedCharge;
+    double cap = double.tryParse(model.data?.transferCharge?.cap ?? "0") ?? 0;
+    if(cap != 1 && totalCharge > cap){
+      totalCharge = cap;
+    }
     charge = '${Converter.twoDecimalPlaceFixedWithoutRounding('$totalCharge')} $currency';
+
     double payable = totalCharge + amount;
-    payableText = '$payable $currency';
+    payableText = '${Converter.twoDecimalPlaceFixedWithoutRounding(payable.toString())} $currency';
     update();
   }
 

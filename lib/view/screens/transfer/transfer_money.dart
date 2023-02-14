@@ -80,7 +80,7 @@ class _TransferMoneyState extends State<TransferMoney> {
                   ),
                   const SizedBox(height: Dimensions.space5),
                   Text(
-                    "${MyStrings.totalCharge.tr}: ${Converter.twoDecimalPlaceFixedWithoutRounding(controller.model.data?.transferCharge?.fixedCharge ?? "")} ${controller.currency}",
+                    "${MyStrings.totalCharge.tr}: ${controller.charge}",
                     style: regularExtraSmall.copyWith(color: MyColor.primaryColor),
                   ),
                   const SizedBox(height: Dimensions.space20),
