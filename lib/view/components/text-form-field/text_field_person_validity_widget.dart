@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/style.dart';
 
-class TextFieldValidityWidget extends StatelessWidget {
+class TextFieldPersonValidityWidget extends StatelessWidget {
 
   final bool? isVisible;
   final String validMsg;
   final String invalidMsg;
 
-  const TextFieldValidityWidget({
+  const TextFieldPersonValidityWidget({
     Key? key,
     this.isVisible,
     required this.validMsg,
