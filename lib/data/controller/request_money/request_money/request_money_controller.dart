@@ -34,7 +34,6 @@ class RequestMoneyController extends GetxController{
     selectedWallet = wallets;
     currency = selectedWallet?.id == -1 ? "" : selectedWallet?.currencyCode ?? "";
     limit = selectedWallet?.id.toString() == "-1" ? "0" : selectedWallet?.currency?.moneyRequestLimit ?? "";
-    totalCharge = selectedWallet?.id.toString() == "-1" ? "0" : model.data?.transferCharge?.fixedCharge ?? "";
     String amt = amountController.text.toString();
     mainAmount = amt.isEmpty ? 0 : double.tryParse(amt) ?? 0;
     changeInfoWidget(mainAmount);
@@ -117,13 +116,20 @@ class RequestMoneyController extends GetxController{
     }
 
     mainAmount = amount;
+
+    double rate = double.tryParse(selectedWallet?.currency?.rate ?? "0") ?? 0;
     double percent = double.tryParse(model.data?.transferCharge?.percentCharge ?? "0") ?? 0;
-    double percentCharge = (amount * percent) / 100;
+    double percentCharge = amount * percent / 100;
     double temCharge = double.tryParse(model.data?.transferCharge?.fixedCharge ?? "0") ?? 0;
-    double totalCharge = percentCharge+temCharge;
+    double fixedCharge = temCharge / rate;
+    double totalCharge = percentCharge + fixedCharge;
+    double cap = double.tryParse(model.data?.transferCharge?.cap ?? "0") ?? 0;
+    if(cap != 1 && totalCharge > cap){
+      totalCharge = cap;
+    }
     charge = '${Converter.twoDecimalPlaceFixedWithoutRounding('$totalCharge')} $currency';
     double payable = totalCharge + amount;
-    payableText = '$payable $currency';
+    payableText = '${Converter.twoDecimalPlaceFixedWithoutRounding(payable.toString())} $currency';
     update();
   }
 }

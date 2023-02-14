@@ -14,14 +14,11 @@ import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
-import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
 import 'package:xcash_app/view/components/text/label_text.dart';
 import 'package:xcash_app/view/screens/request-money/request_money/widget/request_money_bottom_sheet.dart';
 import 'package:xcash_app/view/screens/request-money/request_money/widget/request_money_wallet_bottom_sheet.dart';
 import 'package:xcash_app/view/screens/transaction/widget/filter_row_widget.dart';
-
-import '../../../../data/model/request_money/request_money/request_money_response_model.dart';
 
 class RequestMoneyScreen extends StatefulWidget {
   const RequestMoneyScreen({Key? key}) : super(key: key);
@@ -82,7 +79,7 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                           }
                       ),
                       const SizedBox(height: Dimensions.space5),
-                      Text("${MyStrings.totalCharge.tr}: ${controller.totalCharge} ${controller.currency}", style: regularExtraSmall.copyWith(color: MyColor.primaryColor))
+                      Text("${MyStrings.totalCharge.tr}: ${controller.charge}", style: regularExtraSmall.copyWith(color: MyColor.primaryColor))
                     ],
                   ),
                   const SizedBox(height: Dimensions.space15),
