@@ -13,9 +13,11 @@ import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
+import 'package:xcash_app/view/components/text-form-field/text_field_person_validity_widget.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
 import 'package:xcash_app/view/components/text/label_text.dart';
 import 'package:xcash_app/view/screens/money_discharge/make_payment/widget/make_payment_bottom_sheet.dart';
@@ -42,19 +44,25 @@ class _MakePaymentFormState extends State<MakePaymentForm> {
         child: controller.isLoading ? const CustomLoader() : Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomTextField(
-              needOutlineBorder: true,
-              labelText: MyStrings.merchantUsernameEmail.tr,
-              hintText: MyStrings.merchantUsernameEmailHint.tr,
-              onChanged: (value){},
-              controller: controller.merchantController,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return MyStrings.fieldErrorMsg.tr;
-                } else {
-                  return null;
+            Focus(
+              onFocusChange: (hasFocus){
+                if(!hasFocus){
+                  controller.checkMerchantFocus(hasFocus);
                 }
               },
+              child: CustomTextField(
+                needOutlineBorder: true,
+                labelText: MyStrings.merchantUsernameEmail.tr,
+                hintText: MyStrings.merchantUsernameEmailHint.tr,
+                onChanged: (value){},
+                controller: controller.merchantController,
+              ),
+            ),
+            const SizedBox(height: Dimensions.space5),
+            TextFieldPersonValidityWidget(
+              isVisible: controller.isAgentFound,
+              validMsg: controller.validMerchant,
+              invalidMsg: controller.invalidMerchant
             ),
             const SizedBox(height: Dimensions.space15),
 
@@ -104,7 +112,10 @@ class _MakePaymentFormState extends State<MakePaymentForm> {
 
             RoundedButton(
               press: (){
-                if(formKey.currentState!.validate()){
+                if(controller.merchantController.text.toString().isEmpty){
+                  CustomSnackBar.error(errorList: [MyStrings.fieldErrorMsg.tr]);
+                }
+                else{
                   CustomBottomSheet(
                     child: const MakePaymentBottomSheet()
                   ).customBottomSheet(context);

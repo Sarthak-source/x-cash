@@ -7,6 +7,7 @@ import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/authorization/authorization_response_model.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
+import 'package:xcash_app/data/model/money_discharge/make_payment/check_merchant_response_model.dart';
 import 'package:xcash_app/data/model/money_discharge/make_payment/make_payment_response_model.dart';
 import 'package:xcash_app/data/repo/money_discharge/make_payment/make_payment_repo.dart';
 import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
@@ -104,7 +105,6 @@ class MakePaymentController extends GetxController{
     String otpType = selectedOtp.toLowerCase().toString();
 
     ResponseModel response = await makePaymentRepo.submitPayment(walletId: walletId,amount: amount,merchant: merchantName,otpType: otpType);
-    print(response.responseJson);
     if(response.statusCode==200){
       AuthorizationResponseModel model = AuthorizationResponseModel.fromJson(jsonDecode(response.responseJson));
       if(model.status?.toLowerCase()=='success'){
@@ -144,5 +144,33 @@ class MakePaymentController extends GetxController{
     double payable = totalCharge + amount;
     payableText = '$payable $currency';
     update();
+  }
+
+  bool hasAgent = false;
+  String validMerchant = "";
+  String invalidMerchant = "";
+  bool? isAgentFound;
+  Future<void> checkMerchantFocus(bool hasFocus) async{
+    hasAgent = hasFocus;
+    update();
+
+    String merchant = merchantController.text;
+    ResponseModel responseModel = await makePaymentRepo.checkMerchant(merchant: merchant);
+    if(responseModel.statusCode == 200){
+      CheckMerchantResponseModel model = CheckMerchantResponseModel.fromJson(jsonDecode(responseModel.responseJson));
+      if(model.status.toString().toLowerCase() == "success"){
+        isAgentFound = true;
+        validMerchant = MyStrings.validMerchantMsg;
+        update();
+      }
+      else{
+        isAgentFound = false;
+        invalidMerchant = MyStrings.invalidMerchantMsg;
+        update();
+      }
+    }
+    else{
+      CustomSnackBar.error(errorList: [responseModel.message]);
+    }
   }
 }

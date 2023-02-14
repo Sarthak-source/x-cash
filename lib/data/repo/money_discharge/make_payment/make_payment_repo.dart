@@ -42,4 +42,14 @@ class MakePaymentRepo{
     return responseModel;
 
   }
+
+  Future<ResponseModel> checkMerchant({required String merchant}) async{
+
+    String url = "${UrlContainer.baseUrl}${UrlContainer.checkMerchantUrl}";
+
+    Map<String, String> params = {"merchant" : merchant};
+    ResponseModel responseModel = await apiClient.request(url, Method.postMethod, params, passHeader: true);
+
+    return responseModel;
+  }
 }
