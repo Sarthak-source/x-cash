@@ -48,8 +48,6 @@ class Languages {
     required this.id,
     required this.name,
     required this.code,
-    required this.icon,
-    required this.textAlign,
     required this.isDefault,
     required this.createdAt,
     required this.updatedAt,});
@@ -58,8 +56,6 @@ class Languages {
     id = json['id'];
     name = json['name'];
     code = json['code'].toString();
-    icon = json['icon'].toString();
-    textAlign = json['text_align'].toString();
     isDefault = json['is_default'].toString();
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
@@ -68,8 +64,6 @@ class Languages {
   int? id;
   String? name;
   String? code;
-  String? icon;
-  String? textAlign;
   String? isDefault;
   String? createdAt;
   String? updatedAt;
@@ -79,12 +73,9 @@ class Languages {
     map['id'] = id;
     map['name'] = name;
     map['code'] = code;
-    map['icon'] = icon;
-    map['text_align'] = textAlign;
     map['is_default'] = isDefault;
     map['created_at'] = createdAt;
     map['updated_at'] = updatedAt;
     return map;
   }
-
 }
