@@ -605,6 +605,11 @@ class MyStrings{
   static const String invoiceItemNameErrorMsg = "Please, fill up item name field";
   static const String invoiceAmountErrorMsg = "Please, fill up amount field";
 
+  static const String validAgentMsg = "Valid agent for money out";
+  static const String invalidAgentMsg = "Agent not found";
+  static const String validMerchantMsg = "Valid merchant for make payment";
+  static const String invalidMerchantMsg = "Merchant not found";
+
 
   static List<LanguageModel> languages = [
     LanguageModel(imageUrl: '', languageName: 'English', countryCode: 'US', languageCode: 'en'),
