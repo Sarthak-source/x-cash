@@ -7,6 +7,8 @@ import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/home/home_controller.dart';
+import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
+import 'package:xcash_app/view/components/column_widget/card_column.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/image/circle_shape_image.dart';
 
@@ -49,18 +51,21 @@ class InsightSection extends StatelessWidget {
                       children: [
                         const CircleShapeImage(image: MyImages.inMoney),
                         const SizedBox(width: Dimensions.space8),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(MyStrings.moneyIn, style: regularDefault.copyWith(fontWeight: FontWeight.w600)),
-                            const SizedBox(height: Dimensions.space10),
-                            Text(controller.totalMoneyIn, style: regularLarge.copyWith(fontWeight: FontWeight.w600)),
-                          ],
-                        ),
+                        CardColumn(
+                          header: MyStrings.moneyIn,
+                          body: controller.totalMoneyIn
+                        )
                       ],
                     ),
                     GestureDetector(
-                      onTap: (){},
+                      onTap: (){
+                        CustomBottomSheet(
+                            isNeedMargin: true,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                            )
+                        ).customBottomSheet(context);
+                      },
                       child: Container(
                         height: 30, width: 30,
                         alignment: Alignment.center,
@@ -90,7 +95,14 @@ class InsightSection extends StatelessWidget {
                       ],
                     ),
                     GestureDetector(
-                      onTap: (){},
+                      onTap: (){
+                        CustomBottomSheet(
+                          isNeedMargin: true,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                          )
+                        ).customBottomSheet(context);
+                      },
                       child: Container(
                           height: 30, width: 30,
                         alignment: Alignment.center,
