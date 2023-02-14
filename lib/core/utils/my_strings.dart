@@ -612,6 +612,8 @@ class MyStrings{
   static const String validUserMsg = "Valid agent for transaction";
   static const String invalidUserMsg = "User doesn't exists";
 
+  static const String selectInsight = "( Last 7 days )";
+
 
   static List<LanguageModel> languages = [
     LanguageModel(languageName: 'English', countryCode: 'US', languageCode: 'en'),
