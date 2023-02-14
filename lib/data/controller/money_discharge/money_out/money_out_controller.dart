@@ -7,6 +7,7 @@ import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/authorization/authorization_response_model.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
+import 'package:xcash_app/data/model/money_discharge/money_out/check_agent_response_model.dart';
 import 'package:xcash_app/data/model/money_discharge/money_out/money_out_response_model.dart';
 import 'package:xcash_app/data/repo/money_discharge/money_out/money_out_repo.dart';
 import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
@@ -139,5 +140,35 @@ class MoneyOutController extends GetxController{
     double payable = totalCharge + amount;
     payableText = '$payable $currency';
     update();
+  }
+
+  bool hasAgent = false;
+  String validAgent = "";
+  String invalidAgent = "";
+  bool? isAgentFound;
+  Future<void> checkAgentFocus(bool hasFocus) async{
+    hasAgent = hasFocus;
+    update();
+
+    String agent = agentController.text;
+    ResponseModel responseModel = await moneyOutRepo.checkAgent(agent: agent);
+    if(responseModel.statusCode == 200){
+      CheckAgentResponseModel model = CheckAgentResponseModel.fromJson(jsonDecode(responseModel.responseJson));
+      if(model.status.toString().toLowerCase() == "success"){
+        isAgentFound = true;
+        validAgent = "Valid agent for money out";
+        update();
+        //CustomSnackBar.success(successList: model.message?.success ?? [MyStrings.requestSuccess]);
+      }
+      else{
+        isAgentFound = false;
+        invalidAgent = "Agent not found";
+        update();
+        //CustomSnackBar.error(errorList: model.message?.error ?? [MyStrings.somethingWentWrong]);
+      }
+    }
+    else{
+      CustomSnackBar.error(errorList: [responseModel.message]);
+    }
   }
 }

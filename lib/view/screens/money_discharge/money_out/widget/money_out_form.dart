@@ -13,9 +13,11 @@ import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
+import 'package:xcash_app/view/components/text-form-field/text_field_validity_widget.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
 import 'package:xcash_app/view/components/text/label_text.dart';
 import 'package:xcash_app/view/screens/money_discharge/money_out/widget/money_out_bottom_sheet.dart';
@@ -42,19 +44,25 @@ class _MoneyOutFormState extends State<MoneyOutForm> {
         child: controller.isLoading ? const CustomLoader() : Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomTextField(
-              needOutlineBorder: true,
-              labelText: MyStrings.agentUsernameEmail.tr,
-              hintText: MyStrings.agentUsernameHint.tr,
-              onChanged: (value){},
-              controller: controller.agentController,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return MyStrings.fieldErrorMsg.tr;
-                } else {
-                  return null;
+            Focus(
+              onFocusChange: (hasFocus){
+                if(!hasFocus){
+                  controller.checkAgentFocus(hasFocus);
                 }
               },
+              child: CustomTextField(
+                needOutlineBorder: true,
+                labelText: MyStrings.agentUsernameEmail.tr,
+                hintText: MyStrings.agentUsernameHint.tr,
+                onChanged: (value){},
+                controller: controller.agentController,
+              ),
+            ),
+            const SizedBox(height: Dimensions.space5),
+            TextFieldValidityWidget(
+                isVisible: controller.isAgentFound,
+                validMsg: controller.validAgent,
+                invalidMsg: controller.invalidAgent
             ),
             const SizedBox(height: Dimensions.space15),
 
@@ -98,7 +106,10 @@ class _MoneyOutFormState extends State<MoneyOutForm> {
             const SizedBox(height: Dimensions.space20),
             RoundedButton(
               press: (){
-                if(formKey.currentState!.validate()){
+                if(controller.agentController.text.toString().isEmpty){
+                  CustomSnackBar.error(errorList: [MyStrings.fieldErrorMsg.tr]);
+                }
+                else{
                   CustomBottomSheet(
                     child: const MoneyOutBottomSheet()
                   ).customBottomSheet(context);

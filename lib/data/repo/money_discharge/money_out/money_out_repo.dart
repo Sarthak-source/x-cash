@@ -35,4 +35,13 @@ class MoneyOutRepo{
     ResponseModel responseModel = await apiClient.request(url, Method.postMethod, params, passHeader: true);
     return responseModel;
   }
+
+  Future<ResponseModel> checkAgent({required String agent}) async{
+
+    String url = "${UrlContainer.baseUrl}${UrlContainer.checkAgentUrl}";
+    Map<String, String> params = {"agent" : agent};
+
+    ResponseModel responseModel = await apiClient.request(url, Method.postMethod, params, passHeader: true);
+    return responseModel;
+  }
 }
