@@ -8,7 +8,7 @@ import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/auth/sign_up_model/registration_response_model.dart';
 import 'package:xcash_app/data/model/auth/sign_up_model/sign_up_model.dart';
 import 'package:xcash_app/data/model/country_model/country_model.dart';
-import 'package:xcash_app/data/model/general_setting/general_settings_response_model.dart';
+import 'package:xcash_app/data/model/general_setting/general_setting_response_model.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/repo/auth/general_setting_repo.dart';
 import 'package:xcash_app/data/repo/auth/signup_repo.dart';
@@ -25,7 +25,7 @@ class RegistrationController extends GetxController {
   bool isLoading = true;
   bool agreeTC = false;
 
-  GeneralSettingsResponseModel generalSettingMainModel = GeneralSettingsResponseModel();
+  GeneralSettingResponseModel generalSettingMainModel = GeneralSettingResponseModel();
 
   //it will come from general setting api
   bool checkPasswordStrength = false;
@@ -196,8 +196,8 @@ class RegistrationController extends GetxController {
 
     ResponseModel response = await generalSettingRepo.getGeneralSetting();
     if(response.statusCode==200){
-      GeneralSettingsResponseModel model =
-      GeneralSettingsResponseModel.fromJson(jsonDecode(response.responseJson));
+      GeneralSettingResponseModel model =
+      GeneralSettingResponseModel.fromJson(jsonDecode(response.responseJson));
       if (model.status?.toLowerCase()=='success') {
         generalSettingMainModel =model;
         registrationRepo.apiClient.storeGeneralSetting(model);

@@ -9,7 +9,7 @@ import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/method.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/authorization/authorization_response_model.dart';
-import 'package:xcash_app/data/model/general_setting/general_settings_response_model.dart';
+import 'package:xcash_app/data/model/general_setting/general_setting_response_model.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 
 
@@ -155,15 +155,15 @@ class ApiClient extends GetxService{
     }
   }
 
-  storeGeneralSetting(GeneralSettingsResponseModel model){
+  storeGeneralSetting(GeneralSettingResponseModel model){
     String json=jsonEncode(model.toJson());
     sharedPreferences.setString(SharedPreferenceHelper.generalSettingKey, json);
     getGSData();
   }
 
-  GeneralSettingsResponseModel getGSData(){
+  GeneralSettingResponseModel getGSData(){
     String pre= sharedPreferences.getString(SharedPreferenceHelper.generalSettingKey)??'';
-    GeneralSettingsResponseModel model=GeneralSettingsResponseModel.fromJson(jsonDecode(pre));
+    GeneralSettingResponseModel model=GeneralSettingResponseModel.fromJson(jsonDecode(pre));
     return model;
   }
 
@@ -172,7 +172,7 @@ class ApiClient extends GetxService{
     if(isCurrency){
 
       String pre= sharedPreferences.getString(SharedPreferenceHelper.generalSettingKey)??'';
-      GeneralSettingsResponseModel model=GeneralSettingsResponseModel.fromJson(jsonDecode(pre));
+      GeneralSettingResponseModel model=GeneralSettingResponseModel.fromJson(jsonDecode(pre));
       String currency = isSymbol?model.data?.generalSetting?.curSym??'':model.data?.generalSetting?.curText??'';
       return currency;
 
@@ -187,14 +187,14 @@ class ApiClient extends GetxService{
 
   bool getPasswordStrengthStatus(){
       String pre= sharedPreferences.getString(SharedPreferenceHelper.generalSettingKey)??'';
-      GeneralSettingsResponseModel model=GeneralSettingsResponseModel.fromJson(jsonDecode(pre));
+      GeneralSettingResponseModel model=GeneralSettingResponseModel.fromJson(jsonDecode(pre));
       bool checkPasswordStrength = model.data?.generalSetting?.securePassword.toString() == '0' ? false : true;
       return checkPasswordStrength;
   }
 
   String getTemplateName (){
       String pre= sharedPreferences.getString(SharedPreferenceHelper.generalSettingKey)??'';
-      GeneralSettingsResponseModel model=GeneralSettingsResponseModel.fromJson(jsonDecode(pre));
+      GeneralSettingResponseModel model=GeneralSettingResponseModel.fromJson(jsonDecode(pre));
       String templateName = model.data?.generalSetting?.activeTemplate??'';
       return templateName;
   }

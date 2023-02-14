@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
+import 'package:xcash_app/data/model/general_setting/general_setting_response_model.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/home/home_response_model.dart';
 import 'package:xcash_app/data/repo/home/home_repo.dart';
@@ -22,8 +23,10 @@ class HomeController extends GetxController{
   String totalMoneyOut = "";
   String defaultCurrency = "";
   String defaultCurrencySymbol = "";
+  String siteName = "";
 
   HomeResponseModel model = HomeResponseModel();
+  GeneralSettingResponseModel generalSettingResponseModel = GeneralSettingResponseModel();
   List<Wallets> walletList = [];
   List<LatestTrx> trxList = [];
 
