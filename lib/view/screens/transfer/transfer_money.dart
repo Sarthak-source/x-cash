@@ -13,15 +13,13 @@ import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart'
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
-import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
+import 'package:xcash_app/view/components/text-form-field/text_field_person_validity_widget.dart';
 import 'package:xcash_app/view/components/text/label_text.dart';
 import 'package:xcash_app/view/screens/transaction/widget/filter_row_widget.dart';
 import 'package:xcash_app/view/screens/transfer/widget/transfer_money_bottom_sheet.dart';
 import 'package:xcash_app/view/screens/transfer/widget/transfer_money_otp_bottom_sheet.dart';
 import 'package:xcash_app/view/screens/transfer/widget/transfer_money_wallet_bottom_sheet.dart';
-
-import '../../../data/model/transfer/transfer_money_response_model.dart' as tm_model;
 
 class TransferMoney extends StatefulWidget {
   const TransferMoney({Key? key}) : super(key: key);
@@ -86,12 +84,25 @@ class _TransferMoneyState extends State<TransferMoney> {
                     style: regularExtraSmall.copyWith(color: MyColor.primaryColor),
                   ),
                   const SizedBox(height: Dimensions.space20),
-                  CustomTextField(
-                      needOutlineBorder: true,
-                      controller: controller.receiverController,
-                      labelText: MyStrings.receiverUsernameEmail.tr,
-                      hintText: MyStrings.receiverUsernameHint.tr,
-                      onChanged: (value){}
+                  Focus(
+                    onFocusChange: (hasFocus){
+                      if(!hasFocus){
+                        controller.checkUserFocus(hasFocus);
+                      }
+                    },
+                    child: CustomTextField(
+                        needOutlineBorder: true,
+                        controller: controller.receiverController,
+                        labelText: MyStrings.receiverUsernameEmail.tr,
+                        hintText: MyStrings.receiverUsernameHint.tr,
+                        onChanged: (value){}
+                    ),
+                  ),
+                  const SizedBox(height: Dimensions.space5),
+                  TextFieldPersonValidityWidget(
+                      isVisible: controller.isAgentFound,
+                      validMsg: controller.validUser,
+                      invalidMsg: controller.invalidUser
                   ),
                   const SizedBox(height: Dimensions.space20),
                   CustomAmountTextField(
