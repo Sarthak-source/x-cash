@@ -76,4 +76,8 @@ class MyImages{
 
   static const String noInternet = "assets/animation/no_internet.json";
   static const String noData = "assets/animation/no-data.json";
+
+  static const String outMoney = "assets/images/out.png";
+  static const String inMoney = "assets/images/in.png";
+  static const String dots = "assets/images/dots.png";
 }
