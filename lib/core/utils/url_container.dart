@@ -125,4 +125,7 @@ class UrlContainer{
   static const String invoiceSendEmailUrl = "invoice/send-to-mail/";
   static const String invoicePublishUrl = "invoice/publish/";
   static const String invoiceDiscardUrl = "invoice/discard/";
+
+  static const String checkAgentUrl = "agent/exist";
+  static const String checkMerchantUrl = "merchant/exist";
 }
