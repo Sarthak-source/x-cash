@@ -609,6 +609,8 @@ class MyStrings{
   static const String invalidAgentMsg = "Agent not found";
   static const String validMerchantMsg = "Valid merchant for make payment";
   static const String invalidMerchantMsg = "Merchant not found";
+  static const String validUserMsg = "Valid agent for transaction";
+  static const String invalidUserMsg = "User doesn't exists";
 
 
   static List<LanguageModel> languages = [
