@@ -123,7 +123,7 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                   CustomTextField(
                     controller: controller.noteController,
                     needOutlineBorder: true,
-                    maxLines: 4,
+                    maxLines: 2,
                     labelText: MyStrings.noteForRecipient.tr,
                     onChanged: (value){},
                   ),
