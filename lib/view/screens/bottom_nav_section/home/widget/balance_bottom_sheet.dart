@@ -39,7 +39,7 @@ class _BalanceBottomSheetState extends State<BalanceBottomSheet> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const BottomSheetHeaderText(text: MyStrings.xCashBalance),
+              BottomSheetHeaderText(text: "${controller.siteName} ${MyStrings.balance}"),
               BottomSheetHeaderText(text: controller.userBalance)
             ],
           ),

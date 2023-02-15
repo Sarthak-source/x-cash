@@ -44,6 +44,8 @@ class HomeController extends GetxController{
   Future<void> loadData() async{
     defaultCurrency = homeRepo.apiClient.getCurrencyOrUsername();
     defaultCurrencySymbol = homeRepo.apiClient.getCurrencyOrUsername(isSymbol: true);
+    generalSettingResponseModel = homeRepo.apiClient.getGSData();
+    siteName = generalSettingResponseModel.data?.generalSetting?.siteName ?? "";
 
     ResponseModel responseModel = await homeRepo.getData();
     if(responseModel.statusCode == 200){
