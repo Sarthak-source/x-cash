@@ -20,25 +20,31 @@ class ExchangeMoneyController extends GetxController{
   List<ToWallets> toWalletList = [];
 
   String currency = "";
+  String toCurrency = "";
   String amount = "";
   String exchangeAmount = '0';
 
   TextEditingController amountController = TextEditingController();
+  TextEditingController toAmountController = TextEditingController();
 
   FromWallets? fromWalletMethod = FromWallets();
   ToWallets? toWalletMethod = ToWallets();
 
+  double mainAmount = 0;
 
   setFromWalletMethod(FromWallets? fromWallets){
     fromWalletMethod = fromWallets;
-
     currency = fromWalletMethod?.id==-1?'':fromWalletMethod?.currencyCode ?? " ";
+    String amt = amountController.text.toString();
+    mainAmount = amt.isEmpty ? 0 : double.tryParse(amt) ?? 0;
+    calculateExchangeAmount(mainAmount);
     update();
   }
 
 
   setToWalletMethod(ToWallets? toWallets){
     toWalletMethod = toWallets;
+    toCurrency = toWalletMethod?.id==-1?'':toWalletMethod?.currencyCode ?? " ";
     update();
   }
 
@@ -51,6 +57,7 @@ class ExchangeMoneyController extends GetxController{
     toWalletList.clear();
 
     amountController.text = "";
+    toAmountController.text = "0.00";
 
     fromWalletMethod = FromWallets(id: -1, currencyCode: MyStrings.selectOne);
     fromWalletList.insert(0, fromWalletMethod!);
@@ -74,8 +81,6 @@ class ExchangeMoneyController extends GetxController{
         if(tempToWallets != null && tempToWallets.isNotEmpty){
           toWalletList.addAll(tempToWallets);
         }
-
-        amount = amountController.text;
       }
     }
     else{
@@ -104,15 +109,10 @@ class ExchangeMoneyController extends GetxController{
       return false;
     }
 
-    double inputAmount = double.tryParse(amount)??0;
-    calculateExchangeAmount(inputAmount);
-
     return true;
   }
 
   Future<void> submitExchangeMoney() async{
-
-
     submitLoading = true;
     update();
 
@@ -147,30 +147,26 @@ class ExchangeMoneyController extends GetxController{
     update();
   }
 
-  void calculateExchangeAmount(double userAmount){
+  void calculateExchangeAmount(double amount){
 
     if(fromWalletMethod?.id.toString() == '-1'){
       CustomSnackBar.error(errorList: [MyStrings.selectFromCurrency]);
       return ;
     }
 
-    if(toWalletMethod?.id.toString() == '-1'){
-      CustomSnackBar.error(errorList: [MyStrings.selectToCurrency]);
-      return ;
-    }
+      double fromCurrencyRate = double.tryParse(fromWalletMethod?.currency?.rate ?? "0") ?? 0;
 
-    double fromCurrencyRate = double.tryParse(fromWalletMethod?.currency?.rate ?? "0") ?? 0;
-    double basicAmount = userAmount * fromCurrencyRate;
-    double toCurrencyRate = double.tryParse(toWalletMethod?.currency?.rate ?? "0") ?? 0;
-    double finalAmount = basicAmount / toCurrencyRate;
-    String currencyType = toWalletMethod?.currency?.currencyType ?? "-1";
-
-    if(currencyType == "1"){
-      exchangeAmount = Converter.twoDecimalPlaceFixedWithoutRounding(finalAmount.toString(),precision: 2);
-    }
-    else{
-      exchangeAmount = Converter.twoDecimalPlaceFixedWithoutRounding(finalAmount.toString(),precision: 8);
-    }
-    update();
+      double basicAmount = amount * fromCurrencyRate;
+      double toCurrencyRate = double.tryParse(toWalletMethod?.currency?.rate ?? "0") ?? 0;
+      double finalAmount = basicAmount / toCurrencyRate;
+      String currencyType = toWalletMethod?.currency?.currencyType ?? "-1";
+      if(currencyType == "1"){
+        exchangeAmount = Converter.twoDecimalPlaceFixedWithoutRounding(finalAmount.toString(),precision: 2);
+        toAmountController.text = toWalletMethod?.id.toString() == "-1" ? "0.00" : exchangeAmount.toString();
+      }
+      else{
+        exchangeAmount = Converter.twoDecimalPlaceFixedWithoutRounding(finalAmount.toString(),precision: 8);
+        toAmountController.text = toWalletMethod?.id.toString() == "-1" ? "0.00" : exchangeAmount.toString();
+      }
   }
 }
