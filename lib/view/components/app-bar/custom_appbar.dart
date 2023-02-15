@@ -63,7 +63,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
         }
       },icon: Icon(Icons.arrow_back,color: MyColor.getAppBarContentColor(), size: 20)):const SizedBox.shrink(),
       backgroundColor: widget.bgColor,
-      title: Text(widget.title,style: regularLarge.copyWith(color: MyColor.getAppBarContentColor())),
+      title: Text(widget.title,style: regularDefault.copyWith(color: MyColor.getAppBarContentColor())),
       centerTitle: widget.isTitleCenter,
       actions: [
         widget.isShowActionBtn?Container(
