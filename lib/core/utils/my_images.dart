@@ -80,4 +80,10 @@ class MyImages{
   static const String outMoney = "assets/images/out.png";
   static const String inMoney = "assets/images/in.png";
   static const String dots = "assets/images/dots.png";
+
+  static const String totalReceive = "assets/images/total_receive.png";
+  static const String totalSpend = "assets/images/total_spend.png";
+  static const String moneyRequest = "assets/images/request_money.png";
+  static const String sendMoney = "assets/images/send_money.png";
+  static const String viewTransaction = "assets/images/view_transaction.png";
 }
