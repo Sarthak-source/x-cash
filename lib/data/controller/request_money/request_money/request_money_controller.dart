@@ -124,9 +124,9 @@ class RequestMoneyController extends GetxController{
     double fixedCharge = temCharge / rate;
     double totalCharge = percentCharge + fixedCharge;
     double cap = double.tryParse(model.data?.transferCharge?.cap ?? "0") ?? 0;
-    if(cap != 1 && totalCharge > cap){
+    /*if(cap != 1 && totalCharge > cap){
       totalCharge = cap;
-    }
+    }*/
     charge = '${Converter.twoDecimalPlaceFixedWithoutRounding('$totalCharge')} $currency';
     double payable = totalCharge + amount;
     payableText = '${Converter.twoDecimalPlaceFixedWithoutRounding(payable.toString())} $currency';
