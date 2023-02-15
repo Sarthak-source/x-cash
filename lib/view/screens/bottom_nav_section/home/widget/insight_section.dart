@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
@@ -8,9 +7,10 @@ import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/home/home_controller.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
-import 'package:xcash_app/view/components/column_widget/card_column.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/image/circle_shape_image.dart';
+import 'package:xcash_app/view/screens/bottom_nav_section/home/widget/insight_money_in_sheet_widget.dart';
+import 'package:xcash_app/view/screens/bottom_nav_section/home/widget/insight_money_out_sheet_widget.dart';
 
 class InsightSection extends StatelessWidget {
   const InsightSection({Key? key}) : super(key: key);
@@ -51,9 +51,13 @@ class InsightSection extends StatelessWidget {
                       children: [
                         const CircleShapeImage(image: MyImages.inMoney),
                         const SizedBox(width: Dimensions.space8),
-                        CardColumn(
-                          header: MyStrings.moneyIn,
-                          body: controller.totalMoneyIn
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(MyStrings.moneyIn, style: regularDefault.copyWith(color: MyColor.colorBlack.withOpacity(0.7))),
+                            const SizedBox(height: Dimensions.textToTextSpace),
+                            Text(controller.totalMoneyIn, style: regularDefault.copyWith(color: MyColor.colorBlack, fontWeight: FontWeight.w600)),
+                          ],
                         )
                       ],
                     ),
@@ -61,9 +65,7 @@ class InsightSection extends StatelessWidget {
                       onTap: (){
                         CustomBottomSheet(
                             isNeedMargin: true,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                            )
+                            child: const InsightMoneyInSheetWidget()
                         ).customBottomSheet(context);
                       },
                       child: Container(
@@ -87,8 +89,8 @@ class InsightSection extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(MyStrings.moneyOut, style: regularDefault.copyWith(fontWeight: FontWeight.w600)),
-                            const SizedBox(height: Dimensions.space10),
+                            Text(MyStrings.moneyOut, style: regularDefault.copyWith(color: MyColor.colorBlack.withOpacity(0.7))),
+                            const SizedBox(height: Dimensions.textToTextSpace),
                             Text(controller.totalMoneyOut, style: regularLarge.copyWith(fontWeight: FontWeight.w600)),
                           ],
                         ),
@@ -98,9 +100,7 @@ class InsightSection extends StatelessWidget {
                       onTap: (){
                         CustomBottomSheet(
                           isNeedMargin: true,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                          )
+                          child: const InsightMoneyOutSheetWidget()
                         ).customBottomSheet(context);
                       },
                       child: Container(
