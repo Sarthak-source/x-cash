@@ -78,31 +78,23 @@ class _AddMoneyHistoryScreenState extends State<AddMoneyHistoryScreen> {
               ),
             ],
           ),
-          body: controller.isLoading ? const CustomLoader() : controller.depositList.isEmpty ? const Center(
-            child: NoDataWidget(),
-          ) : Padding(
-            padding: Dimensions.screenPaddingHV,
-            child: Column(
-              children: [
-                Visibility(
-                  visible: controller.isSearch,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      AddMoneyHistoryFilterWidget(),
-                      SizedBox(height: Dimensions.space20),
-                    ],
+          body: controller.isLoading ? const CustomLoader() : Padding(
+            padding: const EdgeInsets.only(top: Dimensions.space20, left: Dimensions.space15, right: Dimensions.space15),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Visibility(
+                    visible: controller.isSearch,
+                    child: const AddMoneyHistoryFilterWidget(),
                   ),
-                ),
-                Expanded(
-                  child: controller.depositList.isEmpty && controller.filterLoading == false ? const Center(
+                  controller.depositList.isEmpty && controller.filterLoading == false ? const Center(
                     child: NoDataWidget(),
-                  ) : controller.filterLoading ? const CustomLoader() : SizedBox(
-                    height: MediaQuery.of(context).size.height,
+                  ) : controller.filterLoading ? const CustomLoader() : Expanded(
+                    flex: 0,
                     child: ListView.separated(
                         shrinkWrap: true,
                         scrollDirection: Axis.vertical,
-                        physics: const BouncingScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         padding: EdgeInsets.zero,
                         controller: scrollController,
                         itemCount: controller.depositList.length + 1,
@@ -115,8 +107,8 @@ class _AddMoneyHistoryScreenState extends State<AddMoneyHistoryScreen> {
                         }
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
