@@ -65,7 +65,7 @@ class _MyVoucherScreenState extends State<MyVoucherScreen> {
               onPressed: () => Get.back(),
               icon: Icon(Icons.arrow_back, color: MyColor.getAppBarContentColor(), size: 20),
             ),
-            title: Text(MyStrings.myVoucher.tr, style: regularLarge.copyWith(color: MyColor.getAppBarContentColor())),
+            title: Text(MyStrings.myVoucher.tr, style: regularDefault.copyWith(color: MyColor.getAppBarContentColor())),
             backgroundColor: MyColor.getAppBarColor(),
             actions: [
               ActionButtonIconWidget(
