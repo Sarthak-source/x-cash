@@ -37,15 +37,20 @@ class ExchangeMoneyBottomSheet extends StatelessWidget {
               border: Border.all(color: MyColor.borderColor, width: 0.5)
             ),
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "${MyStrings.exchangeCalculation}:",
+                  "${MyStrings.exchangeCalculation.tr}:",
                   style: regularDefault.copyWith(color: MyColor.colorBlack),
                 ),
                 const SizedBox(width: Dimensions.space10),
-                Text(
-                  "${controller.exchangeAmount} ${controller.toWalletMethod?.currencyCode ?? ""}",
-                  style: regularDefault.copyWith(color: MyColor.getPrimaryColor()),
+                Flexible(
+                  child: Text(
+                    "${controller.exchangeAmount} ${controller.toWalletMethod?.currencyCode ?? ""}",
+                    style: regularDefault.copyWith(color: MyColor.getPrimaryColor()),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 2,
+                  ),
                 )
               ],
             ),
