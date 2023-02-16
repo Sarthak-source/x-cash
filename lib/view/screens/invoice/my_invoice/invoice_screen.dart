@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xcash_app/core/helper/date_converter.dart';
-import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
@@ -11,8 +9,6 @@ import 'package:xcash_app/data/controller/invoice/invoice_history_controller.dar
 import 'package:xcash_app/data/repo/invoice/invoice_history_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
-import 'package:xcash_app/view/components/custom_no_data_found_class.dart';
-import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/no_data.dart';
 import 'package:xcash_app/view/screens/invoice/my_invoice/widget/invoice_card.dart';
 import 'package:xcash_app/view/screens/invoice/my_invoice/widget/invoices_bottom_sheet.dart';
@@ -91,6 +87,7 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
           body: controller.isLoading ? const CustomLoader() : controller.invoiceList.isEmpty ? const Center(
             child: NoDataWidget(),
           ) : SingleChildScrollView(
+            controller: scrollController,
             padding: const EdgeInsets.symmetric(vertical: Dimensions.space20, horizontal: Dimensions.space15),
             child: ListView.separated(
                 shrinkWrap: true,
