@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/helper/string_format_helper.dart';
+import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/authorization/authorization_response_model.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
@@ -194,6 +195,20 @@ class UpdateInvoiceController extends GetxController{
     }
     else{
       CustomSnackBar.error(errorList: [responseModel.message]);
+    }
+  }
+
+  dynamic getPaymentStatusOrColor({bool isStatus = true}){
+    String paymentStatus = model.data?.invoice?.payStatus ?? '';
+
+    if(isStatus){
+      String text = paymentStatus == "0" ? MyStrings.unpaid
+          : paymentStatus == "1" ? MyStrings.paid : "";
+      return text;
+    } else{
+      Color color = paymentStatus == "0" ? MyColor.colorOrange
+          : paymentStatus == "1" ? MyColor.colorGreen : MyColor.transparentColor;
+      return color;
     }
   }
 }

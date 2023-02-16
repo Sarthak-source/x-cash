@@ -13,6 +13,7 @@ import 'package:xcash_app/view/components/image/circle_shape_image.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
+import 'package:xcash_app/view/screens/withdrawals/withdraw_history/widget/status_widget.dart';
 
 class UpdateInvoiceDetails extends StatefulWidget {
   final String invoiceNumber;
@@ -38,6 +39,16 @@ class _UpdateInvoiceDetailsState extends State<UpdateInvoiceDetails> {
          child: Column(
            crossAxisAlignment: CrossAxisAlignment.start,
            children: [
+             Row(
+               mainAxisAlignment: MainAxisAlignment.start,
+               children: [
+                 StatusWidget(
+                     status: controller.getPaymentStatusOrColor(),
+                     color: controller.getPaymentStatusOrColor(isStatus: false)
+                 )
+               ],
+             ),
+             const SizedBox(height: Dimensions.space10),
              Row(
                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                children: [
