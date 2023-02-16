@@ -74,7 +74,12 @@ class TransactionHistoryController extends GetxController{
 
   Future<void> loadTransactionData() async{
 
+
+
+
+    print('current page${page}');
     page = page + 1;
+    print(page);
 
     if(page == 1){
       operationTypeList.clear();
@@ -164,6 +169,7 @@ class TransactionHistoryController extends GetxController{
     if(responseModel.statusCode == 200){
       transaction.TransactionResponseModel model = transaction.TransactionResponseModel.fromJson(jsonDecode(responseModel.responseJson));
       nextPageUrl = model.data?.transactions?.nextPageUrl;
+
 
       if(model.status.toString().toLowerCase() == "success"){
         List<transaction.Data>? tempDataList = model.data?.transactions?.data;

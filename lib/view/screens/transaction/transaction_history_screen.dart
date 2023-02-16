@@ -29,7 +29,9 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
 
   void scrollListener() {
     if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
+      print('max extent');
       if (Get.find<TransactionHistoryController>().hasNext()) {
+        print('call pagination');
         Get.find<TransactionHistoryController>().loadTransactionData();
       }
     }
@@ -82,6 +84,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
           body: controller.isLoading ? const CustomLoader() :  Padding(
             padding: const EdgeInsets.only(top: Dimensions.space20, left: Dimensions.space15, right: Dimensions.space15),
             child: SingleChildScrollView(
+              controller: scrollController,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -94,7 +97,6 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                   ) : controller.filterLoading ? const CustomLoader() : Expanded(
                     flex: 0,
                     child: ListView.separated(
-                        controller: scrollController,
                         physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         padding: EdgeInsets.zero,
@@ -103,12 +105,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                         separatorBuilder: (context, index) => const SizedBox(height: Dimensions.space10),
                         itemBuilder: (context, index) {
                           if(controller.transactionList.length == index){
-                            return controller.hasNext() ? Container(
-                                height: 40,
-                                width: MediaQuery.of(context).size.width,
-                                margin: const EdgeInsets.all(5),
-                                child: const CustomLoader()
-                            ) : const SizedBox();
+                            return controller.hasNext() ? const CustomLoader(isPagination: true) : const SizedBox();
                           }
 
                           return  TransactionCard(

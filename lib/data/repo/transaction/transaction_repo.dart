@@ -36,7 +36,6 @@ class TransactionRepo{
     }
 
     String url = "${UrlContainer.baseUrl}${UrlContainer.transactionEndpoint}?page=$page&type=$transactionType&operation=$operationType&time=$historyFrom&currency=$walletCurrency&search=$searchText";
-
     print(url);
     ResponseModel responseModel = await apiClient.request(url, Method.getMethod, null, passHeader: true);
     return responseModel;
