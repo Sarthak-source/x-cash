@@ -33,7 +33,7 @@ class InsightSection extends StatelessWidget {
                   style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w500),
                 ),
                 Text(
-                  MyStrings.selectInsight,
+                  MyStrings.selectInsight.tr,
                   textAlign: TextAlign.center,
                   style: regularSmall.copyWith(color: MyColor.getPrimaryColor()),
                 )
@@ -54,7 +54,7 @@ class InsightSection extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(MyStrings.moneyIn, style: regularDefault.copyWith(color: MyColor.colorBlack.withOpacity(0.7))),
+                            Text(MyStrings.moneyIn.tr, style: regularDefault.copyWith(color: MyColor.colorBlack.withOpacity(0.7))),
                             const SizedBox(height: Dimensions.textToTextSpace),
                             Text(controller.totalMoneyIn, style: regularDefault.copyWith(color: MyColor.colorBlack, fontWeight: FontWeight.w600)),
                           ],
@@ -89,7 +89,7 @@ class InsightSection extends StatelessWidget {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(MyStrings.moneyOut, style: regularDefault.copyWith(color: MyColor.colorBlack.withOpacity(0.7))),
+                            Text(MyStrings.moneyOut.tr, style: regularDefault.copyWith(color: MyColor.colorBlack.withOpacity(0.7))),
                             const SizedBox(height: Dimensions.textToTextSpace),
                             Text(controller.totalMoneyOut, style: regularLarge.copyWith(fontWeight: FontWeight.w600)),
                           ],

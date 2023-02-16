@@ -39,7 +39,7 @@ class _BalanceBottomSheetState extends State<BalanceBottomSheet> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              BottomSheetHeaderText(text: "${controller.siteName} ${MyStrings.balance}"),
+              BottomSheetHeaderText(text: "${controller.siteName} ${MyStrings.balance.tr}"),
               BottomSheetHeaderText(text: controller.userBalance)
             ],
           ),
@@ -83,19 +83,19 @@ class _BalanceBottomSheetState extends State<BalanceBottomSheet> {
                       border: Border.all(color: MyColor.colorGrey.withOpacity(0.2), width: 0.5),
                       borderRadius: BorderRadius.circular(Dimensions.defaultRadius)
                   ),
-                  child: Text(MyStrings.seeAllWallets, style: regularDefault.copyWith(color: MyColor.primaryColor)),
+                  child: Text(MyStrings.seeAllWallets.tr, style: regularDefault.copyWith(color: MyColor.primaryColor)),
                 ),
               ],
             ),
           ),
           const SizedBox(height: Dimensions.space20),
           Text(
-            MyStrings.estimateBalance,
+            MyStrings.estimateBalance.tr,
             style: regularSmall.copyWith(color: MyColor.colorBlack.withOpacity(0.8), fontWeight: FontWeight.w500),
           ),
           const SizedBox(height: Dimensions.space20),
           RoundedButton(
-            text: MyStrings.transferMoney,
+            text: MyStrings.transferMoney.tr,
             press: () => Get.toNamed(RouteHelper.transferMoneyScreen),
           )
         ],

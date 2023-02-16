@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
@@ -41,7 +42,7 @@ class SelectAccountTypeWidget extends StatelessWidget {
               ),
               const SizedBox(width: Dimensions.space12),
               Text(
-                accountType,
+                accountType.tr,
                 style: regularSmall.copyWith(color: MyColor.getTextColor()),
               )
             ],

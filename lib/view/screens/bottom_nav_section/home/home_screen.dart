@@ -6,6 +6,7 @@ import 'package:xcash_app/data/controller/home/home_controller.dart';
 import 'package:xcash_app/data/repo/home/home_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
+import 'package:xcash_app/view/components/will_pop_widget.dart';
 import 'package:xcash_app/view/screens/bottom_nav_section/home/widget/insight_section.dart';
 import 'package:xcash_app/view/screens/bottom_nav_section/home/widget/latest_transaction_section.dart';
 import 'package:xcash_app/view/screens/bottom_nav_section/home/widget/main_item_section.dart';
@@ -43,25 +44,26 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
-      builder: (controller) => SafeArea(
-        child: Scaffold(
-          backgroundColor: MyColor.getScreenBgColor(),
-          body: controller.isLoading ? const CustomLoader() : SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                TopSection(),
-                SizedBox(height: Dimensions.space10),
-                MainItemSection(),
-                SizedBox(height: Dimensions.space10),
-                /*WalletSection(),
-                SizedBox(height: Dimensions.space10),*/
-                QuickLinkSection(),
-                SizedBox(height: Dimensions.space10),
-                InsightSection(),
-                SizedBox(height: Dimensions.space10),
-                LatestTransactionSection()
-              ],
+      builder: (controller) => WillPopWidget(
+        nextRoute: "",
+        child: SafeArea(
+          child: Scaffold(
+            backgroundColor: MyColor.getScreenBgColor(),
+            body: controller.isLoading ? const CustomLoader() : SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: const [
+                  TopSection(),
+                  SizedBox(height: Dimensions.space10),
+                  MainItemSection(),
+                  SizedBox(height: Dimensions.space10),
+                  QuickLinkSection(),
+                  SizedBox(height: Dimensions.space10),
+                  InsightSection(),
+                  SizedBox(height: Dimensions.space10),
+                  LatestTransactionSection()
+                ],
+              ),
             ),
           ),
         ),

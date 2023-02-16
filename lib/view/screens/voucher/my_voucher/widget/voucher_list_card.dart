@@ -11,7 +11,8 @@ import 'package:xcash_app/view/components/card/custom_card.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
 
 class VoucherListCard extends StatefulWidget {
-  const VoucherListCard({Key? key}) : super(key: key);
+  final ScrollController scrollController;
+  const VoucherListCard({Key? key, required this.scrollController}) : super(key: key);
 
   @override
   State<VoucherListCard> createState() => _VoucherListCardState();
@@ -23,6 +24,7 @@ class _VoucherListCardState extends State<VoucherListCard> {
   Widget build(BuildContext context) {
     return GetBuilder<VoucherListController>(
       builder: (controller) => ListView.separated(
+          controller: widget.scrollController,
           shrinkWrap: true,
           padding: EdgeInsets.zero,
           scrollDirection: Axis.vertical,

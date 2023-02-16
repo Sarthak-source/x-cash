@@ -44,7 +44,7 @@ class _InsightMoneyInSheetWidgetState extends State<InsightMoneyInSheetWidget> {
                   imageColor: MyColor.colorBlack,
                 ),
                 const SizedBox(width: Dimensions.space12),
-                Text(MyStrings.totalReceived, style: regularDefault.copyWith(color: MyColor.colorBlack))
+                Text(MyStrings.totalReceived.tr, style: regularDefault.copyWith(color: MyColor.colorBlack))
               ],
             ),
           ),
@@ -63,7 +63,7 @@ class _InsightMoneyInSheetWidgetState extends State<InsightMoneyInSheetWidget> {
                   imageColor: MyColor.colorBlack,
                 ),
                 const SizedBox(width: Dimensions.space12),
-                Text(MyStrings.requestMoney, style: regularDefault.copyWith(color: MyColor.colorBlack))
+                Text(MyStrings.requestMoney.tr, style: regularDefault.copyWith(color: MyColor.colorBlack))
               ],
             ),
           ),
@@ -82,7 +82,7 @@ class _InsightMoneyInSheetWidgetState extends State<InsightMoneyInSheetWidget> {
                   imageColor: MyColor.colorBlack,
                 ),
                 const SizedBox(width: Dimensions.space12),
-                Text(MyStrings.viewTransactions, style: regularDefault.copyWith(color: MyColor.colorBlack))
+                Text(MyStrings.viewTransactions.tr, style: regularDefault.copyWith(color: MyColor.colorBlack))
               ],
             ),
           ),

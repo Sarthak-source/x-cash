@@ -67,7 +67,7 @@ class _TopSectionState extends State<TopSection> {
               child: Container(
                 padding: const EdgeInsets.symmetric(vertical: Dimensions.space5, horizontal: Dimensions.space20),
                 decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(50)),
-                child: Text(MyStrings.balance, style: regularSmall.copyWith(fontWeight: FontWeight.w500))
+                child: Text(MyStrings.balance.tr, style: regularSmall.copyWith(fontWeight: FontWeight.w500))
               )
             ),
           ],
