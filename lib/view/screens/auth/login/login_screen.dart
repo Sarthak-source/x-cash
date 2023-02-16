@@ -127,8 +127,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                   height: 25,
                                   child: Checkbox(
                                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
-                                      activeColor: MyColor.transparentColor,
-                                      checkColor: MyColor.getPrimaryColor(),
+                                      activeColor: MyColor.primaryColor,
+                                      checkColor: MyColor.colorWhite,
                                       value: controller.remember,
                                       side: MaterialStateBorderSide.resolveWith(
                                             (states) => BorderSide(
