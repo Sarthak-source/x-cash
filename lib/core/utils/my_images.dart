@@ -86,4 +86,8 @@ class MyImages{
   static const String moneyRequest = "assets/images/request_money.png";
   static const String sendMoney = "assets/images/send_money.png";
   static const String viewTransaction = "assets/images/view_transaction.png";
+
+  static const String amount = "assets/images/amount.png";
+  static const String charge = "assets/images/charge.png";
+  static const String payable = "assets/images/payable.png";
 }

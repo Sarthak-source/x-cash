@@ -50,7 +50,6 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
                   animatedLabel: true,
                   needOutlineBorder: true,
                   labelText: MyStrings.newPassword.tr,
-                  hintText: MyStrings.enterNewPassword.tr,
                   onChanged: (value){
                     return ;
                   },
