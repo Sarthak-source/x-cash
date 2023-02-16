@@ -12,12 +12,14 @@ class FilterRowWidget extends StatefulWidget {
   final bool isFilterBtn;
   final Color bgColor;
   final Color borderColor;
+  final Color textColor;
   const FilterRowWidget({
     Key? key,
     this.bgColor = MyColor.transparentColor,
     this.isFilterBtn=false,
     this.iconColor = MyColor.primaryColor,
     this.borderColor = MyColor.textFieldDisableBorderColor,
+    this.textColor = MyColor.colorBlack,
     required this.text,
     required this.press,
     this.fromTrx=false
@@ -33,7 +35,7 @@ class _FilterRowWidgetState extends State<FilterRowWidget> {
     return InkWell(
       onTap:widget.press,
       child: Container(
-        height: 47,
+        height: 50,
         width: MediaQuery.of(context).size.width,
         padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10),
         decoration: BoxDecoration(
@@ -45,7 +47,22 @@ class _FilterRowWidgetState extends State<FilterRowWidget> {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children:  [
-            widget.fromTrx ? Expanded(child: Text(widget.text,style: regularDefault.copyWith(overflow: TextOverflow.ellipsis,color: widget.isFilterBtn ? MyColor.colorBlack : MyColor.colorBlack))): Expanded(child: Text(widget.text,style: regularDefault.copyWith(color:MyColor.colorBlack,overflow: TextOverflow.ellipsis),)),
+            widget.fromTrx ? Expanded(
+              child: Text(
+                widget.text,style:
+                regularDefault.copyWith(
+                    overflow: TextOverflow.ellipsis,
+                    color: widget.isFilterBtn ? MyColor.colorBlack : MyColor.colorBlack)
+              )
+            ): Expanded(
+                child: Text(
+                  widget.text,
+                  style: regularDefault.copyWith(
+                      color: widget.textColor,
+                      overflow: TextOverflow.ellipsis
+                  )
+                )
+            ),
             const SizedBox(width: 20,),
             Icon(Icons.arrow_drop_down, color: widget.iconColor)
           ],

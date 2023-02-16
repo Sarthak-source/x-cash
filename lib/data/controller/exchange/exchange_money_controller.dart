@@ -32,6 +32,8 @@ class ExchangeMoneyController extends GetxController{
 
   double mainAmount = 0;
 
+  AuthorizationResponseModel model = AuthorizationResponseModel();
+
   setFromWalletMethod(FromWallets? fromWallets){
     fromWalletMethod = fromWallets;
     currency = fromWalletMethod?.id==-1?'':fromWalletMethod?.currencyCode ?? " ";
@@ -45,6 +47,7 @@ class ExchangeMoneyController extends GetxController{
   setToWalletMethod(ToWallets? toWallets){
     toWalletMethod = toWallets;
     toCurrency = toWalletMethod?.id==-1?'':toWalletMethod?.currencyCode ?? " ";
+    toAmountController.text = "0.00";
     update();
   }
 
@@ -91,27 +94,6 @@ class ExchangeMoneyController extends GetxController{
     update();
   }
 
-  bool canExchange(){
-
-    if(fromWalletMethod?.id == -1){
-      CustomSnackBar.error(errorList: [MyStrings.selectFromCurrency]);
-      return false;
-    }
-
-    if(toWalletMethod?.id == -1){
-      CustomSnackBar.error(errorList: [MyStrings.selectToCurrency]);
-      return false;
-    }
-
-    amount = amountController.text.toString();
-    if(amount.isEmpty){
-      CustomSnackBar.error(errorList: [MyStrings.enterAmount]);
-      return false;
-    }
-
-    return true;
-  }
-
   Future<void> submitExchangeMoney() async{
     submitLoading = true;
     update();
@@ -123,7 +105,7 @@ class ExchangeMoneyController extends GetxController{
     );
 
     if(responseModel.statusCode == 200){
-      AuthorizationResponseModel model = AuthorizationResponseModel.fromJson(jsonDecode(responseModel.responseJson));
+      model = AuthorizationResponseModel.fromJson(jsonDecode(responseModel.responseJson));
       if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
         Get.back();
         amountController.text = "";
@@ -149,24 +131,44 @@ class ExchangeMoneyController extends GetxController{
 
   void calculateExchangeAmount(double amount){
 
-    if(fromWalletMethod?.id.toString() == '-1'){
-      CustomSnackBar.error(errorList: [MyStrings.selectFromCurrency]);
-      return ;
-    }
-
-      double fromCurrencyRate = double.tryParse(fromWalletMethod?.currency?.rate ?? "0") ?? 0;
-
-      double basicAmount = amount * fromCurrencyRate;
-      double toCurrencyRate = double.tryParse(toWalletMethod?.currency?.rate ?? "0") ?? 0;
-      double finalAmount = basicAmount / toCurrencyRate;
-      String currencyType = toWalletMethod?.currency?.currencyType ?? "-1";
-      if(currencyType == "1"){
-        exchangeAmount = Converter.twoDecimalPlaceFixedWithoutRounding(finalAmount.toString(),precision: 2);
-        toAmountController.text = toWalletMethod?.id.toString() == "-1" ? "0.00" : exchangeAmount.toString();
+      if(toWalletMethod?.id.toString() == "-1"){
+        CustomSnackBar.error(errorList: [MyStrings.selectToCurrency]);
       }
       else{
-        exchangeAmount = Converter.twoDecimalPlaceFixedWithoutRounding(finalAmount.toString(),precision: 8);
-        toAmountController.text = toWalletMethod?.id.toString() == "-1" ? "0.00" : exchangeAmount.toString();
+        double fromCurrencyRate = double.tryParse(fromWalletMethod?.currency?.rate ?? "0") ?? 0;
+        double basicAmount = amount * fromCurrencyRate;
+        double toCurrencyRate = double.tryParse(toWalletMethod?.currency?.rate ?? "0") ?? 0;
+        double finalAmount = basicAmount / toCurrencyRate;
+        String currencyType = toWalletMethod?.currency?.currencyType ?? "-1";
+        if(currencyType == "1"){
+          exchangeAmount = Converter.twoDecimalPlaceFixedWithoutRounding(finalAmount.toString(),precision: 2);
+          toAmountController.text = toWalletMethod?.id.toString() == "-1" ? "0.00" : exchangeAmount.toString();
+        }
+        else{
+          exchangeAmount = Converter.twoDecimalPlaceFixedWithoutRounding(finalAmount.toString(),precision: 8);
+          toAmountController.text = toWalletMethod?.id.toString() == "-1" ? "0.00" : exchangeAmount.toString();
+        }
       }
+  }
+
+  bool canExchange(){
+
+    if(fromWalletMethod?.id == -1){
+      CustomSnackBar.error(errorList: [MyStrings.selectFromCurrency]);
+      return false;
+    }
+
+    if(toWalletMethod?.id == -1){
+      CustomSnackBar.error(errorList: [MyStrings.selectToCurrency]);
+      return false;
+    }
+
+    amount = amountController.text.toString();
+    if(amount.isEmpty){
+      CustomSnackBar.error(errorList: [MyStrings.enterAmount]);
+      return false;
+    }
+
+    return true;
   }
 }

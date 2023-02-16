@@ -165,6 +165,7 @@ class MyStrings{
   static const String agentUsernameHint = "Enter agent username / email";
   static const String receiverUsernameHint = "Enter receiver username / email";
   static const String amount = "Amount";
+  static const String exchangeAmount = "Exchange Amount";
   static const String amountHint = "Enter amount";
   static const String otpBySMS = "OTP by SMS";
   static const String otpByEmail = "OTP by Email";
@@ -530,6 +531,7 @@ class MyStrings{
   static const String loginFailedTryAgain     = 'Login failed,please try again';
 
   static const String selectOne               = "Select One";
+  static const String select               = "Select";
   static const String selectFromCurrency      = "Select from currency";
   static const String selectToCurrency      = "Select to currency";
   static const String sameWalletErrorMsg      = "Can't exchange currency in same wallet";
