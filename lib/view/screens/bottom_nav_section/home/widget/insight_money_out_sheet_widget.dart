@@ -32,7 +32,7 @@ class _InsightMoneyOutSheetWidgetState extends State<InsightMoneyOutSheetWidget>
         ),
         const SizedBox(height: Dimensions.space15),
         GestureDetector(
-          onTap: () => Get.toNamed(RouteHelper.transactionHistoryScreen),
+          onTap: () => Get.toNamed(RouteHelper.transactionHistoryScreen, arguments: "Minus"),
           child: Container(
             width: MediaQuery.of(context).size.width,
             padding: const EdgeInsets.symmetric(vertical: Dimensions.space12, horizontal: Dimensions.space15),
@@ -73,7 +73,7 @@ class _InsightMoneyOutSheetWidgetState extends State<InsightMoneyOutSheetWidget>
         ),
         const CustomDivider(space: Dimensions.space5),
         GestureDetector(
-          onTap: () => Get.toNamed(RouteHelper.transactionHistoryScreen),
+          onTap: () => Get.toNamed(RouteHelper.transactionHistoryScreen, arguments: "Minus"),
           child: Container(
             width: MediaQuery.of(context).size.width,
             padding: const EdgeInsets.symmetric(vertical: Dimensions.space12, horizontal: Dimensions.space15),

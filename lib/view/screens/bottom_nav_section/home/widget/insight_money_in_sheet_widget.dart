@@ -32,7 +32,7 @@ class _InsightMoneyInSheetWidgetState extends State<InsightMoneyInSheetWidget> {
         ),
         const SizedBox(height: Dimensions.space15),
         GestureDetector(
-          onTap: () => Get.toNamed(RouteHelper.transactionHistoryScreen),
+          onTap: () => Get.toNamed(RouteHelper.transactionHistoryScreen, arguments: "Plus"),
           child: Container(
             width: MediaQuery.of(context).size.width,
             padding: const EdgeInsets.symmetric(vertical: Dimensions.space12, horizontal: Dimensions.space15),
@@ -70,7 +70,7 @@ class _InsightMoneyInSheetWidgetState extends State<InsightMoneyInSheetWidget> {
         ),
         const CustomDivider(space: Dimensions.space5),
         GestureDetector(
-          onTap: () => Get.toNamed(RouteHelper.transactionHistoryScreen),
+          onTap: () => Get.toNamed(RouteHelper.transactionHistoryScreen, arguments: "Plus"),
           child: Container(
             width: MediaQuery.of(context).size.width,
             padding: const EdgeInsets.symmetric(vertical: Dimensions.space12, horizontal: Dimensions.space15),

@@ -29,9 +29,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
 
   void scrollListener() {
     if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
-      print('max extent');
       if (Get.find<TransactionHistoryController>().hasNext()) {
-        print('call pagination');
         Get.find<TransactionHistoryController>().loadTransactionData();
       }
     }
@@ -48,7 +46,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       trxType = Get.arguments ?? "";
-      controller.initialSelectedValue();
+      controller.loadDefaultData(trxType);
       scrollController.addListener(scrollListener);
     });
   }

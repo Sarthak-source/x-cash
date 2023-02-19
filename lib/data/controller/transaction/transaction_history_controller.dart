@@ -54,9 +54,22 @@ class TransactionHistoryController extends GetxController{
     update();
   }
 
+
+  void loadDefaultData(String trxType){
+    if(trxType.isNotEmpty){
+      selectedTransactionType = trxType;
+      isSearch = true;
+    } else{
+      selectedTransactionType = "All Type";
+    }
+
+
+    initialSelectedValue();
+  }
+
+
   void initialSelectedValue() async{
     page = 0;
-    selectedTransactionType = "All Type";
     selectedOperationType = "";
     selectedHistoryFrom = "";
     selectedWalletCurrency = "";
@@ -66,7 +79,6 @@ class TransactionHistoryController extends GetxController{
     transactionList.clear();
     isLoading = true;
     update();
-
     await loadTransactionData();
     isLoading = false;
     update();
@@ -74,12 +86,7 @@ class TransactionHistoryController extends GetxController{
 
   Future<void> loadTransactionData() async{
 
-
-
-
-    print('current page${page}');
     page = page + 1;
-    print(page);
 
     if(page == 1){
       operationTypeList.clear();
@@ -202,7 +209,7 @@ class TransactionHistoryController extends GetxController{
   }
 
   bool hasNext(){
-    return nextPageUrl !=null && nextPageUrl!.isNotEmpty && nextPageUrl != 'null'? true : false;
+    return nextPageUrl != null && nextPageUrl!.isNotEmpty && nextPageUrl != 'null' ? true : false;
   }
 
   bool isSearch = false;
@@ -211,6 +218,7 @@ class TransactionHistoryController extends GetxController{
     update();
 
     if(!isSearch){
+      selectedTransactionType = "All Type";
       initialSelectedValue();
     }
   }
