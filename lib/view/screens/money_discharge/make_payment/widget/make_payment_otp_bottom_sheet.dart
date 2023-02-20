@@ -4,6 +4,7 @@ import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/style.dart';
+import 'package:xcash_app/data/controller/money_discharge/make_payment/make_payment_controller.dart';
 import 'package:xcash_app/data/controller/transfer/transfer_money_controller.dart';
 
 showMakePaymentOTPBottomSheet(List<String>? list, {required BuildContext context}){
@@ -52,8 +53,8 @@ showMakePaymentOTPBottomSheet(List<String>? list, {required BuildContext context
                               child: InkWell(
                                 onTap: () {
                                   String selectedValue = list[index];
-                                  final controller= Get.find<TransferMoneyController>();
-                                  controller.setSelectedOtp(selectedValue);
+                                  final controller= Get.find<MakePaymentController>();
+                                  controller.setOtpMethod(selectedValue);
                                   Navigator.pop(context);
 
                                   FocusScopeNode currentFocus = FocusScope.of(context);
