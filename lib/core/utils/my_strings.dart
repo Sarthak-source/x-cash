@@ -104,6 +104,8 @@ class MyStrings{
   static const String myWallet = "My Wallets";
   static const String transferMoney = "Transfer Money";
   static const String addMoney = "Add Money";
+  static const String withdrawInfo = 'Withdraw Info';
+  static const String addMoneyInfo = 'Add Money Info';
 
   static const String invoicePaymentUrl = "Invoice Payment Url";
 
