@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xcash_app/core/helper/date_converter.dart';
 import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/withdraw/withdraw_history_controller.dart';
-import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
-import 'package:xcash_app/view/components/divider/custom_divider.dart';
+import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_bar.dart';
+import 'package:xcash_app/view/components/column_widget/card_column.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
 
 class WithdrawDetailsBottomSheet extends StatelessWidget {
@@ -20,46 +21,101 @@ class WithdrawDetailsBottomSheet extends StatelessWidget {
       builder: (controller) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const BottomSheetBar(),
+          const SizedBox(height: Dimensions.space15),
+          const BottomSheetHeaderText(text: MyStrings.withdrawInfo),
+          const SizedBox(height: Dimensions.space15),
+          Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CardColumn(
+                    header: MyStrings.trxId,
+                    body: controller.withdrawList[index].trx ?? ""
+                ),
+                CardColumn(
+                    alignmentEnd: true,
+                    header: MyStrings.gateway,
+                    body: controller.withdrawList[index].method?.name ?? "-----"
+                ),
+              ]
+          ),
+          const SizedBox(height: Dimensions.space15),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              BottomSheetHeaderText(text: MyStrings.details),
-              BottomSheetCloseButton()
-            ],
-          ),
-          const CustomDivider(space: Dimensions.space10),
-          ListView.separated(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            padding: EdgeInsets.zero,
-            itemCount: controller.withdrawList[index].withdrawInformation?.length ?? 0,
-            separatorBuilder: (context, infoIndex) => const SizedBox(height: Dimensions.space10),
-            itemBuilder: (context, infoIndex) => Container(
-              width: MediaQuery.of(context).size.width,
-              padding: const EdgeInsets.all(Dimensions.space10),
-              decoration: BoxDecoration(
-                  color: MyColor.getCardBgColor(),
-                  border: Border.all(color: MyColor.colorBlack.withOpacity(0.6), width: 0.5),
-                  borderRadius: BorderRadius.circular(Dimensions.defaultRadius)
-              ),
-              child: Column(
+            children: [
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    controller.withdrawList[index].withdrawInformation![infoIndex].name ?? "",
-                    style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600),
+                  Row(
+                    children: [
+                      Text(MyStrings.amount, style: regularSmall.copyWith(color: MyColor.colorBlack.withOpacity(0.6))),
+                      const SizedBox(width: Dimensions.space5),
+                      Text(
+                        "(${Converter.twoDecimalPlaceFixedWithoutRounding(controller.withdrawList[index].amount ?? "")} - ${Converter.twoDecimalPlaceFixedWithoutRounding(controller.withdrawList[index].charge ?? "")} "
+                            "${controller.withdrawList[index].curr?.currencyCode ?? ""})",
+                        style: regularSmall.copyWith(color: MyColor.colorRed, fontWeight: FontWeight.w500),
+                      )
+                    ],
                   ),
                   const SizedBox(height: Dimensions.space5),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: Dimensions.space15),
-                    child: Text(
-                      Converter.removeQuotationAndSpecialCharacterFromString(controller.withdrawList[index].withdrawInformation![infoIndex].value!.toList().toString()),
-                      style: regularSmall.copyWith(color: MyColor.getTextColor()),
-                    ),
+                  Text(
+                      "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.withdrawList[index].finalAmount ?? "")} "
+                          "${controller.withdrawList[index].curr?.currencyCode ?? ""}",
+                      style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w500),
+                      overflow: TextOverflow.ellipsis
                   )
                 ],
               ),
-            ),
+              CardColumn(
+                alignmentEnd: true,
+                header: MyStrings.date,
+                body: DateConverter.isoStringToLocalDateOnly(controller.withdrawList[index].createdAt ?? ""),
+              )
+            ],
+          ),
+          const SizedBox(height: Dimensions.space20),
+          controller.withdrawList[index].withdrawInformation == null ? const SizedBox() : Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const BottomSheetHeaderText(text: MyStrings.details),
+              const SizedBox(height: Dimensions.space15),
+              ListView.separated(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  physics: const NeverScrollableScrollPhysics(),
+                  padding: EdgeInsets.zero,
+                  itemCount: controller.withdrawList[index].withdrawInformation?.length ?? 0,
+                  separatorBuilder: (context, detailIndex) => const SizedBox(height: Dimensions.space10),
+                  itemBuilder: (context, detailIndex){
+                    return controller.withdrawList[index].withdrawInformation![detailIndex].type == "file" ? const SizedBox() : Container(
+                      width: MediaQuery.of(context).size.width,
+                      padding: const EdgeInsets.all(15),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4),
+                          border: Border.all(color: MyColor.colorGrey.withOpacity(0.2))
+                      ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            controller.withdrawList[index].withdrawInformation![detailIndex].name ?? "",
+                            style: regularDefault.copyWith(color: MyColor.colorBlack.withOpacity(0.6)),
+                          ),
+                          const SizedBox(width: Dimensions.space15),
+                          Flexible(
+                            child: Text(
+                              Converter.removeQuotationAndSpecialCharacterFromString(controller.withdrawList[index].withdrawInformation![detailIndex].value!.toList().toString()),
+                              style: regularDefault.copyWith(color: MyColor.colorBlack, overflow: TextOverflow.ellipsis),
+                              maxLines: 2,
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  }
+              ),
+            ],
           )
         ],
       ),

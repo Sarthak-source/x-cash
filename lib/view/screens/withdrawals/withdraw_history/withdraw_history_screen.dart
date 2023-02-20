@@ -14,7 +14,6 @@ import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart'
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/custom_no_data_found_class.dart';
 import 'package:xcash_app/view/components/no_data.dart';
-import 'package:xcash_app/view/screens/withdrawals/withdraw_history/widget/no_details_bottom_sheet.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_history/widget/withdraw_details_bottom_sheet.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_history/widget/withdraw_log_card.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_history/widget/withdraw_log_top.dart';
@@ -127,8 +126,7 @@ class _WithdrawHistoryScreenState extends State<WithdrawHistoryScreen> {
                               index: index,
                               press: (){
                                 CustomBottomSheet(
-                                  child: controller.withdrawList[index].withdrawInformation == null ?
-                                  const NoDetailsBottomSheet() : WithdrawDetailsBottomSheet(index: index)
+                                  child: WithdrawDetailsBottomSheet(index: index)
                                 ).customBottomSheet(context);
                               },
                             );

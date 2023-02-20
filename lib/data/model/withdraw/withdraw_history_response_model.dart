@@ -2,15 +2,15 @@ import '../auth/sign_up_model/registration_response_model.dart';
 
 class WithdrawHistoryResponseModel {
   WithdrawHistoryResponseModel({
-      String? remark, 
-      String? status, 
-      Message? message, 
-      MainData? data,}){
+    String? remark,
+    String? status,
+    Message? message,
+    MainData? data,}){
     _remark = remark;
     _status = status;
     _message = message;
     _data = data;
-}
+  }
 
   WithdrawHistoryResponseModel.fromJson(dynamic json) {
     _remark = json['remark'];
@@ -45,9 +45,9 @@ class WithdrawHistoryResponseModel {
 
 class MainData {
   MainData({
-      Withdraws? withdraws,}){
+    Withdraws? withdraws,}){
     _withdraws = withdraws;
-}
+  }
 
   MainData.fromJson(dynamic json) {
     _withdraws = json['withdraws'] != null ? Withdraws.fromJson(json['withdraws']) : null;
@@ -68,13 +68,14 @@ class MainData {
 
 class Withdraws {
   Withdraws({
-      List<Data>? data,
-      String? nextPageUrl, 
-      String? path}){
+    List<Data>? data,
+    String? nextPageUrl,
+    String? path
+  }){
     _data = data;
     _nextPageUrl = nextPageUrl;
     _path = path;
-}
+  }
 
   Withdraws.fromJson(dynamic json) {
     if (json['data'] != null) {
@@ -83,7 +84,7 @@ class Withdraws {
         _data?.add(Data.fromJson(v));
       });
     }
-    _nextPageUrl = json['next_page_url'];
+    _nextPageUrl = json['next_page_url'] != null ? json['next_page_url'].toString() : "";
     _path = json['path'];
   }
   List<Data>? _data;
@@ -91,7 +92,7 @@ class Withdraws {
   String? _path;
 
   List<Data>? get data => _data;
-  String? get nextPageUrl => _nextPageUrl;
+  dynamic get nextPageUrl => _nextPageUrl;
   String? get path => _path;
 
   Map<String, dynamic> toJson() {
@@ -108,26 +109,26 @@ class Withdraws {
 
 class Data {
   Data({
-      int? id, 
-      String? methodId, 
-      String? userId, 
-      String? userType, 
-      String? amount, 
-      String? currencyId, 
-      String? walletId, 
-      String? currency, 
-      String? rate, 
-      String? charge, 
-      String? trx, 
-      String? finalAmount, 
-      String? afterCharge,
-      List<WithdrawInfoModel>? withdrawInformation,
-      String? status, 
-      dynamic adminFeedback, 
-      String? createdAt, 
-      String? updatedAt, 
-      dynamic method, 
-      Curr? curr,}){
+    int? id,
+    String? methodId,
+    String? userId,
+    String? userType,
+    String? amount,
+    String? currencyId,
+    String? walletId,
+    String? currency,
+    String? rate,
+    String? charge,
+    String? trx,
+    String? finalAmount,
+    String? afterCharge,
+    List<WithdrawInfoModel>? withdrawInformation,
+    String? status,
+    dynamic adminFeedback,
+    String? createdAt,
+    String? updatedAt,
+    Method? method,
+    Curr? curr,}){
     _id = id;
     _methodId = methodId;
     _userId = userId;
@@ -148,20 +149,20 @@ class Data {
     _updatedAt = updatedAt;
     _method = method;
     _curr = curr;
-}
+  }
 
   Data.fromJson(dynamic json) {
     _id = json['id'];
     _methodId = json['method_id'].toString();
     _userId = json['user_id'].toString();
-    _userType = json['user_type'].toString();
-    _amount = json['amount'] != null ? json['amount'].toString() : "";
+    _userType = json['user_type'];
+    _amount = json['amount'].toString();
     _currencyId = json['currency_id'].toString();
     _walletId = json['wallet_id'].toString();
-    _currency = json['currency'].toString();
+    _currency = json['currency'];
     _rate = json['rate'].toString();
     _charge = json['charge'].toString();
-    _trx = json['trx'].toString();
+    _trx = json['trx'];
     _finalAmount = json['final_amount'].toString();
     _afterCharge = json['after_charge'].toString();
     if (json['withdraw_information'] != null) {
@@ -174,7 +175,7 @@ class Data {
     _adminFeedback = json['admin_feedback'];
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
-    _method = json['method'];
+    _method = json['method'] != null ? Method.fromJson(json['method']) : null;
     _curr = json['curr'] != null ? Curr.fromJson(json['curr']) : null;
   }
   int? _id;
@@ -195,7 +196,7 @@ class Data {
   dynamic _adminFeedback;
   String? _createdAt;
   String? _updatedAt;
-  dynamic _method;
+  Method? _method;
   Curr? _curr;
 
   int? get id => _id;
@@ -216,7 +217,7 @@ class Data {
   dynamic get adminFeedback => _adminFeedback;
   String? get createdAt => _createdAt;
   String? get updatedAt => _updatedAt;
-  dynamic get method => _method;
+  Method? get method => _method;
   Curr? get curr => _curr;
 
   Map<String, dynamic> toJson() {
@@ -239,7 +240,9 @@ class Data {
     map['admin_feedback'] = _adminFeedback;
     map['created_at'] = _createdAt;
     map['updated_at'] = _updatedAt;
-    map['method'] = _method;
+    if (_method != null) {
+      map['method'] = _method?.toJson();
+    }
     if (_curr != null) {
       map['curr'] = _curr?.toJson();
     }
@@ -250,34 +253,34 @@ class Data {
 
 class Curr {
   Curr({
-      int? id, 
-      String? currencyCode, 
-      String? currencySymbol, 
-      String? currencyFullName, 
-      String? currencyType, 
-      String? rate, 
-      String? isDefault, 
-      String? status, 
-      String? createdAt, 
-      String? updatedAt,}){
+    int? id,
+    String? currencyCode,
+    String? currencySymbol,
+    String? currencyFullname,
+    String? currencyType,
+    String? rate,
+    String? isDefault,
+    String? status,
+    String? createdAt,
+    String? updatedAt,}){
     _id = id;
     _currencyCode = currencyCode;
     _currencySymbol = currencySymbol;
-    _currencyFullName = currencyFullName;
+    _currencyFullname = currencyFullname;
     _currencyType = currencyType;
     _rate = rate;
     _isDefault = isDefault;
     _status = status;
     _createdAt = createdAt;
     _updatedAt = updatedAt;
-}
+  }
 
   Curr.fromJson(dynamic json) {
     _id = json['id'];
     _currencyCode = json['currency_code'].toString();
-    _currencySymbol = json['currency_symbol'].toString();
-    _currencyFullName = json['currency_FullName'].toString();
-    _currencyType = json['currency_type'].toString();
+    _currencySymbol = json['currency_symbol'];
+    _currencyFullname = json['currency_fullname'];
+    _currencyType = json['currency_type'];
     _rate = json['rate'].toString();
     _isDefault = json['is_default'].toString();
     _status = json['status'].toString();
@@ -287,7 +290,7 @@ class Curr {
   int? _id;
   String? _currencyCode;
   String? _currencySymbol;
-  String? _currencyFullName;
+  String? _currencyFullname;
   String? _currencyType;
   String? _rate;
   String? _isDefault;
@@ -298,7 +301,7 @@ class Curr {
   int? get id => _id;
   String? get currencyCode => _currencyCode;
   String? get currencySymbol => _currencySymbol;
-  String? get currencyFullName => _currencyFullName;
+  String? get currencyFullname => _currencyFullname;
   String? get currencyType => _currencyType;
   String? get rate => _rate;
   String? get isDefault => _isDefault;
@@ -311,11 +314,116 @@ class Curr {
     map['id'] = _id;
     map['currency_code'] = _currencyCode;
     map['currency_symbol'] = _currencySymbol;
-    map['currency_FullName'] = _currencyFullName;
+    map['currency_fullname'] = _currencyFullname;
     map['currency_type'] = _currencyType;
     map['rate'] = _rate;
     map['is_default'] = _isDefault;
     map['status'] = _status;
+    map['created_at'] = _createdAt;
+    map['updated_at'] = _updatedAt;
+    return map;
+  }
+
+}
+
+class Method {
+  Method({
+    int? id,
+    String? formId,
+    String? name,
+    String? minLimit,
+    String? maxLimit,
+    String? fixedCharge,
+    String? rate,
+    String? percentCharge,
+    dynamic currency,
+    String? description,
+    String? status,
+    List<String>? userGuards,
+    List<String>? currencies,
+    String? createdAt,
+    String? updatedAt,}){
+    _id = id;
+    _formId = formId;
+    _name = name;
+    _minLimit = minLimit;
+    _maxLimit = maxLimit;
+    _fixedCharge = fixedCharge;
+    _rate = rate;
+    _percentCharge = percentCharge;
+    _currency = currency;
+    _description = description;
+    _status = status;
+    _userGuards = userGuards;
+    _currencies = currencies;
+    _createdAt = createdAt;
+    _updatedAt = updatedAt;
+  }
+
+  Method.fromJson(dynamic json) {
+    _id = json['id'];
+    _formId = json['form_id'].toString();
+    _name = json['name'];
+    _minLimit = json['min_limit'].toString();
+    _maxLimit = json['max_limit'].toString();
+    _fixedCharge = json['fixed_charge'].toString();
+    _rate = json['rate'].toString();
+    _percentCharge = json['percent_charge'].toString();
+    _currency = json['currency'];
+    _description = json['description'];
+    _status = json['status'].toString();
+    _userGuards = json['user_guards'] != null ? json['user_guards'].cast<String>() : [];
+    _currencies = json['currencies'] != null ? json['currencies'].cast<String>() : [];
+    _createdAt = json['created_at'];
+    _updatedAt = json['updated_at'];
+  }
+  int? _id;
+  String? _formId;
+  String? _name;
+  String? _minLimit;
+  String? _maxLimit;
+  String? _fixedCharge;
+  String? _rate;
+  String? _percentCharge;
+  dynamic _currency;
+  String? _description;
+  String? _status;
+  List<String>? _userGuards;
+  List<String>? _currencies;
+  String? _createdAt;
+  String? _updatedAt;
+
+  int? get id => _id;
+  String? get formId => _formId;
+  String? get name => _name;
+  String? get minLimit => _minLimit;
+  String? get maxLimit => _maxLimit;
+  String? get fixedCharge => _fixedCharge;
+  String? get rate => _rate;
+  String? get percentCharge => _percentCharge;
+  dynamic get currency => _currency;
+  String? get description => _description;
+  String? get status => _status;
+  List<String>? get userGuards => _userGuards;
+  List<String>? get currencies => _currencies;
+  String? get createdAt => _createdAt;
+  String? get updatedAt => _updatedAt;
+
+  Map<String, dynamic> toJson() {
+    final map = <String, dynamic>{};
+    map['id'] = _id;
+    map['form_id'] = _formId;
+    map['name'] = _name;
+    map['min_limit'] = _minLimit;
+    map['max_limit'] = _maxLimit;
+    map['fixed_charge'] = _fixedCharge;
+    map['rate'] = _rate;
+    map['percent_charge'] = _percentCharge;
+    map['currency'] = _currency;
+    map['description'] = _description;
+    map['status'] = _status;
+    map['user_guards'] = _userGuards;
+    map['currencies'] = _currencies;
     map['created_at'] = _createdAt;
     map['updated_at'] = _updatedAt;
     return map;
@@ -334,7 +442,7 @@ class WithdrawInfo {
   WithdrawInfo.fromJson(dynamic json) {
 
     json['withdraw_information'].forEach((e) {
-     WithdrawInfoModel model = WithdrawInfoModel(
+      WithdrawInfoModel model = WithdrawInfoModel(
         name:e.value['name'],
         type:e.value['type'],
         value:(e.value['value'] as List).map((e) => e as String).toList(),
@@ -348,18 +456,17 @@ class WithdrawInfo {
 
 }
 
-
 class WithdrawInfoModel {
   WithdrawInfoModel({
-      String? name,
-      String? type,
-      List<String>?value
+    String? name,
+    String? type,
+    List<String>?value
   }){
 
-   _name = name;
-   _type = type;
-   _value = value;
-}
+    _name = name;
+    _type = type;
+    _value = value;
+  }
 
   WithdrawInfoModel.fromJson(dynamic json) {
     _name = json['name'].toString();
@@ -388,5 +495,3 @@ class WithdrawInfoModel {
 
 
 }
-
-
