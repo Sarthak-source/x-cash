@@ -28,11 +28,13 @@ class CustomTextField extends StatefulWidget {
   final bool needRequiredSign;
   final int maxLines;
   final bool animatedLabel;
+  final Color fillColor;
 
  const CustomTextField({
     Key? key,
     this.labelText,
     this.readOnly = false,
+    this.fillColor = MyColor.transparentColor,
     required this.onChanged,
     this.hintText,
     this.controller,
@@ -83,7 +85,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         contentPadding: const EdgeInsets.only(top: 5, left: 15, right: 15, bottom: 5),
         labelText: widget.labelText,
         labelStyle: regularDefault.copyWith(color: MyColor.getLabelTextColor()),
-        fillColor: MyColor.transparentColor,
+        fillColor: widget.fillColor,
         filled: true,
         border: OutlineInputBorder(borderSide: BorderSide(color: MyColor.getTextFieldDisableBorder()), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
         focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: MyColor.getTextFieldEnableBorder()), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),

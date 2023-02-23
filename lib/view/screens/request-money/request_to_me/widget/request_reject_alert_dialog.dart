@@ -35,7 +35,7 @@ class RequestRejectAlertDialog extends StatelessWidget {
             children: [
               Expanded(
                 child: RoundedButton(
-                    horizontalPadding: 3,verticalPadding: 3,
+                    horizontalPadding: 3,verticalPadding: 5,
                     color: MyColor.colorBlack,
                     text: MyStrings.cancel,
                     press: (){
@@ -45,12 +45,15 @@ class RequestRejectAlertDialog extends StatelessWidget {
               ),
               const SizedBox(width: Dimensions.space15),
               Expanded(
-                child: controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
-                    horizontalPadding: 3,verticalPadding: 3,
+                child: controller.submitLoading ? const RoundedLoadingBtn(
+                  horizontalPadding: 3,verticalPadding: 5,
+                  color: MyColor.colorRed,
+                ) : RoundedButton(
+                    horizontalPadding: 3,verticalPadding: 5,
                     color: MyColor.colorRed,
                     text: MyStrings.reject,
                     press: (){
-                      controller.requestReject(controller.myRequestList[index].id.toString());
+                      controller.requestReject(index,controller.myRequestList[index].id.toString());
                     }
                 ),
               )

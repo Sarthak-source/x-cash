@@ -45,19 +45,25 @@ class RequestToMeResponseModel {
 
 class MainData {
   MainData({
+      List<String>? otpType, 
       Requests? requests,}){
+    _otpType = otpType;
     _requests = requests;
 }
 
   MainData.fromJson(dynamic json) {
+    _otpType = json['otp_type'] != null ? json['otp_type'].cast<String>() : [];
     _requests = json['requests'] != null ? Requests.fromJson(json['requests']) : null;
   }
+  List<String>? _otpType;
   Requests? _requests;
 
+  List<String>? get otpType => _otpType;
   Requests? get requests => _requests;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
+    map['otp_type'] = _otpType;
     if (_requests != null) {
       map['requests'] = _requests?.toJson();
     }
@@ -70,8 +76,7 @@ class Requests {
   Requests({
       List<Data>? data,
       String? nextPageUrl,
-      String? path, 
-      }){
+      String? path,}){
     _data = data;
     _nextPageUrl = nextPageUrl;
     _path = path;
@@ -84,7 +89,7 @@ class Requests {
         _data?.add(Data.fromJson(v));
       });
     }
-    _nextPageUrl = json['next_page_url'];
+    _nextPageUrl = json['next_page_url'] != null ? json['next_page_url'].toString() : "";
     _path = json['path'];
   }
   List<Data>? _data;
@@ -116,7 +121,7 @@ class Data {
       String? requestAmount, 
       String? senderId, 
       String? receiverId, 
-      String? note, 
+      dynamic note, 
       String? status, 
       String? createdAt, 
       String? updatedAt, 
@@ -147,8 +152,8 @@ class Data {
     _receiverId = json['receiver_id'].toString();
     _note = json['note'].toString();
     _status = json['status'].toString();
-    _createdAt = json['created_at'].toString();
-    _updatedAt = json['updated_at'].toString();
+    _createdAt = json['created_at'];
+    _updatedAt = json['updated_at'];
     _currency = json['currency'] != null ? Currency.fromJson(json['currency']) : null;
     _sender = json['sender'] != null ? Sender.fromJson(json['sender']) : null;
   }
@@ -159,7 +164,7 @@ class Data {
   String? _requestAmount;
   String? _senderId;
   String? _receiverId;
-  String? _note;
+  dynamic _note;
   String? _status;
   String? _createdAt;
   String? _updatedAt;
@@ -173,7 +178,7 @@ class Data {
   String? get requestAmount => _requestAmount;
   String? get senderId => _senderId;
   String? get receiverId => _receiverId;
-  String? get note => _note;
+  dynamic get note => _note;
   String? get status => _status;
   String? get createdAt => _createdAt;
   String? get updatedAt => _updatedAt;
@@ -218,13 +223,12 @@ class Sender {
       String? balance, 
       dynamic image, 
       Address? address, 
-      String? status, 
-      dynamic kycData, 
+      String? status,
       String? kv, 
       String? ev, 
       String? sv, 
       String? profileComplete, 
-      String? verCodeSendAt, 
+      dynamic verCodeSendAt, 
       String? ts, 
       String? tv, 
       dynamic tsc, 
@@ -244,7 +248,6 @@ class Sender {
     _image = image;
     _address = address;
     _status = status;
-    _kycData = kycData;
     _kv = kv;
     _ev = ev;
     _sv = sv;
@@ -266,21 +269,20 @@ class Sender {
     _username = json['username'];
     _email = json['email'];
     _countryCode = json['country_code'];
-    _mobile = json['mobile'];
-    _refBy = json['ref_by'];
-    _balance = json['balance'];
+    _mobile = json['mobile'].toString();
+    _refBy = json['ref_by'].toString();
+    _balance = json['balance'] != null ? json['balance'].toString() : "";
     _image = json['image'];
     _address = json['address'] != null ? Address.fromJson(json['address']) : null;
-    _status = json['status'];
-    _kycData = json['kyc_data'];
-    _kv = json['kv'];
-    _ev = json['ev'];
-    _sv = json['sv'];
-    _profileComplete = json['profile_complete'];
-    _verCodeSendAt = json['ver_code_send_at'];
-    _ts = json['ts'];
-    _tv = json['tv'];
-    _tsc = json['tsc'];
+    _status = json['status'].toString();
+    _kv = json['kv'].toString();
+    _ev = json['ev'].toString();
+    _sv = json['sv'].toString();
+    _profileComplete = json['profile_complete'].toString();
+    _verCodeSendAt = json['ver_code_send_at'].toString();
+    _ts = json['ts'].toString();
+    _tv = json['tv'].toString();
+    _tsc = json['tsc'].toString();
     _banReason = json['ban_reason'];
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
@@ -298,12 +300,11 @@ class Sender {
   dynamic _image;
   Address? _address;
   String? _status;
-  dynamic _kycData;
   String? _kv;
   String? _ev;
   String? _sv;
   String? _profileComplete;
-  String? _verCodeSendAt;
+  dynamic _verCodeSendAt;
   String? _ts;
   String? _tv;
   dynamic _tsc;
@@ -324,12 +325,11 @@ class Sender {
   dynamic get image => _image;
   Address? get address => _address;
   String? get status => _status;
-  dynamic get kycData => _kycData;
   String? get kv => _kv;
   String? get ev => _ev;
   String? get sv => _sv;
   String? get profileComplete => _profileComplete;
-  String? get verCodeSendAt => _verCodeSendAt;
+  dynamic get verCodeSendAt => _verCodeSendAt;
   String? get ts => _ts;
   String? get tv => _tv;
   dynamic get tsc => _tsc;
@@ -354,7 +354,6 @@ class Sender {
       map['address'] = _address?.toJson();
     }
     map['status'] = _status;
-    map['kyc_data'] = _kycData;
     map['kv'] = _kv;
     map['ev'] = _ev;
     map['sv'] = _sv;
@@ -374,10 +373,10 @@ class Sender {
 class Address {
   Address({
       String? country, 
-      dynamic address, 
-      dynamic state, 
-      dynamic zip, 
-      dynamic city,}){
+      String? address, 
+      String? state, 
+      String? zip, 
+      String? city,}){
     _country = country;
     _address = address;
     _state = state;
@@ -393,16 +392,16 @@ class Address {
     _city = json['city'];
   }
   String? _country;
-  dynamic _address;
-  dynamic _state;
-  dynamic _zip;
-  dynamic _city;
+  String? _address;
+  String? _state;
+  String? _zip;
+  String? _city;
 
   String? get country => _country;
-  dynamic get address => _address;
-  dynamic get state => _state;
-  dynamic get zip => _zip;
-  dynamic get city => _city;
+  String? get address => _address;
+  String? get state => _state;
+  String? get zip => _zip;
+  String? get city => _city;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -446,9 +445,9 @@ class Currency {
     _currencySymbol = json['currency_symbol'];
     _currencyFullname = json['currency_fullname'];
     _currencyType = json['currency_type'];
-    _rate = json['rate'];
-    _isDefault = json['is_default'];
-    _status = json['status'];
+    _rate = json['rate'].toString();
+    _isDefault = json['is_default'].toString();
+    _status = json['status'].toString();
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
   }

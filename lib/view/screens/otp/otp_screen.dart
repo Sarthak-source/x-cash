@@ -95,7 +95,7 @@ class _OtpScreenState extends State<OtpScreen> {
                         obscuringCharacter: '*',
                         animationType: AnimationType.fade,
                         pinTheme: PinTheme(
-                            shape: PinCodeFieldShape.circle,
+                            shape: PinCodeFieldShape.box,
                             borderWidth: 1,
                             borderRadius: BorderRadius.circular(5),
                             inactiveColor:  MyColor.getTextFieldDisableBorder(),

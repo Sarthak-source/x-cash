@@ -23,7 +23,7 @@ class CustomAlertDialog{
           physics: const ClampingScrollPhysics(),
           child: Container(
             padding: isHorizontalPadding ?
-            const EdgeInsets.symmetric(horizontal: Dimensions.space15, vertical: Dimensions.space10) : const EdgeInsets.symmetric(vertical: Dimensions.space15),
+            const EdgeInsets.symmetric(horizontal: Dimensions.space15, vertical: Dimensions.space12) : const EdgeInsets.symmetric(vertical: Dimensions.space15),
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: MyColor.colorWhite,

@@ -8,7 +8,6 @@ import 'package:xcash_app/data/repo/request_money/my_request_history_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
-import 'package:xcash_app/view/components/custom_no_data_found_class.dart';
 import 'package:xcash_app/view/components/no_data.dart';
 import 'package:xcash_app/view/screens/request-money/request_to_me/widget/middle_tab_buttons.dart';
 import 'package:xcash_app/view/screens/request-money/request_to_me/widget/my_request_list_item.dart';
@@ -44,6 +43,7 @@ class _RequestToMeScreenState extends State<RequestToMeScreen> {
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       Get.find<MyRequestHistoryController>().initialStateData();
+      Get.find<MyRequestHistoryController>().getOtpData();
       scrollController.addListener(scrollListener);
     });
   }

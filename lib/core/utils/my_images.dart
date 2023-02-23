@@ -43,6 +43,7 @@ class MyImages{
   static const String addNewMethod = "assets/images/add_new_method.png";
   static const String withdrawMoney = "assets/images/wallet.png";
   static const String reject = "assets/images/reject.png";
+  static const String accept = "assets/images/accept.png";
   static const String name = "assets/images/user.png";
   static const String moneyHistory = "assets/images/money_history.png";
 

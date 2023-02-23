@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/helper/date_converter.dart';
 import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
-import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/request_money/request_to_me/my_request_history_controller.dart';
 import 'package:xcash_app/view/components/alert-dialog/custom_alert_dialog.dart';
+import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
+import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/buttons/card_button.dart';
+import 'package:xcash_app/view/components/buttons/rounded_button.dart';
+import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/column_widget/card_column.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
+import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
+import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
 import 'package:xcash_app/view/screens/request-money/request_to_me/widget/request_reject_alert_dialog.dart';
 
 import '../../../../../core/utils/my_color.dart';
@@ -76,7 +80,52 @@ class ToMeListItem extends StatelessWidget {
                       isText: false,
                       bgColor: MyColor.colorGreen,
                       icon: Icons.done_all,
-                      press: (){},
+                      press: () => CustomBottomSheet(
+                        child: GetBuilder<MyRequestHistoryController>(
+                          builder: (requestController) => Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  BottomSheetHeaderText(text: MyStrings.sureToConfirm.tr),
+                                  const BottomSheetCloseButton()
+                                ],
+                              ),
+                              const SizedBox(height: Dimensions.space20),
+                              Text(
+                                "${Converter.twoDecimalPlaceFixedWithoutRounding(requestController.myRequestList[index].requestAmount ?? "")} "
+                                    "${requestController.myRequestList[index].currency?.currencyCode ?? ""} "
+                                    "${MyStrings.willBeReduced} ${requestController.myRequestList[index].currency?.currencyCode ?? ""} ${MyStrings.wallet.toLowerCase()}.",
+                                textAlign: TextAlign.center,
+                                style: regularLarge.copyWith(color: MyColor.colorBlack.withOpacity(0.5)),
+                              ),
+                              const SizedBox(height: Dimensions.space15),
+                              CustomDropDownTextField(
+                                labelText: MyStrings.selectOtp.tr,
+                                selectedValue: requestController.selectedOtp,
+                                onChanged: (value) => requestController.setOtpMethod(value),
+                                items: requestController.otpTypeList.map((value) {
+                                  return DropdownMenuItem(
+                                    value: value,
+                                    child: Text(
+                                        value.toString().toTitleCase(),
+                                        style: regularDefault
+                                    ),
+                                  );
+                                }).toList(),
+                              ),
+                              const SizedBox(height: Dimensions.space20),
+                              requestController.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
+                                  text: MyStrings.confirm,
+                                  press: (){
+                                    requestController.requestAccept(requestController.myRequestList[index].id.toString(), requestController.selectedOtp);
+                                  }
+                              ),
+                            ],
+                          ),
+                        )
+                      ).customBottomSheet(context)
                     )
                   ],
                 )

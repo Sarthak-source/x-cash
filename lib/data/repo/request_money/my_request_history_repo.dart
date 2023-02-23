@@ -14,16 +14,28 @@ class MyRequestHistoryRepo{
     return responseModel;
   }
 
+  Future<ResponseModel> otpData() async{
+    String url = "${UrlContainer.baseUrl}${UrlContainer.requestToMeEndPoint}";
+    ResponseModel responseModel = await apiClient.request(url, Method.getMethod, null, passHeader: true);
+    return responseModel;
+  }
+
+  Future<ResponseModel> requestAccept({required String requestId, required String otpType}) async{
+
+    String url = "${UrlContainer.baseUrl}${UrlContainer.requestAcceptUrl}";
+    Map<String, String> params = {"request_id" : requestId, "otp_type" : otpType};
+
+    ResponseModel responseModel = await apiClient.request(url, Method.postMethod, params, passHeader: true);
+    return responseModel;
+  }
+
   Future<ResponseModel> requestReject({required String requestId}) async{
 
     String url = "${UrlContainer.baseUrl}${UrlContainer.requestRejectUrl}";
-    print(url);
-    print(requestId);
 
     Map<String, String> params = {"request_id" : requestId};
 
     ResponseModel responseModel = await apiClient.request(url, Method.postMethod, params, passHeader: true);
-    print(responseModel.responseJson);
     return responseModel;
   }
 }

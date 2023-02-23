@@ -615,6 +615,9 @@ class MyStrings{
   static const String invalidMerchantMsg = "Merchant not found";
   static const String validUserMsg = "Valid agent for transaction";
   static const String invalidUserMsg = "User doesn't exists";
+  static const String acceptRequest = "Accept Request";
+  static const String willBeReduced = "will be reduced from your";
+  static const String sureToConfirm = "Are you sure want to confirm?";
 
   static const String selectInsight = "( Last 7 days )";
 

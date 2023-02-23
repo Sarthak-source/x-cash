@@ -4,6 +4,7 @@ import 'package:xcash_app/core/utils/my_color.dart';
 class RoundedLoadingBtn extends StatelessWidget {
 
   final Color? textColor;
+  final Color? color;
   final double width;
   final double horizontalPadding;
   final double verticalPadding;
@@ -16,6 +17,7 @@ class RoundedLoadingBtn extends StatelessWidget {
     this.horizontalPadding=35,
     this.verticalPadding=18,
     this.textColor = MyColor.colorWhite,
+    this.color = MyColor.primaryColor,
   }):super(key: key) ;
 
   @override
@@ -28,7 +30,7 @@ class RoundedLoadingBtn extends StatelessWidget {
         child: ElevatedButton(
           onPressed: (){},
           style: ElevatedButton.styleFrom(
-              backgroundColor: MyColor.getPrimaryButtonColor(),
+              backgroundColor: color,
               shadowColor: MyColor.transparentColor,
               padding:  EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: verticalPadding-3),
               textStyle: TextStyle(color: textColor, fontSize: 14, fontWeight: FontWeight.w500)),

@@ -41,6 +41,7 @@ class RequestMoneyController extends GetxController{
     update();
   }
 
+
   Future<void> loadData() async{
     isLoading = true;
     update();
