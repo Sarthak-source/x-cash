@@ -7,6 +7,7 @@ import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/authorization/authorization_response_model.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/request_money/request_money/request_money_response_model.dart';
+import 'package:xcash_app/data/model/transfer/check_user_response_model.dart';
 import 'package:xcash_app/data/repo/request_money/request_money_repo.dart';
 import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
@@ -131,5 +132,33 @@ class RequestMoneyController extends GetxController{
     double payable = totalCharge + amount;
     payableText = '${Converter.twoDecimalPlaceFixedWithoutRounding(payable.toString())} $currency';
     update();
+  }
+
+  bool hasAgent = false;
+  String validUser = "";
+  String invalidUser = "";
+  bool? isAgentFound;
+  Future<void> checkUserFocus(bool hasFocus) async{
+    hasAgent = hasFocus;
+    update();
+
+    String user = requestToController.text;
+    ResponseModel responseModel = await requestMoneyRepo.checkUser(user: user);
+    if(responseModel.statusCode == 200){
+      CheckUserResponseModel model = CheckUserResponseModel.fromJson(jsonDecode(responseModel.responseJson));
+      if(model.status.toString().toLowerCase() == "success"){
+        isAgentFound = true;
+        validUser = MyStrings.validUserMsg.tr;
+        update();
+      }
+      else{
+        isAgentFound = false;
+        invalidUser = Converter.removeQuotationAndSpecialCharacterFromString(model.message?.error.toString().tr ?? MyStrings.invalidUserMsg.tr);
+        update();
+      }
+    }
+    else{
+      CustomSnackBar.error(errorList: [responseModel.message]);
+    }
   }
 }

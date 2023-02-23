@@ -9,16 +9,19 @@ import 'package:xcash_app/data/controller/request_money/request_money/request_mo
 import 'package:xcash_app/data/repo/request_money/request_money_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
+import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
+import 'package:xcash_app/view/components/text-form-field/text_field_person_validity_widget.dart';
 import 'package:xcash_app/view/components/text/label_text.dart';
 import 'package:xcash_app/view/screens/request-money/request_money/widget/request_money_bottom_sheet.dart';
-import 'package:xcash_app/view/screens/request-money/request_money/widget/request_money_wallet_bottom_sheet.dart';
 import 'package:xcash_app/view/screens/transaction/widget/filter_row_widget.dart';
+
+import '../../../../data/model/request_money/request_money/request_money_response_model.dart';
 
 class RequestMoneyScreen extends StatefulWidget {
   const RequestMoneyScreen({Key? key}) : super(key: key);
@@ -74,9 +77,62 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                       FilterRowWidget(
                           borderColor: controller.selectedWallet?.id.toString() == "-1" ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
                           text: "${controller.selectedWallet?.id.toString() == "-1" ? MyStrings.selectWallet : controller.selectedWallet?.currencyCode}",
-                          press: () {
-                            requestMoneyWalletBottomSheet(controller.walletList, context: context);
-                          }
+                          press: () => CustomBottomSheet(
+                            child: Column(
+                              children: [
+                                Align(
+                                  alignment: Alignment.topCenter,
+                                  child: Container(
+                                    height: 5,
+                                    width: 50,
+                                    padding: const EdgeInsets.all(1),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: MyColor.colorGrey.withOpacity(0.1),
+                                    ),
+                                  ),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: const [
+                                    BottomSheetCloseButton()
+                                  ],
+                                ),
+                                const SizedBox(height: Dimensions.space15),
+                                ListView.builder(
+                                    itemCount: controller.walletList.length,
+                                    shrinkWrap: true,
+                                    physics: const BouncingScrollPhysics(),
+                                    itemBuilder: (context, index) {
+                                      return GestureDetector(
+                                        onTap: () {
+                                          final controller= Get.find<RequestMoneyController>();
+                                          Wallets selectedValue = controller.walletList[index];
+                                          controller.setWalletMethod(selectedValue);
+                                          Navigator.pop(context);
+
+                                          FocusScopeNode currentFocus = FocusScope.of(context);
+                                          if (!currentFocus.hasPrimaryFocus) {
+                                            currentFocus.unfocus();
+                                          }
+                                        },
+                                        child: Container(
+                                          padding: const EdgeInsets.all(15),
+                                          margin: const EdgeInsets.all(5),
+                                          decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
+                                              border: Border.all(color: MyColor.colorGrey.withOpacity(0.2))
+                                          ),
+                                          child: Text(
+                                            controller.walletList[index].currencyCode.toString() ?? "",
+                                            style: regularDefault,
+                                          ),
+                                        ),
+                                      );
+                                    }),
+                              ],
+                            )
+                          ).customBottomSheet(context)
                       ),
                       const SizedBox(height: Dimensions.space5),
                       Text("${MyStrings.totalCharge.tr}: ${controller.charge}", style: regularExtraSmall.copyWith(color: MyColor.primaryColor))
@@ -108,16 +164,29 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                     ],
                   ),
                   const SizedBox(height: Dimensions.space15),
-                  CustomTextField(
-                      needOutlineBorder: true,
-                      controller: controller.requestToController,
-                      labelText: MyStrings.requestTo.tr,
-                      hintText: MyStrings.enterEmailOrUserName.tr,
-                      onChanged: (value){
-                        if(value == null && value.toString().isEmpty){
-                          CustomSnackBar.error(errorList: [MyStrings.enterEmailOrUserName]);
-                        }
+                  Focus(
+                    onFocusChange: (hasFocus){
+                      if(!hasFocus){
+                        controller.checkUserFocus(hasFocus);
                       }
+                    },
+                    child: CustomTextField(
+                        needOutlineBorder: true,
+                        controller: controller.requestToController,
+                        labelText: MyStrings.requestTo.tr,
+                        hintText: MyStrings.enterEmailOrUserName.tr,
+                        onChanged: (value){
+                          if(value == null && value.toString().isEmpty){
+                            CustomSnackBar.error(errorList: [MyStrings.enterEmailOrUserName]);
+                          }
+                        }
+                    ),
+                  ),
+                  const SizedBox(height: Dimensions.space5),
+                  TextFieldPersonValidityWidget(
+                      isVisible: controller.isAgentFound,
+                      validMsg: controller.validUser,
+                      invalidMsg: controller.invalidUser
                   ),
                   const SizedBox(height: Dimensions.space15),
                   CustomTextField(
@@ -130,7 +199,18 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                   const SizedBox(height: Dimensions.space25),
                   RoundedButton(
                     press: (){
+                      if(controller.selectedWallet?.id.toString() == "-1"){
+                        CustomSnackBar.error(errorList: [MyStrings.selectAWallet]);
+                      }
+                      else if(controller.amountController.text.isEmpty){
+                        CustomSnackBar.error(errorList: [MyStrings.enterAmount]);
+                      }
+                      else if(controller.requestToController.text.isEmpty){
+                        CustomSnackBar.error(errorList: [MyStrings.enterEmailOrUserName]);
+                      }
+                      else{
                         CustomBottomSheet(child: const RequestMoneyBottomSheet()).customBottomSheet(context);
+                      }
                     },
                     text: MyStrings.requestNow,
                   )

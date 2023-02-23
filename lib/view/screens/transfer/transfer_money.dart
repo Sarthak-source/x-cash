@@ -9,6 +9,7 @@ import 'package:xcash_app/data/controller/transfer/transfer_money_controller.dar
 import 'package:xcash_app/data/repo/transfer/transfer_money_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
+import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
@@ -18,8 +19,7 @@ import 'package:xcash_app/view/components/text-form-field/text_field_person_vali
 import 'package:xcash_app/view/components/text/label_text.dart';
 import 'package:xcash_app/view/screens/transaction/widget/filter_row_widget.dart';
 import 'package:xcash_app/view/screens/transfer/widget/transfer_money_bottom_sheet.dart';
-import 'package:xcash_app/view/screens/transfer/widget/transfer_money_otp_bottom_sheet.dart';
-import 'package:xcash_app/view/screens/transfer/widget/transfer_money_wallet_bottom_sheet.dart';
+import 'package:xcash_app/data/model/transfer/transfer_money_response_model.dart' as tm_model;
 
 class TransferMoney extends StatefulWidget {
   const TransferMoney({Key? key}) : super(key: key);
@@ -74,9 +74,62 @@ class _TransferMoneyState extends State<TransferMoney> {
                   FilterRowWidget(
                       borderColor: controller.selectedWallet?.id.toString() == "-1" ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
                       text: "${controller.selectedWallet?.id.toString() == "-1" ? MyStrings.selectWallet : controller.selectedWallet?.currencyCode}",
-                      press: () {
-                        showTransferMoneyWalletBottomSheet(controller.walletList, context: context);
-                      }
+                      press: () => CustomBottomSheet(
+                        child: Column(
+                          children: [
+                            Align(
+                              alignment: Alignment.center,
+                              child: Container(
+                                height: 5,
+                                width: 50,
+                                padding: const EdgeInsets.all(1),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: MyColor.colorGrey.withOpacity(0.1),
+                                ),
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: const [
+                                BottomSheetCloseButton()
+                              ],
+                            ),
+                            const SizedBox(height: Dimensions.space15),
+                            ListView.builder(
+                                itemCount: controller.walletList.length,
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemBuilder: (context, index) {
+                                  return GestureDetector(
+                                    onTap: () {
+                                      final controller= Get.find<TransferMoneyController>();
+                                      tm_model.Wallets selectedValue = controller.walletList[index];
+                                      controller.setSelectedWallet(selectedValue);
+                                      Navigator.pop(context);
+
+                                      FocusScopeNode currentFocus = FocusScope.of(context);
+                                      if (!currentFocus.hasPrimaryFocus) {
+                                        currentFocus.unfocus();
+                                      }
+                                    },
+                                    child: Container(
+                                      padding: const EdgeInsets.all(15),
+                                      margin: const EdgeInsets.all(5),
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
+                                          border: Border.all(color: MyColor.colorGrey.withOpacity(0.2))
+                                      ),
+                                      child: Text(
+                                        controller.walletList[index].currencyCode.toString() ?? "",
+                                        style: regularDefault,
+                                      ),
+                                    ),
+                                  );
+                                })
+                          ],
+                        )
+                      ).customBottomSheet(context)
                   ),
                   const SizedBox(height: Dimensions.space5),
                   Text(
@@ -130,9 +183,62 @@ class _TransferMoneyState extends State<TransferMoney> {
                   FilterRowWidget(
                       borderColor: controller.selectedOtp == MyStrings.selectOtp ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
                       text: controller.selectedOtp.toTitleCase(),
-                      press: () {
-                        showTransferMoneyOTPBottomSheet(controller.otpTypeList, context: context);
-                      }
+                      press: () => CustomBottomSheet(
+                          child: Column(
+                            children: [
+                              Align(
+                                alignment: Alignment.center,
+                                child: Container(
+                                  height: 5,
+                                  width: 50,
+                                  padding: const EdgeInsets.all(1),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    color: MyColor.colorGrey.withOpacity(0.1),
+                                  ),
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: const [
+                                  BottomSheetCloseButton()
+                                ],
+                              ),
+                              const SizedBox(height: Dimensions.space15),
+                              ListView.builder(
+                                  itemCount: controller.otpTypeList.length,
+                                  shrinkWrap: true,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  itemBuilder: (context, index) {
+                                    return GestureDetector(
+                                      onTap: () {
+                                        final controller= Get.find<TransferMoneyController>();
+                                        String selectedValue = controller.otpTypeList[index];
+                                        controller.setSelectedOtp(selectedValue);
+                                        Navigator.pop(context);
+
+                                        FocusScopeNode currentFocus = FocusScope.of(context);
+                                        if (!currentFocus.hasPrimaryFocus) {
+                                          currentFocus.unfocus();
+                                        }
+                                      },
+                                      child: Container(
+                                        padding: const EdgeInsets.all(15),
+                                        margin: const EdgeInsets.all(5),
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
+                                            border: Border.all(color: MyColor.colorGrey.withOpacity(0.2))
+                                        ),
+                                        child: Text(
+                                          controller.otpTypeList[index].toString().toTitleCase(),
+                                          style: regularDefault,
+                                        ),
+                                      ),
+                                    );
+                                  })
+                            ],
+                          )
+                      ).customBottomSheet(context)
                   ),
                   const SizedBox(height: Dimensions.space25),
                   RoundedButton(

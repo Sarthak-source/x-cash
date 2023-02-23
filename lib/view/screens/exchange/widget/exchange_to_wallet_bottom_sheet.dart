@@ -48,9 +48,7 @@ moneyOutWalletBottomSheet(List<Wallets>? list, {required BuildContext context}){
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
                           itemBuilder: (context, index) {
-                            return Material(
-                              color: Colors.transparent,
-                              child: InkWell(
+                            return GestureDetector(
                                 onTap: () {
                                   Wallets selectedValue = list[index];
                                   final controller= Get.find<MoneyOutController>();
@@ -74,8 +72,7 @@ moneyOutWalletBottomSheet(List<Wallets>? list, {required BuildContext context}){
                                     style: regularDefault,
                                   ),
                                 ),
-                              ),
-                            );
+                              );
                           }),
                     )
                   ],

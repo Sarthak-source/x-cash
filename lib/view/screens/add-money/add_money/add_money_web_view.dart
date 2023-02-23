@@ -6,7 +6,9 @@ import 'package:get/get.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/url_container.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
 class AddMoneyWebView extends StatefulWidget {
 
@@ -49,23 +51,27 @@ class _AddMoneyWebViewState extends State<AddMoneyWebView> {
             onWebViewCreated: (WebViewController webViewController) {
               _controller.complete(webViewController);
             },
-            onProgress: (int progress) {
-
-            },
+            onProgress: (int progress) {},
             javascriptChannels: <JavascriptChannel>{
               _toasterJavascriptChannel(context),
             },
             navigationDelegate: (NavigationRequest request) {
+              if (request.url.startsWith('https://www.youtube.com/')) {
+                return NavigationDecision.prevent;
+              }
               return NavigationDecision.navigate;
             },
             onPageStarted: (String url) {
 
-            },
-            onPageFinished: (String url) {
-              if(url == '${UrlContainer.baseUrl}user/deposit/history'){
+              if(url=='${UrlContainer.domainUrl}/user/deposit/history'){
                 Get.offAndToNamed(RouteHelper.addMoneyHistoryScreen);
+                CustomSnackBar.success(successList: [MyStrings.requestSuccess]);
+              } else if(url=='${UrlContainer.baseUrl}user/deposit'){
+                Get.back();
+                CustomSnackBar.error(errorList: [MyStrings.requestFail]);
               }
             },
+            onPageFinished: (String url) {},
             gestureNavigationEnabled: true,
             backgroundColor: const Color(0x00000000),
           ),
@@ -78,9 +84,7 @@ class _AddMoneyWebViewState extends State<AddMoneyWebView> {
   JavascriptChannel _toasterJavascriptChannel(BuildContext context) {
     return JavascriptChannel(
         name: 'Toaster',
-        onMessageReceived: (JavascriptMessage message) {
-
-        });
+        onMessageReceived: (JavascriptMessage message) {});
   }
 
   Widget favoriteButton() {

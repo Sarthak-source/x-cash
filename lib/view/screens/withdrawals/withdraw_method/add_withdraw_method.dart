@@ -5,9 +5,12 @@ import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/withdraw/add_withdraw_method_controller.dart';
+import 'package:xcash_app/data/model/withdraw/add_withdraw_method_response_model.dart';
 import 'package:xcash_app/data/repo/withdraw/add_withdraw_method_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
+import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
+import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/checkbox/custom_check_box.dart';
@@ -19,8 +22,6 @@ import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart
 import 'package:xcash_app/view/components/text/label_text.dart';
 import 'package:xcash_app/view/screens/auth/kyc/widget/widget/choose_file_list_item.dart';
 import 'package:xcash_app/view/screens/transaction/widget/filter_row_widget.dart';
-import 'package:xcash_app/view/screens/withdrawals/withdraw_method/widget/add_withdraw_currency_bottom_sheet.dart';
-import 'package:xcash_app/view/screens/withdrawals/withdraw_method/widget/add_withdraw_method_bottom_sheet.dart';
 import '../../../../../data/model/withdraw/add_withdraw_method_response_model.dart' as withdraw;
 
 class AddWithdrawMethodScreen extends StatefulWidget {
@@ -68,9 +69,63 @@ class _AddWithdrawMethodScreenState extends State<AddWithdrawMethodScreen> {
                   child: FilterRowWidget(
                       borderColor: controller.selectedMethod?.id.toString() == "-1" ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
                       text: "${controller.selectedMethod?.id.toString() == "-1" ? MyStrings.selectMethod : controller.selectedMethod?.name}",
-                      press: () {
-                        addWithdrawMethodBottomSheet(controller.methodList, context: context);
-                      }
+                      press: () => CustomBottomSheet(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Align(
+                              alignment: Alignment.topCenter,
+                              child: Container(
+                                height: 5,
+                                width: 50,
+                                padding: const EdgeInsets.all(1),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: MyColor.colorGrey.withOpacity(0.1),
+                                ),
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: const [
+                                BottomSheetCloseButton()
+                              ],
+                            ),
+                            const SizedBox(height: Dimensions.space15),
+                            ListView.builder(
+                                itemCount: controller.methodList.length,
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemBuilder: (context, index) {
+                                  return GestureDetector(
+                                    onTap: () {
+                                      final controller= Get.find<AddWithdrawMethodController>();
+                                      WithdrawMethod selectedValue = controller.methodList[index];
+                                      controller.setSelectedMethod(selectedValue);
+                                      Navigator.pop(context);
+
+                                      FocusScopeNode currentFocus = FocusScope.of(context);
+                                      if (!currentFocus.hasPrimaryFocus) {
+                                        currentFocus.unfocus();
+                                      }
+                                    },
+                                    child: Container(
+                                      padding: const EdgeInsets.all(15),
+                                      margin: const EdgeInsets.all(5),
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
+                                          border: Border.all(color: MyColor.colorGrey.withOpacity(0.2))
+                                      ),
+                                      child: Text(
+                                        controller.methodList[index].name ?? "",
+                                        style: regularDefault,
+                                      ),
+                                    ),
+                                  );
+                                })
+                          ],
+                        )
+                      ).customBottomSheet(context)
                   ),
                 ),
                 const SizedBox(height: Dimensions.space15),
@@ -82,9 +137,63 @@ class _AddWithdrawMethodScreenState extends State<AddWithdrawMethodScreen> {
                   child: FilterRowWidget(
                       borderColor: controller.selectedCurrencyModel?.curName == MyStrings.selectOne ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
                       text: "${controller.selectedCurrencyModel?.curName == MyStrings.selectOne ? MyStrings.selectCurrency : controller.selectedCurrencyModel?.curName}",
-                      press: () {
-                        addWithdrawCurrencyBottomSheet(controller.selectedCurrencyList, context: context);
-                      }
+                      press: () => CustomBottomSheet(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Align(
+                              alignment: Alignment.topCenter,
+                              child: Container(
+                                height: 5,
+                                width: 50,
+                                padding: const EdgeInsets.all(1),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: MyColor.colorGrey.withOpacity(0.1),
+                                ),
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: const [
+                                BottomSheetCloseButton()
+                              ],
+                            ),
+                            const SizedBox(height: Dimensions.space15),
+                            ListView.builder(
+                                itemCount: controller.selectedCurrencyList.length,
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemBuilder: (context, index) {
+                                  return GestureDetector(
+                                    onTap: () {
+                                      final controller= Get.find<AddWithdrawMethodController>();
+                                      CurrencyModel selectedValue = controller.selectedCurrencyList[index];
+                                      controller.setSelectedCurrency(selectedValue);
+                                      Navigator.pop(context);
+
+                                      FocusScopeNode currentFocus = FocusScope.of(context);
+                                      if (!currentFocus.hasPrimaryFocus) {
+                                        currentFocus.unfocus();
+                                      }
+                                    },
+                                    child: Container(
+                                      padding: const EdgeInsets.all(15),
+                                      margin: const EdgeInsets.all(5),
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
+                                          border: Border.all(color: MyColor.colorGrey.withOpacity(0.2))
+                                      ),
+                                      child: Text(
+                                        controller.selectedCurrencyList[index].curName ?? "",
+                                        style: regularDefault,
+                                      ),
+                                    ),
+                                  );
+                                })
+                          ],
+                        )
+                      ).customBottomSheet(context)
                   ),
                 ),
                 const SizedBox(height: Dimensions.space15),

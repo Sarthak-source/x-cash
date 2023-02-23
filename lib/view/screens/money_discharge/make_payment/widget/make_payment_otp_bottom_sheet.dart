@@ -48,9 +48,7 @@ showMakePaymentOTPBottomSheet(List<String>? list, {required BuildContext context
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
                           itemBuilder: (context, index) {
-                            return Material(
-                              color: Colors.transparent,
-                              child: InkWell(
+                            return GestureDetector(
                                 onTap: () {
                                   String selectedValue = list[index];
                                   final controller= Get.find<MakePaymentController>();
@@ -74,8 +72,7 @@ showMakePaymentOTPBottomSheet(List<String>? list, {required BuildContext context
                                     style: regularDefault,
                                   ),
                                 ),
-                              ),
-                            );
+                              );
                           }),
                     )
                   ],

@@ -39,33 +39,30 @@ class CountryBottomSheet{
                       shrinkWrap: true,
                       physics: const BouncingScrollPhysics(),
                       itemBuilder: (context,index){
-                        return Material(
-                          color: Colors.transparent,
-                          child: InkWell(
-                            onTap: (){
-                              controller.countryController.text = controller.countryList[index].country??'';
-                              controller.setCountryNameAndCode(controller.countryList[index].country??'',
-                                  controller.countryList[index].countryCode??'', controller.countryList[index].dialCode??'');
+                        return GestureDetector(
+                          onTap: (){
+                            controller.countryController.text = controller.countryList[index].country??'';
+                            controller.setCountryNameAndCode(controller.countryList[index].country??'',
+                                controller.countryList[index].countryCode??'', controller.countryList[index].dialCode??'');
 
-                              Navigator.pop(context);
+                            Navigator.pop(context);
 
-                              FocusScopeNode currentFocus = FocusScope.of(context);
-                              if (!currentFocus.hasPrimaryFocus) {
-                                currentFocus.unfocus();
-                              }
+                            FocusScopeNode currentFocus = FocusScope.of(context);
+                            if (!currentFocus.hasPrimaryFocus) {
+                              currentFocus.unfocus();
+                            }
 
-                            },
-                            child: Container(
-                              padding: const EdgeInsets.all(15),
-                              margin: const EdgeInsets.all(5),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(4),
-                                  border: Border.all(color: MyColor.colorGrey.withOpacity(0.2))
-                              ),
-                              child: Text(
-                                  '+${controller.countryList[index].dialCode}  ${controller.countryList[index].country}',
-                                  style: regularDefault.copyWith(color: MyColor.getTextColor())
-                              ),
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.all(15),
+                            margin: const EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(4),
+                                border: Border.all(color: MyColor.colorGrey.withOpacity(0.2))
+                            ),
+                            child: Text(
+                                '+${controller.countryList[index].dialCode}  ${controller.countryList[index].country}',
+                                style: regularDefault.copyWith(color: MyColor.getTextColor())
                             ),
                           ),
                         );

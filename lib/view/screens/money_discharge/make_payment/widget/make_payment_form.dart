@@ -1,28 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/helper/string_format_helper.dart';
-import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/money_discharge/make_payment/make_payment_controller.dart';
 import 'package:xcash_app/data/model/money_discharge/make_payment/make_payment_response_model.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
-import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
-import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
-import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/text_field_person_validity_widget.dart';
-import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
 import 'package:xcash_app/view/components/text/label_text.dart';
 import 'package:xcash_app/view/screens/money_discharge/make_payment/widget/make_payment_bottom_sheet.dart';
-import 'package:xcash_app/view/screens/money_discharge/make_payment/widget/make_payment_otp_bottom_sheet.dart';
-import 'package:xcash_app/view/screens/money_discharge/make_payment/widget/make_payment_wallet_bottom_sheet.dart';
 import 'package:xcash_app/view/screens/transaction/widget/filter_row_widget.dart';
 
 class MakePaymentForm extends StatefulWidget {
@@ -73,9 +67,63 @@ class _MakePaymentFormState extends State<MakePaymentForm> {
               child: FilterRowWidget(
                   borderColor: controller.walletsMethod?.id.toString() == "-1" ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
                   text: "${controller.walletsMethod?.id.toString() == "-1" ? MyStrings.selectWallet : controller.walletsMethod?.currencyCode}",
-                  press: () {
-                    showMakePaymentWalletBottomSheet(controller.walletList, context: context);
-                  }
+                  press: () => CustomBottomSheet(
+                      child: Column(
+                        children: [
+                          Align(
+                            alignment: Alignment.center,
+                            child: Container(
+                              height: 5,
+                              width: 50,
+                              padding: const EdgeInsets.all(1),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                color: MyColor.colorGrey.withOpacity(0.1),
+                              ),
+                            ),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: const [
+                              BottomSheetCloseButton()
+                            ],
+                          ),
+                          const SizedBox(height: Dimensions.space15),
+                          ListView.builder(
+                              itemCount: controller.walletList.length,
+                              shrinkWrap: true,
+                              physics: const BouncingScrollPhysics(),
+                              itemBuilder: (context, index) {
+                                return GestureDetector(
+                                  onTap: () {
+                                    final controller= Get.find<MakePaymentController>();
+                                    Wallets selectedValue = controller.walletList[index];
+                                    controller.setWalletMethod(selectedValue);
+                                    Navigator.pop(context);
+
+                                    FocusScopeNode currentFocus = FocusScope.of(context);
+                                    if (!currentFocus.hasPrimaryFocus) {
+                                      currentFocus.unfocus();
+                                    }
+                                  },
+                                  child: Container(
+                                    padding: const EdgeInsets.all(15),
+                                    margin: const EdgeInsets.all(5),
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
+                                        border: Border.all(color: MyColor.colorGrey.withOpacity(0.2))
+                                    ),
+                                    child: Text(
+                                      controller.walletList[index].currencyCode.toString() ?? "",
+                                      style: regularDefault,
+                                    ),
+                                  ),
+                                );
+                              }
+                          )
+                        ],
+                      )
+                  ).customBottomSheet(context)
               ),
             ),
             const SizedBox(height: Dimensions.space15),
@@ -103,9 +151,63 @@ class _MakePaymentFormState extends State<MakePaymentForm> {
               child: FilterRowWidget(
                   borderColor: controller.selectedOtp == MyStrings.selectOtp ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
                   text: controller.selectedOtp.toTitleCase(),
-                  press: () {
-                    showMakePaymentOTPBottomSheet(controller.otpTypeList, context: context);
-                  }
+                  press: () => CustomBottomSheet(
+                          child: Column(
+                            children: [
+                              Align(
+                                alignment: Alignment.center,
+                                child: Container(
+                                  height: 5,
+                                  width: 50,
+                                  padding: const EdgeInsets.all(1),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    color: MyColor.colorGrey.withOpacity(0.1),
+                                  ),
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: const [
+                                  BottomSheetCloseButton()
+                                ],
+                              ),
+                              const SizedBox(height: Dimensions.space15),
+                              ListView.builder(
+                                  itemCount: controller.otpTypeList.length,
+                                  shrinkWrap: true,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  itemBuilder: (context, index) {
+                                    return GestureDetector(
+                                      onTap: () {
+                                        final controller= Get.find<MakePaymentController>();
+                                        String selectedValue = controller.otpTypeList[index];
+                                        controller.setOtpMethod(selectedValue);
+                                        Navigator.pop(context);
+
+                                        FocusScopeNode currentFocus = FocusScope.of(context);
+                                        if (!currentFocus.hasPrimaryFocus) {
+                                          currentFocus.unfocus();
+                                        }
+                                      },
+                                      child: Container(
+                                        padding: const EdgeInsets.all(15),
+                                        margin: const EdgeInsets.all(5),
+                                        decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
+                                            border: Border.all(color: MyColor.colorGrey.withOpacity(0.2))
+                                        ),
+                                        child: Text(
+                                          controller.otpTypeList[index].toString().toTitleCase() ?? "",
+                                          style: regularDefault,
+                                        ),
+                                      ),
+                                    );
+                                  }
+                              )
+                            ],
+                          )
+                      ).customBottomSheet(context)
               ),
             ),
             const SizedBox(height: Dimensions.space20),

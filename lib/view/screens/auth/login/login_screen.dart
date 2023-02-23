@@ -114,9 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             }
                           },
                         ),
-
                         const SizedBox(height: 25),
-
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -167,19 +165,13 @@ class _LoginScreenState extends State<LoginScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Expanded(
-                              flex:10,
-                              child: Text(MyStrings.doNotHaveAccount.tr, overflow:TextOverflow.ellipsis,style: regularLarge.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w500)),
-                            ),
+                            Text(MyStrings.doNotHaveAccount.tr, overflow:TextOverflow.ellipsis,style: regularLarge.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w500)),
                             const SizedBox(width: Dimensions.space5),
-                            Expanded(
-                              flex: 9,
-                              child: TextButton(
-                                onPressed: (){
-                                  Get.offAndToNamed(RouteHelper.registrationScreen);
-                                },
-                                child: Text(MyStrings.createAccount.tr, maxLines: 2, overflow:TextOverflow.ellipsis,style: regularLarge.copyWith(color: MyColor.getPrimaryColor())),
-                              ),
+                            TextButton(
+                              onPressed: (){
+                                Get.offAndToNamed(RouteHelper.registrationScreen);
+                              },
+                              child: Text(MyStrings.createAccount.tr, maxLines: 2, overflow:TextOverflow.ellipsis,style: regularLarge.copyWith(color: MyColor.getPrimaryColor())),
                             )
                           ],
                         )

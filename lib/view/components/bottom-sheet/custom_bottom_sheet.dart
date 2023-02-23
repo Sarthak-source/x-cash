@@ -6,7 +6,8 @@ class CustomBottomSheet{
 
   final Widget child;
   bool isNeedMargin;
-  CustomBottomSheet({required this.child, this.isNeedMargin = false});
+  final VoidCallback? voidCallback;
+  CustomBottomSheet({required this.child, this.isNeedMargin = false, this.voidCallback});
 
   void customBottomSheet(BuildContext context){
 
@@ -21,7 +22,7 @@ class CustomBottomSheet{
           duration: const Duration(milliseconds: 50),
           curve: Curves.decelerate,
           child: Container(
-            margin: isNeedMargin ? const EdgeInsets.only(left: 15, right: 15, bottom: 15) : EdgeInsets.zero,
+            margin: isNeedMargin ? const EdgeInsets.only(left: 15, right: 15, bottom: 15) : EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.2),
             padding: const EdgeInsets.symmetric(horizontal: Dimensions.space15, vertical: Dimensions.space20),
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
@@ -32,6 +33,6 @@ class CustomBottomSheet{
           ),
         ),
       )
-    );
+    ).then((value) => voidCallback);
   }
 }
