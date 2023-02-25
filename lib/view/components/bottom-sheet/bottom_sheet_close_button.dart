@@ -9,7 +9,7 @@ class BottomSheetCloseButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.back(),
+      onTap: () => Navigator.pop(context),
       child: Container(
         height: 30, width: 30,
         alignment: Alignment.center,

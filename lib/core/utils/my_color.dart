@@ -19,7 +19,7 @@ class MyColor{
   static const Color appBarContentColor = colorWhite;
 
   // text field
-  static const Color labelTextColor = colorBlack;
+  static Color labelTextColor = colorBlack.withOpacity(0.6);
   static const Color hintTextColor = colorGrey;
   static const Color textFieldDisableBorderColor = Color(0xffCFCEDB);
   static const Color textFieldEnableBorderColor = Color(0xff7966FF);

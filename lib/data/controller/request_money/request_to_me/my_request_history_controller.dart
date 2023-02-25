@@ -155,7 +155,7 @@ class MyRequestHistoryController extends GetxController{
       if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
         String actionId = model.data?.actionId??'';
         if(actionId.isNotEmpty){
-          Get.toNamed(RouteHelper.otpScreen,arguments: [actionId, RouteHelper.requestToMeScreen]);
+          Get.offAndToNamed(RouteHelper.otpScreen,arguments: [actionId, RouteHelper.requestToMeScreen]);
           CustomSnackBar.success(successList: model.message?.success ?? [MyStrings.requestSuccess]);
         } else{
           CustomSnackBar.error(errorList: [MyStrings.noActionId]);
