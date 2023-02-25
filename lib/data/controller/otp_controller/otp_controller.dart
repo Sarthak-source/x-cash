@@ -20,6 +20,18 @@ class OtpController extends GetxController {
   String actionId = '';
   String nextRoute = '';
 
+  bool isOtpExpired = false;
+  int time = 180;
+  void makeOtpExpired(bool status){
+    isOtpExpired = status;
+    if(status==false){
+      time = 300;
+    } else{
+      time = 0;
+    }
+    update();
+  }
+
 
 
   Future<void> verifyEmail(String text) async {
@@ -64,6 +76,7 @@ class OtpController extends GetxController {
       AuthorizationResponseModel model = AuthorizationResponseModel.fromJson(jsonDecode(response.responseJson));
       if (model.status?.toLowerCase() == 'success') {
         CustomSnackBar.success(successList: model.message?.success ?? [MyStrings.successfullyCodeResend]);
+        makeOtpExpired(false);
       } else {
         CustomSnackBar.error(errorList: model.message?.error ??[ MyStrings.resendCodeFail]);
       }

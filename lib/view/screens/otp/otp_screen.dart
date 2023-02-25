@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/repo/opt_repo/opt_repo.dart';
@@ -11,7 +10,7 @@ import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
-import 'package:xcash_app/view/components/timer/timer.dart';
+import 'package:xcash_app/view/screens/otp/widget/otp_timer.dart';
 
 import '../../../data/controller/otp_controller/otp_controller.dart';
 
@@ -73,17 +72,33 @@ class _OtpScreenState extends State<OtpScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     const SizedBox(height: Dimensions.space30),
-                    Image.asset(MyImages.otpImage, height: 70, width: 70),
-                    const SizedBox(height: Dimensions.space30),
-                    Text(MyStrings.viaEmailVerify.tr, maxLines: 2, textAlign: TextAlign.center, style: regularDefault.copyWith(color: MyColor.getLabelTextColor(), height: 2)),
-                    const SizedBox(height: Dimensions.space30),
-                    SizedBox(
-                      height: 100,
-                      width: 100,
+                    Visibility(
+                      visible: !controller.isOtpExpired,
                       child: OtpTimer(
-                        onTimeComplete: (){}
-                      )
+                        duration: controller.time,
+                        onTimeComplete: (){
+                          controller.makeOtpExpired(true);
+                        }
+                      ),
                     ),
+                    const SizedBox(height: Dimensions.space20),
+                    Visibility(
+                        visible: controller.isOtpExpired,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(MyStrings.otpHasBeenExpired.tr, style: regularDefault.copyWith(color: MyColor.labelTextColor)),
+                            const SizedBox(width: Dimensions.space15),
+                            controller.resendLoading?
+                            Container(margin:const EdgeInsets.only(left: 5,top: 5),height:20,width:20,child: const CircularProgressIndicator(color: MyColor.primaryColor)):
+                            GestureDetector(
+                              onTap: (){
+                                controller.sendCodeAgain();
+                              },
+                              child: Text(MyStrings.resend.tr, style: regularDefault.copyWith(color: MyColor.primaryColor,decoration: TextDecoration.underline)),
+                            )
+                          ],
+                        )),
                     const SizedBox(height: Dimensions.space30),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: Dimensions.space30),

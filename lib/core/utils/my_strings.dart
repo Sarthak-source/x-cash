@@ -8,6 +8,9 @@ class MyStrings{
   static const String yes = "Yes";
   static const String no = "No";
   static const String nid = "NID";
+  static const String sec = 'Sec';
+
+  static const String otpHasBeenExpired = "Your OTP has been expired.";
 
   // onboard-screen
   static const String onboardTitle1 = "Welcome To Xcash\nWallet App";
@@ -513,6 +516,8 @@ class MyStrings{
   static const String invalidAmount           = 'Invalid amount';
   static const String searchResult            = 'Search Result';
   static const String resetPassMsg            = "Enter your email or username below to receive a password reset verification code";
+  static const String sixDigitOtpMsg = "Please check your email to get a six digit OTP";
+  static const String otpExpiredMsg = "OTP will be expired in the next";
   static const String verificationSuccess     = 'Verification Success';
   static const String enterYourUsername       = 'Enter your username';
   static const String enterUsername           = 'Enter username';
