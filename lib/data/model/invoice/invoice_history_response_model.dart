@@ -70,7 +70,8 @@ class Invoices {
   Invoices({
       List<Data>? data,
       String? nextPageUrl, 
-      String? path}){
+      String? path, 
+      }){
     _data = data;
     _nextPageUrl = nextPageUrl;
     _path = path;
@@ -89,9 +90,9 @@ class Invoices {
   List<Data>? _data;
   String? _nextPageUrl;
   String? _path;
-  
+
   List<Data>? get data => _data;
-  dynamic get nextPageUrl => _nextPageUrl;
+  String? get nextPageUrl => _nextPageUrl;
   String? get path => _path;
 
   Map<String, dynamic> toJson() {
@@ -103,6 +104,7 @@ class Invoices {
     map['path'] = _path;
     return map;
   }
+
 }
 
 class Data {
@@ -122,6 +124,7 @@ class Data {
       String? status, 
       String? createdAt, 
       String? updatedAt, 
+      String? link, 
       List<Items>? items, 
       Currency? currency,}){
     _id = id;
@@ -139,6 +142,7 @@ class Data {
     _status = status;
     _createdAt = createdAt;
     _updatedAt = updatedAt;
+    _link = link;
     _items = items;
     _currency = currency;
 }
@@ -147,11 +151,11 @@ class Data {
     _id = json['id'];
     _userId = json['user_id'].toString();
     _currencyId = json['currency_id'].toString();
-    _userType = json['user_type'].toString();
+    _userType = json['user_type'];
     _invoiceNum = json['invoice_num'].toString();
     _invoiceTo = json['invoice_to'].toString();
-    _email = json['email'].toString();
-    _address = json['address'].toString();
+    _email = json['email'];
+    _address = json['address'];
     _charge = json['charge'].toString();
     _totalAmount = json['total_amount'].toString();
     _getAmount = json['get_amount'].toString();
@@ -159,6 +163,7 @@ class Data {
     _status = json['status'].toString();
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
+    _link = json['link'];
     if (json['items'] != null) {
       _items = [];
       json['items'].forEach((v) {
@@ -182,6 +187,7 @@ class Data {
   String? _status;
   String? _createdAt;
   String? _updatedAt;
+  String? _link;
   List<Items>? _items;
   Currency? _currency;
 
@@ -200,6 +206,7 @@ class Data {
   String? get status => _status;
   String? get createdAt => _createdAt;
   String? get updatedAt => _updatedAt;
+  String? get link => _link;
   List<Items>? get items => _items;
   Currency? get currency => _currency;
 
@@ -220,6 +227,7 @@ class Data {
     map['status'] = _status;
     map['created_at'] = _createdAt;
     map['updated_at'] = _updatedAt;
+    map['link'] = _link;
     if (_items != null) {
       map['items'] = _items?.map((v) => v.toJson()).toList();
     }
@@ -236,7 +244,7 @@ class Currency {
       int? id, 
       String? currencyCode, 
       String? currencySymbol, 
-      String? currencyFullName, 
+      String? currencyFullname, 
       String? currencyType, 
       String? rate, 
       String? isDefault, 
@@ -246,7 +254,7 @@ class Currency {
     _id = id;
     _currencyCode = currencyCode;
     _currencySymbol = currencySymbol;
-    _currencyFullName = currencyFullName;
+    _currencyFullname = currencyFullname;
     _currencyType = currencyType;
     _rate = rate;
     _isDefault = isDefault;
@@ -257,20 +265,20 @@ class Currency {
 
   Currency.fromJson(dynamic json) {
     _id = json['id'];
-    _currencyCode = json['currency_code'].toString();
-    _currencySymbol = json['currency_symbol'].toString();
-    _currencyFullName = json['currency_fullname'].toString();
-    _currencyType = json['currency_type'].toString();
-    _rate = json['rate'].toString();
-    _isDefault = json['is_default'].toString();
-    _status = json['status'].toString();
+    _currencyCode = json['currency_code'];
+    _currencySymbol = json['currency_symbol'];
+    _currencyFullname = json['currency_fullname'];
+    _currencyType = json['currency_type'];
+    _rate = json['rate'];
+    _isDefault = json['is_default'];
+    _status = json['status'];
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
   }
   int? _id;
   String? _currencyCode;
   String? _currencySymbol;
-  String? _currencyFullName;
+  String? _currencyFullname;
   String? _currencyType;
   String? _rate;
   String? _isDefault;
@@ -281,7 +289,7 @@ class Currency {
   int? get id => _id;
   String? get currencyCode => _currencyCode;
   String? get currencySymbol => _currencySymbol;
-  String? get currencyFullName => _currencyFullName;
+  String? get currencyFullname => _currencyFullname;
   String? get currencyType => _currencyType;
   String? get rate => _rate;
   String? get isDefault => _isDefault;
@@ -294,7 +302,7 @@ class Currency {
     map['id'] = _id;
     map['currency_code'] = _currencyCode;
     map['currency_symbol'] = _currencySymbol;
-    map['currency_fullname'] = _currencyFullName;
+    map['currency_fullname'] = _currencyFullname;
     map['currency_type'] = _currencyType;
     map['rate'] = _rate;
     map['is_default'] = _isDefault;
@@ -324,9 +332,9 @@ class Items {
 
   Items.fromJson(dynamic json) {
     _id = json['id'];
-    _invoiceId = json['invoice_id'].toString();
-    _itemName = json['item_name'].toString();
-    _amount = json['amount'] != null ? json['amount'].toString() : "";
+    _invoiceId = json['invoice_id'];
+    _itemName = json['item_name'];
+    _amount = json['amount'];
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
   }
@@ -354,4 +362,5 @@ class Items {
     map['updated_at'] = _updatedAt;
     return map;
   }
+
 }

@@ -32,17 +32,19 @@ class MyRequestListItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                CardColumn(
-                    header: MyStrings.requestTo.tr,
-                    body: "${controller.myRequestList[index].receiver?.firstname ?? "-"} ${controller.myRequestList[index].receiver?.lastname ?? "-"}"
+                Text(
+                  MyStrings.requestTo.tr,
+                  style: regularDefault.copyWith(color: MyColor.getTextColor().withOpacity(0.6)),
+                  overflow: TextOverflow.ellipsis
                 ),
-                CardColumn(
-                    header: MyStrings.date.tr,
-                    body: DateConverter.isoStringToLocalDateOnly(controller.myRequestList[index].createdAt ?? ""),
-                    alignmentEnd: true
+                Text(
+                  "${controller.myRequestList[index].receiver?.firstname ?? "-"} ${controller.myRequestList[index].receiver?.lastname ?? "-"}",
+                  style: regularLarge.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w500),
+                  overflow: TextOverflow.ellipsis
                 )
               ],
             ),
@@ -56,13 +58,11 @@ class MyRequestListItem extends StatelessWidget {
                     body: "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.myRequestList[index].requestAmount ?? "")} "
                     "${controller.myRequestList[index].currency?.currencyCode ?? ""}"
                 ),
-                CardButton(
-                  isText: false,
-                  bgColor: MyColor.colorGrey.withOpacity(0.2),
-                  contentColor: MyColor.colorBlack,
-                  icon: Icons.visibility,
-                  press: (){},
-                ),
+                CardColumn(
+                    header: MyStrings.date.tr,
+                    body: DateConverter.isoStringToLocalDateOnly(controller.myRequestList[index].createdAt ?? ""),
+                    alignmentEnd: true
+                )
               ],
             )
           ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/helper/date_converter.dart';
 import 'package:xcash_app/core/helper/string_format_helper.dart';
@@ -11,6 +12,7 @@ import 'package:xcash_app/data/controller/invoice/invoice_history_controller.dar
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
 
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
+import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
 import 'package:xcash_app/view/screens/invoice/my_invoice/widget/invoice_action_button.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_history/widget/status_widget.dart';
@@ -143,38 +145,48 @@ class InvoicesBottomSheet{
                   ],
                 ),
                 const CustomDivider(space: Dimensions.space15),
-                Row(
+                controller.invoiceList[index].status == "0" ? Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
                       child: InVoiceActionButton(
-                        press: (){},
+                        press: (){
+                          Clipboard.setData(ClipboardData(
+                              text: controller.invoiceList[index].link.toString()
+                          )).then((value) => CustomSnackBar.success(
+                              successList: [MyStrings.copyLink]
+                          ));
+                        },
                         text: MyStrings.copy,
-                        bgColor: MyColor.colorGreen,
+                        bgColor: MyColor.primaryColor,
                         iconData: Icons.copy_sharp,
                       ),
                     ),
                     const SizedBox(width: Dimensions.space15),
-                    controller.invoiceList[index].status == "0" ? Expanded(
+                    Expanded(
                       child: InVoiceActionButton(
                         press: () => Get.toNamed(
                             RouteHelper.updateInvoiceScreen,
                             arguments: [controller.invoiceList[index].invoiceNum, controller.invoiceList[index].currencyId]
                         ),
                         text: MyStrings.edit,
-                        bgColor: MyColor.primaryColor,
-                        iconData: Icons.edit_calendar_sharp,
-                      ),
-                    ) : Expanded(
-                      child: InVoiceActionButton(
-                        press: (){},
-                        text: MyStrings.view,
-                        bgColor: MyColor.colorBlack,
-                        iconData: Icons.visibility,
+                        bgColor: MyColor.colorOrange,
+                        iconData: Icons.edit,
                       ),
                     )
                   ],
-                )
+                ) : InVoiceActionButton(
+                  press: (){
+                    Clipboard.setData(ClipboardData(
+                        text: controller.invoiceList[index].link.toString()
+                    )).then((value) => CustomSnackBar.success(
+                        successList: [MyStrings.copyLink]
+                    ));
+                  },
+                  text: MyStrings.copy,
+                  bgColor: MyColor.primaryColor,
+                  iconData: Icons.copy_sharp,
+                ),
               ],
             ),
           ),

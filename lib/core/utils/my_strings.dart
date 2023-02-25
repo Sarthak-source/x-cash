@@ -412,7 +412,7 @@ class MyStrings{
   static const String everyWeek = "Every week for";
   static const String week = "week";
   static const String investmentPlan = "Investment Plan";
-  static const String copyLink = "Copied Referral Link";
+  static const String copyLink = "Copied to Clipboard";
   static const String walletType = "Wallet Type";
   static const String wallet = "Wallet";
   static const String type = "Type";

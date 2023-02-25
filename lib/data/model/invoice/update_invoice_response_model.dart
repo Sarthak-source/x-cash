@@ -359,7 +359,9 @@ class Invoice {
       String? payStatus, 
       String? status, 
       String? createdAt, 
-      String? updatedAt,}){
+      String? updatedAt,
+      String? link,}){
+
     _id = id;
     _userId = userId;
     _currencyId = currencyId;
@@ -375,6 +377,7 @@ class Invoice {
     _status = status;
     _createdAt = createdAt;
     _updatedAt = updatedAt;
+    _link = link;
 }
 
   Invoice.fromJson(dynamic json) {
@@ -393,6 +396,7 @@ class Invoice {
     _status = json['status'].toString();
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
+    _link = json['link'];
   }
   int? _id;
   String? _userId;
@@ -409,6 +413,7 @@ class Invoice {
   String? _status;
   String? _createdAt;
   String? _updatedAt;
+  String? _link;
 
   int? get id => _id;
   String? get userId => _userId;
@@ -425,6 +430,7 @@ class Invoice {
   String? get status => _status;
   String? get createdAt => _createdAt;
   String? get updatedAt => _updatedAt;
+  String? get link => _link;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -443,6 +449,7 @@ class Invoice {
     map['status'] = _status;
     map['created_at'] = _createdAt;
     map['updated_at'] = _updatedAt;
+    map['link'] = _link;
     return map;
   }
 
