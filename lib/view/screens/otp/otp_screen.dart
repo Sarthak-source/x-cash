@@ -81,24 +81,6 @@ class _OtpScreenState extends State<OtpScreen> {
                         }
                       ),
                     ),
-                    const SizedBox(height: Dimensions.space20),
-                    Visibility(
-                        visible: controller.isOtpExpired,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(MyStrings.otpHasBeenExpired.tr, style: regularDefault.copyWith(color: MyColor.labelTextColor)),
-                            const SizedBox(width: Dimensions.space15),
-                            controller.resendLoading?
-                            Container(margin:const EdgeInsets.only(left: 5,top: 5),height:20,width:20,child: const CircularProgressIndicator(color: MyColor.primaryColor)):
-                            GestureDetector(
-                              onTap: (){
-                                controller.sendCodeAgain();
-                              },
-                              child: Text(MyStrings.resend.tr, style: regularDefault.copyWith(color: MyColor.primaryColor,decoration: TextDecoration.underline)),
-                            )
-                          ],
-                        )),
                     const SizedBox(height: Dimensions.space30),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: Dimensions.space30),
@@ -141,7 +123,21 @@ class _OtpScreenState extends State<OtpScreen> {
                       },
                     ),
                     const SizedBox(height: Dimensions.space30),
-                    Row(
+                    controller.isOtpExpired ? Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(MyStrings.otpHasBeenExpired.tr, style: regularDefault.copyWith(color: MyColor.labelTextColor)),
+                        const SizedBox(width: Dimensions.space15),
+                        controller.resendLoading?
+                        Container(margin:const EdgeInsets.only(left: 5,top: 5),height:20,width:20,child: const CircularProgressIndicator(color: MyColor.primaryColor)):
+                        GestureDetector(
+                          onTap: (){
+                            controller.sendCodeAgain();
+                          },
+                          child: Text(MyStrings.resend.tr, style: regularDefault.copyWith(color: MyColor.primaryColor,decoration: TextDecoration.underline)),
+                        )
+                      ],
+                    ) : Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(MyStrings.didNotReceiveCode.tr, style: regularDefault.copyWith(color: MyColor.getLabelTextColor())),
