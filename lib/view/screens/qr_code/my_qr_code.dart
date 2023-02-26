@@ -53,54 +53,51 @@ class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
             ),
             body: controller.isLoading ? const CustomLoader(loaderColor: MyColor.colorWhite) : SingleChildScrollView(
               padding: Dimensions.screenPaddingHV,
-              child: Hero(
-                tag: "qr_code",
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      height: 60, width: 60,
-                      decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(image: AssetImage(MyImages.profile), fit: BoxFit.fill)
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    height: 60, width: 60,
+                    decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(image: AssetImage(MyImages.profile), fit: BoxFit.fill)
+                    ),
+                  ),
+                  const SizedBox(height: Dimensions.space15),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        homeController.username,
+                        style: semiBoldExtraLarge.copyWith(color: MyColor.colorWhite),
                       ),
+                      const SizedBox(width: Dimensions.space8),
+                      const Icon(Icons.verified, color: MyColor.colorWhite, size: 20)
+                    ],
+                  ),
+                  const SizedBox(height: Dimensions.textToTextSpace),
+                  Text(
+                    MyStrings.verifiedUser.tr,
+                    style: semiBoldLarge.copyWith(color: MyColor.colorWhite.withOpacity(0.5)),
+                  ),
+                  const SizedBox(height: Dimensions.space30),
+                  Image.network(
+                      controller.qrCode,
+                      width: 220, height: 220
+                  ),
+                  const SizedBox(height: Dimensions.space30),
+                  SizedBox(
+                    width: 240,
+                    child: RoundedButton(
+                        color: MyColor.colorWhite,
+                        text: MyStrings.downloadAsImage,
+                        textColor: MyColor.primaryColor,
+                        press: (){}
                     ),
-                    const SizedBox(height: Dimensions.space15),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          homeController.username,
-                          style: semiBoldExtraLarge.copyWith(color: MyColor.colorWhite),
-                        ),
-                        const SizedBox(width: Dimensions.space8),
-                        const Icon(Icons.verified, color: MyColor.colorWhite, size: 20)
-                      ],
-                    ),
-                    const SizedBox(height: Dimensions.textToTextSpace),
-                    Text(
-                      MyStrings.verifiedUser.tr,
-                      style: semiBoldLarge.copyWith(color: MyColor.colorWhite.withOpacity(0.5)),
-                    ),
-                    const SizedBox(height: Dimensions.space30),
-                    Image.network(
-                        controller.qrCode,
-                        width: 220, height: 220
-                    ),
-                    const SizedBox(height: Dimensions.space30),
-                    SizedBox(
-                      width: 240,
-                      child: RoundedButton(
-                          color: MyColor.colorWhite,
-                          text: MyStrings.downloadAsImage,
-                          textColor: MyColor.primaryColor,
-                          press: (){}
-                      ),
-                    ),
-                    const SizedBox(height: Dimensions.space15)
-                  ],
-                ),
+                  ),
+                  const SizedBox(height: Dimensions.space15)
+                ],
               ),
             ),
           ),
