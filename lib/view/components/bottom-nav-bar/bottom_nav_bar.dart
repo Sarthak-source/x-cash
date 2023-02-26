@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
@@ -53,7 +52,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         ),
       ),
       floatingActionButton: GestureDetector(
-        onTap: () => Get.toNamed(RouteHelper.myQrCodeScreen),
+        onTap: () => Get.toNamed(RouteHelper.qrCodeScanner),
         child: Container(
           height: 65, width: 65,
           alignment: Alignment.center,

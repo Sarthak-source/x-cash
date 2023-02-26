@@ -49,6 +49,7 @@ class MyImages{
 
   static const String user = "assets/images/user.svg";
   static const String changePassword = "assets/images/change_password.svg";
+  static const String menuQrCode = "assets/images/menu_qr_code.png";
   static const String menuWithdraw_1 = "assets/images/menu_withdraw_1.svg";
   static const String menuTransfer_1 = "assets/images/menu_transfer_1.svg";
   static const String menuInvoice_1 = "assets/images/menu_invoice_1.svg";

@@ -9,11 +9,13 @@ class MenuItems extends StatelessWidget {
   final String imageSrc;
   final String label;
   final VoidCallback onPressed;
+  final bool isSvgImage;
   const MenuItems({
     Key? key,
     required this.imageSrc,
     required this.label,
-    required this.onPressed
+    required this.onPressed,
+    this.isSvgImage = true
   }) : super(key: key);
 
   @override
@@ -33,7 +35,15 @@ class MenuItems extends StatelessWidget {
                   height: 35, width: 35,
                   alignment: Alignment.center,
                   decoration: const BoxDecoration(color: MyColor.screenBgColor, shape: BoxShape.circle),
-                  child: SvgPicture.asset(imageSrc, color: MyColor.colorBlack, height: 17.5, width: 17.5),
+                  child: isSvgImage ? SvgPicture.asset(
+                      imageSrc,
+                      color: MyColor.colorBlack,
+                      height: 17.5, width: 17.5
+                  ) : Image.asset(
+                      imageSrc,
+                      color: MyColor.colorBlack,
+                      height: 17.5, width: 17.5
+                  ),
                 ),
                 const SizedBox(width: Dimensions.space15),
                 Text(label.tr, style: regularDefault.copyWith(color: MyColor.colorBlack))

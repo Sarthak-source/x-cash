@@ -82,6 +82,13 @@ class _MenuScreenState extends State<MenuScreen> {
                                 label: MyStrings.changePassword,
                                 onPressed: () => Get.toNamed(RouteHelper.changePasswordScreen)
                             ),
+                            const CustomDivider(space: Dimensions.space10),
+                            MenuItems(
+                                isSvgImage: false,
+                                imageSrc: MyImages.menuQrCode,
+                                label: MyStrings.myQrCode,
+                                onPressed: () => Get.toNamed(RouteHelper.myQrCodeScreen)
+                            ),
                           ],
                         ),
                       ),

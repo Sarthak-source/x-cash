@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
@@ -9,8 +10,6 @@ import 'package:xcash_app/data/controller/qr_code/qr_code_controller.dart';
 import 'package:xcash_app/data/repo/qr_code/qr_code_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
-import 'package:xcash_app/view/components/buttons/rounded_button.dart';
-import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 
 class QrCodeScannerScreen extends StatefulWidget {
   const QrCodeScannerScreen({Key? key}) : super(key: key);
@@ -43,8 +42,6 @@ class _QrCodeScannerScreenState extends State<QrCodeScannerScreen> {
 
         result = scanData;
         String? myQrCode = result?.code!=null && result!.code.toString().isNotEmpty ?result?.code.toString():'';
-        print('my qr code ${myQrCode}');
-
         if(myQrCode!=null && myQrCode.isNotEmpty){
           manageQRData(myQrCode);
         }
@@ -58,9 +55,6 @@ class _QrCodeScannerScreenState extends State<QrCodeScannerScreen> {
    qrController?.stopCamera();
 
     bool result = await controller.submitQrData(myQrCode);
-
-
-
   }
 
   @override
@@ -114,13 +108,13 @@ class _QrCodeScannerScreenState extends State<QrCodeScannerScreen> {
                   onQRViewCreated: _onQRViewCreated,
                   cameraFacing: CameraFacing.back,
                   overlay: QrScannerOverlayShape(
-                      borderColor: Colors.red,
+                      borderColor: MyColor.primaryColor,
                       borderRadius: 10,
                       borderLength: 30,
                       borderWidth: 10,
                       cutOutSize: (MediaQuery.of(context).size.width < 400 ||
                           MediaQuery.of(context).size.height < 400)
-                          ? 300.0
+                          ? 250.0
                           : 300.0
                   ),
                   onPermissionSet: (ctrl, p) => _onPermissionSet(context, ctrl, p),

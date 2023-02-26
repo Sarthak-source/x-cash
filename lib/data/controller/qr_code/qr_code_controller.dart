@@ -1,6 +1,5 @@
 import 'dart:convert';
-import 'dart:io';
-
+import 'package:gallery_saver/gallery_saver.dart';
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:xcash_app/core/route/route.dart';
@@ -10,7 +9,7 @@ import 'package:xcash_app/data/model/qr_code/qr_code_response_model.dart';
 import 'package:xcash_app/data/model/qr_code/qr_code_scan_response_model.dart';
 import 'package:xcash_app/data/repo/qr_code/qr_code_repo.dart';
 import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
-import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
 
 class QrCodeController extends GetxController{
 
@@ -46,22 +45,13 @@ class QrCodeController extends GetxController{
     update();
   }
 
-  bool downloading = false;
-  late String localPath;
-
   Future<void> downloadImage() async {
-    downloading = true;
-    update();
-
-    final response = await http.get(Uri.parse(""));
-    final documentDirectory = await getApplicationDocumentsDirectory();
-
-    final file = File("${documentDirectory.path}/image.png");
-    file.writeAsBytesSync(response.bodyBytes);
-
-    downloading = false;
-    localPath = file.path;
-    update();
+    String imageUrl = model.data?.qrCode ?? "";
+    final tempDir = await getTemporaryDirectory();
+    final path = "${tempDir.path}/my_qr_code.jpg";
+    await Dio().download(imageUrl, path);
+    await GallerySaver.saveImage(path);
+    CustomSnackBar.success(successList: ["Image downloaded successfully"]);
   }
 
   bool isScannerLoading = false;

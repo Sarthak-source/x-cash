@@ -52,7 +52,7 @@ class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
               title: Text(MyStrings.myQrCode.tr, style: regularDefault.copyWith(color: MyColor.appBarContentColor)),
               leading: IconButton(
                 onPressed: () => Get.back(),
-                icon: const Icon(Icons.arrow_back, color: MyColor.appBarContentColor, size: 16),
+                icon: const Icon(Icons.arrow_back, color: MyColor.appBarContentColor, size: 20),
               ),
               actions: [
                 ActionButtonIconWidget(
@@ -108,10 +108,7 @@ class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
                         width: 220, height: 220
                     ),
                     const SizedBox(height: Dimensions.space30),
-                    controller.downloading ? const SizedBox(
-                      width: 240,
-                      child: RoundedLoadingBtn(),
-                    ) : SizedBox(
+                    SizedBox(
                       width: 240,
                       child: RoundedButton(
                           color: MyColor.colorWhite,
