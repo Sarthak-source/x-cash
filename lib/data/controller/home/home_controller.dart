@@ -55,8 +55,8 @@ class HomeController extends GetxController{
         username = model.data?.user?.username ?? "";
         userBalance = model.data?.totalSiteBalance ?? "";
         email = model.data?.user?.email ?? "";
-        totalMoneyIn = "${Converter.twoDecimalPlaceFixedWithoutRounding(model.data?.moneyInOut?.totalMoneyIn ?? "")} $defaultCurrency";
-        totalMoneyOut = "${Converter.twoDecimalPlaceFixedWithoutRounding(model.data?.moneyInOut?.totalMoneyOut ?? "")} $defaultCurrency";
+        totalMoneyIn = "${Converter.twoDecimalPlaceFixedWithoutRounding(model.data?.last7DayMoneyInOut?.totalMoneyIn ?? "")} $defaultCurrency";
+        totalMoneyOut = "${Converter.twoDecimalPlaceFixedWithoutRounding(model.data?.last7DayMoneyInOut?.totalMoneyOut ?? "")} $defaultCurrency";
 
         List<Wallets>? tempWalletList = model.data?.wallets;
         if(tempWalletList != null && tempWalletList.isNotEmpty){
