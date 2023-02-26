@@ -33,7 +33,7 @@ class _MenuScreenState extends State<MenuScreen> {
     Get.put(ApiClient(sharedPreferences: Get.find()));
     Get.put(GeneralSettingRepo(apiClient: Get.find()));
     Get.put(MenuRepo(apiClient: Get.find()));
-    final controller = Get.put(MenuController(menuRepo: Get.find(), repo: Get.find()));
+    final controller = Get.put(AppMenuController(menuRepo: Get.find(), repo: Get.find()));
     Get.put(LocalizationController(sharedPreferences: Get.find()));
     super.initState();
 
@@ -45,7 +45,7 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<LocalizationController>(
-      builder: (localizationController) => GetBuilder<MenuController>(
+      builder: (localizationController) => GetBuilder<AppMenuController>(
         builder: (menuController) => WillPopWidget(
           nextRoute: RouteHelper.bottomNavBar,
           child: SafeArea(
@@ -57,7 +57,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 title: Text(MyStrings.menu, style: regularLarge.copyWith(color: MyColor.colorWhite)),
                 automaticallyImplyLeading: false,
               ),
-              body: GetBuilder<MenuController>(
+              body: GetBuilder<AppMenuController>(
                 builder: (controller) => SingleChildScrollView(
                   padding: Dimensions.screenPaddingHV,
                   child: Column(

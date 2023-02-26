@@ -110,4 +110,5 @@ class UrlContainer{
   static const String checkAgentUrl = "agent/exist";
   static const String checkMerchantUrl = "merchant/exist";
   static const String checkUserUrl = "user/exist";
+  static const String qrCodeEndPoint = "qr-code";
 }

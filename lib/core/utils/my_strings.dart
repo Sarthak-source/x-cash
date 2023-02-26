@@ -9,6 +9,9 @@ class MyStrings{
   static const String no = "No";
   static const String nid = "NID";
   static const String sec = 'Sec';
+  static const String myQrCode = "My QR Code";
+  static const String verifiedUser = "Verified User";
+  static const String downloadAsImage = "Download as Image";
 
   static const String otpHasBeenExpired = "Your OTP has been expired.";
 

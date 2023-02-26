@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
@@ -50,19 +52,22 @@ class _BottomNavBarState extends State<BottomNavBar> {
           ),
         ),
       ),
-      floatingActionButton: Container(
-        height: 65, width: 65,
-        alignment: Alignment.center,
-        padding: const EdgeInsets.all(5),
-        decoration: const BoxDecoration(
-          color: MyColor.screenBgColor,
-          shape: BoxShape.circle
-        ),
+      floatingActionButton: GestureDetector(
+        onTap: () => Get.toNamed(RouteHelper.myQrCodeScreen),
         child: Container(
+          height: 65, width: 65,
           alignment: Alignment.center,
-          padding: const EdgeInsets.all(Dimensions.space10),
-          decoration: const BoxDecoration(color: MyColor.primaryColor, shape: BoxShape.circle),
-          child: Image.asset(MyImages.scan, color: MyColor.screenBgColor, width: 30, height: 30),
+          padding: const EdgeInsets.all(5),
+          decoration: const BoxDecoration(
+            color: MyColor.screenBgColor,
+            shape: BoxShape.circle
+          ),
+          child: Container(
+            alignment: Alignment.center,
+            padding: const EdgeInsets.all(Dimensions.space10),
+            decoration: const BoxDecoration(color: MyColor.primaryColor, shape: BoxShape.circle),
+            child: Image.asset(MyImages.scan, color: MyColor.screenBgColor, width: 30, height: 30),
+          ),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

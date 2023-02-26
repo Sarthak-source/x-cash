@@ -9,11 +9,11 @@ import 'package:xcash_app/data/repo/auth/general_setting_repo.dart';
 import 'package:xcash_app/data/repo/menu_repo/menu_repo.dart';
 import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
-class MenuController extends GetxController{
+class AppMenuController extends GetxController{
 
   MenuRepo menuRepo;
   GeneralSettingRepo repo;
-  MenuController({required this.menuRepo, required this.repo});
+  AppMenuController({required this.menuRepo, required this.repo});
 
   bool logoutLoading = false;
   bool isLoading = true;
