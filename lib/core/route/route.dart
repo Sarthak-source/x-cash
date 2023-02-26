@@ -25,6 +25,7 @@ import 'package:xcash_app/view/screens/otp/otp_screen.dart';
 import 'package:xcash_app/view/screens/money_discharge/money_out/money_out.dart';
 import 'package:xcash_app/view/screens/privacy_policy/privacy_policy_screen.dart';
 import 'package:xcash_app/view/screens/qr_code/my_qr_code.dart';
+import 'package:xcash_app/view/screens/qr_code/qr_code_scanner.dart';
 import 'package:xcash_app/view/screens/request-money/request_money/request_money.dart';
 import 'package:xcash_app/view/screens/request-money/request_to_me/request_to_me_screen.dart';
 import 'package:xcash_app/view/screens/splash/splash_screen.dart';
@@ -101,6 +102,7 @@ class RouteHelper{
   static const String redeemLogScreen = "/redeem_log_screen";
   static const String privacyScreen = "/privacy_screen";
   static const String myQrCodeScreen = "/my_qr_code_screen";
+  static const String qrCodeScanner = "/qr_code_scanner_screen";
 
 
   List<GetPage> routes = [
@@ -159,5 +161,6 @@ class RouteHelper{
     GetPage(name: redeemLogScreen, page: () => const RedeemLogScreen()),
     GetPage(name: privacyScreen, page: () => const PrivacyPolicyScreen()),
     GetPage(name: myQrCodeScreen, page: () => const MyQrCodeScreen()),
+    GetPage(name: qrCodeScanner, page: () => const QrCodeScannerScreen()),
   ];
 }

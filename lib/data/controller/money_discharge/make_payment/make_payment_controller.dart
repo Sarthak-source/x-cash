@@ -46,7 +46,7 @@ class MakePaymentController extends GetxController{
     update();
   }
 
-  loadData() async{
+  loadData(String userType) async{
     currency = makePaymentRepo.apiClient.getCurrencyOrUsername();
     isLoading = true;
     update();
@@ -56,7 +56,7 @@ class MakePaymentController extends GetxController{
     walletList.clear();
     otpTypeList.clear();
     amountController.text = "";
-    merchantController.text = "";
+    merchantController.text = userType;
 
     walletsMethod = Wallets(id: -1, currencyCode: MyStrings.selectAWallet);
     walletList.insert(0, walletsMethod!);

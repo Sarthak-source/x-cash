@@ -10,6 +10,7 @@ class MyStrings{
   static const String nid = "NID";
   static const String sec = 'Sec';
   static const String myQrCode = "My QR Code";
+  static const String qrScan = "QR Scan";
   static const String verifiedUser = "Verified User";
   static const String downloadAsImage = "Download as Image";
 
@@ -520,7 +521,7 @@ class MyStrings{
   static const String searchResult            = 'Search Result';
   static const String resetPassMsg            = "Enter your email or username below to receive a password reset verification code";
   static const String sixDigitOtpMsg = "Please check your email to get a six digit OTP";
-  static const String otpExpiredMsg = "OTP will be expired in the next";
+  static const String otpExpiredMsg     = "OTP will be expired in the next";
   static const String verificationSuccess     = 'Verification Success';
   static const String enterYourUsername       = 'Enter your username';
   static const String enterUsername           = 'Enter username';
@@ -535,6 +536,7 @@ class MyStrings{
   static const String register                = 'Register';
   static const String selectACountry          = "Select a country";
   static const String requestFail             = "Request Failed";
+  static const String invalidUserType         = "Invalid user type";
   static const String requestSuccess          = "Request Success";
 
   static const String requestFrom          = "Request from";
@@ -634,4 +636,6 @@ class MyStrings{
     LanguageModel(languageName: 'English', countryCode: 'US', languageCode: 'en'),
     LanguageModel(languageName: 'Arabic', countryCode: 'SA', languageCode: 'ar'),
   ];
+
+  static const String sendCode = "Send Code";
 }

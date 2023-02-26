@@ -19,6 +19,8 @@ class MoneyOutScreen extends StatefulWidget {
 
 class _MoneyOutScreenState extends State<MoneyOutScreen> {
 
+  late String userType;
+
   @override
   void initState() {
     Get.put(ApiClient(sharedPreferences: Get.find()));
@@ -26,7 +28,8 @@ class _MoneyOutScreenState extends State<MoneyOutScreen> {
     final controller = Get.put(MoneyOutController(moneyOutRepo: Get.find()));
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      controller.loadData();
+      userType = Get.arguments ?? "";
+      controller.loadData(userType);
     });
   }
   @override

@@ -26,9 +26,11 @@ class _MakePaymentScreenState extends State<MakePaymentScreen> {
     final controller = Get.put(MakePaymentController(makePaymentRepo: Get.find()));
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      controller.loadData();
+      String userType = Get.arguments ?? "";
+      controller.loadData(userType);
     });
   }
+
   @override
   void dispose() {
     super.dispose();

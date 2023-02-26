@@ -16,4 +16,17 @@ class QrCodeRepo{
 
     return responseModel;
   }
+
+  Future<ResponseModel> qrCodeScan(String code) async{
+    print(code);
+
+    String url = "${UrlContainer.baseUrl}${UrlContainer.qrScanEndPoint}";
+    print(url);
+    Map<String, String> params = {"code" : code};
+
+    ResponseModel responseModel = await apiClient.request(url, Method.postMethod, params, passHeader: true);
+    print(responseModel.responseJson);
+
+    return responseModel;
+  }
 }

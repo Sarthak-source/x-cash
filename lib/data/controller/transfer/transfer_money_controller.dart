@@ -56,7 +56,14 @@ class TransferMoneyController extends GetxController{
     walletList.clear();
     otpTypeList.clear();
     amountController.text = "";
-    receiverController.text = "";
+
+    double number = double.tryParse(walletId)??-1;
+
+    if(number==-1){
+      receiverController.text = walletId;
+      walletId = '';
+    }
+
 
     selectedWallet = tm_model.Wallets(id: -1, currencyCode: MyStrings.selectAWallet);
     walletList.insert(0, selectedWallet!);

@@ -48,7 +48,7 @@ class MoneyOutController extends GetxController{
     update();
   }
 
-  loadData() async{
+  loadData(String? userType) async{
     isLoading = true;
     update();
 
@@ -57,7 +57,7 @@ class MoneyOutController extends GetxController{
     walletList.clear();
     otpTypeList.clear();
     amountController.text = "";
-    agentController.text = "";
+    agentController.text = userType ?? "";
 
     selectedWallet = Wallets(id: -1, currencyCode: MyStrings.selectAWallet);
     walletList.insert(0, selectedWallet!);
