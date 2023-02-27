@@ -117,7 +117,7 @@ class MyStrings{
   static const String invoicePaymentUrl = "Invoice Payment Url";
 
   static const String addNewMethod = "Add new method";
-  static const String chooseNewWithdrawMethod = "Choose a new withdraw method";
+  static const String chooseNewWithdrawMethod = "Setup a new withdraw method";
 
   static const String addItems = "Add Items";
   static const String exchange = "Exchange";
@@ -365,7 +365,7 @@ class MyStrings{
   static const String passwordResetEmailSentTo = 'Password reset email sent to';
   static const String emailVerification = "Email Verification";
   static const String viaEmailVerify = "Please check your email to get a six digit OTP\nOTP will be expired in the next";
-  static const String didNotReceiveCode = "Didn't Receive Code?";
+  static const String didNotReceiveCode = "Didn't receive code?";
   static const String resend = "Resend";
   static const String smsVerification = "Sms Verification";
   static const String profileComplete = "Profile Complete";
@@ -531,7 +531,7 @@ class MyStrings{
   static const String registerMsg             = "Please enter valid info to\ncreate account";
   static const String noCodeReceive           = "Didn't receive the code?";
   static const String smsVerificationMsg      = "We've sent you an access code to your phone number for SMS verification";
-  static const String wellComeBack            = 'Wellcome back';
+  static const String wellComeBack            = 'Welcome back';
   static const String loginMsg                = 'Log in with the data that you entecolorRed during your registration';
   static const String register                = 'Register';
   static const String selectACountry          = "Select a country";
@@ -628,6 +628,7 @@ class MyStrings{
   static const String acceptRequest = "Accept Request";
   static const String willBeReduced = "will be reduced from your";
   static const String sureToConfirm = "Are you sure want to confirm?";
+  static const String imageDownloadMsg = "Image downloaded successfully";
 
   static const String selectInsight = "( Last 7 days )";
 

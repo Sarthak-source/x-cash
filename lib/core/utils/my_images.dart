@@ -6,6 +6,7 @@ class MyImages{
   static const String exchange = "assets/images/exchange.svg";
   static const String moneyOut = "assets/images/interest-rate.svg";
   static const String makePayment = "assets/images/make_payment.svg";
+  static const String placeHolderImage = "assets/images/place_holder.png";
   static const String seeMore = "assets/images/menu.svg";
   static const String menuAddMoney = "assets/images/menu_add_money.svg";
   static const String menuAddMoneyHistory = "assets/images/menu_add_money_history.svg";
