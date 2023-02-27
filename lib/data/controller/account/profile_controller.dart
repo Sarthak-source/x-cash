@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/helper/shared_preference_helper.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
+import 'package:xcash_app/core/utils/url_container.dart';
 import 'package:xcash_app/data/model/profile/profile_response_model.dart';
 import 'package:xcash_app/data/model/user_post_model/user_post_model.dart';
 import 'package:xcash_app/data/repo/account/profile_repo.dart';
@@ -20,7 +21,7 @@ class ProfileController extends GetxController {
 
   ProfileController({required this.profileRepo});
 
-  String imageUrl='';
+  String imageUrl= '';
 
   bool isLoading = false;
   TextEditingController firstNameController = TextEditingController();
@@ -76,6 +77,8 @@ class ProfileController extends GetxController {
     String state      =  stateController.text.toString();
     User?  user       =  model.data?.user;
 
+    print(imageFile?.path);
+
     if(firstName.isNotEmpty && lastName.isNotEmpty){
       isLoading = true;
       update();
@@ -116,6 +119,9 @@ class ProfileController extends GetxController {
     zipCodeController.text = model?.data?.user?.address?.zip??'';
     cityController.text = model?.data?.user?.address?.city??'';
     imageUrl=model?.data?.user?.image==null?'':'${model?.data?.user?.image}';
+    if(imageUrl.isNotEmpty&& imageUrl !='null'){
+      imageUrl = '${UrlContainer.domainUrl}/assets/images/user/profile/$imageUrl';
+    }
     isLoading=false;
 
     update();

@@ -69,8 +69,7 @@ class ProfileRepo {
     await apiClient.request(url, Method.getMethod, null, passHeader: true);
 
     if (responseModel.statusCode == 200) {
-      ProfileResponseModel model =
-      ProfileResponseModel.fromJson(jsonDecode(responseModel.responseJson));
+      ProfileResponseModel model = ProfileResponseModel.fromJson(jsonDecode(responseModel.responseJson));
       if (model.status == 'success') {
         return model;
       } else {

@@ -3,14 +3,12 @@ import 'package:get/get.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
-import 'package:xcash_app/core/utils/util.dart';
 import 'package:xcash_app/data/controller/account/profile_controller.dart';
 import 'package:xcash_app/data/repo/account/profile_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/screens/edit_profile/widget/edit_profile_form.dart';
-import 'package:xcash_app/view/screens/edit_profile/widget/edit_profile_top_section.dart';
 
 class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({Key? key}) : super(key: key);

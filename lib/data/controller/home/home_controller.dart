@@ -24,6 +24,7 @@ class HomeController extends GetxController{
   String defaultCurrency = "";
   String defaultCurrencySymbol = "";
   String siteName = "";
+  String imagePath = "";
 
   HomeResponseModel model = HomeResponseModel();
   GeneralSettingResponseModel generalSettingResponseModel = GeneralSettingResponseModel();
@@ -57,6 +58,7 @@ class HomeController extends GetxController{
         email = model.data?.user?.email ?? "";
         totalMoneyIn = "${Converter.twoDecimalPlaceFixedWithoutRounding(model.data?.last7DayMoneyInOut?.totalMoneyIn ?? "")} $defaultCurrency";
         totalMoneyOut = "${Converter.twoDecimalPlaceFixedWithoutRounding(model.data?.last7DayMoneyInOut?.totalMoneyOut ?? "")} $defaultCurrency";
+        imagePath = model.data?.user?.image??'';
 
         List<Wallets>? tempWalletList = model.data?.wallets;
         if(tempWalletList != null && tempWalletList.isNotEmpty){

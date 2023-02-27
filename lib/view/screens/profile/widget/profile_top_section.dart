@@ -7,6 +7,7 @@ import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/account/profile_controller.dart';
+import 'package:xcash_app/view/components/circle_button_with_icon.dart';
 import 'package:xcash_app/view/components/column_widget/card_column.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/image/circle_shape_image.dart';
@@ -33,28 +34,41 @@ class _ProfileTopSectionState extends State<ProfileTopSection> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const CircleAvatar(
-                  radius: 25,
-                  backgroundImage: AssetImage(MyImages.profile),
+                CircleButtonWithIcon(
+                  circleSize: 50,
+                  imageSize: 40,
+                  padding: 0,
+                  borderColor: Colors.transparent,
+                  isIcon: false,
+                  isAsset: false,
+                  imagePath: controller.imageUrl,
+                  isProfile: true,
+                  press: () {},
                 ),
                 GestureDetector(
                   onTap: () => Get.toNamed(RouteHelper.editProfileScreen),
                   child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: Dimensions.space8, horizontal: Dimensions.space20),
+                    padding: const EdgeInsets.symmetric(vertical: Dimensions.space5, horizontal: Dimensions.space15),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(color: MyColor.getPrimaryColor(), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
-                    child: Text(
-                      MyStrings.editProfile,
-                      style: regularSmall.copyWith(color: MyColor.colorWhite),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Icon(Icons.edit, color: MyColor.colorWhite, size: 20),
+                        const SizedBox(width: Dimensions.space10),
+                        Text(
+                          MyStrings.editProfile,
+                          style: regularSmall.copyWith(color: MyColor.colorWhite),
+                        )
+                      ],
                     ),
                   ),
                 )
               ],
             ),
-            const SizedBox(height: Dimensions.space40),
+            const SizedBox(height: Dimensions.space25),
             Row(
               children: [
                 const CircleShapeImage(image: MyImages.name),
