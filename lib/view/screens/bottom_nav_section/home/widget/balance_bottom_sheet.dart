@@ -9,8 +9,6 @@ import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/home/home_controller.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
-import 'package:xcash_app/view/components/column_widget/card_column.dart';
-import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/row_widget/bottom_sheet_row.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
 

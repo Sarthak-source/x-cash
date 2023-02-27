@@ -11,7 +11,7 @@ class BottomSheetBar extends StatelessWidget {
       child: Container(
         height: 5, width: 50,
         decoration: BoxDecoration(
-            color: MyColor.colorGrey.withOpacity(0.2),
+            color: MyColor.colorGrey.withOpacity(0.1),
             borderRadius: BorderRadius.circular(15)
         ),
       ),
