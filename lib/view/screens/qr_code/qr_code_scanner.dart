@@ -101,7 +101,7 @@ class _QrCodeScannerScreenState extends State<QrCodeScannerScreen> {
             bgColor: MyColor.appBarColor,
           ),
           body: Column(
-            children: <Widget>[
+            children: [
               Expanded(
                 child: QRView(
                   key: qrKey,
@@ -109,7 +109,7 @@ class _QrCodeScannerScreenState extends State<QrCodeScannerScreen> {
                   cameraFacing: CameraFacing.back,
                   overlay: QrScannerOverlayShape(
                       borderColor: MyColor.primaryColor,
-                      borderRadius: 10,
+                      borderRadius: 5,
                       borderLength: 30,
                       borderWidth: 10,
                       cutOutSize: (MediaQuery.of(context).size.width < 400 ||

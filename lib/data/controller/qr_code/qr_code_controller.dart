@@ -49,9 +49,10 @@ class QrCodeController extends GetxController{
     String imageUrl = model.data?.qrCode ?? "";
     final tempDir = await getTemporaryDirectory();
     final path = "${tempDir.path}/my_qr_code.jpg";
+    print("Image: $path");
     await Dio().download(imageUrl, path);
     await GallerySaver.saveImage(path);
-    CustomSnackBar.success(successList: ["Image downloaded successfully"]);
+    CustomSnackBar.success(successList: [MyStrings.imageDownloadMsg]);
   }
 
   bool isScannerLoading = false;
