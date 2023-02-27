@@ -107,6 +107,11 @@ class AddMoneyMethodController extends GetxController{
       return ;
     }
 
+    if(amountController.text.isEmpty){
+      CustomSnackBar.error(errorList: [MyStrings.enterAmountMsg.tr]);
+      return ;
+    }
+
     String amount = amountController.text.toString();
 
     submitLoading = true;

@@ -5,12 +5,10 @@ import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
-import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/add_money/add_money_history_controller.dart';
+import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/column_widget/card_column.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
-import 'package:xcash_app/view/components/text/default_text.dart';
-import 'package:xcash_app/view/components/text/small_text.dart';
 import 'package:xcash_app/view/screens/add-money/add_money_history/widget/add_money_history_bottom_sheet.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_history/widget/status_widget.dart';
 
@@ -22,7 +20,9 @@ class AddMoneyHistoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<AddMoneyHistoryController>(
       builder: (controller) => GestureDetector(
-        onTap: () => AddMoneyHistoryBottomSheet.addMoneyHistoryBottomSheet(context: context, index: index),
+        onTap: () => CustomBottomSheet(
+          child: AddMoneyHistoryBottomSheet(index: index)
+        ).customBottomSheet(context),
         child: Container(
           width: MediaQuery.of(context).size.width,
           padding: const EdgeInsets.symmetric(horizontal: Dimensions.space15, vertical: Dimensions.space15),
