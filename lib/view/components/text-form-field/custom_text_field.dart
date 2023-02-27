@@ -131,7 +131,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.only(top: 5, left: 15, right: 15, bottom: 5),
             hintText: widget.hintText!=null?widget.hintText!.tr:'',
-            hintStyle: regularSmall.copyWith(color: MyColor.getHintTextColor()),
+            hintStyle: regularSmall.copyWith(color: MyColor.getHintTextColor().withOpacity(0.7)),
             fillColor: MyColor.transparentColor,
             filled: true,
             border: OutlineInputBorder(borderSide: BorderSide(color: MyColor.getTextFieldDisableBorder()), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
