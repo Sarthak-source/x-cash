@@ -1,7 +1,7 @@
 import '../auth/sign_up_model/registration_response_model.dart';
 
-class WalletsResponseModel {
-  WalletsResponseModel({
+class WalletResponseModel {
+  WalletResponseModel({
       String? remark, 
       String? status, 
       Message? message, 
@@ -12,7 +12,7 @@ class WalletsResponseModel {
     _data = data;
 }
 
-  WalletsResponseModel.fromJson(dynamic json) {
+  WalletResponseModel.fromJson(dynamic json) {
     _remark = json['remark'];
     _status = json['status'];
     _message = json['message'] != null ? Message.fromJson(json['message']) : null;
@@ -95,11 +95,11 @@ class Wallets {
 
   Wallets.fromJson(dynamic json) {
     _id = json['id'];
-    _userId = json['user_id'];
+    _userId = json['user_id'].toString();
     _userType = json['user_type'];
-    _currencyId = json['currency_id'];
+    _currencyId = json['currency_id'].toString();
     _currencyCode = json['currency_code'];
-    _balance = json['balance'];
+    _balance = json['balance'].toString();
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
     _currency = json['currency'] != null ? Currency.fromJson(json['currency']) : null;
@@ -147,7 +147,7 @@ class Currency {
       int? id, 
       String? currencyCode, 
       String? currencySymbol, 
-      String? currencyFullName, 
+      String? currencyFullname, 
       String? currencyType, 
       String? rate, 
       String? isDefault, 
@@ -157,7 +157,7 @@ class Currency {
     _id = id;
     _currencyCode = currencyCode;
     _currencySymbol = currencySymbol;
-    _currencyFullName = currencyFullName;
+    _currencyFullname = currencyFullname;
     _currencyType = currencyType;
     _rate = rate;
     _isDefault = isDefault;
@@ -170,18 +170,18 @@ class Currency {
     _id = json['id'];
     _currencyCode = json['currency_code'];
     _currencySymbol = json['currency_symbol'];
-    _currencyFullName = json['currency_FullName'];
+    _currencyFullname = json['currency_fullname'];
     _currencyType = json['currency_type'];
-    _rate = json['rate'];
-    _isDefault = json['is_default'];
-    _status = json['status'];
+    _rate = json['rate'].toString();
+    _isDefault = json['is_default'].toString();
+    _status = json['status'].toString();
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
   }
   int? _id;
   String? _currencyCode;
   String? _currencySymbol;
-  String? _currencyFullName;
+  String? _currencyFullname;
   String? _currencyType;
   String? _rate;
   String? _isDefault;
@@ -192,7 +192,7 @@ class Currency {
   int? get id => _id;
   String? get currencyCode => _currencyCode;
   String? get currencySymbol => _currencySymbol;
-  String? get currencyFullName => _currencyFullName;
+  String? get currencyFullname => _currencyFullname;
   String? get currencyType => _currencyType;
   String? get rate => _rate;
   String? get isDefault => _isDefault;
@@ -205,7 +205,7 @@ class Currency {
     map['id'] = _id;
     map['currency_code'] = _currencyCode;
     map['currency_symbol'] = _currencySymbol;
-    map['currency_FullName'] = _currencyFullName;
+    map['currency_fullname'] = _currencyFullname;
     map['currency_type'] = _currencyType;
     map['rate'] = _rate;
     map['is_default'] = _isDefault;

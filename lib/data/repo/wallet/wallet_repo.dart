@@ -12,7 +12,10 @@ class WalletRepo{
 
     String url = "${UrlContainer.baseUrl}${UrlContainer.walletsEndPoint}";
 
+    print(url);
+
     ResponseModel responseModel = await apiClient.request(url, Method.getMethod, null, passHeader: true);
+    print(responseModel.responseJson);
     return responseModel;
   }
 }
