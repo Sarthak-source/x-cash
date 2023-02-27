@@ -10,7 +10,9 @@ import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/money_discharge/make_payment/check_merchant_response_model.dart';
 import 'package:xcash_app/data/model/money_discharge/make_payment/make_payment_response_model.dart';
 import 'package:xcash_app/data/repo/money_discharge/make_payment/make_payment_repo.dart';
+import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
+import 'package:xcash_app/view/screens/money_discharge/make_payment/widget/make_payment_bottom_sheet.dart';
 
 class MakePaymentController extends GetxController{
 
@@ -171,6 +173,24 @@ class MakePaymentController extends GetxController{
     }
     else{
       CustomSnackBar.error(errorList: [responseModel.message]);
+    }
+  }
+
+  void checkValidation(BuildContext context){
+    if(merchantController.text.isEmpty){
+      CustomSnackBar.error(errorList: [MyStrings.merchantUsernameEmailHint.tr]);
+      return ;
+    }
+    else if(walletsMethod?.id.toString() == "-1"){
+      CustomSnackBar.error(errorList: [MyStrings.selectAWallet.tr]);
+      return ;
+    }
+    else if(amountController.text.isEmpty){
+      CustomSnackBar.error(errorList: [MyStrings.merchantUsernameEmailHint.tr]);
+      return ;
+    }
+    else{
+      CustomBottomSheet(child: const MakePaymentBottomSheet()).customBottomSheet(context);
     }
   }
 }

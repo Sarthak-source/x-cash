@@ -6,8 +6,10 @@ import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
+import 'package:xcash_app/core/utils/url_container.dart';
 import 'package:xcash_app/data/controller/home/home_controller.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
+import 'package:xcash_app/view/components/circle_image_button.dart';
 import 'package:xcash_app/view/screens/bottom_nav_section/home/widget/balance_bottom_sheet.dart';
 
 class TopSection extends StatefulWidget {
@@ -33,15 +35,15 @@ class _TopSectionState extends State<TopSection> {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                GestureDetector(
-                  onTap: () => Get.toNamed(RouteHelper.profileScreen),
-                  child: Container(
-                    height: 40, width: 40,
-                    decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(image: AssetImage(MyImages.profile), fit: BoxFit.fill)
-                    ),
-                  ),
+                CircleImageWidget(
+                  height:40,
+                  width:40,
+                  isProfile:true,
+                  isAsset: false,
+                  imagePath: '${UrlContainer.domainUrl}/assets/images/user/profile/${controller.imagePath}',
+                  press: (){
+                    Get.toNamed(RouteHelper.profileScreen);
+                  }
                 ),
                 const SizedBox(width: Dimensions.space10),
                 Column(

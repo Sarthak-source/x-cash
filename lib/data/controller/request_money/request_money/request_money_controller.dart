@@ -9,7 +9,9 @@ import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/request_money/request_money/request_money_response_model.dart';
 import 'package:xcash_app/data/model/transfer/check_user_response_model.dart';
 import 'package:xcash_app/data/repo/request_money/request_money_repo.dart';
+import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
+import 'package:xcash_app/view/screens/request-money/request_money/widget/request_money_bottom_sheet.dart';
 
 class RequestMoneyController extends GetxController{
 
@@ -130,7 +132,7 @@ class RequestMoneyController extends GetxController{
       totalCharge = cap;
     }*/
     charge = '${Converter.twoDecimalPlaceFixedWithoutRounding('$totalCharge')} $currency';
-    double payable = totalCharge + amount;
+    double payable = amount - totalCharge;
     payableText = '${Converter.twoDecimalPlaceFixedWithoutRounding(payable.toString())} $currency';
     update();
   }
@@ -160,6 +162,24 @@ class RequestMoneyController extends GetxController{
     }
     else{
       CustomSnackBar.error(errorList: [responseModel.message]);
+    }
+  }
+
+  void checkValidation(BuildContext context) {
+    if(selectedWallet?.id.toString() == "-1"){
+      CustomSnackBar.error(errorList: [MyStrings.selectAWallet]);
+      return ;
+    }
+    else if(amountController.text.isEmpty){
+      CustomSnackBar.error(errorList: [MyStrings.enterAmountMsg]);
+      return ;
+    }
+    else if(requestToController.text.isEmpty){
+      CustomSnackBar.error(errorList: [MyStrings.enterEmailOrUserName]);
+      return ;
+    }
+    else{
+      CustomBottomSheet(child: const RequestMoneyBottomSheet()).customBottomSheet(context);
     }
   }
 }

@@ -7,6 +7,7 @@ import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/money_discharge/make_payment/make_payment_controller.dart';
 import 'package:xcash_app/data/model/money_discharge/make_payment/make_payment_response_model.dart';
+import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_bar.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
@@ -28,13 +29,10 @@ class MakePaymentForm extends StatefulWidget {
 
 class _MakePaymentFormState extends State<MakePaymentForm> {
 
-  final formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     return GetBuilder<MakePaymentController>(
       builder: (controller) => Form(
-        key: formKey,
         child: controller.isLoading ? const CustomLoader() : Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -70,23 +68,10 @@ class _MakePaymentFormState extends State<MakePaymentForm> {
                   press: () => CustomBottomSheet(
                       child: Column(
                         children: [
-                          Align(
-                            alignment: Alignment.center,
-                            child: Container(
-                              height: 5,
-                              width: 50,
-                              padding: const EdgeInsets.all(1),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(8),
-                                color: MyColor.colorGrey.withOpacity(0.1),
-                              ),
-                            ),
-                          ),
+                          const BottomSheetBar(),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,
-                            children: const [
-                              BottomSheetCloseButton()
-                            ],
+                            children: const [BottomSheetCloseButton()],
                           ),
                           const SizedBox(height: Dimensions.space15),
                           ListView.builder(
@@ -154,18 +139,7 @@ class _MakePaymentFormState extends State<MakePaymentForm> {
                   press: () => CustomBottomSheet(
                           child: Column(
                             children: [
-                              Align(
-                                alignment: Alignment.center,
-                                child: Container(
-                                  height: 5,
-                                  width: 50,
-                                  padding: const EdgeInsets.all(1),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    color: MyColor.colorGrey.withOpacity(0.1),
-                                  ),
-                                ),
-                              ),
+                             const BottomSheetBar(),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: const [
@@ -213,16 +187,7 @@ class _MakePaymentFormState extends State<MakePaymentForm> {
             const SizedBox(height: Dimensions.space20),
 
             RoundedButton(
-              press: (){
-                if(controller.merchantController.text.toString().isEmpty){
-                  CustomSnackBar.error(errorList: [MyStrings.fieldErrorMsg.tr]);
-                }
-                else{
-                  CustomBottomSheet(
-                    child: const MakePaymentBottomSheet()
-                  ).customBottomSheet(context);
-                }
-              },
+              press: () => controller.checkValidation(context),
               text: MyStrings.makePayment,
             )
           ],

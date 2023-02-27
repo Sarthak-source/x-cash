@@ -6,6 +6,7 @@ import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/voucher/create_voucher_controller.dart';
+import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_bar.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
@@ -40,18 +41,7 @@ class _CreateVoucherFormState extends State<CreateVoucherForm> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Align(
-                      alignment: Alignment.topCenter,
-                      child: Container(
-                        height: 5,
-                        width: 50,
-                        padding: const EdgeInsets.all(1),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: MyColor.colorGrey.withOpacity(0.1),
-                        ),
-                      ),
-                    ),
+                    const BottomSheetBar(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: const [BottomSheetCloseButton()],
@@ -129,18 +119,7 @@ class _CreateVoucherFormState extends State<CreateVoucherForm> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Align(
-                      alignment: Alignment.topCenter,
-                      child: Container(
-                        height: 5,
-                        width: 50,
-                        padding: const EdgeInsets.all(1),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: MyColor.colorGrey.withOpacity(0.1),
-                        ),
-                      ),
-                    ),
+                    const BottomSheetBar(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: const [BottomSheetCloseButton()],
@@ -185,18 +164,7 @@ class _CreateVoucherFormState extends State<CreateVoucherForm> {
 
           RoundedButton(
             press: (){
-              if(controller.selectedWallet?.id.toString() == "-1"){
-                CustomSnackBar.error(errorList: [MyStrings.selectAWallet.toTitleCase()]);
-                return ;
-              }
-              if(controller.amountController.text.isEmpty){
-                CustomSnackBar.error(errorList: [MyStrings.enterAmountMsg.toTitleCase()]);
-                return ;
-              }
-
-              CustomBottomSheet(
-                  child: const CreateVoucherBottomSheet()
-              ).customBottomSheet(context);
+              controller.checkValidation(context);
             },
             text: MyStrings.createVoucher,
           )

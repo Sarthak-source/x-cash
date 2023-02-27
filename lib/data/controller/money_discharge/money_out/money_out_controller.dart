@@ -10,7 +10,9 @@ import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/money_discharge/money_out/check_agent_response_model.dart';
 import 'package:xcash_app/data/model/money_discharge/money_out/money_out_response_model.dart';
 import 'package:xcash_app/data/repo/money_discharge/money_out/money_out_repo.dart';
+import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
+import 'package:xcash_app/view/screens/money_discharge/money_out/widget/money_out_bottom_sheet.dart';
 
 class MoneyOutController extends GetxController{
 
@@ -48,7 +50,7 @@ class MoneyOutController extends GetxController{
     update();
   }
 
-  loadData(String? userType) async{
+  loadData(String userType) async{
     isLoading = true;
     update();
 
@@ -57,7 +59,7 @@ class MoneyOutController extends GetxController{
     walletList.clear();
     otpTypeList.clear();
     amountController.text = "";
-    agentController.text = userType ?? "";
+    agentController.text = userType;
 
     selectedWallet = Wallets(id: -1, currencyCode: MyStrings.selectAWallet);
     walletList.insert(0, selectedWallet!);
@@ -167,6 +169,24 @@ class MoneyOutController extends GetxController{
     }
     else{
       CustomSnackBar.error(errorList: [responseModel.message]);
+    }
+  }
+
+  void checkValidation(BuildContext context){
+    if(agentController.text.isEmpty){
+      CustomSnackBar.error(errorList: [MyStrings.agentUsernameHint.tr]);
+      return ;
+    }
+    else if(selectedWallet?.id.toString() == "-1"){
+      CustomSnackBar.error(errorList: [MyStrings.selectAWallet.tr]);
+      return ;
+    }
+    else if(amountController.text.isEmpty){
+      CustomSnackBar.error(errorList: [MyStrings.enterAmountMsg.tr]);
+      return ;
+    }
+    else{
+      CustomBottomSheet(child: const MoneyOutBottomSheet()).customBottomSheet(context);
     }
   }
 }

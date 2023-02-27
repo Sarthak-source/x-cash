@@ -10,7 +10,9 @@ import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/transfer/check_user_response_model.dart';
 import 'package:xcash_app/data/model/transfer/transfer_money_response_model.dart' as tm_model;
 import 'package:xcash_app/data/repo/transfer/transfer_money_repo.dart';
+import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
+import 'package:xcash_app/view/screens/transfer/widget/transfer_money_bottom_sheet.dart';
 
 class TransferMoneyController extends GetxController{
 
@@ -56,10 +58,11 @@ class TransferMoneyController extends GetxController{
     walletList.clear();
     otpTypeList.clear();
     amountController.text = "";
+    receiverController.text = "";
 
-    double number = double.tryParse(walletId)??-1;
+    double number = double.tryParse(walletId) ?? -1;
 
-    if(number==-1){
+    if(number == -1){
       receiverController.text = walletId;
       walletId = '';
     }
@@ -159,9 +162,9 @@ class TransferMoneyController extends GetxController{
     double fixedCharge = temCharge / rate;
     double totalCharge = percentCharge + fixedCharge;
     double cap = double.tryParse(model.data?.transferCharge?.cap ?? "0") ?? 0;
-    /*if(cap != 1 && totalCharge > cap){
+    if(cap != 1 && totalCharge > cap){
       totalCharge = cap;
-    }*/
+    }
     charge = '${Converter.twoDecimalPlaceFixedWithoutRounding('$totalCharge')} $currency';
 
     double payable = totalCharge + amount;
@@ -195,6 +198,21 @@ class TransferMoneyController extends GetxController{
     }
     else{
       CustomSnackBar.error(errorList: [responseModel.message]);
+    }
+  }
+
+  void checkValidation(BuildContext context){
+    if(selectedWallet?.id.toString() == "-1"){
+      CustomSnackBar.error(errorList: [MyStrings.selectAWallet.tr]);
+    }
+    else if(receiverController.text.isEmpty){
+      CustomSnackBar.error(errorList: [MyStrings.receiverUsernameHint.tr]);
+    }
+    else if(amountController.text.isEmpty){
+      CustomSnackBar.error(errorList: [MyStrings.enterAmountMsg.tr]);
+    }
+    else{
+      CustomBottomSheet(child: const TransferMoneyBottomSheet()).customBottomSheet(context);
     }
   }
 }

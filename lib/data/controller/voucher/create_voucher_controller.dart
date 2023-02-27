@@ -9,7 +9,9 @@ import 'package:xcash_app/data/model/authorization/authorization_response_model.
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/voucher/create_voucher_response_model.dart';
 import 'package:xcash_app/data/repo/voucher/create_voucher_repo.dart';
+import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
+import 'package:xcash_app/view/screens/voucher/create_voucher/widget/create_voucher_bottom_sheet.dart';
 
 class CreateVoucherController extends GetxController{
 
@@ -144,5 +146,21 @@ class CreateVoucherController extends GetxController{
     double payable = totalCharge + amount;
     payableText = '$payable $currency';
     update();
+  }
+
+  void checkValidation(BuildContext context) {
+    if(selectedWallet?.id.toString() == "-1"){
+      CustomSnackBar.error(errorList: [MyStrings.selectAWallet]);
+      return ;
+    }
+    if(amountController.text.isEmpty){
+      CustomSnackBar.error(errorList: [MyStrings.enterAmountMsg]);
+      return ;
+    }
+    else{
+      CustomBottomSheet(
+          child: const CreateVoucherBottomSheet()
+      ).customBottomSheet(context);
+    }
   }
 }
