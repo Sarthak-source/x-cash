@@ -71,7 +71,7 @@ class _ProfileTopSectionState extends State<ProfileTopSection> {
             const SizedBox(height: Dimensions.space25),
             Row(
               children: [
-                const CircleShapeImage(image: MyImages.name),
+                const CircleShapeImage(imageColor: MyColor.primaryColor, image: MyImages.name),
                 const SizedBox(width: Dimensions.space15),
                 CardColumn(
                     header: MyStrings.name,
@@ -82,7 +82,7 @@ class _ProfileTopSectionState extends State<ProfileTopSection> {
             const CustomDivider(space: Dimensions.space15),
             Row(
               children: [
-                const CircleShapeImage(image: MyImages.email),
+                const CircleShapeImage(imageColor: MyColor.primaryColor,image: MyImages.email),
                 const SizedBox(width: Dimensions.space15),
                 CardColumn(
                     header: MyStrings.email,
@@ -93,7 +93,7 @@ class _ProfileTopSectionState extends State<ProfileTopSection> {
             const CustomDivider(space: Dimensions.space15),
             Row(
               children: [
-                const CircleShapeImage(image: MyImages.phone),
+                const CircleShapeImage(imageColor: MyColor.primaryColor,image: MyImages.phone),
                 const SizedBox(width: Dimensions.space15),
                 CardColumn(
                     header: MyStrings.phone,
@@ -104,7 +104,7 @@ class _ProfileTopSectionState extends State<ProfileTopSection> {
             const CustomDivider(space: Dimensions.space15),
             Row(
               children: [
-                const CircleShapeImage(image: MyImages.address),
+                const CircleShapeImage(imageColor: MyColor.primaryColor,image: MyImages.address),
                 const SizedBox(width: Dimensions.space15),
                 CardColumn(
                     header: MyStrings.address,
@@ -115,7 +115,7 @@ class _ProfileTopSectionState extends State<ProfileTopSection> {
             const CustomDivider(space: Dimensions.space15),
             Row(
               children: [
-                const CircleShapeImage(image: MyImages.state),
+                const CircleShapeImage(imageColor: MyColor.primaryColor,image: MyImages.state),
                 const SizedBox(width: Dimensions.space15),
                 CardColumn(
                     header: MyStrings.state,
@@ -126,7 +126,7 @@ class _ProfileTopSectionState extends State<ProfileTopSection> {
             const CustomDivider(space: Dimensions.space15),
             Row(
               children: [
-                const CircleShapeImage(image: MyImages.zipCode),
+                const CircleShapeImage(imageColor: MyColor.primaryColor,image: MyImages.zipCode),
                 const SizedBox(width: Dimensions.space15),
                 CardColumn(
                     header: MyStrings.zipCode,
@@ -137,7 +137,7 @@ class _ProfileTopSectionState extends State<ProfileTopSection> {
             const CustomDivider(space: Dimensions.space15),
             Row(
               children: [
-                const CircleShapeImage(image: MyImages.city),
+                const CircleShapeImage(imageColor: MyColor.primaryColor,image: MyImages.city),
                 const SizedBox(width: Dimensions.space15),
                 CardColumn(
                     header: MyStrings.city,
@@ -148,7 +148,7 @@ class _ProfileTopSectionState extends State<ProfileTopSection> {
             const CustomDivider(space: Dimensions.space15),
             Row(
               children: [
-                const CircleShapeImage(image: MyImages.country),
+                const CircleShapeImage(imageColor: MyColor.primaryColor,image: MyImages.country),
                 const SizedBox(width: Dimensions.space15),
                 CardColumn(
                     header: MyStrings.country,
