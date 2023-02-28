@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
+import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/repo/opt_repo/opt_repo.dart';
@@ -10,6 +12,7 @@ import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
+import 'package:xcash_app/view/components/image/circle_shape_image.dart';
 import 'package:xcash_app/view/screens/otp/widget/otp_timer.dart';
 
 import '../../../data/controller/otp_controller/otp_controller.dart';
@@ -55,106 +58,139 @@ class _OtpScreenState extends State<OtpScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: MyColor.getScreenBgColor(),
+        backgroundColor: MyColor.colorWhite,
         appBar: CustomAppBar(
           fromAuth: false,
-          title: MyStrings.otpVerify.tr,
+          title: "",
           isShowBackBtn: true,
           isShowActionBtn: false,
           bgColor: MyColor.getAppBarColor()
         ),
         body: GetBuilder<OtpController>(
           builder: (controller) => SingleChildScrollView(
-              padding: Dimensions.screenPaddingHV,
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const SizedBox(height: Dimensions.space30),
-                    Visibility(
-                      visible: !controller.isOtpExpired,
-                      child: OtpTimer(
-                        duration: controller.time,
-                        onTimeComplete: (){
-                          controller.makeOtpExpired(true);
-                        }
+            child: Column(
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  padding: const EdgeInsets.all(Dimensions.space35),
+                  alignment: Alignment.center,
+                  decoration: const BoxDecoration(
+                    color: MyColor.primaryColor
+                  ),
+                  child: Column(
+                    children: [
+                      CircleShapeImage(
+                        image: MyImages.otpScreenImage,
+                        size: 80,
+                        backgroundColor: MyColor.colorWhite.withOpacity(0.6),
                       ),
-                    ),
-                    const SizedBox(height: Dimensions.space30),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: Dimensions.space30),
-                      child: PinCodeTextField(
-                        appContext: context,
-                        pastedTextStyle: regularDefault.copyWith(color: MyColor.getPrimaryColor()),
-                        length: 6,
-                        textStyle: regularLarge.copyWith(color: MyColor.getPrimaryColor()),
-                        obscuringCharacter: '*',
-                        animationType: AnimationType.fade,
-                        pinTheme: PinTheme(
-                            shape: PinCodeFieldShape.box,
-                            borderWidth: 1,
-                            borderRadius: BorderRadius.circular(5),
-                            inactiveColor:  MyColor.getTextFieldDisableBorder(),
-                            inactiveFillColor: MyColor.getScreenBgColor(),
-                            activeFillColor: MyColor.getScreenBgColor(),
-                            activeColor: MyColor.getPrimaryColor(),
-                            selectedFillColor: MyColor.getScreenBgColor(),
-                            selectedColor: MyColor.getPrimaryColor()
-                        ),
-                        cursorColor: MyColor.getTextColor(),
-                        animationDuration:
-                        const Duration(milliseconds: 100),
-                        enableActiveFill: true,
-                        keyboardType: TextInputType.number,
-                        beforeTextPaste: (text) {
-                          return true;
-                        },
-                        onChanged: (value) {
-                          controller.currentText = value;
-                        },
-                      ),
-                    ),
-                    const SizedBox(height: Dimensions.space20),
-                    controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
-                      text: MyStrings.verify.tr,
-                      press: (){
-                        controller.verifyEmail(controller.currentText);
-                      },
-                    ),
-                    const SizedBox(height: Dimensions.space30),
-                    controller.isOtpExpired ? Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(MyStrings.otpHasBeenExpired.tr, style: regularDefault.copyWith(color: MyColor.labelTextColor)),
-                        const SizedBox(width: Dimensions.space15),
-                        controller.resendLoading?
-                        Container(margin:const EdgeInsets.only(left: 5,top: 5),height:20,width:20,child: const CircularProgressIndicator(color: MyColor.primaryColor)):
-                        GestureDetector(
-                          onTap: (){
-                            controller.sendCodeAgain();
-                          },
-                          child: Text(MyStrings.resend.tr, style: regularDefault.copyWith(color: MyColor.primaryColor,decoration: TextDecoration.underline)),
-                        )
-                      ],
-                    ) : Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(MyStrings.didNotReceiveCode.tr, style: regularDefault.copyWith(color: MyColor.getLabelTextColor())),
-                        const SizedBox(width: Dimensions.space10),
-                        controller.resendLoading?
-                        Container(margin:const EdgeInsets.only(left: 5,top: 5),height:20,width:20,child: CircularProgressIndicator(color: MyColor.getPrimaryColor())):
-                        GestureDetector(
-                          onTap: (){
-                            controller.sendCodeAgain();
-                          },
-                          child: Text(MyStrings.resend.tr, style: regularDefault.copyWith(color: MyColor.getPrimaryColor(),decoration: TextDecoration.underline)),
-                        )
-                      ],
-                    )
-                  ],
+                      const SizedBox(height: Dimensions.space15),
+                      Text(MyStrings.enterYourOTPCode.toTitleCase().tr, maxLines: 2, textAlign: TextAlign.center, style: regularMediumLarge.copyWith(color: MyColor.colorWhite)),
+                    ],
+                  ),
                 ),
-              )
+                Container(
+                    alignment: Alignment.center,
+                    width: MediaQuery.of(context).size.width,
+                    padding: const EdgeInsets.symmetric(vertical: Dimensions.space50, horizontal: Dimensions.space15),
+                    decoration: const BoxDecoration(
+                        color: MyColor.colorWhite,
+                        borderRadius: BorderRadius.only(topLeft: Radius.circular(50))
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(MyStrings.sixDigitOtpMsg.tr, maxLines: 2, textAlign: TextAlign.center, style: regularLarge.copyWith(color: MyColor.labelTextColor)),
+                        const SizedBox(height: Dimensions.space15),
+                        Visibility(
+                          visible: !controller.isOtpExpired,
+                          child: OtpTimer(
+                              duration: controller.time,
+                              onTimeComplete: (){
+                                controller.makeOtpExpired(true);
+                              }
+                          ),
+                        ),
+                        const SizedBox(height: Dimensions.space30),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: Dimensions.space15),
+                          child: PinCodeTextField(
+                            appContext: context,
+                            pastedTextStyle: regularDefault.copyWith(color: MyColor.getPrimaryColor()),
+                            length: 6,
+                            textStyle: regularLarge.copyWith(color: MyColor.getPrimaryColor()),
+                            obscuringCharacter: '*',
+                            animationType: AnimationType.fade,
+                            pinTheme: PinTheme(
+                                shape: PinCodeFieldShape.box,
+                                borderWidth: 1,
+                                borderRadius: BorderRadius.circular(5),
+                                inactiveColor:  MyColor.getTextFieldDisableBorder(),
+                                inactiveFillColor: MyColor.getScreenBgColor(),
+                                activeFillColor: MyColor.getScreenBgColor(),
+                                activeColor: MyColor.getPrimaryColor(),
+                                selectedFillColor: MyColor.getScreenBgColor(),
+                                selectedColor: MyColor.getPrimaryColor()
+                            ),
+                            cursorColor: MyColor.getTextColor(),
+                            animationDuration:
+                            const Duration(milliseconds: 100),
+                            enableActiveFill: true,
+                            keyboardType: TextInputType.number,
+                            beforeTextPaste: (text) {
+                              return true;
+                            },
+                            onChanged: (value) {
+                              controller.currentText = value;
+                              if(value.length == 6){
+                                controller.verifyEmail(value);
+                              }
+                            },
+                          ),
+                        ),
+                        const SizedBox(height: Dimensions.space15),
+                        controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
+                          text: MyStrings.verify.tr,
+                          press: (){
+                            controller.verifyEmail(controller.currentText);
+                          },
+                        ),
+                        const SizedBox(height: Dimensions.space30),
+                        controller.isOtpExpired ? Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(MyStrings.otpHasBeenExpired.tr, style: regularDefault.copyWith(color: MyColor.labelTextColor)),
+                            const SizedBox(width: Dimensions.space15),
+                            controller.resendLoading?
+                            Container(margin:const EdgeInsets.only(left: 5,top: 5),height:20,width:20,child: const CircularProgressIndicator(color: MyColor.primaryColor)):
+                            GestureDetector(
+                              onTap: (){
+                                controller.sendCodeAgain();
+                              },
+                              child: Text(MyStrings.resend.tr, style: regularDefault.copyWith(color: MyColor.primaryColor,decoration: TextDecoration.underline)),
+                            )
+                          ],
+                        ) : Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(MyStrings.didNotReceiveCode.tr, style: regularDefault.copyWith(color: MyColor.getLabelTextColor())),
+                            const SizedBox(width: Dimensions.space10),
+                            controller.resendLoading?
+                            Container(margin:const EdgeInsets.only(left: 5,top: 5),height:20,width:20,child: CircularProgressIndicator(color: MyColor.getPrimaryColor())):
+                            GestureDetector(
+                              onTap: (){
+                                controller.sendCodeAgain();
+                              },
+                              child: Text(MyStrings.resend.tr, style: regularDefault.copyWith(color: MyColor.getPrimaryColor(),decoration: TextDecoration.underline)),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  )
+              ],
+            ),
           ),
         )
       ),

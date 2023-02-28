@@ -57,9 +57,7 @@ class _OtpTimerState extends State<OtpTimer> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(MyStrings.sixDigitOtpMsg.tr, maxLines: 2, textAlign: TextAlign.center,style: regularLarge.copyWith(color: MyColor.labelTextColor)),
-        const SizedBox(height: Dimensions.space20),
-        isTimeEnd?const Text(''):Text(MyStrings.otpExpiredMsg.tr, maxLines: 2, textAlign: TextAlign.center,style: regularDefault.copyWith(color: MyColor.labelTextColor)),
+        isTimeEnd ? const Text(''):Text(MyStrings.otpExpiredMsg.tr, maxLines: 2, textAlign: TextAlign.center,style: regularDefault.copyWith(color: MyColor.labelTextColor)),
         const SizedBox(height: Dimensions.space20),
         SizedBox(
           height: 100,
@@ -69,9 +67,9 @@ class _OtpTimerState extends State<OtpTimer> {
             children: [
               CircularProgressIndicator(
                 value: _counter/widget.duration,
-                backgroundColor: MyColor.colorWhite,
+                backgroundColor: MyColor.colorRed.withOpacity(0.3),
                 strokeWidth: 8,
-                valueColor: AlwaysStoppedAnimation(_counter == 0 ? MyColor.colorRed : MyColor.primaryColor),
+                valueColor: const AlwaysStoppedAnimation(MyColor.primaryColor),
               ),
               Center(
                 child: Text('${_counter.toString()}\n${MyStrings.sec}',textAlign:TextAlign.center,style: semiBoldLarge.copyWith(color: Colors.black)),

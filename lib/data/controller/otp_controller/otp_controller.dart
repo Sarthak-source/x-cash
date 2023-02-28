@@ -25,7 +25,7 @@ class OtpController extends GetxController {
   void makeOtpExpired(bool status){
     isOtpExpired = status;
     if(status==false){
-      time = 300;
+      time = 180;
     } else{
       time = 0;
     }
@@ -71,6 +71,7 @@ class OtpController extends GetxController {
   Future<void> sendCodeAgain() async {
     resendLoading = true;
     update();
+
     ResponseModel response = await repo.resendVerifyCode(actionId);
       if (response.statusCode == 200) {
       AuthorizationResponseModel model = AuthorizationResponseModel.fromJson(jsonDecode(response.responseJson));
