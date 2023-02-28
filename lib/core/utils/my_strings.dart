@@ -100,10 +100,9 @@ class MyStrings{
   static const String kycAlreadyVerifiedMsg = 'You are already verified';
 
   // otp-screen
-  static const String otpVerify = "OTP Verification";
+  static const String otpVerify = "OTP";
   static const String enterOtpSent = "Enter the otp sent to ";
   static const String verify = "Verify";
-  static const String donotReceiveCode = "Don't receive code ?";
   static const String requestAgain = "Request again";
 
   // home-screen
@@ -224,6 +223,7 @@ class MyStrings{
   static const String redeemVoucher = "Redeem Voucher";
   static const String voucherCode = "Voucher Code";
   static const String enterVoucherCode = "Enter voucher code";
+  static const String enterYourOTPCode = "Enter Your OTP Code";
   static const String errorMsgVoucherCode = "Please enter voucher code";
   static const String redeem = "Redeem";
 

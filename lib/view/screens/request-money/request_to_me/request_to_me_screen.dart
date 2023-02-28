@@ -64,11 +64,11 @@ class _RequestToMeScreenState extends State<RequestToMeScreen> {
               Padding(
                 padding: const EdgeInsets.only(top: Dimensions.space20, left: Dimensions.space15, right: Dimensions.space15),
                 child: Container(
-                  height: 40,
+                  padding: const EdgeInsets.all(Dimensions.space8),
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                     color: MyColor.colorWhite,
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(30),
                   ),
                   child: Row(
                     children: [
@@ -88,7 +88,7 @@ class _RequestToMeScreenState extends State<RequestToMeScreen> {
               ),
               const SizedBox(height: Dimensions.space20),
               Expanded(
-                child: controller.isLoading ? const CustomLoader() : controller.myRequestList.isEmpty ? const NoDataWidget() : SizedBox(
+                child: controller.isLoading ? const CustomLoader() : controller.myRequestList.isEmpty ? const Center(child: NoDataWidget()) : SizedBox(
                     height: MediaQuery.of(context).size.height,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: Dimensions.space15),

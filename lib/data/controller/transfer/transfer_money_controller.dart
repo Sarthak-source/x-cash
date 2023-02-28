@@ -176,29 +176,30 @@ class TransferMoneyController extends GetxController{
   bool hasAgent = false;
   String validUser = "";
   String invalidUser = "";
-  bool? isAgentFound;
+  bool? isUserFound;
   Future<void> checkUserFocus(bool hasFocus) async{
     hasAgent = hasFocus;
-    update();
 
     String user = receiverController.text;
     ResponseModel responseModel = await transferMoneyRepo.checkUser(user: user);
     if(responseModel.statusCode == 200){
       CheckUserResponseModel model = CheckUserResponseModel.fromJson(jsonDecode(responseModel.responseJson));
       if(model.status.toString().toLowerCase() == "success"){
-        isAgentFound = true;
+        isUserFound = true;
         validUser = MyStrings.validUserMsg.tr;
-        update();
+        CustomSnackBar.success(successList: [validUser]);
       }
       else{
-        isAgentFound = false;
+        isUserFound = false;
         invalidUser = Converter.removeQuotationAndSpecialCharacterFromString(model.message?.error.toString().tr ?? MyStrings.invalidUserMsg.tr);
-        update();
+        CustomSnackBar.error(errorList: [invalidUser]);
       }
     }
     else{
       CustomSnackBar.error(errorList: [responseModel.message]);
     }
+
+    update();
   }
 
   void checkValidation(BuildContext context){

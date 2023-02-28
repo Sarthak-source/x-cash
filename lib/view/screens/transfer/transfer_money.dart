@@ -122,28 +122,7 @@ class _TransferMoneyState extends State<TransferMoney> {
                   "${MyStrings.totalCharge.tr}: ${controller.charge}",
                   style: regularExtraSmall.copyWith(color: MyColor.primaryColor),
                 ),
-                const SizedBox(height: Dimensions.space20),
-                Focus(
-                  onFocusChange: (hasFocus){
-                    if(!hasFocus){
-                      controller.checkUserFocus(hasFocus);
-                    }
-                  },
-                  child: CustomTextField(
-                      needOutlineBorder: true,
-                      controller: controller.receiverController,
-                      labelText: MyStrings.receiverUsernameEmail.tr,
-                      hintText: MyStrings.receiverUsernameHint.tr,
-                      onChanged: (value){}
-                  ),
-                ),
-                const SizedBox(height: Dimensions.space5),
-                TextFieldPersonValidityWidget(
-                    isVisible: controller.isAgentFound,
-                    validMsg: controller.validUser,
-                    invalidMsg: controller.invalidUser
-                ),
-                const SizedBox(height: Dimensions.space20),
+                const SizedBox(height: Dimensions.space15),
                 CustomAmountTextField(
                   labelText: MyStrings.amount.tr,
                   hintText: MyStrings.amountHint.tr,
@@ -163,7 +142,31 @@ class _TransferMoneyState extends State<TransferMoney> {
                     "${MyStrings.limit.tr}: ${controller.minLimit} - ${controller.maxLimit} ${controller.currency}",
                     style: regularExtraSmall.copyWith(color: MyColor.primaryColor)
                 ),
-                const SizedBox(height: Dimensions.space20),
+                const SizedBox(height: Dimensions.space15),
+                FocusScope(
+                  child: Focus(
+                    onFocusChange: (hasFocus){
+                      if(!hasFocus){
+                        controller.checkUserFocus(hasFocus);
+                      }
+                    },
+                    child: CustomTextField(
+                        needOutlineBorder: true,
+                        controller: controller.receiverController,
+                        labelText: MyStrings.receiverUsernameEmail.tr,
+                        hintText: MyStrings.receiverUsernameHint.tr,
+                        onChanged: (value){},
+                    ),
+                  ),
+                ),
+                const SizedBox(height: Dimensions.space5),
+                TextFieldPersonValidityWidget(
+                    isVisible: controller.isUserFound,
+                    validMsg: controller.validUser,
+                    invalidMsg: controller.invalidUser
+                ),
+                const SizedBox(height: Dimensions.space15),
+
                 const LabelText(text: MyStrings.selectOtp),
                 const SizedBox(height: Dimensions.textToTextSpace),
                 FilterRowWidget(

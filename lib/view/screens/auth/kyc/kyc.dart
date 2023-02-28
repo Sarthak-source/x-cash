@@ -55,124 +55,103 @@ class _KycScreenState extends State<KycScreen> {
               body: SizedBox(
                   height: MediaQuery.of(context).size.height,
                   width: MediaQuery.of(context).size.width,
-                  child: controller.isLoading?const Padding(padding:EdgeInsets.all(Dimensions.space15),child:CustomLoader()):controller.isAlreadyVerified?const AlreadyVerifiedWidget():controller.isAlreadyPending?const AlreadyVerifiedWidget(isPending: true,):controller.isNoDataFound? const NoDataOrInternetScreen():Center(
+                  child: controller.isLoading ? const Padding(padding:EdgeInsets.all(Dimensions.space15),child:CustomLoader()):controller.isAlreadyVerified?const AlreadyVerifiedWidget():controller.isAlreadyPending?const AlreadyVerifiedWidget(isPending: true,):controller.isNoDataFound? const NoDataOrInternetScreen():Center(
                     child: SingleChildScrollView(
-                      child: Container(
-                        padding:  const EdgeInsets.all(10),
-                        margin: const EdgeInsets.all(15),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: MyColor.colorWhite,
-                            boxShadow: [
-                              BoxShadow(
-                                color: MyColor.getTextFieldDisableBorder().withOpacity(0.3),
-                                spreadRadius: 1,
-                                blurRadius: 1,
-                                offset: const Offset(0, 1), // changes position of shadow
+                      padding: Dimensions.screenPaddingHV,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ListView.builder(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              scrollDirection: Axis.vertical,
+                              itemCount: controller.formList.length,
+                              itemBuilder: (ctx,index){
+                                FormModel? model=controller.formList[index];
+                                return Padding(
+                                  padding: const EdgeInsets.all(5),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      model.type=='text'?Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          CustomTextField(
+                                              hintText: (model.name??'').toString().capitalizeFirst,
+                                              needOutlineBorder: true,
+                                              labelText: model.name??'',
+                                              onChanged: (value){
+                                                controller.changeSelectedValue(value, index);
+                                              }),
+                                          const SizedBox(height: Dimensions.space10),
+                                        ],
+                                      ):model.type=='textarea'?Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          CustomTextField(
+                                              needOutlineBorder: true,
+                                              labelText: model.name??'',
+                                              hintText: (model.name??'').capitalizeFirst,
+                                              onChanged: (value){
+                                                controller.changeSelectedValue(value, index);
+                                              }),
+                                          const SizedBox(height: Dimensions.space10),
+                                        ],
+                                      ):model.type=='select'?Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          FormRow(label: model.name??'', isRequired: model.isRequired=='optional'?false:true),
+                                          const SizedBox(height: Dimensions.textToTextSpace,),
+                                          CustomDropDownWithTextField(list: model.options??[],onChanged: (value){
+                                            controller.changeSelectedValue(value,index);
+                                          },selectedValue: model.selectedValue),
+                                          const SizedBox(height: Dimensions.space10)
+                                        ],
+                                      ):model.type=='radio'?Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          FormRow(label: model.name??'', isRequired: model.isRequired=='optional'?false:true),
+                                          CustomRadioButton(title:model.name,selectedIndex:controller.formList[index].options?.indexOf(model.selectedValue??'')??0,list: model.options??[],onChanged: (selectedIndex){
+                                            controller.changeSelectedRadioBtnValue(index,selectedIndex);
+                                          },),
+                                        ],
+                                      ):model.type=='checkbox'?Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          FormRow(label: model.name??'', isRequired: model.isRequired=='optional'?false:true),
+                                          CustomCheckBox(selectedValue:controller.formList[index].cbSelected,list: model.options??[],onChanged: (value){
+                                            controller.changeSelectedCheckBoxValue(index,value);
+                                          },),
+                                        ],
+                                      ):model.type=='file'?Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          FormRow(label: model.name??'', isRequired: model.isRequired=='optional'?false:true),
+                                          Padding(
+                                              padding: const EdgeInsets.symmetric(vertical: Dimensions.textToTextSpace),
+                                              child: ConfirmWithdrawFileItem(
+                                                  index:index
+                                              )
+                                          )
+                                        ],
+                                      ):const SizedBox(),
+                                      const SizedBox(height: Dimensions.space10),
+                                    ],
+                                  ),
+                                );
+                              }
+                          ),
+                          const SizedBox(height: Dimensions.space25),
+                          Center(
+                              child: controller.submitLoading? const RoundedLoadingBtn(): RoundedButton(
+                              press: () {
+                                controller.submitKycData();
+                              },
+                              text: MyStrings.submit,
                               ),
-                            ]
-                        ),
-
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(
-                              height: 35,
-                            ),
-
-                            ListView.builder(
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                scrollDirection: Axis.vertical,
-                                itemCount: controller.formList.length,
-                                itemBuilder: (ctx,index){
-                                  FormModel? model=controller.formList[index];
-                                  return Padding(
-                                    padding: const EdgeInsets.all(5),
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        model.type=='text'?Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            CustomTextField(
-                                                animatedLabel: true,
-                                                hintText: (model.name??'').toString().capitalizeFirst,
-                                                needOutlineBorder: true,
-                                                labelText: model.name??'',
-                                                onChanged: (value){
-                                                  controller.changeSelectedValue(value, index);
-                                                }),
-                                            const SizedBox(height: 10,),
-                                          ],
-                                        ):model.type=='textarea'?Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            CustomTextField(
-                                                animatedLabel: true,
-                                                needOutlineBorder: true,
-                                                labelText: model.name??'',
-                                                hintText: (model.name??'').capitalizeFirst,
-                                                onChanged: (value){
-                                                  controller.changeSelectedValue(value, index);
-                                                }),
-                                            const SizedBox(height: 10,),
-                                          ],
-                                        ):model.type=='select'?Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            FormRow(label: model.name??'', isRequired: model.isRequired=='optional'?false:true),
-                                            const SizedBox(height: Dimensions.textToTextSpace,),
-                                            CustomDropDownWithTextField(list: model.options??[],onChanged: (value){
-                                              controller.changeSelectedValue(value,index);
-                                            },selectedValue: model.selectedValue,),
-                                          ],
-                                        ):model.type=='radio'?Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            FormRow(label: model.name??'', isRequired: model.isRequired=='optional'?false:true),
-                                            CustomRadioButton(title:model.name,selectedIndex:controller.formList[index].options?.indexOf(model.selectedValue??'')??0,list: model.options??[],onChanged: (selectedIndex){
-                                              controller.changeSelectedRadioBtnValue(index,selectedIndex);
-                                            },),
-                                          ],
-                                        ):model.type=='checkbox'?Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            FormRow(label: model.name??'', isRequired: model.isRequired=='optional'?false:true),
-                                            CustomCheckBox(selectedValue:controller.formList[index].cbSelected,list: model.options??[],onChanged: (value){
-                                              controller.changeSelectedCheckBoxValue(index,value);
-                                            },),
-                                          ],
-                                        ):model.type=='file'?Column(
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                            FormRow(label: model.name??'', isRequired: model.isRequired=='optional'?false:true),
-                                            Padding(
-                                                padding: const EdgeInsets.symmetric(vertical: Dimensions.textToTextSpace),
-                                                child: ConfirmWithdrawFileItem(
-                                                    index:index
-                                                )
-                                            )
-                                          ],
-                                        ):const SizedBox(),
-                                        const SizedBox(height: 5,),
-                                      ],
-                                    ),
-                                  );
-                                }
-                            ),
-                            const SizedBox(height: 30,),
-                            Center(
-                                child: controller.submitLoading? const RoundedLoadingBtn(): RoundedButton(
-                                press: () {
-                                  controller.submitKycData();
-                                },
-                                text: MyStrings.submit,
-                                ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   )

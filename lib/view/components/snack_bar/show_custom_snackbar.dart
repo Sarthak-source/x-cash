@@ -23,22 +23,9 @@ class CustomSnackBar{
     Get.rawSnackbar(
       progressIndicatorBackgroundColor: MyColor.transparentColor,
       progressIndicatorValueColor: const AlwaysStoppedAnimation<Color>(Colors.transparent),
-      messageText: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: Dimensions.space8),
-          Text(message,style: regularLarge.copyWith(color: MyColor.colorWhite)),
-        ],
-      ),
+      messageText: Text(message,style: regularLarge.copyWith(color: MyColor.colorWhite)),
       dismissDirection: DismissDirection.horizontal,
       snackPosition: SnackPosition.BOTTOM,
-      titleText: Row(
-        children: [
-          SvgPicture.asset(MyImages.errorImage, height: 20, width: 20,color: MyColor.colorWhite,),
-          const SizedBox(width: Dimensions.space15),
-          Text(MyStrings.error.tr.capitalizeFirst??'',style: semiBoldDefault.copyWith(color: MyColor.colorWhite)),
-        ],
-      ),
       backgroundColor: MyColor.colorRed,
       borderRadius: 4,
       margin: const EdgeInsets.all(Dimensions.space8),
@@ -71,22 +58,9 @@ class CustomSnackBar{
     Get.rawSnackbar(
       progressIndicatorBackgroundColor: MyColor.colorGreen,
       progressIndicatorValueColor: const AlwaysStoppedAnimation<Color>(MyColor.transparentColor),
-      messageText: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: Dimensions.space8),
-          Text(message, style: regularLarge.copyWith(color: MyColor.colorWhite)),
-        ],
-      ),
+      messageText: Text(message, style: regularLarge.copyWith(color: MyColor.colorWhite)),
       dismissDirection: DismissDirection.horizontal,
       snackPosition: SnackPosition.BOTTOM,
-      titleText: Row(
-        children: [
-          Image.asset(MyImages.successImage, height: 20, width: 20, color: MyColor.colorWhite,),
-          const SizedBox(width: Dimensions.space15),
-          Text(MyStrings.success.tr,style: semiBoldDefault.copyWith(color: MyColor.colorWhite)),
-        ],
-      ),
       backgroundColor: MyColor.colorGreen,
       borderRadius: 4,
       margin: const EdgeInsets.all(Dimensions.space8),

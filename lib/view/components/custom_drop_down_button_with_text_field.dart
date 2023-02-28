@@ -37,9 +37,9 @@ class _CustomDropDownWithTextFieldState extends State<CustomDropDownWithTextFiel
         Container(
           height:45,
           decoration: BoxDecoration(
-              color: MyColor.colorWhite,
+              color: MyColor.transparentColor,
               borderRadius: const BorderRadius.all(Radius.circular(5)),
-              border: Border.all(color: MyColor.screenBgColor)
+              border: Border.all(color: MyColor.textFieldDisableBorderColor)
           ),
           child: Padding(
             padding: const EdgeInsets.only(

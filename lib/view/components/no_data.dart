@@ -19,7 +19,7 @@ class NoDataWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Lottie.asset(MyImages.noData, height: 150, width: 150),
+          Image.asset(MyImages.noDataFound, height: 120, width: 120),
           const SizedBox(height: Dimensions.space3),
           Text(
             MyStrings.noDataFound,

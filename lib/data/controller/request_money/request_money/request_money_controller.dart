@@ -31,6 +31,8 @@ class RequestMoneyController extends GetxController{
   TextEditingController requestToController = TextEditingController();
   TextEditingController noteController = TextEditingController();
 
+  final FocusNode amountFocusNode = FocusNode();
+
   List<Wallets> walletList = [];
 
   setWalletMethod(Wallets? wallets){
