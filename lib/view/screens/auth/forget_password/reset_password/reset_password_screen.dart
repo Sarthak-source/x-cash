@@ -71,10 +71,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                       HeaderText(text: MyStrings.resetPassword.tr),
                       const SizedBox(height: Dimensions.space15),
                       DefaultText(text: MyStrings.resetPassContent.tr, textStyle: regularDefault.copyWith(color: MyColor.getTextColor().withOpacity(0.8))),
-                      const SizedBox(height: Dimensions.space20),
-                      Visibility(
-                          visible: controller.hasPasswordFocus && controller.checkPasswordStrength,
-                          child: ValidationWidget(list: controller.passwordValidationRules, heightBottom: 15)),
+                      const SizedBox(height: Dimensions.space15),
                       Focus(
                         onFocusChange: (hasFocus){
                           controller.changePasswordFocus(hasFocus);
@@ -82,26 +79,29 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                         child: CustomTextField(
                             animatedLabel: true,
                             needOutlineBorder: true,
-                            labelText: MyStrings.password.tr,
                             focusNode: controller.passwordFocusNode,
                             nextFocus: controller.confirmPasswordFocusNode,
-                            hintText: MyStrings.passwordHint.tr,
+                            labelText: MyStrings.password,
                             isShowSuffixIcon: true,
                             isPassword: true,
                             textInputType: TextInputType.text,
                             controller: controller.passController,
                             validator: (value) {
-                              return controller.validatePassword(value ?? '');
+                              return controller.validatePassword(value);
                             },
                             onChanged: (value) {
                               if(controller.checkPasswordStrength){
                                 controller.updateValidationList(value);
                               }
-                             return;
+                              return;
                             }
                         ),
                       ),
-                      const SizedBox(height: Dimensions.space25),
+                      Visibility(
+                          visible: controller.hasPasswordFocus && controller.checkPasswordStrength,
+                          child: ValidationWidget(list: controller.passwordValidationRules, fromReset: true,)
+                      ),
+                      const SizedBox(height: Dimensions.space15),
                       CustomTextField(
                           animatedLabel: true,
                           needOutlineBorder: true,

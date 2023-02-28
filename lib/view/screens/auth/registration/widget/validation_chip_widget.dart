@@ -24,7 +24,7 @@ class ChipWidget extends StatelessWidget {
       children: [
         Chip(
           avatar: Icon(hasError?Icons.cancel:Icons.check_circle,color: hasError?Colors.red:Colors.green,size: 15,),
-
+          shape: StadiumBorder(side: BorderSide(color: hasError?Colors.red:Colors.green,width: 1)),
           label: Text(
             name.tr,
             style: regularSmall.copyWith(
