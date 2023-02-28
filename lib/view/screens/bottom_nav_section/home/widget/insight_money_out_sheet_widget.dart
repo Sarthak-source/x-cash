@@ -71,25 +71,6 @@ class _InsightMoneyOutSheetWidgetState extends State<InsightMoneyOutSheetWidget>
             ),
           ),
         ),
-        const CustomDivider(space: Dimensions.space5),
-        GestureDetector(
-          onTap: () => Get.toNamed(RouteHelper.transactionHistoryScreen, arguments: "Minus"),
-          child: Container(
-            width: MediaQuery.of(context).size.width,
-            padding: const EdgeInsets.symmetric(vertical: Dimensions.space12, horizontal: Dimensions.space15),
-            decoration: BoxDecoration(color: MyColor.transparentColor, borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
-            child: Row(
-              children: [
-                const CircleShapeImage(
-                  image: MyImages.viewTransaction,
-                  imageColor: MyColor.colorBlack,
-                ),
-                const SizedBox(width: Dimensions.space12),
-                Text(MyStrings.viewTransactions.tr, style: regularDefault.copyWith(color: MyColor.colorBlack))
-              ],
-            ),
-          ),
-        ),
       ],
     );
   }

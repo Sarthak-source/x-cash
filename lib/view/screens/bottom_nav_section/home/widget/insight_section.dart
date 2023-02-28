@@ -49,7 +49,7 @@ class InsightSection extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        const CircleShapeImage(image: MyImages.inMoney),
+                        const CircleShapeImage(image: MyImages.inMoney, imageColor: MyColor.primaryColor),
                         const SizedBox(width: Dimensions.space8),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,7 +84,7 @@ class InsightSection extends StatelessWidget {
                   children: [
                     Row(
                       children: [
-                        const CircleShapeImage(image: MyImages.outMoney),
+                        const CircleShapeImage(image: MyImages.outMoney, imageColor: MyColor.primaryColor),
                         const SizedBox(width: Dimensions.space8),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,

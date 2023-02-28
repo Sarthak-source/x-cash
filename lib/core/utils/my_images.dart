@@ -65,6 +65,7 @@ class MyImages{
   static const String errorImage = "assets/images/Error.svg";
   static const String successImage = "assets/images/success_icon.png";
   static const String otpImage = "assets/images/otp.png";
+  static const String otpScreenImage = "assets/images/otp_image.png";
 
   static const String usDollar = "assets/icons/coins/dollar.png";
   static const String bdTaka = "assets/icons/coins/taka.png";
@@ -79,9 +80,10 @@ class MyImages{
 
   static const String noInternet = "assets/animation/no_internet.json";
   static const String noData = "assets/animation/no-data.json";
+  static const String noDataFound = "assets/images/no_data.png";
 
-  static const String outMoney = "assets/images/out.png";
-  static const String inMoney = "assets/images/in.png";
+  static const String outMoney = "assets/images/money_out.png";
+  static const String inMoney = "assets/images/money_in.png";
   static const String dots = "assets/images/dots.png";
 
   static const String totalReceive = "assets/images/total_receive.png";
