@@ -187,12 +187,10 @@ class TransferMoneyController extends GetxController{
       if(model.status.toString().toLowerCase() == "success"){
         isUserFound = true;
         validUser = MyStrings.validUserMsg.tr;
-        CustomSnackBar.success(successList: [validUser]);
       }
       else{
         isUserFound = false;
         invalidUser = Converter.removeQuotationAndSpecialCharacterFromString(model.message?.error.toString().tr ?? MyStrings.invalidUserMsg.tr);
-        CustomSnackBar.error(errorList: [invalidUser]);
       }
     }
     else{

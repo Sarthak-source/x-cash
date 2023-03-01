@@ -366,7 +366,7 @@ class MyStrings{
   static const String emailVerification = "Email Verification";
   static const String viaEmailVerify = "Please check your email to get a six digit OTP\nOTP will be expired in the next";
   static const String didNotReceiveCode = "Didn't receive code?";
-  static const String resend = "Resend";
+  static const String resend = "Resend Code in";
   static const String smsVerification = "Sms Verification";
   static const String profileComplete = "Profile Complete";
   static const String enterYour = "Enter your";

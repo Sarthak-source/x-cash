@@ -20,15 +20,17 @@ class OtpController extends GetxController {
   String actionId = '';
   String nextRoute = '';
 
-  bool isOtpExpired = false;
-  int time = 180;
-  void makeOtpExpired(bool status){
-    isOtpExpired = status;
-    if(status==false){
-      time = 180;
-    } else{
+  int time = 60;
+  void makeOtpExpired(bool isOtpExpired){
+
+    if(isOtpExpired){
+      time = 60;
+    }
+    else{
       time = 0;
     }
+    sendCodeAgain();
+
     update();
   }
 
@@ -69,8 +71,6 @@ class OtpController extends GetxController {
 
 
   Future<void> sendCodeAgain() async {
-    resendLoading = true;
-    update();
 
     ResponseModel response = await repo.resendVerifyCode(actionId);
       if (response.statusCode == 200) {
@@ -84,8 +84,5 @@ class OtpController extends GetxController {
     } else {
         CustomSnackBar.success(successList:  [response.message]);
     }
-    resendLoading = false;
-    update();
   }
-
 }
