@@ -6,15 +6,11 @@ import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
-import 'package:xcash_app/data/controller/home/home_controller.dart';
 import 'package:xcash_app/data/controller/qr_code/qr_code_controller.dart';
-import 'package:xcash_app/data/repo/home/home_repo.dart';
 import 'package:xcash_app/data/repo/qr_code/qr_code_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/action_button_icon_widget.dart';
-import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
-import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 
 class MyQrCodeScreen extends StatefulWidget {

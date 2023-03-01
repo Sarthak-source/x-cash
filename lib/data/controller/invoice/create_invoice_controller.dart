@@ -41,6 +41,7 @@ class CreateInvoiceController extends GetxController{
 
   void decreaseNumberField(int index){
     invoiceItemList.removeAt(index);
+    calculateInvoiceAmount();
     update();
   }
 
@@ -59,7 +60,6 @@ class CreateInvoiceController extends GetxController{
 
     totalInvoiceAmount = '${Converter.twoDecimalPlaceFixedWithoutRounding(totalAmount.toString())} ${selectedCurrency?.currencyCode??''}';
     update();
-
   }
 
 
