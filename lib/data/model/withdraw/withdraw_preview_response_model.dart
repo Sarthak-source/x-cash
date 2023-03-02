@@ -46,20 +46,26 @@ class WithdrawPreviewResponseModel {
 class Data {
   Data({
       List<String>? otpType, 
-      Withdraw? withdraw,}){
+      Withdraw? withdraw,
+      String? remainingBalance,
+  }){
     _otpType = otpType;
     _withdraw = withdraw;
+    _remainingBalance = remainingBalance;
 }
 
   Data.fromJson(dynamic json) {
     _otpType = json['otp_type'] != null ? json['otp_type'].cast<String>() : [];
     _withdraw = json['withdraw'] != null ? Withdraw.fromJson(json['withdraw']) : null;
+    _remainingBalance = json['remaining_balance'] != null ? json['remaining_balance'].toString() : "";
   }
   List<String>? _otpType;
   Withdraw? _withdraw;
+  String? _remainingBalance;
 
   List<String>? get otpType => _otpType;
   Withdraw? get withdraw => _withdraw;
+  String? get remainingBalance => _remainingBalance;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -67,6 +73,7 @@ class Data {
     if (_withdraw != null) {
       map['withdraw'] = _withdraw?.toJson();
     }
+    map['remaining_balance'] = map['method_id'] = _remainingBalance;
     return map;
   }
 

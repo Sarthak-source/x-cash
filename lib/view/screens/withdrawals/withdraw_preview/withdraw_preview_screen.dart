@@ -131,7 +131,7 @@ class _WithdrawPreviewScreenState extends State<WithdrawPreviewScreen> {
                             style: regularDefault.copyWith(color: MyColor.getTextColor().withOpacity(0.6)),
                           ),
                           Text(
-                            "$requestedAmount ${controller.currency}",
+                            "${controller.remainingBalance} ${controller.currency}",
                             style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600),
                           )
                         ],

@@ -8,7 +8,6 @@ import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/buttons/circle_animated_button_with_text.dart';
-import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/screens/voucher/redeem_voucher/redeem_voucher.dart';
 
 class MainItemHistory extends StatelessWidget {
@@ -23,9 +22,16 @@ class MainItemHistory extends StatelessWidget {
           padding: const EdgeInsets.only(left: Dimensions.space15, bottom: Dimensions.space15, right: Dimensions.space15),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              Text(MyStrings.history, style: semiBoldDefault),
-              CustomDivider(space: 0)
+            children: [
+              Text(MyStrings.history, style: regularDefault.copyWith(fontWeight: FontWeight.w500)),
+              const SizedBox(width: Dimensions.space10),
+              Expanded(
+                child: Container(
+                  height: 1,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(color: MyColor.colorGrey.withOpacity(0.2)),
+                ),
+              )
             ],
           ),
         ),

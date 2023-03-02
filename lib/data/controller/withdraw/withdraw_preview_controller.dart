@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 import 'package:get/get.dart';
+import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/authorization/authorization_response_model.dart';
@@ -21,6 +22,7 @@ class WithdrawPreviewController extends GetxController{
   String youWillGet = "";
   String balanceWillBe = "";
   String selectedOtp = "";
+  String remainingBalance = "";
 
   String currency = "";
 
@@ -48,6 +50,7 @@ class WithdrawPreviewController extends GetxController{
         currency = model.data?.withdraw?.currency ?? "";
         withdrawCharge = model.data?.withdraw?.charge ?? "";
         youWillGet = model.data?.withdraw?.finalAmount ?? "";
+        remainingBalance = model.data?.remainingBalance ?? "";
 
         List<String>? tempOtpList = model.data?.otpType;
         if(tempOtpList != null || tempOtpList!.isNotEmpty){
