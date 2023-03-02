@@ -73,4 +73,8 @@ class MyImages{
   static const String myRequest = "assets/images/my_request.png";
   static const String withdrawHistory = "assets/images/withdraw_history.png";
   static const String redeemVoucher = "assets/images/redeem_voucher.png";
+
+
+  static const String arrowDown = "assets/images/down_arrow.png";
+  static const String arrowUp = "assets/images/arrow_up.png";
 }

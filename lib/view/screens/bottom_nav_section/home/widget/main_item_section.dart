@@ -119,10 +119,10 @@ class MainItemSection extends StatelessWidget {
                 child: Container(
                   width: 30,
                   alignment: Alignment.center,
-                  child: Icon(
-                    controller.isVisibleItem ? Icons.arrow_drop_up : Icons.arrow_drop_down,
+                  child: Image.asset(
+                    controller.isVisibleItem ? MyImages.arrowUp : MyImages.arrowDown,
                     color: controller.isVisibleItem ? MyColor.colorGrey.withOpacity(0.3) : MyColor.primaryColor,
-                    size: 20
+                    height: 20, width: 20,
                   ),
                 ),
               )
