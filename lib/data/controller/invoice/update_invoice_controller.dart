@@ -38,6 +38,7 @@ class UpdateInvoiceController extends GetxController{
 
   void decreaseNumberField(int index){
     invoiceItemList.removeAt(index);
+    calculateInvoiceAmount();
     update();
   }
 
@@ -63,6 +64,7 @@ class UpdateInvoiceController extends GetxController{
       invoiceToController.text = model.data?.invoice?.invoiceTo ?? "";
       emailController.text = model.data?.invoice?.email ?? "";
       addressController.text = model.data?.invoice?.address ?? "";
+      totalInvoiceAmount = Converter.twoDecimalPlaceFixedWithoutRounding(model.data?.invoice?.totalAmount ?? "");
 
       if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
         List<Currencies>? tempCurrencyList = model.data?.currencies;
@@ -210,5 +212,22 @@ class UpdateInvoiceController extends GetxController{
           : paymentStatus == "1" ? MyColor.colorGreen : MyColor.transparentColor;
       return color;
     }
+  }
+
+  String  totalInvoiceAmount = '';
+  void calculateInvoiceAmount(){
+
+    double totalAmount = 0;
+
+    double firstInvoiceAmount = double.tryParse(invoiceAmountController.text.toString())??0;
+    totalAmount = totalAmount + firstInvoiceAmount ;
+
+    for (var invoice in invoiceItemList) {
+      double  invoiceAmount = double.tryParse(invoice.amountController.text)??0;
+      totalAmount = totalAmount + invoiceAmount;
+    }
+
+    totalInvoiceAmount = Converter.twoDecimalPlaceFixedWithoutRounding(totalAmount.toString());
+    update();
   }
 }

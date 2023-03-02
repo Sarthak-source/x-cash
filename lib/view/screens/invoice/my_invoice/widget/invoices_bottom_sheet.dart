@@ -167,7 +167,7 @@ class InvoicesBottomSheet{
                       child: InVoiceActionButton(
                         press: () => Get.toNamed(
                             RouteHelper.updateInvoiceScreen,
-                            arguments: [controller.invoiceList[index].invoiceNum, controller.invoiceList[index].currencyId]
+                            arguments: [controller.invoiceList[index].invoiceNum, controller.invoiceList[index].currencyId, controller.invoiceList[index].totalAmount]
                         ),
                         text: MyStrings.edit,
                         bgColor: MyColor.colorOrange,

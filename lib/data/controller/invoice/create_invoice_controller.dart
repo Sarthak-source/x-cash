@@ -10,6 +10,7 @@ import 'package:xcash_app/data/model/invoice/create_invoice_response_model.dart'
 import 'package:xcash_app/data/model/invoice/invoice_items_model.dart';
 import 'package:xcash_app/data/repo/invoice/create_invoice_repo.dart';
 import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
+import 'package:xcash_app/view/screens/invoice/create_invoice/widget/invoice_items.dart';
 
 class CreateInvoiceController extends GetxController{
 
@@ -161,5 +162,34 @@ class CreateInvoiceController extends GetxController{
 
     isSubmitLoading = false;
     update();
+  }
+
+  void checkValidation(BuildContext context) {
+
+    if(invoiceToController.text.isEmpty){
+      CustomSnackBar.error(errorList: [MyStrings.enterInvoiceTo]);
+    }
+    else if(emailController.text.isEmpty){
+      CustomSnackBar.error(errorList: [MyStrings.emailAddressHint]);
+    }
+    else if(addressController.text.isEmpty){
+      CustomSnackBar.error(errorList: [MyStrings.enterAddress]);
+    }
+    else if(selectedCurrency?.id.toString() == "-1"){
+      CustomSnackBar.error(errorList: [MyStrings.selectAWallet]);
+    }
+    else{
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => InvoiceItems(
+                invoiceTo: invoiceToController.text,
+                email: emailController.text,
+                address: addressController.text,
+                selectWallet: selectedCurrency?.currencyCode ?? "",
+              )
+          )
+      );
+    }
   }
 }

@@ -8,6 +8,7 @@ import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/invoice/invoice_history_controller.dart';
 import 'package:xcash_app/data/repo/invoice/invoice_history_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
+import 'package:xcash_app/view/components/app-bar/action_button_icon_widget.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/no_data.dart';
 import 'package:xcash_app/view/screens/invoice/my_invoice/widget/invoice_card.dart';
@@ -68,20 +69,10 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
               child: Icon(Icons.arrow_back, color: MyColor.getAppBarContentColor(), size: 20),
             ),
             actions: [
-              Padding(
-                padding: const EdgeInsets.only(right: Dimensions.space15),
-                child: GestureDetector(
-                  onTap: (){
-                    Get.toNamed(RouteHelper.createInvoiceScreen);
-                  },
-                  child: Container(
-                    height: 30, width: 30,
-                    alignment: Alignment.center,
-                    decoration: const BoxDecoration(color: MyColor.colorWhite, shape: BoxShape.circle),
-                    child: const Icon(Icons.add, color: MyColor.primaryColor, size: 15),
-                  ),
-                ),
-              )
+              ActionButtonIconWidget(
+                pressed: () => Get.toNamed(RouteHelper.createInvoiceScreen),
+                icon: Icons.add,
+              ),
             ],
           ),
           body: controller.isLoading ? const CustomLoader() : controller.invoiceList.isEmpty ? const Center(

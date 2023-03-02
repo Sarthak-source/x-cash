@@ -1,17 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/invoice/create_invoice_controller.dart';
-import 'package:xcash_app/view/components/card/custom_card.dart';
-import 'package:xcash_app/view/components/divider/custom_divider.dart';
+import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
+import 'package:xcash_app/view/components/buttons/rounded_button.dart';
+import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
 
 class InvoiceItems extends StatefulWidget {
-  const InvoiceItems({Key? key}) : super(key: key);
+  final String invoiceTo;
+  final String email;
+  final String address;
+  final String selectWallet;
+
+  const InvoiceItems({
+    Key? key,
+    required this.invoiceTo,
+    required this.email,
+    required this.address,
+    required this.selectWallet
+  }) : super(key: key);
 
   @override
   State<InvoiceItems> createState() => _InvoiceItemsState();
@@ -23,117 +35,126 @@ class _InvoiceItemsState extends State<InvoiceItems> {
   Widget build(BuildContext context) {
 
     return GetBuilder<CreateInvoiceController>(
-      builder: (controller) => CustomCard(
-        width: MediaQuery.of(context).size.width,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const BottomSheetHeaderText(text: MyStrings.invoiceItems),
-            const CustomDivider(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.end,
+      builder: (controller) => SafeArea(
+        child: Scaffold(
+          backgroundColor: MyColor.screenBgColor,
+          appBar: CustomAppBar(
+            title: MyStrings.createInvoice,
+            bgColor: MyColor.getAppBarColor(),
+          ),
+          body: SingleChildScrollView(
+            padding: Dimensions.screenPaddingHV,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  width: 120,
-                  child: CustomTextField(
-                      needOutlineBorder: true,
-                      labelText: MyStrings.itemName,
-                      controller: controller.itemController,
-                      onChanged: (value){}
-                  ),
-                ),
-                const SizedBox(width: Dimensions.space10),
-                SizedBox(
-                  width: 120,
-                  child: CustomTextField(
-                      textInputType: TextInputType.number,
-                      needOutlineBorder: true,
-                      labelText: MyStrings.amount,
-                      controller: controller.amountController,
-                      onChanged: (value){
-                        controller.calculateInvoiceAmount();
-                      }
-                  ),
-                ),
-                const SizedBox(width: Dimensions.space10),
-                Expanded(
-                  child: GestureDetector(
-                    onTap: (){
-                      controller.increaseNumberField();
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.all(Dimensions.space8),
-                      alignment: Alignment.center,
-                      decoration: const BoxDecoration(color: MyColor.colorGreen, shape: BoxShape.circle),
-                      child: const Icon(Icons.add, color: MyColor.colorWhite, size: 20),
-                    ),
-                  ),
-                )
-              ],
-            ),
-            SizedBox(height: controller.invoiceItemList.isEmpty ? 0 : Dimensions.space15),
-            ListView.separated(
-              shrinkWrap: true,
-              scrollDirection: Axis.vertical,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: controller.invoiceItemList.length,
-              separatorBuilder: (context, index) => const SizedBox(height: Dimensions.space15),
-              itemBuilder: (context, index){
-
-                return Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    SizedBox(
-                      width: 120,
+                    Expanded(
                       child: CustomTextField(
                           needOutlineBorder: true,
-                          labelText: MyStrings.itemName,
-                          controller: controller.invoiceItemList[index].itemNameController,
+                          labelText: MyStrings.itemName.tr,
+                          controller: controller.itemController,
                           onChanged: (value){}
                       ),
                     ),
                     const SizedBox(width: Dimensions.space10),
-                    SizedBox(
-                      width: 120,
+                    Expanded(
                       child: CustomTextField(
-                          needOutlineBorder: true,
-                          labelText: MyStrings.amount,
                           textInputType: TextInputType.number,
-                          controller: controller.invoiceItemList[index].amountController,
+                          needOutlineBorder: true,
+                          labelText: MyStrings.amount.tr,
+                          controller: controller.amountController,
                           onChanged: (value){
                             controller.calculateInvoiceAmount();
                           }
                       ),
                     ),
-                    const SizedBox(width: Dimensions.space10),
-                    Expanded(
-                      child: GestureDetector(
-                        onTap: (){
-                          controller.decreaseNumberField(index);
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.all(Dimensions.space8),
-                          alignment: Alignment.center,
-                          decoration: const BoxDecoration(color: MyColor.colorRed, shape: BoxShape.circle),
-                          child: const Icon(Icons.clear, color: MyColor.colorWhite, size: 20),
-                        ),
-                      ),
-                    )
                   ],
-                );
-              },
+                ),
+                SizedBox(height: controller.invoiceItemList.isEmpty ? 0 : Dimensions.space15),
+                ListView.separated(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: controller.invoiceItemList.length,
+                  separatorBuilder: (context, index) => const SizedBox(height: Dimensions.space15),
+                  itemBuilder: (context, index){
+
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: CustomTextField(
+                              needOutlineBorder: true,
+                              labelText: MyStrings.itemName,
+                              controller: controller.invoiceItemList[index].itemNameController,
+                              onChanged: (value){}
+                          ),
+                        ),
+                        const SizedBox(width: Dimensions.space10),
+                        Expanded(
+                          child: CustomTextField(
+                              needOutlineBorder: true,
+                              labelText: MyStrings.amount,
+                              textInputType: TextInputType.number,
+                              controller: controller.invoiceItemList[index].amountController,
+                              onChanged: (value){
+                                controller.calculateInvoiceAmount();
+                              }
+                          ),
+                        ),
+                        const SizedBox(width: Dimensions.space10),
+                        GestureDetector(
+                          onTap: (){
+                            controller.decreaseNumberField(index);
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.all(Dimensions.space5),
+                            margin: const EdgeInsets.only(top: Dimensions.space20),
+                            alignment: Alignment.center,
+                            decoration: const BoxDecoration(color: MyColor.colorOrange, shape: BoxShape.circle),
+                            child: const Icon(Icons.clear, color: MyColor.colorWhite, size: 15),
+                          ),
+                        )
+                      ],
+                    );
+                  },
+                ),
+                const SizedBox(height: Dimensions.space20),
+                GestureDetector(
+                  onTap: () => controller.increaseNumberField(),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.add, color: MyColor.primaryColor, size: 20),
+                      const SizedBox(width: Dimensions.space10),
+                      Text(MyStrings.addItems.tr, style: regularDefault.copyWith(color: MyColor.primaryColor))
+                    ],
+                  ),
+                ),
+                const SizedBox(height: Dimensions.space20),
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  padding: const EdgeInsets.symmetric(vertical: Dimensions.space12, horizontal: Dimensions.space15),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: MyColor.colorGrey.withOpacity(0.2), width: 0.5),
+                    borderRadius: BorderRadius.circular(Dimensions.defaultRadius)
+                  ),
+                  child: Text(
+                    "${MyStrings.totalAmount.tr}: ${controller.totalInvoiceAmount}",
+                    style: regularDefault,
+                  ),
+                ),
+                const SizedBox(height: Dimensions.space20),
+                controller.isSubmitLoading ? const RoundedLoadingBtn() : RoundedButton(
+                    text: MyStrings.createInvoice.tr,
+                    press: () => controller.submitInvoice()
+                )
+              ],
             ),
-            const SizedBox(height: Dimensions.space15),
-            Align(
-              alignment: Alignment.centerRight,
-              child: Text(
-                controller.selectedCurrency?.currencyCode == MyStrings.selectOne ? " " : "${MyStrings.totalAmount}: ${controller.totalInvoiceAmount}",
-                style: regularDefault,
-              ),
-            )
-          ],
+          ),
         ),
       ),
     );

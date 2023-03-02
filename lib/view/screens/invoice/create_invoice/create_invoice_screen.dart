@@ -7,11 +7,8 @@ import 'package:xcash_app/data/controller/invoice/create_invoice_controller.dart
 import 'package:xcash_app/data/repo/invoice/create_invoice_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
-import 'package:xcash_app/view/components/buttons/rounded_button.dart';
-import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/screens/invoice/create_invoice/widget/invoice_details.dart';
-import 'package:xcash_app/view/screens/invoice/create_invoice/widget/invoice_items.dart';
 
 class CreateInvoiceScreen extends StatefulWidget {
   const CreateInvoiceScreen({Key? key}) : super(key: key);
@@ -44,26 +41,12 @@ class _CreateInvoiceScreenState extends State<CreateInvoiceScreen> {
             title: MyStrings.createInvoice,
             bgColor: MyColor.getAppBarColor(),
           ),
-          body: controller.isLoading ? const CustomLoader() : SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(vertical: Dimensions.space20, horizontal: Dimensions.space15),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const InvoiceDetails(),
-                const SizedBox(height: Dimensions.space20),
-                controller.selectedCurrency?.currencyCode == MyStrings.selectOne ? const SizedBox() : const InvoiceItems(),
-                const SizedBox(height: Dimensions.space25),
-                controller.isSubmitLoading ? const RoundedLoadingBtn() : RoundedButton(
-                  press: (){
-                    controller.submitInvoice();
-                  },
-                  text: MyStrings.createInvoice,
-                )
-              ],
+          body: controller.isLoading ? const CustomLoader() : const SingleChildScrollView(
+            padding: EdgeInsets.symmetric(vertical: Dimensions.space20, horizontal: Dimensions.space15),
+            child: InvoiceDetails()
             ),
           ),
         ),
-      ),
     );
   }
 }

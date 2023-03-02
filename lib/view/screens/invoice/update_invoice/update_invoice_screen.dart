@@ -54,6 +54,7 @@ class _UpdateInvoiceScreenState extends State<UpdateInvoiceScreen> {
         child: Scaffold(
             backgroundColor: MyColor.getScreenBgColor(),
             appBar: AppBar(
+              titleSpacing: 0,
               elevation: 0,
               title: Text(MyStrings.updateInvoice, style: regularDefault.copyWith(color: MyColor.getAppBarContentColor())),
               leading: IconButton(

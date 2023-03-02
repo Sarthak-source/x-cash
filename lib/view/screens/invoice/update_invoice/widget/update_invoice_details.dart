@@ -35,8 +35,14 @@ class _UpdateInvoiceDetailsState extends State<UpdateInvoiceDetails> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<UpdateInvoiceController>(
-       builder: (controller) => CustomCard(
+       builder: (controller) => Container(
          width: MediaQuery.of(context).size.width,
+         decoration: BoxDecoration(
+             color: MyColor.transparentColor,
+             borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
+             border: Border.all(color: MyColor.colorGrey.withOpacity(0.2), width: 0.5)
+         ),
+         padding: const EdgeInsets.all(Dimensions.space15),
          child: Column(
            crossAxisAlignment: CrossAxisAlignment.start,
            children: [

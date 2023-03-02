@@ -19,7 +19,11 @@ class InvoicePaymentUrlSection extends StatelessWidget {
       builder: (controller) => Container(
         width: MediaQuery.of(context).size.width,
         padding: const EdgeInsets.symmetric(vertical: Dimensions.space12, horizontal: Dimensions.space15),
-        decoration: BoxDecoration(color: MyColor.getCardBgColor(), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
+        decoration: BoxDecoration(
+            color: MyColor.transparentColor,
+            borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
+            border: Border.all(color: MyColor.colorGrey.withOpacity(0.2), width: 0.5)
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
