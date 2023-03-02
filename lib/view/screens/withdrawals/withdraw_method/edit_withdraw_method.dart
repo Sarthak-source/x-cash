@@ -86,7 +86,6 @@ class _EditWithdrawMethodState extends State<EditWithdrawMethod> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 CustomTextField(
-                                    animatedLabel: true,
                                     controller:TextEditingController(text:model.selectedValue),
                                     needOutlineBorder: true,
                                     labelText: model.name?.tr ??'',
@@ -99,7 +98,6 @@ class _EditWithdrawMethodState extends State<EditWithdrawMethod> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 CustomTextField(
-                                    animatedLabel: true,
                                     controller:TextEditingController(text:model.selectedValue),
                                     needOutlineBorder: true,
                                     labelText: model.name?.tr ??'',

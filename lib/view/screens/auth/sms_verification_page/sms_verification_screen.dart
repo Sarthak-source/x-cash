@@ -142,7 +142,7 @@ class _SmsVerificationScreenState extends State<SmsVerificationScreen> {
                               controller.sendCodeAgain();
                             },
                             child: Text(
-                                MyStrings.resend.tr,
+                                MyStrings.resendCode.tr,
                                 style: regularDefault.copyWith(decoration: TextDecoration.underline, color: MyColor.getPrimaryColor())
                             )
                         ),

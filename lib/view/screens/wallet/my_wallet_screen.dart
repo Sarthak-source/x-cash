@@ -77,6 +77,7 @@ class _MyWalletScreenState extends State<MyWalletScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     CircleShapeImage(
+                      imageColor: MyColor.primaryColor,
                       image: controller.image,
                     ),
                     const SizedBox(height: Dimensions.space10),

@@ -155,7 +155,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                             onTap: (){
                               controller.sendCodeAgain();
                             },
-                            child: Text(MyStrings.resend.tr, style: regularDefault.copyWith(color: MyColor.getPrimaryColor(),decoration: TextDecoration.underline)),
+                            child: Text(MyStrings.resendCode.tr, style: regularDefault.copyWith(color: MyColor.getPrimaryColor(),decoration: TextDecoration.underline)),
                           )
                         ],
                       )

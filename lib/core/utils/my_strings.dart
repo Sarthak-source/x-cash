@@ -641,4 +641,6 @@ class MyStrings{
   ];
 
   static const String sendCode = "Send Code";
+
+  static const String agreePolicyMessage = "You must agree with our privacy & policies";
 }

@@ -132,9 +132,6 @@ class _PersonalAccountFormState extends State<PersonalAccountForm> {
                     ],
                   )
               ),
-              Visibility(
-                  visible: controller.hasPasswordFocus && controller.checkPasswordStrength,
-                  child: ValidationWidget(list: controller.passwordValidationRules,)),
               Focus(
                   onFocusChange: (hasFocus){
                     controller.changePasswordFocus(hasFocus);
@@ -158,6 +155,11 @@ class _PersonalAccountFormState extends State<PersonalAccountForm> {
                       return controller.validatePassword(value ?? '');
                     },
                   )),
+              const SizedBox(height: Dimensions.textToTextSpace),
+              Visibility(
+                  visible: controller.hasPasswordFocus && controller.checkPasswordStrength,
+                  child: ValidationWidget(list: controller.passwordValidationRules,)
+              ),
               const SizedBox(height: Dimensions.space20),
               CustomTextField(
                 animatedLabel: true,

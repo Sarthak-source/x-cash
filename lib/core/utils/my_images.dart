@@ -2,7 +2,6 @@ class MyImages{
 
   static const String appLogo = "assets/images/app_logo.png";
   static const String addMoney = "assets/images/add_money.svg";
-  static const String createVoucher = "assets/images/create_voucher.svg";
   static const String exchange = "assets/images/exchange.svg";
   static const String moneyOut = "assets/images/interest-rate.svg";
   static const String makePayment = "assets/images/make_payment.svg";
@@ -11,6 +10,7 @@ class MyImages{
   static const String menuAddMoney = "assets/images/menu_add_money.svg";
   static const String menuAddMoneyHistory = "assets/images/menu_add_money_history.svg";
   static const String menuInvoice = "assets/images/menu_invoice.svg";
+  static const String invoice = "assets/images/invoice.png";
   static const String menuMakePayment = "assets/images/menu_make_payment.svg";
   static const String menuRedeemVoucher = "assets/images/menu_redeem_voucher.svg";
   static const String menuRedeemLog = "assets/images/menu_redeem_log.png";
@@ -25,7 +25,7 @@ class MyImages{
   static const String menuRequestToMe1 = "assets/images/request_to_me.png";
   static const String transaction = "assets/images/transaction.svg";
   static const String transfer = "assets/images/transfer.svg";
-  static const String voucher = "assets/images/voucher.svg";
+  static const String createVoucher = "assets/images/create_voucher.svg";
   static const String withdraw = "assets/images/withdraw.svg";
   static const String moneyWithdraw = "assets/images/money_withdraw.png";
 
@@ -95,4 +95,9 @@ class MyImages{
   static const String amount = "assets/images/amount.png";
   static const String charge = "assets/images/charge.png";
   static const String payable = "assets/images/payable.png";
+  static const String addMoneyHistory = "assets/images/add_money_history.png";
+  static const String voucher = "assets/images/voucher.png";
+  static const String myRequest = "assets/images/my_request.png";
+  static const String withdrawHistory = "assets/images/withdraw_history.png";
+  static const String redeemVoucher = "assets/images/redeem_voucher.png";
 }

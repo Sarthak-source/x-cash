@@ -10,7 +10,6 @@ import 'package:xcash_app/view/components/will_pop_widget.dart';
 import 'package:xcash_app/view/screens/bottom_nav_section/home/widget/insight_section.dart';
 import 'package:xcash_app/view/screens/bottom_nav_section/home/widget/latest_transaction_section.dart';
 import 'package:xcash_app/view/screens/bottom_nav_section/home/widget/main_item_section.dart';
-import 'package:xcash_app/view/screens/bottom_nav_section/home/widget/quick_link_section.dart';
 import 'package:xcash_app/view/screens/bottom_nav_section/home/widget/top_section.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -57,8 +56,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   SizedBox(height: Dimensions.space10),
                   MainItemSection(),
                   SizedBox(height: Dimensions.space10),
-                  /*QuickLinkSection(),
-                  SizedBox(height: Dimensions.space10),*/
                   InsightSection(),
                   SizedBox(height: Dimensions.space10),
                   LatestTransactionSection()

@@ -80,6 +80,11 @@ class RegistrationController extends GetxController {
       return;
     }
 
+    if(needAgree && !agreeTC) {
+      CustomSnackBar.error(errorList: [MyStrings.agreePolicyMessage],);
+      return;
+    }
+
     submitLoading=true;
     update();
 
