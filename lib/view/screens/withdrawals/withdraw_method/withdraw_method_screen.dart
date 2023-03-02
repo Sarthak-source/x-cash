@@ -58,6 +58,7 @@ class _WithdrawMethodScreenState extends State<WithdrawMethodScreen> {
         child: Scaffold(
           backgroundColor: MyColor.getScreenBgColor(),
           appBar: AppBar(
+            titleSpacing: 0,
             title: Text(MyStrings.withdrawMethod, style: regularDefault.copyWith(color: MyColor.getAppBarContentColor())),
             backgroundColor: MyColor.getPrimaryColor(),
             elevation: 0,

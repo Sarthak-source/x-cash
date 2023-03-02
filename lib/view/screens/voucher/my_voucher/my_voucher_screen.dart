@@ -60,6 +60,7 @@ class _MyVoucherScreenState extends State<MyVoucherScreen> {
           backgroundColor: MyColor.screenBgColor,
           appBar: AppBar(
             elevation: 0,
+            titleSpacing: 0,
             leading: IconButton(
               onPressed: () => Get.back(),
               icon: Icon(Icons.arrow_back, color: MyColor.getAppBarContentColor(), size: 20),

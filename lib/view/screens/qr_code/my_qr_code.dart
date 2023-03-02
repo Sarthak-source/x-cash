@@ -44,6 +44,7 @@ class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
             backgroundColor: MyColor.primaryColor,
             appBar: AppBar(
               elevation: 0,
+              titleSpacing: 0,
               backgroundColor: MyColor.appBarColor,
               title: Text(MyStrings.myQrCode.tr, style: regularDefault.copyWith(color: MyColor.appBarContentColor)),
               leading: IconButton(

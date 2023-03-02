@@ -59,6 +59,7 @@ class _AddMoneyScreenState extends State<AddMoneyScreen> {
             backgroundColor: MyColor.getScreenBgColor(),
             appBar: AppBar(
               elevation: 0,
+              titleSpacing: 0,
               backgroundColor: MyColor.getAppBarColor(),
               title: Text(MyStrings.addMoney.tr, style: regularDefault.copyWith(color: MyColor.getAppBarContentColor())),
               leading: IconButton(

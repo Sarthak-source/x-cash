@@ -47,6 +47,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
   Widget build(BuildContext context) {
     return widget.isShowBackBtn?AppBar(
       elevation: 0,
+      titleSpacing: 0,
       leading:widget.isShowBackBtn?IconButton(onPressed: (){
         if(widget.fromAuth){
           Get.offAllNamed(RouteHelper.loginScreen);
@@ -83,6 +84,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
         const SizedBox(width: 10,)
       ],
     ):AppBar(
+      titleSpacing: 0,
       elevation: 0,
       backgroundColor: widget.bgColor,
       title:Text(widget.title,style: regularLarge.copyWith(color: MyColor.getTextColor())),

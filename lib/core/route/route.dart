@@ -29,7 +29,6 @@ import 'package:xcash_app/view/screens/qr_code/qr_code_scanner.dart';
 import 'package:xcash_app/view/screens/request-money/request_money/request_money.dart';
 import 'package:xcash_app/view/screens/request-money/request_to_me/request_to_me_screen.dart';
 import 'package:xcash_app/view/screens/splash/splash_screen.dart';
-import 'package:xcash_app/view/screens/terms-services/terms_services_screen.dart';
 import 'package:xcash_app/view/screens/transaction/transaction_history_screen.dart';
 import 'package:xcash_app/view/screens/transfer/transfer_money.dart';
 import 'package:xcash_app/view/screens/voucher/create_voucher/create_voucher.dart';
@@ -86,7 +85,6 @@ class RouteHelper{
   static const String notificationScreen = "/notification_screen";
   static const String profileScreen = "/profile_screen";
   static const String editProfileScreen = "/edit_profile_screen";
-  static const String termsServiceScreen = "/terms_services_screen";
   static const String kycScreen = "/kyc_screen";
 
   static const String exchangeMoneyScreen = "/exchange_money_screen";
@@ -134,7 +132,6 @@ class RouteHelper{
 
     GetPage(name: profileScreen, page: () => const ProfileScreen()),
     GetPage(name: editProfileScreen, page: () => const EditProfileScreen()),
-    GetPage(name: termsServiceScreen, page: () => const TermsServicesScreen()),
     GetPage(name: transactionHistoryScreen, page: () => const TransactionHistoryScreen()),
     GetPage(name: requestToMeScreen, page: () => const RequestToMeScreen()),
 

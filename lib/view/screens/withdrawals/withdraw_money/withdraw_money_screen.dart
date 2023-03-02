@@ -12,7 +12,6 @@ import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/action_button_icon_widget.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
-import 'package:xcash_app/view/components/custom_no_data_found_class.dart';
 import 'package:xcash_app/view/components/no_data.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_money/widget/withdraw_money_bottom_sheet.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_money/widget/withdraw_money_card.dart';
@@ -57,6 +56,7 @@ class _WithdrawMoneyScreenState extends State<WithdrawMoneyScreen> {
           backgroundColor: MyColor.screenBgColor,
           appBar: AppBar(
             elevation: 0,
+            titleSpacing: 0,
             title: Text(MyStrings.withdrawMoney.tr, style: regularDefault.copyWith(color: MyColor.getAppBarContentColor())),
             backgroundColor: MyColor.getAppBarColor(),
             leading: IconButton(onPressed: () => Get.back(), icon: Icon(Icons.arrow_back, color: MyColor.getAppBarContentColor(), size: 20)),

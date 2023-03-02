@@ -61,6 +61,7 @@ class _AddMoneyHistoryScreenState extends State<AddMoneyHistoryScreen> {
           backgroundColor: MyColor.screenBgColor,
           appBar: AppBar(
             elevation: 0,
+            titleSpacing: 0,
             leading: IconButton(
               onPressed: () => Get.toNamed(RouteHelper.bottomNavBar),
               icon: Icon(Icons.arrow_back, color: MyColor.getAppBarContentColor(), size: 20),

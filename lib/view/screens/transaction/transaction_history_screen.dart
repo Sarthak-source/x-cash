@@ -67,6 +67,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
           appBar: AppBar(
             backgroundColor: MyColor.getAppBarColor(),
             elevation: 0,
+            titleSpacing: 0,
             title: Text(MyStrings.transaction.tr, style: regularLarge.copyWith(color: MyColor.getAppBarContentColor())),
             leading: IconButton(
               onPressed: () => Get.back(),

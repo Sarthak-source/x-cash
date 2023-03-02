@@ -62,6 +62,7 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
           backgroundColor: MyColor.screenBgColor,
           appBar: AppBar(
             elevation: 0,
+            titleSpacing: 0,
             backgroundColor: MyColor.getAppBarColor(),
             title: Text(MyStrings.invoices, style: regularDefault.copyWith(color: MyColor.getAppBarContentColor())),
             leading: GestureDetector(
