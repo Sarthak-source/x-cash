@@ -223,6 +223,7 @@ class MyStrings{
   static const String redeemVoucher = "Redeem Voucher";
   static const String voucherCode = "Voucher Code";
   static const String enterVoucherCode = "Enter voucher code";
+  static const String enterOtpCode = "Enter OTP Code";
   static const String enterYourOTPCode = "Enter Your OTP Code";
   static const String errorMsgVoucherCode = "Please enter voucher code";
   static const String redeem = "Redeem";
@@ -367,6 +368,7 @@ class MyStrings{
   static const String viaEmailVerify = "Please check your email to get a six digit OTP\nOTP will be expired in the next";
   static const String didNotReceiveCode = "Didn't receive code?";
   static const String resend = "Resend Code in";
+  static const String resendCode = "Resend Code";
   static const String smsVerification = "Sms Verification";
   static const String profileComplete = "Profile Complete";
   static const String enterYour = "Enter your";
