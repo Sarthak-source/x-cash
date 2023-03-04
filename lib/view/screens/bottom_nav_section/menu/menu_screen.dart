@@ -138,19 +138,27 @@ class _MenuScreenState extends State<MenuScreen> {
                           ),
                           child: Column(
                             children: [
-                              MenuItems(
-                                  imageSrc: MyImages.language,
-                                  label: MyStrings.language.tr,
-                                  onPressed: (){
-                                    final apiClient = Get.put(ApiClient(sharedPreferences: Get.find()));
-                                    SharedPreferences pref = apiClient.sharedPreferences;
-                                    String language = pref.getString(SharedPreferenceHelper.languageListKey)  ??'';
-                                    String countryCode = pref.getString(SharedPreferenceHelper.countryCode)   ??'US';
-                                    String languageCode = pref.getString(SharedPreferenceHelper.languageCode) ??'en';
-                                    Locale local = Locale(languageCode,countryCode);
-                                    showLanguageDialog(language, local, context);
-                                  }
-                              ),
+                              Visibility(
+                                  visible: menuController.langSwitchEnable,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      MenuItems(
+                                        imageSrc: MyImages.language,
+                                        label: MyStrings.language.tr,
+                                        onPressed: (){
+                                          final apiClient = Get.put(ApiClient(sharedPreferences: Get.find()));
+                                          SharedPreferences pref = apiClient.sharedPreferences;
+                                          String language = pref.getString(SharedPreferenceHelper.languageListKey)  ??'';
+                                          String countryCode = pref.getString(SharedPreferenceHelper.countryCode)   ??'US';
+                                          String languageCode = pref.getString(SharedPreferenceHelper.languageCode) ??'en';
+                                          Locale local = Locale(languageCode,countryCode);
+                                          showLanguageDialog(language, local, context);
+                                          //Get.toNamed(RouteHelper.languageScreen);
+                                        },
+                                      ),
+                                    ],
+                                  )),
                               const CustomDivider(space: Dimensions.space10),
                               MenuItems(
                                   imageSrc: MyImages.policy,

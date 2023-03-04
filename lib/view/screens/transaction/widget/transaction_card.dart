@@ -52,7 +52,7 @@ class TransactionCard extends StatelessWidget {
                         SizedBox(
                           width: 150,
                           child: Text(
-                            controller.transactionList[index].details ?? "",
+                            controller.transactionList[index].apiDetails ?? "",
                             style: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.5)),
                             overflow: TextOverflow.ellipsis,
                             maxLines: 2,

@@ -49,10 +49,8 @@ class AppMenuController extends GetxController{
     if(response.statusCode==200){
       GeneralSettingResponseModel model = GeneralSettingResponseModel.fromJson(jsonDecode(response.responseJson));
       if (model.status?.toLowerCase()==MyStrings.success.toLowerCase()) {
-        // bool langStatus = model.data?.generalSetting?.langSwitch == '0'?false:true;
-        // bool bTransferStatus  = model.data?.generalSetting?.bTransfer== '0'?false:true;
-        // langSwitchEnable = langStatus;
-        // balTransferEnable = bTransferStatus;
+        bool langStatus = model.data?.generalSetting?.enableLanguage == '0'?false:true;
+        langSwitchEnable = langStatus;
         repo.apiClient.storeGeneralSetting(model);
         update();
       }

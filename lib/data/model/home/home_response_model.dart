@@ -152,8 +152,9 @@ class LatestTrx {
       String? details, 
       String? remark, 
       String? createdAt, 
-      String? updatedAt, 
-      Currency? currency, 
+      String? updatedAt,
+      String? apiDetails,
+      Currency? currency,
       ReceiverUser? receiverUser, 
       ReceiverAgent? receiverAgent, 
       dynamic receiverMerchant,}){
@@ -175,6 +176,7 @@ class LatestTrx {
     _remark = remark;
     _createdAt = createdAt;
     _updatedAt = updatedAt;
+    _apiDetails = apiDetails;
     _currency = currency;
     _receiverUser = receiverUser;
     _receiverAgent = receiverAgent;
@@ -200,6 +202,7 @@ class LatestTrx {
     _remark = json['remark'];
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
+    _apiDetails = json['apiDetails'];
     _currency = json['currency'] != null ? Currency.fromJson(json['currency']) : null;
     _receiverUser = json['receiver_user'] != null ? ReceiverUser.fromJson(json['receiver_user']) : null;
     _receiverAgent = json['receiver_agent'] != null ? ReceiverAgent.fromJson(json['receiver_agent']) : null;
@@ -223,6 +226,7 @@ class LatestTrx {
   String? _remark;
   String? _createdAt;
   String? _updatedAt;
+  String? _apiDetails;
   Currency? _currency;
   ReceiverUser? _receiverUser;
   ReceiverAgent? _receiverAgent;
@@ -246,6 +250,7 @@ class LatestTrx {
   String? get remark => _remark;
   String? get createdAt => _createdAt;
   String? get updatedAt => _updatedAt;
+  String? get apiDetails => _apiDetails;
   Currency? get currency => _currency;
   ReceiverUser? get receiverUser => _receiverUser;
   ReceiverAgent? get receiverAgent => _receiverAgent;
@@ -271,6 +276,7 @@ class LatestTrx {
     map['remark'] = _remark;
     map['created_at'] = _createdAt;
     map['updated_at'] = _updatedAt;
+    map['apiDetails'] = _apiDetails;
     if (_currency != null) {
       map['currency'] = _currency?.toJson();
     }
