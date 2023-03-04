@@ -50,7 +50,7 @@ class WithdrawPreviewController extends GetxController{
         currency = model.data?.withdraw?.currency ?? "";
         withdrawCharge = model.data?.withdraw?.charge ?? "";
         youWillGet = model.data?.withdraw?.finalAmount ?? "";
-        remainingBalance = model.data?.remainingBalance ?? "";
+        remainingBalance = Converter.twoDecimalPlaceFixedWithoutRounding(model.data?.remainingBalance ?? "");
 
         List<String>? tempOtpList = model.data?.otpType;
         if(tempOtpList != null || tempOtpList!.isNotEmpty){

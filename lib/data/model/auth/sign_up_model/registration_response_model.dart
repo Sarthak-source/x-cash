@@ -183,7 +183,7 @@ class Address {
   Address.fromJson(dynamic json) {
     _address = json['address'];
     _state = json['state'];
-    _zip = json['zip'];
+    _zip = json['zip'].toString();
     _country = json['country'];
     _city = json['city'];
   }

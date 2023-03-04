@@ -109,10 +109,11 @@ class MainItemSection extends StatelessWidget {
               ],
             ),
             const SizedBox(height: Dimensions.space20),
-            controller.isVisibleItem ? ExpandedSection(
+            ExpandedSection(
+              duration: 800,
               expand: controller.isVisibleItem,
               child: const MainItemHistory(),
-            ) : const SizedBox(),
+            ),
             GestureDetector(
               onTap: () => controller.visibleItem(),
               child: Center(

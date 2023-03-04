@@ -352,8 +352,8 @@ class Gateway {
       String? formId, 
       String? code, 
       String? name, 
-      String? alias, 
-      bool? status, 
+      String? alias,
+      String? status,
       String? gatewayParameters,
       String? crypto, 
       dynamic extra, 
@@ -377,12 +377,12 @@ class Gateway {
 
   Gateway.fromJson(dynamic json) {
     _id = json['id'];
-    _currencyId = json['currency_id'];
-    _formId = json['form_id'];
-    _code = json['code'];
+    _currencyId = json['currency_id'].toString();
+    _formId = json['form_id'].toString();
+    _code = json['code'].toString();
     _name = json['name'];
     _alias = json['alias'];
-    _status = json['status'];
+    _status = json['status'].toString();
     _gatewayParameters = json['gateway_parameters'];
     _crypto = json['crypto'];
     _extra = json['extra'];
@@ -396,7 +396,7 @@ class Gateway {
   String? _code;
   String? _name;
   String? _alias;
-  bool? _status;
+  String? _status;
   String? _gatewayParameters;
   String? _crypto;
   dynamic _extra;
@@ -410,7 +410,7 @@ class Gateway {
   String? get code => _code;
   String? get name => _name;
   String? get alias => _alias;
-  bool? get status => _status;
+  String? get status => _status;
   String? get gatewayParameters => _gatewayParameters;
   String? get crypto => _crypto;
   dynamic get extra => _extra;

@@ -29,7 +29,7 @@ class _ExpandedSectionState extends State<ExpandedSection> with SingleTickerProv
     );
     animation = CurvedAnimation(
       parent: expandController,
-      curve: Curves.easeInOut,
+      curve: Curves.fastOutSlowIn,
     );
   }
 
