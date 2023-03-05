@@ -102,7 +102,7 @@ class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
                     const SizedBox(height: Dimensions.space30),
                     Image.network(
                         controller.qrCode,
-                        width: 220, height: 220
+                        width: 220, height: 220,
                     ),
                     const SizedBox(height: Dimensions.space30),
                     SizedBox(

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:gallery_saver/gallery_saver.dart';
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
@@ -8,6 +9,7 @@ import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/qr_code/qr_code_response_model.dart';
 import 'package:xcash_app/data/model/qr_code/qr_code_scan_response_model.dart';
 import 'package:xcash_app/data/repo/qr_code/qr_code_repo.dart';
+import 'package:xcash_app/view/components/file_download_dialog/download_dialogue.dart';
 import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 import 'package:dio/dio.dart';
 
@@ -46,13 +48,16 @@ class QrCodeController extends GetxController{
   }
 
   Future<void> downloadImage() async {
+    //
+
     String imageUrl = model.data?.qrCode ?? "";
-    final tempDir = await getTemporaryDirectory();
-    final path = "${tempDir.path}/my_qr_code.jpg";
-    print("Image: $path");
-    await Dio().download(imageUrl, path);
-    await GallerySaver.saveImage(path);
-    CustomSnackBar.success(successList: [MyStrings.imageDownloadMsg]);
+    if(imageUrl.isNotEmpty && imageUrl != 'null'){
+      showDialog(
+        context: Get.context!,
+        builder: (context) => DownloadingDialog(isPdf:false,url: 'https://sohan.thesoftking.com/xcash/v4/assets/images/temporary/agent_qr_code_1.jpg',fileName: 'agent_qr_code_1.jpg',),
+      );
+      update();
+    }
   }
 
   bool isScannerLoading = false;

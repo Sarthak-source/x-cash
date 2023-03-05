@@ -56,13 +56,4 @@ class LocalizationController extends GetxController {
     update();
   }
 
-  void searchLanguage(String query) {
-    if (query.isEmpty) {
-      _languages  = [];
-    } else {
-      _selectedIndex = -1;
-      _languages = [];
-    }
-    update();
-  }
 }

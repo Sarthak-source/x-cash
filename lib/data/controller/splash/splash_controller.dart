@@ -25,13 +25,11 @@ class SplashController extends GetxController  {
 
     await loadLanguage();
 
-    bool isRemember = repo.apiClient.sharedPreferences
-        .getBool(SharedPreferenceHelper.rememberMeKey) ?? false;
+    bool isRemember = repo.apiClient.sharedPreferences.getBool(SharedPreferenceHelper.rememberMeKey) ?? false;
     noInternet=false;
     update();
 
     initSharedData();
-
 
     try{
       RemoteMessage? initialMessage =
@@ -45,7 +43,6 @@ class SplashController extends GetxController  {
 
     }catch(e){
       getGSData(isRemember);
-      //Get.offAndToNamed(RouteHelper.loginScreen);
     }
 
 
@@ -92,16 +89,15 @@ class SplashController extends GetxController  {
 
 
   Future<bool> initSharedData() {
-
     if(!repo.apiClient.sharedPreferences.containsKey(SharedPreferenceHelper.countryCode)) {
       return repo.apiClient.sharedPreferences.setString(SharedPreferenceHelper.countryCode, MyStrings.languages[0].countryCode);
     }
     if(!repo.apiClient.sharedPreferences.containsKey(SharedPreferenceHelper.languageCode)) {
       return repo.apiClient.sharedPreferences.setString(SharedPreferenceHelper.languageCode, MyStrings.languages[0].languageCode);
     }
-
     return Future.value(true);
   }
+
 
   Future<void>loadLanguage()async{
     localizationController.loadCurrentLanguage();
@@ -112,7 +108,7 @@ class SplashController extends GetxController  {
         Map<String,Map<String,String>> language = {};
         var resJson = jsonDecode(response.responseJson);
         saveLanguageList(response.responseJson);
-        var value = jsonDecode(resJson['data']['file']) as Map<String,dynamic>;
+        var value = jsonDecode(resJson['data']['data']['file']) as Map<String,dynamic>;
         Map<String,String> json = {};
         value.forEach((key, value) {
           json[key] = value.toString();

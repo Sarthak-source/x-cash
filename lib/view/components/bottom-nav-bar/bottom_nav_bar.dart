@@ -4,12 +4,12 @@ import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/view/screens/bottom_nav_section/home/home_screen.dart';
 import 'package:xcash_app/view/screens/bottom_nav_section/menu/menu_screen.dart';
 
 class BottomNavBar extends StatefulWidget {
-
   const BottomNavBar({Key? key}) : super(key: key);
 
   @override
@@ -45,8 +45,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              navBarItem(MyImages.home, 0, "Home"),
-              navBarItem(MyImages.bottomMenu, 1, "Menu"),
+              navBarItem(MyImages.home, 0, MyStrings.home.tr),
+              navBarItem(MyImages.bottomMenu, 1, MyStrings.menu.tr),
             ],
           ),
         ),

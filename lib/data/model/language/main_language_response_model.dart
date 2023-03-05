@@ -13,7 +13,7 @@ class MainLanguageResponseModel {
     remark = json['remark'];
     status = json['status'];
     message = json['message'] != null ? Message.fromJson(json['message']) : null;
-    data = json['data'] != null ? Data.fromJson(json['data']) : null;
+    data = json['data']['data'] != null ? Data.fromJson(json['data']['data']) : null;
   }
 
   String? remark;

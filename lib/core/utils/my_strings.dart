@@ -2,6 +2,11 @@ import 'package:xcash_app/data/model/language/language_model.dart';
 
 class MyStrings{
 
+  static const String fileDownloadAt = "File download at";
+  static const String errorDownloadingFile = "Error downloading file";
+  static const String downloading = "Downloading";
+  static const String fileDownloadedSuccess = "File downloaded successfully";
+
   static const String appName = "XCash";
   static const String noActionId = "No action id found";
   static const String areYouSure = "Are you sure want to reject?";

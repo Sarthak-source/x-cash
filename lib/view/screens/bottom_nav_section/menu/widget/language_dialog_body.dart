@@ -57,7 +57,7 @@ class _LanguageDialogBodyState extends State<LanguageDialogBody> {
                         Map<String,Map<String,String>> language = {};
                         var resJson = jsonDecode(response.responseJson);
                         await repo.apiClient.sharedPreferences.setString(SharedPreferenceHelper.languageListKey, response.responseJson);
-                        var value = jsonDecode(resJson['data']['file']) as Map<String,dynamic>;
+                        var value = jsonDecode(resJson['data']['data']['file']) as Map<String,dynamic>;
                         Map<String,String> json = {};
                         value.forEach((key, value) {
                           json[key] = value.toString();
