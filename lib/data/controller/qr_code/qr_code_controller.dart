@@ -6,6 +6,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
+import 'package:xcash_app/data/model/qr_code/qr_code_download_response_model.dart';
 import 'package:xcash_app/data/model/qr_code/qr_code_response_model.dart';
 import 'package:xcash_app/data/model/qr_code/qr_code_scan_response_model.dart';
 import 'package:xcash_app/data/repo/qr_code/qr_code_repo.dart';
@@ -47,23 +48,36 @@ class QrCodeController extends GetxController{
     update();
   }
 
-  Future<void> downloadImage() async {
-    //
 
-    String imageUrl = model.data?.qrCode ?? "";
-    if(imageUrl.isNotEmpty && imageUrl != 'null'){
-      showDialog(
-        context: Get.context!,
-        builder: (context) => DownloadingDialog(isPdf:false,url: 'https://sohan.thesoftking.com/xcash/v4/assets/images/temporary/agent_qr_code_1.jpg',fileName: 'agent_qr_code_1.jpg',),
-      );
-      update();
+  String downloadUrl = "";
+  String downloadFileName = "";
+  Future<void> downloadImage() async {
+
+    ResponseModel responseModel = await qrCodeRepo.qrCodeDownLoad();
+    if(responseModel.statusCode == 200){
+      QrCodeDownloadResponseModel model = QrCodeDownloadResponseModel.fromJson(jsonDecode(responseModel.responseJson));
+      if(model.status.toString().toLowerCase() == "success"){
+        downloadUrl = model.data?.downloadLink ?? "";
+        downloadFileName = model.data?.downloadFileName ?? "";
+
+        if(downloadUrl.isNotEmpty && downloadUrl != 'null'){
+          showDialog(
+            context: Get.context!,
+            builder: (context) => DownloadingDialog(isPdf:false,url: downloadUrl, fileName: downloadFileName),
+          );
+        }
+      }
     }
+    else{
+      CustomSnackBar.error(errorList: [responseModel.message]);
+    }
+
+    update();
   }
 
   bool isScannerLoading = false;
   Future<bool> submitQrData(String scannedData) async{
 
-    print("Scan Data: $scannedData");
     isScannerLoading = true;
     update();
 

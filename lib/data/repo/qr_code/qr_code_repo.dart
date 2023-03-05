@@ -29,4 +29,11 @@ class QrCodeRepo{
 
     return responseModel;
   }
+
+  Future<ResponseModel> qrCodeDownLoad() async{
+
+    String url = "${UrlContainer.baseUrl}${UrlContainer.qrCodeImageDownload}";
+    ResponseModel responseModel = await apiClient.request(url, Method.postMethod, null, passHeader: true);
+    return responseModel;
+  }
 }

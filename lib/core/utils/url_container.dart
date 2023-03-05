@@ -113,4 +113,5 @@ class UrlContainer{
 
   static const String qrCodeEndPoint = "qr-code";
   static const String qrScanEndPoint = "qr-code/scan";
+  static const String qrCodeImageDownload = "qr-code/download";
 }

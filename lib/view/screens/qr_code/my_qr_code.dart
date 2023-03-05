@@ -83,30 +83,15 @@ class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
                       ),
                     ),
                     const SizedBox(height: Dimensions.space15),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          controller.username,
-                          style: semiBoldExtraLarge.copyWith(color: MyColor.colorWhite),
-                        ),
-                        const SizedBox(width: Dimensions.space8),
-                        const Icon(Icons.verified, color: MyColor.colorWhite, size: 20)
-                      ],
-                    ),
-                    const SizedBox(height: Dimensions.textToTextSpace),
                     Text(
-                      MyStrings.verifiedUser.tr,
-                      style: semiBoldLarge.copyWith(color: MyColor.colorWhite.withOpacity(0.5)),
+                      controller.username,
+                      style: semiBoldExtraLarge.copyWith(color: MyColor.colorWhite),
                     ),
                     const SizedBox(height: Dimensions.space30),
-                    Image.network(
-                        controller.qrCode,
-                        width: 220, height: 220,
-                    ),
+                    Image.network(controller.qrCode, width: 220, height: 220),
                     const SizedBox(height: Dimensions.space30),
                     SizedBox(
-                      width: 240,
+                      width: MediaQuery.of(context).size.width * 0.7,
                       child: RoundedButton(
                           color: MyColor.colorWhite,
                           text: MyStrings.downloadAsImage,
