@@ -222,7 +222,7 @@ class _TransferMoneyState extends State<TransferMoney> {
                   press: (){
                     controller.checkValidation(context);
                   },
-                  text: MyStrings.transferNow,
+                  text: MyStrings.transferNow.tr,
                 )
               ],
             ),

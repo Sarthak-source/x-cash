@@ -38,7 +38,7 @@ class _CreateInvoiceScreenState extends State<CreateInvoiceScreen> {
         child: Scaffold(
           backgroundColor: MyColor.screenBgColor,
           appBar: CustomAppBar(
-            title: MyStrings.createInvoice,
+            title: MyStrings.createInvoice.tr,
             bgColor: MyColor.getAppBarColor(),
           ),
           body: controller.isLoading ? const CustomLoader() : const SingleChildScrollView(

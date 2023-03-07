@@ -213,7 +213,7 @@ class _AddMoneyScreenState extends State<AddMoneyScreen> {
                     press: (){
                       controller.submitData();
                     },
-                    text: MyStrings.proceed,
+                    text: MyStrings.proceed.tr,
                   )
                 ],
               ),

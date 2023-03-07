@@ -70,24 +70,24 @@ class _UpdateInvoiceDetailsState extends State<UpdateInvoiceDetails> {
                  children: [
                    CustomTextField(
                        needOutlineBorder: true,
-                       labelText: MyStrings.invoiceTo,
-                       hintText: MyStrings.enterInvoiceTo,
+                       labelText: MyStrings.invoiceTo.tr,
+                       hintText: MyStrings.enterInvoiceTo.tr,
                        controller: controller.invoiceToController,
                        onChanged: (value){}
                    ),
                    const SizedBox(height: Dimensions.space15),
                    CustomTextField(
                        needOutlineBorder: true,
-                       labelText: MyStrings.email,
-                       hintText: MyStrings.enterEmail,
+                       labelText: MyStrings.email.tr,
+                       hintText: MyStrings.enterEmail.tr,
                        controller: controller.emailController,
                        onChanged: (value){}
                    ),
                    const SizedBox(height: Dimensions.space15),
                    CustomTextField(
                        needOutlineBorder: true,
-                       labelText: MyStrings.address,
-                       hintText: MyStrings.enterAddress,
+                       labelText: MyStrings.address.tr,
+                       hintText: MyStrings.enterAddress.tr,
                        controller: controller.addressController,
                        onChanged: (value){}
                    ),

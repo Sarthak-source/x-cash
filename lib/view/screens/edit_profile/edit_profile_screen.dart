@@ -42,7 +42,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           appBar: CustomAppBar(
             isShowBackBtn: true,
             bgColor: MyColor.getAppBarColor(),
-            title: MyStrings.editProfile,
+            title: MyStrings.editProfile.tr,
           ),
           body: controller.isLoading ? const CustomLoader() : Stack(
             children: [

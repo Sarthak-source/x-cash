@@ -44,7 +44,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: Scaffold(
           backgroundColor: MyColor.screenBgColor,
           appBar: CustomAppBar(
-            title: MyStrings.profile,
+            title: MyStrings.profile.tr,
             bgColor: MyColor.getAppBarColor(),
           ),
           body: controller.isLoading ? const CustomLoader() : Stack(

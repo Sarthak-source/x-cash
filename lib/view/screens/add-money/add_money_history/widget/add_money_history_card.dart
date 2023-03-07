@@ -39,7 +39,7 @@ class AddMoneyHistoryCard extends StatelessWidget {
                   ),
                   CardColumn(
                       alignmentEnd: true,
-                      header: MyStrings.date,
+                      header: MyStrings.date.tr,
                       body: DateConverter.isoStringToLocalDateOnly(controller.depositList[index].createdAt ?? "")
                   ),
                 ],
@@ -50,7 +50,7 @@ class AddMoneyHistoryCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CardColumn(
-                      header: MyStrings.amount,
+                      header: MyStrings.amount.tr,
                       body: "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.depositList[index].finalAmo ?? "")} ${controller.depositList[index].methodCurrency}"
                   ),
                   StatusWidget(

@@ -72,7 +72,7 @@ class _CreateVoucherFormState extends State<CreateVoucherForm> {
                                   border: Border.all(color: MyColor.colorGrey.withOpacity(0.2))
                               ),
                               child: Text(
-                                controller.walletList[index].currencyCode.toString() ?? "",
+                                controller.walletList[index].currencyCode.toString(),
                                 style: regularDefault,
                               ),
                             ),
@@ -166,7 +166,7 @@ class _CreateVoucherFormState extends State<CreateVoucherForm> {
             press: (){
               controller.checkValidation(context);
             },
-            text: MyStrings.createVoucher,
+            text: MyStrings.createVoucher.tr,
           )
         ],
       ),

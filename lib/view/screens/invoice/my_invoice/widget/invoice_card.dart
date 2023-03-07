@@ -29,7 +29,7 @@ class InvoiceCard extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(MyStrings.invoicesTo, style: regularSmall.copyWith(color: MyColor.colorBlack.withOpacity(0.6))),
+                    Text(MyStrings.invoicesTo.tr, style: regularSmall.copyWith(color: MyColor.colorBlack.withOpacity(0.6))),
                     const SizedBox(height: Dimensions.space5),
                     Text(
                       controller.invoiceList[index].invoiceTo ?? "",
@@ -40,7 +40,7 @@ class InvoiceCard extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text(MyStrings.date, style: regularSmall.copyWith(color: MyColor.colorBlack.withOpacity(0.6))),
+                    Text(MyStrings.date.tr, style: regularSmall.copyWith(color: MyColor.colorBlack.withOpacity(0.6))),
                     const SizedBox(height: Dimensions.space5),
                     Text(
                       DateConverter.isoStringToLocalDateOnly(controller.invoiceList[index].createdAt ?? ""),
@@ -57,7 +57,7 @@ class InvoiceCard extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(MyStrings.amount, style: regularSmall.copyWith(color: MyColor.colorBlack.withOpacity(0.6))),
+                    Text(MyStrings.amount.tr, style: regularSmall.copyWith(color: MyColor.colorBlack.withOpacity(0.6))),
                     const SizedBox(height: Dimensions.space5),
                     Text(
                       "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.invoiceList[index].totalAmount ?? "")} "
@@ -69,7 +69,7 @@ class InvoiceCard extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text(MyStrings.status, style: regularSmall.copyWith(color: MyColor.colorBlack.withOpacity(0.6))),
+                    Text(MyStrings.status.tr, style: regularSmall.copyWith(color: MyColor.colorBlack.withOpacity(0.6))),
                     const SizedBox(height: Dimensions.space5),
                     StatusWidget(
                       status: controller.getStatusOrColor(index),

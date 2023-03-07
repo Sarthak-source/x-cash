@@ -28,7 +28,7 @@ class InvoicePaymentUrlSection extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              MyStrings.invoicePaymentUrl,
+              MyStrings.invoicePaymentUrl.tr,
               style: regularDefault.copyWith(fontWeight: FontWeight.w500),
             ),
             const SizedBox(height: Dimensions.space10),
@@ -56,7 +56,7 @@ class InvoicePaymentUrlSection extends StatelessWidget {
                 GestureDetector(
                   onTap: (){
                     Clipboard.setData(ClipboardData(text: controller.model.data?.invoice?.link ?? "")).then((value) => CustomSnackBar.success(
-                        successList: [MyStrings.copyLink]
+                        successList: [MyStrings.copyLink.tr]
                     ));
                   },
                   child: const CircleShapeImage(image: MyImages.copy),

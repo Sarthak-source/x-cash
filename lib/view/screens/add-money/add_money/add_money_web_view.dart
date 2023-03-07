@@ -65,10 +65,10 @@ class _AddMoneyWebViewState extends State<AddMoneyWebView> {
 
               if(url=='${UrlContainer.domainUrl}/user/deposit/history'){
                 Get.offAndToNamed(RouteHelper.addMoneyHistoryScreen);
-                CustomSnackBar.success(successList: [MyStrings.requestSuccess]);
+                CustomSnackBar.success(successList: [MyStrings.requestSuccess.tr]);
               } else if(url=='${UrlContainer.baseUrl}user/deposit'){
                 Get.back();
-                CustomSnackBar.error(errorList: [MyStrings.requestFail]);
+                CustomSnackBar.error(errorList: [MyStrings.requestFail.tr]);
               }
             },
             onPageFinished: (String url) {},

@@ -188,7 +188,7 @@ class _MakePaymentFormState extends State<MakePaymentForm> {
 
             RoundedButton(
               press: () => controller.checkValidation(context),
-              text: MyStrings.makePayment,
+              text: MyStrings.makePayment.tr,
             )
           ],
         ),

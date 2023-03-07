@@ -5,12 +5,10 @@ import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
-import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/voucher/redeem_log_controller.dart';
 import 'package:xcash_app/view/components/column_widget/card_column.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/text/default_text.dart';
-import 'package:xcash_app/view/components/text/small_text.dart';
 
 class RedeemLogCard extends StatelessWidget {
   final int index;

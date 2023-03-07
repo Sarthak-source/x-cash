@@ -8,7 +8,6 @@ import 'package:xcash_app/data/repo/voucher/redeem_log_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
-import 'package:xcash_app/view/components/custom_no_data_found_class.dart';
 import 'package:xcash_app/view/components/no_data.dart';
 import 'package:xcash_app/view/screens/voucher/redeem_log/widget/redeem_log_card.dart';
 

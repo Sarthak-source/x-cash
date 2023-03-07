@@ -94,7 +94,7 @@ class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
                       width: MediaQuery.of(context).size.width * 0.7,
                       child: RoundedButton(
                           color: MyColor.colorWhite,
-                          text: MyStrings.downloadAsImage,
+                          text: MyStrings.downloadAsImage.tr,
                           textColor: MyColor.primaryColor,
                           press: (){
                             controller.downloadImage();

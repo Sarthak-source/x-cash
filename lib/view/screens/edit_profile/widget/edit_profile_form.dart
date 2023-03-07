@@ -43,7 +43,7 @@ class _EditProfileFormState extends State<EditProfileForm> {
               CustomTextField(
                   animatedLabel: true,
                   needOutlineBorder: true,
-                  labelText: MyStrings.firstName,
+                  labelText: MyStrings.firstName.tr,
                   onChanged: (value){},
                   focusNode: controller.firstNameFocusNode,
                   controller: controller.firstNameController
@@ -52,7 +52,7 @@ class _EditProfileFormState extends State<EditProfileForm> {
               CustomTextField(
                   animatedLabel: true,
                   needOutlineBorder: true,
-                  labelText: MyStrings.lastName,
+                  labelText: MyStrings.lastName.tr,
                   onChanged: (value){},
                   focusNode: controller.lastNameFocusNode,
                   controller: controller.lastNameController
@@ -61,7 +61,7 @@ class _EditProfileFormState extends State<EditProfileForm> {
               CustomTextField(
                   animatedLabel: true,
                   needOutlineBorder: true,
-                  labelText: MyStrings.address,
+                  labelText: MyStrings.address.tr,
                   onChanged: (value){},
                   focusNode: controller.addressFocusNode,
                   controller: controller.addressController
@@ -70,7 +70,7 @@ class _EditProfileFormState extends State<EditProfileForm> {
               CustomTextField(
                   animatedLabel: true,
                   needOutlineBorder: true,
-                  labelText: MyStrings.state,
+                  labelText: MyStrings.state.tr,
                   onChanged: (value){},
                   focusNode: controller.stateFocusNode,
                   controller: controller.stateController
@@ -79,7 +79,7 @@ class _EditProfileFormState extends State<EditProfileForm> {
               CustomTextField(
                   animatedLabel: true,
                   needOutlineBorder: true,
-                  labelText: MyStrings.zipCode,
+                  labelText: MyStrings.zipCode.tr,
                   onChanged: (value){},
                   focusNode: controller.zipCodeFocusNode,
                   controller: controller.zipCodeController
@@ -88,7 +88,7 @@ class _EditProfileFormState extends State<EditProfileForm> {
               CustomTextField(
                   animatedLabel: true,
                   needOutlineBorder: true,
-                  labelText: MyStrings.city,
+                  labelText: MyStrings.city.tr,
                   onChanged: (value){},
                   focusNode: controller.cityFocusNode,
                   controller: controller.cityController,

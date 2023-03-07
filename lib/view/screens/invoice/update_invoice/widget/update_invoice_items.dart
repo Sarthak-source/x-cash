@@ -48,7 +48,7 @@ class _UpdateInvoiceItemsState extends State<UpdateInvoiceItems> {
                     Expanded(
                       child: CustomTextField(
                           needOutlineBorder: true,
-                          labelText: MyStrings.itemName,
+                          labelText: MyStrings.itemName.tr,
                           controller: controller.invoiceItemList[index].itemNameController,
                           onChanged: (value){}
                       ),
@@ -57,7 +57,7 @@ class _UpdateInvoiceItemsState extends State<UpdateInvoiceItems> {
                     Expanded(
                       child: CustomTextField(
                           needOutlineBorder: true,
-                          labelText: MyStrings.amount,
+                          labelText: MyStrings.amount.tr,
                           textInputType: TextInputType.number,
                           controller: controller.invoiceItemList[index].amountController,
                           onChanged: (value){
@@ -73,7 +73,7 @@ class _UpdateInvoiceItemsState extends State<UpdateInvoiceItems> {
                     Expanded(
                       child: CustomTextField(
                           needOutlineBorder: true,
-                          labelText: MyStrings.itemName,
+                          labelText: MyStrings.itemName.tr,
                           controller: controller.invoiceItemList[index].itemNameController,
                           onChanged: (value){}
                       ),
@@ -82,7 +82,7 @@ class _UpdateInvoiceItemsState extends State<UpdateInvoiceItems> {
                     Expanded(
                       child: CustomTextField(
                           needOutlineBorder: true,
-                          labelText: MyStrings.amount,
+                          labelText: MyStrings.amount.tr,
                           textInputType: TextInputType.number,
                           controller: controller.invoiceItemList[index].amountController,
                           onChanged: (value){

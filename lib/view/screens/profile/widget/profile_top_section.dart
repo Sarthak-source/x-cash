@@ -59,7 +59,7 @@ class _ProfileTopSectionState extends State<ProfileTopSection> {
                         const Icon(Icons.edit, color: MyColor.colorWhite, size: 20),
                         const SizedBox(width: Dimensions.space10),
                         Text(
-                          MyStrings.editProfile,
+                          MyStrings.editProfile.tr,
                           style: regularSmall.copyWith(color: MyColor.colorWhite),
                         )
                       ],
@@ -74,7 +74,7 @@ class _ProfileTopSectionState extends State<ProfileTopSection> {
                 const CircleShapeImage(imageColor: MyColor.primaryColor, image: MyImages.name),
                 const SizedBox(width: Dimensions.space15),
                 CardColumn(
-                    header: MyStrings.name,
+                    header: MyStrings.name.tr,
                     body: controller.model.data?.user?.username ?? ""
                 )
               ],
@@ -85,7 +85,7 @@ class _ProfileTopSectionState extends State<ProfileTopSection> {
                 const CircleShapeImage(imageColor: MyColor.primaryColor,image: MyImages.email),
                 const SizedBox(width: Dimensions.space15),
                 CardColumn(
-                    header: MyStrings.email,
+                    header: MyStrings.email.tr,
                     body: controller.model.data?.user?.email ?? ""
                 )
               ],
@@ -96,7 +96,7 @@ class _ProfileTopSectionState extends State<ProfileTopSection> {
                 const CircleShapeImage(imageColor: MyColor.primaryColor,image: MyImages.phone),
                 const SizedBox(width: Dimensions.space15),
                 CardColumn(
-                    header: MyStrings.phone,
+                    header: MyStrings.phone.tr,
                     body: controller.model.data?.user?.mobile ?? ""
                 )
               ],
@@ -107,7 +107,7 @@ class _ProfileTopSectionState extends State<ProfileTopSection> {
                 const CircleShapeImage(imageColor: MyColor.primaryColor,image: MyImages.address),
                 const SizedBox(width: Dimensions.space15),
                 CardColumn(
-                    header: MyStrings.address,
+                    header: MyStrings.address.tr,
                     body: controller.model.data?.user?.address?.address ?? ""
                 )
               ],
@@ -118,7 +118,7 @@ class _ProfileTopSectionState extends State<ProfileTopSection> {
                 const CircleShapeImage(imageColor: MyColor.primaryColor,image: MyImages.state),
                 const SizedBox(width: Dimensions.space15),
                 CardColumn(
-                    header: MyStrings.state,
+                    header: MyStrings.state.tr,
                     body: controller.model.data?.user?.address?.state ?? ""
                 )
               ],
@@ -129,7 +129,7 @@ class _ProfileTopSectionState extends State<ProfileTopSection> {
                 const CircleShapeImage(imageColor: MyColor.primaryColor,image: MyImages.zipCode),
                 const SizedBox(width: Dimensions.space15),
                 CardColumn(
-                    header: MyStrings.zipCode,
+                    header: MyStrings.zipCode.tr,
                     body: controller.model.data?.user?.address?.zip ?? ""
                 )
               ],
@@ -140,7 +140,7 @@ class _ProfileTopSectionState extends State<ProfileTopSection> {
                 const CircleShapeImage(imageColor: MyColor.primaryColor,image: MyImages.city),
                 const SizedBox(width: Dimensions.space15),
                 CardColumn(
-                    header: MyStrings.city,
+                    header: MyStrings.city.tr,
                     body: controller.model.data?.user?.address?.city ?? ""
                 )
               ],
@@ -151,7 +151,7 @@ class _ProfileTopSectionState extends State<ProfileTopSection> {
                 const CircleShapeImage(imageColor: MyColor.primaryColor,image: MyImages.country),
                 const SizedBox(width: Dimensions.space15),
                 CardColumn(
-                    header: MyStrings.country,
+                    header: MyStrings.country.tr,
                     body: controller.model.data?.user?.address?.country ?? ""
                 )
               ],

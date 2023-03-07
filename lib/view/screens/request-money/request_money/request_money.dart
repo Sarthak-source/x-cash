@@ -109,7 +109,7 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                                             border: Border.all(color: MyColor.colorGrey.withOpacity(0.2))
                                         ),
                                         child: Text(
-                                          controller.walletList[index].currencyCode.toString() ?? "",
+                                          controller.walletList[index].currencyCode ?? "",
                                           style: regularDefault,
                                         ),
                                       ),
@@ -143,7 +143,7 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                     ),
                     const SizedBox(height: Dimensions.space5),
                     Text(
-                        "${MyStrings.limit}: ${Converter.twoDecimalPlaceFixedWithoutRounding(controller.limit)}",
+                        "${MyStrings.limit.tr}: ${Converter.twoDecimalPlaceFixedWithoutRounding(controller.limit)}",
                         style: regularExtraSmall.copyWith(color: MyColor.primaryColor)
                     )
                   ],
@@ -162,7 +162,7 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                       hintText: MyStrings.enterEmailOrUserName.tr,
                       onChanged: (value){
                         if(value == null && value.toString().isEmpty){
-                          CustomSnackBar.error(errorList: [MyStrings.enterEmailOrUserName]);
+                          CustomSnackBar.error(errorList: [MyStrings.enterEmailOrUserName.tr]);
                         }
                       }
                   ),
@@ -186,7 +186,7 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                   press: (){
                     controller.checkValidation(context);
                   },
-                  text: MyStrings.requestNow,
+                  text: MyStrings.requestNow.tr,
                 )
               ],
             ),

@@ -25,6 +25,8 @@ class RedeemVoucher extends StatefulWidget {
 
 class _RedeemVoucherState extends State<RedeemVoucher> {
 
+  final formKey = GlobalKey<FormState>();
+
   @override
   void initState() {
     Get.put(ApiClient(sharedPreferences: Get.find()));
@@ -43,8 +45,6 @@ class _RedeemVoucherState extends State<RedeemVoucher> {
     super.dispose();
   }
 
-  final formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     return GetBuilder<RedeemVoucherController>(
@@ -53,9 +53,9 @@ class _RedeemVoucherState extends State<RedeemVoucher> {
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              BottomSheetHeaderText(text: MyStrings.redeemVoucher),
-              BottomSheetCloseButton()
+            children: [
+              BottomSheetHeaderText(text: MyStrings.redeemVoucher.tr),
+              const BottomSheetCloseButton()
             ],
           ),
           const CustomDivider(),
@@ -94,7 +94,7 @@ class _RedeemVoucherState extends State<RedeemVoucher> {
               onChanged: (value){},
               validator: (value){
                 if(value.toString().isEmpty){
-                  return MyStrings.errorMsgVoucherCode;
+                  return MyStrings.errorMsgVoucherCode.tr;
                 }
                 return null;
               },
@@ -107,7 +107,7 @@ class _RedeemVoucherState extends State<RedeemVoucher> {
                   controller.submitRedeemVoucher();
                 }
               },
-              text:MyStrings.redeemVoucher
+              text:MyStrings.redeemVoucher.tr
           )
         ],
       ),

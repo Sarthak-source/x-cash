@@ -53,7 +53,7 @@ class _ExchangeMoneyScreenState extends State<ExchangeMoneyScreen> {
         child: Scaffold(
           backgroundColor: MyColor.getScreenBgColor(),
           appBar: CustomAppBar(
-            title: MyStrings.exchangeMoney,
+            title: MyStrings.exchangeMoney.tr,
             isShowBackBtn: true,
             bgColor: MyColor.getAppBarColor(),
           ),
@@ -147,8 +147,8 @@ class _ExchangeMoneyScreenState extends State<ExchangeMoneyScreen> {
                       flex: 2,
                       child: CustomAmountTextField(
                           readOnly: controller.fromWalletMethod?.id.toString() == "-1" ? true : false,
-                          labelText: MyStrings.amount,
-                          hintText: MyStrings.amountHint,
+                          labelText: MyStrings.amount.tr,
+                          hintText: MyStrings.amountHint.tr,
                           onChanged: (value){
                             if(value.toString().isEmpty){
                               controller.calculateExchangeAmount(0);
@@ -243,7 +243,7 @@ class _ExchangeMoneyScreenState extends State<ExchangeMoneyScreen> {
                       flex: 2,
                       child: CustomAmountTextField(
                           readOnly: true,
-                          labelText: MyStrings.exchangeAmount,
+                          labelText: MyStrings.exchangeAmount.tr,
                           hintText: "",
                           onChanged: (value){},
                           controller: controller.toAmountController,
@@ -259,7 +259,7 @@ class _ExchangeMoneyScreenState extends State<ExchangeMoneyScreen> {
                       controller.submitExchangeMoney();
                     }
                   },
-                  text: MyStrings.exchange,
+                  text: MyStrings.exchange.tr,
                 )
               ],
             ),

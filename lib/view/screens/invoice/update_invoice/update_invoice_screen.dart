@@ -56,7 +56,7 @@ class _UpdateInvoiceScreenState extends State<UpdateInvoiceScreen> {
             appBar: AppBar(
               titleSpacing: 0,
               elevation: 0,
-              title: Text(MyStrings.updateInvoice, style: regularDefault.copyWith(color: MyColor.getAppBarContentColor())),
+              title: Text(MyStrings.updateInvoice.tr, style: regularDefault.copyWith(color: MyColor.getAppBarContentColor())),
               leading: IconButton(
                 onPressed: () => Get.back(),
                 icon: Icon(Icons.arrow_back, color: MyColor.getAppBarContentColor(), size: 20),
@@ -92,7 +92,7 @@ class _UpdateInvoiceScreenState extends State<UpdateInvoiceScreen> {
                     press: (){
                       controller.updateInvoice();
                     },
-                    text: MyStrings.updateInvoice,
+                    text: MyStrings.updateInvoice.tr,
                   )
                 ],
               ),

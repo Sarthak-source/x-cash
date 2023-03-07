@@ -52,8 +52,8 @@ class _MoneyOutFormState extends State<MoneyOutForm> {
           const SizedBox(height: Dimensions.space5),
           TextFieldPersonValidityWidget(
               isVisible: controller.isAgentFound,
-              validMsg: controller.validAgent,
-              invalidMsg: controller.invalidAgent
+              validMsg: controller.validAgent.tr,
+              invalidMsg: controller.invalidAgent.tr
           ),
           const SizedBox(height: Dimensions.space15),
 
@@ -185,7 +185,7 @@ class _MoneyOutFormState extends State<MoneyOutForm> {
             press: (){
               controller.checkValidation(context);
             },
-            text: MyStrings.moneyOut,
+            text: MyStrings.moneyOut.tr,
           )
         ],
       )
