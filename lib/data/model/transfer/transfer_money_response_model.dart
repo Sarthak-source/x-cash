@@ -312,8 +312,8 @@ class Currency {
     _status = json['status'].toString();
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
-    _transferMinLimit = json['transfer_min_limit'].toString();
-    _transferMaxLimit = json['transfer_max_limit'].toString();
+    _transferMinLimit = json['transfer_min_limit'] != null ? json['transfer_min_limit'].toString() : "0";
+    _transferMaxLimit = json['transfer_max_limit'] != null ? json['transfer_max_limit'].toString() : "0";
   }
   int? _id;
   String? _currencyCode;

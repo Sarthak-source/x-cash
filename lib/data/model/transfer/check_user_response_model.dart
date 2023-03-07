@@ -122,16 +122,16 @@ class Agent {
 
   Agent.fromJson(dynamic json) {
     _id = json['id'];
-    _companyName = json['company_name'];
+    _companyName = json['company_name'] != null ? json['company_name'].toString() : "";
     _firstname = json['firstname'];
     _lastname = json['lastname'];
     _username = json['username'];
     _email = json['email'];
-    _countryCode = json['country_code'];
+    _countryCode = json['country_code'].toString();
     _mobile = json['mobile'];
     _refBy = json['ref_by'].toString();
     _balance = json['balance'] != null ? json['balance'].toString() : "";
-    _image = json['image'];
+    _image = json['image'].toString();
     _address = json['address'] != null ? Address.fromJson(json['address']) : null;
     _status = json['status'].toString();
     _kycData = json['kyc_data'];
@@ -142,8 +142,8 @@ class Agent {
     _verCodeSendAt = json['ver_code_send_at'];
     _ts = json['ts'].toString();
     _tv = json['tv'].toString();
-    _tsc = json['tsc'];
-    _banReason = json['ban_reason'];
+    _tsc = json['tsc'].toString();
+    _banReason = json['ban_reason'].toString();
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
   }

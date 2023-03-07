@@ -320,8 +320,8 @@ class WithdrawMethod {
     _currencies = json['currencies'] != null ? json['currencies'].cast<String>() : [];
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
-    _withdrawMinLimit = json['withdraw_min_limit'].toString();
-    _withdrawMaxLimit = json['withdraw_max_limit'].toString();
+    _withdrawMinLimit = json['withdraw_min_limit'] != null ? json['withdraw_min_limit'].toString() : "0";
+    _withdrawMaxLimit = json['withdraw_max_limit'] != null ? json['withdraw_max_limit'].toString() : "0";
   }
   int? _id;
   String? _formId;

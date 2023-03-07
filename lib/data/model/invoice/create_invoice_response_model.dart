@@ -106,9 +106,9 @@ class Currencies {
   Currencies.fromJson(dynamic json) {
     _id = json['id'];
     _currencyCode = json['currency_code'].toString();
-    _currencySymbol = json['currency_symbol'].toString();
-    _currencyFullName = json['currency_FullName'].toString();
-    _currencyType = json['currency_type'].toString();
+    _currencySymbol = json['currency_symbol'];
+    _currencyFullName = json['currency_FullName'];
+    _currencyType = json['currency_type'];
     _rate = json['rate'].toString();
     _isDefault = json['is_default'].toString();
     _status = json['status'].toString();

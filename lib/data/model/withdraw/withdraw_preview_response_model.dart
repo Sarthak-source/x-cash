@@ -123,19 +123,19 @@ class Withdraw {
 
   Withdraw.fromJson(dynamic json) {
     _id = json['id'];
-    _methodId = json['method_id'];
-    _userId = json['user_id'];
-    _userType = json['user_type'];
-    _amount = json['amount'];
-    _currencyId = json['currency_id'];
-    _walletId = json['wallet_id'];
-    _currency = json['currency'];
-    _rate = json['rate'];
-    _charge = json['charge'];
+    _methodId = json['method_id'].toString();
+    _userId = json['user_id'].toString();
+    _userType = json['user_type'].toString();
+    _amount = json['amount'] != null ? json['amount'].toString() : "";
+    _currencyId = json['currency_id'].toString();
+    _walletId = json['wallet_id'].toString();
+    _currency = json['currency'] != null ? json['currency'].toString() : "";
+    _rate = json['rate'].toString();
+    _charge = json['charge'].toString();
     _trx = json['trx'];
-    _finalAmount = json['final_amount'];
-    _afterCharge = json['after_charge'];
-    _status = json['status'];
+    _finalAmount = json['final_amount'] != null ? json['final_amount'].toString() : "";
+    _afterCharge = json['after_charge'].toString();
+    _status = json['status'].toString();
     _adminFeedback = json['admin_feedback'];
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
@@ -268,28 +268,28 @@ class User {
 
   User.fromJson(dynamic json) {
     _id = json['id'];
-    _companyName = json['company_name'];
+    _companyName = json['company_name'] != null ? json['company_name'].toString() : "";
     _firstname = json['firstname'];
     _lastname = json['lastname'];
     _username = json['username'];
     _email = json['email'];
-    _countryCode = json['country_code'];
+    _countryCode = json['country_code'].toString();
     _mobile = json['mobile'];
-    _refBy = json['ref_by'];
-    _balance = json['balance'];
-    _image = json['image'];
+    _refBy = json['ref_by'].toString();
+    _balance = json['balance'] != null ? json['balance'].toString() : "";
+    _image = json['image'].toString();
     _address = json['address'] != null ? Address.fromJson(json['address']) : null;
-    _status = json['status'];
-    _kycData = json['kyc_data'];
-    _kv = json['kv'];
-    _ev = json['ev'];
-    _sv = json['sv'];
-    _profileComplete = json['profile_complete'];
-    _verCodeSendAt = json['ver_code_send_at'];
-    _ts = json['ts'];
-    _tv = json['tv'];
-    _tsc = json['tsc'];
-    _banReason = json['ban_reason'];
+    _status = json['status'].toString();
+    _kycData = json['kyc_data'] != null ? json['kyc_data'].toString() : "";
+    _kv = json['kv'].toString();
+    _ev = json['ev'].toString();
+    _sv = json['sv'].toString();
+    _profileComplete = json['profile_complete'].toString();
+    _verCodeSendAt = json['ver_code_send_at'].toString();
+    _ts = json['ts'].toString();
+    _tv = json['tv'].toString();
+    _tsc = json['tsc'].toString();
+    _banReason = json['ban_reason'].toString();
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
   }
@@ -460,16 +460,16 @@ class Method {
 
   Method.fromJson(dynamic json) {
     _id = json['id'];
-    _formId = json['form_id'];
+    _formId = json['form_id'].toString();
     _name = json['name'];
-    _minLimit = json['min_limit'];
-    _maxLimit = json['max_limit'];
-    _fixedCharge = json['fixed_charge'];
-    _rate = json['rate'];
-    _percentCharge = json['percent_charge'];
-    _currency = json['currency'];
+    _minLimit = json['min_limit'] != null ? json['min_limit'].toString() : "";
+    _maxLimit = json['max_limit'] != null ? json['max_limit'].toString() : "";
+    _fixedCharge = json['fixed_charge'] != null ? json['fixed_charge'].toString() : "";
+    _rate = json['rate'].toString();
+    _percentCharge = json['percent_charge'].toString();
+    _currency = json['currency'] != null ? json['currency'].toString() : "";
     _description = json['description'];
-    _status = json['status'];
+    _status = json['status'].toString();
     _userGuards = json['user_guards'] != null ? json['user_guards'].cast<String>() : [];
     _currencies = json['currencies'] != null ? json['currencies'].cast<String>() : [];
     _createdAt = json['created_at'];

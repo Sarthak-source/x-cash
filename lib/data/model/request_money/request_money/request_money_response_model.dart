@@ -126,19 +126,19 @@ class TransferCharge {
   TransferCharge.fromJson(dynamic json) {
     _id = json['id'];
     _slug = json['slug'];
-    _fixedCharge = json['fixed_charge'];
-    _percentCharge = json['percent_charge'];
-    _minLimit = json['min_limit'];
-    _maxLimit = json['max_limit'];
-    _agentCommissionFixed = json['agent_commission_fixed'];
-    _agentCommissionPercent = json['agent_commission_percent'];
-    _merchantFixedCharge = json['merchant_fixed_charge'];
-    _merchantPercentCharge = json['merchant_percent_charge'];
-    _monthlyLimit = json['monthly_limit'];
-    _dailyLimit = json['daily_limit'];
-    _dailyRequestAcceptLimit = json['daily_request_accept_limit'];
-    _voucherLimit = json['voucher_limit'];
-    _cap = json['cap'];
+    _fixedCharge = json['fixed_charge'].toString();
+    _percentCharge = json['percent_charge'].toString();
+    _minLimit = json['min_limit'] != null ? json['min_limit'].toString() : "0";
+    _maxLimit = json['max_limit'] != null ? json['max_limit'].toString() : "0";
+    _agentCommissionFixed = json['agent_commission_fixed'].toString();
+    _agentCommissionPercent = json['agent_commission_percent'].toString();
+    _merchantFixedCharge = json['merchant_fixed_charge'].toString();
+    _merchantPercentCharge = json['merchant_percent_charge'].toString();
+    _monthlyLimit = json['monthly_limit'].toString();
+    _dailyLimit = json['daily_limit'].toString();
+    _dailyRequestAcceptLimit = json['daily_request_accept_limit'].toString();
+    _voucherLimit = json['voucher_limit'].toString();
+    _cap = json['cap'].toString();
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
   }
@@ -226,11 +226,11 @@ class Wallets {
 
   Wallets.fromJson(dynamic json) {
     _id = json['id'];
-    _userId = json['user_id'];
-    _userType = json['user_type'];
-    _currencyId = json['currency_id'];
-    _currencyCode = json['currency_code'];
-    _balance = json['balance'];
+    _userId = json['user_id'].toString();
+    _userType = json['user_type'].toString();
+    _currencyId = json['currency_id'].toString();
+    _currencyCode = json['currency_code'].toString();
+    _balance = json['balance'] != null ? json['balance'].toString() : "";
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
     _currency = json['currency'] != null ? Currency.fromJson(json['currency']) : null;
@@ -301,16 +301,16 @@ class Currency {
 
   Currency.fromJson(dynamic json) {
     _id = json['id'];
-    _currencyCode = json['currency_code'];
+    _currencyCode = json['currency_code'].toString();
     _currencySymbol = json['currency_symbol'];
     _currencyFullname = json['currency_fullname'];
     _currencyType = json['currency_type'];
-    _rate = json['rate'];
-    _isDefault = json['is_default'];
-    _status = json['status'];
+    _rate = json['rate'].toString();
+    _isDefault = json['is_default'].toString();
+    _status = json['status'].toString();
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
-    _moneyRequestLimit = json['money_request_limit'];
+    _moneyRequestLimit = json['money_request_limit'].toString();
   }
   int? _id;
   String? _currencyCode;

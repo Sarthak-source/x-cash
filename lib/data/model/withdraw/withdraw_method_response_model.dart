@@ -217,13 +217,13 @@ class Currency {
 
   Currency.fromJson(dynamic json) {
     _id = json['id'];
-    _currencyCode = json['currency_code'];
+    _currencyCode = json['currency_code'].toString();
     _currencySymbol = json['currency_symbol'];
     _currencyFullName = json['currency_fullname'];
-    _currencyType = json['currency_type'];
-    _rate = json['rate'];
-    _isDefault = json['is_default'];
-    _status = json['status'];
+    _currencyType = json['currency_type'].toString();
+    _rate = json['rate'].toString();
+    _isDefault = json['is_default'].toString();
+    _status = json['status'].toString();
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
   }
@@ -308,9 +308,9 @@ class WithdrawMethod {
     _id = json['id'];
     _formId = json['form_id'].toString();
     _name = json['name'].toString();
-    _minLimit = json['min_limit'].toString();
-    _maxLimit = json['max_limit'].toString();
-    _fixedCharge = json['fixed_charge'].toString();
+    _minLimit = json['min_limit'] != null ? json['min_limit'].toString() : "0";
+    _maxLimit = json['max_limit'] != null ? json['max_limit'].toString() : "0";
+    _fixedCharge = json['fixed_charge'] != null ? json['fixed_charge'].toString() : "0";
     _rate = json['rate'].toString();
     _percentCharge = json['percent_charge'].toString();
     _currency = json['currency'] != null ? json['currency'].toString() : "";

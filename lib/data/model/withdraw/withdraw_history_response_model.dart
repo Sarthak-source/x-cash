@@ -155,15 +155,15 @@ class Data {
     _id = json['id'];
     _methodId = json['method_id'].toString();
     _userId = json['user_id'].toString();
-    _userType = json['user_type'];
+    _userType = json['user_type'].toString();
     _amount = json['amount'].toString();
     _currencyId = json['currency_id'].toString();
     _walletId = json['wallet_id'].toString();
-    _currency = json['currency'];
+    _currency = json['currency'] != null ? json['currency'].toString() : "";
     _rate = json['rate'].toString();
     _charge = json['charge'].toString();
     _trx = json['trx'];
-    _finalAmount = json['final_amount'].toString();
+    _finalAmount = json['final_amount'] != null ? json['final_amount'].toString() : "0";
     _afterCharge = json['after_charge'].toString();
     if (json['withdraw_information'] != null) {
       _withdrawInformation = [];
@@ -280,7 +280,7 @@ class Curr {
     _currencyCode = json['currency_code'].toString();
     _currencySymbol = json['currency_symbol'];
     _currencyFullname = json['currency_fullname'];
-    _currencyType = json['currency_type'];
+    _currencyType = json['currency_type'].toString();
     _rate = json['rate'].toString();
     _isDefault = json['is_default'].toString();
     _status = json['status'].toString();
@@ -364,12 +364,12 @@ class Method {
     _id = json['id'];
     _formId = json['form_id'].toString();
     _name = json['name'];
-    _minLimit = json['min_limit'].toString();
-    _maxLimit = json['max_limit'].toString();
-    _fixedCharge = json['fixed_charge'].toString();
+    _minLimit = json['min_limit'] != null ? json['min_limit'].toString() : "";
+    _maxLimit = json['max_limit'] != null ? json['max_limit'].toString() : "";
+    _fixedCharge = json['fixed_charge'] != null ? json['fixed_charge'].toString() : "";
     _rate = json['rate'].toString();
     _percentCharge = json['percent_charge'].toString();
-    _currency = json['currency'];
+    _currency = json['currency'] != null ? json['currency'].toString() : "";
     _description = json['description'];
     _status = json['status'].toString();
     _userGuards = json['user_guards'] != null ? json['user_guards'].cast<String>() : [];
@@ -472,8 +472,6 @@ class WithdrawInfoModel {
     _name = json['name'].toString();
     _type = json['type'].toString();
     String runTimeType = json['value'].runtimeType.toString();
-    print(json['value']);
-    print('run time type:$runtimeType');
     if(runTimeType=='String'){
       _value = [json['value'].toString()];
     } else{
@@ -481,17 +479,11 @@ class WithdrawInfoModel {
     }
 
   }
-
-
   String? _name;
   String? _type;
   List<String>?  _value;
 
-
-
   String? get name => _name;
   String? get type => _type;
   List<String>? get value => _value;
-
-
 }

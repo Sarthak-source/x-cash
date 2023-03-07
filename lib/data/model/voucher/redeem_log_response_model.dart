@@ -83,7 +83,7 @@ class Logs {
         _data?.add(Data.fromJson(v));
       });
     }
-    _nextPageUrl = json['next_page_url'];
+    _nextPageUrl = json['next_page_url'] != null ? json['next_page_url'].toString() : "";
     _path = json['path'];
   }
   List<Data>? _data;
@@ -139,8 +139,8 @@ class Data {
     _voucherCode = json['voucher_code'].toString();
     _isUsed = json['is_used'].toString();
     _redeemerId = json['redeemer_id'].toString();
-    _createdAt = json['created_at'].toString();
-    _updatedAt = json['updated_at'].toString();
+    _createdAt = json['created_at'];
+    _updatedAt = json['updated_at'];
   }
   int? _id;
   String? _userId;

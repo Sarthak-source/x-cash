@@ -156,11 +156,11 @@ class Agent {
     _verCodeSendAt = json['ver_code_send_at'];
     _ts = json['ts'].toString();
     _tv = json['tv'].toString();
-    _tsc = json['tsc'];
-    _banReason = json['ban_reason'];
+    _tsc = json['tsc'].toString();
+    _banReason = json['ban_reason'].toString();
     _publicApiKey = json['public_api_key'];
     _secretApiKey = json['secret_api_key'];
-    _rememberToken = json['remember_token'];
+    _rememberToken = json['remember_token'].toString();
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
   }

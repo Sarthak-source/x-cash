@@ -83,7 +83,7 @@ class Vouchers {
         _data?.add(Data.fromJson(v));
       });
     }
-    _nextPageUrl = json['next_page_url'];
+    _nextPageUrl = json['next_page_url'] != null ? json['next_page_url'].toString() : "";
     _path = json['path'];
   }
   List<Data>? _data;

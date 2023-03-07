@@ -441,7 +441,7 @@ class Currency {
 
   Currency.fromJson(dynamic json) {
     _id = json['id'];
-    _currencyCode = json['currency_code'];
+    _currencyCode = json['currency_code'].toString();
     _currencySymbol = json['currency_symbol'];
     _currencyFullname = json['currency_fullname'];
     _currencyType = json['currency_type'];

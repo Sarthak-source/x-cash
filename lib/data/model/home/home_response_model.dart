@@ -352,16 +352,16 @@ class ReceiverAgent {
 
   ReceiverAgent.fromJson(dynamic json) {
     _id = json['id'];
-    _firstname = json['firstname'];
-    _lastname = json['lastname'];
-    _username = json['username'];
-    _email = json['email'];
-    _countryCode = json['country_code'];
+    _firstname = json['firstname'] ?? "";
+    _lastname = json['lastname'] ?? "";
+    _username = json['username'] ?? "";
+    _email = json['email'] ?? "";
+    _countryCode = json['country_code'].toString();
     _mobile = json['mobile'];
     _refBy = json['ref_by'].toString();
     _balance = json['balance'].toString();
     _password = json['password'];
-    _image = json['image'];
+    _image = json['image'].toString();
     _address = json['address'] != null ? Address.fromJson(json['address']) : null;
     _status = json['status'].toString();
     _kv = json['kv'].toString();
@@ -379,8 +379,8 @@ class ReceiverAgent {
     _ts = json['ts'].toString();
     _tv = json['tv'].toString();
     _tsc = json['tsc'].toString();
-    _banReason = json['ban_reason'];
-    _rememberToken = json['remember_token'];
+    _banReason = json['ban_reason'].toString();
+    _rememberToken = json['remember_token'].toString();
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
   }
@@ -612,16 +612,16 @@ class ReceiverUser {
 
   ReceiverUser.fromJson(dynamic json) {
     _id = json['id'];
-    _companyName = json['company_name'];
-    _firstname = json['firstname'];
-    _lastname = json['lastname'];
-    _username = json['username'];
-    _email = json['email'];
-    _countryCode = json['country_code'];
+    _companyName = json['company_name'] ?? "";
+    _firstname = json['firstname'] ?? "";
+    _lastname = json['lastname'] ?? "";
+    _username = json['username'] ?? "";
+    _email = json['email'] ?? "";
+    _countryCode = json['country_code'].toString();
     _mobile = json['mobile'];
     _refBy = json['ref_by'].toString();
     _balance = json['balance'].toString();
-    _image = json['image'];
+    _image = json['image'].toString();
     _address = json['address'] != null ? ReceiverAddress.fromJson(json['address']) : null;
     _status = json['status'].toString();
     _kycData = json['kyc_data'];
@@ -633,7 +633,7 @@ class ReceiverUser {
     _ts = json['ts'].toString();
     _tv = json['tv'].toString();
     _tsc = json['tsc'].toString();
-    _banReason = json['ban_reason'];
+    _banReason = json['ban_reason'].toString();
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
   }
@@ -794,7 +794,7 @@ class Currency {
 
   Currency.fromJson(dynamic json) {
     _id = json['id'];
-    _currencyCode = json['currency_code'];
+    _currencyCode = json['currency_code'].toString();
     _currencySymbol = json['currency_symbol'];
     _currencyFullname = json['currency_fullname'];
     _currencyType = json['currency_type'];
@@ -872,7 +872,7 @@ class Wallets {
     _userId = json['user_id'].toString();
     _userType = json['user_type'];
     _currencyId = json['currency_id'].toString();
-    _currencyCode = json['currency_code'];
+    _currencyCode = json['currency_code'].toString();
     _balance = json['balance'].toString();
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
@@ -946,7 +946,7 @@ class WalletsCurrency {
 
   WalletsCurrency.fromJson(dynamic json) {
     _id = json['id'];
-    _currencyCode = json['currency_code'];
+    _currencyCode = json['currency_code'].toString();
     _currencySymbol = json['currency_symbol'];
     _currencyFullname = json['currency_fullname'];
     _currencyType = json['currency_type'];
@@ -1051,16 +1051,16 @@ class User {
 
   User.fromJson(dynamic json) {
     _id = json['id'];
-    _companyName = json['company_name'];
-    _firstname = json['firstname'];
-    _lastname = json['lastname'];
-    _username = json['username'];
-    _email = json['email'];
-    _countryCode = json['country_code'];
+    _companyName = json['company_name'] ?? "";
+    _firstname = json['firstname'] ?? "";
+    _lastname = json['lastname'] ?? "";
+    _username = json['username'] ?? "";
+    _email = json['email'] ?? "";
+    _countryCode = json['country_code'].toString();
     _mobile = json['mobile'];
     _refBy = json['ref_by'].toString();
     _balance = json['balance'].toString();
-    _image = json['image'];
+    _image = json['image'].toString();
     _address = json['address'] != null ? UserAddress.fromJson(json['address']) : null;
     _status = json['status'].toString();
     _kycData = json['kyc_data'];
@@ -1072,7 +1072,7 @@ class User {
     _ts = json['ts'].toString();
     _tv = json['tv'].toString();
     _tsc = json['tsc'].toString();
-    _banReason = json['ban_reason'];
+    _banReason = json['ban_reason'].toString();
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
   }

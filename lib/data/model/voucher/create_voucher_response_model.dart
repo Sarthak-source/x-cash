@@ -312,8 +312,8 @@ class Currency {
     _status = json['status'].toString();
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
-    _voucherMinLimit = json['voucher_min_limit'].toString();
-    _voucherMaxLimit = json['voucher_max_limit'].toString();
+    _voucherMinLimit = json['voucher_min_limit'] != null ? json['voucher_min_limit'].toString() : "";
+    _voucherMaxLimit = json['voucher_max_limit'] != null ? json['voucher_max_limit'].toString() : "";
   }
   int? _id;
   String? _currencyCode;

@@ -149,16 +149,16 @@ class WithdrawMethod {
 
   WithdrawMethod.fromJson(dynamic json) {
     _id = json['id'];
-    _formId = json['form_id'];
+    _formId = json['form_id'].toString();
     _name = json['name'];
-    _minLimit = json['min_limit'];
-    _maxLimit = json['max_limit'];
-    _fixedCharge = json['fixed_charge'];
-    _rate = json['rate'];
-    _percentCharge = json['percent_charge'];
-    _currency = json['currency'];
+    _minLimit = json['min_limit'] != null ? json['min_limit'].toString() : "0";
+    _maxLimit = json['max_limit'] != null ? json['max_limit'].toString() : "0";
+    _fixedCharge = json['fixed_charge'] != null ? json['fixed_charge'].toString() : "0";
+    _rate = json['rate'].toString();
+    _percentCharge = json['percent_charge'].toString();
+    _currency = json['currency'].toString();
     _description = json['description'];
-    _status = json['status'];
+    _status = json['status'].toString();
     _userGuards = json['user_guards'] != null ? json['user_guards'].cast<String>() : [];
     _currencies = json['currencies'] != null ? json['currencies'].cast<String>() : [];
     _createdAt = json['created_at'];

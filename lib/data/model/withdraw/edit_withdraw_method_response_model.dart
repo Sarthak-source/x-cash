@@ -184,17 +184,17 @@ class MainWithdrawMethod {
   MainWithdrawMethod.fromJson(dynamic json) {
     _id = json['id'];
     _name = json['name'];
-    _userId = json['user_id'];
-    _userType = json['user_type'];
-    _methodId = json['method_id'];
-    _currencyId = json['currency_id'];
+    _userId = json['user_id'].toString();
+    _userType = json['user_type'].toString();
+    _methodId = json['method_id'].toString();
+    _currencyId = json['currency_id'].toString();
     if (json['user_data'] != null) {
       _userData = [];
       json['user_data'].forEach((v) {
         _userData?.add(UserData.fromJson(v));
       });
     }
-    _status = json['status'];
+    _status = json['status'].toString();
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
     _withdrawMethod = json['withdraw_method'] != null ? WithdrawMethod.fromJson(json['withdraw_method']) : null;
@@ -283,16 +283,16 @@ class WithdrawMethod {
 
   WithdrawMethod.fromJson(dynamic json) {
     _id = json['id'];
-    _formId = json['form_id'];
+    _formId = json['form_id'].toString();
     _name = json['name'];
-    _minLimit = json['min_limit'];
-    _maxLimit = json['max_limit'];
-    _fixedCharge = json['fixed_charge'];
-    _rate = json['rate'];
-    _percentCharge = json['percent_charge'];
-    _currency = json['currency'];
+    _minLimit = json['min_limit'] != null ? json['min_limit'].toString() : "0";
+    _maxLimit = json['max_limit'] != null ? json['max_limit'].toString() : "0";
+    _fixedCharge = json['fixed_charge'] != null ? json['fixed_charge'].toString() : "0";
+    _rate = json['rate'].toString();
+    _percentCharge = json['percent_charge'].toString();
+    _currency = json['currency'] != null ? json['currency'].toString() : "";
     _description = json['description'];
-    _status = json['status'];
+    _status = json['status'].toString();
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
     _form = json['form']['form_data'] != null ? Form.fromJson(json['form']['form_data']) : null;

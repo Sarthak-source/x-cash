@@ -84,7 +84,7 @@ class Invoices {
         _data?.add(Data.fromJson(v));
       });
     }
-    _nextPageUrl = json['next_page_url'];
+    _nextPageUrl = json['next_page_url'] != null ? json['next_page_url'].toString() : "";
     _path = json['path'];
   }
   List<Data>? _data;
@@ -265,13 +265,13 @@ class Currency {
 
   Currency.fromJson(dynamic json) {
     _id = json['id'];
-    _currencyCode = json['currency_code'];
+    _currencyCode = json['currency_code'].toString();
     _currencySymbol = json['currency_symbol'];
     _currencyFullname = json['currency_fullname'];
     _currencyType = json['currency_type'];
-    _rate = json['rate'];
-    _isDefault = json['is_default'];
-    _status = json['status'];
+    _rate = json['rate'].toString();
+    _isDefault = json['is_default'].toString();
+    _status = json['status'].toString();
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
   }
@@ -332,9 +332,9 @@ class Items {
 
   Items.fromJson(dynamic json) {
     _id = json['id'];
-    _invoiceId = json['invoice_id'];
+    _invoiceId = json['invoice_id'].toString();
     _itemName = json['item_name'];
-    _amount = json['amount'];
+    _amount = json['amount'] != null ? json['amount'].toString() : "0";
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
   }

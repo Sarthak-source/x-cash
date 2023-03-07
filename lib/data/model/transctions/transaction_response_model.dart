@@ -86,13 +86,13 @@ class MainData {
 
 class Transactions {
   Transactions({
-      List<Data>? data,
-      String? nextPageUrl, 
-      String? path}){
+    List<Data>? data,
+    String? nextPageUrl,
+    String? path}) {
     _data = data;
     _nextPageUrl = nextPageUrl;
     _path = path;
-}
+  }
 
   Transactions.fromJson(dynamic json) {
     if (json['data'] != null) {
@@ -101,56 +101,25 @@ class Transactions {
         _data?.add(Data.fromJson(v));
       });
     }
-    _nextPageUrl = json['next_page_url'];
+    _nextPageUrl = json['next_page_url'] != null ? json['next_page_url'].toString() : "";
     _path = json['path'];
   }
-  int? _currentPage;
+
   List<Data>? _data;
-  String? _firstPageUrl;
-  int? _from;
-  int? _lastPage;
-  String? _lastPageUrl;
-  List<Links>? _links;
   String? _nextPageUrl;
   String? _path;
-  int? _perPage;
-  dynamic _prevPageUrl;
-  int? _to;
-  int? _total;
 
-  int? get currentPage => _currentPage;
   List<Data>? get data => _data;
-  String? get firstPageUrl => _firstPageUrl;
-  int? get from => _from;
-  int? get lastPage => _lastPage;
-  String? get lastPageUrl => _lastPageUrl;
-  List<Links>? get links => _links;
   String? get nextPageUrl => _nextPageUrl;
   String? get path => _path;
-  int? get perPage => _perPage;
-  dynamic get prevPageUrl => _prevPageUrl;
-  int? get to => _to;
-  int? get total => _total;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    map['current_page'] = _currentPage;
     if (_data != null) {
       map['data'] = _data?.map((v) => v.toJson()).toList();
     }
-    map['first_page_url'] = _firstPageUrl;
-    map['from'] = _from;
-    map['last_page'] = _lastPage;
-    map['last_page_url'] = _lastPageUrl;
-    if (_links != null) {
-      map['links'] = _links?.map((v) => v.toJson()).toList();
-    }
     map['next_page_url'] = _nextPageUrl;
     map['path'] = _path;
-    map['per_page'] = _perPage;
-    map['prev_page_url'] = _prevPageUrl;
-    map['to'] = _to;
-    map['total'] = _total;
     return map;
   }
 
@@ -241,18 +210,18 @@ class Data {
 
   Data.fromJson(dynamic json) {
     _id = json['id'];
-    _userId = json['user_id'];
+    _userId = json['user_id'].toString();
     _userType = json['user_type'];
-    _receiverId = json['receiver_id'];
+    _receiverId = json['receiver_id'].toString();
     _receiverType = json['receiver_type'];
-    _currencyId = json['currency_id'];
-    _walletId = json['wallet_id'];
-    _beforeCharge = json['before_charge'];
-    _amount = json['amount'];
-    _charge = json['charge'];
-    _postBalance = json['post_balance'];
-    _trxType = json['trx_type'];
-    _chargeType = json['charge_type'];
+    _currencyId = json['currency_id'].toString();
+    _walletId = json['wallet_id'].toString();
+    _beforeCharge = json['before_charge'].toString();
+    _amount = json['amount'] != null ? json['amount'].toString() : "";
+    _charge = json['charge'].toString();
+    _postBalance = json['post_balance'].toString();
+    _trxType = json['trx_type'].toString();
+    _chargeType = json['charge_type'].toString();
     _trx = json['trx'];
     _details = json['details'];
     _remark = json['remark'];
@@ -402,14 +371,14 @@ class ReceiverUser {
 
   ReceiverUser.fromJson(dynamic json) {
     _id = json['id'];
-    _companyName = json['company_name'];
+    _companyName = json['company_name'] != null ? _companyName = json['company_name'].toString() : "";
     _firstname = json['firstname'];
     _lastname = json['lastname'];
     _username = json['username'];
     _email = json['email'];
-    _countryCode = json['country_code'];
+    _countryCode = json['country_code'].toString();
     _mobile = json['mobile'];
-    _refBy = json['ref_by'];
+    _refBy = json['ref_by'].toString();
     _balance = json['balance'];
     _image = json['image'];
     _address = json['address'] != null ? Address.fromJson(json['address']) : null;
@@ -584,13 +553,13 @@ class Currency {
 
   Currency.fromJson(dynamic json) {
     _id = json['id'];
-    _currencyCode = json['currency_code'];
+    _currencyCode = json['currency_code'].toString();
     _currencySymbol = json['currency_symbol'];
     _currencyFullname = json['currency_fullname'];
     _currencyType = json['currency_type'];
-    _rate = json['rate'];
-    _isDefault = json['is_default'];
-    _status = json['status'];
+    _rate = json['rate'].toString();
+    _isDefault = json['is_default'].toString();
+    _status = json['status'].toString();
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
   }
