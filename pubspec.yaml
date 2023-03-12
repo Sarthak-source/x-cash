@@ -79,6 +79,7 @@ dependencies:
   gallery_saver: ^2.3.2
   dio: ^5.0.1
   image_picker: ^0.8.6+1
+  flutter_local_notifications: ^13.0.0
 
 
 dev_dependencies:

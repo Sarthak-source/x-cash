@@ -15,8 +15,9 @@ class StatusWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: Dimensions.space3, horizontal: Dimensions.space8),
       alignment: Alignment.center,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(4),
-          border: Border.all(color: color)
+          borderRadius: BorderRadius.circular(3),
+          color: color.withOpacity(.1),
+          border: Border.all(color: color,width: .5)
       ),
       child: Text(status.tr, style: regularSmall.copyWith(color: color)));
   }

@@ -27,6 +27,8 @@ class _UpdateInvoiceScreenState extends State<UpdateInvoiceScreen> {
   late String invoiceNumber;
   late String walletId;
 
+  final formKey = GlobalKey<FormState>();
+
   @override
   void initState() {
     Get.put(ApiClient(sharedPreferences: Get.find()));
@@ -84,13 +86,15 @@ class _UpdateInvoiceScreenState extends State<UpdateInvoiceScreen> {
                 children: [
                   const InvoicePaymentUrlSection(),
                   const SizedBox(height: Dimensions.space15),
-                  UpdateInvoiceDetails(invoiceNumber: invoiceNumber, walletId: walletId),
+                  UpdateInvoiceDetails(formKey:formKey,invoiceNumber: invoiceNumber, walletId: walletId),
                   const SizedBox(height: Dimensions.space20),
-                  controller.selectedCurrency?.currencyCode == MyStrings.selectOne ? const SizedBox() : const UpdateInvoiceItems(),
+                  controller.selectedCurrency?.currencyCode == MyStrings.selectOne ? const SizedBox() : UpdateInvoiceItems(formKey:formKey,),
                   const SizedBox(height: Dimensions.space25),
                   controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
                     press: (){
-                      controller.updateInvoice();
+                      if (formKey.currentState!.validate()) {
+                        controller.updateInvoice();
+                      }
                     },
                     text: MyStrings.updateInvoice.tr,
                   )

@@ -60,63 +60,70 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<TransactionHistoryController>(
-      builder: (controller) => SafeArea(
-        child: Scaffold(
-          resizeToAvoidBottomInset: true,
-          backgroundColor: MyColor.screenBgColor,
-          appBar: AppBar(
-            backgroundColor: MyColor.getAppBarColor(),
-            elevation: 0,
-            titleSpacing: 0,
-            title: Text(MyStrings.transaction.tr, style: regularLarge.copyWith(color: MyColor.getAppBarContentColor())),
-            leading: IconButton(
-              onPressed: () => Get.back(),
-              icon: Icon(Icons.arrow_back, color: MyColor.getAppBarContentColor(), size: 20),
-            ),
-            actions: [
-              ActionButtonIconWidget(
-                  pressed: () => controller.changeSearchIcon(),
-                  icon: controller.isSearch ? Icons.clear : Icons.filter_alt_sharp
+      builder: (controller) => GestureDetector(
+        onTap: (){
+          FocusScope.of(context).unfocus();
+        },
+        child: SafeArea(
+          child: Scaffold(
+            resizeToAvoidBottomInset: false,
+            backgroundColor: MyColor.screenBgColor,
+            appBar: AppBar(
+              backgroundColor: MyColor.getAppBarColor(),
+              elevation: 0,
+              titleSpacing: 0,
+              title: Text(MyStrings.transaction.tr, style: regularLarge.copyWith(color: MyColor.getAppBarContentColor())),
+              leading: IconButton(
+                onPressed: () => Get.back(),
+                icon: Icon(Icons.arrow_back, color: MyColor.getAppBarContentColor(), size: 20),
               ),
-            ],
-          ),
-          body: controller.isLoading ? const CustomLoader() :  Padding(
-            padding: const EdgeInsets.only(top: Dimensions.space20, left: Dimensions.space15, right: Dimensions.space15),
-            child: SingleChildScrollView(
-              controller: scrollController,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Visibility(
-                    visible: controller.isSearch,
-                    child: const FiltersField(),
-                  ),
-                  controller.transactionList.isEmpty && controller.filterLoading == false ? const Center(
-                      child:  NoDataWidget()
-                  ) : controller.filterLoading ? const CustomLoader() : Expanded(
-                    flex: 0,
-                    child: ListView.separated(
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        padding: EdgeInsets.zero,
-                        scrollDirection: Axis.vertical,
-                        itemCount: controller.transactionList.length + 1,
-                        separatorBuilder: (context, index) => const SizedBox(height: Dimensions.space10),
-                        itemBuilder: (context, index) {
-                          if(controller.transactionList.length == index){
-                            return controller.hasNext() ? const CustomLoader(isPagination: true) : const SizedBox();
-                          }
-
-                          return  TransactionCard(
-                            index: index,
-                            press: () => CustomBottomSheet(
-                              child: TransactionHistoryBottomSheet(index: index)
-                            ).customBottomSheet(context),
-                          );
-                        }
+              actions: [
+                ActionButtonIconWidget(
+                    pressed: () => controller.changeSearchIcon(),
+                    icon: controller.isSearch ? Icons.clear : Icons.filter_alt_sharp
+                ),
+              ],
+            ),
+            body: controller.isLoading ? const CustomLoader() :  SizedBox(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.only(top: Dimensions.space20, left: Dimensions.space15, right: Dimensions.space15),
+                controller: scrollController,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Visibility(
+                      visible: controller.isSearch,
+                      child: const FiltersField(),
                     ),
-                  ),
-                ],
+                    controller.transactionList.isEmpty && controller.filterLoading == false ?  Center(
+                        child:  NoDataWidget(margin: controller.isSearch? 6:4,)
+                    ) : controller.filterLoading ? const CustomLoader() : Expanded(
+                      flex: 0,
+                      child: ListView.separated(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          padding: EdgeInsets.zero,
+                          scrollDirection: Axis.vertical,
+                          itemCount: controller.transactionList.length + 1,
+                          separatorBuilder: (context, index) => const SizedBox(height: Dimensions.space10),
+                          itemBuilder: (context, index) {
+                            if(controller.transactionList.length == index){
+                              return controller.hasNext() ? const CustomLoader(isPagination: true) : const SizedBox();
+                            }
+
+                            return  TransactionCard(
+                              index: index,
+                              press: () => CustomBottomSheet(
+                                child: TransactionHistoryBottomSheet(index: index)
+                              ).customBottomSheet(context),
+                            );
+                          }
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

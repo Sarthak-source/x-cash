@@ -102,6 +102,11 @@ class ApiClient extends GetxService{
       }
 
 
+      print('url ${uri.toString()}');
+      print('status ${response.statusCode}');
+      print('body ${response.body.toString()}');
+
+
       if (response.statusCode == 200) {
         try{
           AuthorizationResponseModel model=AuthorizationResponseModel.fromJson(jsonDecode(response.body));

@@ -203,6 +203,7 @@ class TransactionHistoryController extends GetxController{
     filterLoading = true;
     update();
     transactionList.clear();
+    FocusScope.of(Get.context!).unfocus();
     await loadFilteredTransactions();
     filterLoading = false;
     update();

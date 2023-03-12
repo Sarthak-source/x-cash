@@ -174,7 +174,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               child: Text(MyStrings.createAccount.tr, maxLines: 2, overflow:TextOverflow.ellipsis,style: regularLarge.copyWith(color: MyColor.getPrimaryColor())),
                             )
                           ],
-                        )
+                        ),
                       ],
                     ),
                   )

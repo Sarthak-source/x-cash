@@ -26,7 +26,7 @@ class CustomBottomSheet{
             padding: const EdgeInsets.symmetric(horizontal: Dimensions.space15, vertical: Dimensions.space12),
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
-              color: MyColor.colorWhite,
+              color: MyColor.screenBgColor,
               borderRadius: isNeedMargin ? BorderRadius.circular(15) : const BorderRadius.vertical(top: Radius.circular(15))
             ),
             child: child,

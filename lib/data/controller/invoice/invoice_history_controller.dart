@@ -35,6 +35,7 @@ class InvoiceHistoryController extends GetxController{
 
   Future<void> loadInvoiceData() async{
 
+
     page = page + 1;
     if(page == 1){
       invoiceList.clear();

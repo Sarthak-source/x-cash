@@ -102,7 +102,7 @@ class Transactions {
       });
     }
     _nextPageUrl = json['next_page_url'] != null ? json['next_page_url'].toString() : "";
-    _path = json['path'];
+    _path = json['path'].toString();
   }
 
   List<Data>? _data;
@@ -125,38 +125,6 @@ class Transactions {
 
 }
 
-class Links {
-  Links({
-      dynamic url, 
-      String? label, 
-      bool? active,}){
-    _url = url;
-    _label = label;
-    _active = active;
-}
-
-  Links.fromJson(dynamic json) {
-    _url = json['url'];
-    _label = json['label'];
-    _active = json['active'];
-  }
-  dynamic _url;
-  String? _label;
-  bool? _active;
-
-  dynamic get url => _url;
-  String? get label => _label;
-  bool? get active => _active;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['url'] = _url;
-    map['label'] = _label;
-    map['active'] = _active;
-    return map;
-  }
-
-}
 
 class Data {
   Data({
@@ -216,22 +184,22 @@ class Data {
     _receiverType = json['receiver_type'];
     _currencyId = json['currency_id'].toString();
     _walletId = json['wallet_id'].toString();
-    _beforeCharge = json['before_charge'].toString();
+    _beforeCharge = json['before_charge'] != null ? json['before_charge'].toString():'';
     _amount = json['amount'] != null ? json['amount'].toString() : "";
-    _charge = json['charge'].toString();
-    _postBalance = json['post_balance'].toString();
-    _trxType = json['trx_type'].toString();
-    _chargeType = json['charge_type'].toString();
-    _trx = json['trx'];
-    _details = json['details'];
-    _remark = json['remark'];
+    _charge = json['charge']!=null?json['charge'].toString():'';
+    _postBalance = json['post_balance']!=null?json['post_balance'].toString():'';
+    _trxType = json['trx_type']!=null?json['trx_type'].toString():'';
+    _chargeType = json['charge_type']!=null?json['charge_type'].toString():'';
+    _trx = json['trx']!=null?json['trx'].toString():'';
+    _details = json['details']!=null?json['details'].toString():'';
+    _remark = json['remark']!=null?json['remark'].toString():'';
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
-    _apiDetails = json['apiDetails'];
+    _apiDetails = json['apiDetails'].toString();
     _currency = json['currency'] != null ? Currency.fromJson(json['currency']) : null;
     _receiverUser = json['receiver_user'] != null ? ReceiverUser.fromJson(json['receiver_user']) : null;
-    _receiverAgent = json['receiver_agent'];
-    _receiverMerchant = json['receiver_merchant'];
+    _receiverAgent = json['receiver_agent']!=null?json['receiver_agent'].toString():'';
+    _receiverMerchant = json['receiver_merchant']!=null?json['receiver_merchant'].toString():'';
   }
   int? _id;
   String? _userId;
@@ -375,24 +343,24 @@ class ReceiverUser {
     _firstname = json['firstname'];
     _lastname = json['lastname'];
     _username = json['username'];
-    _email = json['email'];
+    _email = json['email'].toString();
     _countryCode = json['country_code'].toString();
-    _mobile = json['mobile'];
+    _mobile = json['mobile'].toString();
     _refBy = json['ref_by'].toString();
-    _balance = json['balance'];
-    _image = json['image'];
+    _balance = json['balance'].toString();
+    _image = json['image'].toString();
     _address = json['address'] != null ? Address.fromJson(json['address']) : null;
-    _status = json['status'];
-    _kycData = json['kyc_data'];
-    _kv = json['kv'];
-    _ev = json['ev'];
-    _sv = json['sv'];
-    _profileComplete = json['profile_complete'];
-    _verCodeSendAt = json['ver_code_send_at'];
-    _ts = json['ts'];
-    _tv = json['tv'];
-    _tsc = json['tsc'];
-    _banReason = json['ban_reason'];
+    _status = json['status'].toString();
+    _kycData = json['kyc_data'].toString();
+    _kv = json['kv'].toString();
+    _ev = json['ev'].toString();
+    _sv = json['sv'].toString();
+    _profileComplete = json['profile_complete'].toString();
+    _verCodeSendAt = json['ver_code_send_at'].toString();
+    _ts = json['ts'].toString();
+    _tv = json['tv'].toString();
+    _tsc = json['tsc'].toString();
+    _banReason = json['ban_reason'].toString();
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
   }
@@ -497,11 +465,11 @@ class Address {
 }
 
   Address.fromJson(dynamic json) {
-    _country = json['country'];
-    _address = json['address'];
-    _state = json['state'];
-    _zip = json['zip'];
-    _city = json['city'];
+    _country = json['country'].toString();
+    _address = json['address'].toString();
+    _state = json['state'].toString();
+    _zip = json['zip'].toString();
+    _city = json['city'].toString();
   }
   String? _country;
   dynamic _address;
@@ -554,10 +522,10 @@ class Currency {
   Currency.fromJson(dynamic json) {
     _id = json['id'];
     _currencyCode = json['currency_code'].toString();
-    _currencySymbol = json['currency_symbol'];
-    _currencyFullname = json['currency_fullname'];
-    _currencyType = json['currency_type'];
-    _rate = json['rate'].toString();
+    _currencySymbol = json['currency_symbol']!=null?json['currency_symbol'].toString():'';
+    _currencyFullname = json['currency_fullname']!=null?json['currency_fullname'].toString():'';
+    _currencyType = json['currency_type']!=null?json['currency_type'].toString():'';
+    _rate = json['rate']!=null?json['rate'].toString():'';
     _isDefault = json['is_default'].toString();
     _status = json['status'].toString();
     _createdAt = json['created_at'];

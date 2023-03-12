@@ -8,13 +8,14 @@ import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 
 class NoDataWidget extends StatelessWidget {
-  const NoDataWidget({Key? key}) : super(key: key);
+  final double margin;
+  const NoDataWidget({Key? key,this.margin = 4}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height / 4),
+      margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height / margin),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,

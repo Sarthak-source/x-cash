@@ -16,14 +16,19 @@ import 'package:xcash_app/view/components/text/label_text.dart';
 import 'package:xcash_app/view/screens/transaction/widget/filter_row_widget.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_history/widget/status_widget.dart';
 
+import '../../../../components/bottom-sheet/bottom_sheet_header_row.dart';
+import '../../../../components/card/bottom_sheet_card.dart';
+
 class UpdateInvoiceDetails extends StatefulWidget {
   final String invoiceNumber;
   final String walletId;
+  final dynamic formKey;
 
   const UpdateInvoiceDetails({
     Key? key,
     required this.invoiceNumber,
-    required this.walletId
+    required this.walletId,
+    required this.formKey
   }) : super(key: key);
 
   @override
@@ -31,6 +36,8 @@ class UpdateInvoiceDetails extends StatefulWidget {
 }
 
 class _UpdateInvoiceDetailsState extends State<UpdateInvoiceDetails> {
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -43,119 +50,124 @@ class _UpdateInvoiceDetailsState extends State<UpdateInvoiceDetails> {
              border: Border.all(color: MyColor.colorGrey.withOpacity(0.2), width: 0.5)
          ),
          padding: const EdgeInsets.all(Dimensions.space15),
-         child: Column(
-           crossAxisAlignment: CrossAxisAlignment.start,
-           children: [
-             Row(
-               mainAxisAlignment: MainAxisAlignment.start,
-               children: [
-                 StatusWidget(
-                     status: controller.getPaymentStatusOrColor(),
-                     color: controller.getPaymentStatusOrColor(isStatus: false)
-                 )
-               ],
-             ),
-             const SizedBox(height: Dimensions.space10),
-             Row(
-               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-               children: [
-                 const BottomSheetHeaderText(text: MyStrings.invoiceDetails),
-                 BottomSheetHeaderText(text: "#${widget.invoiceNumber}"),
-               ],
-             ),
-             const CustomDivider(space: Dimensions.space15),
-             Form(
-               child: Column(
-                 crossAxisAlignment: CrossAxisAlignment.start,
+         child: Form(
+           key: widget.formKey,
+           child: Column(
+             crossAxisAlignment: CrossAxisAlignment.start,
+             children: [
+              /* Row(
+                 mainAxisAlignment: MainAxisAlignment.start,
                  children: [
-                   CustomTextField(
-                       needOutlineBorder: true,
-                       labelText: MyStrings.invoiceTo.tr,
-                       hintText: MyStrings.enterInvoiceTo.tr,
-                       controller: controller.invoiceToController,
-                       onChanged: (value){}
-                   ),
-                   const SizedBox(height: Dimensions.space15),
-                   CustomTextField(
-                       needOutlineBorder: true,
-                       labelText: MyStrings.email.tr,
-                       hintText: MyStrings.enterEmail.tr,
-                       controller: controller.emailController,
-                       onChanged: (value){}
-                   ),
-                   const SizedBox(height: Dimensions.space15),
-                   CustomTextField(
-                       needOutlineBorder: true,
-                       labelText: MyStrings.address.tr,
-                       hintText: MyStrings.enterAddress.tr,
-                       controller: controller.addressController,
-                       onChanged: (value){}
-                   ),
-                   const SizedBox(height: Dimensions.space15),
-                   const LabelText(text: MyStrings.yourWallet),
-                   const SizedBox(height: Dimensions.textToTextSpace),
-                   FilterRowWidget(
-                       borderColor: controller.selectedCurrency?.id.toString() == "-1" ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
-                       text: "${controller.selectedCurrency?.id.toString() == "-1" ? MyStrings.selectWallet : controller.selectedCurrency?.currencyCode}",
-                       press: () => CustomBottomSheet(
-                           child: Column(
-                             children: [
-                               Align(
-                                 alignment: Alignment.topCenter,
-                                 child: Container(
-                                   height: 5,
-                                   width: 50,
-                                   padding: const EdgeInsets.all(1),
-                                   decoration: BoxDecoration(
-                                     borderRadius: BorderRadius.circular(8),
-                                     color: MyColor.colorGrey.withOpacity(0.1),
-                                   ),
-                                 ),
-                               ),
-                               Row(
-                                 mainAxisAlignment: MainAxisAlignment.end,
-                                 children: const [BottomSheetCloseButton()],
-                               ),
-                               const SizedBox(height: Dimensions.space15),
-                               ListView.builder(
-                                   itemCount: controller.currencyList.length,
-                                   shrinkWrap: true,
-                                   physics: const NeverScrollableScrollPhysics(),
-                                   itemBuilder: (context, index) {
-                                     return GestureDetector(
-                                       onTap: () {
-                                         final controller= Get.find<UpdateInvoiceController>();
-                                         Currencies selectedValue = controller.currencyList[index];
-                                         controller.setSelectedCurrency(selectedValue);
-                                         Navigator.pop(context);
-
-                                         FocusScopeNode currentFocus = FocusScope.of(context);
-                                         if (!currentFocus.hasPrimaryFocus) {
-                                           currentFocus.unfocus();
-                                         }
-                                       },
-                                       child: Container(
-                                         padding: const EdgeInsets.all(15),
-                                         margin: const EdgeInsets.all(5),
-                                         decoration: BoxDecoration(
-                                             borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
-                                             border: Border.all(color: MyColor.colorGrey.withOpacity(0.2))
-                                         ),
-                                         child: Text(
-                                           controller.currencyList[index].currencyCode ?? "",
-                                           style: regularDefault,
-                                         ),
-                                       ),
-                                     );
-                                   })
-                             ],
-                           )
-                       ).customBottomSheet(context)
-                   ),
+                   StatusWidget(
+                       status: controller.getPaymentStatusOrColor(),
+                       color: controller.getPaymentStatusOrColor(isStatus: false)
+                   )
                  ],
                ),
-             )
-           ],
+               const SizedBox(height: Dimensions.space10),*/
+               Row(
+                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                 children: [
+                   const BottomSheetHeaderText(text: MyStrings.invoiceDetails),
+                   BottomSheetHeaderText(text: "#${widget.invoiceNumber}"),
+                 ],
+               ),
+               const CustomDivider(space: Dimensions.space15),
+               Form(
+                 child: Column(
+                   crossAxisAlignment: CrossAxisAlignment.start,
+                   children: [
+                     CustomTextField(
+                         needOutlineBorder: true,
+                         labelText: MyStrings.invoiceTo.tr,
+                         hintText: MyStrings.enterInvoiceTo.tr,
+                         controller: controller.invoiceToController,
+                         onChanged: (value){},
+                         validator: (value) {
+                           if (value!.isEmpty) {
+                             return MyStrings.invoiceToEmptyMsg.tr;
+                           }else {
+                             return null;
+                           }
+                         },
+
+                     ),
+                     const SizedBox(height: Dimensions.space15),
+                     CustomTextField(
+                         needOutlineBorder: true,
+                         labelText: MyStrings.email.tr,
+                         hintText: MyStrings.enterEmail.tr,
+                         controller: controller.emailController,
+                         onChanged: (value){},
+                         validator: (value) {
+                           if (value!.isEmpty) {
+                             return MyStrings.emailAddressEmptyMsg.tr;
+                           }  else {
+                             return null;
+                           }
+                         },
+                     ),
+                     const SizedBox(height: Dimensions.space15),
+                     CustomTextField(
+                         needOutlineBorder: true,
+                         labelText: MyStrings.address.tr,
+                         hintText: MyStrings.enterAddress.tr,
+                         controller: controller.addressController,
+                         onChanged: (value){},
+                         validator: (value) {
+                           if (value!.isEmpty) {
+                             return MyStrings.addressEmptyMsg.tr;
+                           } else {
+                             return null;
+                           }
+                         },
+                     ),
+                     const SizedBox(height: Dimensions.space15),
+                     const LabelText(text: MyStrings.yourWallet),
+                     const SizedBox(height: Dimensions.textToTextSpace),
+                     FilterRowWidget(
+                         borderColor: controller.selectedCurrency?.id.toString() == "-1" ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
+                         text: "${controller.selectedCurrency?.id.toString() == "-1" ? MyStrings.selectWallet : controller.selectedCurrency?.currencyCode}",
+                         press: () {
+                           CustomBottomSheet(
+                               child: Column(
+                                 children: [
+                                   const BottomSheetHeaderRow(header: MyStrings.selectWallet,),
+                                   ListView.builder(
+                                       itemCount: controller.currencyList.length,
+                                       shrinkWrap: true,
+                                       physics: const NeverScrollableScrollPhysics(),
+                                       itemBuilder: (context, index) {
+                                         return GestureDetector(
+                                           onTap: () {
+                                             final controller= Get.find<UpdateInvoiceController>();
+                                             Currencies selectedValue = controller.currencyList[index];
+                                             controller.setSelectedCurrency(selectedValue);
+                                             Navigator.pop(context);
+
+                                             FocusScopeNode currentFocus = FocusScope.of(context);
+                                             if (!currentFocus.hasPrimaryFocus) {
+                                               currentFocus.unfocus();
+                                             }
+                                           },
+                                           child: BottomSheetCard(
+                                             child: Text(
+                                               controller.currencyList[index].currencyCode ?? "",
+                                               style: regularDefault,
+                                             ),
+                                           ),
+                                         );
+                                       })
+                                 ],
+                               )
+                           ).customBottomSheet(context);
+                         }
+                     ),
+                   ],
+                 ),
+               )
+             ],
+           ),
          ),
        )
     );

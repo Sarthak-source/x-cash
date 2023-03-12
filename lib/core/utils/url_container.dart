@@ -1,6 +1,6 @@
 class UrlContainer{
 
-  static const String domainUrl = 'https://sohan.thesoftking.com/xcash/v4';
+  static const String domainUrl = 'https://sohan.thesoftking.com/x_cash/v4';
   //static const String domainUrl = 'http://192.168.30.135/php_8/lab/xCash';
   static const String baseUrl = '$domainUrl/api/';
 

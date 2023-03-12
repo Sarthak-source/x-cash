@@ -10,6 +10,7 @@ import 'package:xcash_app/data/model/invoice/create_invoice_response_model.dart'
 import 'package:xcash_app/data/model/invoice/invoice_items_model.dart';
 import 'package:xcash_app/data/repo/invoice/create_invoice_repo.dart';
 import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
+import 'package:xcash_app/view/screens/bottom_nav_section/home/home_screen.dart';
 import 'package:xcash_app/view/screens/invoice/create_invoice/widget/invoice_items.dart';
 
 class CreateInvoiceController extends GetxController{
@@ -108,8 +109,7 @@ class CreateInvoiceController extends GetxController{
 
   bool isSubmitLoading = false;
   Future <void> submitInvoice() async{
-    isSubmitLoading = true;
-    update();
+
 
     String invoiceTo = invoiceToController.text.toString();
     String email = emailController.text.toString();
@@ -144,6 +144,9 @@ class CreateInvoiceController extends GetxController{
       return ;
     }
 
+    isSubmitLoading = true;
+    update();
+
     ResponseModel responseModel = await createInvoiceRepo.createInvoice(invoiceTo,email,address,curId,firstInvoice,firstInvoiceAmount,invoiceItemList);
     if(responseModel.statusCode == 200){
       AuthorizationResponseModel model = AuthorizationResponseModel.fromJson(jsonDecode(responseModel.responseJson));
@@ -166,16 +169,8 @@ class CreateInvoiceController extends GetxController{
 
   void checkValidation(BuildContext context) {
 
-    if(invoiceToController.text.isEmpty){
-      CustomSnackBar.error(errorList: [MyStrings.enterInvoiceTo]);
-    }
-    else if(emailController.text.isEmpty){
-      CustomSnackBar.error(errorList: [MyStrings.emailAddressHint]);
-    }
-    else if(addressController.text.isEmpty){
-      CustomSnackBar.error(errorList: [MyStrings.enterAddress]);
-    }
-    else if(selectedCurrency?.id.toString() == "-1"){
+
+    if(selectedCurrency?.id.toString() == "-1"){
       CustomSnackBar.error(errorList: [MyStrings.selectAWallet]);
     }
     else{

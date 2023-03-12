@@ -50,7 +50,7 @@ class InvoicesBottomSheet{
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          MyStrings.invoicesTo,
+                          MyStrings.invoicesTo.tr,
                           style: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.6)),
                         ),
                         const SizedBox(height: Dimensions.space5),
@@ -64,7 +64,7 @@ class InvoicesBottomSheet{
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
-                          MyStrings.date,
+                          MyStrings.date.tr,
                           style: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.6)),
                         ),
                         const SizedBox(height: Dimensions.space5),
@@ -84,7 +84,7 @@ class InvoicesBottomSheet{
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          MyStrings.paymentStatus,
+                          MyStrings.paymentStatus.tr,
                           style: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.6)),
                         ),
                         const SizedBox(height: Dimensions.space5),
@@ -98,7 +98,7 @@ class InvoicesBottomSheet{
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
-                          MyStrings.amount,
+                          MyStrings.amount.tr,
                           style: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.6)),
                         ),
                         const SizedBox(height: Dimensions.space5),
@@ -118,7 +118,7 @@ class InvoicesBottomSheet{
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          MyStrings.email,
+                          MyStrings.email.tr,
                           style: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.6)),
                         ),
                         const SizedBox(height: Dimensions.space5),
@@ -132,7 +132,7 @@ class InvoicesBottomSheet{
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
-                          MyStrings.status,
+                          MyStrings.status.tr,
                           style: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.6)),
                         ),
                         const SizedBox(height: Dimensions.space5),
@@ -145,6 +145,7 @@ class InvoicesBottomSheet{
                   ],
                 ),
                 const CustomDivider(space: Dimensions.space15),
+                //user can edit only unpublished invoice
                 controller.invoiceList[index].status == "0" ? Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -157,12 +158,12 @@ class InvoicesBottomSheet{
                               successList: [MyStrings.copyLink]
                           ));
                         },
-                        text: MyStrings.copy,
-                        bgColor: MyColor.primaryColor,
+                        text: MyStrings.copy.tr,
+                        bgColor: MyColor.colorBlack,
                         iconData: Icons.copy_sharp,
                       ),
                     ),
-                    const SizedBox(width: Dimensions.space15),
+                    const SizedBox(width: Dimensions.space20),
                     Expanded(
                       child: InVoiceActionButton(
                         press: () => Get.toNamed(
@@ -170,7 +171,7 @@ class InvoicesBottomSheet{
                             arguments: [controller.invoiceList[index].invoiceNum, controller.invoiceList[index].currencyId, controller.invoiceList[index].totalAmount]
                         ),
                         text: MyStrings.edit,
-                        bgColor: MyColor.colorOrange,
+                        bgColor: MyColor.primaryColor,
                         iconData: Icons.edit,
                       ),
                     )
@@ -183,8 +184,9 @@ class InvoicesBottomSheet{
                         successList: [MyStrings.copyLink]
                     ));
                   },
-                  text: MyStrings.copy,
-                  bgColor: MyColor.primaryColor,
+
+                  text: MyStrings.copy.tr,
+                  bgColor: MyColor.colorBlack,
                   iconData: Icons.copy_sharp,
                 ),
               ],

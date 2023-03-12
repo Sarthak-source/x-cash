@@ -38,7 +38,7 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: MyColor.screenBgColor,
+        backgroundColor: MyColor.colorWhite,
         appBar: const CustomAppBar(
           title: MyStrings.privacyPolicy,
           bgColor: MyColor.primaryColor,
@@ -64,7 +64,7 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
                               CategoryButton(
                                   color: controller.selectedIndex == index
                                       ? MyColor.primaryColor
-                                      : MyColor.colorWhite,
+                                      : MyColor.secondaryColor,
                                   horizontalPadding: 8,
                                   verticalPadding: 7,
                                   textColor: controller.selectedIndex == index?MyColor.colorWhite:MyColor.colorBlack,
@@ -83,20 +83,22 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
                 ),
                 const SizedBox(height: Dimensions.space15),
                 Expanded(
-                    child:  SingleChildScrollView(
-                      child: Container(
-                        padding: const EdgeInsets.all(20),
-                        width: double.infinity,
-                        color: Colors.transparent,
-                        child: HtmlWidget(
-                          controller.selectedHtml,
-                          textStyle: regularDefault.copyWith(color: Colors.black),
-                          onLoadingBuilder: (context, element, loadingProgress) => const Center(
-                            child: CustomLoader()
+                    child:  Center(
+                      child: SingleChildScrollView(
+                        child: Container(
+                          padding: const EdgeInsets.all(20),
+                          width: double.infinity,
+                          color: Colors.transparent,
+                          child: HtmlWidget(
+                            controller.selectedHtml,
+                            textStyle: regularDefault.copyWith(color: Colors.black),
+                            onLoadingBuilder: (context, element, loadingProgress) => const Center(
+                              child: CustomLoader()
+                        )
                       )
-                    )
                   )
-                )
+                ),
+                    )
               )
             ],
           ),

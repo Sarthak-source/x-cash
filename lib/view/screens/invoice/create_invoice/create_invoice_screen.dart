@@ -36,7 +36,7 @@ class _CreateInvoiceScreenState extends State<CreateInvoiceScreen> {
     return GetBuilder<CreateInvoiceController>(
       builder: (controller) => SafeArea(
         child: Scaffold(
-          backgroundColor: MyColor.screenBgColor,
+          backgroundColor: MyColor.colorWhite,
           appBar: CustomAppBar(
             title: MyStrings.createInvoice.tr,
             bgColor: MyColor.getAppBarColor(),

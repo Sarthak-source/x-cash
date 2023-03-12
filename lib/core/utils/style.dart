@@ -71,6 +71,15 @@ const TextStyle regularSmall = TextStyle(
     fontWeight: FontWeight.w400,
     fontSize: Dimensions.fontSmall
 );
+
+const TextStyle dateTextStyle = TextStyle(
+    fontFamily: 'Lora',
+    color: MyColor.primaryTextColor,
+    fontWeight: FontWeight.w400,
+    fontStyle: FontStyle.italic,
+    fontSize: Dimensions.fontSmall
+);
+
 const TextStyle regularDefault = TextStyle(
     fontFamily: 'Lora',
     color: MyColor.primaryTextColor,

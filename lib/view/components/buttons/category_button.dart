@@ -4,12 +4,14 @@ import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/style.dart';
 
 class CategoryButton extends StatelessWidget {
+
   final String text;
   final VoidCallback press;
   final Color color, textColor;
   final double horizontalPadding;
   final double verticalPadding;
   final double textSize;
+
   const CategoryButton({
     Key? key,
     required this.text,

@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart';
 import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
+import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
+import 'package:xcash_app/core/utils/util.dart';
 import 'package:xcash_app/data/controller/transaction/transaction_history_controller.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
+import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_header_row.dart';
+import 'package:xcash_app/view/components/card/bottom_sheet_card.dart';
+import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
 
 showTrxBottomSheet(List<String>? list, int callFrom, {required BuildContext context}){
 
@@ -16,37 +22,34 @@ showTrxBottomSheet(List<String>? list, int callFrom, {required BuildContext cont
         context: context,
         isDismissible: true,
         builder: (BuildContext context) {
+
+          String header = '';
+          if(callFrom == 1){
+            header = MyStrings.trxType;
+          }
+          else if(callFrom == 2){
+            header = MyStrings.operationType;
+          }
+          else if(callFrom == 3){
+            header = MyStrings.historyFrom;
+          }
+          else if(callFrom == 4){
+            header = MyStrings.walletCurrency;
+          }
           return SingleChildScrollView(
             physics: const ClampingScrollPhysics(),
             child: Container(
                 width: MediaQuery.of(context).size.width,
-                padding: const EdgeInsets.all(20),
+                padding: const EdgeInsets.only(left: 20,right: 20,bottom: 20,top: 8),
                 margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.2),
                 decoration: const BoxDecoration(
-                    color: MyColor.colorWhite,
+                    color: MyColor.screenBgColor,
                     borderRadius: BorderRadius.vertical(top: Radius.circular(20))
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Align(
-                      alignment: Alignment.topCenter,
-                      child: Container(
-                        height: 5,
-                        width: 50,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: MyColor.colorGrey.withOpacity(0.2),
-                        ),
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: const [
-                        BottomSheetCloseButton()
-                      ],
-                    ),
-                    const SizedBox(height: Dimensions.space15),
+                    BottomSheetHeaderRow(header: header,),
                     ListView.builder(
                         padding: EdgeInsets.zero,
                         itemCount: list.length,
@@ -80,15 +83,11 @@ showTrxBottomSheet(List<String>? list, int callFrom, {required BuildContext cont
                                   currentFocus.unfocus();
                                 }
                               },
-                              child: Container(
-                                padding: const EdgeInsets.all(Dimensions.space15),
-                                margin: const EdgeInsets.only(top: Dimensions.space5),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
-                                    border: Border.all(color: MyColor.colorGrey.withOpacity(0.2))
-                                ),
+                              child: BottomSheetCard(
                                 child: Text(
-                                  ' ${callFrom == 2 ? Converter.replaceUnderscoreWithSpace(list[index].capitalizeFirst??''):list[index]}',
+                                  '${callFrom == 2 ? Converter.replaceUnderscoreWithSpace(list[index].capitalizeFirst??''):
+                                  callFrom == 3?MyUtils.getOperationTitle(list[index]):
+                                  list[index]}',
                                   style: regularDefault,
                                 ),
                               ),

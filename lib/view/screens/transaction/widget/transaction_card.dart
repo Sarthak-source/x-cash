@@ -5,6 +5,7 @@ import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/style.dart';
+import 'package:xcash_app/core/utils/util.dart';
 import 'package:xcash_app/data/controller/transaction/transaction_history_controller.dart';
 
 class TransactionCard extends StatelessWidget {
@@ -20,7 +21,8 @@ class TransactionCard extends StatelessWidget {
           child: Container(
             width: MediaQuery.of(context).size.width,
             padding: const EdgeInsets.symmetric(vertical: Dimensions.space15, horizontal: Dimensions.space10),
-            decoration: BoxDecoration(color: MyColor.getCardBgColor(), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
+            decoration: BoxDecoration(color: MyColor.getCardBgColor(), borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
+                boxShadow:MyUtils.getShadow()),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -45,14 +47,14 @@ class TransactionCard extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "${controller.transactionList[index].remark}".replaceAll("_", " ").toTitleCase(),
+                          "${controller.transactionList[index].remark}".replaceAll("_", " ").toTitleCase().tr,
                           style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w500),
                         ),
                         const SizedBox(height: Dimensions.space10),
                         SizedBox(
                           width: 150,
                           child: Text(
-                            controller.transactionList[index].apiDetails ?? "",
+                            (controller.transactionList[index].apiDetails ?? "").tr,
                             style: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.5)),
                             overflow: TextOverflow.ellipsis,
                             maxLines: 2,
@@ -67,7 +69,7 @@ class TransactionCard extends StatelessWidget {
                   children: [
                     Text(
                       DateConverter.isoStringToLocalDateOnly(controller.transactionList[index].createdAt ?? ""),
-                      style: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.5)),
+                      style: dateTextStyle.copyWith(color: MyColor.getTextColor().withOpacity(0.5)),
                     ),
                     const SizedBox(height: Dimensions.space10),
                     Text(

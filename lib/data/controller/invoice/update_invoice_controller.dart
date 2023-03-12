@@ -106,8 +106,14 @@ class UpdateInvoiceController extends GetxController{
 
   bool submitLoading = false;
   Future<void> updateInvoice() async{
-    submitLoading = true;
-    update();
+
+
+
+    if(selectedCurrency?.currencyCode?.toLowerCase() == MyStrings.selectOne.toLowerCase()){
+      CustomSnackBar.error(errorList: [MyStrings.selectWallet]);
+      return;
+    }
+
 
     String invoiceId = model.data?.invoice?.id.toString() ?? "";
     String invoiceTo = invoiceToController.text.toString();
@@ -117,6 +123,9 @@ class UpdateInvoiceController extends GetxController{
 
     String invoiceName = invoiceItemController.text.toString();
     String invoiceAmount = invoiceAmountController.text.toString();
+
+    submitLoading = true;
+    update();
 
     ResponseModel responseModel = await updateInvoiceRepo.updateData(
         invoiceId: invoiceId,

@@ -57,7 +57,7 @@ class _FiltersFieldState extends State<FiltersField> {
                       Text(MyStrings.operationType.tr, style: regularSmall.copyWith(color: MyColor.colorGrey)),
                       const SizedBox(height: Dimensions.space10),
                       SizedBox(
-                        width: 150,
+                        width: 170,
                         child: FilterRowWidget(
                             fromTrx: true,
                             text: Converter.replaceUnderscoreWithSpace(controller.selectedOperationType.isEmpty ? MyStrings.any : controller.selectedOperationType),

@@ -87,9 +87,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
         labelStyle: regularDefault.copyWith(color: MyColor.getLabelTextColor()),
         fillColor: widget.fillColor,
         filled: true,
-        border: OutlineInputBorder(borderSide: BorderSide(color: MyColor.getTextFieldDisableBorder()), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
-        focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: MyColor.getTextFieldEnableBorder()), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
-        enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: MyColor.getTextFieldDisableBorder()), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
+        border: OutlineInputBorder(borderSide: BorderSide(width:0.5,color: MyColor.getTextFieldDisableBorder()), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
+        focusedBorder: OutlineInputBorder(borderSide: BorderSide(width:0.5,color: MyColor.getTextFieldEnableBorder()), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
+        enabledBorder: OutlineInputBorder(borderSide: BorderSide(width:0.5,color: MyColor.getTextFieldDisableBorder()), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
         suffixIcon: widget.isShowSuffixIcon
             ? widget.isPassword
             ? IconButton(
@@ -134,9 +134,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
             hintStyle: regularSmall.copyWith(color: MyColor.getHintTextColor().withOpacity(0.7)),
             fillColor: MyColor.transparentColor,
             filled: true,
-            border: OutlineInputBorder(borderSide: BorderSide(color: MyColor.getTextFieldDisableBorder()), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
-            focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: MyColor.getTextFieldEnableBorder()), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
-            enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: MyColor.getTextFieldDisableBorder()), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
+            border: OutlineInputBorder(borderSide: BorderSide(width:0.5,color: MyColor.getTextFieldDisableBorder()), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
+            focusedBorder: OutlineInputBorder(borderSide: BorderSide(width:0.5,color: MyColor.getTextFieldEnableBorder()), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
+            enabledBorder: OutlineInputBorder(borderSide: BorderSide(width:0.5,color: MyColor.getTextFieldDisableBorder()), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
             suffixIcon: widget.isShowSuffixIcon
                 ? widget.isPassword
                 ? IconButton(
@@ -178,9 +178,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
         labelStyle: regularDefault.copyWith(color: MyColor.getLabelTextColor()),
         fillColor: MyColor.transparentColor,
         filled: true,
-        border: UnderlineInputBorder(borderSide: BorderSide(color: MyColor.getTextFieldDisableBorder())),
-        focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: MyColor.getTextFieldEnableBorder())),
-        enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: MyColor.getTextFieldDisableBorder())),
+        border: UnderlineInputBorder(borderSide: BorderSide(width:0.5,color: MyColor.getTextFieldDisableBorder())),
+        focusedBorder: UnderlineInputBorder(borderSide: BorderSide(width:0.5,color: MyColor.getTextFieldEnableBorder())),
+        enabledBorder: UnderlineInputBorder(borderSide: BorderSide(width:0.5,color: MyColor.getTextFieldDisableBorder())),
         suffixIcon: widget.isShowSuffixIcon
             ? widget.isPassword
             ? IconButton(

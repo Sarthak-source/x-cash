@@ -25,7 +25,7 @@ class InVoiceActionButton extends StatelessWidget {
       child: Container(
         width: MediaQuery.of(context).size.width,
         alignment: Alignment.center,
-        padding: const EdgeInsets.symmetric(vertical: Dimensions.space10),
+        padding: const EdgeInsets.symmetric(vertical: Dimensions.space12),
         decoration: BoxDecoration(color: bgColor, borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

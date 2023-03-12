@@ -67,6 +67,7 @@ class MyStrings{
   static const String firstName = "First Name";
   static const String enterFirstName = "Enter first name";
   static const String lastName = "Last Name";
+  static const String last = "Last";
   static const String enterLastName = "Enter last name";
   static const String country = "Country";
   static const String enterYourCountry = "Enter your country";
@@ -78,6 +79,7 @@ class MyStrings{
   static const String countryHint = "Select Country";
   static const String mobileNumberHint = "Your phone number";
   static const String emailAddressHint = "Enter email address";
+  static const String emailAddressEmptyMsg = "Email address can't be empty";
   static const String confirmPasswordHint = "Enter confirm Password";
   static const String signUp = "Sign Up";
   static const String alreadyAccount = "Already have an account?";
@@ -93,6 +95,7 @@ class MyStrings{
   static const String enterEmail = "Enter email";
   static const String address = "Address";
   static const String enterAddress = "Enter address";
+  static const String addressEmptyMsg = "Address can't be empty";
 
   static const String copy = "Copy";
   static const String view = "View";
@@ -250,7 +253,10 @@ class MyStrings{
   static const String invoiceDetails = "Invoice Details";
   static const String invoiceTo = "Invoice To";
   static const String enterInvoiceTo = "Enter invoice to";
+  static const String invoiceToEmptyMsg = "Invoice to can't be empty";
   static const String yourWallet = "Your Wallet";
+
+  static const String plsFillOutFieldMsg = "Please fill out this field";
 
   // invoice items
   static const String invoiceItems = "Invoice items";
@@ -617,7 +623,7 @@ class MyStrings{
 
   static const String paid = "Paid";
   static const String unpaid = "Unpaid";
-  static const String notPublished = "Not Published";
+  static const String notPublished = "Unpublished";
 
   static const String invoiceFieldErrorMsg = "Please, fill up invoice to field";
   static const String invoiceEmailFieldErrorMsg = "Please, fill up email field";

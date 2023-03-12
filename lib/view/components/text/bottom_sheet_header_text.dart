@@ -12,6 +12,7 @@ class BottomSheetHeaderText extends StatelessWidget {
     return Text(
       text.tr,
       textAlign: textAlign,
+      overflow: TextOverflow.ellipsis,
       style: regularLarge.copyWith(fontWeight: FontWeight.w600),
     );
   }
