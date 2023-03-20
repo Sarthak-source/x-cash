@@ -51,7 +51,7 @@ class WithdrawDetailsBottomSheet extends StatelessWidget {
                       Text(MyStrings.amount, style: regularSmall.copyWith(color: MyColor.colorBlack.withOpacity(0.6))),
                       const SizedBox(width: Dimensions.space5),
                       Text(
-                        "(${Converter.twoDecimalPlaceFixedWithoutRounding(controller.withdrawList[index].amount ?? "")} - ${Converter.twoDecimalPlaceFixedWithoutRounding(controller.withdrawList[index].charge ?? "")} "
+                        "(${Converter.formatNumber(controller.withdrawList[index].amount ?? "")} - ${Converter.formatNumber(controller.withdrawList[index].charge ?? "")} "
                             "${controller.withdrawList[index].curr?.currencyCode ?? ""})",
                         style: regularSmall.copyWith(color: MyColor.colorRed, fontWeight: FontWeight.w500),
                       )
@@ -59,7 +59,7 @@ class WithdrawDetailsBottomSheet extends StatelessWidget {
                   ),
                   const SizedBox(height: Dimensions.space5),
                   Text(
-                      "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.withdrawList[index].finalAmount ?? "")} "
+                      "${Converter.formatNumber(controller.withdrawList[index].finalAmount ?? "")} "
                           "${controller.withdrawList[index].curr?.currencyCode ?? ""}",
                       style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w500),
                       overflow: TextOverflow.ellipsis

@@ -22,7 +22,7 @@ import 'package:xcash_app/view/screens/invoice/my_invoice/invoice_screen.dart';
 import 'package:xcash_app/view/screens/invoice/update_invoice/update_invoice_screen.dart';
 import 'package:xcash_app/view/screens/money_discharge/make_payment/make_payment.dart';
 import 'package:xcash_app/view/screens/otp/otp_screen.dart';
-import 'package:xcash_app/view/screens/money_discharge/money_out/money_out.dart';
+import 'package:xcash_app/view/screens/money_discharge/money_out/money_out_screen.dart';
 import 'package:xcash_app/view/screens/privacy_policy/privacy_policy_screen.dart';
 import 'package:xcash_app/view/screens/qr_code/my_qr_code.dart';
 import 'package:xcash_app/view/screens/qr_code/qr_code_scanner.dart';
@@ -30,7 +30,7 @@ import 'package:xcash_app/view/screens/request-money/request_money/request_money
 import 'package:xcash_app/view/screens/request-money/request_to_me/request_to_me_screen.dart';
 import 'package:xcash_app/view/screens/splash/splash_screen.dart';
 import 'package:xcash_app/view/screens/transaction/transaction_history_screen.dart';
-import 'package:xcash_app/view/screens/transfer/transfer_money.dart';
+import 'package:xcash_app/view/screens/transfer/transfer_money_screen.dart';
 import 'package:xcash_app/view/screens/voucher/create_voucher/create_voucher.dart';
 import 'package:xcash_app/view/screens/voucher/my_voucher/my_voucher_screen.dart';
 import 'package:xcash_app/view/screens/voucher/redeem_log/redeem_log_screen.dart';
@@ -151,7 +151,7 @@ class RouteHelper{
     GetPage(name: makePaymentScreen, page: () =>  const MakePaymentScreen()),
     GetPage(name: moneyOutScreen, page: () =>  const MoneyOutScreen()),
 
-    GetPage(name: transferMoneyScreen, page: () =>  const TransferMoney()),
+    GetPage(name: transferMoneyScreen, page: () =>  const TransferMoneyScreen()),
     GetPage(name: kycScreen, page: () => const KycScreen()),
 
     GetPage(name: createVoucherScreen, page: () => const CreateVoucherScreen()),

@@ -38,10 +38,10 @@ class MyUtils{
     return  [
       BoxShadow(
        // color: MyColor.screenBgColor,
-        color: Colors.grey.shade500.withOpacity(0.1),
+        color: Colors.grey.shade400.withOpacity(0.08),
         spreadRadius: 3,
-        blurRadius: 5,
-        offset: Offset(0, 3), // changes position of shadow
+        blurRadius: 4,
+        offset: const Offset(0, 3), // changes position of shadow
       ),
     ];
   }
@@ -65,7 +65,7 @@ class MyUtils{
     if(match!=null){
       String? num = match.group(1)??'';
       String? unit = match.group(2)??'';
-      String title = '${MyStrings.last.tr} ${num} ${unit.capitalizeFirst}';
+      String title = '${MyStrings.last.tr} $num ${unit.capitalizeFirst}';
       return title;
     } else{
       return value;

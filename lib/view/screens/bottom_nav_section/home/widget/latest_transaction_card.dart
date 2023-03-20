@@ -76,7 +76,7 @@ class LatestTransactionCard extends StatelessWidget {
                         ),
                         const SizedBox(height: Dimensions.space10),
                         Text(
-                            "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.trxList[index].amount ?? "")} ${controller.trxList[index].currency?.currencyCode ?? ""}",
+                            "${Converter.formatNumber(controller.trxList[index].amount ?? "")} ${controller.trxList[index].currency?.currencyCode ?? ""}",
                             style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600)
                         )
                       ],

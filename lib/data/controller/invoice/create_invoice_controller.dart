@@ -60,7 +60,7 @@ class CreateInvoiceController extends GetxController{
       totalAmount = totalAmount + invoiceAmount;
     }
 
-    totalInvoiceAmount = '${Converter.twoDecimalPlaceFixedWithoutRounding(totalAmount.toString())} ${selectedCurrency?.currencyCode??''}';
+    totalInvoiceAmount = '${Converter.formatNumber(totalAmount.toString())} ${selectedCurrency?.currencyCode??''}';
     update();
   }
 

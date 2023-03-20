@@ -16,6 +16,7 @@ class MyStrings{
   static const String sec = 'Sec';
   static const String myQrCode = "My QR Code";
   static const String qrScan = "QR Scan";
+  static const String share = "Share";
   static const String verifiedUser = "Verified User";
   static const String downloadAsImage = "Download as Image";
 
@@ -137,8 +138,10 @@ class MyStrings{
   static const String requestMoney = "Request Money";
 
   static const String requestedAmount = "Requested Amount: ";
+  static const String requestAmount = "Request Amount";
   static const String withdrawCharge = "Withdraw Charge: ";
   static const String youWillGet = "You will get: ";
+  static const String willGet = "You Will Get";
   static const String yourBalanceWillBe = "Your Balance will be: ";
 
   static const String withdraw = "Withdrawals";
@@ -533,8 +536,9 @@ class MyStrings{
   static const String invalidAmount           = 'Invalid amount';
   static const String searchResult            = 'Search Result';
   static const String resetPassMsg            = "Enter your email or username below to receive a password reset verification code";
-  static const String sixDigitOtpMsg = "Please check your email to get a six digit OTP";
-  static const String otpExpiredMsg     = "OTP will be expired in the next";
+  static const String sixDigitOtpEmailMsg     = "Please check your email to get a six digit OTP";
+  static const String sixDigitOtpMsg          = "Please check your phone to get a six digit OTP";
+  static const String otpExpiredMsg           = "OTP will be expired in the next";
   static const String verificationSuccess     = 'Verification Success';
   static const String enterYourUsername       = 'Enter your username';
   static const String enterUsername           = 'Enter username';
@@ -552,14 +556,15 @@ class MyStrings{
   static const String invalidUserType         = "Invalid user type";
   static const String requestSuccess          = "Request Success";
 
-  static const String requestFrom          = "Request from";
+  static const String requestFrom             = "Request from";
   static const String loginFailedTryAgain     = 'Login failed,please try again';
 
   static const String selectOne               = "Select One";
-  static const String select               = "Select";
+  static const String select                  = "Select";
   static const String selectFromCurrency      = "Select from currency";
-  static const String selectToCurrency      = "Select to currency";
+  static const String selectToCurrency        = "Select to currency";
   static const String sameWalletErrorMsg      = "Can't exchange currency in same wallet";
+  static const String moneyExchangeSuccess    = "Money Exchange Successfully";
   static const String sms                     = 'SMS';
 
   //no internet

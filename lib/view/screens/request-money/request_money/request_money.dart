@@ -11,8 +11,10 @@ import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_bar.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
+import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_header_row.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
+import 'package:xcash_app/view/components/card/bottom_sheet_card.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
@@ -46,7 +48,6 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
   }
 
@@ -76,13 +77,7 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                         press: () => CustomBottomSheet(
                           child: Column(
                             children: [
-                              const BottomSheetBar(),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: const [
-                                  BottomSheetCloseButton()
-                                ],
-                              ),
+                              const BottomSheetHeaderRow(header: ''),
                               const SizedBox(height: Dimensions.space15),
                               ListView.builder(
                                   itemCount: controller.walletList.length,
@@ -101,13 +96,7 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                                           currentFocus.unfocus();
                                         }
                                       },
-                                      child: Container(
-                                        padding: const EdgeInsets.all(15),
-                                        margin: const EdgeInsets.all(5),
-                                        decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
-                                            border: Border.all(color: MyColor.colorGrey.withOpacity(0.2))
-                                        ),
+                                      child: BottomSheetCard(
                                         child: Text(
                                           controller.walletList[index].currencyCode ?? "",
                                           style: regularDefault,
@@ -143,7 +132,7 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                     ),
                     const SizedBox(height: Dimensions.space5),
                     Text(
-                        "${MyStrings.limit.tr}: ${Converter.twoDecimalPlaceFixedWithoutRounding(controller.limit)}",
+                        "${MyStrings.limit.tr}: ${Converter.formatNumber(controller.limit)}",
                         style: regularExtraSmall.copyWith(color: MyColor.primaryColor)
                     )
                   ],
@@ -179,11 +168,14 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                   needOutlineBorder: true,
                   maxLines: 2,
                   labelText: MyStrings.noteForRecipient.tr,
-                  onChanged: (value){},
+                  onChanged: (value){
+
+                  },
                 ),
-                const SizedBox(height: Dimensions.space25),
+                const SizedBox(height: Dimensions.space30),
                 RoundedButton(
                   press: (){
+                    FocusScope.of(context).unfocus();
                     controller.checkValidation(context);
                   },
                   text: MyStrings.requestNow.tr,

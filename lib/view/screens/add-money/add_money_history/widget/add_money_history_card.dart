@@ -51,7 +51,7 @@ class AddMoneyHistoryCard extends StatelessWidget {
                 children: [
                   CardColumn(
                       header: MyStrings.amount.tr,
-                      body: "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.depositList[index].finalAmo ?? "")} ${controller.depositList[index].methodCurrency}"
+                      body: "${Converter.formatNumber(controller.depositList[index].finalAmo ?? "")} ${controller.depositList[index].methodCurrency}"
                   ),
                   StatusWidget(
                       status: controller.getStatusOrColor(index),

@@ -103,7 +103,7 @@ class InvoicesBottomSheet{
                         ),
                         const SizedBox(height: Dimensions.space5),
                         Text(
-                          "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.invoiceList[index].totalAmount ?? "",)} ${controller.invoiceList[index].currency?.currencyCode ?? ""}",
+                          "${Converter.formatNumber(controller.invoiceList[index].totalAmount ?? "",)} ${controller.invoiceList[index].currency?.currencyCode ?? ""}",
                           style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600),
                         )
                       ],

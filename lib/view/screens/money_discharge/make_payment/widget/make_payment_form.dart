@@ -11,6 +11,7 @@ import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_bar.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
+import 'package:xcash_app/view/components/card/bottom_sheet_card.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
@@ -57,58 +58,54 @@ class _MakePaymentFormState extends State<MakePaymentForm> {
               invalidMsg: controller.invalidMerchant
             ),
             const SizedBox(height: Dimensions.space15),
-
             const LabelText(text: MyStrings.selectWallet),
             const SizedBox(height: Dimensions.textToTextSpace),
             SizedBox(
               height: 50,
               child: FilterRowWidget(
-                  borderColor: controller.walletsMethod?.id.toString() == "-1" ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
-                  text: "${controller.walletsMethod?.id.toString() == "-1" ? MyStrings.selectWallet : controller.walletsMethod?.currencyCode}",
-                  press: () => CustomBottomSheet(
-                      child: Column(
-                        children: [
-                          const BottomSheetBar(),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: const [BottomSheetCloseButton()],
-                          ),
-                          const SizedBox(height: Dimensions.space15),
-                          ListView.builder(
-                              itemCount: controller.walletList.length,
-                              shrinkWrap: true,
-                              physics: const BouncingScrollPhysics(),
-                              itemBuilder: (context, index) {
-                                return GestureDetector(
-                                  onTap: () {
-                                    final controller= Get.find<MakePaymentController>();
-                                    Wallets selectedValue = controller.walletList[index];
-                                    controller.setWalletMethod(selectedValue);
-                                    Navigator.pop(context);
+                  borderColor: controller.selectedWallet?.id.toString() == "-1" ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
+                  text: "${controller.selectedWallet?.id.toString() == "-1" ? MyStrings.selectWallet : controller.selectedWallet?.currencyCode}",
+                  press: () {
+                    FocusScope.of(context).unfocus();
+                    CustomBottomSheet(
+                        child: Column(
+                          children: [
+                            const BottomSheetBar(),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: const [BottomSheetCloseButton()],
+                            ),
+                            const SizedBox(height: Dimensions.space15),
+                            ListView.builder(
+                                itemCount: controller.walletList.length,
+                                shrinkWrap: true,
+                                physics: const BouncingScrollPhysics(),
+                                itemBuilder: (context, index) {
+                                  return GestureDetector(
+                                    onTap: () {
+                                      final controller= Get.find<MakePaymentController>();
+                                      Wallets selectedValue = controller.walletList[index];
+                                      controller.setWalletMethod(selectedValue);
+                                      Navigator.pop(context);
 
-                                    FocusScopeNode currentFocus = FocusScope.of(context);
-                                    if (!currentFocus.hasPrimaryFocus) {
-                                      currentFocus.unfocus();
-                                    }
-                                  },
-                                  child: Container(
-                                    padding: const EdgeInsets.all(15),
-                                    margin: const EdgeInsets.all(5),
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
-                                        border: Border.all(color: MyColor.colorGrey.withOpacity(0.2))
+                                      FocusScopeNode currentFocus = FocusScope.of(context);
+                                      if (!currentFocus.hasPrimaryFocus) {
+                                        currentFocus.unfocus();
+                                      }
+                                    },
+                                    child: BottomSheetCard(
+                                      child: Text(
+                                        controller.walletList[index].currencyCode.toString() ?? "",
+                                        style: regularDefault,
+                                      ),
                                     ),
-                                    child: Text(
-                                      controller.walletList[index].currencyCode.toString() ?? "",
-                                      style: regularDefault,
-                                    ),
-                                  ),
-                                );
-                              }
-                          )
-                        ],
-                      )
-                  ).customBottomSheet(context)
+                                  );
+                                }
+                            )
+                          ],
+                        )
+                    ).customBottomSheet(context);
+                  }
               ),
             ),
             const SizedBox(height: Dimensions.space15),
@@ -136,58 +133,55 @@ class _MakePaymentFormState extends State<MakePaymentForm> {
               child: FilterRowWidget(
                   borderColor: controller.selectedOtp == MyStrings.selectOtp ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
                   text: controller.selectedOtp.toTitleCase(),
-                  press: () => CustomBottomSheet(
-                          child: Column(
-                            children: [
-                             const BottomSheetBar(),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: const [
-                                  BottomSheetCloseButton()
-                                ],
-                              ),
-                              const SizedBox(height: Dimensions.space15),
-                              ListView.builder(
-                                  itemCount: controller.otpTypeList.length,
-                                  shrinkWrap: true,
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  itemBuilder: (context, index) {
-                                    return GestureDetector(
-                                      onTap: () {
-                                        final controller= Get.find<MakePaymentController>();
-                                        String selectedValue = controller.otpTypeList[index];
-                                        controller.setOtpMethod(selectedValue);
-                                        Navigator.pop(context);
+                  press: () {
+                    FocusScope.of(context).unfocus();
+                    CustomBottomSheet(
+                        child: Column(
+                          children: [
+                            const BottomSheetBar(),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: const [
+                                BottomSheetCloseButton()
+                              ],
+                            ),
+                            const SizedBox(height: Dimensions.space15),
+                            ListView.builder(
+                                itemCount: controller.otpTypeList.length,
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemBuilder: (context, index) {
+                                  return GestureDetector(
+                                    onTap: () {
+                                      final controller= Get.find<MakePaymentController>();
+                                      String selectedValue = controller.otpTypeList[index];
+                                      controller.setOtpMethod(selectedValue);
+                                      Navigator.pop(context);
 
-                                        FocusScopeNode currentFocus = FocusScope.of(context);
-                                        if (!currentFocus.hasPrimaryFocus) {
-                                          currentFocus.unfocus();
-                                        }
-                                      },
-                                      child: Container(
-                                        padding: const EdgeInsets.all(15),
-                                        margin: const EdgeInsets.all(5),
-                                        decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
-                                            border: Border.all(color: MyColor.colorGrey.withOpacity(0.2))
-                                        ),
-                                        child: Text(
-                                          controller.otpTypeList[index].toString().toTitleCase() ?? "",
-                                          style: regularDefault,
-                                        ),
+                                      FocusScopeNode currentFocus = FocusScope.of(context);
+                                      if (!currentFocus.hasPrimaryFocus) {
+                                        currentFocus.unfocus();
+                                      }
+                                    },
+                                    child: BottomSheetCard(
+                                      child: Text(
+                                        controller.otpTypeList[index].toString().toTitleCase() ?? "",
+                                        style: regularDefault,
                                       ),
-                                    );
-                                  }
-                              )
-                            ],
-                          )
-                      ).customBottomSheet(context)
+                                    ),
+                                  );
+                                }
+                            )
+                          ],
+                        )
+                    ).customBottomSheet(context);
+                  }
               ),
             ),
-            const SizedBox(height: Dimensions.space20),
+            const SizedBox(height: Dimensions.space30),
 
             RoundedButton(
-              press: () => controller.checkValidation(context),
+              press: () => controller.checkAndShowPreviewBottomSheet(context),
               text: MyStrings.makePayment.tr,
             )
           ],

@@ -35,9 +35,7 @@ class _EditProfileFormState extends State<EditProfileForm> {
               ProfileWidget(
                   isEdit:  true,
                   imagePath:  controller.imageUrl,
-                  onClicked: () async {
-
-                  }
+                  onClicked: () async {}
               ),
               const SizedBox(height: Dimensions.space20),
               CustomTextField(

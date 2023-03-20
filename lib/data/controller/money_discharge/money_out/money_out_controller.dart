@@ -39,8 +39,8 @@ class MoneyOutController extends GetxController{
 
   setWalletMethod(Wallets? wallet){
     selectedWallet = wallet;
-    minLimit = Converter.twoDecimalPlaceFixedWithoutRounding(selectedWallet?.id == -1 ? "0" : selectedWallet?.currency?.moneyOutMinLimit.toString() ?? "");
-    maxLimit = Converter.twoDecimalPlaceFixedWithoutRounding(selectedWallet?.id == -1 ? "0" : selectedWallet?.currency?.moneyOutMaxLimit.toString() ?? "");
+    minLimit = Converter.formatNumber(selectedWallet?.id == -1 ? "0" : selectedWallet?.currency?.moneyOutMinLimit.toString() ?? "");
+    maxLimit = Converter.formatNumber(selectedWallet?.id == -1 ? "0" : selectedWallet?.currency?.moneyOutMaxLimit.toString() ?? "");
     currency = selectedWallet?.id == -1 ? "" : selectedWallet?.currencyCode ?? "";
     update();
   }
@@ -55,6 +55,11 @@ class MoneyOutController extends GetxController{
     update();
 
     ResponseModel responseModel = await moneyOutRepo.getMoneyOutWallet();
+
+    hasAgent = false;
+    validAgent = "";
+    invalidAgent = "";
+    isAgentFound = false;
 
     walletList.clear();
     otpTypeList.clear();
@@ -116,6 +121,8 @@ class MoneyOutController extends GetxController{
         else{
           CustomSnackBar.error(errorList: [MyStrings.noActionId]);
         }
+      } else{
+        CustomSnackBar.error(errorList: model.message?.error??[MyStrings.requestFail]);
       }
     } else{
       CustomSnackBar.error(errorList: [response.message]);
@@ -134,15 +141,21 @@ class MoneyOutController extends GetxController{
       return ;
     }
     mainAmount = amount;
+    double currencyRate = double.tryParse(selectedWallet?.currency?.rate??'1')??1;
+
     double percent = double.tryParse(model.data?.moneyOutCharge?.percentCharge ?? "0") ?? 0;
-    double percentCharge = (amount * percent) / 100;
-    double temCharge = double.tryParse(model.data?.moneyOutCharge?.fixedCharge ?? "0") ?? 0;
-    double totalCharge = percentCharge+temCharge;
-    charge = '${Converter.twoDecimalPlaceFixedWithoutRounding('$totalCharge')} $currency';
-    double payable = totalCharge + amount;
+    double percentCharge = (amount*percent)/100;
+
+    double fixed = double.tryParse(model.data?.moneyOutCharge?.fixedCharge ?? "0") ?? 0;
+    double fixedCharge = fixed/currencyRate;  //fixed charge are  global for each currency so that we don't calculate it with expected currency
+
+    double finalCharge = fixedCharge + percentCharge;
+    charge = '${Converter.formatNumber('$finalCharge')} $currency';
+    String payable = Converter.sum(finalCharge.toString(),mainAmount.toString());
     payableText = '$payable $currency';
     update();
   }
+
 
   bool hasAgent = false;
   String validAgent = "";
@@ -172,19 +185,23 @@ class MoneyOutController extends GetxController{
     }
   }
 
-  void checkValidation(BuildContext context){
+  void checkAndShowPreviewSheet(BuildContext context){
+
     if(agentController.text.isEmpty){
       CustomSnackBar.error(errorList: [MyStrings.agentUsernameHint.tr]);
       return ;
     }
+
     else if(selectedWallet?.id.toString() == "-1"){
       CustomSnackBar.error(errorList: [MyStrings.selectAWallet.tr]);
       return ;
     }
+
     else if(amountController.text.isEmpty){
       CustomSnackBar.error(errorList: [MyStrings.enterAmountMsg.tr]);
       return ;
     }
+
     else{
       CustomBottomSheet(child: const MoneyOutBottomSheet()).customBottomSheet(context);
     }

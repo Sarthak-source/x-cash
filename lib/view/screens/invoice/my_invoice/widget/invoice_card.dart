@@ -60,7 +60,7 @@ class InvoiceCard extends StatelessWidget {
                     Text(MyStrings.amount.tr, style: regularSmall.copyWith(color: MyColor.colorBlack.withOpacity(0.6))),
                     const SizedBox(height: Dimensions.space5),
                     Text(
-                      "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.invoiceList[index].totalAmount ?? "")} "
+                      "${Converter.formatNumber(controller.invoiceList[index].totalAmount ?? "")} "
                           "${controller.invoiceList[index].currency?.currencyCode ?? ""}",
                       style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600),
                     )

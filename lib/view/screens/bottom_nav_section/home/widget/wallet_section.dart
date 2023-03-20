@@ -74,7 +74,7 @@ class WalletSection extends StatelessWidget {
                             const SizedBox(width: Dimensions.space15),
                             Expanded(
                               child: Text(
-                                "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.walletList[index].balance ?? "")} ${controller.walletList[index].currencyCode}",
+                                "${Converter.formatNumber(controller.walletList[index].balance ?? "")} ${controller.walletList[index].currencyCode}",
                                 style: regularLarge.copyWith(fontWeight: FontWeight.w600),
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 2,

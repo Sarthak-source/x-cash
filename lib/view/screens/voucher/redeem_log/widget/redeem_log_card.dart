@@ -38,7 +38,7 @@ class RedeemLogCard extends StatelessWidget {
               children: [
                 CardColumn(
                     header: MyStrings.amount.tr,
-                    body: Converter.twoDecimalPlaceFixedWithoutRounding(controller.redeemLogList[index].amount ?? "")
+                    body: Converter.formatNumber(controller.redeemLogList[index].amount ?? "")
                 ),
                 CardColumn(
                     alignmentEnd: true,

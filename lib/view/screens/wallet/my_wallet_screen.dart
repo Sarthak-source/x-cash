@@ -84,7 +84,7 @@ class _MyWalletScreenState extends State<MyWalletScreen> {
                     Row(
                         children: [
                           Text(
-                              Converter.twoDecimalPlaceFixedWithoutRounding(controller.walletList[index].balance ?? ""),
+                              Converter.formatNumber(controller.walletList[index].balance ?? ""),
                               style: regularLarge.copyWith(fontWeight: FontWeight.w600)
                           ),
                           const SizedBox(width: Dimensions.space5),

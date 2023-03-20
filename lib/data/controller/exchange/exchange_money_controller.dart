@@ -84,6 +84,8 @@ class ExchangeMoneyController extends GetxController{
         if(tempToWallets != null && tempToWallets.isNotEmpty){
           toWalletList.addAll(tempToWallets);
         }
+      }else{
+        CustomSnackBar.error(errorList: model.message?.error??[MyStrings.requestFail]);
       }
     }
     else{
@@ -109,10 +111,10 @@ class ExchangeMoneyController extends GetxController{
       if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
         Get.back();
         amountController.text = "";
-        CustomSnackBar.success(successList: model.message?.success ?? ["Money Exchange Successfully"]);
+        CustomSnackBar.success(successList: model.message?.success ?? [MyStrings.moneyExchangeSuccess]);
       }
       else{
-        CustomSnackBar.error(errorList: model.message?.error ?? [MyStrings.somethingWentWrong]);
+        CustomSnackBar.error(errorList: model.message?.error ?? [MyStrings.requestFail]);
       }
     }
     else{
@@ -124,15 +126,12 @@ class ExchangeMoneyController extends GetxController{
   }
 
   bool submitLoading = false;
-  void submitLoadingState(){
-    submitLoading = !submitLoading;
-    update();
-  }
 
   void calculateExchangeAmount(double amount){
 
       if(toWalletMethod?.id.toString() == "-1"){
-        CustomSnackBar.error(errorList: [MyStrings.selectToCurrency]);
+        return;
+        //CustomSnackBar.error(errorList: [MyStrings.selectToCurrency]);
       }
       else{
         double fromCurrencyRate = double.tryParse(fromWalletMethod?.currency?.rate ?? "0") ?? 0;
@@ -141,11 +140,11 @@ class ExchangeMoneyController extends GetxController{
         double finalAmount = basicAmount / toCurrencyRate;
         String currencyType = toWalletMethod?.currency?.currencyType ?? "-1";
         if(currencyType == "1"){
-          exchangeAmount = Converter.twoDecimalPlaceFixedWithoutRounding(finalAmount.toString(),precision: 2);
+          exchangeAmount = Converter.formatNumber(finalAmount.toString(),precision: 2);
           toAmountController.text = toWalletMethod?.id.toString() == "-1" ? "0.00" : exchangeAmount.toString();
         }
         else{
-          exchangeAmount = Converter.twoDecimalPlaceFixedWithoutRounding(finalAmount.toString(),precision: 8);
+          exchangeAmount = Converter.formatNumber(finalAmount.toString(),precision: 8);
           toAmountController.text = toWalletMethod?.id.toString() == "-1" ? "0.00" : exchangeAmount.toString();
         }
       }

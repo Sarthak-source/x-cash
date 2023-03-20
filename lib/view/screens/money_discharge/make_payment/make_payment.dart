@@ -42,10 +42,9 @@ class _MakePaymentScreenState extends State<MakePaymentScreen> {
       builder: (controller) => SafeArea(
         child: Scaffold(
           backgroundColor: MyColor.getScreenBgColor(),
-          appBar: CustomAppBar(
+          appBar: const CustomAppBar(
             isShowBackBtn: true,
-            title: MyStrings.makePayment.tr,
-            bgColor: MyColor.getAppBarColor(),
+            title: MyStrings.makePayment,
           ),
           body: controller.isLoading ? const CustomLoader() : const SingleChildScrollView(
             padding: Dimensions.screenPaddingHV,

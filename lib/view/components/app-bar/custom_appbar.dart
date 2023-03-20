@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/route/route.dart';
+import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_icons.dart';
+import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/services/api_service.dart';
+import 'package:xcash_app/view/components/app-bar/action_button_icon_widget.dart';
 import 'package:xcash_app/view/components/dialog/exit_dialog.dart';
 
 
@@ -18,15 +21,26 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget{
   final bool isTitleCenter;
   final bool fromAuth;
   final bool isProfileCompleted;
+  final dynamic actionIcon;
+  final VoidCallback? actionPress;
+  final bool isActionIconAlignEnd;
+  final String actionText;
+  final bool isActionImage;
 
   const CustomAppBar({Key? key,
     this.isProfileCompleted=false,
     this.fromAuth = false,
     this.isTitleCenter = false,
-    this.bgColor = Colors.transparent,
+    this.bgColor = MyColor.primaryColor,
     this.isShowBackBtn=true,
     required this.title,
-    this.isShowActionBtn=false}) : super(key: key);
+    this.isShowActionBtn=false,
+    this.actionText = '',
+    this.actionIcon,
+    this.actionPress,
+    this.isActionIconAlignEnd = false,
+    this.isActionImage = true,
+  }) : super(key: key);
 
   @override
   State<CustomAppBar> createState() => _CustomAppBarState();
@@ -45,6 +59,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
 
   @override
   Widget build(BuildContext context) {
+    print('is widget ${widget.isActionImage}');
     return widget.isShowBackBtn?AppBar(
       elevation: 0,
       titleSpacing: 0,
@@ -67,21 +82,16 @@ class _CustomAppBarState extends State<CustomAppBar> {
       title: Text(widget.title,style: regularDefault.copyWith(color: MyColor.getAppBarContentColor())),
       centerTitle: widget.isTitleCenter,
       actions: [
-        widget.isShowActionBtn?Container(
-          height: 30,width: 30,
-          decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: MyColor.transparentColor
-          ),
-          child: InkWell(
-            onTap: (){
-              Get.toNamed(RouteHelper.notificationScreen) ?.then((value) {
-              setState(() {
-                hasNotification=false;
-              });
-          });},child: SvgPicture.asset(hasNotification? MyIcons.activeNotificationIcon: MyIcons.activeNotificationIcon,height: 25,width: 25,)),
-        ):const SizedBox.shrink(),
-        const SizedBox(width: 10,)
+        widget.isShowActionBtn
+            ? ActionButtonIconWidget(
+          pressed: widget.actionPress!,
+          isImage: widget.isActionImage,
+          icon: widget.isActionImage?Icons.add:widget.actionIcon,  //just for demo purpose we put it here
+          imageSrc: widget.isActionImage?widget.actionIcon:'',
+        ) : const SizedBox.shrink(),
+        const SizedBox(
+          width: 5,
+        )
       ],
     ):AppBar(
       titleSpacing: 0,
@@ -94,7 +104,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
             hasNotification=false;
           });
         });},child: SvgPicture.asset(hasNotification?MyIcons.activeNotificationIcon:MyIcons.activeNotificationIcon,height: 28,width: 28,)):const SizedBox.shrink(),
-        const SizedBox(width: 10)],
+        const SizedBox(width: 5)],
       automaticallyImplyLeading: false,
     );
   }

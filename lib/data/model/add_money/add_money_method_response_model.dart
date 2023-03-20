@@ -51,8 +51,8 @@ class Data {
       });
     }
   }
-  List<AddMoneyWallets>? _wallets;
 
+  List<AddMoneyWallets>? _wallets;
   List<AddMoneyWallets>? get wallets => _wallets;
 
   Map<String, dynamic> toJson() {
@@ -265,8 +265,8 @@ class Gateways {
   Gateways.fromJson(dynamic json) {
     _id = json['id'];
     _name = json['name'];
-    _currency = json['currency'];
-    _symbol = json['symbol'];
+    _currency = json['currency']!=null?json['currency'].toString():'';
+    _symbol = json['symbol']!=null?json['symbol'].toString():'';
     _methodCode = json['method_code'].toString();
     _gatewayAlias = json['gateway_alias'].toString();
     _minAmount = json['min_amount'].toString();
@@ -275,11 +275,11 @@ class Gateways {
     _fixedCharge = json['fixed_charge'].toString();
     _rate = json['rate'].toString();
     _image = json['image'] != null ? json['image'].toString() : "";
-    _gatewayParameter = json['gateway_parameter'];
+    _gatewayParameter = json['gateway_parameter'].toString();
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
-    _depositMinLimit = json['deposit_min_limit'].toString();
-    _depositMaxLimit = json['deposit_max_limit'].toString();
+    _depositMinLimit = json['deposit_min_limit']!=null?json['deposit_min_limit'].toString():'';
+    _depositMaxLimit = json['deposit_max_limit']!=null?json['deposit_max_limit'].toString():'';
   }
   int? _id;
   String? _name;

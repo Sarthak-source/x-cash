@@ -19,13 +19,16 @@ class RequestMoneyRepo{
   Future<ResponseModel> submitRequestMoney({
     required String walletId,
     required String amount,
-    required String username}) async{
+    required String username,
+    required String note,
+  }) async{
 
     String url = "${UrlContainer.baseUrl}${UrlContainer.requestMoneySubmitEndPoint}";
     Map<String, String> params = {
       "wallet_id" : walletId,
       "amount" : amount,
-      "user" : username
+      "user" : username,
+      "note" : note,
     };
 
     ResponseModel responseModel = await apiClient.request(url, Method.postMethod, params, passHeader: true);

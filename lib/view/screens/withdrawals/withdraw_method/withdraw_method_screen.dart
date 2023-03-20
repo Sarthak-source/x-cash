@@ -181,8 +181,8 @@ class _WithdrawMethodScreenState extends State<WithdrawMethodScreen> {
                                 ),
                                 const SizedBox(height: Dimensions.space5),
                                 Text(
-                                    "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.methodList[index].withdrawMethod?.withdrawMinLimit ?? "")} ~ "
-                                        "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.methodList[index].withdrawMethod?.withdrawMaxLimit ?? "")} "
+                                    "${Converter.formatNumber(controller.methodList[index].withdrawMethod?.withdrawMinLimit ?? "")} ~ "
+                                        "${Converter.formatNumber(controller.methodList[index].withdrawMethod?.withdrawMaxLimit ?? "")} "
                                         "${controller.methodList[index].currency?.currencyCode ?? ""}",
                                     style: regularSmall.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600)
                                 ),
@@ -198,14 +198,14 @@ class _WithdrawMethodScreenState extends State<WithdrawMethodScreen> {
                                 ),
                                 const SizedBox(height: Dimensions.space5),
                                 controller.methodList[index].withdrawMethod?.id == 4 ? Text(
-                                    "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.methodList[index].withdrawMethod?.withdrawMinLimit ?? "")} "
+                                    "${Converter.formatNumber(controller.methodList[index].withdrawMethod?.withdrawMinLimit ?? "")} "
                                         "${controller.methodList[index].currency?.currencyCode ?? ""} + "
-                                        "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.methodList[index].withdrawMethod?.percentCharge ?? "")}%",
+                                        "${Converter.formatNumber(controller.methodList[index].withdrawMethod?.percentCharge ?? "")}%",
                                     style: regularSmall.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600)
                                 ) : Text(
-                                    "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.methodList[index].withdrawMethod?.withdrawMaxLimit ?? "")} "
+                                    "${Converter.formatNumber(controller.methodList[index].withdrawMethod?.withdrawMaxLimit ?? "")} "
                                         "${controller.methodList[index].currency?.currencyCode ?? ""} + "
-                                        "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.methodList[index].withdrawMethod?.percentCharge ?? "")}%",
+                                        "${Converter.formatNumber(controller.methodList[index].withdrawMethod?.percentCharge ?? "")}%",
                                     style: regularSmall.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600)
                                 ),
                               ],

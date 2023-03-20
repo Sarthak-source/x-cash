@@ -6,6 +6,7 @@ import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
+import 'package:xcash_app/core/utils/util.dart';
 import 'package:xcash_app/data/controller/add_money/add_money_history_controller.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_bar.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
@@ -57,7 +58,7 @@ class AddMoneyHistoryBottomSheet extends StatelessWidget {
                       Text(MyStrings.amount, style: regularSmall.copyWith(color: MyColor.colorBlack.withOpacity(0.6))),
                       const SizedBox(width: Dimensions.space5),
                       Text(
-                        "(${Converter.twoDecimalPlaceFixedWithoutRounding(controller.depositList[index].amount ?? "")} + ${Converter.twoDecimalPlaceFixedWithoutRounding(controller.depositList[index].charge ?? "")} "
+                        "(${Converter.formatNumber(controller.depositList[index].amount ?? "")} + ${Converter.formatNumber(controller.depositList[index].charge ?? "")} "
                             "${controller.depositList[index].currency?.currencyCode ?? ""})",
                         style: regularSmall.copyWith(color: MyColor.colorRed, fontWeight: FontWeight.w500),
                       )
@@ -65,7 +66,7 @@ class AddMoneyHistoryBottomSheet extends StatelessWidget {
                   ),
                   const SizedBox(height: Dimensions.space5),
                   Text(
-                      "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.depositList[index].finalAmo ?? "")} "
+                      "${Converter.formatNumber(controller.depositList[index].finalAmo ?? "")} "
                           "${controller.depositList[index].currency?.currencyCode ?? ""}",
                       style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w500),
                       overflow: TextOverflow.ellipsis
@@ -92,27 +93,32 @@ class AddMoneyHistoryBottomSheet extends StatelessWidget {
                   padding: EdgeInsets.zero,
                   itemCount: controller.depositList[index].detail?.length ?? 0,
                   separatorBuilder: (context, detailIndex) => const SizedBox(height: Dimensions.space10),
-                  itemBuilder: (context, detailIndex) => Container(
-                    width: MediaQuery.of(context).size.width,
-                    padding: const EdgeInsets.all(15),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-                        border: Border.all(color: MyColor.colorGrey.withOpacity(0.2))
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          controller.depositList[index].detail![detailIndex].name ?? "",
-                          style: regularDefault.copyWith(color: MyColor.colorBlack.withOpacity(0.6)),
-                        ),
-                        Text(
-                          controller.depositList[index].detail![detailIndex].value ?? "",
-                          style: regularDefault.copyWith(color: MyColor.colorBlack),
-                        )
-                      ],
-                    ),
-                  )
+                  itemBuilder: (context, detailIndex) {
+
+                    return Container(
+                      width: MediaQuery.of(context).size.width,
+                      padding: const EdgeInsets.all(15),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(4),
+                          border: Border.all(color: MyColor.colorGrey.withOpacity(0.2),width: .4),
+                          color: MyColor.colorWhite,
+                          boxShadow: MyUtils.getBottomSheetShadow()
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            controller.depositList[index].detail?[detailIndex].name ?? "",
+                            style: regularDefault.copyWith(color: MyColor.colorBlack.withOpacity(0.6),fontWeight: FontWeight.w600),
+                          ),
+                          Text(
+                            controller.depositList[index].detail?[detailIndex].value ?? "",
+                            style: regularDefault.copyWith(color: MyColor.colorBlack,fontWeight: FontWeight.w600),
+                          )
+                        ],
+                      ),
+                    );
+                  }
               ),
             ],
           )

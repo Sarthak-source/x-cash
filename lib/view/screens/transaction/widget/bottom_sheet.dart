@@ -40,10 +40,10 @@ showTrxBottomSheet(List<String>? list, int callFrom, {required BuildContext cont
             physics: const ClampingScrollPhysics(),
             child: Container(
                 width: MediaQuery.of(context).size.width,
-                padding: const EdgeInsets.only(left: 20,right: 20,bottom: 20,top: 8),
+                padding: const EdgeInsets.only(left: 10,right: 10,bottom: 20,top: 8),
                 margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.2),
                 decoration: const BoxDecoration(
-                    color: MyColor.screenBgColor,
+                    color: Color(0xFFF7F8FC),//MyColor.colorWhite,
                     borderRadius: BorderRadius.vertical(top: Radius.circular(20))
                 ),
                 child: Column(
@@ -58,7 +58,9 @@ showTrxBottomSheet(List<String>? list, int callFrom, {required BuildContext cont
                         itemBuilder: (context, index) {
                           return GestureDetector(
                               onTap: () {
+
                                 String selectedValue = list[index];
+
                                 final controller= Get.find<TransactionHistoryController>();
                                 if(callFrom == 1){
                                   controller.setSelectedTransactionType(selectedValue);
@@ -76,6 +78,7 @@ showTrxBottomSheet(List<String>? list, int callFrom, {required BuildContext cont
                                   controller.setSelectedWalletCurrency(selectedValue);
                                   controller.filterData();
                                 }
+
                                 Navigator.pop(context);
 
                                 FocusScopeNode currentFocus = FocusScope.of(context);

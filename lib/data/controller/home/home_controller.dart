@@ -57,8 +57,8 @@ class HomeController extends GetxController{
         username = model.data?.user?.username ?? "";
         userBalance = model.data?.totalSiteBalance ?? "";
         email = model.data?.user?.email ?? "";
-        totalMoneyIn = "${Converter.twoDecimalPlaceFixedWithoutRounding(model.data?.last7DayMoneyInOut?.totalMoneyIn ?? "")} $defaultCurrency";
-        totalMoneyOut = "${Converter.twoDecimalPlaceFixedWithoutRounding(model.data?.last7DayMoneyInOut?.totalMoneyOut ?? "")} $defaultCurrency";
+        totalMoneyIn = "${Converter.formatNumber(model.data?.last7DayMoneyInOut?.totalMoneyIn ?? "")} $defaultCurrency";
+        totalMoneyOut = "${Converter.formatNumber(model.data?.last7DayMoneyInOut?.totalMoneyOut ?? "")} $defaultCurrency";
         imagePath = model.data?.user?.image??'';
 
         List<Wallets>? tempWalletList = model.data?.wallets;

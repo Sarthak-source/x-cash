@@ -41,8 +41,8 @@ class CreateVoucherController extends GetxController{
     String amt = amountController.text.toString();
     mainAmount = amt.isEmpty ? 0 : double.tryParse(amt) ?? 0;
     changeInfoWidget(mainAmount);
-    minLimit = Converter.twoDecimalPlaceFixedWithoutRounding(selectedWallet?.id.toString() == "-1" ? "0" : selectedWallet?.currency?.voucherMinLimit ?? "");
-    maxLimit = Converter.twoDecimalPlaceFixedWithoutRounding(selectedWallet?.id.toString() == "-1" ? "0" : selectedWallet?.currency?.voucherMaxLimit ?? "");
+    minLimit = Converter.formatNumber(selectedWallet?.id.toString() == "-1" ? "0" : selectedWallet?.currency?.voucherMinLimit ?? "");
+    maxLimit = Converter.formatNumber(selectedWallet?.id.toString() == "-1" ? "0" : selectedWallet?.currency?.voucherMaxLimit ?? "");
     update();
   }
 
@@ -138,17 +138,40 @@ class CreateVoucherController extends GetxController{
     }
 
     mainAmount = amount;
+    double currencyRate = double.tryParse(selectedWallet?.currency?.rate??'1')??1;
+
+    double percent = double.tryParse(model.data?.voucherCharge?.percentCharge ?? "0") ?? 0;
+    double percentCharge = (amount*percent)/100;
+
+    double fixed = double.tryParse(model.data?.voucherCharge?.fixedCharge ?? "0") ?? 0;
+    double fixedCharge = fixed/currencyRate;  //fixed charge are  global for each currency so that we don't calculate it with expected currency
+
+    double finalCharge = fixedCharge + percentCharge;
+    charge = '${Converter.formatNumber('$finalCharge')} $currency';
+    String payable = Converter.sum(finalCharge.toString(),mainAmount.toString());
+    payableText = '$payable $currency';
+
+  /*  mainAmount = amount;
     double percent = double.tryParse(model.data?.voucherCharge?.percentCharge ?? "0") ?? 0;
     double percentCharge = (amount * percent) / 100;
     double temCharge = double.tryParse(model.data?.voucherCharge?.fixedCharge ?? "0") ?? 0;
     double totalCharge = percentCharge+temCharge;
-    charge = '${Converter.twoDecimalPlaceFixedWithoutRounding('$totalCharge')} $currency';
+    charge = '${Converter.formatNumber('$totalCharge')} $currency';
     double payable = totalCharge + amount;
-    payableText = '$payable $currency';
+    payableText = '$payable $currency';*/
+
+   /* mainAmount = amount;
+    double percent =
+    double percentCharge = (amount * percent) / 100;
+    double temCharge = double.tryParse(model.data?.voucherCharge?.fixedCharge ?? "0") ?? 0;
+    double totalCharge = percentCharge+temCharge;
+    charge = '${Converter.formatNumber('$totalCharge')} $currency';
+    double payable = totalCharge + amount;
+    payableText = '$payable $currency';*/
     update();
   }
 
-  void checkValidation(BuildContext context) {
+  void checkAndShowPreviewBottomSheet(BuildContext context) {
     if(selectedWallet?.id.toString() == "-1"){
       CustomSnackBar.error(errorList: [MyStrings.selectAWallet]);
       return ;

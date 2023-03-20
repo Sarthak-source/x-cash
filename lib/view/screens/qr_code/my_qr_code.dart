@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
@@ -90,17 +91,33 @@ class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
                     const SizedBox(height: Dimensions.space30),
                     Image.network(controller.qrCode, width: 220, height: 220),
                     const SizedBox(height: Dimensions.space30),
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.7,
-                      child: RoundedButton(
-                          color: MyColor.colorWhite,
-                          text: MyStrings.downloadAsImage.tr,
-                          textColor: MyColor.primaryColor,
-                          press: (){
-                            controller.downloadImage();
-                          }
-                      ),
-                    ),
+                   Row(
+                     children: [
+                       Expanded(child: RoundedButton(
+                           color: MyColor.colorWhite,
+                           text: MyStrings.download.tr,
+                           textColor: MyColor.primaryColor,
+                           press: ()async{
+                             final box = context.findRenderObject() as RenderBox?;
+
+                             await Share.share(
+                               'MyQr ',
+                               subject: 'Share Image',
+                               sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size,
+                             );
+                           }
+                       )),
+                       const SizedBox(width: Dimensions.space12,),
+                       Expanded(child: RoundedButton(
+                           color: MyColor.colorBlack,
+                           text: MyStrings.share.tr,
+                           textColor: MyColor.colorWhite,
+                           press: (){
+                             controller.shareImage();
+                           }
+                       )),
+                     ],
+                   ),
                     const SizedBox(height: Dimensions.space15)
                   ],
                 ),

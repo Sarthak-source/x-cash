@@ -55,7 +55,7 @@ class MyRequestListItem extends StatelessWidget {
               children: [
                 CardColumn(
                     header: MyStrings.amount.tr,
-                    body: "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.myRequestList[index].requestAmount ?? "")} "
+                    body: "${Converter.formatNumber(controller.myRequestList[index].requestAmount ?? "")} "
                     "${controller.myRequestList[index].currency?.currencyCode ?? ""}"
                 ),
                 CardColumn(

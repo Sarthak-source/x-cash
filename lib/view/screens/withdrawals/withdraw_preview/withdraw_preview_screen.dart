@@ -103,7 +103,7 @@ class _WithdrawPreviewScreenState extends State<WithdrawPreviewScreen> {
                             style: regularDefault.copyWith(color: MyColor.getTextColor().withOpacity(0.6)),
                           ),
                           Text(
-                            "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.withdrawCharge)} ${controller.currency}",
+                            "${Converter.formatNumber(controller.withdrawCharge)} ${controller.currency}",
                             style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600),
                           )
                         ],
@@ -117,7 +117,7 @@ class _WithdrawPreviewScreenState extends State<WithdrawPreviewScreen> {
                             style: regularDefault.copyWith(color: MyColor.getTextColor().withOpacity(0.6)),
                           ),
                           Text(
-                            "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.youWillGet)} ${controller.currency}",
+                            "${Converter.formatNumber(controller.youWillGet)} ${controller.currency}",
                             style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600),
                           )
                         ],

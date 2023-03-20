@@ -56,7 +56,7 @@ class _VoucherListCardState extends State<VoucherListCard> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.voucherList[index].amount ?? "")} "
+                      "${Converter.formatNumber(controller.voucherList[index].amount ?? "")} "
                       "${controller.voucherList[index].currency?.currencyCode ?? ""}",
                       style: regularLarge.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600),
                     ),

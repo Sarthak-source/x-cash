@@ -47,14 +47,14 @@ class LatestTransactionBottomSheet extends StatelessWidget {
             children: [
               CardColumn(
                 header: MyStrings.beforeCharge,
-                body: "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.trxList[index].beforeCharge ?? "")} "
+                body: "${Converter.formatNumber(controller.trxList[index].beforeCharge ?? "")} "
                     "${controller.trxList[index].currency?.currencyCode ?? ""}",
               ),
               CardColumn(
                 alignmentEnd: true,
                 header: MyStrings.charge,
                 body: "${controller.trxList[index].chargeType ?? ""} "
-                    "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.trxList[index].charge ?? "")} "
+                    "${Converter.formatNumber(controller.trxList[index].charge ?? "")} "
                     "${controller.trxList[index].currency?.currencyCode ?? ""}",
               )
             ],
@@ -65,7 +65,7 @@ class LatestTransactionBottomSheet extends StatelessWidget {
             children: [
               CardColumn(
                 header: MyStrings.remainingBalance,
-                body: "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.trxList[index].postBalance ?? "")} ${controller.trxList[index].currency?.currencyCode ?? ""}",
+                body: "${Converter.formatNumber(controller.trxList[index].postBalance ?? "")} ${controller.trxList[index].currency?.currencyCode ?? ""}",
               ),
             ],
           )

@@ -14,6 +14,7 @@ import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_bar.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
+import 'package:xcash_app/view/components/card/bottom_sheet_card.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
@@ -21,14 +22,14 @@ import 'package:xcash_app/view/components/text-form-field/text_field_person_vali
 import 'package:xcash_app/view/components/text/label_text.dart';
 import 'package:xcash_app/view/screens/transaction/widget/filter_row_widget.dart';
 
-class TransferMoney extends StatefulWidget {
-  const TransferMoney({Key? key}) : super(key: key);
+class TransferMoneyScreen extends StatefulWidget {
+  const TransferMoneyScreen({Key? key}) : super(key: key);
 
   @override
-  State<TransferMoney> createState() => _TransferMoneyState();
+  State<TransferMoneyScreen> createState() => _TransferMoneyScreenState();
 }
 
-class _TransferMoneyState extends State<TransferMoney> {
+class _TransferMoneyScreenState extends State<TransferMoneyScreen> {
 
   @override
   void initState() {
@@ -98,13 +99,7 @@ class _TransferMoneyState extends State<TransferMoney> {
                                       currentFocus.unfocus();
                                     }
                                   },
-                                  child: Container(
-                                    padding: const EdgeInsets.all(15),
-                                    margin: const EdgeInsets.all(5),
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
-                                        border: Border.all(color: MyColor.colorGrey.withOpacity(0.2))
-                                    ),
+                                  child: BottomSheetCard(
                                     child: Text(
                                       controller.walletList[index].currencyCode.toString() ?? "",
                                       style: regularDefault,
@@ -171,56 +166,54 @@ class _TransferMoneyState extends State<TransferMoney> {
                 FilterRowWidget(
                     borderColor: controller.selectedOtp == MyStrings.selectOtp ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
                     text: controller.selectedOtp.toTitleCase(),
-                    press: () => CustomBottomSheet(
-                        child: Column(
-                          children: [
-                            const BottomSheetBar(),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: const [
-                                BottomSheetCloseButton()
-                              ],
-                            ),
-                            const SizedBox(height: Dimensions.space15),
-                            ListView.builder(
-                                itemCount: controller.otpTypeList.length,
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemBuilder: (context, index) {
-                                  return GestureDetector(
-                                    onTap: () {
-                                      final controller= Get.find<TransferMoneyController>();
-                                      String selectedValue = controller.otpTypeList[index];
-                                      controller.setSelectedOtp(selectedValue);
-                                      Navigator.pop(context);
+                    press: (){
+                      FocusScope.of(context).unfocus();
+                      CustomBottomSheet(
+                          child: Column(
+                            children: [
+                              const BottomSheetBar(),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: const [
+                                  BottomSheetCloseButton()
+                                ],
+                              ),
+                              const SizedBox(height: Dimensions.space15),
+                              ListView.builder(
+                                  itemCount: controller.otpTypeList.length,
+                                  shrinkWrap: true,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  itemBuilder: (context, index) {
+                                    return GestureDetector(
+                                      onTap: () {
+                                        final controller= Get.find<TransferMoneyController>();
+                                        String selectedValue = controller.otpTypeList[index];
+                                        controller.setSelectedOtp(selectedValue);
+                                        Navigator.pop(context);
 
-                                      FocusScopeNode currentFocus = FocusScope.of(context);
-                                      if (!currentFocus.hasPrimaryFocus) {
-                                        currentFocus.unfocus();
-                                      }
-                                    },
-                                    child: Container(
-                                      padding: const EdgeInsets.all(15),
-                                      margin: const EdgeInsets.all(5),
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
-                                          border: Border.all(color: MyColor.colorGrey.withOpacity(0.2))
+                                        FocusScopeNode currentFocus = FocusScope.of(context);
+                                        if (!currentFocus.hasPrimaryFocus) {
+                                          currentFocus.unfocus();
+                                        }
+                                      },
+                                      child: BottomSheetCard(
+                                        child: Text(
+                                          controller.otpTypeList[index].toString().toTitleCase(),
+                                          style: regularDefault,
+                                        ),
                                       ),
-                                      child: Text(
-                                        controller.otpTypeList[index].toString().toTitleCase(),
-                                        style: regularDefault,
-                                      ),
-                                    ),
-                                  );
-                                })
-                          ],
-                        )
-                    ).customBottomSheet(context)
+                                    );
+                                  })
+                            ],
+                          )
+                      ).customBottomSheet(context);
+                    }
                 ),
-                const SizedBox(height: Dimensions.space25),
+                const SizedBox(height: Dimensions.space30),
                 RoundedButton(
                   press: (){
-                    controller.checkValidation(context);
+                    FocusScope.of(context).unfocus();
+                    controller.checkAndShowPreviewBottomSheet(context);
                   },
                   text: MyStrings.transferNow.tr,
                 )

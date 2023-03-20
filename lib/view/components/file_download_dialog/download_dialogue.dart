@@ -40,9 +40,9 @@ class DownloadingDialogState extends State<DownloadingDialog> {
       });
     }).onDone(() async {
       final file = File('${(await getApplicationDocumentsDirectory()).path}/qr_code.png');
-      await file.writeAsBytes(_bytes);
+     File savedFile =  await file.writeAsBytes(_bytes);
       Get.back();
-      CustomSnackBar.success(successList: [MyStrings.fileDownloadedSuccess]);
+      CustomSnackBar.success(successList: ['${MyStrings.fileDownloadedSuccess}: ${savedFile.path.toString()}']);
       setState(() {
         _image = file;
       });

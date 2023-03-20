@@ -66,24 +66,30 @@ class _ProfileWidgetState extends State<ProfileWidget> {
     bool isAsset=widget.imagePath.contains('http')==true?false:true;
 
 
-    return ClipOval(
-      child: Material(
-        color: MyColor.getCardBgColor(),
-        child:imageFile!=null?
-        Ink.image(
-          image: image as ImageProvider,
-          fit: BoxFit.cover,
-          width: 90,
-          height: 90,
-          child: InkWell(
-            onTap: widget.onClicked,
-          ),
-        ):CircleImageWidget(
-          press: (){},
-          isAsset: isAsset,
-          imagePath: isAsset?MyImages.profile:widget.imagePath,
-          height: 100,
-          width: 100,),
+    return Container(
+      decoration:  BoxDecoration(
+        shape:  BoxShape.circle,
+        border: Border.all(color: MyColor.screenBgColor,width: 1),
+      ),
+      child: ClipOval(
+        child: Material(
+          color: MyColor.getCardBgColor(),
+          child:imageFile!=null?
+          Ink.image(
+            image: image as ImageProvider,
+            fit: BoxFit.cover,
+            width: 90,
+            height: 90,
+            child: InkWell(
+              onTap: widget.onClicked,
+            ),
+          ):CircleImageWidget(
+            press: (){},
+            isAsset: isAsset,
+            imagePath: isAsset?MyImages.profile:widget.imagePath,
+            height: 100,
+            width: 100,),
+        ),
       ),
     );
   }

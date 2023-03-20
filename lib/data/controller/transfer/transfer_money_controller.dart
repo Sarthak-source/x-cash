@@ -41,8 +41,8 @@ class TransferMoneyController extends GetxController{
     String amt = amountController.text.toString();
     mainAmount = amt.isEmpty ? 0 : double.tryParse(amt) ?? 0;
     changeInfoWidget(mainAmount);
-    minLimit = Converter.twoDecimalPlaceFixedWithoutRounding(selectedWallet?.id == -1 ? "0" : selectedWallet?.currency?.transferMinLimit ?? "");
-    maxLimit = Converter.twoDecimalPlaceFixedWithoutRounding(selectedWallet?.id == -1 ? "0" : selectedWallet?.currency?.transferMaxLimit ?? "");
+    minLimit = Converter.formatNumber(selectedWallet?.id == -1 ? "0" : selectedWallet?.currency?.transferMinLimit ?? "");
+    maxLimit = Converter.formatNumber(selectedWallet?.id == -1 ? "0" : selectedWallet?.currency?.transferMaxLimit ?? "");
     update();
   }
 
@@ -54,6 +54,11 @@ class TransferMoneyController extends GetxController{
   Future<void> loadData(String walletId) async{
     isLoading = true;
     update();
+
+    hasAgent    = false;
+    validUser   = "";
+    invalidUser = "";
+    isUserFound = false;
 
     walletList.clear();
     otpTypeList.clear();
@@ -165,10 +170,10 @@ class TransferMoneyController extends GetxController{
     if(cap != 1 && totalCharge > cap){
       totalCharge = cap;
     }
-    charge = '${Converter.twoDecimalPlaceFixedWithoutRounding('$totalCharge')} $currency';
+    charge = '${Converter.formatNumber('$totalCharge')} $currency';
 
     double payable = totalCharge + amount;
-    payableText = '${Converter.twoDecimalPlaceFixedWithoutRounding(payable.toString())} $currency';
+    payableText = '${Converter.formatNumber(payable.toString())} $currency';
     update();
   }
 
@@ -200,7 +205,7 @@ class TransferMoneyController extends GetxController{
     update();
   }
 
-  void checkValidation(BuildContext context){
+  void checkAndShowPreviewBottomSheet(BuildContext context){
     if(selectedWallet?.id.toString() == "-1"){
       CustomSnackBar.error(errorList: [MyStrings.selectAWallet.tr]);
     }

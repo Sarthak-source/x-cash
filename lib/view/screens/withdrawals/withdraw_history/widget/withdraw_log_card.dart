@@ -55,7 +55,7 @@ class WithdrawLogCard extends StatelessWidget {
                 children: [
                   CardColumn(
                       header: MyStrings.amount.tr,
-                      body: "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.withdrawList[index].finalAmount ?? "")} ${controller.withdrawList[index].currency}"
+                      body: "${Converter.formatNumber(controller.withdrawList[index].finalAmount ?? "")} ${controller.withdrawList[index].currency}"
                   ),
                   StatusWidget(
                     status: controller.getStatusOrColor(index),

@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 
 class MyColor{
 
-  static const Color primaryColor = Color(0xff7966FF);
+  static const Color primaryColor = Color(0xff1C3A6F);
   static const Color secondaryColor = Color(0xffF6F7FE);
   //static const Color screenBgColor = Color(0xFFf2f2f2);
   static const Color screenBgColor = Color(0xFFF9F9F9);
-  static const Color secondaryScreenBgColor = Color(0xffC9C2FF);
+  static  Color secondaryScreenBgColor = primaryColor.withOpacity(.4);
   static const Color primaryTextColor = Color(0xff262626);
   static const Color contentTextColor = Color(0xff777777);
-  static const Color primaryStatusBarColor = Color(0xff634EF4);
-  static const Color underlineTextColor = Color(0xff7966FF);
+  static const Color primaryStatusBarColor = primaryColor;
+  static const Color underlineTextColor = primaryColor;
   static const Color lineColor = Color(0xffECECEC);
   static const Color borderColor = Color(0xffD9D9D9);
 
@@ -21,7 +21,7 @@ class MyColor{
   // text field
   static Color labelTextColor = colorBlack.withOpacity(0.6);
   static const Color textFieldDisableBorderColor = Color(0xffCFCEDB);
-  static const Color textFieldEnableBorderColor = Color(0xff7966FF);
+  static const Color textFieldEnableBorderColor = primaryColor;
   static const Color hintTextColor = Color(0xff98a1ab);
 
   // button
@@ -57,6 +57,11 @@ class MyColor{
   static Color getScreenBgColor(){
     return screenBgColor; 
   }
+
+  static Color getGreyText(){
+    return  MyColor.colorBlack.withOpacity(0.5);
+  }
+
   static Color getSecondaryScreenBgColor(){
     return secondaryScreenBgColor;
   }

@@ -8,8 +8,10 @@ import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/voucher/create_voucher_controller.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_bar.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
+import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_header_row.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
+import 'package:xcash_app/view/components/card/bottom_sheet_card.dart';
 import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
 import 'package:xcash_app/view/components/text/label_text.dart';
@@ -41,11 +43,7 @@ class _CreateVoucherFormState extends State<CreateVoucherForm> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const BottomSheetBar(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: const [BottomSheetCloseButton()],
-                    ),
+                    const BottomSheetHeaderRow(header: ''),
                     const SizedBox(height: Dimensions.space15),
                     ListView.builder(
                         itemCount: controller.walletList.length,
@@ -64,13 +62,7 @@ class _CreateVoucherFormState extends State<CreateVoucherForm> {
                                 currentFocus.unfocus();
                               }
                             },
-                            child: Container(
-                              padding: const EdgeInsets.all(15),
-                              margin: const EdgeInsets.all(5),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
-                                  border: Border.all(color: MyColor.colorGrey.withOpacity(0.2))
-                              ),
+                            child: BottomSheetCard(
                               child: Text(
                                 controller.walletList[index].currencyCode.toString(),
                                 style: regularDefault,
@@ -115,56 +107,54 @@ class _CreateVoucherFormState extends State<CreateVoucherForm> {
           FilterRowWidget(
               borderColor: controller.selectedOtp == MyStrings.selectOtp ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
               text: controller.selectedOtp.toTitleCase(),
-              press: () => CustomBottomSheet(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const BottomSheetBar(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: const [BottomSheetCloseButton()],
-                    ),
-                    const SizedBox(height: Dimensions.space15),
-                    ListView.builder(
-                        itemCount: controller.otpTypeList.length,
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          return GestureDetector(
-                            onTap: () {
-                              final controller= Get.find<CreateVoucherController>();
-                              String selectedValue = controller.otpTypeList[index];
-                              controller.setSelectedOtp(selectedValue);
-                              Navigator.pop(context);
+              press: () {
+                FocusScope.of(context).unfocus();
+                CustomBottomSheet(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const BottomSheetBar(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: const [BottomSheetCloseButton()],
+                        ),
+                        const SizedBox(height: Dimensions.space15),
+                        ListView.builder(
+                            itemCount: controller.otpTypeList.length,
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemBuilder: (context, index) {
+                              return GestureDetector(
+                                onTap: () {
+                                  final controller= Get.find<CreateVoucherController>();
+                                  String selectedValue = controller.otpTypeList[index];
+                                  controller.setSelectedOtp(selectedValue);
+                                  Navigator.pop(context);
 
-                              FocusScopeNode currentFocus = FocusScope.of(context);
-                              if (!currentFocus.hasPrimaryFocus) {
-                                currentFocus.unfocus();
-                              }
-                            },
-                            child: Container(
-                              padding: const EdgeInsets.all(15),
-                              margin: const EdgeInsets.all(5),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
-                                  border: Border.all(color: MyColor.colorGrey.withOpacity(0.2))
-                              ),
-                              child: Text(
-                                controller.otpTypeList[index].toString().toTitleCase(),
-                                style: regularDefault,
-                              ),
-                            ),
-                          );
-                        })
-                  ],
-                )
-              ).customBottomSheet(context)
+                                  FocusScopeNode currentFocus = FocusScope.of(context);
+                                  if (!currentFocus.hasPrimaryFocus) {
+                                    currentFocus.unfocus();
+                                  }
+                                },
+                                child: BottomSheetCard(
+                                  child: Text(
+                                    controller.otpTypeList[index].toString().toTitleCase(),
+                                    style: regularDefault,
+                                  ),
+                                ),
+                              );
+                            })
+                      ],
+                    )
+                ).customBottomSheet(context);
+              }
           ),
           const SizedBox(height: Dimensions.space30),
 
           RoundedButton(
             press: (){
-              controller.checkValidation(context);
+              FocusScope.of(context).unfocus();
+              controller.checkAndShowPreviewBottomSheet(context);
             },
             text: MyStrings.createVoucher.tr,
           )

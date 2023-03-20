@@ -26,6 +26,7 @@ class ActionButtonIconWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('action widget ${isImage}');
     return GestureDetector(
       onTap: pressed,
       child: Container(

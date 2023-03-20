@@ -102,9 +102,10 @@ class ApiClient extends GetxService{
       }
 
 
-      print('url ${uri.toString()}');
-      print('status ${response.statusCode}');
-      print('body ${response.body.toString()}');
+      print('url--------------${uri.toString()}');
+      print('params-----------${params.toString()}');
+      print('status-----------${response.statusCode}');
+      print('body-------------${response.body.toString()}');
 
 
       if (response.statusCode == 200) {

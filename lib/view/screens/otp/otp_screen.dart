@@ -58,7 +58,7 @@ class _OtpScreenState extends State<OtpScreen> {
         backgroundColor: MyColor.screenBgColor,
         appBar: CustomAppBar(
           fromAuth: false,
-          title: "",
+          title: MyStrings.otpVerification,
           isShowBackBtn: true,
           isShowActionBtn: false,
           bgColor: MyColor.getAppBarColor()
@@ -69,13 +69,13 @@ class _OtpScreenState extends State<OtpScreen> {
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  padding: const EdgeInsets.all(Dimensions.space20),
+                  padding: const EdgeInsets.all(Dimensions.space7),
                   alignment: Alignment.center,
                   decoration: const BoxDecoration(
                     color: MyColor.primaryColor,
-                    borderRadius: BorderRadius.vertical(bottom: Radius.circular(30)),
+                    borderRadius: BorderRadius.vertical(bottom: Radius.circular(22)),
                   ),
-                  child: Image.asset(MyImages.appLogo, height: 100, width: 200),
+                  child: Image.asset(MyImages.appLogo, height: 80, width: 200),
                 ),
                 Padding(
                   padding: const EdgeInsetsDirectional.symmetric(vertical: Dimensions.space30, horizontal: Dimensions.space15),
@@ -86,7 +86,7 @@ class _OtpScreenState extends State<OtpScreen> {
                       const SizedBox(height: Dimensions.space8),
                       Text(MyStrings.enterYourOTPCode.tr, style: regularMediumLarge.copyWith(color: MyColor.colorBlack, fontWeight: FontWeight.w600)),
                       const SizedBox(height: Dimensions.space10),
-                      Text(MyStrings.sixDigitOtpMsg.tr, maxLines: 2, textAlign: TextAlign.center, style: regularLarge.copyWith(color: MyColor.labelTextColor)),
+                      Text(MyStrings.sixDigitOtpEmailMsg.tr, maxLines: 2, textAlign: TextAlign.center, style: regularLarge.copyWith(color: MyColor.labelTextColor)),
                       const SizedBox(height: Dimensions.space30),
                       LabelText(text: MyStrings.enterOtpCode.tr),
                       const SizedBox(height: Dimensions.textToTextSpace),

@@ -11,12 +11,12 @@ class BottomSheetCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
     padding: const EdgeInsets.all(Dimensions.space15),
-    margin: const EdgeInsets.only(top: Dimensions.space8),
+    margin: const EdgeInsets.only(top: Dimensions.space7),
     decoration: BoxDecoration(
     borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
-    color: MyColor.colorWhite,
-    border: Border.all(width: .3,color: MyColor.colorGrey.withOpacity(.2)),
-    //boxShadow: MyUtils.getBottomSheetShadow()
+    color: MyColor.colorWhite ,//MyColor.colorGrey.withOpacity(.03),
+    border: Border.all(width: .5,color: MyColor.primaryColor.withOpacity(.1)),
+        boxShadow: MyUtils.getBottomSheetShadow()
     ),
     child: child);
   }

@@ -10,9 +10,11 @@ import 'package:xcash_app/data/repo/exchange/exchange_money_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
+import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_header_row.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
+import 'package:xcash_app/view/components/card/bottom_sheet_card.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
 import 'package:xcash_app/view/components/text/label_text.dart';
@@ -84,24 +86,7 @@ class _ExchangeMoneyScreenState extends State<ExchangeMoneyScreen> {
                               press: () => CustomBottomSheet(
                                 child: Column(
                                   children: [
-                                    Align(
-                                      alignment: Alignment.center,
-                                      child: Container(
-                                        height: 5,
-                                        width: 50,
-                                        padding: const EdgeInsets.all(1),
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(8),
-                                          color: MyColor.colorGrey.withOpacity(0.1),
-                                        ),
-                                      ),
-                                    ),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: const [
-                                        BottomSheetCloseButton()
-                                      ],
-                                    ),
+                                    const BottomSheetHeaderRow(header: ''),
                                     const SizedBox(height: Dimensions.space15),
                                     ListView.builder(
                                         padding: EdgeInsets.zero,
@@ -121,13 +106,7 @@ class _ExchangeMoneyScreenState extends State<ExchangeMoneyScreen> {
                                                 currentFocus.unfocus();
                                               }
                                             },
-                                            child: Container(
-                                              padding: const EdgeInsets.all(15),
-                                              margin: const EdgeInsets.all(5),
-                                              decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
-                                                  border: Border.all(color: MyColor.colorGrey.withOpacity(0.2))
-                                              ),
+                                            child: BottomSheetCard(
                                               child: Text(
                                                 controller.fromWalletList[index].currencyCode ?? "",
                                                 style: regularDefault,
@@ -180,24 +159,7 @@ class _ExchangeMoneyScreenState extends State<ExchangeMoneyScreen> {
                               press: () => CustomBottomSheet(
                                 child: Column(
                                   children: [
-                                    Align(
-                                      alignment: Alignment.center,
-                                      child: Container(
-                                        height: 5,
-                                        width: 50,
-                                        padding: const EdgeInsets.all(1),
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(8),
-                                          color: MyColor.colorGrey.withOpacity(0.1),
-                                        ),
-                                      ),
-                                    ),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: const [
-                                        BottomSheetCloseButton()
-                                      ],
-                                    ),
+                                   const BottomSheetHeaderRow(),
                                     const SizedBox(height: Dimensions.space15),
                                     ListView.builder(
                                         padding: EdgeInsets.zero,
@@ -217,13 +179,7 @@ class _ExchangeMoneyScreenState extends State<ExchangeMoneyScreen> {
                                                 currentFocus.unfocus();
                                               }
                                             },
-                                            child: Container(
-                                              padding: const EdgeInsets.all(15),
-                                              margin: const EdgeInsets.all(5),
-                                              decoration: BoxDecoration(
-                                                  borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
-                                                  border: Border.all(color: MyColor.colorGrey.withOpacity(0.2))
-                                              ),
+                                            child: BottomSheetCard(
                                               child: Text(
                                                 controller.toWalletList[index].currencyCode ?? "",
                                                 style: regularDefault,
@@ -259,7 +215,7 @@ class _ExchangeMoneyScreenState extends State<ExchangeMoneyScreen> {
                       controller.submitExchangeMoney();
                     }
                   },
-                  text: MyStrings.exchange.tr,
+                  text: MyStrings.exchange,
                 )
               ],
             ),

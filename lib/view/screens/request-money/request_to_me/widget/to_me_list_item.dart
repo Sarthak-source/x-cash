@@ -58,7 +58,7 @@ class ToMeListItem extends StatelessWidget {
               children: [
                 CardColumn(
                   header: MyStrings.amount,
-                  body: "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.myRequestList[index].requestAmount ?? "")} "
+                  body: "${Converter.formatNumber(controller.myRequestList[index].requestAmount ?? "")} "
                     "${controller.myRequestList[index].currency?.currencyCode ?? ""}"
                 ),
                 Row(
@@ -94,7 +94,7 @@ class ToMeListItem extends StatelessWidget {
                               ),
                               const SizedBox(height: Dimensions.space20),
                               Text(
-                                "${Converter.twoDecimalPlaceFixedWithoutRounding(requestController.myRequestList[index].requestAmount ?? "")} "
+                                "${Converter.formatNumber(requestController.myRequestList[index].requestAmount ?? "")} "
                                     "${requestController.myRequestList[index].currency?.currencyCode ?? ""} "
                                     "${MyStrings.willBeReduced} ${requestController.myRequestList[index].currency?.currencyCode ?? ""} ${MyStrings.wallet.toLowerCase()}.",
                                 textAlign: TextAlign.center,

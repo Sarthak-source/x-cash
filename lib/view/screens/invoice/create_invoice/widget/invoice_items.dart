@@ -4,11 +4,12 @@ import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
-import 'package:xcash_app/data/controller/invoice/create_invoice_controller.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
+
+import '../../../../../data/controller/invoice/create_invoice_controller.dart';
 
 class InvoiceItems extends StatefulWidget {
 
@@ -97,7 +98,6 @@ class _InvoiceItemsState extends State<InvoiceItems> {
                     itemCount: controller.invoiceItemList.length,
                     separatorBuilder: (context, index) => const SizedBox(height: Dimensions.space15),
                     itemBuilder: (context, index){
-
                       return Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -184,7 +184,6 @@ class _InvoiceItemsState extends State<InvoiceItems> {
                         if (formKey.currentState!.validate()) {
                           controller.submitInvoice();
                         }
-
                       }
                   )
                 ],

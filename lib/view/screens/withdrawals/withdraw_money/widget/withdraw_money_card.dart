@@ -82,8 +82,8 @@ class WithdrawMoneyCard extends StatelessWidget {
                       ),
                       const SizedBox(height: Dimensions.space5),
                       Text(
-                          "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.withdrawMoneyList[index].withdrawMethod?.withdrawMinLimit ?? "")} ~ "
-                              "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.withdrawMoneyList[index].withdrawMethod?.withdrawMaxLimit ?? "")} "
+                          "${Converter.formatNumber(controller.withdrawMoneyList[index].withdrawMethod?.withdrawMinLimit ?? "")} ~ "
+                              "${Converter.formatNumber(controller.withdrawMoneyList[index].withdrawMethod?.withdrawMaxLimit ?? "")} "
                               "${controller.withdrawMoneyList[index].currency?.currencyCode ?? ""}",
                           style: regularSmall.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600)
                       ),
@@ -99,14 +99,14 @@ class WithdrawMoneyCard extends StatelessWidget {
                       ),
                       const SizedBox(height: Dimensions.space5),
                       controller.withdrawMoneyList[index].withdrawMethod?.id == 4 ? Text(
-                          "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.withdrawMoneyList[index].withdrawMethod?.withdrawMinLimit ?? "")} "
+                          "${Converter.formatNumber(controller.withdrawMoneyList[index].withdrawMethod?.withdrawMinLimit ?? "")} "
                               "${controller.withdrawMoneyList[index].currency?.currencyCode ?? ""} + "
-                              "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.withdrawMoneyList[index].withdrawMethod?.percentCharge ?? "")}%",
+                              "${Converter.formatNumber(controller.withdrawMoneyList[index].withdrawMethod?.percentCharge ?? "")}%",
                           style: regularSmall.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600)
                       ) : Text(
-                          "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.withdrawMoneyList[index].withdrawMethod?.withdrawMaxLimit ?? "")} "
+                          "${Converter.formatNumber(controller.withdrawMoneyList[index].withdrawMethod?.withdrawMaxLimit ?? "")} "
                               "${controller.withdrawMoneyList[index].currency?.currencyCode ?? ""} + "
-                              "${Converter.twoDecimalPlaceFixedWithoutRounding(controller.withdrawMoneyList[index].withdrawMethod?.percentCharge ?? "")}%",
+                              "${Converter.formatNumber(controller.withdrawMoneyList[index].withdrawMethod?.percentCharge ?? "")}%",
                           style: regularSmall.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600)
                       ),
                     ],

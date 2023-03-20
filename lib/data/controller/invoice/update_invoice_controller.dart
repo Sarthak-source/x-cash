@@ -64,7 +64,7 @@ class UpdateInvoiceController extends GetxController{
       invoiceToController.text = model.data?.invoice?.invoiceTo ?? "";
       emailController.text = model.data?.invoice?.email ?? "";
       addressController.text = model.data?.invoice?.address ?? "";
-      totalInvoiceAmount = Converter.twoDecimalPlaceFixedWithoutRounding(model.data?.invoice?.totalAmount ?? "");
+      totalInvoiceAmount = Converter.formatNumber(model.data?.invoice?.totalAmount ?? "");
 
       if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
         List<Currencies>? tempCurrencyList = model.data?.currencies;
@@ -86,7 +86,7 @@ class UpdateInvoiceController extends GetxController{
         if(tempInvoiceItemList != null && tempInvoiceItemList.isNotEmpty){
           for (var element in tempInvoiceItemList) {
             String itemName = element.itemName ?? "";
-            String amount = Converter.twoDecimalPlaceFixedWithoutRounding(element.amount ?? "");
+            String amount = Converter.formatNumber(element.amount ?? "");
             InvoiceItemsModel items = InvoiceItemsModel(itemNameController: TextEditingController(text: itemName), amountController: TextEditingController(text: amount));
             invoiceItemList.add(items);
           }
@@ -236,7 +236,7 @@ class UpdateInvoiceController extends GetxController{
       totalAmount = totalAmount + invoiceAmount;
     }
 
-    totalInvoiceAmount = Converter.twoDecimalPlaceFixedWithoutRounding(totalAmount.toString());
+    totalInvoiceAmount = Converter.formatNumber(totalAmount.toString());
     update();
   }
 }

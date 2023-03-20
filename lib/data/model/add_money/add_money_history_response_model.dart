@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import '../auth/sign_up_model/registration_response_model.dart';
 
 class AddMoneyHistoryResponseModel {
@@ -165,14 +167,21 @@ class DepositsData {
     _methodCode = json['method_code'].toString();
     _amount = json['amount'] != null ? json['amount'].toString() : "";
     _methodCurrency = json['method_currency'].toString();
-    _charge = json['charge'].toString();
-    _rate = json['rate'].toString();
+    _charge = json['charge']!=null?json['charge'].toString():'';
+    _rate = json['rate']!=null? json['rate'].toString():'';
     _finalAmo = json['final_amo'].toString();
     if (json['detail'] != null) {
       _detail = [];
-      json['detail'].forEach((v) {
-        _detail?.add(Detail.fromJson(v));
-      });
+      try{
+        json['detail'].forEach((v) {
+          _detail?.add(Detail.fromJson(v));
+        });
+      }catch(e){
+        if (kDebugMode) {
+          print(e.toString());
+        }
+      }
+
     }
     _btcAmo = json['btc_amo'].toString();
     _btcWallet = json['btc_wallet'] != null ? json['btc_wallet'].toString() : "";

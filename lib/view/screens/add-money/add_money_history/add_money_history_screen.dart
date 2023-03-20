@@ -3,12 +3,14 @@ import 'package:get/get.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
+import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/add_money/add_money_history_controller.dart';
 import 'package:xcash_app/data/repo/add_money/add_money_history_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/action_button_icon_widget.dart';
+import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/no_data.dart';
 import 'package:xcash_app/view/screens/add-money/add_money_history/widget/add_money_history_card.dart';
@@ -59,29 +61,20 @@ class _AddMoneyHistoryScreenState extends State<AddMoneyHistoryScreen> {
       builder: (controller) => SafeArea(
         child: Scaffold(
           backgroundColor: MyColor.screenBgColor,
-          appBar: AppBar(
-            elevation: 0,
-            titleSpacing: 0,
-            leading: IconButton(
-              onPressed: () => Get.toNamed(RouteHelper.bottomNavBar),
-              icon: Icon(Icons.arrow_back, color: MyColor.getAppBarContentColor(), size: 20),
-            ),
-            title: Text(MyStrings.addMoneyHistory.tr, style: regularDefault.copyWith(color: MyColor.appBarContentColor)),
-            backgroundColor: MyColor.getAppBarColor(),
-            actions: [
-              ActionButtonIconWidget(
-                  pressed: () => controller.changeSearchStatus(),
-                  icon: controller.isSearch ? Icons.clear : Icons.search,
-              ),
-              ActionButtonIconWidget(
-                pressed: () => Get.toNamed(RouteHelper.addMoneyScreen),
-                icon: Icons.add,
-              ),
-            ],
+          appBar: CustomAppBar(
+            title:MyStrings.addMoneyHistory,
+            isShowActionBtn: true,
+            isShowBackBtn: true,
+            actionIcon: controller.isSearch ? Icons.clear : Icons.search,
+            isActionImage: false,
+            actionPress: (){
+              controller.changeSearchStatus();
+            },
           ),
           body: controller.isLoading ? const CustomLoader() : Padding(
             padding: const EdgeInsets.only(top: Dimensions.space20, left: Dimensions.space15, right: Dimensions.space15),
             child: SingleChildScrollView(
+              controller: scrollController,
               child: Column(
                 children: [
                   Visibility(
@@ -97,7 +90,6 @@ class _AddMoneyHistoryScreenState extends State<AddMoneyHistoryScreen> {
                         scrollDirection: Axis.vertical,
                         physics: const NeverScrollableScrollPhysics(),
                         padding: EdgeInsets.zero,
-                        controller: scrollController,
                         itemCount: controller.depositList.length + 1,
                         separatorBuilder: (context, index) => const SizedBox(height: Dimensions.space10),
                         itemBuilder: (context, index) {

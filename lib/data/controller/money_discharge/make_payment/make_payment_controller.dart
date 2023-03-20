@@ -21,7 +21,7 @@ class MakePaymentController extends GetxController{
 
   bool isLoading = true;
   String currency = "";
-  Wallets? walletsMethod = Wallets();
+  Wallets? selectedWallet = Wallets();
   String selectedOtp = "";
   String amount = "";
   String totalCharge = "";
@@ -35,8 +35,8 @@ class MakePaymentController extends GetxController{
   List<String> otpTypeList = [];
 
   setWalletMethod(Wallets? wallet){
-    walletsMethod = wallet;
-    currency = walletsMethod?.id == -1 ? "" : walletsMethod?.currencyCode ?? "";
+    selectedWallet = wallet;
+    currency = selectedWallet?.id == -1 ? "" : selectedWallet?.currencyCode ?? "";
     String amt = amountController.text.toString();
     mainAmount = amt.isEmpty ? 0 : double.tryParse(amt) ?? 0;
     changeInfoWidget(mainAmount);
@@ -53,16 +53,22 @@ class MakePaymentController extends GetxController{
     isLoading = true;
     update();
 
+    hasAgent = false;
+    validMerchant = "";
+    invalidMerchant = "";
+    isAgentFound = false;
+
     ResponseModel responseModel = await makePaymentRepo.getMakePaymentWallet();
+
 
     walletList.clear();
     otpTypeList.clear();
     amountController.text = "";
     merchantController.text = userType;
 
-    walletsMethod = Wallets(id: -1, currencyCode: MyStrings.selectAWallet);
-    walletList.insert(0, walletsMethod!);
-    setWalletMethod(walletsMethod);
+    selectedWallet = Wallets(id: -1, currencyCode: MyStrings.selectAWallet);
+    walletList.insert(0, selectedWallet!);
+    setWalletMethod(selectedWallet);
 
     otpTypeList.insert(0, MyStrings.selectOtp);
 
@@ -102,7 +108,7 @@ class MakePaymentController extends GetxController{
     update();
 
     String merchantName = merchantController.text;
-    String walletId = walletsMethod?.id.toString()??'';
+    String walletId = selectedWallet?.id.toString()??'';
     String amount = amountController.text;
     String otpType = selectedOtp.toLowerCase().toString();
 
@@ -118,7 +124,7 @@ class MakePaymentController extends GetxController{
         }
 
       } else{
-
+        CustomSnackBar.error(errorList: model.message?.error??[MyStrings.requestFail]);
       }
     } else{
       CustomSnackBar.error(errorList: [response.message]);
@@ -133,17 +139,24 @@ class MakePaymentController extends GetxController{
   String charge = "";
   String payableText = '';
   void changeInfoWidget(double amount){
-    if(walletsMethod?.id.toString() == "-1"){
+    if(selectedWallet?.id.toString() == "-1"){
       return ;
     }
 
     mainAmount = amount;
+    double currencyRate = double.tryParse(selectedWallet?.currency?.rate??'1')??1;
+
     double percent = double.tryParse(model.data?.paymentCharge?.percentCharge ?? "0") ?? 0;
-    double percentCharge = (amount * percent) / 100;
-    double temCharge = double.tryParse(model.data?.paymentCharge?.fixedCharge ?? "0") ?? 0;
-    double totalCharge = percentCharge+temCharge;
-    charge = '${Converter.twoDecimalPlaceFixedWithoutRounding('$totalCharge')} $currency';
-    double payable = totalCharge + amount;
+    double percentCharge = (amount*percent)/100;
+
+    double fixed = double.tryParse(model.data?.paymentCharge?.fixedCharge ?? "0") ?? 0;
+    double fixedCharge = fixed/currencyRate;  //fixed charge are  global for each currency so that we don't calculate it with expected currency
+
+    print('percent charge $percentCharge -------- fixed charge : $fixedCharge');
+
+    double finalCharge = fixedCharge + percentCharge;
+    charge = '${Converter.formatNumber('$finalCharge')} $currency';
+    String payable = Converter.sum(finalCharge.toString(),mainAmount.toString());
     payableText = '$payable $currency';
     update();
   }
@@ -176,12 +189,12 @@ class MakePaymentController extends GetxController{
     }
   }
 
-  void checkValidation(BuildContext context){
+  void checkAndShowPreviewBottomSheet(BuildContext context){
     if(merchantController.text.isEmpty){
       CustomSnackBar.error(errorList: [MyStrings.merchantUsernameEmailHint.tr]);
       return ;
     }
-    else if(walletsMethod?.id.toString() == "-1"){
+    else if(selectedWallet?.id.toString() == "-1"){
       CustomSnackBar.error(errorList: [MyStrings.selectAWallet.tr]);
       return ;
     }

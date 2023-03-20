@@ -1,8 +1,10 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:gallery_saver/gallery_saver.dart';
 import 'package:get/get.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
@@ -51,7 +53,11 @@ class QrCodeController extends GetxController{
 
   String downloadUrl = "";
   String downloadFileName = "";
+  bool downloadLoading = false;
   Future<void> downloadImage() async {
+
+    downloadLoading = true;
+    update();
 
     ResponseModel responseModel = await qrCodeRepo.qrCodeDownLoad();
     if(responseModel.statusCode == 200){
@@ -59,7 +65,6 @@ class QrCodeController extends GetxController{
       if(model.status.toString().toLowerCase() == "success"){
         downloadUrl = model.data?.downloadLink ?? "";
         downloadFileName = model.data?.downloadFileName ?? "";
-
         if(downloadUrl.isNotEmpty && downloadUrl != 'null'){
           showDialog(
             context: Get.context!,
@@ -72,7 +77,19 @@ class QrCodeController extends GetxController{
       CustomSnackBar.error(errorList: [responseModel.message]);
     }
 
+    downloadLoading = false;
     update();
+  }
+
+  Future<void> shareImage() async {
+
+    final box = Get.context!.findRenderObject() as RenderBox?;
+
+    await Share.share(
+      qrCode,
+      subject: MyStrings.share.tr,
+      sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size,
+    );
   }
 
   bool isScannerLoading = false;
