@@ -32,7 +32,7 @@ class HomeController extends GetxController{
   List<Wallets> walletList = [];
   List<LatestTrx> trxList = [];
 
-  void initialData() async{
+  Future<void> initialData() async{
     walletList.clear();
     trxList.clear();
     isLoading = true;

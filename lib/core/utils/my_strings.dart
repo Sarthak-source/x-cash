@@ -280,6 +280,7 @@ class MyStrings{
   // alert dialog
   static const String areYouSureReject = "Are you sure want to\nreject?";
 
+
   // request details
   static const String requestDetails = "Request Details";
   static const String totalCharge = "Total Charge";

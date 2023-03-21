@@ -85,7 +85,7 @@ class OtpController extends GetxController {
       }
     }
     else {
-        CustomSnackBar.success(successList:  [response.message]);
+        CustomSnackBar.error(errorList:  [response.message]);
     }
 
     resendLoading = false;

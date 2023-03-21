@@ -53,7 +53,7 @@ class RequestRejectAlertDialog extends StatelessWidget {
                     color: MyColor.colorRed,
                     text: MyStrings.reject,
                     press: (){
-                      controller.requestReject(index,controller.myRequestList[index].id.toString());
+                      controller.requestReject(index,controller.requestToMeList[index].id.toString());
                     }
                 ),
               )

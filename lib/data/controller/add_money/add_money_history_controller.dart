@@ -18,7 +18,6 @@ class AddMoneyHistoryController extends GetxController{
 
   AddMoneyHistoryResponseModel addMoneyHistoryModel = AddMoneyHistoryResponseModel();
   String currency = "";
-
   List<DepositsData> depositList = [];
   String? nextPageUrl='';
   String trx='';
@@ -50,6 +49,7 @@ class AddMoneyHistoryController extends GetxController{
     if(page == 1){
       depositList.clear();
     }
+
     String searchText = searchController.text;
     ResponseModel responseModel = await addMoneyHistoryRepo.getAddMoneyHistoryData(page, searchText: searchText);
     if(responseModel.statusCode == 200){

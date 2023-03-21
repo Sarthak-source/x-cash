@@ -128,58 +128,65 @@ class _MoneyOutFormState extends State<MoneyOutForm> {
               "${MyStrings.limit.tr}: ${controller.minLimit} - ${controller.maxLimit} ${controller.currency}",
               style: regularExtraSmall.copyWith(color: MyColor.primaryColor)
           ),
-          const SizedBox(height: Dimensions.space15),
+          Visibility(
+            visible: controller.otpTypeList.length>1,
+            child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: Dimensions.space15),
+              const LabelText(text: MyStrings.selectOtp),
+              const SizedBox(height: Dimensions.textToTextSpace),
+              FilterRowWidget(
+                  borderColor: controller.selectedOtp == MyStrings.selectOtp ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
+                  text: controller.selectedOtp.toTitleCase(),
+                  press: () {
+                    FocusScope.of(context).unfocus();
+                    CustomBottomSheet(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const BottomSheetBar(),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: const [BottomSheetCloseButton()],
+                            ),
+                            const SizedBox(height: Dimensions.space15),
+                            ListView.builder(
+                                itemCount: controller.otpTypeList.length,
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemBuilder: (context, index) {
+                                  return GestureDetector(
+                                    onTap: () {
+                                      final controller= Get.find<MoneyOutController>();
+                                      String selectedValue = controller.otpTypeList[index];
+                                      controller.setOtpMethod(selectedValue);
+                                      Navigator.pop(context);
 
-          const LabelText(text: MyStrings.selectOtp),
-          const SizedBox(height: Dimensions.textToTextSpace),
-          FilterRowWidget(
-              borderColor: controller.selectedOtp == MyStrings.selectOtp ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
-              text: controller.selectedOtp.toTitleCase(),
-              press: () {
-                FocusScope.of(context).unfocus();
-                CustomBottomSheet(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const BottomSheetBar(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: const [BottomSheetCloseButton()],
-                        ),
-                        const SizedBox(height: Dimensions.space15),
-                        ListView.builder(
-                            itemCount: controller.otpTypeList.length,
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemBuilder: (context, index) {
-                              return GestureDetector(
-                                onTap: () {
-                                  final controller= Get.find<MoneyOutController>();
-                                  String selectedValue = controller.otpTypeList[index];
-                                  controller.setOtpMethod(selectedValue);
-                                  Navigator.pop(context);
-
-                                  FocusScopeNode currentFocus = FocusScope.of(context);
-                                  if (!currentFocus.hasPrimaryFocus) {
-                                    currentFocus.unfocus();
-                                  }
-                                },
-                                child: BottomSheetCard(
-                                  child: Text(
-                                    controller.otpTypeList[index].toString().toTitleCase().tr,
-                                    style: regularDefault,
-                                  ),
-                                ),
-                              );
-                            })
-                      ],
-                    )
-                ).customBottomSheet(context);
-              }
-          ),
-          const SizedBox(height: Dimensions.space20),
+                                      FocusScopeNode currentFocus = FocusScope.of(context);
+                                      if (!currentFocus.hasPrimaryFocus) {
+                                        currentFocus.unfocus();
+                                      }
+                                    },
+                                    child: BottomSheetCard(
+                                      child: Text(
+                                        controller.otpTypeList[index].toString().toTitleCase().tr,
+                                        style: regularDefault,
+                                      ),
+                                    ),
+                                  );
+                                })
+                          ],
+                        )
+                    ).customBottomSheet(context);
+                  }
+              ),
+            ],
+          )),
+          const SizedBox(height: Dimensions.space30),
           RoundedButton(
             press: (){
+              FocusScope.of(context).unfocus();
               controller.checkAndShowPreviewSheet(context);
             },
             text: MyStrings.moneyOut.tr,

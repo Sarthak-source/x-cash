@@ -87,8 +87,7 @@ class UserData {
       String? image, 
       Address? address, 
       String? status, 
-      String? kv, 
-      List<KycData>? kycData, 
+      String? kv,
       String? ev, 
       String? sv, 
       String? profileComplete, 
@@ -115,7 +114,6 @@ class UserData {
     _address = address;
     _status = status;
     _kv = kv;
-    _kycData = kycData;
     _ev = ev;
     _sv = sv;
     _profileComplete = profileComplete;
@@ -145,12 +143,6 @@ class UserData {
     _address = json['address'] != null ? Address.fromJson(json['address']) : null;
     _status = json['status'].toString();
     _kv = json['kv'].toString();
-    if (json['kyc_data'] != null) {
-      _kycData = [];
-      json['kyc_data'].forEach((v) {
-        _kycData?.add(KycData.fromJson(v));
-      });
-    }
     _ev = json['ev'].toString();
     _sv = json['sv'].toString();
     _profileComplete = json['profile_complete'].toString();
@@ -178,7 +170,6 @@ class UserData {
   Address? _address;
   String? _status;
   String? _kv;
-  List<KycData>? _kycData;
   String? _ev;
   String? _sv;
   String? _profileComplete;
@@ -206,7 +197,6 @@ class UserData {
   Address? get address => _address;
   String? get status => _status;
   String? get kv => _kv;
-  List<KycData>? get kycData => _kycData;
   String? get ev => _ev;
   String? get sv => _sv;
   String? get profileComplete => _profileComplete;
@@ -238,9 +228,6 @@ class UserData {
     }
     map['status'] = _status;
     map['kv'] = _kv;
-    if (_kycData != null) {
-      map['kyc_data'] = _kycData?.map((v) => v.toJson()).toList();
-    }
     map['ev'] = _ev;
     map['sv'] = _sv;
     map['profile_complete'] = _profileComplete;
@@ -258,80 +245,4 @@ class UserData {
 
 }
 
-class KycData {
-  KycData({
-      String? name, 
-      String? type, 
-      String? value,}){
-    _name = name;
-    _type = type;
-    _value = value;
-}
 
-  KycData.fromJson(dynamic json) {
-    _name = json['name'];
-    _type = json['type'];
-    _value = json['value'];
-  }
-  String? _name;
-  String? _type;
-  String? _value;
-
-  String? get name => _name;
-  String? get type => _type;
-  String? get value => _value;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['name'] = _name;
-    map['type'] = _type;
-    map['value'] = _value;
-    return map;
-  }
-
-}
-
-class Address {
-  Address({
-      String? address, 
-      String? city, 
-      String? state, 
-      String? zip, 
-      String? country,}){
-    _address = address;
-    _city = city;
-    _state = state;
-    _zip = zip;
-    _country = country;
-}
-
-  Address.fromJson(dynamic json) {
-    _address = json['address'];
-    _city = json['city'];
-    _state = json['state'];
-    _zip = json['zip'];
-    _country = json['country'];
-  }
-  String? _address;
-  String? _city;
-  String? _state;
-  String? _zip;
-  String? _country;
-
-  String? get address => _address;
-  String? get city => _city;
-  String? get state => _state;
-  String? get zip => _zip;
-  String? get country => _country;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['address'] = _address;
-    map['city'] = _city;
-    map['state'] = _state;
-    map['zip'] = _zip;
-    map['country'] = _country;
-    return map;
-  }
-
-}

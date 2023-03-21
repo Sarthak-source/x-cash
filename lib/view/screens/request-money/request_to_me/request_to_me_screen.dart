@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
+import 'package:xcash_app/core/utils/util.dart';
 import 'package:xcash_app/data/controller/request_money/request_to_me/my_request_history_controller.dart';
 import 'package:xcash_app/data/repo/request_money/my_request_history_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
@@ -12,6 +13,9 @@ import 'package:xcash_app/view/components/no_data.dart';
 import 'package:xcash_app/view/screens/request-money/request_to_me/widget/middle_tab_buttons.dart';
 import 'package:xcash_app/view/screens/request-money/request_to_me/widget/my_request_list_item.dart';
 import 'package:xcash_app/view/screens/request-money/request_to_me/widget/to_me_list_item.dart';
+
+import 'widget/my_request_tab_widget.dart';
+import 'widget/to_me_tab_widget.dart';
 
 class RequestToMeScreen extends StatefulWidget {
   const RequestToMeScreen({Key? key}) : super(key: key);
@@ -51,73 +55,53 @@ class _RequestToMeScreenState extends State<RequestToMeScreen> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<MyRequestHistoryController>(
-      builder: (controller) => SafeArea(
-        child: Scaffold(
-          backgroundColor: MyColor.screenBgColor,
-          appBar: CustomAppBar(
-            title: MyStrings.moneyRequestToMe.tr,
-            isShowBackBtn: true,
-            bgColor: MyColor.getAppBarColor(),
-          ),
-          body:  Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: Dimensions.space20, left: Dimensions.space15, right: Dimensions.space15),
-                child: Container(
-                  padding: const EdgeInsets.all(Dimensions.space8),
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    color: MyColor.colorWhite,
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: Row(
-                    children: [
-                      MiddleTabButtons(buttonName: MyStrings.myRequests.tr, activeButton: controller.isMyRequest,press: (){
-                        if(!controller.isMyRequest){
-                          controller.changeTabState(true);
-                        }
-                      },),
-                      MiddleTabButtons(buttonName: MyStrings.toMe.tr, activeButton: !controller.isMyRequest,press: (){
-                        if(controller.isMyRequest){
-                          controller.changeTabState(false);
-                        }
-                      },),
-                    ],
+      builder: (controller) {
+        print('--------------${controller.isMyRequest}');
+        return SafeArea(
+          child: Scaffold(
+            backgroundColor: MyColor.screenBgColor,
+            appBar: CustomAppBar(
+              title: MyStrings.moneyRequestToMe.tr,
+              isShowBackBtn: true,
+              bgColor: MyColor.getAppBarColor(),
+            ),
+            body:  Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: Dimensions.space20, left: Dimensions.space15, right: Dimensions.space15),
+                  child: Container(
+                    padding: const EdgeInsets.all(Dimensions.space8),
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                        color: MyColor.colorWhite,
+                        borderRadius: BorderRadius.circular(30),
+                        boxShadow: MyUtils.getCardShadow()
+                    ),
+                    child: Row(
+                      children: [
+                        MiddleTabButtons(buttonName: MyStrings.myRequests.tr, activeButton: controller.isMyRequest,press: (){
+                          if(!controller.isMyRequest){
+                            controller.changeTabState(true);
+                          }
+                        },),
+                        MiddleTabButtons(buttonName: MyStrings.toMe.tr, activeButton: !controller.isMyRequest,press: (){
+                          if(controller.isMyRequest){
+                            controller.changeTabState(false);
+                          }
+                        },),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: Dimensions.space20),
-              Expanded(
-                child: controller.isLoading ? const CustomLoader() : controller.myRequestList.isEmpty ? const Center(child: NoDataWidget()) : SizedBox(
-                    height: MediaQuery.of(context).size.height,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: Dimensions.space15),
-                      child: ListView.separated(
-                        shrinkWrap: true,
-                        controller: scrollController,
-                        padding: EdgeInsets.zero,
-                        physics: const BouncingScrollPhysics(),
-                        itemCount: controller.myRequestList.length + 1,
-                        separatorBuilder: (context, index) => const SizedBox(height: Dimensions.space10),
-                        itemBuilder: (context, index){
-                          if(controller.myRequestList.length == index){
-                            return controller.hasNext() ? Container(
-                                height: 40,
-                                width: MediaQuery.of(context).size.width,
-                                margin: const EdgeInsets.all(5),
-                                child: const CustomLoader()
-                            ) : const SizedBox();
-                          }
-                          return controller.isMyRequest ? MyRequestListItem(index: index): ToMeListItem(index: index);
-                        },
-                      ),
-                    ),
-                  )
-              ),
-            ],
+                const SizedBox(height: Dimensions.space20),
+                controller.isMyRequest?
+                MyRequestTabWidget(scrollController: scrollController):
+                RequestToMeTabWidget(scrollController: scrollController),
+              ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

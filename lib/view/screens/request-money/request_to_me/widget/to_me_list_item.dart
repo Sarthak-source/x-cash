@@ -5,6 +5,7 @@ import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
+import 'package:xcash_app/core/utils/util.dart';
 import 'package:xcash_app/data/controller/request_money/request_to_me/my_request_history_controller.dart';
 import 'package:xcash_app/view/components/alert-dialog/custom_alert_dialog.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
@@ -33,7 +34,7 @@ class ToMeListItem extends StatelessWidget {
       builder: (controller) => Container(
         width: MediaQuery.of(context).size.width,
         padding: const EdgeInsets.symmetric(vertical: Dimensions.space15, horizontal: Dimensions.space15),
-        decoration: BoxDecoration(color: MyColor.getCardBgColor(), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
+        decoration: BoxDecoration(color: MyColor.getCardBgColor(), borderRadius: BorderRadius.circular(Dimensions.defaultRadius),boxShadow:  MyUtils.getCardShadow()),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -42,11 +43,11 @@ class ToMeListItem extends StatelessWidget {
               children: [
                 CardColumn(
                   header: MyStrings.requestFrom,
-                  body: "${controller.myRequestList[index].sender?.firstname ?? ""} ${controller.myRequestList[index].sender?.lastname ?? ""}"
+                  body: "${controller.requestToMeList[index].sender?.firstname ?? ""} ${controller.requestToMeList[index].sender?.lastname ?? ""}"
                 ),
                 CardColumn(
                     header: MyStrings.date,
-                    body: DateConverter.isoStringToLocalDateOnly(controller.myRequestList[index].createdAt ?? ""),
+                    body: DateConverter.isoStringToLocalDateOnly(controller.requestToMeList[index].createdAt ?? ""),
                     alignmentEnd: true
                 )
               ],
@@ -58,8 +59,8 @@ class ToMeListItem extends StatelessWidget {
               children: [
                 CardColumn(
                   header: MyStrings.amount,
-                  body: "${Converter.formatNumber(controller.myRequestList[index].requestAmount ?? "")} "
-                    "${controller.myRequestList[index].currency?.currencyCode ?? ""}"
+                  body: "${Converter.formatNumber(controller.requestToMeList[index].requestAmount ?? "")} "
+                    "${controller.requestToMeList[index].currency?.currencyCode ?? ""}"
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -94,32 +95,38 @@ class ToMeListItem extends StatelessWidget {
                               ),
                               const SizedBox(height: Dimensions.space20),
                               Text(
-                                "${Converter.formatNumber(requestController.myRequestList[index].requestAmount ?? "")} "
-                                    "${requestController.myRequestList[index].currency?.currencyCode ?? ""} "
-                                    "${MyStrings.willBeReduced} ${requestController.myRequestList[index].currency?.currencyCode ?? ""} ${MyStrings.wallet.toLowerCase()}.",
+                                "${Converter.formatNumber(requestController.requestToMeList[index].requestAmount ?? "")} "
+                                    "${requestController.requestToMeList[index].currency?.currencyCode ?? ""} "
+                                    "${MyStrings.willBeReduced} ${requestController.requestToMeList[index].currency?.currencyCode ?? ""} ${MyStrings.wallet.toLowerCase()}.",
                                 textAlign: TextAlign.center,
                                 style: regularLarge.copyWith(color: MyColor.colorBlack.withOpacity(0.5)),
                               ),
-                              const SizedBox(height: Dimensions.space15),
-                              CustomDropDownTextField(
-                                labelText: MyStrings.selectOtp.tr,
-                                selectedValue: requestController.selectedOtp,
-                                onChanged: (value) => requestController.setOtpMethod(value),
-                                items: requestController.otpTypeList.map((value) {
-                                  return DropdownMenuItem(
-                                    value: value,
-                                    child: Text(
-                                        value.toString().toTitleCase(),
-                                        style: regularDefault
-                                    ),
-                                  );
-                                }).toList(),
-                              ),
+                              Visibility(
+                                visible:controller.otpTypeList.length>1,
+                                child: Column(
+                                children: [
+                                  const SizedBox(height: Dimensions.space15),
+                                  CustomDropDownTextField(
+                                    labelText: MyStrings.selectOtp.tr,
+                                    selectedValue: requestController.selectedOtp,
+                                    onChanged: (value) => requestController.setOtpMethod(value),
+                                    items: requestController.otpTypeList.map((value) {
+                                      return DropdownMenuItem(
+                                        value: value,
+                                        child: Text(
+                                            value.toString().toTitleCase(),
+                                            style: regularDefault
+                                        ),
+                                      );
+                                    }).toList(),
+                                  ),
+                                ],
+                              )),
                               const SizedBox(height: Dimensions.space20),
                               requestController.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
                                   text: MyStrings.confirm,
                                   press: (){
-                                    requestController.requestAccept(requestController.myRequestList[index].id.toString(), requestController.selectedOtp);
+                                    requestController.requestAccept(index,requestController.requestToMeList[index].id.toString(), requestController.selectedOtp);
                                   }
                               ),
                             ],

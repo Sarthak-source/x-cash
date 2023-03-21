@@ -6,6 +6,7 @@ import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
+import 'package:xcash_app/core/utils/util.dart';
 import 'package:xcash_app/data/controller/wallet/wallet_controller.dart';
 import 'package:xcash_app/data/repo/wallet/wallet_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
@@ -71,7 +72,7 @@ class _MyWalletScreenState extends State<MyWalletScreen> {
               itemBuilder: (context, index) => Container(
                 width: MediaQuery.of(context).size.width,
                 padding: const EdgeInsets.symmetric(vertical: Dimensions.space12, horizontal: Dimensions.space15),
-                decoration: BoxDecoration(color: MyColor.getCardBgColor(), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
+                decoration: BoxDecoration(color: MyColor.getCardBgColor(), borderRadius: BorderRadius.circular(Dimensions.defaultRadius),boxShadow: MyUtils.getCardShadow()),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -81,18 +82,16 @@ class _MyWalletScreenState extends State<MyWalletScreen> {
                       image: controller.image,
                     ),
                     const SizedBox(height: Dimensions.space10),
-                    Row(
-                        children: [
-                          Text(
-                              Converter.formatNumber(controller.walletList[index].balance ?? ""),
-                              style: regularLarge.copyWith(fontWeight: FontWeight.w600)
-                          ),
-                          const SizedBox(width: Dimensions.space5),
-                          Text(
-                              controller.walletList[index].currency?.currencyCode ?? "",
-                              style: regularLarge.copyWith(fontWeight: FontWeight.w600)
-                          )
-                        ]
+                    Expanded(
+                      child: Row(
+                          children: [
+                            Expanded(child: Text(
+                               '${ Converter.formatNumber(controller.walletList[index].balance ?? "")} ${controller.walletList[index].currency?.currencyCode ?? ""}',
+                                style: regularLarge.copyWith(fontWeight: FontWeight.w600)
+                            )),
+                            const SizedBox(width: Dimensions.space5),
+                          ]
+                      ),
                     ),
                     const CustomDivider(space: Dimensions.space15),
                     Row(

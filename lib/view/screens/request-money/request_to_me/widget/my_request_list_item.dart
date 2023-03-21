@@ -8,6 +8,7 @@ import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
+import 'package:xcash_app/core/utils/util.dart';
 import 'package:xcash_app/data/controller/request_money/request_to_me/my_request_history_controller.dart';
 import 'package:xcash_app/view/components/buttons/card_button.dart';
 import 'package:xcash_app/view/components/column_widget/card_column.dart';
@@ -28,7 +29,7 @@ class MyRequestListItem extends StatelessWidget {
       builder: (controller) => Container(
         width: MediaQuery.of(context).size.width,
         padding: const EdgeInsets.symmetric(vertical: Dimensions.space15, horizontal: Dimensions.space15),
-        decoration: BoxDecoration(color: MyColor.getCardBgColor(), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
+        decoration: BoxDecoration(color: MyColor.getCardBgColor(), borderRadius: BorderRadius.circular(Dimensions.defaultRadius),boxShadow: MyUtils.getCardShadow()),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

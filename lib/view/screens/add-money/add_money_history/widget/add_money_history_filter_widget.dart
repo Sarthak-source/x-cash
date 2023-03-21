@@ -4,6 +4,7 @@ import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
+import 'package:xcash_app/core/utils/util.dart';
 import 'package:xcash_app/data/controller/add_money/add_money_history_controller.dart';
 
 class AddMoneyHistoryFilterWidget extends StatelessWidget {
@@ -16,7 +17,7 @@ class AddMoneyHistoryFilterWidget extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         margin: const EdgeInsets.only(bottom: Dimensions.space15),
         padding: const EdgeInsets.symmetric(vertical: Dimensions.space15, horizontal: Dimensions.space15),
-        decoration: BoxDecoration(color: MyColor.getCardBgColor(), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
+        decoration: BoxDecoration(color: MyColor.getCardBgColor(), borderRadius: BorderRadius.circular(Dimensions.defaultRadius),boxShadow: MyUtils.getCardShadow()),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.end,

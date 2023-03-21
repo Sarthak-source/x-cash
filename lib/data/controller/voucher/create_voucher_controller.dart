@@ -6,6 +6,7 @@ import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/authorization/authorization_response_model.dart';
+import 'package:xcash_app/data/model/general_setting/general_setting_response_model.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/voucher/create_voucher_response_model.dart';
 import 'package:xcash_app/data/repo/voucher/create_voucher_repo.dart';
@@ -113,7 +114,8 @@ class CreateVoucherController extends GetxController{
         if(actionId.isNotEmpty){
           Get.toNamed(RouteHelper.otpScreen,arguments: [actionId, RouteHelper.myVoucherScreen]);
         } else{
-          CustomSnackBar.error(errorList: [MyStrings.noActionId]);
+          CustomSnackBar.success(successList: model.message?.success??[MyStrings.requestSuccess]);
+          Get.toNamed(RouteHelper.myVoucherScreen);
         }
       }
       else{
@@ -138,7 +140,7 @@ class CreateVoucherController extends GetxController{
     }
 
     mainAmount = amount;
-    double currencyRate = double.tryParse(selectedWallet?.currency?.rate??'1')??1;
+    double currencyRate = double.tryParse(selectedWallet?.currency?.rate ?? '1')??1;
 
     double percent = double.tryParse(model.data?.voucherCharge?.percentCharge ?? "0") ?? 0;
     double percentCharge = (amount*percent)/100;
@@ -147,27 +149,10 @@ class CreateVoucherController extends GetxController{
     double fixedCharge = fixed/currencyRate;  //fixed charge are  global for each currency so that we don't calculate it with expected currency
 
     double finalCharge = fixedCharge + percentCharge;
-    charge = '${Converter.formatNumber('$finalCharge')} $currency';
+    charge = '${Converter.formatNumber('$finalCharge',precision:selectedWallet?.currency?.currencyType=='2'?8:2)} $currency';
     String payable = Converter.sum(finalCharge.toString(),mainAmount.toString());
     payableText = '$payable $currency';
 
-  /*  mainAmount = amount;
-    double percent = double.tryParse(model.data?.voucherCharge?.percentCharge ?? "0") ?? 0;
-    double percentCharge = (amount * percent) / 100;
-    double temCharge = double.tryParse(model.data?.voucherCharge?.fixedCharge ?? "0") ?? 0;
-    double totalCharge = percentCharge+temCharge;
-    charge = '${Converter.formatNumber('$totalCharge')} $currency';
-    double payable = totalCharge + amount;
-    payableText = '$payable $currency';*/
-
-   /* mainAmount = amount;
-    double percent =
-    double percentCharge = (amount * percent) / 100;
-    double temCharge = double.tryParse(model.data?.voucherCharge?.fixedCharge ?? "0") ?? 0;
-    double totalCharge = percentCharge+temCharge;
-    charge = '${Converter.formatNumber('$totalCharge')} $currency';
-    double payable = totalCharge + amount;
-    payableText = '$payable $currency';*/
     update();
   }
 

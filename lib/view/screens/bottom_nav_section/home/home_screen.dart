@@ -45,20 +45,25 @@ class _HomeScreenState extends State<HomeScreen> {
       builder: (controller) => WillPopWidget(
         nextRoute: "",
         child: SafeArea(
-          child: Scaffold(
-            backgroundColor: MyColor.getScreenBgColor(),
-            body: controller.isLoading ? const CustomLoader() : SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  TopSection(),
-                  SizedBox(height: Dimensions.space10),
-                  MainItemSection(),
-                  SizedBox(height: Dimensions.space10),
-                  InsightSection(),
-                  SizedBox(height: Dimensions.space10),
-                  LatestTransactionSection()
-                ],
+          child: RefreshIndicator(
+            onRefresh: ()async{
+              await controller.initialData();
+            },
+            child: Scaffold(
+              backgroundColor: MyColor.getScreenBgColor(),
+              body: controller.isLoading ? const CustomLoader() : SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    TopSection(),
+                    SizedBox(height: Dimensions.space10),
+                    MainItemSection(),
+                    SizedBox(height: Dimensions.space10),
+                    InsightSection(),
+                    SizedBox(height: Dimensions.space10),
+                    LatestTransactionSection()
+                  ],
+                ),
               ),
             ),
           ),

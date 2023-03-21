@@ -27,7 +27,7 @@ class TransactionCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
+                Expanded(child: Row(
                   children: [
                     Container(
                         height: 35, width: 35,
@@ -43,28 +43,30 @@ class TransactionCard extends StatelessWidget {
                         )
                     ),
                     const SizedBox(width: Dimensions.space10),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "${controller.transactionList[index].remark}".replaceAll("_", " ").toTitleCase().tr,
-                          style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w500),
-                        ),
-                        const SizedBox(height: Dimensions.space10),
-                        SizedBox(
-                          width: 150,
-                          child: Text(
-                            (controller.transactionList[index].apiDetails ?? "").tr,
-                            style: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.5)),
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 2,
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "${controller.transactionList[index].remark}".replaceAll("_", " ").toTitleCase().tr,
+                            style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w500),
                           ),
-                        )
-                      ],
+                          const SizedBox(height: Dimensions.space10),
+                          SizedBox(
+                            width: 150,
+                            child: Text(
+                              (controller.transactionList[index].apiDetails ?? "").tr,
+                              style: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.5)),
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 2,
+                            ),
+                          )
+                        ],
+                      ),
                     )
                   ],
-                ),
-                Column(
+                )),
+                Expanded(child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
@@ -74,10 +76,11 @@ class TransactionCard extends StatelessWidget {
                     const SizedBox(height: Dimensions.space10),
                     Text(
                         "${Converter.formatNumber(controller.transactionList[index].amount ?? "")} ${controller.transactionList[index].currency?.currencyCode ?? ""}",
+                        textAlign: TextAlign.end,
                         style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600)
                     )
                   ],
-                )
+                ))
               ],
             ),
           )

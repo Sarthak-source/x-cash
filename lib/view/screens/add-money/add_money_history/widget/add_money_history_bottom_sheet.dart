@@ -10,7 +10,9 @@ import 'package:xcash_app/core/utils/util.dart';
 import 'package:xcash_app/data/controller/add_money/add_money_history_controller.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_bar.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
+import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_header_row.dart';
 import 'package:xcash_app/view/components/column_widget/card_column.dart';
+import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
 
 class AddMoneyHistoryBottomSheet extends StatelessWidget {
@@ -24,13 +26,7 @@ class AddMoneyHistoryBottomSheet extends StatelessWidget {
       builder: (controller) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const BottomSheetBar(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: const [BottomSheetCloseButton()],
-          ),
-          const SizedBox(height: Dimensions.space15),
-          const BottomSheetHeaderText(text: MyStrings.addMoneyInfo),
+          const BottomSheetHeaderRow(header: MyStrings.addMoneyInfo,bottomSpace: 0,),
           const SizedBox(height: Dimensions.space20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -100,7 +96,6 @@ class AddMoneyHistoryBottomSheet extends StatelessWidget {
                       padding: const EdgeInsets.all(15),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(4),
-                          border: Border.all(color: MyColor.colorGrey.withOpacity(0.2),width: .4),
                           color: MyColor.colorWhite,
                           boxShadow: MyUtils.getBottomSheetShadow()
                       ),

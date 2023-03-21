@@ -5,6 +5,7 @@ import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
+import 'package:xcash_app/core/utils/util.dart';
 import 'package:xcash_app/data/controller/add_money/add_money_history_controller.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/column_widget/card_column.dart';
@@ -20,13 +21,16 @@ class AddMoneyHistoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetBuilder<AddMoneyHistoryController>(
       builder: (controller) => GestureDetector(
-        onTap: () => CustomBottomSheet(
-          child: AddMoneyHistoryBottomSheet(index: index)
-        ).customBottomSheet(context),
+        onTap: () {
+          FocusScope.of(context).unfocus();
+          CustomBottomSheet(
+              child: AddMoneyHistoryBottomSheet(index: index)
+          ).customBottomSheet(context);
+        },
         child: Container(
           width: MediaQuery.of(context).size.width,
           padding: const EdgeInsets.symmetric(horizontal: Dimensions.space15, vertical: Dimensions.space15),
-          decoration: BoxDecoration(color: MyColor.colorWhite, borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
+          decoration: BoxDecoration(color: MyColor.colorWhite, borderRadius: BorderRadius.circular(Dimensions.defaultRadius),boxShadow: MyUtils.getCardShadow()),
           child: Column(
             children: [
               Row(

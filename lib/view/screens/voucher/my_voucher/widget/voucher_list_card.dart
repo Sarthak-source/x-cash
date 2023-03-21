@@ -8,7 +8,10 @@ import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/voucher/voucher_list_controller.dart';
 import 'package:xcash_app/view/components/card/custom_card.dart';
+import 'package:xcash_app/view/components/column_widget/card_column.dart';
+import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
+import 'package:xcash_app/view/screens/withdrawals/withdraw_history/widget/status_widget.dart';
 
 class VoucherListCard extends StatefulWidget {
   final ScrollController scrollController;
@@ -29,67 +32,50 @@ class _VoucherListCardState extends State<VoucherListCard> {
           padding: EdgeInsets.zero,
           scrollDirection: Axis.vertical,
           physics: const BouncingScrollPhysics(),
-          itemCount: controller.voucherList.length,
+          itemCount: controller.voucherList.length+1,
           separatorBuilder: (context, index) => const SizedBox(height: Dimensions.space10),
-          itemBuilder: (context, index) => CustomCard(
-            paddingTop: Dimensions.space15,
-            paddingBottom: Dimensions.space15,
-            width: MediaQuery.of(context).size.height,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      controller.voucherList[index].voucherCode ?? "",
-                      style: regularLarge.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600),
-                    ),
-                    Text(
-                      DateConverter.isoStringToLocalDateOnly(controller.voucherList[index].createdAt ?? ""),
-                      style: regularDefault.copyWith(color: MyColor.getTextColor()),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: Dimensions.space10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "${Converter.formatNumber(controller.voucherList[index].amount ?? "")} "
-                      "${controller.voucherList[index].currency?.currencyCode ?? ""}",
-                      style: regularLarge.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.symmetric(vertical: Dimensions.space5, horizontal: Dimensions.space10),
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          border: Border.all(color: controller.voucherList[index].isUsed == "0" ? MyColor.colorOrange : MyColor.colorGreen)
-                      ),
-                      child: Text(
-                        controller.voucherList[index].isUsed == "0" ? controller.notUsed : controller.used,
-                        style: regularExtraSmall.copyWith(
-                            color: controller.voucherList[index].isUsed == "0" ? MyColor.colorOrange : MyColor.colorGreen
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                const CustomDivider(space: Dimensions.space15),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Text("${MyStrings.usedAt.tr}: ", style: regularSmall),
-                    Text(
-                      controller.voucherList[index].isUsed == "0" ? "N/A" : DateConverter.isoStringToLocalDateOnly(controller.voucherList[index].createdAt ?? ""),
-                      style: regularDefault
-                    ),
-                  ],
-                )
-              ],
-            ),
-          )
+          itemBuilder: (context, index) {
+            if(controller.voucherList.length==index){
+              return controller.hasNext()?const CustomLoader(isPagination: true):const SizedBox.shrink();
+            }
+            return CustomCard(
+              paddingTop: Dimensions.space15,
+              paddingBottom: Dimensions.space15,
+              width: MediaQuery.of(context).size.height,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CardColumn(header: MyStrings.voucherCode, body: controller.voucherList[index].voucherCode ?? "",),
+                      CardColumn(alignmentEnd:true,header: MyStrings.initiated, body: DateConverter.isoStringToLocalDateOnly(controller.voucherList[index].createdAt ?? "",))
+                    ],
+                  ),
+                  const CustomDivider(space: Dimensions.space15),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CardColumn(header: MyStrings.amount, body: "${Converter.formatNumber(controller.voucherList[index].amount ?? "")} "),
+                      //StatusWidget(status: controller.voucherList[index].isUsed == "0" ? controller.notUsed : controller.used, color: controller.voucherList[index].isUsed == "0" ? MyColor.colorOrange : MyColor.colorGreen),
+                      CardColumn(alignmentEnd:true,header: MyStrings.usedAt, body: controller.voucherList[index].isUsed == "0" ? "N/A" : DateConverter.isoStringToLocalDateOnly(controller.voucherList[index].createdAt ?? "")),
+                    ],
+                  ),
+                  const SizedBox(height: Dimensions.space15),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      StatusWidget(status: controller.voucherList[index].isUsed == "0" ? MyStrings.notUsed : MyStrings.used, color: controller.voucherList[index].isUsed == "0" ? MyColor.colorOrange : MyColor.colorGreen)
+                      /*Text('${MyStrings.usedAt.tr}: ',style: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.6)),overflow: TextOverflow.ellipsis,),
+                    const SizedBox(height: Dimensions.space5),
+                    Text(controller.voucherList[index].isUsed == "0" ? "N/A" : DateConverter.isoStringToLocalDateOnly(controller.voucherList[index].createdAt ?? ""), style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w500), overflow: TextOverflow.ellipsis)*/
+                    ],
+                  )
+                  //
+                ],
+              ),
+            );
+          }
       ),
     );
   }

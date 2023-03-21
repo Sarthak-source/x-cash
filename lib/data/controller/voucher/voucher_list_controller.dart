@@ -19,8 +19,7 @@ class VoucherListController extends GetxController{
   String? nextPageUrl;
   int page = 0;
   String currency = "";
-  String notUsed = "Not Used";
-  String used = "Used";
+
 
   void initialState() async{
     page = 0;
@@ -59,6 +58,7 @@ class VoucherListController extends GetxController{
     else{
       CustomSnackBar.error(errorList: [responseModel.message]);
     }
+    update();
   }
 
   bool hasNext(){

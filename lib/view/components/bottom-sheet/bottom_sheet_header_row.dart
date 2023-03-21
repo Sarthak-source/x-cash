@@ -8,7 +8,8 @@ import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
 
 class BottomSheetHeaderRow extends StatelessWidget {
   final String header ;
-  const BottomSheetHeaderRow({Key? key,this.header = ''}) : super(key: key);
+  final double bottomSpace;
+  const BottomSheetHeaderRow({Key? key,this.header = '',this.bottomSpace = Dimensions.space10}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,7 @@ class BottomSheetHeaderRow extends StatelessWidget {
             const BottomSheetCloseButton()
           ],
         ),
-        const SizedBox(height: Dimensions.space10,),
+        SizedBox(height: bottomSpace),
       ],
     );
   }

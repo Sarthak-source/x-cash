@@ -10,6 +10,7 @@ import 'package:xcash_app/data/controller/auth/auth/registration_controller.dart
 import 'package:xcash_app/data/repo/auth/general_setting_repo.dart';
 import 'package:xcash_app/data/repo/auth/signup_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
+import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/custom_no_data_found_class.dart';
 import 'package:xcash_app/view/components/text/default_text.dart';
@@ -56,6 +57,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         child: SafeArea(
           child: Scaffold(
             backgroundColor: MyColor.getScreenBgColor(),
+            appBar: const CustomAppBar(title: MyStrings.signUp),
             body: controller.noInternet ? NoDataOrInternetScreen(
               isNoInternet: true,
               onChanged: (value){

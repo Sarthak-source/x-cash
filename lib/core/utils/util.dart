@@ -46,17 +46,18 @@ class MyUtils{
     ];
   }
 
-  static dynamic getWhiteBGShadow(){
+  static dynamic getCardShadow(){
     return  [
       BoxShadow(
         // color: MyColor.screenBgColor,
-        color: Colors.grey.shade500.withOpacity(0.1),
-        spreadRadius: 3,
-        blurRadius: 5,
+        color: Colors.grey.shade400.withOpacity(0.07),
+        spreadRadius: 2,
+        blurRadius: 4,
         offset: const Offset(0, 3), // changes position of shadow
       ),
     ];
   }
+
 
   static getOperationTitle(String value) {
     String number = value;
