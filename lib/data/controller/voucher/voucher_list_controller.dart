@@ -65,9 +65,14 @@ class VoucherListController extends GetxController{
     return nextPageUrl !=null && nextPageUrl!.isNotEmpty && nextPageUrl != 'null'? true : false;
   }
 
-  bool activeTab = true;
-  void changeTabSection(){
-    activeTab = !activeTab;
+  int selectedIndex = -1;
+  void changeSelectedIndex(int selectedIndex){
+    if(this.selectedIndex == selectedIndex){
+      this.selectedIndex = -1;
+    } else{
+      this.selectedIndex = selectedIndex;
+    }
+
     update();
   }
 }

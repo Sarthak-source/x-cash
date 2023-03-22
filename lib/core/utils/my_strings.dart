@@ -624,7 +624,7 @@ class MyStrings{
   static const String toCurrency = "To Currency";
 
   static const String otp = "OTP";
-  static const String moneyRequestToMe = "Money Requests to Me";
+  static const String moneyRequests = "Money Requests";
   static const String moreOptions = "More Options";
 
   static const String paid = "Paid";

@@ -52,8 +52,8 @@ class AddMoneyMethodController extends GetxController{
       String amt = amountController.text.toString();
       mainAmount = amt.isEmpty ? 0 : double.tryParse(amt) ?? 0;
       selectedGateway = gateways;
-      depositMinLimit = Converter.formatNumber(selectedGateway == gatewayList[0] ? "0.00" : selectedGateway?.depositMinLimit ?? "0.00");
-      depositMaxLimit = Converter.formatNumber(selectedGateway == gatewayList[0] ? "0.00" : selectedGateway?.depositMaxLimit ?? "0.00");
+      depositMinLimit = Converter.formatNumber(selectedGateway == gatewayList[0] ? "0.00" : selectedGateway?.depositMinLimit ?? "0.00",precision: selectedWallet?.currency?.currencyType=='2'?8:2);
+      depositMaxLimit = Converter.formatNumber(selectedGateway == gatewayList[0] ? "0.00" : selectedGateway?.depositMaxLimit ?? "0.00",precision: selectedWallet?.currency?.currencyType=='2'?8:2);
       changeInfoWidgetValue(mainAmount);
       update();
   }
@@ -152,9 +152,9 @@ class AddMoneyMethodController extends GetxController{
     double percentCharge = (amount * percent) / 100;
     double temCharge = double.tryParse(selectedGateway?.fixedCharge??'0')??0;
     double totalCharge = percentCharge+temCharge;
-    charge = '${Converter.formatNumber('$totalCharge')} $currency';
+    charge = '${Converter.formatNumber('$totalCharge',precision: selectedWallet?.currency?.currencyType=='2'?8:2)} $currency';
     double payable = totalCharge + amount;
-    payableText = '$payable $currency';
+    payableText = '${Converter.formatNumber('$payable',precision: selectedWallet?.currency?.currencyType=='2'?8:2)} $currency';
     update();
   }
 

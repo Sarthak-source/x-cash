@@ -113,11 +113,11 @@ class Converter {
     return value.padLeft(2, '0');
   }
 
-  static String sum(String first, String last) {
+  static String sum(String first, String last,{int precision = 2}) {
     double firstNum = double.tryParse(first) ?? 0;
     double secondNum = double.tryParse(last) ?? 0;
     double result = firstNum + secondNum;
-    String formatedResult = formatNumber(result.toString());
+    String formatedResult = formatNumber(result.toString(),precision: precision);
     return formatedResult;
   }
 

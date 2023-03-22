@@ -7,15 +7,40 @@ import 'package:xcash_app/view/components/no_data.dart';
 
 import 'to_me_list_item.dart';
 
-class RequestToMeTabWidget extends StatelessWidget {
-  final ScrollController scrollController;
-  const RequestToMeTabWidget({Key? key,required this.scrollController}) : super(key: key);
+class RequestToMeTabWidget extends StatefulWidget {
+  const RequestToMeTabWidget({Key? key}) : super(key: key);
+
+  @override
+  State<RequestToMeTabWidget> createState() => _RequestToMeTabWidgetState();
+}
+
+class _RequestToMeTabWidgetState extends State<RequestToMeTabWidget> {
+
+  final ScrollController scrollController = ScrollController();
+
+  void scrollListener() {
+    if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
+      if (Get.find<MyRequestHistoryController>().hasNext()) {
+        final controller = Get.find<MyRequestHistoryController>();
+          controller.loadToMeHistoryData();
+      }
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      scrollController.addListener(scrollListener);
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<MyRequestHistoryController>(builder: (controller){
       return  Expanded(
-          child: controller.isLoading ? const CustomLoader() : controller.requestToMeList.isEmpty ? const Center(child: NoDataWidget()) : SizedBox(
+          child: controller.isLoading || (controller.toMeRequestPage ==0 && controller.isToMeRequestLoading) ? const CustomLoader() : controller.requestToMeList.isEmpty ? const Center(child: NoDataWidget()) : SizedBox(
             height: MediaQuery.of(context).size.height,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: Dimensions.space15),

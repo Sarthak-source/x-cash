@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
+import 'package:xcash_app/core/utils/util.dart';
 
 class CustomCard extends StatefulWidget {
   final double paddingLeft, paddingRight, paddingTop, paddingBottom;
@@ -38,7 +39,8 @@ class _CustomCardState extends State<CustomCard> {
         padding: EdgeInsets.only(left: widget.paddingLeft, right: widget.paddingRight, top: widget.paddingTop, bottom: widget.paddingBottom),
         decoration: BoxDecoration(
           color: widget.backgroundColor,
-          borderRadius: BorderRadius.circular(widget.radius)
+          borderRadius: BorderRadius.circular(widget.radius),
+          boxShadow: MyUtils.getCardShadow(),
         ),
         child: widget.child,
       ),
@@ -48,6 +50,7 @@ class _CustomCardState extends State<CustomCard> {
       decoration: BoxDecoration(
           color: widget.backgroundColor,
           borderRadius: BorderRadius.circular(widget.radius),
+          boxShadow: MyUtils.getCardShadow(),
       ),
       child: widget.child,
     );

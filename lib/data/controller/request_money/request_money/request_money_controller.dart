@@ -71,15 +71,12 @@ class RequestMoneyController extends GetxController{
 
     if(responseModel.statusCode == 200){
       model = RequestMoneyResponseModel.fromJson(jsonDecode(responseModel.responseJson));
-
       if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
-
         List<Wallets>? tempWalletList = model.data?.wallets;
         if(tempWalletList != null && tempWalletList.isNotEmpty){
           walletList.addAll(tempWalletList);
         }
-      }
-      else{
+      } else{
         CustomSnackBar.error(errorList: model.message?.error ?? [MyStrings.somethingWentWrong]);
       }
     }
@@ -139,12 +136,13 @@ class RequestMoneyController extends GetxController{
     double fixedCharge = temCharge / rate;
     double totalCharge = percentCharge + fixedCharge;
     double cap = double.tryParse(model.data?.transferCharge?.cap ?? "0") ?? 0;
-    /*if(cap != 1 && totalCharge > cap){
-      totalCharge = cap;
-    }*/
-    charge = '${Converter.formatNumber('$totalCharge')} $currency';
+    double mainCap = cap/rate;
+    if(cap != 1 && totalCharge > mainCap){
+      totalCharge = mainCap;
+    }
+    charge = '${Converter.formatNumber('$totalCharge',precision: selectedWallet?.currency?.currencyType == '2'? 8:2)} $currency';
     double payable = amount - totalCharge;
-    payableText = '${Converter.formatNumber(payable.toString())} $currency';
+    payableText = '${Converter.formatNumber( payable.toString(),precision: selectedWallet?.currency?.currencyType == '2'? 8:2)} $currency';
     update();
   }
 

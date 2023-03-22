@@ -77,6 +77,7 @@ class _RedeemLogScreenState extends State<RedeemLogScreen> {
                         scrollDirection: Axis.vertical,
                         physics: const BouncingScrollPhysics(),
                         padding: EdgeInsets.zero,
+                        controller: scrollController,
                         itemCount: controller.redeemLogList.length + 1,
                         separatorBuilder: (context, index) => const SizedBox(height: Dimensions.space10),
                         itemBuilder: (context, index){

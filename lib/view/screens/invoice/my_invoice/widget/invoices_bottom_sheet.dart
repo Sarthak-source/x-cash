@@ -166,10 +166,17 @@ class InvoicesBottomSheet{
                     const SizedBox(width: Dimensions.space20),
                     Expanded(
                       child: InVoiceActionButton(
-                        press: () => Get.toNamed(
-                            RouteHelper.updateInvoiceScreen,
-                            arguments: [controller.invoiceList[index].invoiceNum, controller.invoiceList[index].currencyId, controller.invoiceList[index].totalAmount]
-                        ),
+                        press: (){
+                          Get.back();
+                          Get.toNamed(
+                              RouteHelper.updateInvoiceScreen,
+                              arguments: [controller.invoiceList[index].invoiceNum, controller.invoiceList[index].currencyId, controller.invoiceList[index].totalAmount]
+                          )?.then((value){
+                            if(value!=null && value=='success'){
+                              controller.initialData();
+                            }
+                          });
+                        },
                         text: MyStrings.edit,
                         bgColor: MyColor.primaryColor,
                         iconData: Icons.edit,

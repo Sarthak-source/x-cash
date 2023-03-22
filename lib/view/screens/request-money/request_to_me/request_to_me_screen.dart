@@ -8,12 +8,7 @@ import 'package:xcash_app/data/controller/request_money/request_to_me/my_request
 import 'package:xcash_app/data/repo/request_money/my_request_history_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
-import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
-import 'package:xcash_app/view/components/no_data.dart';
 import 'package:xcash_app/view/screens/request-money/request_to_me/widget/middle_tab_buttons.dart';
-import 'package:xcash_app/view/screens/request-money/request_to_me/widget/my_request_list_item.dart';
-import 'package:xcash_app/view/screens/request-money/request_to_me/widget/to_me_list_item.dart';
-
 import 'widget/my_request_tab_widget.dart';
 import 'widget/to_me_tab_widget.dart';
 
@@ -31,7 +26,8 @@ class _RequestToMeScreenState extends State<RequestToMeScreen> {
   void scrollListener() {
     if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
       if (Get.find<MyRequestHistoryController>().hasNext()) {
-        Get.find<MyRequestHistoryController>().loadHistoryData();
+        final controller = Get.find<MyRequestHistoryController>();
+          controller.loadToMeHistoryData();
       }
     }
   }
@@ -56,12 +52,11 @@ class _RequestToMeScreenState extends State<RequestToMeScreen> {
   Widget build(BuildContext context) {
     return GetBuilder<MyRequestHistoryController>(
       builder: (controller) {
-        print('--------------${controller.isMyRequest}');
         return SafeArea(
           child: Scaffold(
             backgroundColor: MyColor.screenBgColor,
             appBar: CustomAppBar(
-              title: MyStrings.moneyRequestToMe.tr,
+              title: MyStrings.moneyRequests.tr,
               isShowBackBtn: true,
               bgColor: MyColor.getAppBarColor(),
             ),
@@ -95,8 +90,8 @@ class _RequestToMeScreenState extends State<RequestToMeScreen> {
                 ),
                 const SizedBox(height: Dimensions.space20),
                 controller.isMyRequest?
-                MyRequestTabWidget(scrollController: scrollController):
-                RequestToMeTabWidget(scrollController: scrollController),
+                MyRequestTabWidget():
+                const RequestToMeTabWidget(),
               ],
             ),
           ),

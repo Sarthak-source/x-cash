@@ -5,13 +5,14 @@ import '../../../core/utils/util.dart';
 
 class BottomSheetCard extends StatelessWidget {
   final Widget child;
-  const BottomSheetCard({Key? key,required this.child}) : super(key: key);
+  final double  bottomSpace;
+  const BottomSheetCard({Key? key,required this.child,this.bottomSpace = Dimensions.space7}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
     padding: const EdgeInsets.all(Dimensions.space15),
-    margin: const EdgeInsets.only(top: Dimensions.space7),
+    margin:  EdgeInsets.only(top: bottomSpace),
     decoration: BoxDecoration(
     borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
     color: MyColor.colorWhite ,//MyColor.colorGrey.withOpacity(.03),

@@ -48,6 +48,7 @@ class ExchangeMoneyController extends GetxController{
     toWalletMethod = toWallets;
     toCurrency = toWalletMethod?.id==-1?'':toWalletMethod?.currencyCode ?? " ";
     toAmountController.text = "0.00";
+    calculateExchangeAmount(double.tryParse(amountController.text)??0);
     update();
   }
 
@@ -167,6 +168,7 @@ class ExchangeMoneyController extends GetxController{
       CustomSnackBar.error(errorList: [MyStrings.enterAmount]);
       return false;
     }
+
 
     return true;
   }

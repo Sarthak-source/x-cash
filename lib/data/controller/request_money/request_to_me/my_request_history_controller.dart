@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:get/get.dart';
@@ -19,92 +20,131 @@ class MyRequestHistoryController extends GetxController{
 
   List<rq_model.Data> myRequestList = [];
 
-  String? nextPageUrl;
-  int page = 0;
+  String? toMeRequestNextPageUrl;
+  String? myRequestNextPageUrl;
+  int toMeRequestPage = 0;
+  int myRequestPage = 0;
 
   void initialStateData() async{
-    page = 0;
+    myRequestPage = 0;
+    toMeRequestPage = 0;
     myRequestList.clear();
     isLoading = true;
     update();
 
-    await loadHistoryData();
+    await loadMyRequestData();
     isLoading = false;
     update();
   }
 
-  Future<void> loadHistoryData() async{
-    page = page + 1;
-    if(page == 1){
+  bool isMyRequestLoading = false;
+  Future<void> loadMyRequestData() async{
+    myRequestPage = myRequestPage + 1;
+    if(myRequestPage == 1){
       myRequestList.clear();
-      requestToMeList.clear();
     }
 
-    ResponseModel responseModel = await myRequestHistoryRepo.getHistoryData(page,isMyRequest: isMyRequest);
+    isMyRequestLoading = true;
+    update();
+    ResponseModel responseModel = await myRequestHistoryRepo.getHistoryData(myRequestPage,isMyRequest: isMyRequest);
     if(responseModel.statusCode == 200){
-      if(isMyRequest){
-        formatMyRequestResponse(responseModel.responseJson);
-      } else{
-        formatRequestToMeResponse(responseModel.responseJson);
+      rq_model.MyRequestResponseModel model = rq_model.MyRequestResponseModel.fromJson(jsonDecode(responseModel.responseJson));
+      myRequestNextPageUrl = model.data?.requests?.nextPageUrl;
+      if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
+        List<rq_model.Data>? tempMyRequestList = model.data?.requests?.data;
+        if(tempMyRequestList != null && tempMyRequestList.isNotEmpty){
+          myRequestList.addAll(tempMyRequestList);
+        }
       }
-
-      
+      else{
+        CustomSnackBar.error(errorList: model.message?.error ?? [MyStrings.somethingWentWrong]);
+      }
     }
     else{
       CustomSnackBar.error(errorList: [responseModel.message]);
     }
 
+    isMyRequestLoading = false;
+    isLoading = false;
+    update();
+  }
+
+  bool isToMeRequestLoading = false;
+  Future<void> loadToMeHistoryData() async{
+
+    toMeRequestPage = toMeRequestPage + 1;
+    if(toMeRequestPage == 1){
+      requestToMeList.clear();
+    }
+
+    isToMeRequestLoading = true;
+    ResponseModel responseModel = await myRequestHistoryRepo.getHistoryData(toMeRequestPage,isMyRequest: isMyRequest);
+    if(responseModel.statusCode == 200){
+      RequestToMeResponseModel model = RequestToMeResponseModel.fromJson(jsonDecode(responseModel.responseJson));
+      toMeRequestNextPageUrl = model.data?.requests?.nextPageUrl;
+      if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
+        List<Data>? tempRequestToMeList = model.data?.requests?.data;
+        if(tempRequestToMeList != null && tempRequestToMeList.isNotEmpty){
+          requestToMeList.addAll(tempRequestToMeList);
+        }
+      }
+      else{
+        CustomSnackBar.error(errorList: model.message?.error ?? [MyStrings.somethingWentWrong]);
+      }
+    }
+    else{
+      CustomSnackBar.error(errorList: [responseModel.message]);
+    }
+
+    isToMeRequestLoading = false;
     isLoading = false;
     update();
   }
 
 
   bool hasNext(){
-    return nextPageUrl !=null && nextPageUrl!.isNotEmpty && nextPageUrl != 'null'? true : false;
-  }
-  
-  void formatMyRequestResponse(String responseJson){
-    rq_model.MyRequestResponseModel model = rq_model.MyRequestResponseModel.fromJson(jsonDecode(responseJson));
-    nextPageUrl = model.data?.requests?.nextPageUrl;
-    if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
-      List<rq_model.Data>? tempMyRequestList = model.data?.requests?.data;
-      if(tempMyRequestList != null && tempMyRequestList.isNotEmpty){
-        myRequestList.addAll(tempMyRequestList);
-      }
+    if(isMyRequest){
+      return myRequestNextPageUrl !=null && myRequestNextPageUrl!.isNotEmpty && myRequestNextPageUrl != 'null'? true : false;
+    } else{
+      return toMeRequestNextPageUrl !=null && toMeRequestNextPageUrl!.isNotEmpty && toMeRequestNextPageUrl != 'null'? true : false;
     }
-    else{
-      CustomSnackBar.error(errorList: model.message?.error ?? [MyStrings.somethingWentWrong]);
-    }
+
   }
+
+
+
+
 
   List<Data>requestToMeList = [];
-  void formatRequestToMeResponse(String responseJson){
-    RequestToMeResponseModel model = RequestToMeResponseModel.fromJson(jsonDecode(responseJson));
-    nextPageUrl = model.data?.requests?.nextPageUrl;
-    if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
-      List<Data>? tempRequestToMeList = model.data?.requests?.data;
-      if(tempRequestToMeList != null && tempRequestToMeList.isNotEmpty){
-        requestToMeList.addAll(tempRequestToMeList);
-      }
-    }
-    else{
-      CustomSnackBar.error(errorList: model.message?.error ?? [MyStrings.somethingWentWrong]);
-    }
-    update();
-  }
-
+  int count = 0;
   bool isMyRequest = true;
   void changeTabState(bool status)async{
     isMyRequest = status;
     isLoading = true;
-    page = 0;
+    myRequestPage = 0;
+    toMeRequestPage = 0;
     myRequestList.clear();
     requestToMeList.clear();
     update();
 
-    await loadHistoryData();
+    count=count+1;
+
+   if(isMyRequest){
+    if(!isMyRequestLoading){
+      myRequestPage = 0;
+      await loadMyRequestData();
+    }
+   } else{
+     if(!isToMeRequestLoading){
+       toMeRequestPage = 0;
+       await loadToMeHistoryData();
+     }
+   }
+
+
     isLoading = false;
     update();
+
   }
 
   bool submitLoading = false;

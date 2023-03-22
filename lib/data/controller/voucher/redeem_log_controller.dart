@@ -40,7 +40,6 @@ class RedeemLogController extends GetxController{
     }
 
     ResponseModel responseModel = await redeemLogRepo.getRedeemLogData(page);
-    print(responseModel.responseJson);
     if(responseModel.statusCode == 200){
       model = RedeemLogResponseModel.fromJson(jsonDecode(responseModel.responseJson));
       if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){

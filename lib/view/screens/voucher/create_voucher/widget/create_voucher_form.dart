@@ -106,6 +106,7 @@ class _CreateVoucherFormState extends State<CreateVoucherForm> {
           Visibility(
             visible: controller.otpTypeList.length>1,
             child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: Dimensions.space15),
               const LabelText(text: MyStrings.selectOtp),

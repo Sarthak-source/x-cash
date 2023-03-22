@@ -17,7 +17,7 @@ class UpdateInvoiceRepo{
     return responseModel;
   }
 
-  Future<ResponseModel> updateData({
+  Future<ResponseModel> updateInvoice({
     required String invoiceId,
     required String invoiceTo,
     required String email,

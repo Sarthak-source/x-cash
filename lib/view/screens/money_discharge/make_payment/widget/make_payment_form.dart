@@ -124,60 +124,66 @@ class _MakePaymentFormState extends State<MakePaymentForm> {
               currency: controller.currency,
               controller: controller.amountController,
             ),
-            const SizedBox(height: Dimensions.space15),
+           Visibility(
+             visible: controller.otpTypeList.length>1,
+             child: Column(
+             crossAxisAlignment: CrossAxisAlignment.start,
+             children: [
+               const SizedBox(height: Dimensions.space15),
+               const LabelText(text: MyStrings.selectOtp),
+               const SizedBox(height: Dimensions.textToTextSpace),
+               SizedBox(
+                 height: 50,
+                 child: FilterRowWidget(
+                     borderColor: controller.selectedOtp == MyStrings.selectOtp ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
+                     text: controller.selectedOtp.toTitleCase(),
+                     press: () {
+                       FocusScope.of(context).unfocus();
+                       CustomBottomSheet(
+                           child: Column(
+                             children: [
+                               const BottomSheetBar(),
+                               Row(
+                                 mainAxisAlignment: MainAxisAlignment.end,
+                                 children: const [
+                                   BottomSheetCloseButton()
+                                 ],
+                               ),
+                               const SizedBox(height: Dimensions.space15),
+                               ListView.builder(
+                                   itemCount: controller.otpTypeList.length,
+                                   shrinkWrap: true,
+                                   physics: const NeverScrollableScrollPhysics(),
+                                   itemBuilder: (context, index) {
+                                     return GestureDetector(
+                                       onTap: () {
+                                         final controller= Get.find<MakePaymentController>();
+                                         String selectedValue = controller.otpTypeList[index];
+                                         controller.setOtpMethod(selectedValue);
+                                         Navigator.pop(context);
 
-            const LabelText(text: MyStrings.selectOtp),
-            const SizedBox(height: Dimensions.textToTextSpace),
-            SizedBox(
-              height: 50,
-              child: FilterRowWidget(
-                  borderColor: controller.selectedOtp == MyStrings.selectOtp ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
-                  text: controller.selectedOtp.toTitleCase(),
-                  press: () {
-                    FocusScope.of(context).unfocus();
-                    CustomBottomSheet(
-                        child: Column(
-                          children: [
-                            const BottomSheetBar(),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: const [
-                                BottomSheetCloseButton()
-                              ],
-                            ),
-                            const SizedBox(height: Dimensions.space15),
-                            ListView.builder(
-                                itemCount: controller.otpTypeList.length,
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemBuilder: (context, index) {
-                                  return GestureDetector(
-                                    onTap: () {
-                                      final controller= Get.find<MakePaymentController>();
-                                      String selectedValue = controller.otpTypeList[index];
-                                      controller.setOtpMethod(selectedValue);
-                                      Navigator.pop(context);
-
-                                      FocusScopeNode currentFocus = FocusScope.of(context);
-                                      if (!currentFocus.hasPrimaryFocus) {
-                                        currentFocus.unfocus();
-                                      }
-                                    },
-                                    child: BottomSheetCard(
-                                      child: Text(
-                                        controller.otpTypeList[index].toString().toTitleCase() ?? "",
-                                        style: regularDefault,
-                                      ),
-                                    ),
-                                  );
-                                }
-                            )
-                          ],
-                        )
-                    ).customBottomSheet(context);
-                  }
-              ),
-            ),
+                                         FocusScopeNode currentFocus = FocusScope.of(context);
+                                         if (!currentFocus.hasPrimaryFocus) {
+                                           currentFocus.unfocus();
+                                         }
+                                       },
+                                       child: BottomSheetCard(
+                                         child: Text(
+                                           controller.otpTypeList[index].toString().toTitleCase() ?? "",
+                                           style: regularDefault,
+                                         ),
+                                       ),
+                                     );
+                                   }
+                               )
+                             ],
+                           )
+                       ).customBottomSheet(context);
+                     }
+                 ),
+               ),
+             ],
+           )),
             const SizedBox(height: Dimensions.space30),
 
             RoundedButton(

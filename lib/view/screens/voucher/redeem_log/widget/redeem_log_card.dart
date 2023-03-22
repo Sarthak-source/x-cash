@@ -5,6 +5,7 @@ import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
+import 'package:xcash_app/core/utils/util.dart';
 import 'package:xcash_app/data/controller/voucher/redeem_log_controller.dart';
 import 'package:xcash_app/view/components/column_widget/card_column.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
@@ -20,7 +21,7 @@ class RedeemLogCard extends StatelessWidget {
       builder: (controller) => Container(
         width: MediaQuery.of(context).size.width,
         padding: const EdgeInsets.symmetric(vertical: Dimensions.space15, horizontal: Dimensions.space15),
-        decoration: BoxDecoration(color: MyColor.getCardBgColor(), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
+        decoration: BoxDecoration(color: MyColor.getCardBgColor(), borderRadius: BorderRadius.circular(Dimensions.defaultRadius),boxShadow: MyUtils.getCardShadow()),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

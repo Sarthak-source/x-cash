@@ -11,6 +11,7 @@ import 'package:xcash_app/data/controller/add_money/add_money_history_controller
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_bar.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_header_row.dart';
+import 'package:xcash_app/view/components/card/bottom_sheet_card.dart';
 import 'package:xcash_app/view/components/column_widget/card_column.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
@@ -31,14 +32,16 @@ class AddMoneyHistoryBottomSheet extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              CardColumn(
+              Expanded(child: CardColumn(
                   header: MyStrings.trxId,
                   body: controller.depositList[index].trx ?? ""
-              ),
-              CardColumn(
-                  alignmentEnd: true,
-                  header: MyStrings.gateWay,
-                  body: controller.depositList[index].gateway?.name ?? "-----"
+              ),),
+              Expanded(
+                child: CardColumn(
+                    alignmentEnd: true,
+                    header: MyStrings.gateWay,
+                    body: controller.depositList[index].gateway?.name ?? "-----"
+                ),
               )
             ],
           ),
@@ -46,7 +49,9 @@ class AddMoneyHistoryBottomSheet extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Column(
+              Expanded(
+                flex: 5,
+                child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
@@ -68,12 +73,14 @@ class AddMoneyHistoryBottomSheet extends StatelessWidget {
                       overflow: TextOverflow.ellipsis
                   )
                 ],
-              ),
-              CardColumn(
+              ),),
+              Expanded(
+                flex: 3,
+                child: CardColumn(
                 alignmentEnd: true,
                 header: MyStrings.date,
                 body: DateConverter.isoStringToLocalDateOnly(controller.depositList[index].createdAt ?? ""),
-              )
+              ))
             ],
           ),
           const SizedBox(height: Dimensions.space20),
@@ -91,15 +98,10 @@ class AddMoneyHistoryBottomSheet extends StatelessWidget {
                   separatorBuilder: (context, detailIndex) => const SizedBox(height: Dimensions.space10),
                   itemBuilder: (context, detailIndex) {
 
-                    return Container(
-                      width: MediaQuery.of(context).size.width,
-                      padding: const EdgeInsets.all(15),
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(4),
-                          color: MyColor.colorWhite,
-                          boxShadow: MyUtils.getBottomSheetShadow()
-                      ),
-                      child: Row(
+                    return BottomSheetCard(
+                      bottomSpace: Dimensions.space5,
+                      child:
+                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(

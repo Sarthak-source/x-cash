@@ -25,17 +25,17 @@ class TransferMoneyBottomSheet extends StatelessWidget {
         children: [
           const BottomSheetHeaderRow(header: MyStrings.paymentPreview,),
           const SizedBox(height: 20,),
-          CardRow(
+          BottomSheetRow(
             header: MyStrings.totalAmount,
-            body: "${Converter.formatNumber(controller.amountController.text)} ${controller.currency}",
+            body: "${Converter.formatNumber(controller.amountController.text,precision: controller.selectedWallet?.currency?.currencyType=='2'?8:2)} ${controller.currency}",
           ),
           const SizedBox(height: Dimensions.space10),
-          CardRow(
+          BottomSheetRow(
             header: MyStrings.totalCharge,
             body: controller.charge,
           ),
           const CustomDivider(space: 15,),
-          CardRow(
+          BottomSheetRow(
             header: MyStrings.payable,
             body: controller.payableText,
           ),

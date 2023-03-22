@@ -25,7 +25,7 @@ class RequestMoneyBottomSheet extends StatelessWidget {
           const SizedBox(height: Dimensions.space15),
           BottomSheetRow(
             header: MyStrings.requestAmount,
-            body: "${Converter.formatNumber(controller.amountController.text)} ${controller.currency}",
+            body: "${Converter.formatNumber(controller.amountController.text,precision: controller.selectedWallet?.currency?.currencyType=='2'?8:2)} ${controller.currency}",
           ),
           const SizedBox(height: Dimensions.space10),
           BottomSheetRow(

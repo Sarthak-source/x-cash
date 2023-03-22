@@ -120,9 +120,9 @@ class MakePaymentController extends GetxController{
         if(actionId.isNotEmpty){
           Get.toNamed(RouteHelper.otpScreen,arguments: [actionId, RouteHelper.bottomNavBar]);
         } else{
-          CustomSnackBar.error(errorList: [MyStrings.noActionId]);
+          Get.offAndToNamed(RouteHelper.bottomNavBar);
+          CustomSnackBar.success(successList: model.message?.success??[MyStrings.requestSuccess]);
         }
-
       } else{
         CustomSnackBar.error(errorList: model.message?.error??[MyStrings.requestFail]);
       }
@@ -152,11 +152,9 @@ class MakePaymentController extends GetxController{
     double fixed = double.tryParse(model.data?.paymentCharge?.fixedCharge ?? "0") ?? 0;
     double fixedCharge = fixed/currencyRate;  //fixed charge are  global for each currency so that we don't calculate it with expected currency
 
-    print('percent charge $percentCharge -------- fixed charge : $fixedCharge');
-
     double finalCharge = fixedCharge + percentCharge;
-    charge = '${Converter.formatNumber('$finalCharge')} $currency';
-    String payable = Converter.sum(finalCharge.toString(),mainAmount.toString());
+    charge = '${Converter.formatNumber('$finalCharge',precision: selectedWallet?.currency?.currencyType=='2'?8:2)} $currency';
+    String payable = Converter.sum(finalCharge.toString(),mainAmount.toString(),precision: selectedWallet?.currency?.currencyType=='2'?8:2);
     payableText = '$payable $currency';
     update();
   }

@@ -10,7 +10,6 @@ import 'package:xcash_app/data/controller/add_money/add_money_method_controller.
 import 'package:xcash_app/data/model/add_money/add_money_method_response_model.dart';
 import 'package:xcash_app/data/repo/add_money/add_money_method_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
-import 'package:xcash_app/view/components/app-bar/action_button_icon_widget.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_bar.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
@@ -72,46 +71,49 @@ class _AddMoneyScreenState extends State<AddMoneyScreen> {
                   FilterRowWidget(
                       borderColor: controller.selectedWallet?.id.toString() == "-1" ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
                       text: "${controller.selectedWallet?.id.toString() == "-1" ? MyStrings.selectWallet : controller.selectedWallet?.currencyCode}",
-                      press: () => CustomBottomSheet(
-                        child: Column(
-                          children: [
-                            const BottomSheetBar(),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: const [
-                                BottomSheetCloseButton()
-                              ],
-                            ),
-                            const SizedBox(height: Dimensions.space15),
-                            ListView.builder(
-                                padding: EdgeInsets.zero,
-                                itemCount: controller.walletList.length,
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemBuilder: (context, index) {
-                                  return GestureDetector(
-                                    onTap: () {
-                                      final controller = Get.find<AddMoneyMethodController>();
-                                      AddMoneyWallets selectedValue = controller.walletList[index];
-                                      controller.setWallet(selectedValue);
-                                      Navigator.pop(context);
+                      press: () {
+                        FocusScope.of(context).unfocus();
+                        CustomBottomSheet(
+                            child: Column(
+                              children: [
+                                const BottomSheetBar(),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: const [
+                                    BottomSheetCloseButton()
+                                  ],
+                                ),
+                                const SizedBox(height: Dimensions.space15),
+                                ListView.builder(
+                                    padding: EdgeInsets.zero,
+                                    itemCount: controller.walletList.length,
+                                    shrinkWrap: true,
+                                    physics: const NeverScrollableScrollPhysics(),
+                                    itemBuilder: (context, index) {
+                                      return GestureDetector(
+                                        onTap: () {
+                                          final controller = Get.find<AddMoneyMethodController>();
+                                          AddMoneyWallets selectedValue = controller.walletList[index];
+                                          controller.setWallet(selectedValue);
+                                          Navigator.pop(context);
 
-                                      FocusScopeNode currentFocus = FocusScope.of(context);
-                                      if (!currentFocus.hasPrimaryFocus) {
-                                        currentFocus.unfocus();
-                                      }
-                                    },
-                                    child: BottomSheetCard(
-                                      child: Text(
-                                        controller.walletList[index].currencyCode.toString() ?? "",
-                                        style: regularDefault,
-                                      ),
-                                    ),
-                                  );
-                                }),
-                          ],
-                        )
-                      ).customBottomSheet(context)
+                                          FocusScopeNode currentFocus = FocusScope.of(context);
+                                          if (!currentFocus.hasPrimaryFocus) {
+                                            currentFocus.unfocus();
+                                          }
+                                        },
+                                        child: BottomSheetCard(
+                                          child: Text(
+                                            controller.walletList[index].currencyCode.toString() ?? "",
+                                            style: regularDefault,
+                                          ),
+                                        ),
+                                      );
+                                    }),
+                              ],
+                            )
+                        ).customBottomSheet(context);
+                      }
                   ),
                   const SizedBox(height: Dimensions.space20),
                   const LabelText(text: MyStrings.selectGateway),
@@ -119,46 +121,49 @@ class _AddMoneyScreenState extends State<AddMoneyScreen> {
                   FilterRowWidget(
                       borderColor: controller.selectedGateway?.id.toString() == "-1" ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
                       text: "${controller.selectedGateway?.id.toString() == "-1" ? MyStrings.selectGateway : controller.selectedGateway?.name}",
-                      press: () => CustomBottomSheet(
-                        child: Column(
-                          children: [
-                            const BottomSheetBar(),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: const [
-                                BottomSheetCloseButton()
-                              ],
-                            ),
-                            const SizedBox(height: Dimensions.space15),
-                            ListView.builder(
-                                padding: EdgeInsets.zero,
-                                itemCount: controller.gatewayList.length,
-                                shrinkWrap: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemBuilder: (context, index) {
-                                  return GestureDetector(
-                                    onTap: () {
-                                      final controller= Get.find<AddMoneyMethodController>();
-                                      Gateways selectedValue = controller.gatewayList[index];
-                                      controller.setGatewayMethod(selectedValue);
-                                      Navigator.pop(context);
+                      press: () {
+                        FocusScope.of(context).unfocus();
+                        CustomBottomSheet(
+                            child: Column(
+                              children: [
+                                const BottomSheetBar(),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: const [
+                                    BottomSheetCloseButton()
+                                  ],
+                                ),
+                                const SizedBox(height: Dimensions.space15),
+                                ListView.builder(
+                                    padding: EdgeInsets.zero,
+                                    itemCount: controller.gatewayList.length,
+                                    shrinkWrap: true,
+                                    physics: const NeverScrollableScrollPhysics(),
+                                    itemBuilder: (context, index) {
+                                      return GestureDetector(
+                                        onTap: () {
+                                          final controller= Get.find<AddMoneyMethodController>();
+                                          Gateways selectedValue = controller.gatewayList[index];
+                                          controller.setGatewayMethod(selectedValue);
+                                          Navigator.pop(context);
 
-                                      FocusScopeNode currentFocus = FocusScope.of(context);
-                                      if (!currentFocus.hasPrimaryFocus) {
-                                        currentFocus.unfocus();
-                                      }
-                                    },
-                                    child:BottomSheetCard(
-                                      child:Text(
-                                        controller.gatewayList[index].name.toString() ?? "",
-                                        style: regularDefault,
-                                      ),
-                                    ),
-                                  );
-                                })
-                          ],
-                        )
-                      ).customBottomSheet(context)
+                                          FocusScopeNode currentFocus = FocusScope.of(context);
+                                          if (!currentFocus.hasPrimaryFocus) {
+                                            currentFocus.unfocus();
+                                          }
+                                        },
+                                        child:BottomSheetCard(
+                                          child:Text(
+                                            controller.gatewayList[index].name.toString() ?? "",
+                                            style: regularDefault,
+                                          ),
+                                        ),
+                                      );
+                                    })
+                              ],
+                            )
+                        ).customBottomSheet(context);
+                      }
                   ),
                   const SizedBox(height: Dimensions.space20),
 

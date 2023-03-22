@@ -42,8 +42,8 @@ class CreateVoucherController extends GetxController{
     String amt = amountController.text.toString();
     mainAmount = amt.isEmpty ? 0 : double.tryParse(amt) ?? 0;
     changeInfoWidget(mainAmount);
-    minLimit = Converter.formatNumber(selectedWallet?.id.toString() == "-1" ? "0" : selectedWallet?.currency?.voucherMinLimit ?? "");
-    maxLimit = Converter.formatNumber(selectedWallet?.id.toString() == "-1" ? "0" : selectedWallet?.currency?.voucherMaxLimit ?? "");
+    minLimit = Converter.formatNumber(selectedWallet?.id.toString() == "-1" ? "0" : selectedWallet?.currency?.voucherMinLimit ?? "",precision: selectedWallet?.currency?.currencyType=='2'?8:2);
+    maxLimit = Converter.formatNumber(selectedWallet?.id.toString() == "-1" ? "0" : selectedWallet?.currency?.voucherMaxLimit ?? "",precision: selectedWallet?.currency?.currencyType=='2'?8:2);
     update();
   }
 
@@ -148,9 +148,16 @@ class CreateVoucherController extends GetxController{
     double fixed = double.tryParse(model.data?.voucherCharge?.fixedCharge ?? "0") ?? 0;
     double fixedCharge = fixed/currencyRate;  //fixed charge are  global for each currency so that we don't calculate it with expected currency
 
-    double finalCharge = fixedCharge + percentCharge;
-    charge = '${Converter.formatNumber('$finalCharge',precision:selectedWallet?.currency?.currencyType=='2'?8:2)} $currency';
-    String payable = Converter.sum(finalCharge.toString(),mainAmount.toString());
+    double totalCharge = fixedCharge + percentCharge;
+
+    double cap = double.tryParse(model.data?.voucherCharge?.cap ?? "0") ?? 0;
+    double mainCap = cap/currencyRate;
+    if(cap != 1 && totalCharge > mainCap){
+      totalCharge = mainCap;
+    }
+    
+    charge = '${Converter.formatNumber('$totalCharge',precision:selectedWallet?.currency?.currencyType=='2'?8:2)} $currency';
+    String payable = Converter.sum(totalCharge.toString(),mainAmount.toString(),precision: selectedWallet?.currency?.currencyType=='2'?8:2);
     payableText = '$payable $currency';
 
     update();

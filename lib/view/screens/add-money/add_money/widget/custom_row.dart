@@ -25,22 +25,25 @@ class CustomRow extends StatelessWidget {
     return showImage ? Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Row(
-          children: [
-            Container(
-              height: 30, width: 30,
-              alignment: Alignment.center,
-              decoration: const BoxDecoration(
-                color: MyColor.screenBgColor,
-                shape: BoxShape.circle
+        Expanded(
+          flex: 3,
+          child: Row(
+            children: [
+              Container(
+                height: 30, width: 30,
+                alignment: Alignment.center,
+                decoration: const BoxDecoration(
+                  color: MyColor.screenBgColor,
+                  shape: BoxShape.circle
+                ),
+                child: Image.asset(imageSrc!, color: MyColor.primaryColor, height: 17, width: 17),
               ),
-              child: Image.asset(imageSrc!, color: MyColor.primaryColor, height: 17, width: 17),
-            ),
-            const SizedBox(width: Dimensions.space10),
-            Text(firstText.tr, style: regularDefault.copyWith(color: MyColor.colorBlack.withOpacity(0.6)),overflow: TextOverflow.ellipsis,maxLines: 1),
-          ],
+              const SizedBox(width: Dimensions.space10),
+              Text(firstText.tr, style: regularDefault.copyWith(color: MyColor.colorBlack.withOpacity(0.6)),overflow: TextOverflow.ellipsis,maxLines: 1),
+            ],
+          ),
         ),
-        Text(lastText, maxLines:2, style: regularDefault.copyWith(color: MyColor.colorBlack),overflow: TextOverflow.ellipsis,textAlign: TextAlign.end,)
+        Expanded(flex:2,child: Text(lastText, maxLines:2, style: regularDefault.copyWith(color: MyColor.colorBlack),overflow: TextOverflow.ellipsis,textAlign: TextAlign.end,))
       ],
     ) : Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,

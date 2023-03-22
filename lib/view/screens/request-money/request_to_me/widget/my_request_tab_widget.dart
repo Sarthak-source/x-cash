@@ -8,9 +8,33 @@ import 'package:xcash_app/view/screens/request-money/request_to_me/widget/my_req
 
 import 'to_me_list_item.dart';
 
-class MyRequestTabWidget extends StatelessWidget {
-  final ScrollController scrollController;
-  const MyRequestTabWidget({Key? key,required this.scrollController}) : super(key: key);
+class MyRequestTabWidget extends StatefulWidget {
+  const MyRequestTabWidget({Key? key}) : super(key: key);
+
+  @override
+  State<MyRequestTabWidget> createState() => _MyRequestTabWidgetState();
+}
+
+class _MyRequestTabWidgetState extends State<MyRequestTabWidget> {
+
+  final ScrollController scrollController = ScrollController();
+
+  void scrollListener() {
+    if (scrollController.position.pixels == scrollController.position.maxScrollExtent) {
+      if (Get.find<MyRequestHistoryController>().hasNext()) {
+        final controller = Get.find<MyRequestHistoryController>();
+        controller.loadMyRequestData();
+      }
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      scrollController.addListener(scrollListener);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

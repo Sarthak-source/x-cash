@@ -127,7 +127,7 @@ class UpdateInvoiceController extends GetxController{
     submitLoading = true;
     update();
 
-    ResponseModel responseModel = await updateInvoiceRepo.updateData(
+    ResponseModel responseModel = await updateInvoiceRepo.updateInvoice(
         invoiceId: invoiceId,
         invoiceTo: invoiceTo,
         email: email,
@@ -141,6 +141,8 @@ class UpdateInvoiceController extends GetxController{
     if(responseModel.statusCode == 200){
       AuthorizationResponseModel model = AuthorizationResponseModel.fromJson(jsonDecode(responseModel.responseJson));
       if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
+        Get.back(result: 'success');
+        print('back');
         CustomSnackBar.success(successList: model.message?.success ?? [MyStrings.requestSuccess]);
       }
       else{

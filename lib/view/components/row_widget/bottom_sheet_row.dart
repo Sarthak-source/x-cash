@@ -41,8 +41,8 @@ class BottomSheetRow extends StatelessWidget {
     ) : Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(header.tr, style: regularDefault.copyWith(color: MyColor.getTextColor().withOpacity(0.6)),overflow: TextOverflow.ellipsis,),
-        Text(body.tr,style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w500), overflow: TextOverflow.ellipsis)
+        Expanded(flex:3,child: Text(header.tr, style: regularDefault.copyWith(color: MyColor.getTextColor().withOpacity(0.6)),overflow: TextOverflow.ellipsis,)),
+        Expanded(flex:4,child: Text(body.tr,maxLines:2,textAlign:TextAlign.end,style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w500), overflow: TextOverflow.ellipsis))
       ],
     );
   }

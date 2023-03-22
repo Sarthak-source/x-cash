@@ -39,9 +39,10 @@ class MoneyOutController extends GetxController{
 
   setWalletMethod(Wallets? wallet){
     selectedWallet = wallet;
-    minLimit = Converter.formatNumber(selectedWallet?.id == -1 ? "0" : selectedWallet?.currency?.moneyOutMinLimit.toString() ?? "");
-    maxLimit = Converter.formatNumber(selectedWallet?.id == -1 ? "0" : selectedWallet?.currency?.moneyOutMaxLimit.toString() ?? "");
+    minLimit = Converter.formatNumber(selectedWallet?.id == -1 ? "0" : selectedWallet?.currency?.moneyOutMinLimit.toString() ?? "",precision: selectedWallet?.currency?.currencyType=='2'?8:2);
+    maxLimit = Converter.formatNumber(selectedWallet?.id == -1 ? "0" : selectedWallet?.currency?.moneyOutMaxLimit.toString() ?? "",precision: selectedWallet?.currency?.currencyType=='2'?8:2);
     currency = selectedWallet?.id == -1 ? "" : selectedWallet?.currencyCode ?? "";
+    changeInfoWidget(double.tryParse(amountController.text)??0);
     update();
   }
 
@@ -119,7 +120,8 @@ class MoneyOutController extends GetxController{
           Get.toNamed(RouteHelper.otpScreen, arguments: [actionId, RouteHelper.bottomNavBar]);
         }
         else{
-          CustomSnackBar.error(errorList: [MyStrings.noActionId]);
+          Get.offAndToNamed(RouteHelper.bottomNavBar);
+          CustomSnackBar.success(successList: model.message?.success??[MyStrings.requestSuccess]);
         }
       } else{
         CustomSnackBar.error(errorList: model.message?.error??[MyStrings.requestFail]);
@@ -150,8 +152,8 @@ class MoneyOutController extends GetxController{
     double fixedCharge = fixed/currencyRate;  //fixed charge are  global for each currency so that we don't calculate it with expected currency
 
     double finalCharge = fixedCharge + percentCharge;
-    charge = '${Converter.formatNumber('$finalCharge')} $currency';
-    String payable = Converter.sum(finalCharge.toString(),mainAmount.toString());
+    charge = '${Converter.formatNumber('$finalCharge',precision: selectedWallet?.currency?.currencyType=='2'?8:2)} $currency';
+    String payable = Converter.sum(finalCharge.toString(),mainAmount.toString(),precision: selectedWallet?.currency?.currencyType=='2'?8:2);
     payableText = '$payable $currency';
     update();
   }

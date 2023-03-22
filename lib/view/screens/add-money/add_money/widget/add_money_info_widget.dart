@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
@@ -28,7 +29,7 @@ class AddMoneyInfoWidget extends StatelessWidget {
                 showImage: true,
                 imageSrc: MyImages.amount,
                 firstText: MyStrings.amount,
-                lastText: "${controller.mainAmount.toString()} ${controller.currency}"
+                lastText: "${Converter.formatNumber(controller.mainAmount.toString(),precision: controller.selectedWallet?.currency?.currencyType=='2'?8:2)} ${controller.currency}"
             ),
             const CustomDivider(space: Dimensions.space15),
             CustomRow(

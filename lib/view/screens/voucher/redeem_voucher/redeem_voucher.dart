@@ -10,6 +10,7 @@ import 'package:xcash_app/data/controller/voucher/redeem_voucher_controller.dart
 import 'package:xcash_app/data/repo/voucher/redeem_voucher_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
+import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_header_row.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
@@ -51,13 +52,7 @@ class _RedeemVoucherState extends State<RedeemVoucher> {
       builder: (controller) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              BottomSheetHeaderText(text: MyStrings.redeemVoucher.tr),
-              const BottomSheetCloseButton()
-            ],
-          ),
+          const BottomSheetHeaderRow(header:MyStrings.redeemVoucher,bottomSpace: 0),
           const CustomDivider(),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -67,9 +62,9 @@ class _RedeemVoucherState extends State<RedeemVoucher> {
                   Get.toNamed(RouteHelper.redeemLogScreen);
                 },
                 child: Container(
-                  padding: const EdgeInsets.all(Dimensions.space15),
+                  padding: const EdgeInsets.symmetric(horizontal:Dimensions.space10,vertical: Dimensions.space7),
                   alignment: Alignment.center,
-                  decoration: BoxDecoration(color: MyColor.getPrimaryColor(), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
+                  decoration: BoxDecoration(color: MyColor.getPrimaryColor().withOpacity(.9), borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -83,7 +78,7 @@ class _RedeemVoucherState extends State<RedeemVoucher> {
               )
             ],
           ),
-          const SizedBox(height: Dimensions.space20),
+          const SizedBox(height: Dimensions.space15),
           Form(
             key: formKey,
             child: CustomTextField(
@@ -100,7 +95,7 @@ class _RedeemVoucherState extends State<RedeemVoucher> {
               },
             ),
           ),
-          const SizedBox(height: Dimensions.space25),
+          const SizedBox(height: Dimensions.space30),
           controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
               press: (){
                 if(formKey.currentState!.validate()){

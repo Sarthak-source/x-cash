@@ -41,8 +41,8 @@ class TransferMoneyController extends GetxController{
     String amt = amountController.text.toString();
     mainAmount = amt.isEmpty ? 0 : double.tryParse(amt) ?? 0;
     changeInfoWidget(mainAmount);
-    minLimit = Converter.formatNumber(selectedWallet?.id == -1 ? "0" : selectedWallet?.currency?.transferMinLimit ?? "");
-    maxLimit = Converter.formatNumber(selectedWallet?.id == -1 ? "0" : selectedWallet?.currency?.transferMaxLimit ?? "");
+    minLimit = Converter.formatNumber(selectedWallet?.id == -1 ? "0" : selectedWallet?.currency?.transferMinLimit ?? "",precision: selectedWallet?.currency?.currencyType=='2'?8:2);
+    maxLimit = Converter.formatNumber(selectedWallet?.id == -1 ? "0" : selectedWallet?.currency?.transferMaxLimit ?? "",precision: selectedWallet?.currency?.currencyType=='2'?8:2);
     update();
   }
 
@@ -136,7 +136,8 @@ class TransferMoneyController extends GetxController{
         if(actionId.isNotEmpty){
           Get.toNamed(RouteHelper.otpScreen,arguments: [actionId, RouteHelper.bottomNavBar]);
         } else{
-          CustomSnackBar.error(errorList: [MyStrings.noActionId]);
+          CustomSnackBar.success(successList: model.message?.success??[MyStrings.requestSuccess]);
+          Get.offAndToNamed(RouteHelper.bottomNavBar);
         }
       }
       else{
@@ -167,13 +168,13 @@ class TransferMoneyController extends GetxController{
     double fixedCharge = temCharge / rate;
     double totalCharge = percentCharge + fixedCharge;
     double cap = double.tryParse(model.data?.transferCharge?.cap ?? "0") ?? 0;
-    if(cap != 1 && totalCharge > cap){
-      totalCharge = cap;
+    double mainCap = cap/rate;
+    if(cap != 1 && totalCharge > mainCap){
+      totalCharge = mainCap;
     }
-    charge = '${Converter.formatNumber('$totalCharge')} $currency';
-
+    charge = '${Converter.formatNumber('$totalCharge',precision: selectedWallet?.currency?.currencyType=='2'?8:2)} $currency';
     double payable = totalCharge + amount;
-    payableText = '${Converter.formatNumber(payable.toString())} $currency';
+    payableText = '${Converter.formatNumber(payable.toString(),precision: selectedWallet?.currency?.currencyType=='2'?8:2)} $currency';
     update();
   }
 
