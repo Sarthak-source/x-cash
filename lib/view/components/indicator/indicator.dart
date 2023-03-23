@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
+import 'package:xcash_app/core/utils/util.dart';
 
 class LoadingIndicator extends StatelessWidget {
   final double strokeWidth;
@@ -16,11 +17,7 @@ class LoadingIndicator extends StatelessWidget {
       decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: MyColor.colorWhite,
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(.8),
-              blurRadius: 2.0,
-            ),]
+         boxShadow: MyUtils.getCardShadow()
       ),
       child: const CircularProgressIndicator(
         color: MyColor.primaryColor,

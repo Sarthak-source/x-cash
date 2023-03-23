@@ -8,8 +8,9 @@ import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
+import 'package:xcash_app/core/utils/util.dart';
 import 'package:xcash_app/data/controller/localization/localization_controller.dart';
-import 'package:xcash_app/data/controller/menu/menu_controller.dart';
+import 'package:xcash_app/data/controller/menu/my_menu_controller.dart';
 import 'package:xcash_app/data/repo/auth/general_setting_repo.dart';
 import 'package:xcash_app/data/repo/menu_repo/menu_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
@@ -33,7 +34,7 @@ class _MenuScreenState extends State<MenuScreen> {
     Get.put(ApiClient(sharedPreferences: Get.find()));
     Get.put(GeneralSettingRepo(apiClient: Get.find()));
     Get.put(MenuRepo(apiClient: Get.find()));
-    final controller = Get.put(AppMenuController(menuRepo: Get.find(), repo: Get.find()));
+    final controller = Get.put(MyMenuController(menuRepo: Get.find(), repo: Get.find()));
     Get.put(LocalizationController(sharedPreferences: Get.find()));
     super.initState();
 
@@ -45,7 +46,7 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<LocalizationController>(
-      builder: (localizationController) => GetBuilder<AppMenuController>(
+      builder: (localizationController) => GetBuilder<MyMenuController>(
         builder: (menuController) => WillPopWidget(
           nextRoute: RouteHelper.bottomNavBar,
           child: SafeArea(
@@ -57,7 +58,7 @@ class _MenuScreenState extends State<MenuScreen> {
                 title: Text(MyStrings.menu, style: regularLarge.copyWith(color: MyColor.colorWhite)),
                 automaticallyImplyLeading: false,
               ),
-              body: GetBuilder<AppMenuController>(
+              body: GetBuilder<MyMenuController>(
                 builder: (controller) => SingleChildScrollView(
                   padding: Dimensions.screenPaddingHV,
                   child: Column(
@@ -67,7 +68,8 @@ class _MenuScreenState extends State<MenuScreen> {
                         padding: const EdgeInsets.symmetric(vertical: Dimensions.space15, horizontal: Dimensions.space15),
                         decoration: BoxDecoration(
                           color: MyColor.colorWhite,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
+                          boxShadow: MyUtils.getCardShadow()
                         ),
                         child: Column(
                           children: [
@@ -98,28 +100,52 @@ class _MenuScreenState extends State<MenuScreen> {
                         padding: const EdgeInsets.symmetric(vertical: Dimensions.space15, horizontal: Dimensions.space15),
                         decoration: BoxDecoration(
                           color: MyColor.colorWhite,
-                          borderRadius: BorderRadius.circular(10),
+                          borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
+                          boxShadow: MyUtils.getCardShadow()
                         ),
                         child: Column(
                           children: [
-                            MenuItems(
-                                imageSrc: MyImages.menuWithdraw_1,
-                                label: MyStrings.withdraw.tr,
-                                onPressed: () => Get.toNamed(RouteHelper.withdrawHistoryScreen)
-                            ),
-                            const CustomDivider(space: Dimensions.space10),
-                            MenuItems(
-                                imageSrc: MyImages.menuTransfer_1,
-                                label: MyStrings.transfer.tr,
-                                onPressed: () => Get.toNamed(RouteHelper.transferMoneyScreen)
-                            ),
-                            const CustomDivider(space: Dimensions.space10),
-                            MenuItems(
-                                imageSrc: MyImages.menuInvoice_1,
-                                label: MyStrings.invoice.tr,
-                                onPressed: () => Get.toNamed(RouteHelper.invoiceScreen)
-                            ),
-                            const CustomDivider(space: Dimensions.space10),
+                           Visibility(
+                             visible: menuController.isWithdrawEnable,
+                             child: Column(
+                             crossAxisAlignment: CrossAxisAlignment.start,
+                             children: [
+                               MenuItems(
+                                   imageSrc: MyImages.menuWithdraw_1,
+                                   label: MyStrings.withdraw.tr,
+                                   onPressed: () => Get.toNamed(RouteHelper.withdrawHistoryScreen)
+                               ),
+                               const CustomDivider(space: Dimensions.space10),
+                             ],
+                           )),
+
+                            Visibility(
+                                visible: menuController.isTransferEnable,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    MenuItems(
+                                        imageSrc: MyImages.menuTransfer_1,
+                                        label: MyStrings.transfer.tr,
+                                        onPressed: () => Get.toNamed(RouteHelper.transferMoneyScreen)
+                                    ),
+                                    const CustomDivider(space: Dimensions.space10),
+                                  ],
+                                )),
+
+                            Visibility(
+                                visible: menuController.isInvoiceEnable,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    MenuItems(
+                                      imageSrc: MyImages.menuInvoice_1,
+                                      label: MyStrings.invoice.tr,
+                                      onPressed: () => Get.toNamed(RouteHelper.invoiceScreen)
+                                    ),
+                                    const CustomDivider(space: Dimensions.space10),
+                                  ],
+                                )),
                             MenuItems(
                                 imageSrc: MyImages.menuTransaction_1,
                                 label: MyStrings.transaction.tr,
@@ -134,7 +160,8 @@ class _MenuScreenState extends State<MenuScreen> {
                           padding: const EdgeInsets.symmetric(vertical: Dimensions.space15, horizontal: Dimensions.space15),
                           decoration: BoxDecoration(
                             color: MyColor.colorWhite,
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
+                            boxShadow: MyUtils.getCardShadow()
                           ),
                           child: Column(
                             children: [
@@ -157,9 +184,9 @@ class _MenuScreenState extends State<MenuScreen> {
                                           //Get.toNamed(RouteHelper.languageScreen);
                                         },
                                       ),
+                                      const CustomDivider(space: Dimensions.space10),
                                     ],
                                   )),
-                              const CustomDivider(space: Dimensions.space10),
                               MenuItems(
                                   imageSrc: MyImages.policy,
                                   label: MyStrings.privacyPolicy.tr,

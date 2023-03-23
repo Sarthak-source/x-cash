@@ -125,6 +125,7 @@ class _InvoiceDetailsState extends State<InvoiceDetails> {
              RoundedButton(
                press: (){
                  if (formKey.currentState!.validate()) {
+                   FocusScope.of(context).unfocus();
                    controller.checkValidation(context);
                  }
                },

@@ -10,7 +10,9 @@ import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/invoice/invoice_items_model.dart';
 import 'package:xcash_app/data/model/invoice/update_invoice_response_model.dart';
 import 'package:xcash_app/data/repo/invoice/update_invoice_repo.dart';
+import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
+import 'package:xcash_app/view/screens/invoice/update_invoice/widget/update_invoice_preview_bottom_sheet.dart';
 
 class UpdateInvoiceController extends GetxController{
 
@@ -44,6 +46,7 @@ class UpdateInvoiceController extends GetxController{
 
   setSelectedCurrency(Currencies? currencies){
     selectedCurrency = currencies;
+    calculateInvoiceAmount();
     update();
   }
 
@@ -100,8 +103,19 @@ class UpdateInvoiceController extends GetxController{
       CustomSnackBar.error(errorList: [responseModel.message]);
     }
 
+    calculateInvoiceAmount();
     isLoading = false;
     update();
+  }
+
+
+  void submitUpdateInvoice(){
+    if(selectedCurrency?.currencyCode?.toLowerCase() == MyStrings.selectOne.toLowerCase()){
+      CustomSnackBar.error(errorList: [MyStrings.selectWallet]);
+      return;
+    }
+    calculateInvoiceAmount();
+    CustomBottomSheet(child: const UpdateInvoicePreviewBottomSheet()).customBottomSheet(Get.context!);
   }
 
   bool submitLoading = false;
@@ -141,8 +155,8 @@ class UpdateInvoiceController extends GetxController{
     if(responseModel.statusCode == 200){
       AuthorizationResponseModel model = AuthorizationResponseModel.fromJson(jsonDecode(responseModel.responseJson));
       if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
+        Get.back();
         Get.back(result: 'success');
-        print('back');
         CustomSnackBar.success(successList: model.message?.success ?? [MyStrings.requestSuccess]);
       }
       else{
@@ -157,9 +171,12 @@ class UpdateInvoiceController extends GetxController{
     update();
   }
 
+  bool isSendToEmailLoading = false;
   Future<void> invoiceSendToEmail() async{
     String invoiceId = model.data?.invoice?.id.toString() ?? "";
 
+    isSendToEmailLoading = true;
+    update();
     ResponseModel responseModel = await updateInvoiceRepo.sendToEmail(invoiceId);
     if(responseModel.statusCode == 200){
       AuthorizationResponseModel model = AuthorizationResponseModel.fromJson(jsonDecode(responseModel.responseJson));
@@ -173,15 +190,21 @@ class UpdateInvoiceController extends GetxController{
     else{
       CustomSnackBar.error(errorList: [responseModel.message]);
     }
+    isSendToEmailLoading = false;
+    update();
   }
 
+  bool isPublishInvoiceLoading = false;
   Future<void> publishInvoice() async{
     String invoiceId = model.data?.invoice?.id.toString() ?? "";
 
+    isPublishInvoiceLoading = true;
+    update();
     ResponseModel responseModel = await updateInvoiceRepo.publishInvoice(invoiceId);
     if(responseModel.statusCode == 200){
       AuthorizationResponseModel model = AuthorizationResponseModel.fromJson(jsonDecode(responseModel.responseJson));
       if(model.status.toString().toLowerCase() == "success"){
+        Get.back(result: 'success');
         CustomSnackBar.success(successList: model.message?.success ?? [MyStrings.requestSuccess]);
       }
       else{
@@ -191,24 +214,32 @@ class UpdateInvoiceController extends GetxController{
     else{
       CustomSnackBar.error(errorList: [responseModel.message]);
     }
+    isPublishInvoiceLoading = false;
+    update();
   }
 
+  bool isDiscardInvoiceLoading = false;
   Future<void> discardInvoice() async{
     String invoiceId = model.data?.invoice?.id.toString() ?? "";
 
+    isDiscardInvoiceLoading = true;
+    update();
     ResponseModel responseModel = await updateInvoiceRepo.discardInvoice(invoiceId);
     if(responseModel.statusCode == 200){
       AuthorizationResponseModel model = AuthorizationResponseModel.fromJson(jsonDecode(responseModel.responseJson));
       if(model.status.toString().toLowerCase() == "success"){
+        Get.back(result: 'success');
         CustomSnackBar.success(successList: model.message?.success ?? [MyStrings.requestSuccess]);
       }
       else{
-        CustomSnackBar.error(errorList: model.message?.error ?? [MyStrings.somethingWentWrong]);
+        CustomSnackBar.error(errorList: model.message?.error ?? [MyStrings.requestFail]);
       }
     }
     else{
       CustomSnackBar.error(errorList: [responseModel.message]);
     }
+    isDiscardInvoiceLoading = false;
+    update();
   }
 
   dynamic getPaymentStatusOrColor({bool isStatus = true}){
@@ -226,6 +257,8 @@ class UpdateInvoiceController extends GetxController{
   }
 
   String  totalInvoiceAmount = '';
+  String charge = '';
+  String payableText = '';
   void calculateInvoiceAmount(){
 
     double totalAmount = 0;
@@ -238,7 +271,28 @@ class UpdateInvoiceController extends GetxController{
       totalAmount = totalAmount + invoiceAmount;
     }
 
-    totalInvoiceAmount = Converter.formatNumber(totalAmount.toString());
+    totalInvoiceAmount = Converter.formatNumber(totalAmount.toString(),precision: selectedCurrency?.currencyType=='2'?8:2);
+    
+
+
+    //for preview bottom sheet
+    double currencyRate = double.tryParse(selectedCurrency?.rate ?? "0") ?? 0;
+    double percent = double.tryParse(model.data?.invoiceCharge?.percentCharge ?? "0") ?? 0;
+    double percentCharge = totalAmount * percent / 100;
+    double temCharge = double.tryParse(model.data?.invoiceCharge?.fixedCharge ?? "0") ?? 0;
+    double fixedCharge = temCharge / currencyRate;
+
+    double totalCharge = percentCharge + fixedCharge;
+    double cap = double.tryParse(model.data?.invoiceCharge?.cap ?? "0") ?? 0;
+    double mainCap = cap/currencyRate;
+    if(cap != 1 && totalCharge > mainCap){
+      totalCharge = mainCap;
+    }
+
+    charge = '${Converter.formatNumber('$totalCharge',precision: selectedCurrency?.currencyType == '2'? 8:2)} ${selectedCurrency?.currencyCode??''}';
+    double payable = totalAmount - totalCharge;
+    payableText = '${Converter.formatNumber( payable.toString(),precision: selectedCurrency?.currencyType == '2'? 8:2)} ${selectedCurrency?.currencyCode??''}';
+    
     update();
   }
 }

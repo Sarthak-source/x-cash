@@ -50,6 +50,9 @@ class SplashController extends GetxController  {
 
   bool noInternet=false;
   void getGSData(bool isRemember)async{
+
+    await repo.loadAndStoreModuleSetting();
+
     ResponseModel response = await repo.getGeneralSetting();
     if(response.statusCode==200){
       GeneralSettingResponseModel model = GeneralSettingResponseModel.fromJson(jsonDecode(response.responseJson));
@@ -76,12 +79,12 @@ class SplashController extends GetxController  {
 
 
     if (isRemember) {
-      Future.delayed(const Duration(seconds: 3), () {
+      Future.delayed(const Duration(seconds: 1), () {
         Get.offAndToNamed(RouteHelper.bottomNavBar);
       });
     }
     else {
-      Future.delayed(const Duration(seconds: 3), () {
+      Future.delayed(const Duration(seconds: 1), () {
         Get.offAndToNamed(RouteHelper.loginScreen);
       });
     }

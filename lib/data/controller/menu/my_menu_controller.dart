@@ -9,11 +9,11 @@ import 'package:xcash_app/data/repo/auth/general_setting_repo.dart';
 import 'package:xcash_app/data/repo/menu_repo/menu_repo.dart';
 import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
-class AppMenuController extends GetxController{
+class MyMenuController extends GetxController{
 
   MenuRepo menuRepo;
   GeneralSettingRepo repo;
-  AppMenuController({required this.menuRepo, required this.repo});
+  MyMenuController({required this.menuRepo, required this.repo});
 
   bool logoutLoading = false;
   bool isLoading = true;
@@ -42,7 +42,18 @@ class AppMenuController extends GetxController{
     Get.offAllNamed(RouteHelper.loginScreen);
   }
 
+  bool isTransferEnable = true;
+  bool isWithdrawEnable = true;
+  bool isInvoiceEnable  = true;
+
+
   configureMenuItem() async{
+
+    isTransferEnable = repo.apiClient.getModuleStatus('transfer_money');
+    isWithdrawEnable = repo.apiClient.getModuleStatus('withdraw_money');
+    isInvoiceEnable  = repo.apiClient.getModuleStatus('create_invoice');
+
+    update();
 
     ResponseModel response = await repo.getGeneralSetting();
 
@@ -67,5 +78,6 @@ class AppMenuController extends GetxController{
       CustomSnackBar.error(errorList:[response.message]);
       return;
     }
+    await repo.loadAndStoreModuleSetting();
   }
 }

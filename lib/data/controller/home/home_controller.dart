@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
@@ -31,8 +32,12 @@ class HomeController extends GetxController{
   GeneralSettingResponseModel generalSettingResponseModel = GeneralSettingResponseModel();
   List<Wallets> walletList = [];
   List<LatestTrx> trxList = [];
+  List<Widget>moduleList = [];
+  List<Widget>historyModuleList = [];
 
   Future<void> initialData() async{
+    moduleList = homeRepo.apiClient.getModuleList();
+    historyModuleList = homeRepo.apiClient.getHistoryModuleList();
     walletList.clear();
     trxList.clear();
     isLoading = true;
@@ -80,6 +85,13 @@ class HomeController extends GetxController{
     }
 
     isLoading = false;
+    update();
+
+    await homeRepo.refreshGeneralSetting();
+    await homeRepo.refreshModuleSetting();
+
+    moduleList = homeRepo.apiClient.getModuleList();
+    historyModuleList = homeRepo.apiClient.getHistoryModuleList();
     update();
   }
 

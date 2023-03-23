@@ -177,12 +177,12 @@ class _InvoiceItemsState extends State<InvoiceItems> {
                       style: regularDefault,
                     ),
                   ),
-                  const SizedBox(height: Dimensions.space20),
-                  controller.isSubmitLoading ? const RoundedLoadingBtn() : RoundedButton(
+                  const SizedBox(height: Dimensions.space30),
+                  RoundedButton(
                       text: MyStrings.createInvoice.tr,
                       press: () {
                         if (formKey.currentState!.validate()) {
-                          controller.submitInvoice();
+                          controller.confirmInvoice();
                         }
                       }
                   )

@@ -33,6 +33,7 @@ class MyStrings{
   static const String next = "Next";
   static const String getStarted = "Get Started";
   static const String paymentPreview = "Payment Preview";
+  static const String invoicePreview = "Invoice Preview";
   static const String seeMore = "See More";
 
   static const String beforeCharge = "Before Charge";
@@ -644,7 +645,6 @@ class MyStrings{
   static const String invalidMerchantMsg = "Merchant not found";
   static const String validUserMsg = "Valid agent for transaction";
   static const String invalidUserMsg = "User doesn't exists";
-  static const String acceptRequest = "Accept Request";
   static const String willBeReduced = "will be reduced from your";
   static const String sureToConfirm = "Are you sure want to confirm?";
   static const String imageDownloadMsg = "Image downloaded successfully";

@@ -10,6 +10,7 @@ class SharedPreferenceHelper{
   static const String userPhoneNumberKey='user_phone_number';
   static const String rememberMeKey='remember me';
   static const String generalSettingKey='general-setting-key';
+  static const String moduleSettingKey='module-setting-key';
   static const String fcmDeviceKey='device-key';
   static const String needTwoFactorVerification='need-tfa';
 

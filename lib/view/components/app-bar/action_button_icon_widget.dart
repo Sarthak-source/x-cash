@@ -11,6 +11,7 @@ class ActionButtonIconWidget extends StatelessWidget {
   final IconData? icon;
   final bool isImage;
   final String? imageSrc;
+  final bool isLoading;
 
   const ActionButtonIconWidget({
     Key? key,
@@ -21,20 +22,21 @@ class ActionButtonIconWidget extends StatelessWidget {
     this.spacing = 15,
     this.icon,
     this.imageSrc,
-    this.isImage = false
+    this.isImage = false,
+    this.isLoading = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    print('action widget ${isImage}');
     return GestureDetector(
       onTap: pressed,
       child: Container(
         height: size, width: size,
         alignment: Alignment.center,
+        padding: EdgeInsets.all(isLoading?5:0),
         margin: EdgeInsets.only(right: spacing),
         decoration: BoxDecoration(color: backgroundColor, shape: BoxShape.circle),
-        child: isImage ? Image.asset(
+        child: isLoading?SizedBox(height:size/2,width:size/2,child: const CircularProgressIndicator(color: MyColor.primaryColor)): isImage ? Image.asset(
           imageSrc!,
           color: iconColor,
           height: size / 2,

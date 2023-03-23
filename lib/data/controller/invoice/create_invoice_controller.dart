@@ -9,8 +9,9 @@ import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/invoice/create_invoice_response_model.dart';
 import 'package:xcash_app/data/model/invoice/invoice_items_model.dart';
 import 'package:xcash_app/data/repo/invoice/create_invoice_repo.dart';
+import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
-import 'package:xcash_app/view/screens/bottom_nav_section/home/home_screen.dart';
+import 'package:xcash_app/view/screens/invoice/create_invoice/widget/create_invoice_bottom_sheet.dart';
 import 'package:xcash_app/view/screens/invoice/create_invoice/widget/invoice_items.dart';
 
 class CreateInvoiceController extends GetxController{
@@ -48,6 +49,9 @@ class CreateInvoiceController extends GetxController{
   }
 
   String  totalInvoiceAmount = '';
+  String charge = '';
+  String payableText = '';
+
   void calculateInvoiceAmount(){
 
     double totalAmount = 0;
@@ -60,7 +64,27 @@ class CreateInvoiceController extends GetxController{
       totalAmount = totalAmount + invoiceAmount;
     }
 
-    totalInvoiceAmount = '${Converter.formatNumber(totalAmount.toString())} ${selectedCurrency?.currencyCode??''}';
+    totalInvoiceAmount = '${Converter.formatNumber(totalAmount.toString(),precision:selectedCurrency?.currencyType == '2'? 8:2 )} ${selectedCurrency?.currencyCode??''}';
+
+
+    //for preview bottom sheet
+    double currencyRate = double.tryParse(selectedCurrency?.rate ?? "0") ?? 0;
+    double percent = double.tryParse(model.data?.invoiceCharge?.percentCharge ?? "0") ?? 0;
+    double percentCharge = totalAmount * percent / 100;
+    double temCharge = double.tryParse(model.data?.invoiceCharge?.fixedCharge ?? "0") ?? 0;
+    double fixedCharge = temCharge / currencyRate;
+
+    double totalCharge = percentCharge + fixedCharge;
+    double cap = double.tryParse(model.data?.invoiceCharge?.cap ?? "0") ?? 0;
+    double mainCap = cap/currencyRate;
+    if(cap != 1 && totalCharge > mainCap){
+      totalCharge = mainCap;
+    }
+
+    charge = '${Converter.formatNumber('$totalCharge',precision: selectedCurrency?.currencyType == '2'? 8:2)} ${selectedCurrency?.currencyCode??''}';
+    double payable = totalAmount - totalCharge;
+    payableText = '${Converter.formatNumber( payable.toString(),precision: selectedCurrency?.currencyType == '2'? 8:2)} ${selectedCurrency?.currencyCode??''}';
+
     update();
   }
 
@@ -68,6 +92,7 @@ class CreateInvoiceController extends GetxController{
 
   setSelectedCurrency(Currencies? currencies){
     selectedCurrency = currencies;
+    calculateInvoiceAmount();
     update();
   }
 
@@ -81,6 +106,11 @@ class CreateInvoiceController extends GetxController{
     invoiceToController.text = "";
     emailController.text = "";
     addressController.text = "";
+    invoiceItemList.clear();
+
+    itemController.text = '';
+    amountController.text = '';
+
 
     selectedCurrency = Currencies(id: -1, currencyCode: MyStrings.selectOne);
     currencyList.insert(0, selectedCurrency!);
@@ -105,6 +135,38 @@ class CreateInvoiceController extends GetxController{
 
     isLoading = false;
     update();
+  }
+
+  Future <void> confirmInvoice() async{
+
+    String invoiceTo = invoiceToController.text.toString();
+    String email = emailController.text.toString();
+    String address = addressController.text.toString();
+    String curId = selectedCurrency?.id.toString()??'';
+
+    if(invoiceTo.isEmpty){
+      CustomSnackBar.error(errorList: [MyStrings.invoiceFieldErrorMsg]);
+      return ;
+    }
+
+    if(email.isEmpty){
+      CustomSnackBar.error(errorList: [MyStrings.invoiceEmailFieldErrorMsg]);
+      return ;
+    }
+
+    if(address.isEmpty){
+      CustomSnackBar.error(errorList: [MyStrings.invoiceAddressFieldErrorMsg]);
+      return ;
+    }
+
+    if(curId == "0"){
+      CustomSnackBar.error(errorList: [MyStrings.invoiceWalletErrorMsg]);
+      return ;
+    }
+
+
+      CustomBottomSheet(child: const CreateInvoicePreviewBottomSheet()).customBottomSheet(Get.context!);
+
   }
 
   bool isSubmitLoading = false;

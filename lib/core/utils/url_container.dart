@@ -44,7 +44,8 @@ class UrlContainer{
   static const String kycFormUrl='kyc-form';
   static const String kycSubmitUrl='kyc-submit';
 
-  static const String generalSettingEndPoint='general-setting';
+  static const String generalSettingEndPoint = 'general-setting';
+  static const String moduleSettingEndPoint = 'module-setting';
 
   //privacy policy
   static const String privacyPolicyEndPoint='policy-pages';

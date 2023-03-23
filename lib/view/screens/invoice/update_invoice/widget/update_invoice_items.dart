@@ -9,8 +9,7 @@ import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
 
 class UpdateInvoiceItems extends StatefulWidget {
-  final dynamic formKey;
-  const UpdateInvoiceItems({Key? key,required this.formKey}) : super(key: key);
+  const UpdateInvoiceItems({Key? key}) : super(key: key);
 
   @override
   State<UpdateInvoiceItems> createState() => _UpdateInvoiceItemsState();
@@ -30,126 +29,137 @@ class _UpdateInvoiceItemsState extends State<UpdateInvoiceItems> {
           borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
           border: Border.all(color: MyColor.colorGrey.withOpacity(0.2), width: 0.5)
         ),
-        child: Form(
-          key:widget.formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const BottomSheetHeaderText(text: MyStrings.invoiceItems),
-              const SizedBox(height: Dimensions.space20),
-              ListView.separated(
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: controller.invoiceItemList.length,
-                separatorBuilder: (context, index) => const SizedBox(height: Dimensions.space15),
-                itemBuilder: (context, index){
-                  return index == 0 ? Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Expanded(
-                        child: CustomTextField(
-                            needOutlineBorder: true,
-                            labelText: MyStrings.itemName.tr,
-                            controller: controller.invoiceItemList[index].itemNameController,
-                            onChanged: (value){},
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return MyStrings.plsFillOutFieldMsg.tr;
-                              }else {
-                                return null;
-                              }
-                            },
-                        ),
-                      ),
-                      const SizedBox(width: Dimensions.space10),
-                      Expanded(
-                        child: CustomTextField(
-                            needOutlineBorder: true,
-                            labelText: MyStrings.amount.tr,
-                            textInputType: TextInputType.number,
-                            controller: controller.invoiceItemList[index].amountController,
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return MyStrings.plsFillOutFieldMsg.tr;
-                              }else {
-                                return null;
-                              }
-                            },
-                            onChanged: (value){
-                              controller.calculateInvoiceAmount();
-                            }
-                        ),
-                      ),
-                    ],
-                  ) : Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: CustomTextField(
-                            needOutlineBorder: true,
-                            labelText: MyStrings.itemName.tr,
-                            controller: controller.invoiceItemList[index].itemNameController,
-                            onChanged: (value){}
-                        ),
-                      ),
-                      const SizedBox(width: Dimensions.space10),
-                      Expanded(
-                        child: CustomTextField(
-                            needOutlineBorder: true,
-                            labelText: MyStrings.amount.tr,
-                            textInputType: TextInputType.number,
-                            controller: controller.invoiceItemList[index].amountController,
-                            onChanged: (value){
-                              controller.calculateInvoiceAmount();
-                            }
-                        ),
-                      ),
-                      const SizedBox(width: Dimensions.space10),
-                      GestureDetector(
-                        onTap: (){
-                          controller.decreaseNumberField(index);
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.all(Dimensions.space5),
-                          margin: const EdgeInsets.only(top: Dimensions.space20),
-                          alignment: Alignment.center,
-                          decoration: const BoxDecoration(color: MyColor.colorOrange, shape: BoxShape.circle),
-                          child: const Icon(Icons.clear, color: MyColor.colorWhite, size: 15),
-                        ),
-                      )
-                    ],
-                  );
-                },
-              ),
-              const SizedBox(height: Dimensions.space20),
-              GestureDetector(
-                onTap: () => controller.increaseNumberField(),
-                child: Row(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const BottomSheetHeaderText(text: MyStrings.invoiceItems),
+            const SizedBox(height: Dimensions.space20),
+            ListView.separated(
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: controller.invoiceItemList.length,
+              separatorBuilder: (context, index) => const SizedBox(height: Dimensions.space15),
+              itemBuilder: (context, index){
+                return index == 0 ? Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    const Icon(Icons.add, color: MyColor.primaryColor, size: 20),
+                    Expanded(
+                      child: CustomTextField(
+                          needOutlineBorder: true,
+                          labelText: MyStrings.itemName.tr,
+                          controller: controller.invoiceItemList[index].itemNameController,
+                          onChanged: (value){},
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return MyStrings.plsFillOutFieldMsg.tr;
+                            }else {
+                              return null;
+                            }
+                          },
+                      ),
+                    ),
                     const SizedBox(width: Dimensions.space10),
-                    Text(MyStrings.addItems.tr, style: regularDefault.copyWith(color: MyColor.primaryColor))
+                    Expanded(
+                      child: CustomTextField(
+                          needOutlineBorder: true,
+                          labelText: MyStrings.amount.tr,
+                          textInputType: TextInputType.number,
+                          controller: controller.invoiceItemList[index].amountController,
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return MyStrings.plsFillOutFieldMsg.tr;
+                            }else {
+                              return null;
+                            }
+                          },
+                          onChanged: (value){
+                            controller.calculateInvoiceAmount();
+                          }
+                      ),
+                    ),
                   ],
-                ),
+                ) : Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: CustomTextField(
+                          needOutlineBorder: true,
+                          labelText: MyStrings.itemName.tr,
+                          controller: controller.invoiceItemList[index].itemNameController,
+                          onChanged: (value){},
+                         validator: (value) {
+                          if (value!.isEmpty) {
+                            return MyStrings.plsFillOutFieldMsg.tr;
+                          }else {
+                            return null;
+                          }
+                        },
+                      ),
+                    ),
+                    const SizedBox(width: Dimensions.space10),
+                    Expanded(
+                      child: CustomTextField(
+                          needOutlineBorder: true,
+                          labelText: MyStrings.amount.tr,
+                          textInputType: TextInputType.number,
+                          controller: controller.invoiceItemList[index].amountController,
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return MyStrings.plsFillOutFieldMsg.tr;
+                            }else {
+                              return null;
+                            }
+                          },
+                          onChanged: (value){
+                            controller.calculateInvoiceAmount();
+                          }
+                      ),
+                    ),
+                    const SizedBox(width: Dimensions.space10),
+                    GestureDetector(
+                      onTap: (){
+                        controller.decreaseNumberField(index);
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.all(Dimensions.space5),
+                        margin: const EdgeInsets.only(top: Dimensions.space20),
+                        alignment: Alignment.center,
+                        decoration: const BoxDecoration(color: MyColor.colorOrange, shape: BoxShape.circle),
+                        child: const Icon(Icons.clear, color: MyColor.colorWhite, size: 15),
+                      ),
+                    )
+                  ],
+                );
+              },
+            ),
+            const SizedBox(height: Dimensions.space20),
+            GestureDetector(
+              onTap: () => controller.increaseNumberField(),
+              child: Row(
+                children: [
+                  const Icon(Icons.add, color: MyColor.primaryColor, size: 20),
+                  const SizedBox(width: Dimensions.space10),
+                  Text(MyStrings.addItems.tr, style: regularDefault.copyWith(color: MyColor.primaryColor))
+                ],
               ),
-              const SizedBox(height: Dimensions.space20),
-              Container(
-                width: MediaQuery.of(context).size.width,
-                padding: const EdgeInsets.symmetric(vertical: Dimensions.space12, horizontal: Dimensions.space15),
-                decoration: BoxDecoration(
-                    border: Border.all(color: MyColor.colorGrey.withOpacity(0.2), width: 0.5),
-                    borderRadius: BorderRadius.circular(Dimensions.defaultRadius)
-                ),
-                child: Text(
-                  "${MyStrings.totalAmount.tr}: ${controller.totalInvoiceAmount}",
-                  style: regularDefault,
-                ),
+            ),
+            const SizedBox(height: Dimensions.space20),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              padding: const EdgeInsets.symmetric(vertical: Dimensions.space12, horizontal: Dimensions.space15),
+              decoration: BoxDecoration(
+                  border: Border.all(color: MyColor.colorGrey.withOpacity(0.2), width: 0.5),
+                  borderRadius: BorderRadius.circular(Dimensions.defaultRadius)
               ),
-            ],
-          ),
+              child: Text(
+                "${MyStrings.totalAmount.tr}: ${controller.totalInvoiceAmount}",
+                style: regularDefault,
+              ),
+            ),
+          ],
         ),
       ),
     );

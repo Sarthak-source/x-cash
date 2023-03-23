@@ -173,6 +173,7 @@ class InvoicesBottomSheet{
                               arguments: [controller.invoiceList[index].invoiceNum, controller.invoiceList[index].currencyId, controller.invoiceList[index].totalAmount]
                           )?.then((value){
                             if(value!=null && value=='success'){
+                              Get.back();
                               controller.initialData();
                             }
                           });

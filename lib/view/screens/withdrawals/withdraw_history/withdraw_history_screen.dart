@@ -17,6 +17,8 @@ import 'package:xcash_app/view/screens/withdrawals/withdraw_history/widget/withd
 import 'package:xcash_app/view/screens/withdrawals/withdraw_history/widget/withdraw_log_card.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_history/widget/withdraw_log_top.dart';
 
+import 'widget/floating_action_button.dart';
+
 class WithdrawHistoryScreen extends StatefulWidget {
   const WithdrawHistoryScreen({Key? key}) : super(key: key);
 
@@ -100,7 +102,7 @@ class _WithdrawHistoryScreenState extends State<WithdrawHistoryScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: const [
                             WithdrawLogTop(),
-                            SizedBox(height: 20),
+                            SizedBox(height: Dimensions.space15),
                           ],
                         ),
                       ),
@@ -137,6 +139,7 @@ class _WithdrawHistoryScreenState extends State<WithdrawHistoryScreen> {
               ],
             ),
           ),
+          floatingActionButton: const CustomFAB(),
         ),
       ),
     );

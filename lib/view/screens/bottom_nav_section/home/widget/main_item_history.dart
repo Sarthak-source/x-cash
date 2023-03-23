@@ -6,6 +6,7 @@ import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
+import 'package:xcash_app/data/controller/home/home_controller.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/buttons/circle_animated_button_with_text.dart';
 import 'package:xcash_app/view/screens/voucher/redeem_voucher/redeem_voucher.dart';
@@ -15,7 +16,7 @@ class MainItemHistory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return GetBuilder<HomeController>(builder: (controller)=>Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
@@ -35,92 +36,65 @@ class MainItemHistory extends StatelessWidget {
             ],
           ),
         ),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        controller.historyModuleList.length>4?Wrap(
+          spacing: 8.0,
+          runSpacing: 8.0,
           children: [
-            Expanded(
-              child: CircleAnimatedButtonWithText(
-                buttonName: MyStrings.addMoneyHistory,
-                backgroundColor: MyColor.screenBgColor,
-                child: Image.asset(MyImages.addMoneyHistory, color: MyColor.primaryColor, height: 20, width: 20),
-                onTap: (){
-                  Get.toNamed(RouteHelper.addMoneyHistoryScreen);
-                },
-              ),
-            ),
-            Expanded(
-              child: CircleAnimatedButtonWithText(
-                  buttonName: MyStrings.voucher,
-                  backgroundColor: MyColor.screenBgColor,
-                  child: Image.asset(MyImages.voucher, color: MyColor.primaryColor, height: 20, width: 20),
-                  onTap: () => Get.toNamed(RouteHelper.myVoucherScreen)
-              ),
-            ),
-            Expanded(
-              child: CircleAnimatedButtonWithText(
-                  buttonName: MyStrings.myRequests,
-                  backgroundColor: MyColor.screenBgColor,
-                  child: Image.asset(MyImages.myRequest, color: MyColor.primaryColor, height: 20, width: 20),
-                  onTap: () => Get.toNamed(RouteHelper.requestToMeScreen)
-              ),
-            ),
-            Expanded(
-              child: CircleAnimatedButtonWithText(
-                buttonName: MyStrings.transactions,
-                height: 40, width: 40,
-                backgroundColor: MyColor.screenBgColor,
-                child: Image.asset(MyImages.viewTransaction, color: MyColor.primaryColor, height: 20, width: 20),
-                onTap: (){
-                  Get.toNamed(RouteHelper.transactionHistoryScreen);
-                },
-              ),
-            ),
+            ...controller.historyModuleList
+                .getRange(0, 4)
+                .map((item) => SizedBox(
+              width:
+              (MediaQuery.of(context).size.width -
+                  32 -
+                  24) /
+                  4,
+              // 32 is the total horizontal padding, 24 is the total horizontal spacing
+              child: item,
+            ))
+                .toList(),
+            ...controller.historyModuleList
+                .getRange(4, controller.historyModuleList.length)
+                .map((item) => SizedBox(
+              width:
+              (MediaQuery.of(context).size.width -
+                  32 -
+                  24) /
+                  4,
+              child: item,
+            ))
+                .toList(),
           ],
-        ),
-        const SizedBox(height: Dimensions.space20),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        ):
+        controller.historyModuleList.length == 4
+            ? Row(
+          mainAxisAlignment:
+          MainAxisAlignment.spaceBetween,
           children: [
-            Expanded(
-              child: CircleAnimatedButtonWithText(
-                buttonName: MyStrings.withdrawHistory,
-                backgroundColor: MyColor.screenBgColor,
-                child: Image.asset(MyImages.withdrawHistory, color: MyColor.primaryColor, height: 20, width: 20),
-                onTap: (){
-                  Get.toNamed(RouteHelper.withdrawHistoryScreen);
-                },
-              ),
-            ),
-            Expanded(
-              child: CircleAnimatedButtonWithText(
-                  buttonName: MyStrings.invoice,
-                  backgroundColor: MyColor.screenBgColor,
-                  child: Image.asset(MyImages.invoice, color: MyColor.primaryColor, height: 20, width: 20),
-                  onTap: () => Get.toNamed(RouteHelper.invoiceScreen)
-              ),
-            ),
-            Expanded(
-              child: CircleAnimatedButtonWithText(
-                buttonName: MyStrings.redeemVoucher,
-                backgroundColor: MyColor.screenBgColor,
-                child: Image.asset(MyImages.redeemVoucher, color: MyColor.primaryColor, height: 20, width: 20),
-                onTap: (){
-                  Get.back();
-                  CustomBottomSheet(
-                      child: const RedeemVoucher()
-                  ).customBottomSheet(context);
-                },
-              ),
-            ),
-            const Expanded(
-              child: SizedBox(),
-            )
+            Expanded(child: controller.historyModuleList[0]),
+            Expanded(child: controller.historyModuleList[1]),
+            Expanded(child: controller.historyModuleList[2]),
+            Expanded(child: controller.historyModuleList[3]),
+          ],
+        ):
+        Wrap(
+          spacing: 8.0,
+          runSpacing: 8.0,
+          children: [
+            ...controller.historyModuleList
+                .getRange(0, controller.historyModuleList.length)
+                .map((item) => SizedBox(
+              width:
+              (MediaQuery.of(context).size.width -
+                  32 -
+                  24) /
+                  4,
+              child: item,
+            ))
+                .toList(),
           ],
         ),
         const SizedBox(height: Dimensions.space20),
       ],
-    );
+    ));
   }
 }
