@@ -124,7 +124,7 @@ class LoginRepo {
   Future<bool> sendUpdatedToken(String deviceToken) async {
     String url = '${UrlContainer.baseUrl}${UrlContainer.deviceTokenEndPoint}';
     Map<String, String> map = deviceTokenMap(deviceToken);
-    ResponseModel responseModel = await apiClient.request(url, Method.postMethod, map, passHeader: true);
+    await apiClient.request(url, Method.postMethod, map, passHeader: true);
     return true;
   }
 
@@ -132,4 +132,5 @@ class LoginRepo {
     Map<String, String> map = {'token': deviceToken.toString()};
     return map;
   }
+
 }

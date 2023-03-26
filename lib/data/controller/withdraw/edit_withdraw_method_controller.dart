@@ -139,6 +139,8 @@ class EditWithdrawMethodController extends GetxController {
           } else{
             selectedValue = [];
           }
+        } else if(type == 'file'){
+          selectedValue = '';
         } else{
           selectedValue = element.value??'';
         }

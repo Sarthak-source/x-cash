@@ -22,7 +22,7 @@ class EmailVerificationController extends GetxController {
 
   bool needTwoFactor = false;
   bool submitLoading = false;
-  bool isLoading = false;
+  bool isLoading = true;
   bool resendLoading = false;
 
   loadData() async {

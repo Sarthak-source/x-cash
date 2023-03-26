@@ -42,8 +42,8 @@ class WithdrawMoneyCard extends StatelessWidget {
                       Container(
                         height: 35, width: 35,
                         alignment: Alignment.center,
-                        decoration: BoxDecoration(color: MyColor.getPrimaryColor().withOpacity(0.2), shape: BoxShape.circle),
-                        child: Image.asset(MyImages.withdrawMoney, color: MyColor.getPrimaryColor(), height: 17, width: 17),
+                        decoration: BoxDecoration(color: MyColor.getSymbolColor(index), shape: BoxShape.circle),
+                        child: Image.asset(MyImages.withdrawMoney, color: MyColor.colorWhite, height: 17, width: 17),
                       ),
                       const SizedBox(width: Dimensions.space15),
                       Column(
@@ -73,7 +73,7 @@ class WithdrawMoneyCard extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
+                  Expanded(child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
@@ -82,15 +82,16 @@ class WithdrawMoneyCard extends StatelessWidget {
                       ),
                       const SizedBox(height: Dimensions.space5),
                       Text(
-                          "${Converter.formatNumber(controller.withdrawMoneyList[index].withdrawMethod?.withdrawMinLimit ?? "")} ~ "
-                              "${Converter.formatNumber(controller.withdrawMoneyList[index].withdrawMethod?.withdrawMaxLimit ?? "")} "
+                          "${Converter.formatNumber(controller.withdrawMoneyList[index].withdrawMethod?.withdrawMinLimit ?? "",precision:controller.withdrawMoneyList[index].currency?.currencyType=='2'?8:2)} ~ "
+                              "${Converter.formatNumber(controller.withdrawMoneyList[index].withdrawMethod?.withdrawMaxLimit ?? "",precision:controller.withdrawMoneyList[index].currency?.currencyType=='2'?8:2)} "
                               "${controller.withdrawMoneyList[index].currency?.currencyCode ?? ""}",
+                          maxLines: 2,
                           style: regularSmall.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600)
                       ),
                     ],
-                  ),
+                  )),
                   const SizedBox(width: Dimensions.space10),
-                  Column(
+                  Expanded(child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
@@ -98,19 +99,15 @@ class WithdrawMoneyCard extends StatelessWidget {
                         style: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.6)),
                       ),
                       const SizedBox(height: Dimensions.space5),
-                      controller.withdrawMoneyList[index].withdrawMethod?.id == 4 ? Text(
-                          "${Converter.formatNumber(controller.withdrawMoneyList[index].withdrawMethod?.withdrawMinLimit ?? "")} "
+                       Text(
+                          "${Converter.formatNumber(controller.withdrawMoneyList[index].withdrawMethod?.withdrawMaxLimit ?? "",precision:controller.withdrawMoneyList[index].currency?.currencyType=='2'?8:2)} "
                               "${controller.withdrawMoneyList[index].currency?.currencyCode ?? ""} + "
                               "${Converter.formatNumber(controller.withdrawMoneyList[index].withdrawMethod?.percentCharge ?? "")}%",
-                          style: regularSmall.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600)
-                      ) : Text(
-                          "${Converter.formatNumber(controller.withdrawMoneyList[index].withdrawMethod?.withdrawMaxLimit ?? "")} "
-                              "${controller.withdrawMoneyList[index].currency?.currencyCode ?? ""} + "
-                              "${Converter.formatNumber(controller.withdrawMoneyList[index].withdrawMethod?.percentCharge ?? "")}%",
+                          maxLines: 2,
                           style: regularSmall.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600)
                       ),
                     ],
-                  )
+                  ))
                 ],
               ),
             ],

@@ -64,7 +64,7 @@ class _WithdrawMoneyScreenState extends State<WithdrawMoneyScreen> {
               ActionButtonIconWidget(
                   isImage: true,
                   pressed: () => Get.toNamed(RouteHelper.withdrawMethodScreen),
-                  imageSrc: MyImages.withdrawMethod
+                  imageSrc: MyImages.moneyWithdraw
               )
             ],
           ),
@@ -86,7 +86,10 @@ class _WithdrawMoneyScreenState extends State<WithdrawMoneyScreen> {
                   }
                   return WithdrawMoneyCard(
                     index: index,
-                    press: () => CustomBottomSheet(child: WithdrawMoneyBottomSheet(index: index)).customBottomSheet(context)
+                    press: () {
+                      controller.amountController.text = '';
+                      CustomBottomSheet(child: WithdrawMoneyBottomSheet(index: index)).customBottomSheet(context);
+                    }
                   );
                 }
             ),

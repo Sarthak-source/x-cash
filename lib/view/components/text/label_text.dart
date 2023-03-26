@@ -5,6 +5,7 @@ import 'package:xcash_app/core/utils/style.dart';
 
 class LabelText extends StatelessWidget {
 
+  final bool isRequired;
   final String text;
   final TextAlign? textAlign;
 
@@ -12,11 +13,22 @@ class LabelText extends StatelessWidget {
     Key? key,
     required this.text,
     this.textAlign,
+    this.isRequired = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return isRequired?Row(
+      children: [
+        Text(
+      text.tr,
+      textAlign: textAlign,
+      style: regularDefault.copyWith(color: MyColor.getLabelTextColor()),
+    ),
+        const SizedBox(width: 2,),
+        Text('*',style: semiBoldDefault.copyWith(color: MyColor.colorRed),)
+      ],
+     ) : Text(
       text.tr,
       textAlign: textAlign,
       style: regularDefault.copyWith(color: MyColor.getLabelTextColor()),

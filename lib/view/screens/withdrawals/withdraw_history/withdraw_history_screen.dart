@@ -16,7 +16,6 @@ import 'package:xcash_app/view/components/no_data.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_history/widget/withdraw_details_bottom_sheet.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_history/widget/withdraw_log_card.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_history/widget/withdraw_log_top.dart';
-
 import 'widget/floating_action_button.dart';
 
 class WithdrawHistoryScreen extends StatefulWidget {
@@ -42,8 +41,7 @@ class _WithdrawHistoryScreenState extends State<WithdrawHistoryScreen> {
   void initState() {
     Get.put(ApiClient(sharedPreferences: Get.find()));
     Get.put(WithdrawHistoryRepo(apiClient: Get.find()));
-    final controller =
-        Get.put(WithdrawHistoryController(withdrawHistoryRepo: Get.find()));
+    final controller = Get.put(WithdrawHistoryController(withdrawHistoryRepo: Get.find()));
 
     super.initState();
 
@@ -68,7 +66,7 @@ class _WithdrawHistoryScreenState extends State<WithdrawHistoryScreen> {
           appBar: AppBar(
             title: Text(MyStrings.withdrawHistory.tr,
                 style: regularDefault.copyWith(
-                    color: MyColor.getAppBarContentColor())),
+                color: MyColor.getAppBarContentColor())),
             backgroundColor: MyColor.getAppBarColor(),
             elevation: 0,
             titleSpacing: 0,
@@ -86,7 +84,7 @@ class _WithdrawHistoryScreenState extends State<WithdrawHistoryScreen> {
               ),
               ActionButtonIconWidget(
                 isImage: true,
-                pressed: () => Get.toNamed(RouteHelper.withdrawMethodScreen),
+                pressed: () => Get.toNamed(RouteHelper.withdrawMoneyScreen),
                 imageSrc: MyImages.withdrawMethod,
               )
             ],

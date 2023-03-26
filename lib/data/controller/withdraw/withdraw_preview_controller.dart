@@ -21,7 +21,7 @@ class WithdrawPreviewController extends GetxController{
   String withdrawCharge = "";
   String youWillGet = "";
   String balanceWillBe = "";
-  String selectedOtp = "";
+  String selectedOtp = MyStrings.selectOtp;
   String remainingBalance = "";
 
   String currency = "";
@@ -86,10 +86,10 @@ class WithdrawPreviewController extends GetxController{
         String actionId = model.data?.actionId ?? "";
 
         if(actionId.isNotEmpty){
-          Get.toNamed(RouteHelper.otpScreen, arguments: [actionId, RouteHelper.withdrawHistoryScreen]);
+          Get.offAndToNamed(RouteHelper.otpScreen, arguments: [actionId, RouteHelper.withdrawHistoryScreen]);
         }
         else{
-          CustomSnackBar.error(errorList: [MyStrings.noActionId]);
+          Get.offAndToNamed(RouteHelper.withdrawHistoryScreen);
         }
       }
       else{

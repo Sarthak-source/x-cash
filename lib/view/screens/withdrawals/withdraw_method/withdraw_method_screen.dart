@@ -11,6 +11,7 @@ import 'package:xcash_app/data/controller/withdraw/withdraw_method_controller.da
 import 'package:xcash_app/data/repo/withdraw/withdraw_method_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/action_button_icon_widget.dart';
+import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/card/custom_card.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/custom_no_data_found_class.dart';
@@ -57,23 +58,7 @@ class _WithdrawMethodScreenState extends State<WithdrawMethodScreen> {
       builder: (controller) => SafeArea(
         child: Scaffold(
           backgroundColor: MyColor.getScreenBgColor(),
-          appBar: AppBar(
-            titleSpacing: 0,
-            title: Text(MyStrings.withdrawMethod, style: regularDefault.copyWith(color: MyColor.getAppBarContentColor())),
-            backgroundColor: MyColor.getPrimaryColor(),
-            elevation: 0,
-            leading: IconButton(
-              onPressed: () => Get.back(),
-              icon: Icon(Icons.arrow_back, color: MyColor.getAppBarContentColor(), size: 20),
-            ),
-            actions: [
-              ActionButtonIconWidget(
-                isImage: true,
-                pressed: () => Get.toNamed(RouteHelper.withdrawMoneyScreen),
-                imageSrc: MyImages.moneyWithdraw,
-              )
-            ],
-          ),
+          appBar: const CustomAppBar(title: MyStrings.withdrawMethod),
           body: controller.isLoading ? const CustomLoader() : SingleChildScrollView(
             padding: Dimensions.screenPaddingHV,
             physics: const BouncingScrollPhysics(),
@@ -93,6 +78,7 @@ class _WithdrawMethodScreenState extends State<WithdrawMethodScreen> {
                   return index == 0 ? CustomCard(
                     paddingTop: Dimensions.space15,
                     paddingBottom: Dimensions.space15,
+                    radius: Dimensions.defaultRadius,
                     isPress: true,
                     width: MediaQuery.of(context).size.width,
                     child: Row(
@@ -126,6 +112,7 @@ class _WithdrawMethodScreenState extends State<WithdrawMethodScreen> {
                   ) : CustomCard(
                     paddingTop: Dimensions.space15,
                     paddingBottom: Dimensions.space15,
+                    radius: Dimensions.defaultRadius,
                     isPress: true,
                     width: MediaQuery.of(context).size.width,
                     child: Column(

@@ -22,7 +22,7 @@ class CountryTextField extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: Dimensions.space15, horizontal: Dimensions.space15),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
-          border: Border.all(color: MyColor.getTextFieldDisableBorder())
+          border: Border.all(color: MyColor.getTextFieldDisableBorder(),width: .5)
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -31,8 +31,8 @@ class CountryTextField extends StatelessWidget {
               text,
               style: regularDefault.copyWith(color: MyColor.getTextColor())
             ),
-            Icon(
-              Icons.expand_more_rounded,color: MyColor.getPrimaryColor(),
+            const Icon(
+              Icons.expand_more_rounded,color: MyColor.hintTextColor,
               size: 20
             )
           ],

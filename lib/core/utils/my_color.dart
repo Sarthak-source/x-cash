@@ -140,4 +140,25 @@ class MyColor{
   static Color getCardBgColor(){
     return colorWhite;
   }
+
+  static List<Color>symbolPlate = [
+  const Color(0xffDE3163),
+  const Color(0xffC70039),
+  const Color(0xff900C3F),
+  const Color(0xff581845),
+  const Color(0xffFF7F50),
+  const Color(0xffFF5733),
+  const Color(0xff6495ED),
+  const Color(0xffCD5C5C),
+  const Color(0xffF08080),
+  const Color(0xffFA8072),
+  const Color(0xffE9967A),
+  const Color(0xff9FE2BF),
+  ];
+
+  static getSymbolColor(int index) {
+     int colorIndex = index>10?index%10:index;
+     print('color index: $colorIndex and index: $index');
+     return symbolPlate[colorIndex];
+  }
 }

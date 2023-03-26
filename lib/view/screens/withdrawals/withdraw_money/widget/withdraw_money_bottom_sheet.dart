@@ -35,7 +35,7 @@ class WithdrawMoneyBottomSheet extends StatelessWidget {
               controller: controller.amountController,
               onChanged: (value){}
           ),
-          const SizedBox(height: Dimensions.space25),
+          const SizedBox(height: Dimensions.space30),
           controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
             text: MyStrings.submit,
             press: (){

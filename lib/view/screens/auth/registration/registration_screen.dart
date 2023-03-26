@@ -68,10 +68,17 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  HeaderText(text: MyStrings.createAnAccount.tr),
+                  SizedBox(height: MediaQuery.of(context).size.height*.02),
+                  Center(child:Image.asset(MyImages.appLogo, height: 50, width: 225,color: MyColor.primaryColor,),),
+                  /* HeaderText(text: MyStrings.welcomeBack.tr),
+                  const SizedBox(height: 15),
+                  Padding(padding: const EdgeInsets.only(right: 55),
+                  child:  DefaultText(text: MyStrings.subTittle, textStyle: regularDefault.copyWith(color: MyColor.getTextColor().withOpacity(0.8))),),
+                */ SizedBox(height: MediaQuery.of(context).size.height*.05),
+                 /* HeaderText(text: MyStrings.createAnAccount.tr),
                   const SizedBox(height: Dimensions.space15),
                   DefaultText(text: MyStrings.registerMsg.tr, textStyle: regularDefault.copyWith(color: MyColor.getTextColor().withOpacity(0.8))),
-                  const SizedBox(height: Dimensions.space25),
+                  const SizedBox(height: Dimensions.space25),*/
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

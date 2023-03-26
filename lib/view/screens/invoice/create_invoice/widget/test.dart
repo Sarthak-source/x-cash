@@ -1,5 +1,5 @@
 
-  "File download at"
+  var list = ["File download at"
   "Error downloading file"
   "Downloading"
   "File downloaded successfully"
@@ -9,19 +9,19 @@
   "Yes"
   "No"
   "NID"
-  'Sec'
+  "Sec"
   "My QR Code"
   "QR Scan"
   "Share"
   "Verified User"
   "Download as Image"
   "Your OTP has been expired."
-  "Welcome To Xcash\nWallet App"
-  "Lorem Ipsum is simply dummy text of the printing\nand type setting industry"
-  "Easy Way To Manage\nYour Money"
-  "Lorem Ipsum is simply dummy text of the printing\nand type setting industry"
-  "Easy to view your transaction\nreport"
-  "Lorem Ipsum is simply dummy text of the printing\nand type setting industry"
+  "Welcome To Xcash Wallet App"
+  "Lorem Ipsum is simply dummy text of the printing and type setting industry"
+  "Easy Way To Manage Your Money"
+  "Lorem Ipsum is simply dummy text of the printing and type setting industry"
+  "Easy to view your transaction report"
+  "Lorem Ipsum is simply dummy text of the printing and type setting industry"
   "Skip"
   "Next"
   "Get Started"
@@ -33,9 +33,9 @@
   "Enter transaction no."
   "Quick Links"
   "Latest Transactions"
-  'Send to Email'
-  'Publish Invoice'
-  'Discard Invoice'
+  "Send to Email"
+  "Publish Invoice"
+  "Discard Invoice"
   "Welcome Back!"
   "We happy to see you here again. Enter your\nusername and password"
   "Username"
@@ -86,11 +86,11 @@
   "Copy"
   "View"
   "Edit"
-  'KYC'
-  'is required'
-  'Choose File'
-  'Your KYC is under review'
-  'You are already verified'
+  "KYC"
+  "is required"
+  "Choose File"
+  "Your KYC is under review"
+  "You are already verified"
   "OTP"
   "Enter the otp sent to "
   "Verify"
@@ -99,8 +99,8 @@
   "My Wallets"
   "Transfer Money"
   "Add Money"
-  'Withdraw Info'
-  'Add Money Info'
+  "Withdraw Info"
+  "Add Money Info"
   "Invoice Payment Url"
   "Add new method"
   "Setup a new withdraw method"
@@ -236,7 +236,7 @@
   "Select Currency"
   "Provide a Nick Name"
   "Reset Password"
-  "Your new password must different form \nprevious used passwords"
+  "Your new password must different form previous used passwords"
   "New Password"
   "Enter new password"
   "Change Password"
@@ -265,26 +265,26 @@
   "Enter your city"
   "Edit Profile"
   "Update Profile"
-  'Select Language'
+  "Select Language"
   "Please check investment limit"
   "Confirm to invest on"
-  'Invest'
-  'Interest'
-  'Google Authenticator Code'
-  'Two Factor Authentication'
-  'Enter 6-digit code from your two factor authenticator APP.'
+  "Invest"
+  "Interest"
+  "Google Authenticator Code"
+  "Two Factor Authentication"
+  "Enter 6-digit code from your two factor authenticator APP."
   "Do you want to exit the app?"
   "Has uppercase letter"
   "Has lowercase letter"
   "Has digit"
   "Has special character"
   "Min of 6 characters"
-  'Receivable'
-  'Conversion Rate'
-  'In'
+  "Receivable"
+  "Conversion Rate"
+  "In"
   "will cut from your selected wallet"
   "Username can't be empty"
-  'Initiated'
+  "Initiated"
   "Account"
   "Recover Account"
   "We happy to see you here again enter your username and password"
@@ -298,7 +298,7 @@
   "A 6 digits verification code sent to your email address"
   "View History"
   "Phone No."
-  'Password reset email sent to'
+  "Password reset email sent to"
   "Email Verification"
   "Please check your email to get a six digit OTP\nOTP will be expired in the next"
   "Didn't receive code?"
@@ -332,14 +332,14 @@
   "Total Return"
   "every"
   "Deposit Money"
-  'Deposit History'
-  'Transaction History'
-  'TRX'
-  'capital will be back'
-  'Post Balance'
-  'Details'
-  '&'
-  'Any'
+  "Deposit History"
+  "Transaction History"
+  "TRX"
+  "capital will be back"
+  "Post Balance"
+  "Details"
+  "&"
+  "Any"
   "Balance Transfer"
   "Balance"
   "xCash Balance"
@@ -389,29 +389,29 @@
   "for"
   "Capital"
   "Don't have an account?"
-  'Enter username or email'
-  'Policies'
-  'Verification Failed'
-  'Email Verification Failed'
-  'Email Verification Success'
-  'Login'
-  'Registration'
-  'Enter your password'
-  'KYC Verification'
-  'Notifications'
-  'KYC Data'
-  'Sorry! there are no data to show'
-  'Choose option'
+  "Enter username or email"
+  "Policies"
+  "Verification Failed"
+  "Email Verification Failed"
+  "Email Verification Success"
+  "Login"
+  "Registration"
+  "Enter your password"
+  "KYC Verification"
+  "Notifications"
+  "KYC Data"
+  "Sorry! there are no data to show"
+  "Choose option"
   "Gallery"
   "Camera"
-  'Gateway'
-  'Payment Method'
+  "Gateway"
+  "Payment Method"
   "I agree with"
   "Create new password"
   "Please provide a strong password to protect your account"
-  'Enter current password'
-  'Enter new password'
-  'Enter confirm password'
+  "Enter current password"
+  "Enter new password"
+  "Enter confirm password"
   "Add Withdraw"
   "Enter Amount"
   "Please enter an amount"
@@ -435,9 +435,9 @@
   "OTP Verification"
   "Show More"
   "More"
-  'success'
-  'version'
-  'Sign Out Successfully'
+  "success"
+  "version"
+  "Sign Out Successfully"
   "Enter valid email"
   "Enter your current password"
   "Enter your new password"
@@ -447,60 +447,60 @@
   "Enter last name"
   "Username must be 6 character"
   "Phone Number"
-  'Password Verification'
-  'Resend the code successfully'
-  'Failed to resend code'
-  'Something went wrong'
-  'No colorRedirect url found'
-  'Invalid amount'
-  'Search Result'
+  "Password Verification"
+  "Resend the code successfully"
+  "Failed to resend code"
+  "Something went wrong"
+  "No colorRedirect url found"
+  "Invalid amount"
+  "Search Result"
   "Enter your email or username below to receive a password reset verification code"
   "Please check your email to get a six digit OTP"
   "Please check your phone to get a six digit OTP"
   "OTP will be expired in the next"
-  'Verification Success'
-  'Enter your username'
-  'Enter username'
-  'Enter your email'
+  "Verification Success"
+  "Enter your username"
+  "Enter username"
+  "Enter your email"
   "Enter your phone number"
-  'Confirm your password'
-  "Please enter valid info to\ncreate account"
+  "Confirm your password"
+  "Please enter valid info to create account"
   "Didn't receive the code?"
   "We've sent you an access code to your phone number for SMS verification"
-  'Welcome back'
-  'Log in with the data that you entecolorRed during your registration'
-  'Register'
+  "Welcome back"
+  "Log in with the data that you enter during your registration"
+  "Register"
   "Select a country"
   "Request Failed"
   "Invalid user type"
   "Request Success"
   "Request from"
-  'Login failed,please try again'
+  "Login failed,please try again"
   "Select One"
   "Select"
   "Select from currency"
   "Select to currency"
   "Can't exchange currency in same wallet"
   "Money Exchange Successfully"
-  'SMS'
-  'No internet connection'
+  "SMS"
+  "No internet connection"
   "Retry"
-  'Return'
+  "Return"
   "Otp field can't be empty"
-  'Sorry something went wrong here, go back and retry after sometimes'
-  'second ago'
-  'minutes ago'
-  'hour ago'
-  'days ago'
-  'just now'
+  "Sorry something went wrong here, go back and retry after sometimes"
+  "second ago"
+  "minutes ago"
+  "hour ago"
+  "days ago"
+  "just now"
   "Level"
   "logout"
   "Menu"
   "Write something..."
-  'Bad Response Format!'
-  'Server Error'
-  'Unauthorized'
-  'your email'
+  "Bad Response Format!"
+  "Server Error"
+  "Unauthorized"
+  "your email"
   "Password reset email sent to "
   "Password change successfully"
   "Deposit Limit"
@@ -508,8 +508,8 @@
   "Please"
   "Deposit Wallet"
   "Interest Wallet"
-  'Error'
-  'Trx Type'
+  "Error"
+  "Trx Type"
   "Approved"
   "Accept"
   "Enabled"
@@ -547,4 +547,17 @@
   "Image downloaded successfully"
   "( Last 7 days )"
   "Send Code"
-  "You must agree with our privacy & policies"
+  "You must agree with our privacy & policies"];
+
+void main(){
+  var  map = {};
+ for(int i=0;i<list.length;i++){
+   map["${list[i]}"]=list[i];
+ }
+
+
+ map.forEach((key, value) {
+   print("------$key: v----$value ");
+ });
+
+}

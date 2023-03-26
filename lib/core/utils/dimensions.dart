@@ -22,6 +22,7 @@ class Dimensions{
   static const double space7 = 7;
   static const double space8 = 8;
   static const double space3 = 3;
+  static const double space2 = 2;
   static const double space10 = 10;
   static const double space15 = 15;
   static const double space17 = 17;

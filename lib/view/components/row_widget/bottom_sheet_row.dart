@@ -10,12 +10,14 @@ class BottomSheetRow extends StatelessWidget {
   final String body;
   final String? currencySymbol;
   final bool showSymbol;
+  final Color curBgColor;
 
   const BottomSheetRow({
     Key? key,
     required this.header,
     required this.body,
     this.showSymbol = false,
+    this.curBgColor = MyColor.primaryColor,
     this.currencySymbol
   }) : super(key: key);
 
@@ -27,9 +29,9 @@ class BottomSheetRow extends StatelessWidget {
         Row(
           children: [
             Container(
-              height: 35, width: 35,
+              height: 30, width: 30,
               alignment: Alignment.center,
-              decoration: const BoxDecoration(color: MyColor.colorBlack, shape: BoxShape.circle),
+              decoration: BoxDecoration(color: curBgColor, shape: BoxShape.circle),
               child: Text(currencySymbol!, textAlign: TextAlign.center, style: regularDefault.copyWith(color: MyColor.colorWhite)),
             ),
             const SizedBox(width: Dimensions.space10),

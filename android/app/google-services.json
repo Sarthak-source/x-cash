@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "402423441604",
+    "project_id": "viserlab-global-app",
+    "storage_bucket": "viserlab-global-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:402423441604:android:36a742fede4ca364b04191",
+        "android_client_info": {
+          "package_name": "dev.vlab.globalapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "402423441604-6qmv5a6pnigkc54v47mvacbde6heqvj3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfAkI8p8wKmbwtUi9Cq-2V4m4_65hAuU0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "402423441604-6qmv5a6pnigkc54v47mvacbde6heqvj3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:402423441604:android:5aedaf6961dbfcabb04191",
+        "android_client_info": {
+          "package_name": "dev.vlab.xcash_user"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "402423441604-6qmv5a6pnigkc54v47mvacbde6heqvj3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfAkI8p8wKmbwtUi9Cq-2V4m4_65hAuU0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "402423441604-6qmv5a6pnigkc54v47mvacbde6heqvj3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

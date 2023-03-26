@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
+import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/auth/login_controller.dart';
@@ -65,12 +66,13 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const SizedBox(height: Dimensions.space30),
-                  HeaderText(text: MyStrings.welcomeBack.tr),
+                 SizedBox(height: MediaQuery.of(context).size.height*.06),
+                 Center(child:Image.asset(MyImages.appLogo, height: 50, width: 225,color: MyColor.primaryColor,),),
+                 /* HeaderText(text: MyStrings.welcomeBack.tr),
                   const SizedBox(height: 15),
                   Padding(padding: const EdgeInsets.only(right: 55),
                   child:  DefaultText(text: MyStrings.subTittle, textStyle: regularDefault.copyWith(color: MyColor.getTextColor().withOpacity(0.8))),),
-                  const SizedBox(height: 40),
+                */ SizedBox(height: MediaQuery.of(context).size.height*.08),
                   Form(
                     key: formKey,
                     child: Column(

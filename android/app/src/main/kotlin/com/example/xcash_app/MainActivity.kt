@@ -1,4 +1,4 @@
-package com.example.xcash_app
+package dev.vlab.xcash_user
 
 import io.flutter.embedding.android.FlutterActivity
 

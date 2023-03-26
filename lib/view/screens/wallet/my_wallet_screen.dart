@@ -72,13 +72,14 @@ class _MyWalletScreenState extends State<MyWalletScreen> {
               itemBuilder: (context, index) => Container(
                 width: MediaQuery.of(context).size.width,
                 padding: const EdgeInsets.symmetric(vertical: Dimensions.space12, horizontal: Dimensions.space15),
-                decoration: BoxDecoration(color: MyColor.getCardBgColor(), borderRadius: BorderRadius.circular(Dimensions.defaultRadius),boxShadow: MyUtils.getCardShadow()),
+                decoration: BoxDecoration(color: MyColor.getCardBgColor(), borderRadius: BorderRadius.circular(Dimensions.defaultRadius),/*boxShadow: MyUtils.getCardShadow()*/),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     CircleShapeImage(
-                      imageColor: MyColor.primaryColor,
+                      imageColor: MyColor.colorWhite,
+                      backgroundColor: MyColor.getSymbolColor(index),
                       image: controller.image,
                     ),
                     const SizedBox(height: Dimensions.space10),

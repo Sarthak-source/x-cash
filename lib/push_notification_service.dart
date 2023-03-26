@@ -6,7 +6,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'core/helper/shared_preference_helper.dart';
-import 'core/route/route.dart';
 import 'data/repo/splash/splash_repo.dart';
 import 'data/services/api_service.dart';
 

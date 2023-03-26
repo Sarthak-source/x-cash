@@ -9,6 +9,7 @@ import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/home/home_controller.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
+import 'package:xcash_app/view/components/card/bottom_sheet_card.dart';
 import 'package:xcash_app/view/components/row_widget/bottom_sheet_row.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
 
@@ -57,15 +58,12 @@ class _BalanceBottomSheetState extends State<BalanceBottomSheet> {
               onTap: (){
                 Get.toNamed(RouteHelper.transferMoneyScreen, arguments: controller.walletList[index].id.toString());
               },
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                padding: const EdgeInsets.symmetric(vertical: Dimensions.space10, horizontal: Dimensions.space15),
-                decoration: BoxDecoration(
-                    border: Border.all(color: MyColor.colorGrey.withOpacity(0.2), width: 0.5),
-                    borderRadius: BorderRadius.circular(Dimensions.defaultRadius)
-                ),
+              child: BottomSheetCard(
+                bottomSpace: 1,
+                padding: Dimensions.space10,
                 child: BottomSheetRow(
                     showSymbol: true,
+                    curBgColor: MyColor.getSymbolColor(index),
                     currencySymbol: controller.walletList[index].currency?.currencySymbol ?? "",
                     header: controller.walletList[index].currencyCode ?? "",
                     body: "${controller.walletList[index].currency?.currencySymbol ?? ""}${Converter.formatNumber(controller.walletList[index].balance ?? "")}"

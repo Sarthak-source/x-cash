@@ -99,7 +99,14 @@ class WithdrawMoneyController extends GetxController{
       SubmitWithdrawMoneyResponseModel model = SubmitWithdrawMoneyResponseModel.fromJson(jsonDecode(responseModel.responseJson));
       if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
         trx = model.data?.trx ?? "";
-        Get.toNamed(RouteHelper.withdrawPreviewScreen, arguments: [withdrawMethodName, trx, amountController.text]);
+        if(trx.isNotEmpty){
+          Get.back();
+          Get.toNamed(RouteHelper.withdrawPreviewScreen, arguments: [withdrawMethodName, trx, amountController.text]);
+        } else{
+          Get.back();
+          Get.toNamed(RouteHelper.withdrawHistoryScreen);
+        }
+        CustomSnackBar.success(successList: model.message?.success ?? [MyStrings.requestSuccess]);
       }
       else{
         CustomSnackBar.error(errorList: model.message?.error ?? [MyStrings.somethingWentWrong]);

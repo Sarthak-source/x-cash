@@ -29,6 +29,7 @@ class CustomTextField extends StatefulWidget {
   final int maxLines;
   final bool animatedLabel;
   final Color fillColor;
+  final bool isRequired;
 
  const CustomTextField({
     Key? key,
@@ -53,7 +54,8 @@ class CustomTextField extends StatefulWidget {
     this.needOutlineBorder = false,
     this.needRequiredSign = false,
     this.maxLines = 1,
-    this.animatedLabel = false
+    this.animatedLabel = false,
+   this.isRequired = false,
   }) : super(key: key);
 
   @override
@@ -112,7 +114,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
     ) : Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        LabelText(text: widget.labelText.toString()),
+        LabelText(text: widget.labelText.toString(),isRequired: widget.isRequired),
         const SizedBox(height: Dimensions.textToTextSpace),
         TextFormField(
           maxLines: widget.maxLines,

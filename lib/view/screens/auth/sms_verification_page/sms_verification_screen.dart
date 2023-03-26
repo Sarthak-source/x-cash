@@ -69,15 +69,15 @@ class _SmsVerificationScreenState extends State<SmsVerificationScreen> {
                       height: 100, width: 100,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          color: MyColor.getCardBgColor(),
+                          color: MyColor.primaryColor.withOpacity(.075),
                           shape: BoxShape.circle
                       ),
                       child: SvgPicture.asset(MyImages.emailVerifyImage, height: 50, width: 50, color: MyColor.getPrimaryColor()),
                     ),
                     const SizedBox(height: Dimensions.space50),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30 ),
-                      child: SmallText(text: MyStrings.smsVerificationMsg.tr, textAlign: TextAlign.center, textStyle: regularDefault.copyWith(color: MyColor.getLabelTextColor())),
+                      padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*.07 ),
+                      child: SmallText(text: MyStrings.smsVerificationMsg.tr, maxLine:3,textAlign: TextAlign.center, textStyle: regularDefault.copyWith(color: MyColor.getLabelTextColor())),
                     ),
                     const SizedBox(height: 30),
 

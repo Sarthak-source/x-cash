@@ -1,18 +1,36 @@
 import 'dart:io';
 
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:xcash_app/core/helper/shared_preference_helper.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/messages.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/controller/localization/localization_controller.dart';
+import 'package:xcash_app/push_notification_service.dart';
 import 'core/di_service/di_services.dart' as di_service;
+
+
+
+Future<void> _messageHandler(RemoteMessage message) async {
+  await Firebase.initializeApp();
+  final sharedPreferences=await SharedPreferences.getInstance();
+  Get.lazyPut(()=>sharedPreferences);
+  sharedPreferences.setBool(SharedPreferenceHelper.hasNewNotificationKey, true);
+}
 
 Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   Map<String, Map<String, String>> languages = await di_service.init();
 
-  await di_service.init();
+  FirebaseMessaging.onBackgroundMessage(
+      _messageHandler
+  );
+  await PushNotificationService().setupInteractedMessage();
+
   HttpOverrides.global = MyHttpOverrides();
   runApp(MyApp(languages: languages));
 }
@@ -48,7 +66,8 @@ class _MyAppState extends State<MyApp> {
         getPages: RouteHelper().routes,
         locale: localizeController.locale,
         translations: Messages(languages: widget.languages),
-        fallbackLocale: Locale(localizeController.locale.languageCode, localizeController.locale.countryCode),
+        fallbackLocale: Locale(localizeController.locale.languageCode,
+        localizeController.locale.countryCode),
       ),
     );
   }

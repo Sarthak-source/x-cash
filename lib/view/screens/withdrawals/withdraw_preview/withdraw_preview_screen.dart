@@ -5,6 +5,7 @@ import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
+import 'package:xcash_app/core/utils/util.dart';
 import 'package:xcash_app/data/controller/withdraw/withdraw_preview_controller.dart';
 import 'package:xcash_app/data/repo/withdraw/withdraw_money_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
@@ -72,7 +73,8 @@ class _WithdrawPreviewScreenState extends State<WithdrawPreviewScreen> {
                   width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                       color: MyColor.getCardBgColor(),
-                      borderRadius: BorderRadius.circular(Dimensions.defaultRadius)
+                      borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
+                      boxShadow: MyUtils.getCardShadow()
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -139,21 +141,37 @@ class _WithdrawPreviewScreenState extends State<WithdrawPreviewScreen> {
                     ],
                   ),
                 ),
-                const SizedBox(height: Dimensions.space20),
-                CustomDropDownTextField(
-                  labelText: MyStrings.selectOtp.tr,
-                  selectedValue: controller.selectedOtp,
-                  onChanged: (newValue) {
-                    controller.setSelectedOTP(newValue.toString());
-                  },
-                  items: controller.otpTypeList.map((value) {
-                    return DropdownMenuItem(
-                      value: value,
-                      child: Text(value.toString().toTitleCase(), style: regularDefault),
-                    );
-                  }).toList(),
-                ),
-                const SizedBox(height: Dimensions.space25),
+               Visibility(
+                 visible: controller.otpTypeList.length>1,
+                 child: Container(
+                   margin: const EdgeInsets.only(top: Dimensions.space10),
+                   padding: const EdgeInsets.only(left: Dimensions.space15,right: Dimensions.space15, bottom: Dimensions.space20),
+                   width: MediaQuery.of(context).size.width,
+                   decoration: BoxDecoration(
+                       color: MyColor.getCardBgColor(),
+                       borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
+                       boxShadow: MyUtils.getCardShadow()
+                   ),
+                   child: Column(
+                   crossAxisAlignment: CrossAxisAlignment.start,
+                   children: [
+                     const SizedBox(height: Dimensions.space20),
+                     CustomDropDownTextField(
+                       labelText: MyStrings.selectOtp.tr,
+                       selectedValue: controller.selectedOtp,
+                       onChanged: (newValue) {
+                         controller.setSelectedOTP(newValue.toString());
+                       },
+                       items: controller.otpTypeList.map((value) {
+                         return DropdownMenuItem(
+                           value: value,
+                           child: Text(value.toString().toTitleCase(), style: regularDefault),
+                         );
+                       }).toList(),
+                     )],
+                   ),
+                 )),
+                const SizedBox(height: Dimensions.space30),
                 controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
                     text: MyStrings.confirm,
                     press: (){

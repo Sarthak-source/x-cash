@@ -487,7 +487,7 @@ class MyStrings{
   static const String camera = "Camera";
   static const String gateway = 'Gateway';
   static const String paymentMethod = 'Payment Method';
-  static const String iAgreeWith = "I agree with";
+  static const String iAgreeWith = "I agree with the";
   /// change password
   static const String createNewPassword = "Create new password";
   static const String createPasswordSubText = "Please provide a strong password to protect your account";

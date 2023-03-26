@@ -13,6 +13,7 @@ import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
+import 'package:xcash_app/view/components/text/small_text.dart';
 
 
 class TwoFactorVerificationScreen extends StatefulWidget {
@@ -51,7 +52,7 @@ class _TwoFactorVerificationScreenState extends State<TwoFactorVerificationScree
     return SafeArea(
       child: Scaffold(
         backgroundColor: MyColor.getScreenBgColor(),
-        appBar: CustomAppBar(title:MyStrings.twoFactorAuth.tr,fromAuth: true,bgColor: MyColor.transparentColor,),
+        appBar: CustomAppBar(title:MyStrings.twoFactorAuth.tr,fromAuth: true,),
         body: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: Dimensions.space15, vertical: Dimensions.space20),
           child: GetBuilder<TwoFactorController>(
@@ -65,14 +66,17 @@ class _TwoFactorVerificationScreenState extends State<TwoFactorVerificationScree
                       height: 100, width: 100,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          color: MyColor.getCardBgColor(),
+                          color: MyColor.primaryColor.withOpacity(.075),
                           shape: BoxShape.circle
                       ),
-                      child: SvgPicture.asset(MyImages.emailVerifyImage, height: 50, width: 50),
+                      child: SvgPicture.asset(MyImages.emailVerifyImage, height: 50, width: 50, color: MyColor.getPrimaryColor()),
                     ),
                     const SizedBox(height: Dimensions.space50),
-                    Text(MyStrings.twoFactorMsg.tr, style: regularDefault.copyWith(color: MyColor.colorWhite), textAlign: TextAlign.center),
-                    const SizedBox(height: Dimensions.space30),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*.07 ),
+                      child: SmallText(text: MyStrings.twoFactorMsg.tr, maxLine:3,textAlign: TextAlign.center, textStyle: regularDefault.copyWith(color: MyColor.getLabelTextColor())),
+                    ),
+                    const SizedBox(height: Dimensions.space50),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: Dimensions.space30),
                       child: PinCodeTextField(
