@@ -1,5 +1,4 @@
 
-
 import '../auth/sign_up_model/registration_response_model.dart';
 
 class MainLanguageResponseModel {

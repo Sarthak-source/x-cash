@@ -87,7 +87,7 @@ class _ChangePasswordFormState extends State<ChangePasswordForm> {
               controller.submitLoading?
               const RoundedLoadingBtn():
               RoundedButton(
-                text: MyStrings.submit.tr,
+                text: MyStrings.submit,
                 press: (){
                   if (formKey.currentState!.validate()) {
                     controller.changePassword();

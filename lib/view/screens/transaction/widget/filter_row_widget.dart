@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
@@ -49,14 +50,14 @@ class _FilterRowWidgetState extends State<FilterRowWidget> {
           children:  [
             widget.fromTrx ? Expanded(
               child: Text(
-                widget.text,style:
+                widget.text.tr,style:
                 regularDefault.copyWith(
                     overflow: TextOverflow.ellipsis,
                     color: widget.isFilterBtn ? MyColor.colorBlack : MyColor.colorBlack)
               )
             ): Expanded(
                 child: Text(
-                  widget.text,
+                  widget.text.tr,
                   style: regularDefault.copyWith(
                       color: widget.textColor,
                       overflow: TextOverflow.ellipsis

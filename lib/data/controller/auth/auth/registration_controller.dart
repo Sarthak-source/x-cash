@@ -10,10 +10,10 @@ import 'package:xcash_app/data/model/auth/sign_up_model/sign_up_model.dart';
 import 'package:xcash_app/data/model/country_model/country_model.dart';
 import 'package:xcash_app/data/model/general_setting/general_setting_response_model.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
+import 'package:xcash_app/data/model/model/error_model.dart';
 import 'package:xcash_app/data/repo/auth/general_setting_repo.dart';
 import 'package:xcash_app/data/repo/auth/signup_repo.dart';
 import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
-import 'package:xcash_app/view/screens/auth/registration/model/error_model.dart';
 
 class RegistrationController extends GetxController {
   
@@ -168,14 +168,14 @@ class RegistrationController extends GetxController {
 
   void closeAllController() {
     isLoading = false;
-    emailController.text      = '';
-    passwordController.text   = '';
-    cPasswordController.text  = '';
-    fNameController.text      = '';
-    lNameController.text      = '';
-    mobileController.text     = '';
-    countryController.text    = '';
-    userNameController.text   = '';
+    emailController.text         = '';
+    passwordController.text      = '';
+    cPasswordController.text     = '';
+    fNameController.text         = '';
+    lNameController.text         = '';
+    mobileController.text        = '';
+    countryController.text       = '';
+    userNameController.text      = '';
     companyNameController.text   = '';
   }
 
@@ -186,9 +186,9 @@ class RegistrationController extends GetxController {
   List<ErrorModel> passwordValidationRules = [
     ErrorModel(text: MyStrings.hasUpperLetter.tr, hasError: true),
     ErrorModel(text: MyStrings.hasLowerLetter.tr, hasError: true),
-    ErrorModel(text: MyStrings.hasDigit.tr, hasError: true),
+    ErrorModel(text: MyStrings.hasDigit.tr,       hasError: true),
     ErrorModel(text: MyStrings.hasSpecialChar.tr, hasError: true),
-    ErrorModel(text: MyStrings.minSixChar.tr, hasError: true),
+    ErrorModel(text: MyStrings.minSixChar.tr,     hasError: true),
   ];
 
   bool isCountryLoading=true;

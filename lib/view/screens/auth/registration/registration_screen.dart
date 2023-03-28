@@ -13,8 +13,6 @@ import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/custom_no_data_found_class.dart';
-import 'package:xcash_app/view/components/text/default_text.dart';
-import 'package:xcash_app/view/components/text/header_text.dart';
 import 'package:xcash_app/view/components/will_pop_widget.dart';
 import 'package:xcash_app/view/screens/auth/registration/widget/company_account_form.dart';
 import 'package:xcash_app/view/screens/auth/registration/widget/personal_account_form.dart';
@@ -70,15 +68,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 children: [
                   SizedBox(height: MediaQuery.of(context).size.height*.02),
                   Center(child:Image.asset(MyImages.appLogo, height: 50, width: 225,color: MyColor.primaryColor,),),
-                  /* HeaderText(text: MyStrings.welcomeBack.tr),
-                  const SizedBox(height: 15),
-                  Padding(padding: const EdgeInsets.only(right: 55),
-                  child:  DefaultText(text: MyStrings.subTittle, textStyle: regularDefault.copyWith(color: MyColor.getTextColor().withOpacity(0.8))),),
-                */ SizedBox(height: MediaQuery.of(context).size.height*.05),
-                 /* HeaderText(text: MyStrings.createAnAccount.tr),
-                  const SizedBox(height: Dimensions.space15),
-                  DefaultText(text: MyStrings.registerMsg.tr, textStyle: regularDefault.copyWith(color: MyColor.getTextColor().withOpacity(0.8))),
-                  const SizedBox(height: Dimensions.space25),*/
+                  SizedBox(height: MediaQuery.of(context).size.height*.05),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

@@ -1,6 +1,4 @@
 import 'dart:convert';
-
-import 'package:get/get.dart';
 import 'package:xcash_app/core/utils/method.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/url_container.dart';
@@ -15,14 +13,9 @@ class GeneralSettingRepo {
   GeneralSettingRepo({required this.apiClient});
 
   Future<dynamic> getGeneralSetting() async {
-
-    try{
       String url='${UrlContainer.baseUrl}${UrlContainer.generalSettingEndPoint}';
       ResponseModel response= await apiClient.request(url,Method.getMethod, null,passHeader: false);
       return response;
-    }catch(e){
-      return ResponseModel(false, MyStrings.somethingWentWrong.tr, 300, '');
-    }
   }
 
   Future<dynamic> getLanguage(String languageCode) async {

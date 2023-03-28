@@ -13,6 +13,7 @@ import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_bar.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
+import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_header_row.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
@@ -76,13 +77,7 @@ class _AddMoneyScreenState extends State<AddMoneyScreen> {
                         CustomBottomSheet(
                             child: Column(
                               children: [
-                                const BottomSheetBar(),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: const [
-                                    BottomSheetCloseButton()
-                                  ],
-                                ),
+                                const BottomSheetHeaderRow(header: ''),
                                 const SizedBox(height: Dimensions.space15),
                                 ListView.builder(
                                     padding: EdgeInsets.zero,
@@ -154,7 +149,7 @@ class _AddMoneyScreenState extends State<AddMoneyScreen> {
                                         },
                                         child:BottomSheetCard(
                                           child:Text(
-                                            controller.gatewayList[index].name.toString() ?? "",
+                                            controller.gatewayList[index].name?.tr.toString() ?? "",
                                             style: regularDefault,
                                           ),
                                         ),
@@ -193,7 +188,7 @@ class _AddMoneyScreenState extends State<AddMoneyScreen> {
                     press: (){
                       controller.submitData();
                     },
-                    text: MyStrings.proceed.tr,
+                    text: MyStrings.proceed,
                   )
                 ],
               ),

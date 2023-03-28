@@ -10,7 +10,6 @@ import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/withdraw/withdraw_method_controller.dart';
 import 'package:xcash_app/data/repo/withdraw/withdraw_method_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
-import 'package:xcash_app/view/components/app-bar/action_button_icon_widget.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/card/custom_card.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
@@ -74,7 +73,6 @@ class _WithdrawMethodScreenState extends State<WithdrawMethodScreen> {
                   if (controller.methodList.length == index) {
                     return controller.hasNext() ? const CustomLoader(isPagination: true) : const SizedBox();
                   }
-
                   return index == 0 ? CustomCard(
                     paddingTop: Dimensions.space15,
                     paddingBottom: Dimensions.space15,
@@ -94,12 +92,12 @@ class _WithdrawMethodScreenState extends State<WithdrawMethodScreen> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              controller.methodList[index].name ?? "",
+                              controller.methodList[index].name?.tr ?? "",
                               style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600),
                             ),
                             const SizedBox(height: Dimensions.space8),
                             Text(
-                              MyStrings.chooseNewWithdrawMethod,
+                              MyStrings.chooseNewWithdrawMethod.tr,
                               style: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.6)),
                             ),
                           ],
@@ -163,13 +161,13 @@ class _WithdrawMethodScreenState extends State<WithdrawMethodScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  MyStrings.limit,
+                                  MyStrings.limit.tr,
                                   style: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.6)),
                                 ),
                                 const SizedBox(height: Dimensions.space5),
                                 Text(
-                                    "${Converter.formatNumber(controller.methodList[index].withdrawMethod?.withdrawMinLimit ?? "")} ~ "
-                                        "${Converter.formatNumber(controller.methodList[index].withdrawMethod?.withdrawMaxLimit ?? "")} "
+                                    "${Converter.formatNumber(controller.methodList[index].minLimit ?? "")} ~ "
+                                        "${Converter.formatNumber(controller.methodList[index].maxLimit ?? "")} "
                                         "${controller.methodList[index].currency?.currencyCode ?? ""}",
                                     style: regularSmall.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600)
                                 ),
@@ -180,17 +178,12 @@ class _WithdrawMethodScreenState extends State<WithdrawMethodScreen> {
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Text(
-                                  MyStrings.charge,
+                                  MyStrings.charge.tr,
                                   style: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.6)),
                                 ),
                                 const SizedBox(height: Dimensions.space5),
-                                controller.methodList[index].withdrawMethod?.id == 4 ? Text(
-                                    "${Converter.formatNumber(controller.methodList[index].withdrawMethod?.withdrawMinLimit ?? "")} "
-                                        "${controller.methodList[index].currency?.currencyCode ?? ""} + "
-                                        "${Converter.formatNumber(controller.methodList[index].withdrawMethod?.percentCharge ?? "")}%",
-                                    style: regularSmall.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600)
-                                ) : Text(
-                                    "${Converter.formatNumber(controller.methodList[index].withdrawMethod?.withdrawMaxLimit ?? "")} "
+                                 Text(
+                                     "${Converter.calculateRate(controller.methodList[index].withdrawMethod?.fixedCharge??'0', controller.methodList[index].currency?.rate??'0')} "
                                         "${controller.methodList[index].currency?.currencyCode ?? ""} + "
                                         "${Converter.formatNumber(controller.methodList[index].withdrawMethod?.percentCharge ?? "")}%",
                                     style: regularSmall.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600)

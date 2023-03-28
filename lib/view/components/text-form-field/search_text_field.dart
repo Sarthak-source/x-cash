@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/style.dart';
+import 'package:get/get.dart';
 
 class SearchTextField extends StatefulWidget {
 
@@ -114,7 +115,7 @@ class _SearchTextFieldState extends State<SearchTextField> {
       obscureText: widget.isPassword?obscureText:false,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.only(top: 5, left: 0, right: 0, bottom: 5),
-        labelText:  widget.labelText,
+        labelText:  widget.labelText?.tr??'',
         labelStyle: regularDefault.copyWith(color: MyColor.getLabelTextColor()),
         fillColor: MyColor.transparentColor,
         filled: true,

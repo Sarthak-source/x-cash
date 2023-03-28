@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:lottie/lottie.dart';
+import 'package:get/get.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
@@ -23,7 +22,7 @@ class NoDataWidget extends StatelessWidget {
           Image.asset(MyImages.noDataFound, height: 120, width: 120),
           const SizedBox(height: Dimensions.space3),
           Text(
-            MyStrings.noDataFound,
+            MyStrings.noDataFound.tr,
             style: regularLarge.copyWith(color: MyColor.getTextColor()),
           )
         ],

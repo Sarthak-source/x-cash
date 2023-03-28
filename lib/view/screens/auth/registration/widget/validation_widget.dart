@@ -2,8 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
-
-import '../model/error_model.dart';
+import 'package:xcash_app/data/model/model/error_model.dart';
 import 'validation_chip_widget.dart';
 
 class ValidationWidget extends StatelessWidget {

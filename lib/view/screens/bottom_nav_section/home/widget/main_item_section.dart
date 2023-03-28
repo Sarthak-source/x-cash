@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
-import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/controller/home/home_controller.dart';
 import 'package:xcash_app/view/components/animated_widget/expanded_widget.dart';
-import 'package:xcash_app/view/components/buttons/circle_animated_button_with_text.dart';
 import 'package:xcash_app/view/screens/bottom_nav_section/home/widget/main_item_history.dart';
 
 class MainItemSection extends StatelessWidget {
@@ -61,25 +57,14 @@ class MainItemSection extends StatelessWidget {
                                 ...controller.moduleList
                                     .getRange(0, 4)
                                     .map((item) => SizedBox(
-                                          width: (MediaQuery.of(context)
-                                                      .size
-                                                      .width -
-                                                  32 -
-                                                  24) /
-                                              4,
-                                          // 32 is the total horizontal padding, 24 is the total horizontal spacing
+                                          width: (MediaQuery.of(context).size.width - 32 - 24) / 4,
                                           child: item,
                                         ))
                                     .toList(),
                                 ...controller.moduleList
                                     .getRange(4, controller.moduleList.length)
                                     .map((item) => SizedBox(
-                                          width: (MediaQuery.of(context)
-                                                      .size
-                                                      .width -
-                                                  32 -
-                                                  24) /
-                                              4,
+                                          width: (MediaQuery.of(context).size.width - 32 - 24) / 4,
                                           child: item,
                                         ))
                                     .toList(),

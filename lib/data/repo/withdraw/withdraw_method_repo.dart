@@ -9,9 +9,7 @@ class WithdrawMethodRepo{
   WithdrawMethodRepo({required this.apiClient});
 
   Future<ResponseModel> getMethodData(int page) async{
-
     String url = "${UrlContainer.baseUrl}${UrlContainer.withdrawMethodUrl}?page=$page";
-
     ResponseModel responseModel = await apiClient.request(url, Method.getMethod, null, passHeader: true);
     return responseModel;
   }

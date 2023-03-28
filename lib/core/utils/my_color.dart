@@ -4,7 +4,6 @@ class MyColor{
 
   static const Color primaryColor = Color(0xff1C3A6F);
   static const Color secondaryColor = Color(0xffF6F7FE);
-  //static const Color screenBgColor = Color(0xFFf2f2f2);
   static const Color screenBgColor = Color(0xFFF9F9F9);
   static  Color secondaryScreenBgColor = primaryColor.withOpacity(.4);
   static const Color primaryTextColor = Color(0xff262626);
@@ -158,7 +157,6 @@ class MyColor{
 
   static getSymbolColor(int index) {
      int colorIndex = index>10?index%10:index;
-     print('color index: $colorIndex and index: $index');
      return symbolPlate[colorIndex];
   }
 }

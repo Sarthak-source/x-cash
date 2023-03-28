@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/helper/string_format_helper.dart';
@@ -143,26 +142,26 @@ class MakePaymentController extends GetxController{
       return ;
     }
 
-    mainAmount = amount;
-    double currencyRate = double.tryParse(selectedWallet?.currency?.rate??'1')??1;
+    mainAmount            = amount;
+    double currencyRate   = double.tryParse(selectedWallet?.currency?.rate??'1')??1;
 
-    double percent = double.tryParse(model.data?.paymentCharge?.percentCharge ?? "0") ?? 0;
-    double percentCharge = (amount*percent)/100;
+    double percent        = double.tryParse(model.data?.paymentCharge?.percentCharge ?? "0") ?? 0;
+    double percentCharge  = (amount*percent)/100;
 
-    double fixed = double.tryParse(model.data?.paymentCharge?.fixedCharge ?? "0") ?? 0;
-    double fixedCharge = fixed/currencyRate;  //fixed charge are  global for each currency so that we don't calculate it with expected currency
+    double fixed          = double.tryParse(model.data?.paymentCharge?.fixedCharge ?? "0") ?? 0;
+    double fixedCharge    = fixed/currencyRate;  //fixed charge are  global for each currency so that we don't calculate it with expected currency
 
-    double finalCharge = fixedCharge + percentCharge;
-    charge = '${Converter.formatNumber('$finalCharge',precision: selectedWallet?.currency?.currencyType=='2'?8:2)} $currency';
-    String payable = Converter.sum(finalCharge.toString(),mainAmount.toString(),precision: selectedWallet?.currency?.currencyType=='2'?8:2);
-    payableText = '$payable $currency';
+    double finalCharge    = fixedCharge + percentCharge;
+    charge                = '${Converter.formatNumber('$finalCharge',precision: selectedWallet?.currency?.currencyType=='2'?8:2)} $currency';
+    String payable        = Converter.sum(finalCharge.toString(),mainAmount.toString(),precision: selectedWallet?.currency?.currencyType=='2'?8:2);
+    payableText           = '$payable $currency';
     update();
   }
 
-  bool hasAgent = false;
-  String validMerchant = "";
-  String invalidMerchant = "";
-  bool? isAgentFound;
+  bool   hasAgent         = false;
+  String validMerchant    = "";
+  String invalidMerchant  = "";
+  bool?  isAgentFound;
   Future<void> checkMerchantFocus(bool hasFocus) async{
     hasAgent = hasFocus;
     update();
@@ -172,7 +171,7 @@ class MakePaymentController extends GetxController{
     if(responseModel.statusCode == 200){
       CheckMerchantResponseModel model = CheckMerchantResponseModel.fromJson(jsonDecode(responseModel.responseJson));
       if(model.status.toString().toLowerCase() == "success"){
-        isAgentFound = true;
+        isAgentFound  = true;
         validMerchant = MyStrings.validMerchantMsg;
         update();
       }

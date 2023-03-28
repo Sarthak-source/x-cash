@@ -21,20 +21,15 @@ class MyRequestHistoryRepo{
   }
 
   Future<ResponseModel> requestAccept({required String requestId, required String otpType}) async{
-
     String url = "${UrlContainer.baseUrl}${UrlContainer.requestAcceptUrl}";
     Map<String, String> params = {"request_id" : requestId, "otp_type" : otpType};
-
     ResponseModel responseModel = await apiClient.request(url, Method.postMethod, params, passHeader: true);
     return responseModel;
   }
 
   Future<ResponseModel> requestReject({required String requestId}) async{
-
     String url = "${UrlContainer.baseUrl}${UrlContainer.requestRejectUrl}";
-
     Map<String, String> params = {"request_id" : requestId};
-
     ResponseModel responseModel = await apiClient.request(url, Method.postMethod, params, passHeader: true);
     return responseModel;
   }

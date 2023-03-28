@@ -1,7 +1,6 @@
 class UrlContainer{
 
-  static const String domainUrl = 'https://sohan.thesoftking.com/x_cash/v4';
-  //static const String domainUrl = 'http://192.168.30.135/php_8/lab/xCash';
+  static const String domainUrl = 'https://sohan.thesoftking.com/x_cash/v5';
   static const String baseUrl = '$domainUrl/api/';
 
 
@@ -59,7 +58,7 @@ class UrlContainer{
   static const String changePasswordEndPoint='change-password';
   static const String countryEndPoint='get-countries';
 
-  static const String deviceTokenEndPoint  = 'save/device/token';
+  static const String deviceTokenEndPoint  = 'get/device/token';
   static const String languageUrl = 'language/';
 
   // make payment

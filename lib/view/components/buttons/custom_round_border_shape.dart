@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/style.dart';
@@ -27,7 +28,7 @@ class RoundedBorderContainer extends StatelessWidget {
         border:Border.all(color: borderColor,width: 1.5)
       ),
       child: Text(
-        text,
+        text.tr,
         style: boldDefault.copyWith(color:textColor,fontSize: Dimensions.fontSmall)
       ),
     );

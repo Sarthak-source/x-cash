@@ -5,7 +5,6 @@ import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/money_discharge/make_payment/make_payment_controller.dart';
-import 'package:xcash_app/data/controller/transfer/transfer_money_controller.dart';
 
 showMakePaymentOTPBottomSheet(List<String>? list, {required BuildContext context}){
 

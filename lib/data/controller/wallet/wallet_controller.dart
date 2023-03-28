@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:get/get.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
@@ -16,7 +15,6 @@ class WalletController extends GetxController{
   bool isLoading = true;
   String image = MyImages.withdrawMoney;
   wallet_model.Wallets? wallets = wallet_model.Wallets();
-
   List<wallet_model.Wallets> walletList = [];
 
   Future<void> loadWalletData() async{

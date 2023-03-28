@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/route/route.dart';
@@ -15,7 +13,6 @@ import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
 import 'package:xcash_app/view/components/text/default_text.dart';
-import 'package:xcash_app/view/components/text/header_text.dart';
 import 'package:xcash_app/view/components/will_pop_widget.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -68,11 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                  SizedBox(height: MediaQuery.of(context).size.height*.06),
                  Center(child:Image.asset(MyImages.appLogo, height: 50, width: 225,color: MyColor.primaryColor,),),
-                 /* HeaderText(text: MyStrings.welcomeBack.tr),
-                  const SizedBox(height: 15),
-                  Padding(padding: const EdgeInsets.only(right: 55),
-                  child:  DefaultText(text: MyStrings.subTittle, textStyle: regularDefault.copyWith(color: MyColor.getTextColor().withOpacity(0.8))),),
-                */ SizedBox(height: MediaQuery.of(context).size.height*.08),
+                  SizedBox(height: MediaQuery.of(context).size.height*.08),
                   Form(
                     key: formKey,
                     child: Column(

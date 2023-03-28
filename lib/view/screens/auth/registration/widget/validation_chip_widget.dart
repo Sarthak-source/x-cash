@@ -5,8 +5,6 @@ import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/style.dart';
 
 
-
-
 class ChipWidget extends StatelessWidget {
   const ChipWidget({
        Key? key,

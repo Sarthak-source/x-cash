@@ -1,11 +1,9 @@
 import 'dart:io';
-
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:xcash_app/view/components/circle_image_button.dart';
-
 import '../../../../../../../../core/utils/my_color.dart';
 import '../../../../../../../core/utils/my_images.dart';
 import '../../../../../data/controller/account/profile_controller.dart';
@@ -143,9 +141,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
         allowMultiple: false,
         type: FileType.custom,
         allowedExtensions: ['png', 'jpg', 'jpeg',]);
-    /*final pickedFile = await FilePicker.pickImage(
-      source: ImageSource.gallery ,
-    );*/
     setState(() {
       Get.find<ProfileController>().imageFile= File(result!.files.single.path!);
       imageFile = XFile(result.files.single.path!);

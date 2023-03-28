@@ -8,6 +8,7 @@ import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/withdraw/withdraw_history_controller.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_bar.dart';
+import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_header_row.dart';
 import 'package:xcash_app/view/components/card/bottom_sheet_card.dart';
 import 'package:xcash_app/view/components/column_widget/card_column.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
@@ -22,9 +23,7 @@ class WithdrawDetailsBottomSheet extends StatelessWidget {
       builder: (controller) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const BottomSheetBar(),
-          const SizedBox(height: Dimensions.space15),
-          const BottomSheetHeaderText(text: MyStrings.withdrawInfo),
+          const BottomSheetHeaderRow(header:MyStrings.withdrawInfo),
           const SizedBox(height: Dimensions.space15),
           Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -49,7 +48,7 @@ class WithdrawDetailsBottomSheet extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Text(MyStrings.amount, style: regularSmall.copyWith(color: MyColor.colorBlack.withOpacity(0.6))),
+                      Text(MyStrings.amount.tr, style: regularSmall.copyWith(color: MyColor.colorBlack.withOpacity(0.6))),
                       const SizedBox(width: Dimensions.space5),
                       Text(
                         "(${Converter.formatNumber(controller.withdrawList[index].amount ?? "")} - ${Converter.formatNumber(controller.withdrawList[index].charge ?? "")} "

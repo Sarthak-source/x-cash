@@ -6,15 +6,12 @@ import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/invoice/update_invoice_controller.dart';
 import 'package:xcash_app/data/model/invoice/update_invoice_response_model.dart';
-import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
-import 'package:xcash_app/view/components/card/custom_card.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
 import 'package:xcash_app/view/components/text/label_text.dart';
 import 'package:xcash_app/view/screens/transaction/widget/filter_row_widget.dart';
-import 'package:xcash_app/view/screens/withdrawals/withdraw_history/widget/status_widget.dart';
 
 import '../../../../components/bottom-sheet/bottom_sheet_header_row.dart';
 import '../../../../components/card/bottom_sheet_card.dart';
@@ -52,16 +49,6 @@ class _UpdateInvoiceDetailsState extends State<UpdateInvoiceDetails> {
          child: Column(
            crossAxisAlignment: CrossAxisAlignment.start,
            children: [
-            /* Row(
-               mainAxisAlignment: MainAxisAlignment.start,
-               children: [
-                 StatusWidget(
-                     status: controller.getPaymentStatusOrColor(),
-                     color: controller.getPaymentStatusOrColor(isStatus: false)
-                 )
-               ],
-             ),
-             const SizedBox(height: Dimensions.space10),*/
              Row(
                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                children: [
@@ -148,7 +135,7 @@ class _UpdateInvoiceDetailsState extends State<UpdateInvoiceDetails> {
                                        },
                                        child: BottomSheetCard(
                                          child: Text(
-                                           controller.currencyList[index].currencyCode ?? "",
+                                           controller.currencyList[index].currencyCode?.tr ?? "",
                                            style: regularDefault,
                                          ),
                                        ),

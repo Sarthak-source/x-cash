@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
@@ -14,7 +15,7 @@ class ShowMoreText extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Text(
-        text,
+        text.tr,
         style: semiBoldDefault.copyWith(color: MyColor.getPrimaryColor(), decoration:TextDecoration.underline),
       ),
     );

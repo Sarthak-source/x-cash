@@ -9,8 +9,6 @@ import 'package:xcash_app/data/controller/request_money/request_money/request_mo
 import 'package:xcash_app/data/repo/request_money/request_money_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
-import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_bar.dart';
-import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_header_row.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
@@ -98,7 +96,7 @@ class _RequestMoneyScreenState extends State<RequestMoneyScreen> {
                                       },
                                       child: BottomSheetCard(
                                         child: Text(
-                                          controller.walletList[index].currencyCode ?? "",
+                                          controller.walletList[index].currencyCode?.tr ?? "",
                                           style: regularDefault,
                                         ),
                                       ),

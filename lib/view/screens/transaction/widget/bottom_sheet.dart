@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart';
 import 'package:xcash_app/core/helper/string_format_helper.dart';
-import 'package:xcash_app/core/utils/dimensions.dart';
-import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/core/utils/util.dart';
 import 'package:xcash_app/data/controller/transaction/transaction_history_controller.dart';
-import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_header_row.dart';
 import 'package:xcash_app/view/components/card/bottom_sheet_card.dart';
-import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
 
 showTrxBottomSheet(List<String>? list, int callFrom, {required BuildContext context}){
 
@@ -88,9 +83,9 @@ showTrxBottomSheet(List<String>? list, int callFrom, {required BuildContext cont
                               },
                               child: BottomSheetCard(
                                 child: Text(
-                                  '${callFrom == 2 ? Converter.replaceUnderscoreWithSpace(list[index].capitalizeFirst??''):
-                                  callFrom == 3?MyUtils.getOperationTitle(list[index]):
-                                  list[index]}',
+                                  '${callFrom == 2 ? Converter.replaceUnderscoreWithSpace(list[index].capitalizeFirst??'').tr:
+                                  callFrom == 3?MyUtils.getOperationTitle(list[index]).tr:
+                                  list[index].tr}',
                                   style: regularDefault,
                                 ),
                               ),

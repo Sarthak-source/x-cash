@@ -50,14 +50,14 @@ class LatestTransactionCard extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "${controller.trxList[index].remark}".replaceAll("_", " ").toTitleCase(),
+                              "${controller.trxList[index].remark}".replaceAll("_", " ").toTitleCase().tr,
                               style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w500),
                             ),
                             const SizedBox(height: Dimensions.space10),
                             SizedBox(
                               width: 150,
                               child: Text(
-                                controller.trxList[index].apiDetails ?? "",
+                                controller.trxList[index].apiDetails?.tr ?? "",
                                 style: regularSmall.copyWith(color: MyColor.getTextColor().withOpacity(0.5)),
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 2,

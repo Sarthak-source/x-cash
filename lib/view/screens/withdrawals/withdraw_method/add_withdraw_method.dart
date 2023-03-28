@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
-import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/withdraw/add_withdraw_method_controller.dart';
 import 'package:xcash_app/data/model/withdraw/add_withdraw_method_response_model.dart';
 import 'package:xcash_app/data/repo/withdraw/add_withdraw_method_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
-import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_header_row.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
@@ -24,6 +23,7 @@ import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart
 import 'package:xcash_app/view/components/text/label_text.dart';
 import 'package:xcash_app/view/screens/auth/kyc/widget/widget/choose_file_list_item.dart';
 import 'package:xcash_app/view/screens/transaction/widget/filter_row_widget.dart';
+
 import '../../../../../data/model/withdraw/add_withdraw_method_response_model.dart' as withdraw;
 
 class AddWithdrawMethodScreen extends StatefulWidget {
@@ -95,7 +95,7 @@ class _AddWithdrawMethodScreenState extends State<AddWithdrawMethodScreen> {
                                     },
                                     child: BottomSheetCard(
                                       child: Text(
-                                        controller.methodList[index].name ?? "",
+                                        controller.methodList[index].name?.tr ?? "",
                                         style: regularDefault,
                                       ),
                                     ),
@@ -113,7 +113,7 @@ class _AddWithdrawMethodScreenState extends State<AddWithdrawMethodScreen> {
                   height: 50,
                   child: FilterRowWidget(
                       borderColor: controller.selectedCurrencyModel.curName == MyStrings.selectOne ? MyColor.textFieldDisableBorderColor : MyColor.textFieldEnableBorderColor,
-                      text: "${controller.selectedCurrencyModel.curName == MyStrings.selectOne ? MyStrings.selectCurrency : controller.selectedCurrencyModel?.curName}",
+                      text: controller.selectedCurrencyModel.curName == MyStrings.selectOne ? MyStrings.selectCurrency : controller.selectedCurrencyModel.curName,
                       press: () => CustomBottomSheet(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -139,7 +139,7 @@ class _AddWithdrawMethodScreenState extends State<AddWithdrawMethodScreen> {
                                     },
                                     child: BottomSheetCard(
                                       child: Text(
-                                        controller.selectedCurrencyList[index].curName ?? "",
+                                        controller.selectedCurrencyList[index].curName.tr,
                                         style: regularDefault,
                                       ),
                                     ),

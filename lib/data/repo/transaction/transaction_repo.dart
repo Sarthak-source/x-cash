@@ -20,7 +20,6 @@ class TransactionRepo{
       transactionType = "";
     } else{
      transactionType = transactionType=='plus'?'plus_trx':transactionType=='minus'?'minus_trx':'';
-     print('formated trx type: $transactionType');
     }
 
     if(operationType.isEmpty || operationType.toLowerCase() == "all operations"){
@@ -34,9 +33,7 @@ class TransactionRepo{
     if(walletCurrency.isEmpty || walletCurrency.toLowerCase() == "all currency"){
       walletCurrency = "";
     }
-
     String url = "${UrlContainer.baseUrl}${UrlContainer.transactionEndpoint}?page=$page&type=$transactionType&operation=$operationType&time=$historyFrom&currency=$walletCurrency&search=$searchText";
-    print(url);
     ResponseModel responseModel = await apiClient.request(url, Method.getMethod, null, passHeader: true);
     return responseModel;
   }

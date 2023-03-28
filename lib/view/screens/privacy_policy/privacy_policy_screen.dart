@@ -42,7 +42,7 @@ class _PrivacyPolicyScreenState extends State<PrivacyPolicyScreen> {
         appBar: const CustomAppBar(
           title: MyStrings.privacyPolicy,
           bgColor: MyColor.primaryColor,
-          isShowActionBtn: true,
+          isShowActionBtn: false,
         ),
         body: GetBuilder<PrivacyController>(
           builder: (controller) => SizedBox(

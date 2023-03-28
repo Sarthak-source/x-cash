@@ -6,7 +6,6 @@ import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
-import 'package:xcash_app/core/utils/util.dart';
 import 'package:xcash_app/data/controller/wallet/wallet_controller.dart';
 import 'package:xcash_app/data/repo/wallet/wallet_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';

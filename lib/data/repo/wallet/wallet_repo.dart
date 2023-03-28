@@ -9,13 +9,8 @@ class WalletRepo{
   WalletRepo({required this.apiClient});
 
   Future<ResponseModel> getWalletData() async{
-
     String url = "${UrlContainer.baseUrl}${UrlContainer.walletsEndPoint}";
-
-    print(url);
-
     ResponseModel responseModel = await apiClient.request(url, Method.getMethod, null, passHeader: true);
-    print(responseModel.responseJson);
     return responseModel;
   }
 }

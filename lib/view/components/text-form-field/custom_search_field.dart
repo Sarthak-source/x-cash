@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/style.dart';
@@ -14,7 +15,7 @@ class CustomSearchField extends StatefulWidget {
   const CustomSearchField({
     Key? key,
     this.textEditingController,
-    this.labelText = "Label Text",
+    this.labelText = "",
     required this.hintText,
     required this.onChanged,
     this.showLabelText = false,
@@ -34,7 +35,7 @@ class _CustomSearchFieldState extends State<CustomSearchField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        widget.showLabelText ? Text(widget.labelText, style: regularDefault.copyWith(height: 1.452)) : const SizedBox(),
+        widget.showLabelText ? Text(widget.labelText.tr, style: regularDefault.copyWith(height: 1.452)) : const SizedBox(),
 
         widget.showLabelText ? const SizedBox(height: Dimensions.space10) : const SizedBox(),
 
@@ -66,7 +67,7 @@ class _CustomSearchFieldState extends State<CustomSearchField> {
                   },
                   decoration: InputDecoration(
                       contentPadding: const EdgeInsets.only(bottom: 12),
-                      hintText: widget.hintText,
+                      hintText: widget.hintText.tr,
                       hintStyle: regularSmall.copyWith(color: MyColor.contentTextColor, height: 1.452),
                       border: InputBorder.none,
                       focusedBorder: InputBorder.none,

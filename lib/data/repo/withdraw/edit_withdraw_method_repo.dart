@@ -17,10 +17,7 @@ class EditWithdrawMethodRepo {
 
   Future<ResponseModel> getData(String id) async {
     String url = "${UrlContainer.baseUrl}${UrlContainer.withdrawMethodEdit}/$id";
-    print(url);
-
     ResponseModel responseModel = await apiClient.request(url, Method.getMethod, null, passHeader: true);
-
     return responseModel;
   }
 
@@ -32,9 +29,6 @@ class EditWithdrawMethodRepo {
 
 
   Future<AuthorizationResponseModel> submitData(String id, String methodId, String name, String status, List<FormModel> list) async {
-    print(id);
-    print(methodId);
-
     apiClient.initToken();
     await modelToMap(list);
     String url = '${UrlContainer.baseUrl}${UrlContainer.withdrawMethodUpdate}';

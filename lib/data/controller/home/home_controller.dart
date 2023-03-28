@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/helper/string_format_helper.dart';
@@ -123,13 +122,7 @@ class HomeController extends GetxController{
     });
   }
 
-  int index = 0;
-  void changeIndex(){
-    for(int i = 0; i < walletList.length; i++){
-      index = i + 1;
-    }
-    update();
-  }
+  
 
   bool isVisibleItem = false;
   void visibleItem() {

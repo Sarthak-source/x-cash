@@ -1,12 +1,10 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/authorization/authorization_response_model.dart';
-import 'package:xcash_app/data/model/general_setting/general_setting_response_model.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/voucher/create_voucher_response_model.dart';
 import 'package:xcash_app/data/repo/voucher/create_voucher_repo.dart';
@@ -139,26 +137,27 @@ class CreateVoucherController extends GetxController{
       return ;
     }
 
-    mainAmount = amount;
-    double currencyRate = double.tryParse(selectedWallet?.currency?.rate ?? '1')??1;
+    mainAmount              = amount;
+    double currencyRate     = double.tryParse(selectedWallet?.currency?.rate ?? '1')??1;
 
-    double percent = double.tryParse(model.data?.voucherCharge?.percentCharge ?? "0") ?? 0;
-    double percentCharge = (amount*percent)/100;
+    double percent          = double.tryParse(model.data?.voucherCharge?.percentCharge ?? "0") ?? 0;
+    double percentCharge    = (amount*percent)/100;
 
-    double fixed = double.tryParse(model.data?.voucherCharge?.fixedCharge ?? "0") ?? 0;
-    double fixedCharge = fixed/currencyRate;  //fixed charge are  global for each currency so that we don't calculate it with expected currency
+    double fixed            = double.tryParse(model.data?.voucherCharge?.fixedCharge ?? "0") ?? 0;
+    double fixedCharge      = fixed/currencyRate;  //fixed charge are  global for each currency so that we don't calculate it with expected currency
 
-    double totalCharge = fixedCharge + percentCharge;
+    double totalCharge      = fixedCharge + percentCharge;
 
-    double cap = double.tryParse(model.data?.voucherCharge?.cap ?? "0") ?? 0;
-    double mainCap = cap/currencyRate;
+    double cap              = double.tryParse(model.data?.voucherCharge?.cap ?? "0") ?? 0;
+    double mainCap          = cap/currencyRate;
+
     if(cap != 1 && totalCharge > mainCap){
       totalCharge = mainCap;
     }
     
-    charge = '${Converter.formatNumber('$totalCharge',precision:selectedWallet?.currency?.currencyType=='2'?8:2)} $currency';
-    String payable = Converter.sum(totalCharge.toString(),mainAmount.toString(),precision: selectedWallet?.currency?.currencyType=='2'?8:2);
-    payableText = '$payable $currency';
+    charge                   = '${Converter.formatNumber('$totalCharge',precision:selectedWallet?.currency?.currencyType=='2'?8:2)} $currency';
+    String payable           = Converter.sum(totalCharge.toString(),mainAmount.toString(),precision: selectedWallet?.currency?.currencyType=='2'?8:2);
+    payableText              = '$payable $currency';
 
     update();
   }

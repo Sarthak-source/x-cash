@@ -102,7 +102,7 @@ class _TransferMoneyScreenState extends State<TransferMoneyScreen> {
                                       },
                                       child: BottomSheetCard(
                                         child: Text(
-                                          controller.walletList[index].currencyCode.toString() ?? "",
+                                          controller.walletList[index].currencyCode.toString()?.tr ?? "",
                                           style: regularDefault,
                                         ),
                                       ),
@@ -204,7 +204,7 @@ class _TransferMoneyScreenState extends State<TransferMoneyScreen> {
                                            },
                                            child: BottomSheetCard(
                                              child: Text(
-                                               controller.otpTypeList[index].toString().toTitleCase(),
+                                               controller.otpTypeList[index].toString().toTitleCase().tr,
                                                style: regularDefault,
                                              ),
                                            ),

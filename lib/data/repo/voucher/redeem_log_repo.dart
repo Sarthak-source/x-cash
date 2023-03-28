@@ -9,12 +9,8 @@ class RedeemLogRepo{
   RedeemLogRepo({required this.apiClient});
 
   Future<ResponseModel> getRedeemLogData(int page) async{
-
     String url = "${UrlContainer.baseUrl}${UrlContainer.redeemLogEndPoint}?page=$page";
-    print(url);
-
     ResponseModel responseModel = await apiClient.request(url, Method.getMethod, null, passHeader: true);
-    print(responseModel.statusCode);
     return responseModel;
   }
 }

@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -134,9 +133,9 @@ class AddWithdrawMethodController extends GetxController {
       return;
     }
 
-    String methodId = selectedMethod?.id.toString()??'';
+    String methodId   = selectedMethod?.id.toString()??'';
     String currencyId = selectedCurrencyModel.curId;
-    String name = nameController.text;
+    String name       = nameController.text;
     
     if(name.isEmpty){
       CustomSnackBar.error(errorList: [MyStrings.nickNameEmptyMsg]);

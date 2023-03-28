@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:share_plus/share_plus.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
@@ -59,7 +58,8 @@ class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
                   },
                   icon: Icons.qr_code_outlined,
                   iconColor: MyColor.primaryColor,
-                )
+                ),
+                const SizedBox(width: 10)
               ],
             ),
             body: controller.isLoading ? const CustomLoader(loaderColor: MyColor.colorWhite) : SingleChildScrollView(
@@ -98,13 +98,7 @@ class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
                            text: MyStrings.download.tr,
                            textColor: MyColor.primaryColor,
                            press: ()async{
-                             final box = context.findRenderObject() as RenderBox?;
-
-                             await Share.share(
-                               'MyQr ',
-                               subject: 'Share Image',
-                               sharePositionOrigin: box!.localToGlobal(Offset.zero) & box.size,
-                             );
+                             controller.downloadImage();
                            }
                        )),
                        const SizedBox(width: Dimensions.space12,),

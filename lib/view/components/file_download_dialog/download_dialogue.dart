@@ -73,7 +73,7 @@ class DownloadingDialogState extends State<DownloadingDialog> {
             height: 20,
           ),
           Text(
-            '${MyStrings.downloading.tr} ${_received ~/ 1024}/${_total ~/ 1024} KB',
+            '${MyStrings.downloading.tr} ${_received ~/ 1024}/${_total ~/ 1024} ${'KB'.tr}',
             style: regularDefault
           ),
         ],

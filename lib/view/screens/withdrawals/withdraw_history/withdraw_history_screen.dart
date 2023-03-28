@@ -16,7 +16,6 @@ import 'package:xcash_app/view/components/no_data.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_history/widget/withdraw_details_bottom_sheet.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_history/widget/withdraw_log_card.dart';
 import 'package:xcash_app/view/screens/withdrawals/withdraw_history/widget/withdraw_log_top.dart';
-import 'widget/floating_action_button.dart';
 
 class WithdrawHistoryScreen extends StatefulWidget {
   const WithdrawHistoryScreen({Key? key}) : super(key: key);
@@ -86,7 +85,8 @@ class _WithdrawHistoryScreenState extends State<WithdrawHistoryScreen> {
                 isImage: true,
                 pressed: () => Get.toNamed(RouteHelper.withdrawMoneyScreen),
                 imageSrc: MyImages.withdrawMethod,
-              )
+              ),
+              const SizedBox(width: 10)
             ],
           ),
           body: controller.isLoading ? const CustomLoader() : Padding(
@@ -137,7 +137,6 @@ class _WithdrawHistoryScreenState extends State<WithdrawHistoryScreen> {
               ],
             ),
           ),
-          floatingActionButton: const CustomFAB(),
         ),
       ),
     );

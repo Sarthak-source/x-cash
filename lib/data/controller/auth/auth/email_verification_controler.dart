@@ -12,7 +12,6 @@ class EmailVerificationController extends GetxController {
 
 
   SmsEmailVerificationRepo repo;
-
   EmailVerificationController({required this.repo});
 
 
@@ -50,9 +49,7 @@ class EmailVerificationController extends GetxController {
       AuthorizationResponseModel model = AuthorizationResponseModel.fromJson(jsonDecode(responseModel.responseJson));
 
       if (model.status == MyStrings.success) {
-
           CustomSnackBar.success(successList: model.message?.success??[(MyStrings.emailVerificationSuccess)]);
-
           if(needSmsVerification){
             Get.offAndToNamed(RouteHelper.smsVerificationScreen, arguments: [isProfileCompleteEnable,needTwoFactor]);
           } else if(needTwoFactor){
@@ -73,6 +70,7 @@ class EmailVerificationController extends GetxController {
     submitLoading=false;
     update();
   }
+
   Future<void> sendCodeAgain() async {
     resendLoading = true;
     update();
@@ -80,4 +78,5 @@ class EmailVerificationController extends GetxController {
     resendLoading = false;
     update();
   }
+
 }

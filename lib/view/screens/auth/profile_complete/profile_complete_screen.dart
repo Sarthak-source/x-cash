@@ -12,6 +12,8 @@ import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
 import 'package:xcash_app/view/components/will_pop_widget.dart';
 
+import 'widget/image_widget.dart';
+
 
 class ProfileCompleteScreen extends StatefulWidget {
   const ProfileCompleteScreen({Key? key}) : super(key: key);
@@ -63,6 +65,9 @@ class _ProfileCompleteScreenState extends State<ProfileCompleteScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    const SizedBox(height: Dimensions.space5,),
+                    CustomImageWidget(imagePath:  '', onClicked: (){}),
+                    const SizedBox(height: Dimensions.space20,),
                     CustomTextField(
                       animatedLabel: true,
                       needOutlineBorder: true,

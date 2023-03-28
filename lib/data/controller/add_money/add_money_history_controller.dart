@@ -98,22 +98,27 @@ class AddMoneyHistoryController extends GetxController{
     if(!isSearch){
       initialSelectedValue();
     }
+
   }
 
   dynamic getStatusOrColor(int index,{bool isStatus = true}){
     String status = depositList[index].status??'';
 
     if(isStatus){
+
       String text = status == "1" ? MyStrings.succeed.tr
           : status == "2" ? MyStrings.pending.tr
           : status == "3" ? MyStrings.rejected.tr
           : "";
       return text;
+
     } else{
+
       Color color = status == "1" ? MyColor.colorGreen
           : status == "2" ? MyColor.colorOrange
           : status == "3" ? MyColor.colorRed : MyColor.colorGreen;
       return color;
+
     }
   }
 }

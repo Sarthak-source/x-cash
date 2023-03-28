@@ -6,14 +6,10 @@ import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
-import 'package:xcash_app/core/utils/util.dart';
 import 'package:xcash_app/data/controller/add_money/add_money_history_controller.dart';
-import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_bar.dart';
-import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_header_row.dart';
 import 'package:xcash_app/view/components/card/bottom_sheet_card.dart';
 import 'package:xcash_app/view/components/column_widget/card_column.dart';
-import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
 
 class AddMoneyHistoryBottomSheet extends StatelessWidget {
@@ -56,7 +52,7 @@ class AddMoneyHistoryBottomSheet extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Text(MyStrings.amount, style: regularSmall.copyWith(color: MyColor.colorBlack.withOpacity(0.6))),
+                      Text(MyStrings.amount.tr, style: regularSmall.copyWith(color: MyColor.colorBlack.withOpacity(0.6))),
                       const SizedBox(width: Dimensions.space5),
                       Text(
                         "(${Converter.formatNumber(controller.depositList[index].amount ?? "")} + ${Converter.formatNumber(controller.depositList[index].charge ?? "")} "
@@ -105,11 +101,11 @@ class AddMoneyHistoryBottomSheet extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            controller.depositList[index].detail?[detailIndex].name ?? "",
+                            controller.depositList[index].detail?[detailIndex].name?.tr ?? "",
                             style: regularDefault.copyWith(color: MyColor.colorBlack.withOpacity(0.6),fontWeight: FontWeight.w600),
                           ),
                           Text(
-                            controller.depositList[index].detail?[detailIndex].value ?? "",
+                            controller.depositList[index].detail?[detailIndex].value?.tr ?? "",
                             style: regularDefault.copyWith(color: MyColor.colorBlack,fontWeight: FontWeight.w600),
                           )
                         ],

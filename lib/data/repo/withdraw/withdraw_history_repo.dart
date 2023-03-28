@@ -9,9 +9,7 @@ class WithdrawHistoryRepo{
   WithdrawHistoryRepo({required this.apiClient});
 
   Future<ResponseModel> getData(int page, {required String searchText}) async{
-
     String url = "${UrlContainer.baseUrl}${UrlContainer.withdrawHistoryUrl}?page=$page&search=$searchText";
-
     ResponseModel responseModel = await apiClient.request(url, Method.getMethod, null, passHeader: true);
     return responseModel;
   }

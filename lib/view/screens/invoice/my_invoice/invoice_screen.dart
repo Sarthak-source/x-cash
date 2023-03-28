@@ -74,6 +74,7 @@ class _InvoiceScreenState extends State<InvoiceScreen> {
                 pressed: () => Get.toNamed(RouteHelper.createInvoiceScreen),
                 icon: Icons.add,
               ),
+              const SizedBox(width: 10)
             ],
           ),
           body: controller.isLoading ? const CustomLoader() : controller.invoiceList.isEmpty ? const Center(

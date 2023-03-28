@@ -1,6 +1,5 @@
 import 'dart:developer';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
@@ -54,7 +53,7 @@ class _QrCodeScannerScreenState extends State<QrCodeScannerScreen> {
 
    qrController?.stopCamera();
 
-    bool result = await controller.submitQrData(myQrCode);
+     await controller.submitQrData(myQrCode);
   }
 
   @override

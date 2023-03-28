@@ -64,21 +64,14 @@ class Data {
       var map=Map.from(json['currencies']).map((key, value) => MapEntry(key, value));
       _currencies=[];
       try{
-
-        print(map.toString());
-
         List<CurrencyModel>?list=map.entries.map((e) =>
             CurrencyModel(
               curName:e.key,
                 curId:e.value.toString()
             ),).toList();
 
-
-        print('currency list: ${list.length}');
-
         if(list.isNotEmpty){
           _currencies?.addAll(list);
-          print('inserted curList: ${_currencies?.length}');
         }
 
       }finally{}

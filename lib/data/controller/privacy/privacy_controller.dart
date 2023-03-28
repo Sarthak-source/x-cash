@@ -13,9 +13,7 @@ class PrivacyController extends GetxController{
   bool isLoading=true;
 
   List<PolicyPages>list=[];
-
   late var selectedHtml='';
-
   PrivacyController({required this.repo});
 
   void loadData()async{

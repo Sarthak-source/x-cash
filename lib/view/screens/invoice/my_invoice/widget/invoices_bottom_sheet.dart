@@ -178,7 +178,7 @@ class InvoicesBottomSheet{
                             }
                           });
                         },
-                        text: MyStrings.edit,
+                        text: MyStrings.edit.tr,
                         bgColor: MyColor.primaryColor,
                         iconData: Icons.edit,
                       ),
@@ -192,7 +192,6 @@ class InvoicesBottomSheet{
                         successList: [MyStrings.copyLink]
                     ));
                   },
-
                   text: MyStrings.copy.tr,
                   bgColor: MyColor.colorBlack,
                   iconData: Icons.copy_sharp,

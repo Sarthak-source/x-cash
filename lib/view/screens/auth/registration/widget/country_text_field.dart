@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/style.dart';
@@ -28,7 +29,7 @@ class CountryTextField extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children:  [
             Text(
-              text,
+              text.tr,
               style: regularDefault.copyWith(color: MyColor.getTextColor())
             ),
             const Icon(

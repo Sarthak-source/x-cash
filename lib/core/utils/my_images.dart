@@ -8,10 +8,8 @@ class MyImages{
   static const String invoice = "assets/images/invoice.png";
   static const String withdrawMethod = "assets/images/withdraw_method.png";
   static const String requestMoney = "assets/images/request_money.svg";
-  static const String transaction = "assets/images/transaction.svg";
   static const String transfer = "assets/images/transfer.svg";
   static const String createVoucher = "assets/images/create_voucher.svg";
-  static const String withdraw = "assets/images/withdraw.svg";
   static const String moneyWithdraw = "assets/images/money_withdraw.png";
 
   static const String profile = "assets/images/profile.png";
@@ -29,7 +27,6 @@ class MyImages{
   static const String addNewMethod = "assets/images/add_new_method.png";
   static const String withdrawMoney = "assets/images/wallet.png";
   static const String reject = "assets/images/reject.png";
-  static const String accept = "assets/images/accept.png";
   static const String name = "assets/images/user.png";
   static const String moneyHistory = "assets/images/money_history.png";
 
@@ -52,7 +49,6 @@ class MyImages{
   static const String companyAcc = "assets/images/company.png";
 
   static const String noInternet = "assets/animation/no_internet.json";
-  static const String noData = "assets/animation/no-data.json";
   static const String noDataFound = "assets/images/no_data.png";
 
   static const String outMoney = "assets/images/money_out.png";
@@ -74,7 +70,7 @@ class MyImages{
   static const String withdrawHistory = "assets/images/withdraw_history.png";
   static const String redeemVoucher = "assets/images/redeem_voucher.png";
 
-
+  static const String profileImage = "assets/images/avatar.png";
   static const String arrowDown = "assets/images/down_arrow.png";
   static const String arrowUp = "assets/images/arrow_up.png";
 }

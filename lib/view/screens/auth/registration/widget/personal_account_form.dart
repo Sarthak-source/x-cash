@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
@@ -11,7 +10,6 @@ import 'package:xcash_app/data/controller/auth/auth/registration_controller.dart
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
-import 'package:xcash_app/view/components/text/label_text.dart';
 import 'package:xcash_app/view/screens/auth/registration/widget/country_bottom_sheet.dart';
 import 'package:xcash_app/view/screens/auth/registration/widget/validation_widget.dart';
 

@@ -26,7 +26,6 @@ class MakePaymentRepo{
 
     String url = "${UrlContainer.baseUrl}${UrlContainer.makePaymentVerifyOtpUrl}";
 
-    print(url.toString());
 
     Map<String, String> params = {
       "wallet_id" : walletId,
@@ -35,7 +34,6 @@ class MakePaymentRepo{
       "otp_type" : otpType
     };
 
-    print(params.toString());
 
     ResponseModel responseModel = await apiClient.request(url, Method.postMethod,params,passHeader: true);
 

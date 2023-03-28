@@ -77,6 +77,7 @@ class CreateInvoiceController extends GetxController{
     double totalCharge = percentCharge + fixedCharge;
     double cap = double.tryParse(model.data?.invoiceCharge?.cap ?? "0") ?? 0;
     double mainCap = cap/currencyRate;
+
     if(cap != 1 && totalCharge > mainCap){
       totalCharge = mainCap;
     }

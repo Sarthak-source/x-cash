@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-
 import '../utils/my_strings.dart';
 
 class Converter {
@@ -135,6 +134,12 @@ class Converter {
     double result =
         (double.tryParse(first) ?? 0) * (double.tryParse(second) ?? 0);
     return Converter.formatNumber(result.toString());
+  }
+
+  static calculateRate(String amount, String rate,{int precision = 2}) {
+    double result =
+        (double.tryParse(amount) ?? 0) / (double.tryParse(rate) ?? 0);
+    return Converter.formatNumber(result.toString(),precision: precision);
   }
 }
 

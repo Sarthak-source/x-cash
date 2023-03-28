@@ -13,12 +13,10 @@ import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart'
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/card/bottom_sheet_card.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
-import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
 import 'package:xcash_app/view/components/text-form-field/text_field_person_validity_widget.dart';
 import 'package:xcash_app/view/components/text/label_text.dart';
-import 'package:xcash_app/view/screens/money_discharge/make_payment/widget/make_payment_bottom_sheet.dart';
 import 'package:xcash_app/view/screens/transaction/widget/filter_row_widget.dart';
 
 class MakePaymentForm extends StatefulWidget {
@@ -95,7 +93,7 @@ class _MakePaymentFormState extends State<MakePaymentForm> {
                                     },
                                     child: BottomSheetCard(
                                       child: Text(
-                                        controller.walletList[index].currencyCode.toString() ?? "",
+                                        controller.walletList[index].currencyCode?.tr ?? "",
                                         style: regularDefault,
                                       ),
                                     ),

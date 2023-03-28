@@ -2,6 +2,7 @@ import 'package:xcash_app/data/model/language/language_model.dart';
 
 class MyStrings{
 
+
   static const String fileDownloadAt = "File download at";
   static const String errorDownloadingFile = "Error downloading file";
   static const String downloading = "Downloading";
@@ -151,7 +152,6 @@ class MyStrings{
   static const String moneyOut = "Money Out";
   static const String seeAll = "See All";
   static const String seeAllWallets = "See all Wallets";
-  static const String see = "See";
 
   static const String voucherRedeemLog = "Voucher Redeem Log";
   static const String redeemLog = "Redeem Log";
@@ -191,8 +191,6 @@ class MyStrings{
   static const String otpByEmail = "OTP by Email";
   static const String otpByGoogleAuth = "OTP by Google Authentication";
   static const String transferNow = "Transfer Now";
-  static const String chargeAmount = "Charge : 50 USD";
-  static const String minMaxAmount = "Min: 50 USD -- Max: 1000 USD";
 
   // add money-history bottom-sheet
   static const String date = "Date";
@@ -354,7 +352,7 @@ class MyStrings{
   static const String googleAuthenticatorCode = 'Google Authenticator Code';
   static const String twoFactorAuth = 'Two Factor Authentication';
   static const String twoFactorMsg = 'Enter 6-digit code from your two factor authenticator APP.';
-  static const String exitTitle = "Do you want to exit\n the app?";
+  static const String exitTitle = "Are you sure you want to exit the app?";
   static const String hasUpperLetter = "Has uppercase letter";
   static const String hasLowerLetter = "Has lowercase letter";
   static const String hasDigit = "Has digit";
@@ -371,7 +369,6 @@ class MyStrings{
   static const String subTittle = "We happy to see you here again enter your username and password";
   static const String usernameOrEmail = "Username or Email";
   static const String usernameOrEmailHint = "Enter your username or email";
-  static const String notRegistecolorRed = "Not registecolorRed yet?";
   static const String createAccount = "Create an account";
   static const String fieldErrorMsg = "Please fill out this field";
   static const String resetPassContent = "To secure your account please provide a secure password";
@@ -381,7 +378,7 @@ class MyStrings{
   static const String phoneNo = "Phone No.";
   static const String passwordResetEmailSentTo = 'Password reset email sent to';
   static const String emailVerification = "Email Verification";
-  static const String viaEmailVerify = "Please check your email to get a six digit OTP\nOTP will be expired in the next";
+  static const String viaEmailVerify = "We've sent you an access code via email for email verification";
   static const String didNotReceiveCode = "Didn't receive code?";
   static const String resend = "Resend Code in";
   static const String resendCode = "Resend Code";

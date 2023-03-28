@@ -9,10 +9,8 @@ class RequestMoneyRepo{
   RequestMoneyRepo({required this.apiClient});
 
   Future<ResponseModel> getWalletData() async{
-
     String url = "${UrlContainer.baseUrl}${UrlContainer.requestMoneyEndPoint}";
     ResponseModel responseModel = await apiClient.request(url, Method.getMethod, null, passHeader: true);
-
     return responseModel;
   }
 
@@ -32,16 +30,13 @@ class RequestMoneyRepo{
     };
 
     ResponseModel responseModel = await apiClient.request(url, Method.postMethod, params, passHeader: true);
-
     return responseModel;
   }
 
   Future<ResponseModel> checkUser({required String user}) async {
     String url = "${UrlContainer.baseUrl}${UrlContainer.checkUserUrl}";
-
     Map<String, String> params = {"user": user};
     ResponseModel responseModel = await apiClient.request(url, Method.postMethod, params, passHeader: true);
-
     return responseModel;
   }
 }

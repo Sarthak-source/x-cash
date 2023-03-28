@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:xcash_app/core/helper/shared_preference_helper.dart';
 import 'package:xcash_app/core/utils/method.dart';

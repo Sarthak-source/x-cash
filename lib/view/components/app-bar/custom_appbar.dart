@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/route/route.dart';
-import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/my_icons.dart';
-import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/action_button_icon_widget.dart';
@@ -59,7 +55,6 @@ class _CustomAppBarState extends State<CustomAppBar> {
 
   @override
   Widget build(BuildContext context) {
-    print('is widget ${widget.isActionImage}');
     return widget.isShowBackBtn?AppBar(
       elevation: 0,
       titleSpacing: 0,
@@ -79,7 +74,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
         }
       },icon: Icon(Icons.arrow_back,color: MyColor.getAppBarContentColor(), size: 20)):const SizedBox.shrink(),
       backgroundColor: widget.bgColor,
-      title: Text(widget.title,style: regularDefault.copyWith(color: MyColor.getAppBarContentColor())),
+      title: Text(widget.title.tr,style: regularDefault.copyWith(color: MyColor.getAppBarContentColor())),
       centerTitle: widget.isTitleCenter,
       actions: [
         widget.isShowActionBtn
@@ -97,14 +92,14 @@ class _CustomAppBarState extends State<CustomAppBar> {
       titleSpacing: 0,
       elevation: 0,
       backgroundColor: widget.bgColor,
-      title:Text(widget.title,style: regularLarge.copyWith(color: MyColor.getTextColor())),
+      title:Text(widget.title.tr,style: regularLarge.copyWith(color: MyColor.getTextColor())),
       actions: [
         widget.isShowActionBtn?InkWell(onTap: (){Get.toNamed(RouteHelper.notificationScreen)?.then((value){
           setState(() {
             hasNotification=false;
           });
-        });},child: SvgPicture.asset(hasNotification?MyIcons.activeNotificationIcon:MyIcons.activeNotificationIcon,height: 28,width: 28,)):const SizedBox.shrink(),
-        const SizedBox(width: 5)],
+        });},child:const SizedBox.shrink()):const SizedBox()
+       ],
       automaticallyImplyLeading: false,
     );
   }

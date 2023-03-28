@@ -36,10 +36,8 @@ class TransferMoneyRepo{
 
   Future<ResponseModel> checkUser({required String user}) async {
     String url = "${UrlContainer.baseUrl}${UrlContainer.checkUserUrl}";
-
     Map<String, String> params = {"user": user};
     ResponseModel responseModel = await apiClient.request(url, Method.postMethod, params, passHeader: true);
-
     return responseModel;
   }
 }

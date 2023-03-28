@@ -71,7 +71,8 @@ class _MyVoucherScreenState extends State<MyVoucherScreen> {
               ActionButtonIconWidget(
                   pressed: () => Get.toNamed(RouteHelper.createVoucherScreen),
                   icon: Icons.add
-              )
+              ),
+              const SizedBox(width: 10)
             ],
           ),
           body: controller.isLoading ? const CustomLoader() : Padding(

@@ -11,6 +11,7 @@ class CustomCard extends StatefulWidget {
   final VoidCallback? onPressed;
   final Widget child;
   final bool isPress;
+
   const CustomCard({
     Key? key,
     required this.width,

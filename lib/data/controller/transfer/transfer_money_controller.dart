@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/helper/string_format_helper.dart';
@@ -123,10 +122,10 @@ class TransferMoneyController extends GetxController{
     submitLoading = true;
     update();
 
-    String receiverName = receiverController.text;
-    String walletId = selectedWallet?.id.toString() ?? "";
-    String amount = amountController.text;
-    String otpType = selectedOtp.toString().toLowerCase();
+    String receiverName    = receiverController.text;
+    String walletId        = selectedWallet?.id.toString() ?? "";
+    String amount          = amountController.text;
+    String otpType         = selectedOtp.toString().toLowerCase();
 
     ResponseModel responseModel = await transferMoneyRepo.submitTransferMoney(walletId: walletId, amount: amount, username: receiverName, otpType: otpType);
     if(responseModel.statusCode == 200){
@@ -160,28 +159,30 @@ class TransferMoneyController extends GetxController{
       return ;
     }
 
-    mainAmount = amount;
-    double rate = double.tryParse(selectedWallet?.currency?.rate ?? "0") ?? 0;
-    double percent = double.tryParse(model.data?.transferCharge?.percentCharge ?? "0") ?? 0;
-    double percentCharge = amount * percent / 100;
-    double temCharge = double.tryParse(model.data?.transferCharge?.fixedCharge ?? "0") ?? 0;
-    double fixedCharge = temCharge / rate;
-    double totalCharge = percentCharge + fixedCharge;
-    double cap = double.tryParse(model.data?.transferCharge?.cap ?? "0") ?? 0;
-    double mainCap = cap/rate;
+    mainAmount            = amount;
+    double rate           = double.tryParse(selectedWallet?.currency?.rate ?? "0") ?? 0;
+    double percent        = double.tryParse(model.data?.transferCharge?.percentCharge ?? "0") ?? 0;
+    double percentCharge  = amount * percent / 100;
+    double temCharge      = double.tryParse(model.data?.transferCharge?.fixedCharge ?? "0") ?? 0;
+    double fixedCharge    = temCharge / rate;
+    double totalCharge    = percentCharge + fixedCharge;
+    double cap            = double.tryParse(model.data?.transferCharge?.cap ?? "0") ?? 0;
+    double mainCap        = cap/rate;
+
     if(cap != 1 && totalCharge > mainCap){
       totalCharge = mainCap;
     }
-    charge = '${Converter.formatNumber('$totalCharge',precision: selectedWallet?.currency?.currencyType=='2'?8:2)} $currency';
-    double payable = totalCharge + amount;
-    payableText = '${Converter.formatNumber(payable.toString(),precision: selectedWallet?.currency?.currencyType=='2'?8:2)} $currency';
+
+    charge                = '${Converter.formatNumber('$totalCharge',precision: selectedWallet?.currency?.currencyType=='2'?8:2)} $currency';
+    double payable        = totalCharge + amount;
+    payableText           = '${Converter.formatNumber(payable.toString(),precision: selectedWallet?.currency?.currencyType=='2'?8:2)} $currency';
     update();
   }
 
 
-  bool hasAgent = false;
-  String validUser = "";
-  String invalidUser = "";
+  bool hasAgent       = false;
+  String validUser    = "";
+  String invalidUser  = "";
   bool? isUserFound;
   Future<void> checkUserFocus(bool hasFocus) async{
     hasAgent = hasFocus;

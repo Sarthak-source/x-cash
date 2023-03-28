@@ -6,18 +6,16 @@ import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/voucher/create_voucher_controller.dart';
+import 'package:xcash_app/data/model/voucher/create_voucher_response_model.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_bar.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_header_row.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/card/bottom_sheet_card.dart';
-import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_amount_text_field.dart';
 import 'package:xcash_app/view/components/text/label_text.dart';
 import 'package:xcash_app/view/screens/transaction/widget/filter_row_widget.dart';
-import 'package:xcash_app/view/screens/voucher/create_voucher/widget/create_voucher_bottom_sheet.dart';
-import 'package:xcash_app/data/model/voucher/create_voucher_response_model.dart';
 
 class CreateVoucherForm extends StatefulWidget {
   const CreateVoucherForm({Key? key}) : super(key: key);
@@ -66,7 +64,7 @@ class _CreateVoucherFormState extends State<CreateVoucherForm> {
                                 },
                                 child: BottomSheetCard(
                                   child: Text(
-                                    controller.walletList[index].currencyCode.toString(),
+                                    controller.walletList[index].currencyCode.toString().tr,
                                     style: regularDefault,
                                   ),
                                 ),

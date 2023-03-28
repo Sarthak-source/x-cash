@@ -43,13 +43,13 @@ class CustomRow extends StatelessWidget {
             ],
           ),
         ),
-        Expanded(flex:2,child: Text(lastText, maxLines:2, style: regularDefault.copyWith(color: MyColor.colorBlack),overflow: TextOverflow.ellipsis,textAlign: TextAlign.end,))
+        Expanded(flex:2,child: Text(lastText.tr, maxLines:2, style: regularDefault.copyWith(color: MyColor.colorBlack),overflow: TextOverflow.ellipsis,textAlign: TextAlign.end,))
       ],
     ) : Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Flexible(child: Text(firstText.tr, style: regularDefault.copyWith(color: MyColor.colorBlack.withOpacity(0.6)),overflow: TextOverflow.ellipsis,maxLines: 1,)),
-        Flexible(child:Text(lastText, maxLines:2, style: regularDefault.copyWith(color: MyColor.colorBlack),overflow: TextOverflow.ellipsis,textAlign: TextAlign.end,))
+        Flexible(child:Text(lastText.tr, maxLines:2, style: regularDefault.copyWith(color: MyColor.colorBlack),overflow: TextOverflow.ellipsis,textAlign: TextAlign.end,))
       ],
     );
   }

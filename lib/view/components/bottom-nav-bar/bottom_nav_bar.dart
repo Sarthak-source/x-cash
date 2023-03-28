@@ -98,7 +98,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           ),
           const SizedBox(height: Dimensions.space10 / 2),
           Text(
-              label, textAlign: TextAlign.center,
+              label.tr, textAlign: TextAlign.center,
               style: regularSmall.copyWith(color: index == currentIndex ? MyColor.primaryColor : MyColor.primaryTextColor)
           )
         ],

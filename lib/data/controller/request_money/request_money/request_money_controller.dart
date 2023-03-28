@@ -9,7 +9,6 @@ import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/model/request_money/request_money/request_money_response_model.dart';
 import 'package:xcash_app/data/model/transfer/check_user_response_model.dart';
 import 'package:xcash_app/data/repo/request_money/request_money_repo.dart';
-import 'package:xcash_app/main.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 import 'package:xcash_app/view/screens/request-money/request_money/widget/request_money_bottom_sheet.dart';
@@ -54,16 +53,16 @@ class RequestMoneyController extends GetxController{
     ResponseModel responseModel = await requestMoneyRepo.getWalletData();
     walletList.clear();
 
-    hasAgent = false;
-    validUser = "";
-    invalidUser = "";
-    isAgentFound = false;
-    amountController.text = "";
+    hasAgent                 = false;
+    validUser                = "";
+    invalidUser              = "";
+    isAgentFound             = false;
+    amountController.text    = "";
     requestToController.text = "";
-    noteController.text = "";
-    charge = '';
-    mainAmount = 0;
-    payableText = '';
+    noteController.text      = "";
+    charge                   = '';
+    mainAmount               = 0;
+    payableText              = '';
 
     selectedWallet = Wallets(id: -1, currencyCode: MyStrings.selectWallet);
     walletList.insert(0, selectedWallet!);
@@ -94,10 +93,10 @@ class RequestMoneyController extends GetxController{
     submitLoading = true;
     update();
 
-    String amount = amountController.text;
+    String amount   = amountController.text;
     String walletId = selectedWallet?.id.toString() ?? "";
     String username = requestToController.text;
-    String note = noteController.text;
+    String note     = noteController.text;
 
     ResponseModel responseModel = await requestMoneyRepo.submitRequestMoney(walletId: walletId, amount: amount, username: username,note:note);
     if(responseModel.statusCode == 200){
@@ -129,43 +128,47 @@ class RequestMoneyController extends GetxController{
 
     mainAmount = amount;
 
-    double rate = double.tryParse(selectedWallet?.currency?.rate ?? "0") ?? 0;
-    double percent = double.tryParse(model.data?.transferCharge?.percentCharge ?? "0") ?? 0;
-    double percentCharge = amount * percent / 100;
-    double temCharge = double.tryParse(model.data?.transferCharge?.fixedCharge ?? "0") ?? 0;
-    double fixedCharge = temCharge / rate;
-    double totalCharge = percentCharge + fixedCharge;
-    double cap = double.tryParse(model.data?.transferCharge?.cap ?? "0") ?? 0;
-    double mainCap = cap/rate;
+    double rate           = double.tryParse(selectedWallet?.currency?.rate ?? "0") ?? 0;
+    double percent        = double.tryParse(model.data?.transferCharge?.percentCharge ?? "0") ?? 0;
+    double percentCharge  = amount * percent / 100;
+    double temCharge      = double.tryParse(model.data?.transferCharge?.fixedCharge ?? "0") ?? 0;
+    double fixedCharge    = temCharge / rate;
+    double totalCharge    = percentCharge + fixedCharge;
+    double cap            = double.tryParse(model.data?.transferCharge?.cap ?? "0") ?? 0;
+    double mainCap        = cap/rate;
+
     if(cap != 1 && totalCharge > mainCap){
       totalCharge = mainCap;
     }
-    charge = '${Converter.formatNumber('$totalCharge',precision: selectedWallet?.currency?.currencyType == '2'? 8:2)} $currency';
-    double payable = amount - totalCharge;
-    payableText = '${Converter.formatNumber( payable.toString(),precision: selectedWallet?.currency?.currencyType == '2'? 8:2)} $currency';
+
+    charge                = '${Converter.formatNumber('$totalCharge',precision: selectedWallet?.currency?.currencyType == '2'? 8:2)} $currency';
+    double payable        = amount - totalCharge;
+    payableText           = '${Converter.formatNumber( payable.toString(),precision: selectedWallet?.currency?.currencyType == '2'? 8:2)} $currency';
     update();
   }
 
-  bool hasAgent = false;
-  String validUser = "";
-  String invalidUser = "";
+  bool hasAgent       = false;
+  String validUser    = "";
+  String invalidUser  = "";
   bool? isAgentFound;
+
   Future<void> checkUserFocus(bool hasFocus) async{
     hasAgent = hasFocus;
     update();
 
-    String user = requestToController.text;
+    String user                 = requestToController.text;
     ResponseModel responseModel = await requestMoneyRepo.checkUser(user: user);
+
     if(responseModel.statusCode == 200){
       CheckUserResponseModel model = CheckUserResponseModel.fromJson(jsonDecode(responseModel.responseJson));
       if(model.status.toString().toLowerCase() == "success"){
         isAgentFound = true;
-        validUser = MyStrings.validUserMsg.tr;
+        validUser    = MyStrings.validUserMsg.tr;
         update();
       }
       else{
         isAgentFound = false;
-        invalidUser = Converter.removeQuotationAndSpecialCharacterFromString(model.message?.error.toString().tr ?? MyStrings.invalidUserMsg.tr);
+        invalidUser  = Converter.removeQuotationAndSpecialCharacterFromString(model.message?.error.toString().tr ?? MyStrings.invalidUserMsg.tr);
         update();
       }
     }

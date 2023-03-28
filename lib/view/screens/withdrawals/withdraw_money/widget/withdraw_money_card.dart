@@ -50,7 +50,7 @@ class WithdrawMoneyCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                              controller.withdrawMoneyList[index].name ?? "",
+                              controller.withdrawMoneyList[index].name?.tr ?? "",
                               style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600)
                           ),
                           const SizedBox(height: Dimensions.space5),
@@ -82,8 +82,8 @@ class WithdrawMoneyCard extends StatelessWidget {
                       ),
                       const SizedBox(height: Dimensions.space5),
                       Text(
-                          "${Converter.formatNumber(controller.withdrawMoneyList[index].withdrawMethod?.withdrawMinLimit ?? "",precision:controller.withdrawMoneyList[index].currency?.currencyType=='2'?8:2)} ~ "
-                              "${Converter.formatNumber(controller.withdrawMoneyList[index].withdrawMethod?.withdrawMaxLimit ?? "",precision:controller.withdrawMoneyList[index].currency?.currencyType=='2'?8:2)} "
+                          "${Converter.formatNumber(controller.withdrawMoneyList[index].minLimit ?? "",precision:controller.withdrawMoneyList[index].currency?.currencyType=='2'?8:2)} ~ "
+                              "${Converter.formatNumber(controller.withdrawMoneyList[index].maxLimit ?? "",precision:controller.withdrawMoneyList[index].currency?.currencyType=='2'?8:2)} "
                               "${controller.withdrawMoneyList[index].currency?.currencyCode ?? ""}",
                           maxLines: 2,
                           style: regularSmall.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600)
@@ -100,7 +100,7 @@ class WithdrawMoneyCard extends StatelessWidget {
                       ),
                       const SizedBox(height: Dimensions.space5),
                        Text(
-                          "${Converter.formatNumber(controller.withdrawMoneyList[index].withdrawMethod?.withdrawMaxLimit ?? "",precision:controller.withdrawMoneyList[index].currency?.currencyType=='2'?8:2)} "
+                          "${Converter.calculateRate(controller.withdrawMoneyList[index].withdrawMethod?.fixedCharge??'0', controller.withdrawMoneyList[index].currency?.rate??'0')} "
                               "${controller.withdrawMoneyList[index].currency?.currencyCode ?? ""} + "
                               "${Converter.formatNumber(controller.withdrawMoneyList[index].withdrawMethod?.percentCharge ?? "")}%",
                           maxLines: 2,

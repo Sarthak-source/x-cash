@@ -4,8 +4,8 @@ import 'package:xcash_app/core/helper/shared_preference_helper.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/auth/verification/email_verification_model.dart';
+import 'package:xcash_app/data/model/model/error_model.dart';
 import 'package:xcash_app/data/repo/auth/login_repo.dart';
-import 'package:xcash_app/view/screens/auth/registration/model/error_model.dart';
 
 class ResetPasswordController extends GetxController{
   

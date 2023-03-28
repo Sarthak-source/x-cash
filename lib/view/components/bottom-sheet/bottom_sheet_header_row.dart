@@ -1,6 +1,5 @@
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
+import 'package:get/get.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
@@ -31,7 +30,7 @@ class BottomSheetHeaderRow extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children:[
-            Expanded(child: BottomSheetHeaderText(text: header)),
+            Expanded(child: BottomSheetHeaderText(text: header.tr)),
             const BottomSheetCloseButton()
           ],
         ),

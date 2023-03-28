@@ -19,7 +19,7 @@ class ThemeController extends GetxController implements GetxService {
     update();
   }
 
-  void toggleTheme() {
+  void changeTheme() {
     _darkTheme = !_darkTheme;
     sharedPreferences.setBool(MyStrings.theme, _darkTheme);
     if(_darkTheme){

@@ -180,7 +180,7 @@ class _EditWithdrawMethodState extends State<EditWithdrawMethod> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        MyStrings.status,
+                        MyStrings.status.tr,
                         style: regularDefault.copyWith(color: MyColor.getTextColor(), fontWeight: FontWeight.w600),
                       ),
                       Switch(

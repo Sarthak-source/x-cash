@@ -73,7 +73,7 @@ class _CustomAmountTextFieldState extends State<CustomAmountTextField> {
                       controller: widget.controller,
                       autofocus: widget.autoFocus,
                       style: regularDefault.copyWith(color: MyColor.getTextColor()),
-                      textAlign: TextAlign.left,
+                      //textAlign: TextAlign.left,
                       keyboardType: TextInputType.number,
                       textInputAction: widget.inputAction,
                       onChanged: widget.onChanged,

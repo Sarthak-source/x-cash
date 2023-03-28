@@ -65,7 +65,8 @@ class _WithdrawMoneyScreenState extends State<WithdrawMoneyScreen> {
                   isImage: true,
                   pressed: () => Get.toNamed(RouteHelper.withdrawMethodScreen),
                   imageSrc: MyImages.moneyWithdraw
-              )
+              ),
+              const SizedBox(width: 10)
             ],
           ),
           body: controller.isLoading ? const CustomLoader() : SingleChildScrollView(

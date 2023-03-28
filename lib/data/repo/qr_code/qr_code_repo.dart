@@ -9,29 +9,19 @@ class QrCodeRepo{
   QrCodeRepo({required this.apiClient});
 
   Future<ResponseModel> getQrData() async{
-
     String url = "${UrlContainer.baseUrl}${UrlContainer.qrCodeEndPoint}";
-
     ResponseModel responseModel = await apiClient.request(url, Method.getMethod, null, passHeader: true);
-
     return responseModel;
   }
 
   Future<ResponseModel> qrCodeScan(String code) async{
-    print(code);
-
     String url = "${UrlContainer.baseUrl}${UrlContainer.qrScanEndPoint}";
-    print(url);
     Map<String, String> params = {"code" : code};
-
     ResponseModel responseModel = await apiClient.request(url, Method.postMethod, params, passHeader: true);
-    print(responseModel.responseJson);
-
     return responseModel;
   }
 
   Future<ResponseModel> qrCodeDownLoad() async{
-
     String url = "${UrlContainer.baseUrl}${UrlContainer.qrCodeImageDownload}";
     ResponseModel responseModel = await apiClient.request(url, Method.postMethod, null, passHeader: true);
     return responseModel;

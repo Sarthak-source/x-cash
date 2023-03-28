@@ -6,7 +6,6 @@ import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/data/controller/account/profile_controller.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
-
 import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
 import 'package:xcash_app/view/screens/edit_profile/widget/profile_image.dart';
 

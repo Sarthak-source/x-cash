@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/helper/string_format_helper.dart';
@@ -277,6 +276,7 @@ class UpdateInvoiceController extends GetxController{
 
     //for preview bottom sheet
     double currencyRate = double.tryParse(selectedCurrency?.rate ?? "0") ?? 0;
+
     double percent = double.tryParse(model.data?.invoiceCharge?.percentCharge ?? "0") ?? 0;
     double percentCharge = totalAmount * percent / 100;
     double temCharge = double.tryParse(model.data?.invoiceCharge?.fixedCharge ?? "0") ?? 0;
@@ -285,6 +285,7 @@ class UpdateInvoiceController extends GetxController{
     double totalCharge = percentCharge + fixedCharge;
     double cap = double.tryParse(model.data?.invoiceCharge?.cap ?? "0") ?? 0;
     double mainCap = cap/currencyRate;
+
     if(cap != 1 && totalCharge > mainCap){
       totalCharge = mainCap;
     }

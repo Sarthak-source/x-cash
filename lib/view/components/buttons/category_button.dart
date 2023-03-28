@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/style.dart';
@@ -38,7 +39,7 @@ class CategoryButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(4),
             ),
             child: Text(
-              text,
+              text.tr,
               style: regularDefault.copyWith(color: textColor,fontSize: textSize),
             ),
           ),

@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:xcash_app/core/utils/method.dart';
 import 'package:xcash_app/core/utils/url_container.dart';
 import 'package:xcash_app/data/model/authorization/authorization_response_model.dart';

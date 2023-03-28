@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
@@ -20,9 +21,9 @@ class HistoryStatusSection extends StatelessWidget {
               : status == "3" ? Colors.red : MyColor.colorGreen)
       ),
       child: Text(
-        status == "1" ? MyStrings.approved
-            : status == "2" ? MyStrings.pending
-            : status == "3" ? MyStrings.rejected
+        status == "1" ? MyStrings.approved.tr
+            : status == "2" ? MyStrings.pending.tr
+            : status == "3" ? MyStrings.rejected.tr
             : "",
         textAlign: TextAlign.center,
         style: regularExtraSmall.copyWith(

@@ -1,15 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
-import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/home/home_controller.dart';
-import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
-import 'package:xcash_app/view/components/buttons/circle_animated_button_with_text.dart';
-import 'package:xcash_app/view/screens/voucher/redeem_voucher/redeem_voucher.dart';
 
 class MainItemHistory extends StatelessWidget {
   const MainItemHistory({Key? key}) : super(key: key);
@@ -43,11 +38,7 @@ class MainItemHistory extends StatelessWidget {
             ...controller.historyModuleList
                 .getRange(0, 4)
                 .map((item) => SizedBox(
-              width:
-              (MediaQuery.of(context).size.width -
-                  32 -
-                  24) /
-                  4,
+              width: (MediaQuery.of(context).size.width - 32 - 24) / 4,
               // 32 is the total horizontal padding, 24 is the total horizontal spacing
               child: item,
             ))
@@ -55,11 +46,7 @@ class MainItemHistory extends StatelessWidget {
             ...controller.historyModuleList
                 .getRange(4, controller.historyModuleList.length)
                 .map((item) => SizedBox(
-              width:
-              (MediaQuery.of(context).size.width -
-                  32 -
-                  24) /
-                  4,
+              width: (MediaQuery.of(context).size.width - 32 - 24) / 4,
               child: item,
             ))
                 .toList(),
@@ -84,10 +71,7 @@ class MainItemHistory extends StatelessWidget {
                 .getRange(0, controller.historyModuleList.length)
                 .map((item) => SizedBox(
               width:
-              (MediaQuery.of(context).size.width -
-                  32 -
-                  24) /
-                  4,
+              (MediaQuery.of(context).size.width - 32 - 24) / 4,
               child: item,
             ))
                 .toList(),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:xcash_app/core/utils/dimensions.dart';
+import 'package:get/get.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/style.dart';
 
@@ -18,7 +18,7 @@ class FormRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Text(label, style: regularDefault.copyWith(color: MyColor.labelTextColor)),
+        Text(label.tr, style: regularDefault.copyWith(color: MyColor.labelTextColor)),
         Text(isRequired?' *':'',style: boldDefault.copyWith(color: Colors.red))
       ],
     );

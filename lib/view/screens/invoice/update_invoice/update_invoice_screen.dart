@@ -9,7 +9,6 @@ import 'package:xcash_app/data/repo/invoice/update_invoice_repo.dart';
 import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/action_button_icon_widget.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
-import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/screens/invoice/update_invoice/widget/invoice_payment_url_section.dart';
 import 'package:xcash_app/view/screens/invoice/update_invoice/widget/update_invoice_details.dart';
@@ -45,7 +44,6 @@ class _UpdateInvoiceScreenState extends State<UpdateInvoiceScreen> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
   }
 
@@ -79,6 +77,7 @@ class _UpdateInvoiceScreenState extends State<UpdateInvoiceScreen> {
                   isLoading: controller.isDiscardInvoiceLoading,
                   pressed: () => controller.discardInvoice(),
                 ),
+                const SizedBox(width: 10),
               ],
               backgroundColor: MyColor.getAppBarColor(),
             ),

@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:xcash_app/core/utils/method.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/url_container.dart';

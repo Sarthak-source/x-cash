@@ -4,11 +4,13 @@ import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 
 class CircleShapeImage extends StatefulWidget {
+
   final String image;
   final Color backgroundColor;
   final Color? imageColor;
   final double size;
   final bool isSvgImage;
+
   const CircleShapeImage({
     Key? key,
     this.backgroundColor = MyColor.screenBgColor,

@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
+
 import '../auth/sign_up_model/registration_response_model.dart';
 
 class KycResponseModel {
@@ -76,8 +78,10 @@ class Form {
       }
       _list;
 
-    }finally{
-
+    }catch(e){
+      if(kDebugMode){
+        print(e.toString());
+      }
     }
   }
 

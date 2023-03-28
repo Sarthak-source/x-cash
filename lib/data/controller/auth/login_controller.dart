@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/helper/shared_preference_helper.dart';
@@ -116,11 +115,6 @@ class LoginController extends GetxController{
     update();
   }
 
-  void clearAllShacolorRedPcolorRedata(){
-    loginRepo.apiClient.sharedPreferences.setBool(SharedPreferenceHelper.rememberMeKey, false);
-    loginRepo.apiClient.sharedPreferences.setString(SharedPreferenceHelper.accessTokenKey, '');
-    return;
-  }
 
   void clearTextField() {
     passwordController.text = '';

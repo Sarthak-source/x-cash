@@ -61,7 +61,7 @@ class _NoDataOrInternetScreenState extends State<NoDataOrInternetScreen> {
                   child: Column(
                     children: [
                       Text(
-                        widget.isNoInternet?MyStrings.noInternet.tr:widget.message,
+                        widget.isNoInternet?MyStrings.noInternet.tr:widget.message.tr,
                         textAlign: TextAlign.center,
                         style:semiBoldDefault.copyWith(
                             color: widget.isNoInternet ? MyColor.colorRed : MyColor.getTextColor(),
@@ -75,7 +75,7 @@ class _NoDataOrInternetScreenState extends State<NoDataOrInternetScreen> {
                         if(await Connectivity().checkConnectivity() != ConnectivityResult.none){
                           widget.onChanged!(true);
                         }
-                      }, child: const RoundedBorderContainer(text: 'RETRY', bgColor: MyColor.colorRed,borderColor: MyColor.colorRed,textColor: MyColor.colorWhite,)): const SizedBox()
+                      }, child: RoundedBorderContainer(text: MyStrings.retry.tr, bgColor: MyColor.colorRed,borderColor: MyColor.colorRed,textColor: MyColor.colorWhite,)): const SizedBox()
                     ],
                   ),
                 )),

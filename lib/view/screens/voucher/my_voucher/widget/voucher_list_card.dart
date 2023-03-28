@@ -84,8 +84,6 @@ class _VoucherListCardState extends State<VoucherListCard> {
                         ),
                       ],
                     ))
-
-                    //
                   ],
                 ),
               ),

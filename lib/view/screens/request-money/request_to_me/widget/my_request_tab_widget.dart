@@ -6,8 +6,6 @@ import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/no_data.dart';
 import 'package:xcash_app/view/screens/request-money/request_to_me/widget/my_request_list_item.dart';
 
-import 'to_me_list_item.dart';
-
 class MyRequestTabWidget extends StatefulWidget {
   const MyRequestTabWidget({Key? key}) : super(key: key);
 

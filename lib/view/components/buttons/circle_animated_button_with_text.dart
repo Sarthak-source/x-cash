@@ -6,12 +6,12 @@ import 'package:xcash_app/core/utils/style.dart';
 class CircleAnimatedButtonWithText extends StatefulWidget {
 
   final Widget child;
-  VoidCallback onTap;
+  final VoidCallback onTap;
   final String buttonName;
   final double height, width;
   final Color backgroundColor;
 
-  CircleAnimatedButtonWithText({
+  const CircleAnimatedButtonWithText({
     Key? key,
     required this.buttonName,
     required this.child,

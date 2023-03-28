@@ -77,8 +77,6 @@ class ProfileController extends GetxController {
     String state      =  stateController.text.toString();
     User?  user       =  model.data?.user;
 
-    print(imageFile?.path);
-
     if(firstName.isNotEmpty && lastName.isNotEmpty){
       isLoading = true;
       update();

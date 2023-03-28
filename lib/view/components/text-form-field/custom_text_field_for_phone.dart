@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/style.dart';
@@ -31,7 +32,7 @@ class CustomTextFieldForPhone extends StatefulWidget {
   final TextCapitalization capitalization;
 
   const CustomTextFieldForPhone(
-      {Key? key, this.hintText = 'Write something...',
+      {Key? key, this.hintText = '',
         required this.labelText,
         this.controller,
         this.focusNode,
@@ -57,7 +58,7 @@ class CustomTextFieldForPhone extends StatefulWidget {
         this.isSearch = false,}) : super(key: key);
 
   @override
-  _CustomTextFieldForPhoneState createState() => _CustomTextFieldForPhoneState();
+  State<CustomTextFieldForPhone> createState() => _CustomTextFieldForPhoneState();
 }
 
 class _CustomTextFieldForPhoneState extends State<CustomTextFieldForPhone> {
@@ -70,8 +71,7 @@ class _CustomTextFieldForPhoneState extends State<CustomTextFieldForPhone> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
 
-        SmallText(text: widget.labelText),
-
+        SmallText(text: widget.labelText.tr),
         const SizedBox(height: Dimensions.space10),
 
         TextFormField(
@@ -85,7 +85,6 @@ class _CustomTextFieldForPhoneState extends State<CustomTextFieldForPhone> {
           textCapitalization: widget.capitalization,
           enabled: widget.isEnabled,
           autofocus: false,
-          //onChanged: widget.isSearch ? widget.languageProvider.searchLanguage : null,
           obscureText: widget.isPassword ? _obscureText : false,
           inputFormatters: widget.inputType == TextInputType.phone ? <TextInputFormatter>[FilteringTextInputFormatter.allow(RegExp('[0-9+]'))] : null,
           decoration: InputDecoration(
@@ -111,7 +110,7 @@ class _CustomTextFieldForPhoneState extends State<CustomTextFieldForPhone> {
               borderSide: const BorderSide(color: MyColor.textFieldDisableBorderColor, width: 1),
             ),
             isDense: true,
-            hintText: widget.hintText,
+            hintText: widget.hintText.tr,
             fillColor: widget.fillColor,
             hintStyle: regularSmall.copyWith(color: MyColor.contentTextColor),
             filled: true,

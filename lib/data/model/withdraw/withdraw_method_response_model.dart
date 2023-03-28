@@ -116,7 +116,9 @@ class Data {
       String? currencyId,
       String? status, 
       String? createdAt, 
-      String? updatedAt, 
+      String? updatedAt,
+      String? minLimit,
+      String? maxLimit,
       WithdrawMethod? withdrawMethod, 
       Currency? currency,}){
     _id = id;
@@ -140,17 +142,22 @@ class Data {
     _methodId = json['method_id'].toString();
     _currencyId = json['currency_id'].toString();
     _status = json['status'].toString();
+    _minLimit = json['min_limit']!=null?json['min_limit'].toString():'';
+    _maxLimit = json['max_limit']!=null?json['max_limit'].toString():'';
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
     _withdrawMethod = json['withdraw_method'] != null ? WithdrawMethod.fromJson(json['withdraw_method']) : null;
     _currency = json['currency'] != null ? Currency.fromJson(json['currency']) : null;
   }
+
   int? _id;
   String? _name;
   String? _userId;
   String? _userType;
   String? _methodId;
   String? _currencyId;
+  String? _minLimit;
+  String? _maxLimit;
   String? _status;
   String? _createdAt;
   String? _updatedAt;
@@ -164,6 +171,8 @@ class Data {
   String? get methodId => _methodId;
   String? get currencyId => _currencyId;
   String? get status => _status;
+  String? get minLimit => _minLimit;
+  String? get maxLimit => _maxLimit;
   String? get createdAt => _createdAt;
   String? get updatedAt => _updatedAt;
   WithdrawMethod? get withdrawMethod => _withdrawMethod;

@@ -82,6 +82,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                     pressed: () => controller.changeSearchIcon(),
                     icon: controller.isSearch ? Icons.clear : Icons.filter_alt_sharp
                 ),
+                const SizedBox(width: 10)
               ],
             ),
             body: controller.isLoading ? const CustomLoader() :  SizedBox(
@@ -109,6 +110,7 @@ class _TransactionHistoryScreenState extends State<TransactionHistoryScreen> {
                           itemCount: controller.transactionList.length + 1,
                           separatorBuilder: (context, index) => const SizedBox(height: Dimensions.space10),
                           itemBuilder: (context, index) {
+
                             if(controller.transactionList.length == index){
                               return controller.hasNext() ? const CustomLoader(isPagination: true) : const SizedBox();
                             }

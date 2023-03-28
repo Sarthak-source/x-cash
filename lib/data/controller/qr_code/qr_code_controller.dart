@@ -1,9 +1,6 @@
 import 'dart:convert';
-import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:gallery_saver/gallery_saver.dart';
 import 'package:get/get.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
@@ -14,7 +11,6 @@ import 'package:xcash_app/data/model/qr_code/qr_code_scan_response_model.dart';
 import 'package:xcash_app/data/repo/qr_code/qr_code_repo.dart';
 import 'package:xcash_app/view/components/file_download_dialog/download_dialogue.dart';
 import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
-import 'package:dio/dio.dart';
 
 class QrCodeController extends GetxController{
 
@@ -24,7 +20,7 @@ class QrCodeController extends GetxController{
   bool isLoading = true;
   QrCodeResponseModel model = QrCodeResponseModel();
 
-  String qrCode = "";
+  String qrCode   = "";
   String username = '';
 
   Future<void> loadData() async{

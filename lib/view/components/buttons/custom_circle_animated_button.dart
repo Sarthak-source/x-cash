@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 class CustomCircleAnimatedButton extends StatefulWidget {
 
   final Widget child;
-  VoidCallback onTap;
+  final VoidCallback onTap;
   final double height, width;
   final Color backgroundColor;
 
-  CustomCircleAnimatedButton({
+  const CustomCircleAnimatedButton({
     Key? key,
     required this.child,
     required this.onTap,

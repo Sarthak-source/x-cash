@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/data/controller/auth/auth/registration_controller.dart';

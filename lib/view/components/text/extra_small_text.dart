@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:xcash_app/core/utils/style.dart';
 
 class ExtraSmallText extends StatelessWidget {
@@ -15,7 +16,7 @@ class ExtraSmallText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      text,
+      text.tr,
       textAlign: textAlign,
       style: textStyle,
       overflow: TextOverflow.ellipsis,

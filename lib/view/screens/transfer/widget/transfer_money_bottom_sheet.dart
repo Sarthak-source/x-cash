@@ -4,15 +4,11 @@ import 'package:xcash_app/core/helper/string_format_helper.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/controller/transfer/transfer_money_controller.dart';
-import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_close_button.dart';
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_header_row.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/row_widget/bottom_sheet_row.dart';
-import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
-
-import '../../../components/row_widget/card_row_widget.dart';
 
 class TransferMoneyBottomSheet extends StatelessWidget {
   const TransferMoneyBottomSheet({Key? key}) : super(key: key);

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/style.dart';
+import 'package:get/get.dart';
 
 
 
@@ -52,7 +53,7 @@ class _CustomDropDownWithTextFieldState extends State<CustomDropDownWithTextFiel
               isExpanded: true,
               underline: Container(),
               hint: Text(
-                widget.selectedValue??'',
+                widget.selectedValue?.tr??'',
                 style: regularDefault.copyWith(color: MyColor.colorBlack),
               ), // Not necessary for Option 1
               value: widget.selectedValue,
@@ -62,7 +63,7 @@ class _CustomDropDownWithTextFieldState extends State<CustomDropDownWithTextFiel
                 return DropdownMenuItem(
                   value: value,
                   child: Text(
-                    value,
+                    value.tr,
                     style: regularDefault.copyWith(color: MyColor.colorBlack),
                   ),
                 );

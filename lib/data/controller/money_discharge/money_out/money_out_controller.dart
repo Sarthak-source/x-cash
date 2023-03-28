@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/helper/string_format_helper.dart';
@@ -57,8 +56,8 @@ class MoneyOutController extends GetxController{
 
     ResponseModel responseModel = await moneyOutRepo.getMoneyOutWallet();
 
-    hasAgent = false;
-    validAgent = "";
+    hasAgent     = false;
+    validAgent   = "";
     invalidAgent = "";
     isAgentFound = false;
 
@@ -143,24 +142,24 @@ class MoneyOutController extends GetxController{
       return ;
     }
     mainAmount = amount;
-    double currencyRate = double.tryParse(selectedWallet?.currency?.rate??'1')??1;
+    double currencyRate  = double.tryParse(selectedWallet?.currency?.rate??'1')??1;
 
-    double percent = double.tryParse(model.data?.moneyOutCharge?.percentCharge ?? "0") ?? 0;
+    double percent       = double.tryParse(model.data?.moneyOutCharge?.percentCharge ?? "0") ?? 0;
     double percentCharge = (amount*percent)/100;
 
-    double fixed = double.tryParse(model.data?.moneyOutCharge?.fixedCharge ?? "0") ?? 0;
-    double fixedCharge = fixed/currencyRate;  //fixed charge are  global for each currency so that we don't calculate it with expected currency
+    double fixed         = double.tryParse(model.data?.moneyOutCharge?.fixedCharge ?? "0") ?? 0;
+    double fixedCharge   = fixed/currencyRate;  //fixed charge are  global for each currency so that we don't calculate it with expected currency
 
-    double finalCharge = fixedCharge + percentCharge;
-    charge = '${Converter.formatNumber('$finalCharge',precision: selectedWallet?.currency?.currencyType=='2'?8:2)} $currency';
-    String payable = Converter.sum(finalCharge.toString(),mainAmount.toString(),precision: selectedWallet?.currency?.currencyType=='2'?8:2);
-    payableText = '$payable $currency';
+    double finalCharge   = fixedCharge + percentCharge;
+    charge               = '${Converter.formatNumber('$finalCharge',precision: selectedWallet?.currency?.currencyType=='2'?8:2)} $currency';
+    String payable       = Converter.sum(finalCharge.toString(),mainAmount.toString(),precision: selectedWallet?.currency?.currencyType=='2'?8:2);
+    payableText          = '$payable $currency';
     update();
   }
 
 
-  bool hasAgent = false;
-  String validAgent = "";
+  bool hasAgent       = false;
+  String validAgent   = "";
   String invalidAgent = "";
   bool? isAgentFound;
   Future<void> checkAgentFocus(bool hasFocus) async{

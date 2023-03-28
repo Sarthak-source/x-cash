@@ -68,7 +68,7 @@ moneyOutWalletBottomSheet(List<Wallets>? list, {required BuildContext context}){
                                       border: Border.all(color: MyColor.colorGrey.withOpacity(0.2))
                                   ),
                                   child: Text(
-                                    list[index].currencyCode.toString() ?? "",
+                                    list[index].currencyCode.toString().tr,
                                     style: regularDefault,
                                   ),
                                 ),

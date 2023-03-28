@@ -9,10 +9,8 @@ class RedeemVoucherRepo{
   RedeemVoucherRepo({required this.apiClient});
 
   Future<ResponseModel> submitRedeemVoucher({required String voucherCode}) async{
-
     String url = "${UrlContainer.baseUrl}${UrlContainer.voucherRedeemEndPoint}";
     final params = {"code": voucherCode};
-
     ResponseModel responseModel = await apiClient.request(url, Method.postMethod, params, passHeader: true);
     return responseModel;
   }

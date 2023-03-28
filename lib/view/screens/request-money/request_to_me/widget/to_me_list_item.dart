@@ -18,8 +18,8 @@ import 'package:xcash_app/view/components/divider/custom_divider.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_drop_down_text_field.dart';
 import 'package:xcash_app/view/components/text/bottom_sheet_header_text.dart';
 import 'package:xcash_app/view/screens/request-money/request_to_me/widget/request_reject_alert_dialog.dart';
-
 import '../../../../../core/utils/my_color.dart';
+
 class ToMeListItem extends StatelessWidget {
   final int index;
 

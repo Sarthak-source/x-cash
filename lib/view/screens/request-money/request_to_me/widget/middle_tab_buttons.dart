@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/style.dart';
@@ -29,7 +30,7 @@ class MiddleTabButtons extends StatelessWidget {
                   color: activeButton ? MyColor.primaryColor : MyColor.colorWhite,
                   borderRadius: BorderRadius.circular(30)
               ),
-              child: Text(buttonName, textAlign: TextAlign.center, style: regularSmall.copyWith(color: activeButton ? MyColor.colorWhite : MyColor.primaryColor)),
+              child: Text(buttonName.tr, textAlign: TextAlign.center, style: regularSmall.copyWith(color: activeButton ? MyColor.colorWhite : MyColor.primaryColor)),
             )
         ),
       );

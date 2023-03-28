@@ -53,7 +53,7 @@ class _LanguageDialogBodyState extends State<LanguageDialogBody> {
                     final localizationController = Get.put(LocalizationController(sharedPreferences: Get.find()));
                     ResponseModel response = await repo.getLanguage(languageCode);
                     if(response.statusCode == 200){
-                      try{
+                      /*try{*/
                         Map<String,Map<String,String>> language = {};
                         var resJson = jsonDecode(response.responseJson);
                         await repo.apiClient.sharedPreferences.setString(SharedPreferenceHelper.languageListKey, response.responseJson);
@@ -75,9 +75,9 @@ class _LanguageDialogBodyState extends State<LanguageDialogBody> {
                         }else{
                           Get.back();
                         }
-                      }catch(e){
+                      /*}catch(e){
                         CustomSnackBar.error(errorList: [e.toString()]);
-                      }
+                      }*/
 
                     } else{
                       CustomSnackBar.error(errorList: [response.message]);
