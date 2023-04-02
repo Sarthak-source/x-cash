@@ -8,7 +8,6 @@ import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart';
 
 class ChangePasswordForm extends StatefulWidget {
-
   const ChangePasswordForm({Key? key}) : super(key: key);
 
   @override

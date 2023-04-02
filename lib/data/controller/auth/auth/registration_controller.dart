@@ -146,7 +146,7 @@ class RegistrationController extends GetxController {
     await preferences.setString(SharedPreferenceHelper.userNameKey, responseModel.data?.user?.username ?? '');
     await preferences.setString(SharedPreferenceHelper.userPhoneNumberKey, responseModel.data?.user?.mobile ?? '');
 
-    //await registrationRepo.sendUserToken();
+    await registrationRepo.sendUserToken();
 
     bool isProfileCompleteEnable = true;
     bool isTwoFactorEnable =  false;

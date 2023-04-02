@@ -80,8 +80,8 @@ class EditWithdrawMethodController extends GetxController {
         if (element.type == 'select') {
           bool? isEmpty = element.options?.isEmpty;
           if (element.options != null && isEmpty != true) {
-            String selectedValue = await loadPreviousValue(element.name??'', element.type??'');
-            if(selectedValue.isNotEmpty){
+            String? selectedValue = await loadPreviousValue(element.name??'', element.type??'');
+            if(selectedValue!=null && selectedValue.isNotEmpty){
               var seen = <String>{};
               List<String>?tempOptionList = element.options?.where((element) => seen.add(element)).toList();
               element.options?.clear();

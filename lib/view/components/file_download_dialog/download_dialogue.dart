@@ -37,7 +37,7 @@ class DownloadingDialogState extends State<DownloadingDialog> {
 
   Future<void> _downloadFile() async {
     _response = await http.Client()
-        .send(http.Request('GET', Uri.parse('https://upload.wikimedia.org/wikipedia/commons/f/ff/Pizigani_1367_Chart_10MB.jpg')));
+        .send(http.Request('GET', Uri.parse(widget.url)));
     _total = _response.contentLength ?? 0;
 
     _response.stream.listen((value) {
