@@ -16,7 +16,6 @@ import 'package:xcash_app/view/components/text/default_text.dart';
 import 'package:xcash_app/view/components/will_pop_widget.dart';
 
 class LoginScreen extends StatefulWidget {
-
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
@@ -64,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                  SizedBox(height: MediaQuery.of(context).size.height*.06),
-                 Center(child:Image.asset(MyImages.appLogo, height: 50, width: 225,color: MyColor.primaryColor,),),
+                 Center(child:Image.asset(MyImages.appLogo2, height: 50, width: 225),),
                   SizedBox(height: MediaQuery.of(context).size.height*.08),
                   Form(
                     key: formKey,

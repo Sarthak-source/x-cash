@@ -21,12 +21,10 @@ class _ConfirmWithdrawFileItemState extends State<ConfirmWithdrawFileItem> {
 
     return GetBuilder<KycController>(builder: (controller){
       FormModel? model=controller.formList[widget.index];
-      return SizedBox(
-        child:InkWell(
-          onTap: (){
-            controller.pickFile(widget.index);
-          }, child: ChooseFileItem(fileName: model.selectedValue??MyStrings.chooseFile)),
-      );
+      return InkWell(
+        onTap: (){
+          controller.pickFile(widget.index);
+        }, child: ChooseFileItem(fileName: model.selectedValue??MyStrings.chooseFile));
     });
   }
 }

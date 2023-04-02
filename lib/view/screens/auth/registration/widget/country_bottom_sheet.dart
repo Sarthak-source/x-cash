@@ -5,10 +5,11 @@ import 'package:xcash_app/data/controller/auth/auth/registration_controller.dart
 import 'package:xcash_app/view/components/bottom-sheet/bottom_sheet_header_row.dart';
 import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/card/bottom_sheet_card.dart';
+import 'package:get/get.dart';
 
 class CountryBottomSheet{
 
-  static void bottomSheet(BuildContext context, RegistrationController controller){
+  static void bottomSheet( RegistrationController controller){
    CustomBottomSheet(child: Column(
      children: [
        const BottomSheetHeaderRow(header: ''),
@@ -21,7 +22,7 @@ class CountryBottomSheet{
                onTap: (){
                  controller.countryController.text = controller.countryList[index].country??'';
                  controller.setCountryNameAndCode(controller.countryList[index].country??'',
-                     controller.countryList[index].countryCode??'', controller.countryList[index].dialCode??'');
+                 controller.countryList[index].countryCode??'', controller.countryList[index].dialCode??'');
 
                  Navigator.pop(context);
 
@@ -33,13 +34,13 @@ class CountryBottomSheet{
                },
                child: BottomSheetCard(
                  child: Text(
-                     '+${controller.countryList[index].dialCode}  ${controller.countryList[index].country}',
+                     '+${controller.countryList[index].dialCode}  ${controller.countryList[index].country?.tr??''}',
                      style: regularDefault.copyWith(color: MyColor.getTextColor())
                  ),
                ),
              );
            })
      ],
-   )).customBottomSheet(context);
+   )).customBottomSheet(Get.context!);
   }
 }

@@ -1,7 +1,7 @@
-class LanguageModel {
+class MyLanguageModel {
   String languageName;
   String languageCode;
   String countryCode;
 
-  LanguageModel({required this.languageName, required this.countryCode, required this.languageCode});
+  MyLanguageModel({required this.languageName, required this.countryCode, required this.languageCode});
 }

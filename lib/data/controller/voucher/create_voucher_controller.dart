@@ -110,7 +110,7 @@ class CreateVoucherController extends GetxController{
       if(model.status?.toLowerCase()=='success'){
         String actionId = model.data?.actionId??'';
         if(actionId.isNotEmpty){
-          Get.toNamed(RouteHelper.otpScreen,arguments: [actionId, RouteHelper.myVoucherScreen]);
+          Get.toNamed(RouteHelper.otpScreen,arguments: [actionId, RouteHelper.myVoucherScreen,otpType]);
         } else{
           CustomSnackBar.success(successList: model.message?.success??[MyStrings.requestSuccess]);
           Get.toNamed(RouteHelper.myVoucherScreen);

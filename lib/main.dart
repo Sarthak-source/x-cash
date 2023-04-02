@@ -26,13 +26,12 @@ Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   Map<String, Map<String, String>> languages = await di_service.init();
 
-  FirebaseMessaging.onBackgroundMessage(
-      _messageHandler
-  );
+  FirebaseMessaging.onBackgroundMessage(_messageHandler);
   await PushNotificationService().setupInteractedMessage();
 
   HttpOverrides.global = MyHttpOverrides();
   runApp(MyApp(languages: languages));
+
 }
 
 class MyHttpOverrides extends HttpOverrides{

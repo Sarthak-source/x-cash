@@ -5,6 +5,8 @@ import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/style.dart';
 
+import '../../../../components/image/custom_svg_picture.dart';
+
 class MenuItems extends StatelessWidget {
   final String imageSrc;
   final String label;
@@ -35,7 +37,7 @@ class MenuItems extends StatelessWidget {
                   height: 35, width: 35,
                   alignment: Alignment.center,
                   decoration: const BoxDecoration(color: MyColor.screenBgColor, shape: BoxShape.circle),
-                  child: isSvgImage ? SvgPicture.asset(
+                  child: isSvgImage ? CustomSvgPicture(image:
                       imageSrc,
                       color: MyColor.colorBlack,
                       height: 17.5, width: 17.5

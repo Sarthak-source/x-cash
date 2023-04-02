@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
+
+import '../../../../components/image/custom_svg_picture.dart';
 
 
 class AlreadyVerifiedWidget extends StatefulWidget {
@@ -19,9 +22,8 @@ class _AlreadyVerifiedWidgetState extends State<AlreadyVerifiedWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      alignment: Alignment.center,
       padding:  const EdgeInsets.all(Dimensions.space20),
-      margin: const EdgeInsets.all(15),
+      margin: const EdgeInsets.all(5),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: MyColor.screenBgColor,
@@ -30,9 +32,9 @@ class _AlreadyVerifiedWidgetState extends State<AlreadyVerifiedWidget> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SvgPicture.asset(widget.isPending ? MyImages.pendingIcon : MyImages.verifiedIcon,height: 100,width: 100,fit: BoxFit.cover,),
+          CustomSvgPicture(image:widget.isPending ? MyImages.pendingIcon : MyImages.verifiedIcon,height: 100,width: 100,fit: BoxFit.cover,),
           const SizedBox(height: 25,),
-          Text(widget.isPending?MyStrings.kycUnderReviewMsg:MyStrings.kycAlreadyVerifiedMsg,style: regularDefault.copyWith(color: MyColor.colorBlack,fontSize: Dimensions.fontExtraLarge,)),
+          Text(widget.isPending?MyStrings.kycUnderReviewMsg.tr:MyStrings.kycAlreadyVerifiedMsg.tr,style: regularDefault.copyWith(color: MyColor.colorBlack,fontSize: Dimensions.fontExtraLarge,)),
           const SizedBox(height: 40,)
         ],
       ),

@@ -1,13 +1,27 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="dev.vlab.xcash_user">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+
+
    <application
-        android:label="xcash_app"
+        android:label="XCash"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true"
+        android:icon="@mipmap/ic_launcher"
+        tools:targetApi="m">
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -34,5 +48,17 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+
+       <provider
+           android:name = "com.pichillilorenzo.flutter_inappwebview.InAppWebViewFileProvider"
+           android:authorities="${applicationId}.flutter_inappwebview.fileprovider"
+           android:exported="false"
+           android:grantUriPermissions="true"
+           tools:ignore="MissingClass">
+           <meta-data
+               android:name="android.support.FILE_PROVIDER_PATHS"
+               android:resource="@xml/provider_paths" />
+       </provider>
+
     </application>
 </manifest>

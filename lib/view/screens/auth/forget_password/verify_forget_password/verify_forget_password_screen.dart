@@ -13,6 +13,7 @@ import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/buttons/rounded_button.dart';
 import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
+import 'package:xcash_app/view/components/image/custom_svg_picture.dart';
 import 'package:xcash_app/view/components/text/default_text.dart';
 
 class VerifyForgetPassScreen extends StatefulWidget {
@@ -64,15 +65,15 @@ class _VerifyForgetPassScreenState extends State<VerifyForgetPassScreen> {
                           height: 100, width: 100,
                           alignment: Alignment.center,
                           decoration: BoxDecoration(
-                              color: MyColor.getCardBgColor(),
+                              color: MyColor.primaryColor.withOpacity(.07),
                               shape: BoxShape.circle
                           ),
-                          child: SvgPicture.asset(MyImages.emailVerifyImage, height: 50, width: 50, color: MyColor.getPrimaryColor()),
+                          child: CustomSvgPicture(image:MyImages.emailVerifyImage, height: 50, width: 50, color: MyColor.getPrimaryColor()),
                         ),
                         const SizedBox(height: Dimensions.space25),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 25),
-                            child: DefaultText(text: MyStrings.verifyPasswordSubText.tr, textAlign: TextAlign.center, textColor: MyColor.getContentTextColor())),
+                            child: DefaultText(text: '${MyStrings.verifyPasswordSubText.tr} : ${controller.getFormatedMail().tr}', textAlign: TextAlign.center, textColor: MyColor.getContentTextColor())),
                         const SizedBox(height: Dimensions.space40),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: Dimensions.space30),

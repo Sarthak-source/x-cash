@@ -21,8 +21,11 @@ class TransactionCard extends StatelessWidget {
           child: Container(
             width: MediaQuery.of(context).size.width,
             padding: const EdgeInsets.symmetric(vertical: Dimensions.space15, horizontal: Dimensions.space10),
-            decoration: BoxDecoration(color: MyColor.getCardBgColor(), borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
-                boxShadow:MyUtils.getShadow()),
+            decoration: BoxDecoration(
+                color: MyColor.getCardBgColor(),
+                borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
+                boxShadow:MyUtils.getCardShadow()
+            ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

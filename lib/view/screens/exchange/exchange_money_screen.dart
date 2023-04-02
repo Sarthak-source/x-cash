@@ -180,7 +180,7 @@ class _ExchangeMoneyScreenState extends State<ExchangeMoneyScreen> {
                                             },
                                             child: BottomSheetCard(
                                               child: Text(
-                                                controller.toWalletList[index].currencyCode ?? "",
+                                                controller.toWalletList[index].currencyCode?.tr ?? "",
                                                 style: regularDefault,
                                               ),
                                             ),
@@ -208,10 +208,10 @@ class _ExchangeMoneyScreenState extends State<ExchangeMoneyScreen> {
                   ],
                 ),
                 const SizedBox(height: Dimensions.space30),
-                controller.submitLoading ? const RoundedLoadingBtn() : RoundedButton(
+                RoundedButton(
                   press: (){
                     if(controller.canExchange()){
-                      controller.submitExchangeMoney();
+                      controller.showPreview();
                     }
                   },
                   text: MyStrings.exchange,

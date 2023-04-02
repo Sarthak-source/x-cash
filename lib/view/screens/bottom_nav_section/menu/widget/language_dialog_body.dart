@@ -17,7 +17,7 @@ import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
 
 class LanguageDialogBody extends StatefulWidget {
 
-  final List<LanguageModel>langList ;
+  final List<MyLanguageModel>langList ;
   final bool fromSplashScreen;
 
   const LanguageDialogBody({Key? key,required this.langList,this.fromSplashScreen = false}) : super(key: key);
@@ -53,11 +53,11 @@ class _LanguageDialogBodyState extends State<LanguageDialogBody> {
                     final localizationController = Get.put(LocalizationController(sharedPreferences: Get.find()));
                     ResponseModel response = await repo.getLanguage(languageCode);
                     if(response.statusCode == 200){
-                      /*try{*/
+                      try{
                         Map<String,Map<String,String>> language = {};
                         var resJson = jsonDecode(response.responseJson);
                         await repo.apiClient.sharedPreferences.setString(SharedPreferenceHelper.languageListKey, response.responseJson);
-                        var value = jsonDecode(resJson['data']['data']['file']) as Map<String,dynamic>;
+                        var value = resJson['data']['data']['file'].toString()=='[]'?{}: jsonDecode(resJson['data']['data']['file']) as Map<String,dynamic>;
                         Map<String,String> json = {};
                         value.forEach((key, value) {
                           json[key] = value.toString();
@@ -75,9 +75,9 @@ class _LanguageDialogBodyState extends State<LanguageDialogBody> {
                         }else{
                           Get.back();
                         }
-                      /*}catch(e){
+                      }catch(e){
                         CustomSnackBar.error(errorList: [e.toString()]);
-                      }*/
+                      }
 
                     } else{
                       CustomSnackBar.error(errorList: [response.message]);

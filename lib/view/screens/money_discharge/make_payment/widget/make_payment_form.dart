@@ -167,7 +167,7 @@ class _MakePaymentFormState extends State<MakePaymentForm> {
                                        },
                                        child: BottomSheetCard(
                                          child: Text(
-                                           controller.otpTypeList[index].toString().toTitleCase() ?? "",
+                                           controller.otpTypeList[index].toString().toTitleCase().tr,
                                            style: regularDefault,
                                          ),
                                        ),

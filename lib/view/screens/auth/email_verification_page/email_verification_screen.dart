@@ -17,6 +17,7 @@ import 'package:xcash_app/view/components/buttons/rounded_loading_button.dart';
 import 'package:xcash_app/view/components/text/small_text.dart';
 import 'package:xcash_app/view/components/will_pop_widget.dart';
 
+import '../../../components/image/custom_svg_picture.dart';
 import '../../../components/otp_field_widget/otp_field_widget.dart';
 
 
@@ -94,7 +95,7 @@ class _EmailVerificationScreenState extends State<EmailVerificationScreen> {
                             color: MyColor.primaryColor.withOpacity(.075),
                             shape: BoxShape.circle
                         ),
-                        child: SvgPicture.asset(MyImages.emailVerifyImage, height: 50, width: 50, color: MyColor.getPrimaryColor()),
+                        child: CustomSvgPicture(image:MyImages.emailVerifyImage, height: 50, width: 50, color: MyColor.getPrimaryColor()),
                       ),
                       const SizedBox(height: Dimensions.space50),
                       Padding(

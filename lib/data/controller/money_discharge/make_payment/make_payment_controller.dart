@@ -57,8 +57,9 @@ class MakePaymentController extends GetxController{
     invalidMerchant = "";
     isAgentFound = false;
 
+    print('get wallet');
     ResponseModel responseModel = await makePaymentRepo.getMakePaymentWallet();
-
+    print('get wallet response ');
 
     walletList.clear();
     otpTypeList.clear();
@@ -90,6 +91,8 @@ class MakePaymentController extends GetxController{
         }
 
         amount = amountController.text;
+      } else{
+        CustomSnackBar.error(errorList: model.message?.error??[MyStrings.requestFail]);
       }
     }
     else{
@@ -117,7 +120,7 @@ class MakePaymentController extends GetxController{
       if(model.status?.toLowerCase()=='success'){
         String actionId = model.data?.actionId??'';
         if(actionId.isNotEmpty){
-          Get.toNamed(RouteHelper.otpScreen,arguments: [actionId, RouteHelper.bottomNavBar]);
+          Get.toNamed(RouteHelper.otpScreen,arguments: [actionId, RouteHelper.bottomNavBar,otpType]);
         } else{
           Get.offAndToNamed(RouteHelper.bottomNavBar);
           CustomSnackBar.success(successList: model.message?.success??[MyStrings.requestSuccess]);

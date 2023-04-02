@@ -52,6 +52,19 @@ class VerifyPasswordController extends GetxController{
     }
   }
 
+  String getFormatedMail(){
+    try{
+      List<String>tempList = email.split('@');
+      int maskLength = tempList[0].length;
+      String maskValue = tempList[0][0].padRight(maskLength,'*');
+      String value = '$maskValue@${tempList[1]}';
+      return value;
+    } catch(e){
+      return email;
+    }
+
+  }
+
 
 }
 

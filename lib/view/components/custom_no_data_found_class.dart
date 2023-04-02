@@ -9,6 +9,7 @@ import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/view/components/buttons/custom_round_border_shape.dart';
 import '../../core/utils/dimensions.dart';
+import 'image/custom_svg_picture.dart';
 
 
 class NoDataOrInternetScreen extends StatefulWidget {
@@ -53,7 +54,7 @@ class _NoDataOrInternetScreenState extends State<NoDataOrInternetScreen> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height*widget.imageHeight,
                   width: widget.isNoInternet?MediaQuery.of(context).size.width*.6:MediaQuery.of(context).size.width*.4,
-                  child: widget.isNoInternet? Lottie.asset(MyImages.noInternet,height:  MediaQuery.of(context).size.height*widget.imageHeight,width: MediaQuery.of(context).size.width*.6,):SvgPicture.asset(widget.image,height: 100,width: 100,color: MyColor.colorGrey,),
+                  child: widget.isNoInternet? Lottie.asset(MyImages.noInternet,height:  MediaQuery.of(context).size.height*widget.imageHeight,width: MediaQuery.of(context).size.width*.6,):CustomSvgPicture(image:widget.image,height: 100,width: 100,color: MyColor.colorGrey,),
                 ),
                 Center(
                     child: Padding(

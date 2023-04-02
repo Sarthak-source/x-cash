@@ -9,9 +9,7 @@ class InvoiceHistoryRepo{
   InvoiceHistoryRepo({required this.apiClient});
 
   Future<ResponseModel> getAllInvoiceData(int page) async{
-
     String url = "${UrlContainer.baseUrl}${UrlContainer.allInvoiceUrl}?page=$page";
-
     ResponseModel responseModel = await apiClient.request(url, Method.getMethod, null, passHeader: true);
     return responseModel;
   }

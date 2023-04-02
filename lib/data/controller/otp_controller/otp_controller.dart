@@ -18,6 +18,11 @@ class OtpController extends GetxController {
   bool resendLoading = false;
   String actionId = '';
   String nextRoute = '';
+  String otpType = '';
+  void updateOtp(String otpType){
+    this.otpType = otpType;
+    update();
+  }
 
   bool isOtpExpired = false;
   int time = 60;
@@ -51,12 +56,12 @@ class OtpController extends GetxController {
       AuthorizationResponseModel model = AuthorizationResponseModel.fromJson(jsonDecode(responseModel.responseJson));
 
       if (model.status?.toLowerCase() == MyStrings.success.toLowerCase()) {
-          if(nextRoute.isNotEmpty){
-            Get.offAndToNamed(nextRoute);
-          } else{
-            Get.back();
-          }
-          CustomSnackBar.success(successList: model.message?.success??[(MyStrings.emailVerificationSuccess)]);
+        if(nextRoute.isNotEmpty){
+          Get.offAndToNamed(nextRoute);
+        } else{
+          Get.back();
+        }
+        CustomSnackBar.success(successList: model.message?.success??[(MyStrings.emailVerificationSuccess)]);
       } else {
         CustomSnackBar.error(errorList: model.message?.error??[(MyStrings.emailVerificationFailed)]);
       }
@@ -74,7 +79,7 @@ class OtpController extends GetxController {
     update();
 
     ResponseModel response = await repo.resendVerifyCode(actionId);
-      if (response.statusCode == 200) {
+    if (response.statusCode == 200) {
       AuthorizationResponseModel model = AuthorizationResponseModel.fromJson(jsonDecode(response.responseJson));
       if (model.status?.toLowerCase() == 'success') {
         CustomSnackBar.success(successList: model.message?.success ?? [MyStrings.successfullyCodeResend]);
@@ -84,7 +89,7 @@ class OtpController extends GetxController {
       }
     }
     else {
-        CustomSnackBar.error(errorList:  [response.message]);
+      CustomSnackBar.error(errorList:  [response.message]);
     }
 
     resendLoading = false;

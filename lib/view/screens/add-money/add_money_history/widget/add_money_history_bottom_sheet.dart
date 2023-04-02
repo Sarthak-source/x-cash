@@ -102,11 +102,18 @@ class AddMoneyHistoryBottomSheet extends StatelessWidget {
                         children: [
                           Text(
                             controller.depositList[index].detail?[detailIndex].name?.tr ?? "",
+                            overflow: TextOverflow.ellipsis,
                             style: regularDefault.copyWith(color: MyColor.colorBlack.withOpacity(0.6),fontWeight: FontWeight.w600),
                           ),
-                          Text(
-                            controller.depositList[index].detail?[detailIndex].value?.tr ?? "",
-                            style: regularDefault.copyWith(color: MyColor.colorBlack,fontWeight: FontWeight.w600),
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: Text(
+                              controller.depositList[index].detail?[detailIndex].value?.tr ?? "",
+                              style: regularDefault.copyWith(color: MyColor.colorBlack,fontWeight: FontWeight.w600),
+                              overflow: TextOverflow.ellipsis,
+                              textAlign: TextAlign.end,
+                              maxLines: 2,
+                            ),
                           )
                         ],
                       ),

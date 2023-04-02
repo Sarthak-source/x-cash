@@ -3,6 +3,9 @@ import 'package:xcash_app/data/model/language/language_model.dart';
 class MyStrings{
 
 
+  static const String fromCurrencyAmount = "From currency amount";
+  static const String toCurrencyAmount = "To currency amount";
+  static const String sameWalletExchangeErrorMsg = "Can't exchange within same wallet";
   static const String fileDownloadAt = "File download at";
   static const String errorDownloadingFile = "Error downloading file";
   static const String downloading = "Downloading";
@@ -380,7 +383,8 @@ class MyStrings{
   static const String emailVerification = "Email Verification";
   static const String viaEmailVerify = "We've sent you an access code via email for email verification";
   static const String didNotReceiveCode = "Didn't receive code?";
-  static const String resend = "Resend Code in";
+  static const String resend = "Resend Code";
+  static const String otpWillBeExpired = "OTP will be expire in the next";
   static const String resendCode = "Resend Code";
   static const String smsVerification = "Sms Verification";
   static const String profileComplete = "Profile Complete";
@@ -537,6 +541,7 @@ class MyStrings{
   static const String resetPassMsg            = "Enter your email or username below to receive a password reset verification code";
   static const String sixDigitOtpEmailMsg     = "Please check your email to get a six digit OTP";
   static const String sixDigitOtpMsg          = "Please check your phone to get a six digit OTP";
+
   static const String otpExpiredMsg           = "OTP will be expired in the next";
   static const String verificationSuccess     = 'Verification Success';
   static const String enterYourUsername       = 'Enter your username';
@@ -640,7 +645,7 @@ class MyStrings{
   static const String invalidAgentMsg = "Agent not found";
   static const String validMerchantMsg = "Valid merchant for make payment";
   static const String invalidMerchantMsg = "Merchant not found";
-  static const String validUserMsg = "Valid agent for transaction";
+  static const String validUserMsg = "Valid user for transaction";
   static const String invalidUserMsg = "User doesn't exists";
   static const String willBeReduced = "will be reduced from your";
   static const String sureToConfirm = "Are you sure want to confirm?";
@@ -649,9 +654,9 @@ class MyStrings{
   static const String selectInsight = "( Last 7 days )";
 
 
-  static List<LanguageModel> languages = [
-    LanguageModel(languageName: 'English', countryCode: 'US', languageCode: 'en'),
-    LanguageModel(languageName: 'Arabic', countryCode: 'SA', languageCode: 'ar'),
+  static List<MyLanguageModel> myLanguages = [
+    MyLanguageModel(languageName: 'English', countryCode: 'US', languageCode: 'en'),
+    MyLanguageModel(languageName: 'Arabic', countryCode: 'SA', languageCode: 'ar'),
   ];
 
   static const String sendCode = "Send Code";

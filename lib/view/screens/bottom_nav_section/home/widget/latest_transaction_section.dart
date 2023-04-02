@@ -50,7 +50,7 @@ class LatestTransactionSection extends StatelessWidget {
             ),
             const SizedBox(height: Dimensions.space20),
             controller.trxList.isEmpty ? const Center(
-              child: NoDataWidget(),
+              child: NoDataWidget(margin: 12),
             ) : ListView.builder(
                 physics: const BouncingScrollPhysics(),
                 shrinkWrap: true,

@@ -33,24 +33,7 @@ class ChooseFileItem extends StatelessWidget {
           const SizedBox(width: Dimensions.space15,),
           Expanded(
             flex: 5,
-            child: TextField(
-              readOnly: true,
-              cursorColor: MyColor.colorBlack,
-              style: regularDefault.copyWith(color: MyColor.colorBlack),
-              keyboardType: TextInputType.number,
-              controller: TextEditingController(text: fileName.tr),
-              decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.only(bottom: 16),
-                  hintText: fileName.tr,
-                  hintStyle: regularSmall.copyWith(color: MyColor.hintTextColor, height: 1.452,overflow: TextOverflow.ellipsis),
-                  border: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  enabledBorder: InputBorder.none,
-                  disabledBorder: InputBorder.none,
-                  focusedErrorBorder: InputBorder.none,
-                  errorBorder: InputBorder.none
-              ),
-            ),
+            child:Text(fileName.tr,style:regularDefault.copyWith(color: MyColor.colorBlack))
           ),
         ],
       ),

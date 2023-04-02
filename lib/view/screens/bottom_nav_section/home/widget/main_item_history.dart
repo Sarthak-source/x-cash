@@ -19,7 +19,7 @@ class MainItemHistory extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(MyStrings.history, style: regularDefault.copyWith(fontWeight: FontWeight.w500)),
+              Text(MyStrings.more, style: regularDefault.copyWith(fontWeight: FontWeight.w500)),
               const SizedBox(width: Dimensions.space10),
               Expanded(
                 child: Container(

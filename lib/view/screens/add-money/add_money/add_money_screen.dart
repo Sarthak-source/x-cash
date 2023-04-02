@@ -99,7 +99,7 @@ class _AddMoneyScreenState extends State<AddMoneyScreen> {
                                         },
                                         child: BottomSheetCard(
                                           child: Text(
-                                            controller.walletList[index].currencyCode.toString() ?? "",
+                                            controller.walletList[index].currencyCode.toString().tr,
                                             style: regularDefault,
                                           ),
                                         ),

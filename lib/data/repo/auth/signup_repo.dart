@@ -34,12 +34,12 @@ class RegistrationRepo {
     Map<String, dynamic> bodyFields = {
       'mobile':model.mobile,
       'email': model.email,
-      'agree': model.agree.toString(),
+      'agree': model.agree.toString()=='true'?'true':'',
       'username': model.username,
       'password': model.password,
-      'password_confirmation':model.password,//password and confirm password check from front end panel
-      'country_code': model.countryCode, //model.country_code,
-      'country': model.country, //model.country,
+      'password_confirmation':model.password,
+      'country_code': model.countryCode,
+      'country': model.country,
       "mobile_code": model.mobileCode
     };
 

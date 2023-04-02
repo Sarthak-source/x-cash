@@ -114,7 +114,7 @@ class ToMeListItem extends StatelessWidget {
                                       return DropdownMenuItem(
                                         value: value,
                                         child: Text(
-                                            value.toString().toTitleCase(),
+                                            value.toString().toTitleCase().tr,
                                             style: regularDefault
                                         ),
                                       );

@@ -133,7 +133,7 @@ class TransferMoneyController extends GetxController{
       if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
         String actionId = model.data?.actionId??'';
         if(actionId.isNotEmpty){
-          Get.toNamed(RouteHelper.otpScreen,arguments: [actionId, RouteHelper.bottomNavBar]);
+          Get.toNamed(RouteHelper.otpScreen,arguments: [actionId, RouteHelper.bottomNavBar,otpType]);
         } else{
           CustomSnackBar.success(successList: model.message?.success??[MyStrings.requestSuccess]);
           Get.offAndToNamed(RouteHelper.bottomNavBar);

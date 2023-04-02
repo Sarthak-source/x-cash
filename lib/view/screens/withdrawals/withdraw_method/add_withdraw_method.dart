@@ -215,7 +215,7 @@ class _AddWithdrawMethodScreenState extends State<AddWithdrawMethodScreen> {
                                           controller.changeSelectedValue(value,index);
                                         },selectedValue: model.selectedValue, items:model.options?.map((String val) {
                                         return DropdownMenuItem(
-                                          value: val,
+                                          value: val.tr,
                                           child: Text(
                                             val,
                                             style: regularSmall,

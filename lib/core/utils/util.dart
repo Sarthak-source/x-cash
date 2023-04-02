@@ -49,11 +49,10 @@ class MyUtils{
   static dynamic getCardShadow(){
     return  [
       BoxShadow(
-        // color: MyColor.screenBgColor,
-        color: Colors.grey.shade400.withOpacity(0.07),
+        color: Colors.grey.shade400.withOpacity(0.05),
         spreadRadius: 2,
-        blurRadius: 4,
-        offset: const Offset(0, 3), // changes position of shadow
+        blurRadius: 2,
+        offset: const Offset(0, 3),
       ),
     ];
   }
@@ -67,9 +66,9 @@ class MyUtils{
       String? num = match.group(1)??'';
       String? unit = match.group(2)??'';
       String title = '${MyStrings.last.tr} $num ${unit.capitalizeFirst}';
-      return title;
+      return title.tr;
     } else{
-      return value;
+      return value.tr;
     }
 
   }

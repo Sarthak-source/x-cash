@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/helper/string_format_helper.dart';
+import 'package:xcash_app/core/utils/my_color.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/core/utils/style.dart';
 import 'package:xcash_app/core/utils/util.dart';
@@ -38,7 +39,7 @@ showTrxBottomSheet(List<String>? list, int callFrom, {required BuildContext cont
                 padding: const EdgeInsets.only(left: 10,right: 10,bottom: 20,top: 8),
                 margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.2),
                 decoration: const BoxDecoration(
-                    color: Color(0xFFF7F8FC),//MyColor.colorWhite,
+                    color: MyColor.colorWhite,//MyColor.colorWhite,
                     borderRadius: BorderRadius.vertical(top: Radius.circular(20))
                 ),
                 child: Column(
@@ -73,9 +74,7 @@ showTrxBottomSheet(List<String>? list, int callFrom, {required BuildContext cont
                                   controller.setSelectedWalletCurrency(selectedValue);
                                   controller.filterData();
                                 }
-
                                 Navigator.pop(context);
-
                                 FocusScopeNode currentFocus = FocusScope.of(context);
                                 if (!currentFocus.hasPrimaryFocus) {
                                   currentFocus.unfocus();
@@ -84,7 +83,7 @@ showTrxBottomSheet(List<String>? list, int callFrom, {required BuildContext cont
                               child: BottomSheetCard(
                                 child: Text(
                                   '${callFrom == 2 ? Converter.replaceUnderscoreWithSpace(list[index].capitalizeFirst??'').tr:
-                                  callFrom == 3?MyUtils.getOperationTitle(list[index]).tr:
+                                  callFrom == 3?MyUtils.getOperationTitle(list[index]):
                                   list[index].tr}',
                                   style: regularDefault,
                                 ),

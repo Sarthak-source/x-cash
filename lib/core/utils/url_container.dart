@@ -58,7 +58,7 @@ class UrlContainer{
   static const String changePasswordEndPoint='change-password';
   static const String countryEndPoint='get-countries';
 
-  static const String deviceTokenEndPoint  = 'get/device/token';
+  static const String deviceTokenEndPoint  = 'merchant/save/device/token';
   static const String languageUrl = 'language/';
 
   // make payment

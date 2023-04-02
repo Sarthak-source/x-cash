@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
     Get.put(ApiClient(sharedPreferences: Get.find()));
     Get.put(HomeRepo(apiClient: Get.find()));
     final controller = Get.put(HomeController(homeRepo: Get.find()));
-
+    controller.isLoading = true;
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
@@ -47,7 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: SafeArea(
           child: RefreshIndicator(
             onRefresh: ()async{
-              await controller.initialData();
+              await controller.initialData(shouldLoad: false);
             },
             child: Scaffold(
               backgroundColor: MyColor.getScreenBgColor(),

@@ -31,34 +31,36 @@ class _TopSectionState extends State<TopSection> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CircleImageWidget(
-                  height:40,
-                  width:40,
-                  isProfile:true,
-                  isAsset: false,
-                  imagePath: '${UrlContainer.domainUrl}/assets/images/user/profile/${controller.imagePath}',
-                  press: (){
-                    Get.toNamed(RouteHelper.profileScreen);
-                  }
-                ),
-                const SizedBox(width: Dimensions.space10),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(controller.username, style: regularDefault.copyWith(color: MyColor.colorWhite, fontWeight: FontWeight.w500)),
-                    const SizedBox(height: Dimensions.space5),
-                    Text(
-                      controller.email,
-                      style: regularDefault.copyWith(color: MyColor.colorWhite, fontWeight: FontWeight.w500),
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 2,
-                    ),
-                  ],
-                )
-              ],
+            Expanded(
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CircleImageWidget(
+                    height:40,
+                    width:40,
+                    isProfile:true,
+                    isAsset: false,
+                    imagePath: '${UrlContainer.domainUrl}/assets/images/user/profile/${controller.imagePath}',
+                    press: (){
+                      Get.toNamed(RouteHelper.profileScreen);
+                    }
+                  ),
+                  const SizedBox(width: Dimensions.space10),
+                 Expanded(child:  Column(
+                   crossAxisAlignment: CrossAxisAlignment.start,
+                   children: [
+                     Text(controller.username, style: regularDefault.copyWith(color: MyColor.colorWhite, fontWeight: FontWeight.w500)),
+                     const SizedBox(height: Dimensions.space5),
+                     Text(
+                       controller.email,
+                       style: regularDefault.copyWith(color: MyColor.colorWhite, fontWeight: FontWeight.w500),
+                       overflow: TextOverflow.ellipsis,
+                       maxLines: 2,
+                     ),
+                   ],
+                 ))
+                ],
+              ),
             ),
             const SizedBox(width: Dimensions.space15),
             GestureDetector(

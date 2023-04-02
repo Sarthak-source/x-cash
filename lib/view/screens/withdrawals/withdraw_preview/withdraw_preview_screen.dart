@@ -164,7 +164,7 @@ class _WithdrawPreviewScreenState extends State<WithdrawPreviewScreen> {
                        items: controller.otpTypeList.map((value) {
                          return DropdownMenuItem(
                            value: value,
-                           child: Text(value.toString().toTitleCase(), style: regularDefault),
+                           child: Text(value.toString().toTitleCase().tr, style: regularDefault),
                          );
                        }).toList(),
                      )],

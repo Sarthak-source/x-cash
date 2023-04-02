@@ -48,7 +48,7 @@ class _SplashScreenState extends State<SplashScreen> {
             children: [
               Align(
                 alignment: Alignment.center,
-                child: Image.asset(MyImages.appLogo, height: 50, width: 225),
+                child: Image.asset(MyImages.appLogoCircle, height: 100, width: 100),
               ),
             ],
           ),

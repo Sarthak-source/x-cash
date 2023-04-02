@@ -54,7 +54,10 @@ class MoneyOutController extends GetxController{
     isLoading = true;
     update();
 
+    print('get wallet');
     ResponseModel responseModel = await moneyOutRepo.getMoneyOutWallet();
+    print('get wallet response ');
+
 
     hasAgent     = false;
     validAgent   = "";
@@ -91,6 +94,9 @@ class MoneyOutController extends GetxController{
 
         amount = amountController.text;
       }
+      else{
+        CustomSnackBar.error(errorList: model.message?.error??[MyStrings.requestFail]);
+      }
     }
     else{
       CustomSnackBar.error(errorList: [responseModel.message]);
@@ -116,7 +122,7 @@ class MoneyOutController extends GetxController{
       if(model.status?.toLowerCase()=='success'){
         String actionId = model.data?.actionId??'';
         if(actionId.isNotEmpty){
-          Get.toNamed(RouteHelper.otpScreen, arguments: [actionId, RouteHelper.bottomNavBar]);
+          Get.toNamed(RouteHelper.otpScreen, arguments: [actionId, RouteHelper.bottomNavBar,otpType]);
         }
         else{
           Get.offAndToNamed(RouteHelper.bottomNavBar);

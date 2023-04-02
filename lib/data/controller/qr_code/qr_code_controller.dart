@@ -64,7 +64,7 @@ class QrCodeController extends GetxController{
         if(downloadUrl.isNotEmpty && downloadUrl != 'null'){
           showDialog(
             context: Get.context!,
-            builder: (context) => DownloadingDialog(isPdf:false,url: downloadUrl, fileName: downloadFileName),
+            builder: (context) => DownloadingDialog(isImage:true,isPdf:false,url: downloadUrl, fileName: downloadFileName),
           );
         }
       }

@@ -121,7 +121,7 @@ class _EditWithdrawMethodState extends State<EditWithdrawMethod> {
                                   return DropdownMenuItem(
                                     value: val,
                                     child: Text(
-                                      val,
+                                      val.tr,
                                       style: regularSmall,
                                     ),
                                   );

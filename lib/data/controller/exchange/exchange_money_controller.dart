@@ -2,12 +2,15 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/helper/string_format_helper.dart';
+import 'package:xcash_app/core/route/route.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/model/authorization/authorization_response_model.dart';
 import 'package:xcash_app/data/model/exchange/exchange_money_response_model.dart';
 import 'package:xcash_app/data/model/global/response_model/response_model.dart';
 import 'package:xcash_app/data/repo/exchange/exchange_money_repo.dart';
+import 'package:xcash_app/view/components/bottom-sheet/custom_bottom_sheet.dart';
 import 'package:xcash_app/view/components/snack_bar/show_custom_snackbar.dart';
+import 'package:xcash_app/view/screens/exchange/widget/exchange_money_preview.dart';
 
 class ExchangeMoneyController extends GetxController{
 
@@ -96,8 +99,26 @@ class ExchangeMoneyController extends GetxController{
     update();
   }
 
+  Future<void> showPreview() async{
+
+    if(fromWalletMethod?.id.toString()==toWalletMethod?.id.toString()){
+      CustomSnackBar.error(errorList: [MyStrings.sameWalletExchangeErrorMsg]);
+      return;
+    }
+
+    CustomBottomSheet(child: const ExchangePreviewBottomSheet()).customBottomSheet(Get.context!);
+
+  }
+
   Future<void> submitExchangeMoney() async{
-    submitLoading = true;
+
+    if(fromWalletMethod?.id.toString()==toWalletMethod?.id.toString()){
+      CustomSnackBar.error(errorList: [MyStrings.sameWalletExchangeErrorMsg]);
+      return;
+    }
+
+
+    isSubmitLoading = true;
     update();
 
     ResponseModel responseModel = await exchangeMoneyRepo.confirmExchangeMoney(
@@ -110,6 +131,7 @@ class ExchangeMoneyController extends GetxController{
       model = AuthorizationResponseModel.fromJson(jsonDecode(responseModel.responseJson));
       if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
         Get.back();
+        Get.offAllNamed(RouteHelper.bottomNavBar);
         amountController.text = "";
         CustomSnackBar.success(successList: model.message?.success ?? [MyStrings.moneyExchangeSuccess]);
       }
@@ -121,11 +143,11 @@ class ExchangeMoneyController extends GetxController{
       CustomSnackBar.error(errorList: [responseModel.message]);
     }
 
-    submitLoading = false;
+    isSubmitLoading = false;
     update();
   }
 
-  bool submitLoading = false;
+  bool isSubmitLoading = false;
 
   void calculateExchangeAmount(double amount){
 

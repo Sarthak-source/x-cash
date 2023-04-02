@@ -3,6 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 
+import 'custom_svg_picture.dart';
+
 class CircleShapeImage extends StatefulWidget {
 
   final String image;

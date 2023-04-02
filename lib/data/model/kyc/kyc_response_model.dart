@@ -36,28 +36,28 @@ class KycResponseModel {
 
 class Data {
   Data({
-    Form? form,}){
+    FormData? form,}){
     _form = form;
   }
 
   Data.fromJson(dynamic json) {
-    _form = json['form'] != null ? Form.fromJson(json['form']) : null;
+    _form = json['form'] != null ? FormData.fromJson(json['form']) : null;
   }
-  Form? _form;
+  FormData? _form;
 
-  Form? get form => _form;
+  FormData? get form => _form;
 
 }
 
-class Form {
-  Form({List<FormModel>?list}){
+class FormData {
+  FormData({List<FormModel>?list}){
     _list=list;
   }
 
   List<FormModel>? _list=[];
   List<FormModel>? get list => _list;
 
-  Form.fromJson(dynamic json) {
+  FormData.fromJson(dynamic json) {
     var map=Map.from(json).map((key, value) => MapEntry(key, value));
     try{
 

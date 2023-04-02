@@ -138,20 +138,19 @@ static const String qrCodeScanner                   = "/qr_code_scanner_screen";
     GetPage(name: exchangeMoneyScreen,          page: () => const ExchangeMoneyScreen()),
     GetPage(name: kycScreen,                    page: () => const KycScreen()),
 
-    GetPage(name: emailVerificationScreen,      page: () =>  EmailVerificationScreen(needSmsVerification: Get.arguments[0],isProfileCompleteEnabled: Get.arguments[1],needTwoFactor: Get.arguments[2],)),
-    GetPage(name: smsVerificationScreen,        page: () =>  const SmsVerificationScreen()),
-    GetPage(name: verifyPassCodeScreen,         page: () =>  const VerifyForgetPassScreen()),
-    GetPage(name: resetPasswordScreen,          page: () =>  const ResetPasswordScreen()),
-    GetPage(name: twoFactorScreen,              page: () =>  TwoFactorVerificationScreen(isProfileCompleteEnable: Get.arguments)),
+    GetPage(name: emailVerificationScreen,      page: () => EmailVerificationScreen(needSmsVerification: Get.arguments[0],isProfileCompleteEnabled: Get.arguments[1],needTwoFactor: Get.arguments[2],)),
+    GetPage(name: smsVerificationScreen,        page: () => const SmsVerificationScreen()),
+    GetPage(name: verifyPassCodeScreen,         page: () => const VerifyForgetPassScreen()),
+    GetPage(name: resetPasswordScreen,          page: () => const ResetPasswordScreen()),
+    GetPage(name: twoFactorScreen,              page: () => TwoFactorVerificationScreen(isProfileCompleteEnable: Get.arguments)),
 
-    GetPage(name: otpScreen,                    page: () =>  OtpScreen(actionId:Get.arguments[0], nextRoute: Get.arguments[1])),
+    GetPage(name: otpScreen,                    page: () => OtpScreen(actionId:Get.arguments[0], nextRoute: Get.arguments[1],otpType: Get.arguments[2])),
+    GetPage(name: requestMoneyScreen,           page: () => const RequestMoneyScreen()),
 
-    GetPage(name: requestMoneyScreen,           page: () =>  const RequestMoneyScreen()),
+    GetPage(name: makePaymentScreen,            page: () => const MakePaymentScreen()),
+    GetPage(name: moneyOutScreen,               page: () => const MoneyOutScreen()),
 
-    GetPage(name: makePaymentScreen,            page: () =>  const MakePaymentScreen()),
-    GetPage(name: moneyOutScreen,               page: () =>  const MoneyOutScreen()),
-
-    GetPage(name: transferMoneyScreen,          page: () =>  const TransferMoneyScreen()),
+    GetPage(name: transferMoneyScreen,          page: () => const TransferMoneyScreen()),
     GetPage(name: kycScreen,                    page: () => const KycScreen()),
 
     GetPage(name: createVoucherScreen,          page: () => const CreateVoucherScreen()),

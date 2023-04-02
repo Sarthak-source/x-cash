@@ -58,12 +58,12 @@ class _OtpTimerState extends State<OtpTimer> {
     return Row(
       children: [
         Text(
-            MyStrings.resend,
+            MyStrings.otpWillBeExpired.tr,
             style: semiBoldLarge.copyWith(color: MyColor.colorBlack)
         ),
         const SizedBox(width: Dimensions.textToTextSpace),
         Text(
-          '${_counter.toString()} ${MyStrings.sec}',
+          '${_counter.toString()} ${MyStrings.sec.tr}',
           style: semiBoldLarge.copyWith(color: isTimeEnd ? MyColor.colorRed : MyColor.primaryColor)
         ),
       ],

@@ -96,7 +96,7 @@ class WithdrawDetailsBottomSheet extends StatelessWidget {
                         children: [
                           Flexible(
                             child: Text(
-                              controller.withdrawList[index].withdrawInformation![detailIndex].name ?? "",
+                              controller.withdrawList[index].withdrawInformation![detailIndex].name?.tr ?? "",
                               style: regularDefault.copyWith(color: MyColor.colorBlack.withOpacity(0.6)),
                               maxLines: 3,
                               overflow: TextOverflow.ellipsis,
@@ -105,7 +105,7 @@ class WithdrawDetailsBottomSheet extends StatelessWidget {
                           const SizedBox(width: Dimensions.space15),
                           Flexible(
                             child: Text(
-                              Converter.removeQuotationAndSpecialCharacterFromString(controller.withdrawList[index].withdrawInformation![detailIndex].value!.toList().toString()),
+                              Converter.removeQuotationAndSpecialCharacterFromString(controller.withdrawList[index].withdrawInformation![detailIndex].value!.toList().toString()).tr,
                               style: regularDefault.copyWith(color: MyColor.colorBlack, overflow: TextOverflow.ellipsis),
                               maxLines: 3,
                             ),

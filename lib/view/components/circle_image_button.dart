@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../core/utils/my_color.dart';
 import '../../../core/utils/my_images.dart';
+import 'image/custom_svg_picture.dart';
 
 class CircleImageWidget extends StatelessWidget {
   final double height;
@@ -38,7 +39,7 @@ class CircleImageWidget extends StatelessWidget {
             }, placeholder: isProfile?MyImages.profile:MyImages.placeHolderImage,
           ),
         ),
-      ):imagePath.contains('svg')?SvgPicture.asset(
+      ):imagePath.contains('svg')?CustomSvgPicture(image:
         imagePath,
         fit: BoxFit.cover,
         width: height,

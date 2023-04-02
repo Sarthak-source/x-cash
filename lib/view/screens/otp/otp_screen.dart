@@ -19,11 +19,13 @@ class OtpScreen extends StatefulWidget {
 
  final String actionId;
  final String nextRoute;
+ final String otpType;
 
   const OtpScreen({
     Key? key,
     required this.actionId,
     required this.nextRoute,
+    required this.otpType,
   }) : super(key: key);
 
 
@@ -43,6 +45,8 @@ class _OtpScreenState extends State<OtpScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       controller.nextRoute = widget.nextRoute;
       controller.actionId = widget.actionId;
+      controller.updateOtp(widget.otpType.toLowerCase()) ;
+     
     });
   }
 
@@ -82,14 +86,10 @@ class _OtpScreenState extends State<OtpScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(MyStrings.otpVerification.tr, style: regularLarge.copyWith(color: MyColor.colorBlack, fontWeight: FontWeight.w400)),
-                      const SizedBox(height: Dimensions.space8),
                       Text(MyStrings.enterYourOTPCode.tr, style: regularMediumLarge.copyWith(color: MyColor.colorBlack, fontWeight: FontWeight.w600)),
                       const SizedBox(height: Dimensions.space10),
-                      Text(MyStrings.sixDigitOtpEmailMsg.tr, maxLines: 2, textAlign: TextAlign.center, style: regularLarge.copyWith(color: MyColor.labelTextColor)),
+                      Text(controller.otpType=="sms"?MyStrings.sixDigitOtpMsg:controller.otpType == "email"?MyStrings.sixDigitOtpEmailMsg:controller.otpType=='2fa'?MyStrings.twoFactorMsg.tr:'', maxLines: 2, textAlign: TextAlign.start, style: regularLarge.copyWith(color: MyColor.labelTextColor)),
                       const SizedBox(height: Dimensions.space30),
-                      LabelText(text: MyStrings.enterOtpCode.tr),
-                      const SizedBox(height: Dimensions.textToTextSpace),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: Dimensions.space15),
                         child: PinCodeTextField(
@@ -111,8 +111,7 @@ class _OtpScreenState extends State<OtpScreen> {
                               selectedColor: MyColor.getPrimaryColor()
                           ),
                           cursorColor: MyColor.getTextColor(),
-                          animationDuration:
-                          const Duration(milliseconds: 100),
+                          animationDuration: const Duration(milliseconds: 0),
                           enableActiveFill: true,
                           keyboardType: TextInputType.number,
                           beforeTextPaste: (text) {

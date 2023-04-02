@@ -143,7 +143,7 @@ class _CreateVoucherFormState extends State<CreateVoucherForm> {
                                     },
                                     child: BottomSheetCard(
                                       child: Text(
-                                        controller.otpTypeList[index].toString().toTitleCase(),
+                                        controller.otpTypeList[index].toString().toTitleCase().tr,
                                         style: regularDefault,
                                       ),
                                     ),

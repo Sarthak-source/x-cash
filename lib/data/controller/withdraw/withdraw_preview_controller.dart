@@ -79,14 +79,16 @@ class WithdrawPreviewController extends GetxController{
     submitLoading = true;
     update();
 
-    ResponseModel  responseModel = await repo.submitData(otpType: selectedOtp.toString().toLowerCase(), trx: trxId);
+    String otpType = selectedOtp.toString().toLowerCase();
+
+    ResponseModel  responseModel = await repo.submitData(otpType: otpType, trx: trxId);
     if(responseModel.statusCode == 200){
       AuthorizationResponseModel model = AuthorizationResponseModel.fromJson(jsonDecode(responseModel.responseJson));
       if(model.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
         String actionId = model.data?.actionId ?? "";
 
         if(actionId.isNotEmpty){
-          Get.offAndToNamed(RouteHelper.otpScreen, arguments: [actionId, RouteHelper.withdrawHistoryScreen]);
+          Get.offAndToNamed(RouteHelper.otpScreen, arguments: [actionId, RouteHelper.withdrawHistoryScreen,otpType]);
         }
         else{
           Get.offAndToNamed(RouteHelper.withdrawHistoryScreen);

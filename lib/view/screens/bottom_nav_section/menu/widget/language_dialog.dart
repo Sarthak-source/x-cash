@@ -10,11 +10,11 @@ void showLanguageDialog(String languageList, Locale selectedLocal, BuildContext 
   var language = jsonDecode(languageList);
   MainLanguageResponseModel model = MainLanguageResponseModel.fromJson(language);
 
-  List<LanguageModel>langList = [];
+  List<MyLanguageModel>langList = [];
 
   if(model.data?.languages !=null && model.data!.languages!.isNotEmpty){
     for (var listItem in model.data!.languages!) {
-      LanguageModel model = LanguageModel(languageCode: listItem.code ?? '', countryCode: listItem.name ?? '', languageName: listItem.name ?? '');
+      MyLanguageModel model = MyLanguageModel(languageCode: listItem.code ?? '', countryCode: listItem.name ?? '', languageName: listItem.name ?? '');
       langList.add(model);
     }
   }

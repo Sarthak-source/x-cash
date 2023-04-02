@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
+import 'package:xcash_app/core/utils/my_images.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/controller/account/profile_complete_controller.dart';
 import 'package:xcash_app/data/repo/account/profile_repo.dart';
@@ -65,9 +66,10 @@ class _ProfileCompleteScreenState extends State<ProfileCompleteScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SizedBox(height: Dimensions.space5,),
-                    CustomImageWidget(imagePath:  '', onClicked: (){}),
-                    const SizedBox(height: Dimensions.space20,),
+                    const SizedBox(height: Dimensions.space15),
+                    //CustomImageWidget(imagePath:  '', onClicked: (){}),
+                    Center(child:Image.asset(MyImages.appLogo, height: 50, width: 225,color: MyColor.primaryColor,),),
+                    const SizedBox(height: Dimensions.space30),
                     CustomTextField(
                       animatedLabel: true,
                       needOutlineBorder: true,

@@ -30,20 +30,7 @@ class SplashController extends GetxController  {
     update();
 
     initSharedData();
-
-    try{
-      RemoteMessage? initialMessage =
-      await FirebaseMessaging.instance.getInitialMessage();
-      if (initialMessage != null && initialMessage.data.isNotEmpty) {
-
-      }else{
-        getGSData(isRemember);
-        return;
-      }
-
-    }catch(e){
-      getGSData(isRemember);
-    }
+    getGSData(isRemember);
 
 
   }
@@ -93,10 +80,10 @@ class SplashController extends GetxController  {
 
   Future<bool> initSharedData() {
     if(!repo.apiClient.sharedPreferences.containsKey(SharedPreferenceHelper.countryCode)) {
-      return repo.apiClient.sharedPreferences.setString(SharedPreferenceHelper.countryCode, MyStrings.languages[0].countryCode);
+      return repo.apiClient.sharedPreferences.setString(SharedPreferenceHelper.countryCode, MyStrings.myLanguages[0].countryCode);
     }
     if(!repo.apiClient.sharedPreferences.containsKey(SharedPreferenceHelper.languageCode)) {
-      return repo.apiClient.sharedPreferences.setString(SharedPreferenceHelper.languageCode, MyStrings.languages[0].languageCode);
+      return repo.apiClient.sharedPreferences.setString(SharedPreferenceHelper.languageCode, MyStrings.myLanguages[0].languageCode);
     }
     return Future.value(true);
   }
@@ -111,7 +98,7 @@ class SplashController extends GetxController  {
         Map<String,Map<String,String>> language = {};
         var resJson = jsonDecode(response.responseJson);
         saveLanguageList(response.responseJson);
-        var value = jsonDecode(resJson['data']['data']['file']) as Map<String,dynamic>;
+        var value = resJson['data']['data']['file'].toString()=='[]'?{}:jsonDecode(resJson['data']['data']['file']) as Map<String,dynamic>;
         Map<String,String> json = {};
         value.forEach((key, value) {
           json[key] = value.toString();

@@ -29,6 +29,8 @@ class KycScreen extends StatefulWidget {
 
 class _KycScreenState extends State<KycScreen> {
 
+  final formKey = GlobalKey<FormState>();
+
   @override
   void initState() {
     Get.put(ApiClient(sharedPreferences: Get.find()));
@@ -58,100 +60,121 @@ class _KycScreenState extends State<KycScreen> {
                   child: controller.isLoading ? const Padding(padding:EdgeInsets.all(Dimensions.space15),child:CustomLoader()):controller.isAlreadyVerified?const AlreadyVerifiedWidget():controller.isAlreadyPending?const AlreadyVerifiedWidget(isPending: true,):controller.isNoDataFound? const NoDataOrInternetScreen():Center(
                     child: SingleChildScrollView(
                       padding: Dimensions.screenPaddingHV,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          ListView.builder(
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              scrollDirection: Axis.vertical,
-                              itemCount: controller.formList.length,
-                              itemBuilder: (ctx,index){
-                                FormModel? model=controller.formList[index];
-                                return Padding(
-                                  padding: const EdgeInsets.all(5),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      model.type=='text'?Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          CustomTextField(
-                                              hintText: (model.name??'').toString().capitalizeFirst,
-                                              needOutlineBorder: true,
-                                              labelText: model.name??'',
-                                              onChanged: (value){
-                                                controller.changeSelectedValue(value, index);
-                                              }),
-                                          const SizedBox(height: Dimensions.space10),
-                                        ],
-                                      ):model.type=='textarea'?Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          CustomTextField(
-                                              needOutlineBorder: true,
-                                              labelText: model.name??'',
-                                              hintText: (model.name??'').capitalizeFirst,
-                                              onChanged: (value){
-                                                controller.changeSelectedValue(value, index);
-                                              }),
-                                          const SizedBox(height: Dimensions.space10),
-                                        ],
-                                      ):model.type=='select'?Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          FormRow(label: model.name??'', isRequired: model.isRequired=='optional'?false:true),
-                                          const SizedBox(height: Dimensions.textToTextSpace,),
-                                          CustomDropDownWithTextField(list: model.options??[],onChanged: (value){
-                                            controller.changeSelectedValue(value,index);
-                                          },selectedValue: model.selectedValue),
-                                          const SizedBox(height: Dimensions.space10)
-                                        ],
-                                      ):model.type=='radio'?Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          FormRow(label: model.name??'', isRequired: model.isRequired=='optional'?false:true),
-                                          CustomRadioButton(title:model.name,selectedIndex:controller.formList[index].options?.indexOf(model.selectedValue??'')??0,list: model.options??[],onChanged: (selectedIndex){
-                                            controller.changeSelectedRadioBtnValue(index,selectedIndex);
-                                          },),
-                                        ],
-                                      ):model.type=='checkbox'?Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          FormRow(label: model.name??'', isRequired: model.isRequired=='optional'?false:true),
-                                          CustomCheckBox(selectedValue:controller.formList[index].cbSelected,list: model.options??[],onChanged: (value){
-                                            controller.changeSelectedCheckBoxValue(index,value);
-                                          },),
-                                        ],
-                                      ):model.type=='file'?Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          FormRow(label: model.name??'', isRequired: model.isRequired=='optional'?false:true),
-                                          Padding(
-                                              padding: const EdgeInsets.symmetric(vertical: Dimensions.textToTextSpace),
-                                              child: ConfirmWithdrawFileItem(
-                                                  index:index
-                                              )
-                                          )
-                                        ],
-                                      ):const SizedBox(),
-                                      const SizedBox(height: Dimensions.space10),
-                                    ],
-                                  ),
-                                );
-                              }
-                          ),
-                          const SizedBox(height: Dimensions.space25),
-                          Center(
-                              child: controller.submitLoading? const RoundedLoadingBtn(): RoundedButton(
-                              press: () {
-                                controller.submitKycData();
-                              },
-                              text: MyStrings.submit,
-                              ),
-                          ),
-                        ],
+                      child: Form(
+                        key:formKey,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            ListView.builder(
+                                shrinkWrap: true,
+                                physics: const NeverScrollableScrollPhysics(),
+                                scrollDirection: Axis.vertical,
+                                itemCount: controller.formList.length,
+                                itemBuilder: (ctx,index){
+                                  FormModel? model=controller.formList[index];
+                                  return Padding(
+                                    padding: const EdgeInsets.all(3),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        model.type=='text'?Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            CustomTextField(
+                                                isRequired: model.isRequired=='optional'?false:true,
+                                                hintText: (model.name??'').toString().capitalizeFirst,
+                                                needOutlineBorder: true,
+                                                labelText: model.name??'',
+                                                validator: (value){
+                                                  if(model.isRequired != 'optional ' && value.toString().isEmpty){
+                                                    return '${model.name.toString().capitalizeFirst} ${MyStrings.isRequired}';
+                                                  }else{
+                                                    return null;
+                                                  }
+                                                },
+                                                onChanged: (value){
+                                                  controller.changeSelectedValue(value, index);
+                                                }),
+                                            const SizedBox(height: Dimensions.space10),
+                                          ],
+                                        ):model.type=='textarea'?Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            CustomTextField(
+                                                isRequired: model.isRequired=='optional'?false:true,
+                                                needOutlineBorder: true,
+                                                labelText: model.name??'',
+                                                hintText: (model.name??'').capitalizeFirst,
+                                                validator: (value){
+                                                  if(model.isRequired != 'optional ' && value.toString().isEmpty){
+                                                    return '${model.name.toString().capitalizeFirst} ${MyStrings.isRequired}';
+                                                  }else{
+                                                    return null;
+                                                  }
+                                                },
+                                                onChanged: (value){
+                                                  controller.changeSelectedValue(value, index);
+                                                }),
+                                            const SizedBox(height: Dimensions.space10),
+                                          ],
+                                        ):model.type=='select'?Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            FormRow(label: model.name??'', isRequired: model.isRequired=='optional'?false:true),
+                                            const SizedBox(height: Dimensions.textToTextSpace,),
+                                            CustomDropDownWithTextField(list: model.options??[],onChanged: (value){
+                                              controller.changeSelectedValue(value,index);
+                                            },selectedValue: model.selectedValue),
+                                            const SizedBox(height: Dimensions.space10)
+                                          ],
+                                        ):model.type=='radio'?Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            FormRow(label: model.name??'', isRequired: model.isRequired=='optional'?false:true),
+                                            CustomRadioButton(title:model.name,selectedIndex:controller.formList[index].options?.indexOf(model.selectedValue??'')??0,list: model.options??[],onChanged: (selectedIndex){
+                                              controller.changeSelectedRadioBtnValue(index,selectedIndex);
+                                            },),
+                                          ],
+                                        ):model.type=='checkbox'?Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            FormRow(label: model.name??'', isRequired: model.isRequired=='optional'?false:true),
+                                            CustomCheckBox(selectedValue:controller.formList[index].cbSelected,list: model.options??[],onChanged: (value){
+                                              controller.changeSelectedCheckBoxValue(index,value);
+                                            },),
+                                          ],
+                                        ):model.type=='file'?Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            FormRow(label: model.name??'', isRequired: model.isRequired=='optional'?false:true),
+                                            Padding(
+                                                padding: const EdgeInsets.symmetric(vertical: Dimensions.textToTextSpace),
+                                                child: ConfirmWithdrawFileItem(
+                                                    index:index
+                                                )
+                                            )
+                                          ],
+                                        ):const SizedBox(),
+                                        const SizedBox(height: Dimensions.space10),
+                                      ],
+                                    ),
+                                  );
+                                }
+                            ),
+                            const SizedBox(height: Dimensions.space25),
+                            Center(
+                                child: controller.submitLoading? const RoundedLoadingBtn(): RoundedButton(
+                                press: () {
+                                  if(formKey.currentState!.validate()){
+                                    controller.submitKycData();
+                                  }
+                                },
+                                text: MyStrings.submit,
+                                ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   )

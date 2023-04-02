@@ -82,7 +82,7 @@ class _PersonalAccountFormState extends State<PersonalAccountForm> {
               const SizedBox(height: Dimensions.space20),
               CountryTextField(
                 press: (){
-                  CountryBottomSheet.bottomSheet(context, controller);
+                  CountryBottomSheet.bottomSheet( controller);
                 },
                 text:controller.countryName == null?MyStrings.selectACountry.tr:(controller.countryName)!.tr,
               ),
@@ -187,8 +187,8 @@ class _PersonalAccountFormState extends State<PersonalAccountForm> {
                     height: 25,
                     child: Checkbox(
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(Dimensions.defaultRadius)),
-                        activeColor: MyColor.transparentColor,
-                        checkColor: MyColor.getPrimaryColor(),
+                        activeColor: MyColor.primaryColor,
+                        checkColor: MyColor.colorWhite,
                         value: controller.agreeTC,
                         side: MaterialStateBorderSide.resolveWith(
                               (states) => BorderSide(

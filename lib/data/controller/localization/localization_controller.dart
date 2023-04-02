@@ -15,13 +15,13 @@ class LocalizationController extends GetxController {
 
 
 
-  Locale _locale = Locale(MyStrings.languages[0].languageCode, MyStrings.languages[0].countryCode);
+  Locale _locale = Locale(MyStrings.myLanguages[0].languageCode, MyStrings.myLanguages[0].countryCode);
   bool _isLtr = true;
-  List<LanguageModel> _languages = [];
+  List<MyLanguageModel> _languages = [];
 
   Locale get locale => _locale;
   bool get isLtr => _isLtr;
-  List<LanguageModel> get languages => _languages;
+  List<MyLanguageModel> get languages => _languages;
 
   void setLanguage(Locale locale) {
     Get.updateLocale(locale);
@@ -37,8 +37,8 @@ class LocalizationController extends GetxController {
 
   void loadCurrentLanguage() async {
 
-    _locale = Locale(sharedPreferences.getString(SharedPreferenceHelper.languageCode) ?? MyStrings.languages[0].languageCode,
-        sharedPreferences.getString(SharedPreferenceHelper.countryCode) ?? MyStrings.languages[0].countryCode);
+    _locale = Locale(sharedPreferences.getString(SharedPreferenceHelper.languageCode) ?? MyStrings.myLanguages[0].languageCode,
+        sharedPreferences.getString(SharedPreferenceHelper.countryCode) ?? MyStrings.myLanguages[0].countryCode);
     _isLtr = _locale.languageCode != 'ar';
     update();
   }

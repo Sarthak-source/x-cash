@@ -1,6 +1,8 @@
 class MyImages{
 
+  static const String appLogoCircle = "assets/images/app_logo_circle.png";
   static const String appLogo = "assets/images/app_logo.png";
+  static const String appLogo2 = "assets/images/app_logo2.png";
   static const String addMoney = "assets/images/add_money.svg";
   static const String exchange = "assets/images/exchange.svg";
   static const String makePayment = "assets/images/make_payment.svg";
@@ -41,8 +43,8 @@ class MyImages{
   static const String policy = "assets/images/policy.svg";
   static const String logout = "assets/images/logout.svg";
   static const String emailVerifyImage = "assets/images/message.svg";
-  static const String pendingIcon = "assets/icons/pending.svg";
-  static const String verifiedIcon = "assets/icons/verified.svg";
+  static const String pendingIcon = "assets/images/pending.svg";
+  static const String verifiedIcon = "assets/images/verified.svg";
   static const String noDataImage = "assets/images/no_data.svg";
 
   static const String personalAcc = "assets/images/personal.png";
@@ -59,7 +61,7 @@ class MyImages{
   static const String totalSpend = "assets/images/total_spend.png";
   static const String moneyRequest = "assets/images/request_money.png";
   static const String sendMoney = "assets/images/send_money.png";
-  static const String viewTransaction = "assets/images/view_transaction.png";
+  static const String viewTransaction = "assets/images/view_transaction.svg";
 
   static const String amount = "assets/images/amount.png";
   static const String charge = "assets/images/charge.png";

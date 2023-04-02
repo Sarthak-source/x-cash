@@ -98,7 +98,6 @@ class LoginController extends GetxController{
       LoginResponseModel loginModel=LoginResponseModel.fromJson(jsonDecode(model.responseJson));
       if(loginModel.status.toString().toLowerCase() == MyStrings.success.toLowerCase()){
        checkAndGotoNextStep(loginModel);
-        return;
       }else{
         CustomSnackBar.error(errorList: loginModel.message?.error??[MyStrings.loginFailedTryAgain]);
       }
