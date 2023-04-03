@@ -38,6 +38,7 @@ class _AddMoneyWebViewState extends State<AddMoneyWebView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: MyColor.screenBgColor,
         appBar: const CustomAppBar(title: '',isShowBackBtn: true,),
         body: MyWebViewWidget(url: widget.redirectUrl),
         floatingActionButton: favoriteButton(),
@@ -65,91 +66,6 @@ class _AddMoneyWebViewState extends State<AddMoneyWebView> {
       Permission.camera,
       Permission.storage,
     ].request();
-
-    /* if (statuses[Permission.storage]!.isPermanentlyDenied) {
-    await openAppSettings().then(
-          (value) async {
-        if (value) {
-          if (await Permission.storage.status.isPermanentlyDenied == true &&
-              await Permission.storage.status.isGranted == false) {
-            openAppSettings();
-          }
-        }
-      },
-    );
-  } else {
-    if (statuses[Permission.storage]!.isDenied) {
-      permissionServices();
-    }
-  }
-
-  if (statuses[Permission.camera]!.isPermanentlyDenied) {
-    await openAppSettings().then(
-          (value) async {
-        if (value) {
-          if (await Permission.camera.status.isPermanentlyDenied == true &&
-              await Permission.camera.status.isGranted == false) {
-            openAppSettings();
-          }
-        }
-      },
-    );
-  } else {
-    if (statuses[Permission.camera]!.isDenied) {
-     permissionServices();
-    }
-  }
-
-  if (statuses[Permission.mediaLibrary]!.isPermanentlyDenied) {
-    await openAppSettings().then(
-          (value) async {
-        if (value) {
-          if (await Permission.mediaLibrary.status.isPermanentlyDenied == true &&
-              await Permission.mediaLibrary.status.isGranted == false) {
-            openAppSettings();
-          }
-        }
-      },
-    );
-  } else {
-    if (statuses[Permission.mediaLibrary]!.isDenied) {
-      permissionServices();
-    }
-  }
-
-  if (statuses[Permission.photos]!.isPermanentlyDenied) {
-    await openAppSettings().then(
-          (value) async {
-        if (value) {
-          if (await Permission.mediaLibrary.status.isPermanentlyDenied == true &&
-              await Permission.photos.status.isGranted == false) {
-            openAppSettings();
-          }
-        }
-      },
-    );
-  } else {
-    if (statuses[Permission.photos]!.isDenied) {
-      permissionServices();
-    }
-  }
-
-  if (statuses[Permission.microphone]!.isPermanentlyDenied) {
-    await openAppSettings().then(
-          (value) async {
-        if (value) {
-          if (await Permission.microphone.status.isPermanentlyDenied == true &&
-              await Permission.microphone.status.isGranted == false) {
-            openAppSettings();
-          }
-        }
-      },
-    );
-  } else {
-    if (statuses[Permission.microphone]!.isDenied) {
-      permissionServices();
-    }
-  }*/
 
     return statuses;
   }

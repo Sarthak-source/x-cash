@@ -153,7 +153,7 @@ class _AddWithdrawMethodScreenState extends State<AddWithdrawMethodScreen> {
                 const SizedBox(height: Dimensions.space15),
                 CustomTextField(
                     needOutlineBorder: true,
-                    isRequired:true,
+                    isRequired: true,
                     controller: controller.nameController,
                     labelText: MyStrings.provideNickName.tr,
                     hintText: MyStrings.provideNickName.toLowerCase(),
@@ -172,91 +172,88 @@ class _AddWithdrawMethodScreenState extends State<AddWithdrawMethodScreen> {
                           itemCount: controller.formList.length,
                           itemBuilder: (ctx,index){
                             withdraw.FormModel? model= controller.formList[index] ;
-                            return Padding(
-                              padding: const EdgeInsets.all(5),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  model.type=='text'?Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      CustomTextField(
-                                          isRequired:model.isRequired=='optional'?false:true,
-                                          hintText: (model.name?.tr ??'').toString().capitalizeFirst,
-                                          needOutlineBorder: true,
-                                          labelText: model.name?.tr ??'',
-                                          onChanged: (value){
-                                            controller.changeSelectedValue(value, index);
-                                          }),
-                                      const SizedBox(height: 10,),
-                                    ],
-                                  ):model.type=='textarea'?Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      CustomTextField(
-                                          isRequired: model.isRequired=='optional'?false:true,
-                                          needOutlineBorder: true,
-                                          labelText: model.name?.tr ??'',
-                                          hintText: (model.name?.tr ??'').capitalizeFirst,
-                                          onChanged: (value){
-                                            controller.changeSelectedValue(value, index);
-                                          }),
-                                      const SizedBox(height: 10,),
-                                    ],
-                                  ):model.type=='select'?Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      FormRow(label: model.name?.tr ??'', isRequired: model.isRequired=='optional'?false:true),
-                                      const SizedBox(height: Dimensions.textToTextSpace,),
-                                      CustomDropDownTextField(
-                                        needLabel: false,
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                model.type=='text'?Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    CustomTextField(
+                                        hintText: (model.name?.tr ??'').toString().capitalizeFirst,
+                                        needOutlineBorder: true,
+                                        labelText: model.name?.tr ??'',
+                                        needRequiredSign:model.isRequired=='optional'?false:true,
                                         onChanged: (value){
-                                          controller.changeSelectedValue(value,index);
-                                        },selectedValue: model.selectedValue, items:model.options?.map((String val) {
-                                        return DropdownMenuItem(
-                                          value: val.tr,
-                                          child: Text(
-                                            val,
-                                            style: regularSmall,
-                                          ),
-                                        );
-                                      }).toList(),),
-                                    ],
-                                  ):model.type=='radio'?Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      FormRow(label: model.name?.tr ??'', isRequired: model.isRequired=='optional'?false:true),
-                                      CustomRadioButton(title:model.name,selectedIndex:controller.formList[index].options?.indexOf(model.selectedValue??'')??0,list: model.options??[],onChanged: (selectedIndex){
-                                        controller.changeSelectedRadioBtnValue(index,selectedIndex);
-                                      },),
-                                    ],
-                                  ):model.type=='checkbox'?Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      FormRow(label: model.name?.tr ??'', isRequired: model.isRequired=='optional'?false:true),
-                                      CustomCheckBox(selectedValue:controller.formList[index].cbSelected,list: model.options??[],onChanged: (value){
-                                        controller.changeSelectedCheckBoxValue(index,value);
-                                      },),
-                                    ],
-                                  ):model.type=='file'?Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      FormRow(label: model.name?.tr ??'', isRequired: model.isRequired=='optional'?false:true),
-                                      Padding(
-                                          padding: const EdgeInsets.symmetric(vertical: Dimensions.textToTextSpace),
-                                          child: SizedBox(
-                                            child:InkWell(
-                                                onTap: (){
-                                                  controller.pickFile(index);
-                                                }, child: ChooseFileItem(fileName: model.selectedValue??MyStrings.chooseFile)),
-                                          )
-                                      )
-                                    ],
-                                  ):const SizedBox(),
-                                  const SizedBox(height: 5,),
-                                ],
-                              ),
+                                          controller.changeSelectedValue(value, index);
+                                        }),
+                                    const SizedBox(height: 10,),
+                                  ],
+                                ):model.type=='textarea'?Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    CustomTextField(
+                                        needOutlineBorder: true,
+                                        labelText: model.name?.tr ??'',
+                                        needRequiredSign:model.isRequired=='optional'?false:true,
+                                        hintText: (model.name?.tr ??'').capitalizeFirst,
+                                        onChanged: (value){
+                                          controller.changeSelectedValue(value, index);
+                                        }),
+                                    const SizedBox(height: 10,),
+                                  ],
+                                ):model.type=='select'?Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    FormRow(label: model.name?.tr ??'', isRequired: model.isRequired=='optional'?false:true),
+                                    const SizedBox(height: Dimensions.textToTextSpace,),
+                                    CustomDropDownTextField(
+                                      needLabel: false,
+                                      onChanged: (value){
+                                        controller.changeSelectedValue(value,index);
+                                      },selectedValue: model.selectedValue, items:model.options?.map((String val) {
+                                      return DropdownMenuItem(
+                                        value: val,
+                                        child: Text(
+                                          val,
+                                          style: regularDefault.copyWith(color: MyColor.getTextColor()),
+                                        ),
+                                      );
+                                    }).toList(),),
+                                  ],
+                                ):model.type=='radio'?Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    FormRow(label: model.name?.tr ??'', isRequired: model.isRequired=='optional'?false:true),
+                                    CustomRadioButton(title:model.name,selectedIndex:controller.formList[index].options?.indexOf(model.selectedValue??'')??0,list: model.options??[],onChanged: (selectedIndex){
+                                      controller.changeSelectedRadioBtnValue(index,selectedIndex);
+                                    },),
+                                  ],
+                                ):model.type=='checkbox'?Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    FormRow(label: model.name?.tr ??'', isRequired: model.isRequired=='optional'?false:true),
+                                    CustomCheckBox(selectedValue:controller.formList[index].cbSelected,list: model.options??[],onChanged: (value){
+                                      controller.changeSelectedCheckBoxValue(index,value);
+                                    },),
+                                  ],
+                                ):model.type=='file'?Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    FormRow(label: model.name?.tr ??'', isRequired: model.isRequired=='optional'?false:true),
+                                    Padding(
+                                        padding: const EdgeInsets.symmetric(vertical: Dimensions.textToTextSpace),
+                                        child: SizedBox(
+                                          child:InkWell(
+                                              onTap: (){
+                                                controller.pickFile(index);
+                                              }, child: ChooseFileItem(fileName: model.selectedValue??MyStrings.chooseFile)),
+                                        )
+                                    )
+                                  ],
+                                ):const SizedBox(),
+                                const SizedBox(height: Dimensions.space10),
+                              ],
                             );
                           }
                       )

@@ -33,7 +33,6 @@ class _CustomImageWidgetState extends State<CustomImageWidget> {
   }
 
   Widget buildImage() {
-
     return Container(
       padding: EdgeInsets.zero,
       width: 90,

@@ -94,6 +94,10 @@ class AddMoneyHistoryBottomSheet extends StatelessWidget {
                   separatorBuilder: (context, detailIndex) => const SizedBox(height: Dimensions.space10),
                   itemBuilder: (context, detailIndex) {
 
+                    if(controller.depositList[index].detail?[detailIndex].type=='file'){
+                      return const SizedBox.shrink();
+                    }
+
                     return BottomSheetCard(
                       bottomSpace: Dimensions.space5,
                       child:

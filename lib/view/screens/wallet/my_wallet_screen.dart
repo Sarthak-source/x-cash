@@ -76,17 +76,21 @@ class _MyWalletScreenState extends State<MyWalletScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    CircleShapeImage(
-                      imageColor: MyColor.colorWhite,
-                      backgroundColor: MyColor.getSymbolColor(index),
-                      image: controller.image,
+                    Container(
+                      height: 30, width: 30,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(color: MyColor.getSymbolColor(index), shape: BoxShape.circle),
+                      child: Text(
+                        controller.walletList[index].currency?.currencySymbol ?? "",
+                        style: regularLarge.copyWith(color: MyColor.colorWhite),
+                      ),
                     ),
                     const SizedBox(height: Dimensions.space10),
                     Expanded(
                       child: Row(
                           children: [
                             Expanded(child: Text(
-                               '${ Converter.formatNumber(controller.walletList[index].balance ?? "")} ${controller.walletList[index].currency?.currencyCode ?? ""}',
+                               '${ Converter.formatNumber(controller.walletList[index].balance ?? "",precision: controller.walletList[index].currency?.currencyType=='2'?8:2)} ${controller.walletList[index].currency?.currencyCode ?? ""}',
                                 style: regularLarge.copyWith(fontWeight: FontWeight.w600)
                             )),
                             const SizedBox(width: Dimensions.space5),
