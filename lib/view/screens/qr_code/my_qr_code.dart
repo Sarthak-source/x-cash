@@ -89,7 +89,23 @@ class _MyQrCodeScreenState extends State<MyQrCodeScreen> {
                       style: semiBoldExtraLarge.copyWith(color: MyColor.colorWhite),
                     ),
                     const SizedBox(height: Dimensions.space30),
-                    Image.network(controller.qrCode, width: 220, height: 220),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: MyColor.transparentColor,
+                        borderRadius: BorderRadius.circular(Dimensions.defaultRadius),
+                      ),
+                      child: Image.network(
+                          controller.qrCode,
+                          width: 220,
+                          height: 220,
+                          errorBuilder: (ctx,object,trx) {
+                        return Image.asset(
+                          MyImages.placeHolderImage,
+                          fit: BoxFit.cover,
+                          width: 220, height: 220,
+                        );
+                      }),
+                    ),
                     const SizedBox(height: Dimensions.space30),
                    Row(
                      children: [

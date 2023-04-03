@@ -9,7 +9,7 @@ import 'package:get/get.dart';
 
 class CountryBottomSheet{
 
-  static void bottomSheet( RegistrationController controller){
+  static void bottomSheet(BuildContext context, RegistrationController controller){
    CustomBottomSheet(child: Column(
      children: [
        const BottomSheetHeaderRow(header: ''),
@@ -41,6 +41,6 @@ class CountryBottomSheet{
              );
            })
      ],
-   )).customBottomSheet(Get.context!);
+   )).customBottomSheet(context);
   }
 }

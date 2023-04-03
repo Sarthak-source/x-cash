@@ -12,7 +12,6 @@ import 'package:xcash_app/data/services/api_service.dart';
 import 'package:xcash_app/view/components/app-bar/custom_appbar.dart';
 import 'package:xcash_app/view/components/custom_loader/custom_loader.dart';
 import 'package:xcash_app/view/components/divider/custom_divider.dart';
-import 'package:xcash_app/view/components/image/circle_shape_image.dart';
 
 class MyWalletScreen extends StatefulWidget {
   const MyWalletScreen({Key? key}) : super(key: key);
@@ -28,7 +27,6 @@ class _MyWalletScreenState extends State<MyWalletScreen> {
     Get.put(ApiClient(sharedPreferences: Get.find()));
     Get.put(WalletRepo(apiClient: Get.find()));
     final controller = Get.put(WalletController(walletRepo: Get.find()));
-
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
@@ -97,8 +95,9 @@ class _MyWalletScreenState extends State<MyWalletScreen> {
                           ]
                       ),
                     ),
-                    const CustomDivider(space: Dimensions.space15),
-                    Row(
+
+                    controller.walletRepo.apiClient.getModuleStatus('transfer_money')?const CustomDivider(space: Dimensions.space15):const SizedBox(),
+                    controller.walletRepo.apiClient.getModuleStatus('transfer_money')?Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
@@ -117,7 +116,7 @@ class _MyWalletScreenState extends State<MyWalletScreen> {
                           ),
                         )
                       ],
-                    )
+                    ):const SizedBox.shrink()
                   ],
                 ),
               ),

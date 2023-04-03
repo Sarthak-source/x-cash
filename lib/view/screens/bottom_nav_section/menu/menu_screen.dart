@@ -60,7 +60,7 @@ class _MenuScreenState extends State<MenuScreen> {
               ),
               body: GetBuilder<MyMenuController>(
                 builder: (controller) => SingleChildScrollView(
-                  padding: Dimensions.screenPaddingHV,
+                  padding: const EdgeInsets.symmetric(vertical: Dimensions.space12),
                   child: Column(
                     children: [
                       Container(

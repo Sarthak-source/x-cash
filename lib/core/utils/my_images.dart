@@ -2,7 +2,6 @@ class MyImages{
 
   static const String appLogoCircle = "assets/images/app_logo_circle.png";
   static const String appLogo = "assets/images/app_logo.png";
-  static const String appLogo2 = "assets/images/app_logo2.png";
   static const String addMoney = "assets/images/add_money.svg";
   static const String exchange = "assets/images/exchange.svg";
   static const String makePayment = "assets/images/make_payment.svg";

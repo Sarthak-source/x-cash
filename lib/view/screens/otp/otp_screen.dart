@@ -79,7 +79,7 @@ class _OtpScreenState extends State<OtpScreen> {
                     color: MyColor.primaryColor,
                     borderRadius: BorderRadius.vertical(bottom: Radius.circular(22)),
                   ),
-                  child: Image.asset(MyImages.appLogo, height: 80, width: 200),
+                  child: Image.asset(MyImages.appLogo, height: 80, width: 200,color: MyColor.colorWhite,),
                 ),
                 Padding(
                   padding: const EdgeInsetsDirectional.symmetric(vertical: Dimensions.space30, horizontal: Dimensions.space15),

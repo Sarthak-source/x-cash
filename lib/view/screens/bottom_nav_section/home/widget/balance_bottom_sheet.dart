@@ -95,10 +95,10 @@ class _BalanceBottomSheetState extends State<BalanceBottomSheet> {
             style: regularSmall.copyWith(color: MyColor.colorBlack.withOpacity(0.8), fontWeight: FontWeight.w500),
           ),
           const SizedBox(height: Dimensions.space20),
-          RoundedButton(
+          controller.homeRepo.apiClient.getModuleStatus('transfer_money')?RoundedButton(
             text: MyStrings.transferMoney.tr,
             press: () => Get.toNamed(RouteHelper.transferMoneyScreen),
-          )
+          ):const SizedBox.shrink()
         ],
       ),
     );

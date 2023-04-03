@@ -55,7 +55,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         child: SafeArea(
           child: Scaffold(
             backgroundColor: MyColor.getScreenBgColor(),
-            appBar: const CustomAppBar(title: MyStrings.signUp),
+            appBar: const CustomAppBar(title: MyStrings.signUp,fromAuth: true),
             body: controller.noInternet ? NoDataOrInternetScreen(
               isNoInternet: true,
               onChanged: (value){
