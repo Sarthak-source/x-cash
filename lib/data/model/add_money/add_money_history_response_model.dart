@@ -308,7 +308,7 @@ class Currency {
     _currencyCode = json['currency_code'].toString();
     _currencySymbol = json['currency_symbol'];
     _currencyFullName = json['currency_FullName'];
-    _currencyType = json['currency_type'];
+    _currencyType = json['currency_type'].toString();
     _rate = json['rate'].toString();
     _isDefault = json['is_default'].toString();
     _status = json['status'].toString();
@@ -389,12 +389,12 @@ class Gateway {
     _currencyId = json['currency_id'].toString();
     _formId = json['form_id'].toString();
     _code = json['code'].toString();
-    _name = json['name'];
-    _alias = json['alias'];
+    _name = json['name']??'';
+    _alias = json['alias'].toString();
     _status = json['status'].toString();
     _gatewayParameters = json['gateway_parameters'];
-    _crypto = json['crypto'];
-    _extra = json['extra'];
+    _crypto = json['crypto'].toString();
+    _extra = json['extra'].toString();
     _description = json['description'];
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
@@ -460,7 +460,7 @@ class Detail {
   Detail.fromJson(dynamic json) {
     _name = json['name'];
     _type = json['type'];
-    _value = json['value'];
+    _value = json['value']!=null?json['value'].toString():'';
   }
   String? _name;
   String? _type;

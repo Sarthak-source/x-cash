@@ -147,7 +147,7 @@ class MyStrings{
   static const String withdrawCharge = "Withdraw Charge: ";
   static const String youWillGet = "You will get: ";
   static const String willGet = "You Will Get";
-  static const String yourBalanceWillBe = "Your Balance will be: ";
+  static const String yourBalanceWillBe = "Your Balance will be";
 
   static const String withdraw = "Withdrawals";
   static const String insights = "Insights";

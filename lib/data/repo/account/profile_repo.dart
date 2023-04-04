@@ -47,6 +47,10 @@ class ProfileRepo {
       AuthorizationResponseModel model = AuthorizationResponseModel.fromJson(jsonDecode(jsonResponse));
 
 
+      print(response.statusCode);
+      print(jsonResponse);
+      print(url.toString());
+
 
       if(model.status?.toLowerCase()==MyStrings.success.toLowerCase()){
         CustomSnackBar.success(successList: model.message?.success??[MyStrings.success]);

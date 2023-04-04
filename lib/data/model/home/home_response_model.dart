@@ -797,7 +797,7 @@ class Currency {
     _currencyCode = json['currency_code'].toString();
     _currencySymbol = json['currency_symbol'];
     _currencyFullname = json['currency_fullname'];
-    _currencyType = json['currency_type'];
+    _currencyType = json['currency_type'].toString();
     _rate = json['rate'].toString();
     _isDefault = json['is_default'].toString();
     _status = json['status'].toString();
@@ -876,7 +876,7 @@ class Wallets {
     _balance = json['balance'].toString();
     _createdAt = json['created_at'];
     _updatedAt = json['updated_at'];
-    _transactions = json['transactions'];
+    _transactions = json['transactions'].toString();
     _currency = json['currency'] != null ? WalletsCurrency.fromJson(json['currency']) : null;
   }
   int? _id;
@@ -947,9 +947,9 @@ class WalletsCurrency {
   WalletsCurrency.fromJson(dynamic json) {
     _id = json['id'];
     _currencyCode = json['currency_code'].toString();
-    _currencySymbol = json['currency_symbol'];
-    _currencyFullname = json['currency_fullname'];
-    _currencyType = json['currency_type'];
+    _currencySymbol = json['currency_symbol'].toString();
+    _currencyFullname = json['currency_fullname'].toString();
+    _currencyType = json['currency_type'].toString();
     _rate = json['rate'].toString();
     _isDefault = json['is_default'].toString();
     _status = json['status'].toString();
@@ -1178,10 +1178,10 @@ class UserAddress {
 
   UserAddress.fromJson(dynamic json) {
     _country = json['country'];
-    _address = json['address'];
-    _state = json['state'];
-    _zip = json['zip'];
-    _city = json['city'];
+    _address = json['address'].toString();
+    _state = json['state'].toString();
+    _zip = json['zip'].toString();
+    _city = json['city'].toString();
   }
   String? _country;
   String? _address;

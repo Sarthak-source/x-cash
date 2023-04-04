@@ -49,7 +49,6 @@ class SplashController extends GetxController  {
       else {
         List<String>message=[MyStrings.somethingWentWrong];
         CustomSnackBar.error(errorList:model.message?.error??message);
-        return;
       }
     }else{
       if(response.statusCode==503){
@@ -57,7 +56,6 @@ class SplashController extends GetxController  {
         update();
       }
       CustomSnackBar.error(errorList:[response.message]);
-      return;
     }
 
 
