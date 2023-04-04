@@ -126,8 +126,8 @@ class _WithdrawMethodScreenState extends State<WithdrawMethodScreen> {
                                 Container(
                                   height: 35, width: 35,
                                   alignment: Alignment.center,
-                                  decoration: BoxDecoration(color: MyColor.getPrimaryColor().withOpacity(0.2), shape: BoxShape.circle),
-                                  child: Image.asset(MyImages.withdrawMoney, color: MyColor.getPrimaryColor(), height: 17, width: 17),
+                                  decoration: BoxDecoration(color:  MyColor.getSymbolColor(index), shape: BoxShape.circle),
+                                  child: Image.asset(MyImages.withdrawMoney, color: MyColor.colorWhite, height: 17, width: 17),
                                 ),
                                 const SizedBox(width: Dimensions.space15),
                                 Column(

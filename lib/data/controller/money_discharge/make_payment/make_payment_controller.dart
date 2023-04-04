@@ -57,9 +57,7 @@ class MakePaymentController extends GetxController{
     invalidMerchant = "";
     isAgentFound = false;
 
-    print('get wallet');
     ResponseModel responseModel = await makePaymentRepo.getMakePaymentWallet();
-    print('get wallet response ');
 
     walletList.clear();
     otpTypeList.clear();

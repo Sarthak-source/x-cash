@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:xcash_app/core/utils/dimensions.dart';
 import 'package:xcash_app/core/utils/my_color.dart';
 
@@ -37,7 +36,7 @@ class _CircleShapeImageState extends State<CircleShapeImage> {
         color: widget.backgroundColor,
         shape: BoxShape.circle
       ),
-      child: SvgPicture.asset(widget.image, color: widget.imageColor, height: widget.size / 2, width: widget.size / 2),
+      child: CustomSvgPicture(image:widget.image, color: widget.imageColor??MyColor.primaryColor, height: widget.size / 2, width: widget.size / 2),
     ) : Container(
       height: widget.size, width: widget.size,
       padding: const EdgeInsets.all(Dimensions.space10),

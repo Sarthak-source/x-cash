@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
 import 'package:xcash_app/view/components/image/custom_svg_picture.dart';
+
 import '../../../../../core/utils/my_color.dart';
 import 'circle_image_button.dart';
 

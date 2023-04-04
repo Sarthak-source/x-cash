@@ -19,14 +19,14 @@ import 'package:xcash_app/view/components/text-form-field/custom_text_field.dart
 import 'package:xcash_app/view/screens/auth/kyc/widget/widget/choose_file_list_item.dart';
 import '../../../../../data/model/withdraw/edit_withdraw_method_response_model.dart' as withdraw;
 
-class EditWithdrawMethod extends StatefulWidget {
-  const EditWithdrawMethod({Key? key}) : super(key: key);
+class EditWithdrawMethodScreen extends StatefulWidget {
+  const EditWithdrawMethodScreen({Key? key}) : super(key: key);
 
   @override
-  State<EditWithdrawMethod> createState() => _EditWithdrawMethodState();
+  State<EditWithdrawMethodScreen> createState() => _EditWithdrawMethodScreenState();
 }
 
-class _EditWithdrawMethodState extends State<EditWithdrawMethod> {
+class _EditWithdrawMethodScreenState extends State<EditWithdrawMethodScreen> {
 
   @override
   void initState() {
@@ -60,6 +60,8 @@ class _EditWithdrawMethodState extends State<EditWithdrawMethod> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomTextField(
+                    isRequired: true,
+                    needRequiredSign: true,
                     needOutlineBorder: true,
                     controller: controller.nameController,
                     labelText: MyStrings.provideNickName.tr,
@@ -122,7 +124,7 @@ class _EditWithdrawMethodState extends State<EditWithdrawMethod> {
                                     value: val,
                                     child: Text(
                                       val.tr,
-                                      style: regularSmall,
+                                      style: regularDefault.copyWith(color: MyColor.getTextColor()),
                                     ),
                                   );
                                 }).toList()),

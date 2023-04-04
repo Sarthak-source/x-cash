@@ -128,7 +128,7 @@ static const String qrCodeScanner                   = "/qr_code_scanner_screen";
     GetPage(name: withdrawHistoryScreen,        page: () => const WithdrawHistoryScreen()),
     GetPage(name: withdrawMethodScreen,         page: () => const WithdrawMethodScreen()),
     GetPage(name: addWithdrawMethodScreen,      page: () => const AddWithdrawMethodScreen()),
-    GetPage(name: editWithdrawMethod,           page: () => const EditWithdrawMethod()),
+    GetPage(name: editWithdrawMethod,           page: () => const EditWithdrawMethodScreen()),
 
     GetPage(name: profileScreen,                page: () => const ProfileScreen()),
     GetPage(name: editProfileScreen,            page: () => const EditProfileScreen()),

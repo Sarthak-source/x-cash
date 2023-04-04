@@ -4,10 +4,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:get/get.dart';
-import 'core/helper/shared_preference_helper.dart';
-import 'data/repo/splash/splash_repo.dart';
-import 'data/services/api_service.dart';
 
 
 
@@ -63,7 +59,7 @@ class PushNotificationService {
           Map<String, String> payload = payloadMap.map((key, value) => MapEntry(key.toString(), value.toString()));
           String? remark = payload['for_app'];
           if(remark !=null && remark.isNotEmpty){
-            checkAndRedirect(remark);
+           //redirect any specific page
           }
         }
       }catch(e){
@@ -117,46 +113,6 @@ class PushNotificationService {
     enableLights: true,
     importance: Importance.high,
   );
-
-  checkAndRedirect(String remark) async{
-
-    Get.put(ApiClient(sharedPreferences: Get.find()));
-    SplashRepo splashRepo =  Get.put(SplashRepo( apiClient: Get.find()));
-    splashRepo.apiClient.sharedPreferences.setBool(SharedPreferenceHelper.hasNewNotificationKey,true);
-    bool rememberMe =  splashRepo.apiClient.sharedPreferences.getBool(SharedPreferenceHelper.rememberMeKey)??false;
-
-
-    if(rememberMe){
-
-      List<String>trxHistoryRemark = ['BAL_ADD','BAL_SUB','REFERRAL-COMMISSION','BALANCE_TRANSFER','BALANCE_RECEIVE'];
-      List<String>withdrawRemark = ['WITHDRAW_APPROVE','WITHDRAW_REJECT','WITHDRAW_REJECT','WITHDRAW_REQUEST'];
-      List<String>transferHistoryRemark = ["TRANSFER",'OTHER_BANK_TRANSFER_COMPLETE','WIRE_TRANSFER_COMPLETED','OWN_BANK_TRANSFER_MONEY_SEND','OWN_BANK_TRANSFER_MONEY_RECEIVE','OTHER_BANK_TRANSFER_REQUEST_SEND'];
-      List<String>depositHistoryRemark = ['DEPOSIT_APPROVE','DEPOSIT_COMPLETE','DEPOSIT_REJECT','DEPOSIT_REQUEST'];
-      List<String>loanHistoryRemark = ['LOAN_APPROVE','LOAN_REJECT','LOAN_PAID','LOAN_INSTALLMENT_DUE'];
-      List<String>dpsHistoryRemark = ['DPS_OPENED','DPS_MATURED','DPS_CLOSED','DPS_INSTALLMENT_DUE'];
-      List<String>fdrHistoryRemark = ['FDR_OPENED','FDR_CLOSED'];
-      //List<String>homeRemark = ['KYC_REJECT','FDR_APPROVE'];
-
-      /*if(trxHistoryRemark.contains(remark)){
-        Get.toNamed(RouteHelper.transactionScreen);
-      }else if(withdrawRemark.contains(remark)){
-        Get.toNamed(RouteHelper.withdrawScreen);
-      }else if(depositHistoryRemark.contains(remark)){
-        Get.toNamed(RouteHelper.depositsScreen);
-      }else if(transferHistoryRemark.contains(remark)){
-        Get.toNamed(RouteHelper.transferHistoryScreen);
-        //check back issue
-      }else if(loanHistoryRemark.contains(remark)){
-        Get.toNamed(RouteHelper.loanScreen,arguments: 'list');
-      }else if(dpsHistoryRemark.contains(remark)){
-        Get.toNamed(RouteHelper.dpsScreen,arguments: 'list');
-      }else if(fdrHistoryRemark.contains(remark)){
-        Get.toNamed(RouteHelper.fdrScreen,arguments: 'list');
-      }*/
-    }/*else{
-      Get.toNamed(RouteHelper.loginScreen);
-    }*/
-  }
 
   Future<void> _requestPermissions() async {
 

@@ -54,9 +54,7 @@ class MoneyOutController extends GetxController{
     isLoading = true;
     update();
 
-    print('get wallet');
     ResponseModel responseModel = await moneyOutRepo.getMoneyOutWallet();
-    print('get wallet response ');
 
 
     hasAgent     = false;
