@@ -11,28 +11,37 @@ import 'package:xcash_app/core/utils/messages.dart';
 import 'package:xcash_app/core/utils/my_strings.dart';
 import 'package:xcash_app/data/controller/localization/localization_controller.dart';
 import 'package:xcash_app/push_notification_service.dart';
+
 import 'core/di_service/di_services.dart' as di_service;
 
 
 
 Future<void> _messageHandler(RemoteMessage message) async {
-  await Firebase.initializeApp();
+  
   final sharedPreferences=await SharedPreferences.getInstance();
   Get.lazyPut(()=>sharedPreferences);
   sharedPreferences.setBool(SharedPreferenceHelper.hasNewNotificationKey, true);
 }
 
-Future<void> main() async{
+Future<void> main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
+   await Firebase.initializeApp();
   Map<String, Map<String, String>> languages = await di_service.init();
 
+  // Initialize Firebase
+ 
+
+  // Set up background message handler
   FirebaseMessaging.onBackgroundMessage(_messageHandler);
+
+  // Set up interacted message
   await PushNotificationService().setupInteractedMessage();
 
   HttpOverrides.global = MyHttpOverrides();
   runApp(MyApp(languages: languages));
-
 }
+
 
 class MyHttpOverrides extends HttpOverrides{
   @override

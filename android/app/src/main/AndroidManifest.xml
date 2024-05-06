@@ -16,7 +16,7 @@
 
 
    <application
-        android:label="XCash"
+        android:label="Qwallet"
         android:name="${applicationName}"
         android:usesCleartextTraffic="true"
         android:requestLegacyExternalStorage="true"
